@@ -4,5 +4,5 @@
 /**
  * 
  */
-module MyProject {
+module SecDFD {
 }
