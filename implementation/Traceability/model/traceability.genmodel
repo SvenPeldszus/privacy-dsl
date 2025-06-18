@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Traceability/src" modelPluginID="Traceability"
+    modelName="Traceability" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="21.0" copyrightFields="false"
+    usedGenPackages="../../org.secdfd.model/model/model.genmodel#//model ../../Graph/model/graph.genmodel#//graph"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>traceability.ecore</foreignModel>
+  <genPackages prefix="Traceability" disposableProviderFactory="true" ecorePackage="traceability.ecore#/">
+    <genClasses ecoreClass="traceability.ecore#//EDFDToGraph">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference traceability.ecore#//EDFDToGraph/edfdGraphTraces"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference traceability.ecore#//EDFDToGraph/edfds"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference traceability.ecore#//EDFDToGraph/graphs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference traceability.ecore#//EDFDToGraph/endtoendgraph"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference traceability.ecore#//EDFDToGraph/graphEndToEndTrace"/>
+    </genClasses>
+    <genClasses ecoreClass="traceability.ecore#//EDFDGraphTrace">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference traceability.ecore#//EDFDGraphTrace/edfdElements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference traceability.ecore#//EDFDGraphTrace/graphElements"/>
+    </genClasses>
+    <genClasses ecoreClass="traceability.ecore#//GraphEndToEndTrace">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference traceability.ecore#//GraphEndToEndTrace/endtoendGraphElements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference traceability.ecore#//GraphEndToEndTrace/graphElements"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

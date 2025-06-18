@@ -129,13 +129,13 @@ enum Priority returns Priority:
 				H = 'H' | M = 'M' | L = 'L';
 				
 enum Objective returns Objective:
-				Integrity = 'I' | Confidentiality = 'C' | Availability = 'Av' | Accountability = 'Ac';
+				Integrity = 'I' | Confidentiality = 'C' | Availability = 'Av' | Accountability = 'Ac' | Privacy = 'P';
 
 enum Layer returns Layer:
 				Transport = 'Transport' | Architectural = 'Architectural' | Application = 'Application';
 
 enum ResponsibilityType returns ResponsibilityType:
-				Store = 'Store' | Comparator = 'Comparator' | Discarder = 'Discarder' | Joiner = 'Joiner' | Copier = 'Copier' | Splitter = 'Splitter' | Forward = 'Forward' | EncryptOrHash = 'EncryptOrHash' | Decrypt = 'Decrypt' | Authenticator = 'Authenticator' | Authoriser = 'Authoriser' | Verifier = 'Verifier' | User = 'User';
+				Store = 'Store' | Comparator = 'Comparator' | Discarder = 'Discarder' | Joiner = 'Joiner' | Copier = 'Copier' | Splitter = 'Splitter' | Forward = 'Forward' | EncryptOrHash = 'EncryptOrHash' | Decrypt = 'Decrypt' | Authenticator = 'Authenticator' | Authoriser = 'Authoriser' | Verifier = 'Verifier' | User = 'User' | ML = 'ML';
 
 enum Channel returns Channel:
 				VLAN = 'VLAN' | ETH = 'ETH' | WiFi = 'WiFi';
