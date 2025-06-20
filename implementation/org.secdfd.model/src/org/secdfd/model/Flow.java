@@ -90,7 +90,7 @@ public interface Flow extends Element {
 	 * @return the value of the '<em>Label</em>' attribute.
 	 * @see #setLabel(int)
 	 * @see org.secdfd.model.ModelPackage#getFlow_Label()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getLabel();

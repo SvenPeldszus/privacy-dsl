@@ -5,6 +5,7 @@ package org.secdfd.model;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -22,7 +23,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see org.secdfd.model.ModelFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore'"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore"
  * @generated
  */
 public interface ModelPackage extends EPackage {
@@ -797,13 +798,22 @@ public interface ModelPackage extends EPackage {
 	int VALUE_FEATURE_COUNT = 2;
 
 	/**
+	 * The operation id for the '<em>Constraint 1</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE___CONSTRAINT_1__DIAGNOSTICCHAIN_MAP = 0;
+
+	/**
 	 * The number of operations of the '<em>Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_OPERATION_COUNT = 0;
+	int VALUE_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.impl.AssumptionImpl <em>Assumption</em>}' class.
@@ -1489,6 +1499,16 @@ public interface ModelPackage extends EPackage {
 	EAttribute getValue_Priority();
 
 	/**
+	 * Returns the meta object for the '{@link org.secdfd.model.Value#constraint_1(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Constraint 1</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Constraint 1</em>' operation.
+	 * @see org.secdfd.model.Value#constraint_1(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getValue__Constraint_1__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.Assumption <em>Assumption</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1978,6 +1998,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VALUE__PRIORITY = eINSTANCE.getValue_Priority();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraint 1</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation VALUE___CONSTRAINT_1__DIAGNOSTICCHAIN_MAP = eINSTANCE.getValue__Constraint_1__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.impl.AssumptionImpl <em>Assumption</em>}' class.

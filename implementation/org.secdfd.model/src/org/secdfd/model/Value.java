@@ -2,6 +2,8 @@
  */
 package org.secdfd.model;
 
+import java.util.Map;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see org.secdfd.model.ModelPackage#getValue()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='constraint_1'"
  * @generated
  */
 public interface Value extends EObject {
@@ -72,5 +74,13 @@ public interface Value extends EObject {
 	 * @generated
 	 */
 	void setPriority(Priority value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='Tuple {\n\tmessage : String = \'Privacy as objective can only have a high or low priority.\',\n\tstatus : Boolean = \n\t\t\tself.Objective = Objective::Privacy implies (self.Priority = Priority::H or self.Priority = Priority::L)\n}.status'"
+	 * @generated
+	 */
+	boolean constraint_1(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Value

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://www.secdfd.org/secdfd" nsPrefix="org.secdfd">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="basePackage" value="org.secdfd"/>
+  </eAnnotations>
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
     <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
   </eAnnotations>
-  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-    <details key="basePackage" value="org.secdfd"/>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EEnum" name="Priority">
     <eLiterals name="H"/>
@@ -53,6 +58,7 @@
     <eLiterals name="Authoriser" value="11"/>
     <eLiterals name="Verifier" value="13"/>
     <eLiterals name="User" value="14"/>
+    <eLiterals name="ML" value="15"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataStore" eSuperTypes="#//Element"/>
   <eClassifiers xsi:type="ecore:EClass" name="Flow" eSuperTypes="#//Element">
@@ -60,7 +66,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" upperBound="-1"
         eType="#//Element"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Element"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExternalEntity" eSuperTypes="#//Element"/>
   <eClassifiers xsi:type="ecore:EEnum" name="Objective">
@@ -68,6 +74,7 @@
     <eLiterals name="Confidentiality" value="1"/>
     <eLiterals name="Availability" value="2"/>
     <eLiterals name="Accountability" value="3"/>
+    <eLiterals name="Privacy" value="4"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true" eSuperTypes="#//NamedEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="outflows" upperBound="-1"
@@ -78,12 +85,14 @@
         eType="#//Asset"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inflows" upperBound="-1"
         eType="#//Flow"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Attacker" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Attacker" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedEntity" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Layer">
     <eLiterals name="Transport"/>
@@ -91,6 +100,12 @@
     <eLiterals name="Application" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="constraint_1"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="constraint_1" value="Tuple {&#xA;&#x9;message : String = 'Privacy as objective can only have a high or low priority.',&#xA;&#x9;status : Boolean = &#xA;&#x9;&#x9;&#x9;self.Objective = Objective::Privacy implies (self.Priority = Priority::H or self.Priority = Priority::L)&#xA;}.status"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Objective" eType="#//Objective"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Priority" eType="#//Priority"
         defaultValueLiteral="H"/>

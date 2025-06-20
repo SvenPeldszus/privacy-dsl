@@ -5,9 +5,12 @@ package org.secdfd.model.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.secdfd.model.Asset;
@@ -29,6 +32,7 @@ import org.secdfd.model.Responsibility;
 import org.secdfd.model.ResponsibilityType;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
+import org.secdfd.model.util.ModelValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -222,6 +226,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		// Initialize created meta-data
 		theModelPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theModelPackage,
+			 new EValidator.Descriptor() {
+				 @Override
+				 public EValidator getEValidator() {
+					 return ModelValidator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theModelPackage.freeze();
@@ -537,6 +551,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
+	public EOperation getValue__Constraint_1__DiagnosticChain_Map() {
+		return valueEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getAssumption() {
 		return assumptionEClass;
 	}
@@ -798,6 +822,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		valueEClass = createEClass(VALUE);
 		createEAttribute(valueEClass, VALUE__OBJECTIVE);
 		createEAttribute(valueEClass, VALUE__PRIORITY);
+		createEOperation(valueEClass, VALUE___CONSTRAINT_1__DIAGNOSTICCHAIN_MAP);
 
 		assumptionEClass = createEClass(ASSUMPTION);
 		createEAttribute(assumptionEClass, ASSUMPTION__OBJECTIVE);
@@ -886,7 +911,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getFlow_Channel(), this.getChannel(), "Channel", null, 0, 1, Flow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFlow_Target(), this.getElement(), null, "target", null, 0, -1, Flow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFlow_Source(), this.getElement(), null, "source", null, 0, 1, Flow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getFlow_Label(), ecorePackage.getEInt(), "Label", null, 0, 1, Flow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFlow_Label(), ecorePackage.getEInt(), "Label", null, 1, 1, Flow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(externalEntityEClass, ExternalEntity.class, "ExternalEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -895,15 +920,24 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getElement_Assumption(), this.getAssumption(), null, "assumption", null, 0, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElement_Assets(), this.getAsset(), null, "assets", null, 0, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElement_Inflows(), this.getFlow(), null, "inflows", null, 0, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getElement_Attacker(), ecorePackage.getEBoolean(), "Attacker", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElement_Attacker(), ecorePackage.getEBoolean(), "Attacker", null, 1, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedEntityEClass, NamedEntity.class, "NamedEntity", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNamedEntity_Number(), ecorePackage.getEInt(), "number", null, 0, 1, NamedEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNamedEntity_Number(), ecorePackage.getEInt(), "number", null, 1, 1, NamedEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getValue_Objective(), this.getObjective(), "Objective", null, 0, 1, Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getValue_Priority(), this.getPriority(), "Priority", "H", 0, 1, Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		EOperation op = initEOperation(getValue__Constraint_1__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "constraint_1", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(assumptionEClass, Assumption.class, "Assumption", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAssumption_Objective(), this.getObjective(), "Objective", null, 0, -1, Assumption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -948,12 +982,14 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.AUTHORISER);
 		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.VERIFIER);
 		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.USER);
+		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.ML);
 
 		initEEnum(objectiveEEnum, Objective.class, "Objective");
 		addEEnumLiteral(objectiveEEnum, Objective.INTEGRITY);
 		addEEnumLiteral(objectiveEEnum, Objective.CONFIDENTIALITY);
 		addEEnumLiteral(objectiveEEnum, Objective.AVAILABILITY);
 		addEEnumLiteral(objectiveEEnum, Objective.ACCOUNTABILITY);
+		addEEnumLiteral(objectiveEEnum, Objective.PRIVACY);
 
 		initEEnum(layerEEnum, Layer.class, "Layer");
 		addEEnumLiteral(layerEEnum, Layer.TRANSPORT);
@@ -971,23 +1007,46 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://www.eclipse.org/OCL/Import
-		createImportAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createImportAnnotations() {
-		String source = "http://www.eclipse.org/OCL/Import";
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
 		addAnnotation
 		  (this,
 		   source,
 		   new String[] {
-			   "ecore", "http://www.eclipse.org/emf/2002/Ecore"
+		   });
+		addAnnotation
+		  (valueEClass,
+		   source,
+		   new String[] {
+			   "constraints", "constraint_1"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation
+		  (getValue__Constraint_1__DiagnosticChain_Map(),
+		   source,
+		   new String[] {
+			   "body", "Tuple {\n\tmessage : String = \'Privacy as objective can only have a high or low priority.\',\n\tstatus : Boolean = \n\t\t\tself.Objective = Objective::Privacy implies (self.Priority = Priority::H or self.Priority = Priority::L)\n}.status"
 		   });
 	}
 

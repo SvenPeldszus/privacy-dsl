@@ -178,7 +178,7 @@ public class AssumptionItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return SecdfdEditPlugin.INSTANCE;
+		return ModelEditPlugin.INSTANCE;
 	}
 
 }

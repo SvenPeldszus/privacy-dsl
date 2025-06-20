@@ -274,7 +274,7 @@ public class EDFDItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return SecdfdEditPlugin.INSTANCE;
+		return ModelEditPlugin.INSTANCE;
 	}
 
 }

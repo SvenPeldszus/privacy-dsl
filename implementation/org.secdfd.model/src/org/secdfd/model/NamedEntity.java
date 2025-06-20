@@ -51,7 +51,7 @@ public interface NamedEntity extends EObject {
 	 * @return the value of the '<em>Number</em>' attribute.
 	 * @see #setNumber(int)
 	 * @see org.secdfd.model.ModelPackage#getNamedEntity_Number()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getNumber();

@@ -9,15 +9,11 @@ import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->
- * A test suite for the '<em><b>model</b></em>' package.
+ * A test suite for the '<em><b>Model</b></em>' model.
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModelTests extends TestSuite {
-
-	public void test() {
-		//TODO: Implement test here
-	}
+public class ModelAllTests extends TestSuite {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -34,8 +30,8 @@ public class ModelTests extends TestSuite {
 	 * @generated
 	 */
 	public static Test suite() {
-		TestSuite suite = new ModelTests("model Tests");
-		suite.addTestSuite(ValueTest.class);
+		TestSuite suite = new ModelAllTests("Model Tests");
+		suite.addTest(ModelTests.suite());
 		return suite;
 	}
 
@@ -44,8 +40,8 @@ public class ModelTests extends TestSuite {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModelTests(String name) {
+	public ModelAllTests(String name) {
 		super(name);
 	}
 
-} //ModelTests
+} //ModelAllTests

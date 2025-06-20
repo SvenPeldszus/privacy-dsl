@@ -80,7 +80,7 @@ public interface Element extends NamedEntity {
 	 * @return the value of the '<em>Attacker</em>' attribute.
 	 * @see #setAttacker(boolean)
 	 * @see org.secdfd.model.ModelPackage#getElement_Attacker()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	boolean isAttacker();

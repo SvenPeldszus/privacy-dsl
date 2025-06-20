@@ -246,7 +246,7 @@ public class ResponsibilityItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return SecdfdEditPlugin.INSTANCE;
+		return ModelEditPlugin.INSTANCE;
 	}
 
 }

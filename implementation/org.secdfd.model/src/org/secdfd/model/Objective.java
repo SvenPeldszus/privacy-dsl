@@ -56,7 +56,15 @@ public enum Objective implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ACCOUNTABILITY(3, "Accountability", "Accountability");
+	ACCOUNTABILITY(3, "Accountability", "Accountability"), /**
+	 * The '<em><b>Privacy</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PRIVACY_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PRIVACY(4, "Privacy", "Privacy");
 
 	/**
 	 * The '<em><b>Integrity</b></em>' literal value.
@@ -103,6 +111,17 @@ public enum Objective implements Enumerator {
 	public static final int ACCOUNTABILITY_VALUE = 3;
 
 	/**
+	 * The '<em><b>Privacy</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PRIVACY
+	 * @model name="Privacy"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PRIVACY_VALUE = 4;
+
+	/**
 	 * An array of all the '<em><b>Objective</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -114,6 +133,7 @@ public enum Objective implements Enumerator {
 			CONFIDENTIALITY,
 			AVAILABILITY,
 			ACCOUNTABILITY,
+			PRIVACY,
 		};
 
 	/**
@@ -174,6 +194,7 @@ public enum Objective implements Enumerator {
 			case CONFIDENTIALITY_VALUE: return CONFIDENTIALITY;
 			case AVAILABILITY_VALUE: return AVAILABILITY;
 			case ACCOUNTABILITY_VALUE: return ACCOUNTABILITY;
+			case PRIVACY_VALUE: return PRIVACY;
 		}
 		return null;
 	}
