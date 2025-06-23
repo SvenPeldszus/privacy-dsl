@@ -32,4 +32,7 @@ hs_err_pid*
 *.launch
 
 target/
-src-gen/
+implementation/org.secdfd.dsl.ide/src-gen/
+implementation/org.secdfd.dsl.tests/src-gen/
+implementation/org.secdfd.dsl.ui.tests/src-gen/
+implementation/org.secdfd.dsl.ui/src-gen/
