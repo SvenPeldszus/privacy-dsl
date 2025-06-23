@@ -4,9 +4,6 @@ package traceability.impl;
 
 import org.secdfd.model.ModelPackage;
 import graph.GraphPackage;
-
-import graph.impl.GraphPackageImpl;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -96,18 +93,13 @@ public class TraceabilityPackageImpl extends EPackageImpl implements Traceabilit
 
 		// Initialize simple dependencies
 		ModelPackage.eINSTANCE.eClass();
-
-		// Obtain or create and register interdependencies
-		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(GraphPackage.eNS_URI);
-		GraphPackageImpl theGraphPackage = (GraphPackageImpl)(registeredPackage instanceof GraphPackageImpl ? registeredPackage : GraphPackage.eINSTANCE);
+		GraphPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theTraceabilityPackage.createPackageContents();
-		theGraphPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theTraceabilityPackage.initializePackageContents();
-		theGraphPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theTraceabilityPackage.freeze();

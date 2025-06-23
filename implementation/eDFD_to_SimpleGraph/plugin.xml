@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?><plugin>
-  <extension point="org.eclipse.emf.ecore.generated_package">
-    <!-- @generated traceability -->
-    <package class="graph.GraphPackage" genModel="model/graph.genmodel" uri="http://www.example.org/graph"/>
-  </extension>
   <extension id="edfdtosimplegraph.EDFDXformM2M" point="org.eclipse.viatra.query.runtime.queryspecification">
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:edfdtosimplegraph.EDFDXformM2M" id="edfdtosimplegraph.EDFDXformM2M">
       <query-specification fqn="edfdtosimplegraph.EDFD"/>
