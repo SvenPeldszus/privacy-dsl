@@ -178,7 +178,7 @@ public class ValueItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ModelEditPlugin.INSTANCE;
+		return SecdfdEditPlugin.INSTANCE;
 	}
 
 }

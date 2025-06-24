@@ -4,7 +4,7 @@
     <semanticResources>My.secdfd</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_neRtoEw7EfC38b3b5yjNmQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_nfmjUEw7EfC38b3b5yjNmQ" name="extendedDFD" repPath="#_ne_fUEw7EfC38b3b5yjNmQ" changeId="1750247957294">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_nfmjUEw7EfC38b3b5yjNmQ" name="extendedDFD" repPath="#_ne_fUEw7EfC38b3b5yjNmQ" changeId="1750685327244">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
         <target xmi:type="org.secdfd:EDFD" href="My.secdfd#DistriFriendMap"/>
       </ownedRepresentationDescriptors>
@@ -66,7 +66,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nupE4kw7EfC38b3b5yjNmQ"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_nuc3oEw7EfC38b3b5yjNmQ" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuc3oUw7EfC38b3b5yjNmQ" x="150" width="100" height="100"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuc3oUw7EfC38b3b5yjNmQ" x="155" y="99" width="100" height="100"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_nudesEw7EfC38b3b5yjNmQ" type="2001" element="_nhWPwUw7EfC38b3b5yjNmQ">
           <children xmi:type="notation:Node" xmi:id="_nudes0w7EfC38b3b5yjNmQ" type="5002">
@@ -77,7 +77,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nuqTAkw7EfC38b3b5yjNmQ"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_nudesUw7EfC38b3b5yjNmQ" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nudeskw7EfC38b3b5yjNmQ" x="310" width="100" height="100"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nudeskw7EfC38b3b5yjNmQ" x="325" y="105" width="100" height="100"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_nueFwEw7EfC38b3b5yjNmQ" type="2001" element="_nhahMUw7EfC38b3b5yjNmQ">
           <children xmi:type="notation:Node" xmi:id="_nueFw0w7EfC38b3b5yjNmQ" type="5002">

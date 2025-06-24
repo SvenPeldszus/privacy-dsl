@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.secdfd.model.edit;singleton:=true
 Automatic-Module-Name: org.secdfd.model.edit
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.secdfd.model.provider.ModelEditPlugin$Implementation
+Bundle-Activator: org.secdfd.model.provider.SecdfdEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-21

@@ -287,7 +287,7 @@ public class AssetItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ModelEditPlugin.INSTANCE;
+		return SecdfdEditPlugin.INSTANCE;
 	}
 
 }
