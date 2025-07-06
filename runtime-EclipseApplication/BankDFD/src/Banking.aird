@@ -2,9 +2,11 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.secdfd="http://www.secdfd.org/secdfd" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_B1ZD0FA4EfC9e87frNF52w" selectedViews="_gruaoFA_EfCEge4zdscY-w" version="15.4.3.202406261640">
     <semanticResources>Banking.secdfd</semanticResources>
+    <semanticResources>Banking.graph</semanticResources>
+    <semanticResources>Banking.traceability</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_gruaoFA_EfCEge4zdscY-w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_gtyQIFA_EfCEge4zdscY-w" name="extendedDFD" repPath="#_gswVYFA_EfCEge4zdscY-w" changeId="1750854432067">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_gtyQIFA_EfCEge4zdscY-w" name="extendedDFD" repPath="#_gswVYFA_EfCEge4zdscY-w" changeId="1750930249746">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
         <target xmi:type="org.secdfd:EDFD" href="Banking.secdfd#Bank"/>
       </ownedRepresentationDescriptors>

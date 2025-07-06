@@ -1,0 +1,158 @@
+EDFD Encrypt_Test[
+	assets:
+		Asset Password
+			type: String
+			values: [ C ]
+			source: "E1: Applicant"
+			targets: "P1: Login",
+		Asset ID
+			type: Number
+			source: "E1: Applicant"
+			targets: "P1: Login",
+		Asset Token
+			type: String
+			values: [ C ]
+			source: "P1: Login"
+			targets: "E1: Applicant",
+		Asset "Asset data"
+			type: Object
+			values: [ C ]
+			source: "E1: Applicant"
+			targets: "P3: credit application" , "D1: DB" , "P4: calculate asset risk score (AI) - R1.2" ,
+		Asset "Applicant data"
+			type: Object
+			values: [ C ]
+			source: "E1: Applicant"
+			targets: "P3: credit application" , "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)" , "D1: DB" ,
+		Asset "credit history"
+			type: Object
+			values: [ C ]
+			source: "D1: DB"
+			targets: "P2: show overview", "E1: Applicant",
+		Asset "payment history"
+			type: Object
+			values: [ C ]
+			source: "D1: DB"
+			targets: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)",
+		Asset "asset risk score"
+			type: String
+			values: [ C ]
+			source: "P4: calculate asset risk score (AI) - R1.2"
+			targets: "P6: loan decision (AI) R1 -  Homomorphic Encryption" , "P8: encrypt asset risk score" ,
+		Asset "applicant risk score"
+			type: String
+			values: [ C ]
+			source: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"
+			targets: "P6: loan decision (AI) R1 -  Homomorphic Encryption" , "P10: encrypt applicant risk score" ,
+		Asset "asset category"
+			type: String
+			source: "P3: credit application"
+			targets: "P6: loan decision (AI) R1 -  Homomorphic Encryption" , "P9: encrypt asset category" ,
+		Asset "encrypted decision details"
+			type: Object
+			source: "P6: loan decision (AI) R1 -  Homomorphic Encryption"
+			targets: "P11: decrypt decision details" , Asset "encrypted asset risk score" type: String source: "P8: encrypt asset risk score" targets: "P6: loan decision (AI) R1 -  Homomorphic Encryption" , Asset "encrypted asset category" type: String source: "P9: encrypt asset category" targets: "P6: loan decision (AI) R1 -  Homomorphic Encryption" , Asset "encrypted applicant risk score" type: String source: "P10: encrypt applicant risk score" targets: "P6: loan decision (AI) R1 -  Homomorphic Encryption" , Asset "decision details" type: Object values: [ C ] source: "P11: decrypt decision details" targets: "D1: DB" , "P7: show request result" , "E1: Applicant" elements:
+		Process "P1: Login"[
+			responsibilities: [Password, ID User:: Token]
+			assets: Password, ID, Token
+			incoming flows: "E1: Applicant.F1: Password, ID"
+			outgoing flows:
+				"F3: Password, ID"[num: 3 source: "P1: Login"],
+				"F2: Token"[num: 2 assets: Token source: "P1: Login" targets: "E1: Applicant"]
+		],
+		ExternalEntity "E1: Applicant"[
+			assets: Password, ID, Token, "Asset data", "Applicant data", "credit history"
+			, "decision details" incoming flows: "P1: Login.F2: Token",
+				"P2: show overview.F7: credit history",
+				"P7: show request result.F16: decision details"
+			outgoing flows:
+				"F1: Password, ID"[num: 1 assets: Password, ID source: "E1: Applicant" targets: "P1: Login"],
+				"F3: token"[num: 3 assets: Token source: "E1: Applicant" targets: "P3: credit application"],
+				"F4: Asset data, Applicant data"[num: 4 assets: "Asset data", "Applicant data" source: "E1: Applicant" targets: "P3: credit application"]
+		],
+		Process "P3: credit application"[
+			responsibilities: [Token Store::],
+							  ["Asset data", "Applicant data" Forward:: "Asset data", "Applicant data"]
+			assets: Token, "Asset data", "Applicant data"
+			, "asset category" incoming flows: "E1: Applicant.F3: token",
+				"E1: Applicant.F4: Asset data, Applicant data"
+			outgoing flows:
+				"F5: Asset data, Applicant data"[num: 5 assets: "Asset data", "Applicant data" source: "P3: credit application" targets: "D1: DB"],
+				"F8: Asset data"[num: 8 assets: "Asset data" source: "P3: credit application" targets: "P4: calculate asset risk score (AI) - R1.2"],
+				"F9: Applicant data"[num: 9 assets: "Applicant data" source: "P3: credit application" targets: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"],
+				
+		"F17: asset category" [ num: 17 assets: "asset category" source: "P3: credit application" targets: "P9: encrypt asset category" ] ],
+		DataStore "D1: DB"[
+			assets: "Asset data", "Applicant data", "credit history", "payment history", "decision details"
+			incoming flows:
+				"P3: credit application.F5: Asset data, Applicant data",
+				"P11: decrypt decision details.F23: decision details"
+			outgoing flows:
+				"F6: credit history"[num: 6 assets: "credit history" source: "D1: DB" targets: "P2: show overview"],
+				"F10: credit history, payment history"[num: 10 assets: "credit history", "payment history" source: "D1: DB" targets: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"],
+				"F15: decision details"[num: 15 assets: "decision details" source: "D1: DB" targets: "P7: show request result"]
+		],
+		Process "P2: show overview"[
+			responsibilities: ["credit history" Forward:: "credit history"]
+			assets: "credit history" incoming flows: "D1: DB.F6: credit history"
+			outgoing flows: "F7: credit history"[num: 7 assets: "credit history" source: "P2: show overview" targets: "E1: Applicant"]
+		],
+		Process "P4: calculate asset risk score (AI) - R1.2"[
+			assets: "asset risk score", "Asset data"
+			incoming flows: "P3: credit application.F8: Asset data"
+			outgoing flows: 
+		"F13: asset risk score" [ num: 13 assets: "asset risk score" source: "P4: calculate asset risk score (AI) - R1.2" targets: "P8: encrypt asset risk score" ] ],
+		Process "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"[
+			responsibilities: ["Applicant data", "credit history", "payment history" Joiner:: "applicant risk score"]
+			assets: "applicant risk score", "credit history", "payment history", "Applicant data"
+			incoming flows:
+				"P3: credit application.F9: Applicant data",
+				"D1: DB.F10: credit history, payment history"
+			outgoing flows: 
+		"F18: applicant risk score" [ num: 18 assets: "applicant risk score" source: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)" targets: "P10: encrypt applicant risk score" ] ],
+		Process "P7: show request result"[
+			responsibilities: ["encrypted decision details" Forward:: "encrypted decision details"]
+			assets: "decision details"
+			incoming flows: "D1: DB.F15: decision details"
+			outgoing flows: "F16: decision details"[num: 16 assets: "decision details" source: "P7: show request result" targets: "E1: Applicant"]
+		], 
+		Process "P8: encrypt asset risk score" [ 
+			responsibilities: ["asset risk score" EncryptOrHash:: "encrypted asset risk score"]
+			assets: "asset risk score" 
+			incoming flows: "P4: calculate asset risk score (AI) - R1.2.F13: asset risk score" 
+			outgoing flows: "F19: encrypted asset risk score" [num: 19 assets: "encrypted asset risk score" source: "P8: encrypt asset risk score" targets: "P6: loan decision (AI) R1 -  Homomorphic Encryption" ]
+		], 
+		Process "P9: encrypt asset category" [
+			responsibilities: ["asset category" EncryptOrHash:: "encrypted asset category"]
+			assets: "asset category" 
+			incoming flows: "P3: credit application.F17: asset category" 
+			outgoing flows: "F20: encrypted asset category" [ num: 20 assets: "encrypted asset category" source: "P9: encrypt asset category" targets: "P6: loan decision (AI) R1 -  Homomorphic Encryption" ]
+		], 
+		Process "P10: encrypt applicant risk score" [
+			responsibilities: ["applicant risk score" EncryptOrHash:: "encrypted applicant risk score"] 
+			assets: "applicant risk score" 
+			incoming flows: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4).F18: applicant risk score" 
+			outgoing flows: "F21: encrypted applicant risk score" [ num: 21 assets: "encrypted applicant risk score" source: "P10: encrypt applicant risk score" targets: "P6: loan decision (AI) R1 -  Homomorphic Encryption" ]
+		],
+		Process "P6: loan decision (AI) R1 -  Homomorphic Encryption"[
+			responsibilities: ["encrypted asset risk score", "encrypted asset category", "encrypted applicant risk score" Joiner:: "encrypted decision details"]
+			assets: "encrypted decision details", "encrypted asset risk score", "encrypted asset category", "encrypted applicant risk score"
+			incoming flows:
+				"P8: encrypt asset risk score.F19: encrypted asset risk score",
+				"P9: encrypt asset category.F20: encrypted asset category",
+				"P10: encrypt applicant risk score.F21: encrypted applicant risk score"
+			outgoing flows: "F22: encrypted decision details" [ num: 22 assets: "encrypted decision details" source: "P6: loan decision (AI) R1 -  Homomorphic Encryption" targets: "P11: decrypt decision details" ] 
+		], 
+		Process "P11: decrypt decision details" [ 
+			responsibilities: ["encrypted decision details" Decrypt:: "decision details"]
+			assets: "encrypted decision details" , "decision details" 
+			incoming flows: "P6: loan decision (AI) R1 -  Homomorphic Encryption.F22: encrypted decision details" 
+			outgoing flows: "F23: decision details" [ num: 23 assets: "decision details" source: "P11: decrypt decision details" targets: "D1: DB" ]
+		] attack zones: Attackerzone1[
+				attacker profiles:
+					ExternalHacker [
+						observation: 1
+					]
+				elements: "P6: loan decision (AI) R1 -  Homomorphic Encryption"
+			]
+]

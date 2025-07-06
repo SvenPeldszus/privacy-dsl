@@ -1,0 +1,140 @@
+EDFD Test[
+	assets:
+		Asset Password
+			type: String
+			values: [ C ]
+			source: "E1: Applicant"
+			targets: "P1: Login",
+		Asset ID
+			type: Number
+			source: "E1: Applicant"
+			targets: "P1: Login",
+		Asset Token
+			type: String
+			values: [ C ]
+			source: "P1: Login"
+			targets: "E1: Applicant",
+		Asset "Asset data"
+			type: Object
+			values: [ C ]
+			source: "E1: Applicant"
+			targets: "P3: credit application" , "D1: DB" , "P4: calculate asset risk score (AI) - R1.2" ,
+		Asset "Applicant data"
+			type: Object
+			values: [ C ]
+			source: "E1: Applicant"
+			targets: "P3: credit application" , "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)" , "D1: DB" ,
+		Asset "credit history"
+			type: Object
+			values: [ C ]
+			source: "D1: DB"
+			targets: "P2: show overview", "E1: Applicant",
+		Asset "payment history"
+			type: Object
+			values: [ C ]
+			source: "D1: DB"
+			targets: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)",
+		Asset "asset risk score"
+			type: String
+			values: [ C ]
+			source: "P4: calculate asset risk score (AI) - R1.2"
+			targets: "P6: loan decision (AI) R1",
+		Asset "applicant risk score"
+			type: String
+			values: [ ]
+			source: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"
+			targets: "P6: loan decision (AI) R1",
+		Asset "asset category"
+			type: String
+			values: [ ]
+			source: "P3: credit application"
+			targets: "P6: loan decision (AI) R1",
+		Asset "decision details"
+			type: String
+			values: [ C ]
+			source: "P6: loan decision (AI) R1"
+			targets: "D1: DB", "P7: show request result", "E1: Applicant"
+	elements:
+		Process "P1: Login"[
+			responsibilities: [Password, ID User:: Token]
+			assets: Password, ID, Token
+			incoming flows: "E1: Applicant.F1: Password, ID"
+			outgoing flows:
+				"F3: Password, ID"[num: 3 source: "P1: Login"],
+				"F2: Token"[num: 2 assets: Token source: "P1: Login" targets: "E1: Applicant"]
+		],
+		ExternalEntity "E1: Applicant"[
+			assets: Password, ID, Token, "Asset data", "Applicant data", "credit history"
+			incoming flows:
+				"P1: Login.F2: Token",
+				"P2: show overview.F7: credit history",
+				"P7: show request result.F16: decision details"
+			outgoing flows:
+				"F1: Password, ID"[num: 1 assets: Password, ID source: "E1: Applicant" targets: "P1: Login"],
+				"F3: token"[num: 3 assets: Token source: "E1: Applicant" targets: "P3: credit application"],
+				"F4: Asset data, Applicant data"[num: 4 assets: "Asset data", "Applicant data" source: "E1: Applicant" targets: "P3: credit application"]
+		],
+		Process "P3: credit application"[
+			responsibilities: [Token Store::],
+							  ["Asset data", "Applicant data" Forward:: "Asset data", "Applicant data"]
+			assets: Token, "Asset data", "Applicant data"
+			, "asset category" incoming flows: "E1: Applicant.F3: token",
+				"E1: Applicant.F4: Asset data, Applicant data"
+			outgoing flows:
+				"F5: Asset data, Applicant data"[num: 5 assets: "Asset data", "Applicant data" source: "P3: credit application" targets: "D1: DB"],
+				"F8: Asset data"[num: 8 assets: "Asset data" source: "P3: credit application" targets: "P4: calculate asset risk score (AI) - R1.2"],
+				"F9: Applicant data"[num: 9 assets: "Applicant data" source: "P3: credit application" targets: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"],
+				"F12: asset category"[num: 12 assets: "asset category" source: "P3: credit application" targets: "P6: loan decision (AI) R1"]
+		],
+		DataStore "D1: DB"[
+			assets: "Asset data", "Applicant data", "decision details", "credit history", "payment history"
+			incoming flows:
+				"P3: credit application.F5: Asset data, Applicant data",
+				"P6: loan decision (AI) R1.F14: decision details"
+			outgoing flows:
+				"F6: credit history"[num: 6 assets: "credit history" source: "D1: DB" targets: "P2: show overview"],
+				"F10: credit history, payment history"[num: 10 assets: "credit history", "payment history" source: "D1: DB" targets: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"],
+				"F15: decision details"[num: 15 assets: "decision details" source: "D1: DB" targets: "P7: show request result"]
+		],
+		Process "P2: show overview"[
+			responsibilities: ["credit history" Forward:: "credit history"]
+			assets: "credit history" incoming flows: "D1: DB.F6: credit history"
+			outgoing flows: "F7: credit history"[num: 7 assets: "credit history" source: "P2: show overview" targets: "E1: Applicant"]
+		],
+		Process "P4: calculate asset risk score (AI) - R1.2"[
+			assets: "asset risk score", "Asset data"
+			incoming flows: "P3: credit application.F8: Asset data"
+			outgoing flows: "F13: asset risk score"[num: 13 assets: "asset risk score" source: "P4: calculate asset risk score (AI) - R1.2" targets: "P6: loan decision (AI) R1"]
+		],
+		Process "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"[
+			responsibilities: ["Applicant data", "credit history", "payment history" Joiner:: "applicant risk score"]
+			assets: "applicant risk score", "credit history", "payment history", "Applicant data"
+			incoming flows:
+				"P3: credit application.F9: Applicant data",
+				"D1: DB.F10: credit history, payment history"
+			outgoing flows: "F11: applicant risk score"[num: 11 assets: "applicant risk score" source: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)" targets: "P6: loan decision (AI) R1"]
+		],
+		Process "P6: loan decision (AI) R1"[
+			responsibilities: ["asset risk score", "asset category", "applicant risk score" Joiner:: "decision details"]
+			assets: "asset risk score", "applicant risk score", "asset category", "decision details"
+			incoming flows:
+				"P4: calculate asset risk score (AI) - R1.2.F13: asset risk score",
+				"P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4).F11: applicant risk score",
+				"P3: credit application.F12: asset category"
+			outgoing flows: "F14: decision details"[num: 14 assets: "decision details" source: "P6: loan decision (AI) R1" targets: "D1: DB"]
+		],
+		Process "P7: show request result"[
+			responsibilities: ["decision details" Forward:: "decision details"]
+			assets: "decision details"
+			incoming flows: "D1: DB.F15: decision details"
+			outgoing flows: "F16: decision details"[num: 16 assets: "decision details" source: "P7: show request result" targets: "E1: Applicant"]
+		]
+		attack zones:
+			Attackerzone1[
+				attacker profiles:
+					ExternalHacker [
+						observation: 1
+					]
+				elements: "P6: loan decision (AI) R1"
+			]
+]

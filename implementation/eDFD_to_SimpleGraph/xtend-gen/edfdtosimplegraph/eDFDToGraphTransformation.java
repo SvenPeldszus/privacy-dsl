@@ -627,7 +627,7 @@ public class eDFDToGraphTransformation {
                       InputOutput.<String>print(_builder_1.toString());
                       StringConcatenation _builder_2 = new StringConcatenation();
                       _builder_2.append(" ");
-                      _builder_2.append("for ecrypting asset:");
+                      _builder_2.append("for encrypting asset:");
                       String _iD_1 = ga.getID();
                       _builder_2.append(_iD_1, " ");
                       InputOutput.<String>print(_builder_2.toString());
@@ -982,6 +982,28 @@ public class eDFDToGraphTransformation {
                 if (_string != null) {
                   switch (_string) {
                     case "[EncryptOrHash]":
+                      outgoing.setEdgeLabel(0);
+                      StringConcatenation _builder = new StringConcatenation();
+                      _builder.append("Label propagation of edge ");
+                      String _iD = outgoing.getID();
+                      _builder.append(_iD);
+                      _builder.append(", ");
+                      int _number = outgoing.getNumber();
+                      _builder.append(_number);
+                      InputOutput.<String>print(_builder.toString());
+                      StringConcatenation _builder_1 = new StringConcatenation();
+                      _builder_1.append(" ");
+                      _builder_1.append("is ");
+                      int _edgeLabel = outgoing.getEdgeLabel();
+                      _builder_1.append(_edgeLabel, " ");
+                      InputOutput.<String>print(_builder_1.toString());
+                      StringConcatenation _builder_2 = new StringConcatenation();
+                      _builder_2.append(" ");
+                      _builder_2.append("for ecrypting asset:");
+                      String _iD_1 = ga.getID();
+                      _builder_2.append(_iD_1, " ");
+                      InputOutput.<String>print(_builder_2.toString());
+                      InputOutput.println();
                       break;
                     case "[Decrypt]":
                       int most_restrictive = (-1);
@@ -993,7 +1015,33 @@ public class eDFDToGraphTransformation {
                           most_restrictive = i.getLabel();
                         }
                       }
+                      if ((most_restrictive == 1)) {
+                        outgoing.setEdgeLabel(1);
+                      } else {
+                        outgoing.setEdgeLabel(0);
+                      }
                       outgoing.setEdgeLabel(1);
+                      StringConcatenation _builder_3 = new StringConcatenation();
+                      _builder_3.append("Label propagation of edge ");
+                      String _iD_2 = outgoing.getID();
+                      _builder_3.append(_iD_2);
+                      _builder_3.append(", ");
+                      int _number_1 = outgoing.getNumber();
+                      _builder_3.append(_number_1);
+                      InputOutput.<String>print(_builder_3.toString());
+                      StringConcatenation _builder_4 = new StringConcatenation();
+                      _builder_4.append(" ");
+                      _builder_4.append("is ");
+                      int _edgeLabel_1 = outgoing.getEdgeLabel();
+                      _builder_4.append(_edgeLabel_1, " ");
+                      InputOutput.<String>print(_builder_4.toString());
+                      StringConcatenation _builder_5 = new StringConcatenation();
+                      _builder_5.append(" ");
+                      _builder_5.append("for decrypting asset:");
+                      String _iD_3 = ga.getID();
+                      _builder_5.append(_iD_3, " ");
+                      InputOutput.<String>print(_builder_5.toString());
+                      InputOutput.println();
                       break;
                     case "[Comparator]":
                       int most_restrictive_1 = (-1);
@@ -1006,6 +1054,27 @@ public class eDFDToGraphTransformation {
                         }
                       }
                       outgoing.setEdgeLabel(most_restrictive_1);
+                      StringConcatenation _builder_6 = new StringConcatenation();
+                      _builder_6.append("Label propagation of edge ");
+                      String _iD_4 = outgoing.getID();
+                      _builder_6.append(_iD_4);
+                      _builder_6.append(", ");
+                      int _number_2 = outgoing.getNumber();
+                      _builder_6.append(_number_2);
+                      InputOutput.<String>print(_builder_6.toString());
+                      StringConcatenation _builder_7 = new StringConcatenation();
+                      _builder_7.append(" ");
+                      _builder_7.append("is ");
+                      int _edgeLabel_2 = outgoing.getEdgeLabel();
+                      _builder_7.append(_edgeLabel_2, " ");
+                      InputOutput.<String>print(_builder_7.toString());
+                      StringConcatenation _builder_8 = new StringConcatenation();
+                      _builder_8.append(" ");
+                      _builder_8.append("for comparing asset:");
+                      String _iD_5 = ga.getID();
+                      _builder_8.append(_iD_5, " ");
+                      InputOutput.<String>print(_builder_8.toString());
+                      InputOutput.println();
                       break;
                     case "[Joiner]":
                       int most_restrictive_2 = (-1);
@@ -1018,6 +1087,27 @@ public class eDFDToGraphTransformation {
                         }
                       }
                       outgoing.setEdgeLabel(most_restrictive_2);
+                      StringConcatenation _builder_9 = new StringConcatenation();
+                      _builder_9.append("Label propagation of edge ");
+                      String _iD_6 = outgoing.getID();
+                      _builder_9.append(_iD_6);
+                      _builder_9.append(", ");
+                      int _number_3 = outgoing.getNumber();
+                      _builder_9.append(_number_3);
+                      InputOutput.<String>print(_builder_9.toString());
+                      StringConcatenation _builder_10 = new StringConcatenation();
+                      _builder_10.append(" ");
+                      _builder_10.append("is ");
+                      int _edgeLabel_3 = outgoing.getEdgeLabel();
+                      _builder_10.append(_edgeLabel_3, " ");
+                      InputOutput.<String>print(_builder_10.toString());
+                      StringConcatenation _builder_11 = new StringConcatenation();
+                      _builder_11.append(" ");
+                      _builder_11.append("for joining asset:");
+                      String _iD_7 = ga.getID();
+                      _builder_11.append(_iD_7, " ");
+                      InputOutput.<String>print(_builder_11.toString());
+                      InputOutput.println();
                       break;
                     case "[Splitter]":
                       int most_restrictive_3 = (-1);
@@ -1030,6 +1120,27 @@ public class eDFDToGraphTransformation {
                         }
                       }
                       outgoing.setEdgeLabel(most_restrictive_3);
+                      StringConcatenation _builder_12 = new StringConcatenation();
+                      _builder_12.append("Label propagation of edge ");
+                      String _iD_8 = outgoing.getID();
+                      _builder_12.append(_iD_8);
+                      _builder_12.append(", ");
+                      int _number_4 = outgoing.getNumber();
+                      _builder_12.append(_number_4);
+                      InputOutput.<String>print(_builder_12.toString());
+                      StringConcatenation _builder_13 = new StringConcatenation();
+                      _builder_13.append(" ");
+                      _builder_13.append("is ");
+                      int _edgeLabel_4 = outgoing.getEdgeLabel();
+                      _builder_13.append(_edgeLabel_4, " ");
+                      InputOutput.<String>print(_builder_13.toString());
+                      StringConcatenation _builder_14 = new StringConcatenation();
+                      _builder_14.append(" ");
+                      _builder_14.append("for spliting asset:");
+                      String _iD_9 = ga.getID();
+                      _builder_14.append(_iD_9, " ");
+                      InputOutput.<String>print(_builder_14.toString());
+                      InputOutput.println();
                       break;
                     case "[User]":
                       int most_restrictive_4 = (-1);
@@ -1042,12 +1153,75 @@ public class eDFDToGraphTransformation {
                         }
                       }
                       outgoing.setEdgeLabel(most_restrictive_4);
+                      StringConcatenation _builder_15 = new StringConcatenation();
+                      _builder_15.append("Label propagation of edge ");
+                      String _iD_10 = outgoing.getID();
+                      _builder_15.append(_iD_10);
+                      _builder_15.append(", ");
+                      int _number_5 = outgoing.getNumber();
+                      _builder_15.append(_number_5);
+                      InputOutput.<String>print(_builder_15.toString());
+                      StringConcatenation _builder_16 = new StringConcatenation();
+                      _builder_16.append(" ");
+                      _builder_16.append("is ");
+                      int _edgeLabel_5 = outgoing.getEdgeLabel();
+                      _builder_16.append(_edgeLabel_5, " ");
+                      InputOutput.<String>print(_builder_16.toString());
+                      StringConcatenation _builder_17 = new StringConcatenation();
+                      _builder_17.append(" ");
+                      _builder_17.append("for using asset:");
+                      String _iD_11 = ga.getID();
+                      _builder_17.append(_iD_11, " ");
+                      InputOutput.<String>print(_builder_17.toString());
+                      InputOutput.println();
                       break;
                     case "[Copier]":
                       outgoing.setEdgeLabel(nr.getIncomingassets().get(0).getLabel());
+                      StringConcatenation _builder_18 = new StringConcatenation();
+                      _builder_18.append("Label propagation of edge ");
+                      String _iD_12 = outgoing.getID();
+                      _builder_18.append(_iD_12);
+                      _builder_18.append(", ");
+                      int _number_6 = outgoing.getNumber();
+                      _builder_18.append(_number_6);
+                      InputOutput.<String>print(_builder_18.toString());
+                      StringConcatenation _builder_19 = new StringConcatenation();
+                      _builder_19.append(" ");
+                      _builder_19.append("is ");
+                      int _edgeLabel_6 = outgoing.getEdgeLabel();
+                      _builder_19.append(_edgeLabel_6, " ");
+                      InputOutput.<String>print(_builder_19.toString());
+                      StringConcatenation _builder_20 = new StringConcatenation();
+                      _builder_20.append(" ");
+                      _builder_20.append("for copying asset:");
+                      String _iD_13 = ga.getID();
+                      _builder_20.append(_iD_13, " ");
+                      InputOutput.<String>print(_builder_20.toString());
+                      InputOutput.println();
                       break;
                     case "[Forward]":
                       outgoing.setEdgeLabel(nr.getIncomingassets().get(0).getLabel());
+                      StringConcatenation _builder_21 = new StringConcatenation();
+                      _builder_21.append("Label propagation of edge ");
+                      String _iD_14 = outgoing.getID();
+                      _builder_21.append(_iD_14);
+                      _builder_21.append(", ");
+                      int _number_7 = outgoing.getNumber();
+                      _builder_21.append(_number_7);
+                      InputOutput.<String>print(_builder_21.toString());
+                      StringConcatenation _builder_22 = new StringConcatenation();
+                      _builder_22.append(" ");
+                      _builder_22.append("is ");
+                      int _edgeLabel_7 = outgoing.getEdgeLabel();
+                      _builder_22.append(_edgeLabel_7, " ");
+                      InputOutput.<String>print(_builder_22.toString());
+                      StringConcatenation _builder_23 = new StringConcatenation();
+                      _builder_23.append(" ");
+                      _builder_23.append("for forwarding asset:");
+                      String _iD_15 = ga.getID();
+                      _builder_23.append(_iD_15, " ");
+                      InputOutput.<String>print(_builder_23.toString());
+                      InputOutput.println();
                       break;
                     case "[Store]":
                       int most_restrictive_5 = (-1);
@@ -1060,6 +1234,27 @@ public class eDFDToGraphTransformation {
                         }
                       }
                       outgoing.setEdgeLabel(most_restrictive_5);
+                      StringConcatenation _builder_24 = new StringConcatenation();
+                      _builder_24.append("Label propagation of edge ");
+                      String _iD_16 = outgoing.getID();
+                      _builder_24.append(_iD_16);
+                      _builder_24.append(", ");
+                      int _number_8 = outgoing.getNumber();
+                      _builder_24.append(_number_8);
+                      InputOutput.<String>print(_builder_24.toString());
+                      StringConcatenation _builder_25 = new StringConcatenation();
+                      _builder_25.append(" ");
+                      _builder_25.append("is ");
+                      int _edgeLabel_8 = outgoing.getEdgeLabel();
+                      _builder_25.append(_edgeLabel_8, " ");
+                      InputOutput.<String>print(_builder_25.toString());
+                      StringConcatenation _builder_26 = new StringConcatenation();
+                      _builder_26.append(" ");
+                      _builder_26.append("for using asset:");
+                      String _iD_17 = ga.getID();
+                      _builder_26.append(_iD_17, " ");
+                      InputOutput.<String>print(_builder_26.toString());
+                      InputOutput.println();
                       break;
                     default:
                       {
@@ -1077,8 +1272,8 @@ public class eDFDToGraphTransformation {
                   }
                 }
               }
-              int _edgeLabel = outgoing.getEdgeLabel();
-              boolean _equals = (_edgeLabel == (-1));
+              int _edgeLabel_9 = outgoing.getEdgeLabel();
+              boolean _equals = (_edgeLabel_9 == (-1));
               if (_equals) {
                 int most_restrictive_6 = (-1);
                 EList<GraphAsset> _graphassets_1 = outgoing.getGraphassets();
@@ -1090,27 +1285,27 @@ public class eDFDToGraphTransformation {
                   }
                 }
                 outgoing.setEdgeLabel(most_restrictive_6);
-                StringConcatenation _builder = new StringConcatenation();
-                _builder.append("Label inferred for edge ");
-                String _iD = outgoing.getID();
-                _builder.append(_iD);
-                InputOutput.<String>print(_builder.toString());
-                StringConcatenation _builder_1 = new StringConcatenation();
-                _builder_1.append(" ");
-                _builder_1.append("to ");
-                int _edgeLabel_1 = outgoing.getEdgeLabel();
-                _builder_1.append(_edgeLabel_1, " ");
-                InputOutput.<String>print(_builder_1.toString());
-                StringConcatenation _builder_2 = new StringConcatenation();
-                _builder_2.append(" ");
-                _builder_2.append("since no label propagation rules apply to this edge.");
-                InputOutput.<String>print(_builder_2.toString());
+                StringConcatenation _builder_27 = new StringConcatenation();
+                _builder_27.append("Label inferred for edge ");
+                String _iD_18 = outgoing.getID();
+                _builder_27.append(_iD_18);
+                InputOutput.<String>print(_builder_27.toString());
+                StringConcatenation _builder_28 = new StringConcatenation();
+                _builder_28.append(" ");
+                _builder_28.append("to ");
+                int _edgeLabel_10 = outgoing.getEdgeLabel();
+                _builder_28.append(_edgeLabel_10, " ");
+                InputOutput.<String>print(_builder_28.toString());
+                StringConcatenation _builder_29 = new StringConcatenation();
+                _builder_29.append(" ");
+                _builder_29.append("since no label propagation rules apply to this edge.");
+                InputOutput.<String>print(_builder_29.toString());
                 InputOutput.println();
               }
               InputOutput.<Integer>print(Integer.valueOf(f.getNumber()));
-              StringConcatenation _builder_3 = new StringConcatenation();
-              _builder_3.append(": ");
-              InputOutput.<String>print(_builder_3.toString());
+              StringConcatenation _builder_30 = new StringConcatenation();
+              _builder_30.append(": ");
+              InputOutput.<String>print(_builder_30.toString());
               InputOutput.<Integer>print(Integer.valueOf(outgoing.getEdgeLabel()));
               InputOutput.println();
             }
