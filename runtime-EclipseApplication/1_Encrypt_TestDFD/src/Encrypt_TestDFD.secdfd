@@ -37,7 +37,7 @@ EDFD Encrypt_Test[
 		Asset "asset risk score"
 			type: String
 			values: [ C ]
-			source: "P4: calculate asset risk score (AI) - R1.2"
+			, [ ] source: "P4: calculate asset risk score (AI) - R1.2"
 			targets: "P6: loan decision (AI) R1 -  Homomorphic Encryption" , "P8: encrypt asset risk score" ,
 		Asset "applicant risk score"
 			type: String
