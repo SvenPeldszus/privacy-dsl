@@ -68,13 +68,16 @@ public class GraphTables extends AbstractTables
 	public static final /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore = IdManager.getNsURIPackageId("http://www.eclipse.org/emf/2002/Ecore", null, EcorePackage.eINSTANCE);
 	public static final /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_www_example_org_s_graph = IdManager.getNsURIPackageId("http://www.example.org/graph", null, GraphPackage.eINSTANCE);
 	public static final /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_www_secdfd_org_s_secdfd = IdManager.getNsURIPackageId("http://www.secdfd.org/secdfd", null, ModelPackage.eINSTANCE);
+	public static final /*@NonInvalid*/ ClassId CLSSid_AssetLabel = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("AssetLabel", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Edge = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("Edge", 0);
+	public static final /*@NonInvalid*/ ClassId CLSSid_EdgeLabel = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("EdgeLabel", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Graph = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("Graph", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_GraphAsset = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("GraphAsset", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Node = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("Node", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_NodeResponsibility = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("NodeResponsibility", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Subgraphs = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("Subgraphs", 0);
 	public static final /*@NonInvalid*/ DataTypeId DATAid_EInt = GraphTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EInt", 0);
+	public static final /*@NonInvalid*/ EnumerationId ENUMid_Objective = GraphTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Objective");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_ResponsibilityType = GraphTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("ResponsibilityType");
 	public static final /*@NonInvalid*/ IntegerValue INT_0 = ValueUtil.integerValueOf("0");
 	public static final /*@NonInvalid*/ IntegerValue INT_1 = ValueUtil.integerValueOf("1");
@@ -96,13 +99,16 @@ public class GraphTables extends AbstractTables
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_GraphAsset = TypeId.BAG.getSpecializedId(GraphTables.CLSSid_GraphAsset, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Node = TypeId.BAG.getSpecializedId(GraphTables.CLSSid_Node, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_NodeResponsibility = TypeId.BAG.getSpecializedId(GraphTables.CLSSid_NodeResponsibility, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
+	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_AssetLabel = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_AssetLabel, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Edge = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_Edge, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
+	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_EdgeLabel = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_EdgeLabel, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_GraphAsset = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_GraphAsset, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Node = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_Node, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_NodeResponsibility = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_NodeResponsibility, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Node_0 = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_Node, true, ValueUtil.ONE_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Subgraphs = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_Subgraphs, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_ENUMid_ResponsibilityType = TypeId.ORDERED_SET.getSpecializedId(GraphTables.ENUMid_ResponsibilityType, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
+	public static final /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_AssetLabel = TypeId.SEQUENCE.getSpecializedId(GraphTables.CLSSid_AssetLabel, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId SEQ_DATAid_EInt = TypeId.SEQUENCE.getSpecializedId(GraphTables.DATAid_EInt, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 
 	/**
@@ -133,21 +139,27 @@ public class GraphTables extends AbstractTables
 			TypeParameters.init();
 		}
 
+		public static final EcoreExecutorType _AssetLabel = new EcoreExecutorType(GraphPackage.Literals.ASSET_LABEL, PACKAGE, 0);
 		public static final EcoreExecutorType _Edge = new EcoreExecutorType(GraphPackage.Literals.EDGE, PACKAGE, 0);
+		public static final EcoreExecutorType _EdgeLabel = new EcoreExecutorType(GraphPackage.Literals.EDGE_LABEL, PACKAGE, 0);
 		public static final EcoreExecutorType _Graph = new EcoreExecutorType(GraphPackage.Literals.GRAPH, PACKAGE, 0);
 		public static final EcoreExecutorType _GraphAsset = new EcoreExecutorType(GraphPackage.Literals.GRAPH_ASSET, PACKAGE, 0);
 		public static final EcoreExecutorType _Identifiable = new EcoreExecutorType(GraphPackage.Literals.IDENTIFIABLE, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final EcoreExecutorType _Node = new EcoreExecutorType(GraphPackage.Literals.NODE, PACKAGE, 0);
 		public static final EcoreExecutorType _NodeResponsibility = new EcoreExecutorType(GraphPackage.Literals.NODE_RESPONSIBILITY, PACKAGE, 0);
+		public static final EcoreExecutorType _SecurityLabel = new EcoreExecutorType(GraphPackage.Literals.SECURITY_LABEL, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final EcoreExecutorType _Subgraphs = new EcoreExecutorType(GraphPackage.Literals.SUBGRAPHS, PACKAGE, 0);
 
 		private static final EcoreExecutorType /*@NonNull*/ [] types = {
+			_AssetLabel,
 			_Edge,
+			_EdgeLabel,
 			_Graph,
 			_GraphAsset,
 			_Identifiable,
 			_Node,
 			_NodeResponsibility,
+			_SecurityLabel,
 			_Subgraphs
 		};
 
@@ -174,10 +186,20 @@ public class GraphTables extends AbstractTables
 			Types.init();
 		}
 
+		private static final ExecutorFragment _AssetLabel__AssetLabel = new ExecutorFragment(Types._AssetLabel, GraphTables.Types._AssetLabel);
+		private static final ExecutorFragment _AssetLabel__OclAny = new ExecutorFragment(Types._AssetLabel, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _AssetLabel__OclElement = new ExecutorFragment(Types._AssetLabel, OCLstdlibTables.Types._OclElement);
+		private static final ExecutorFragment _AssetLabel__SecurityLabel = new ExecutorFragment(Types._AssetLabel, GraphTables.Types._SecurityLabel);
+
 		private static final ExecutorFragment _Edge__Edge = new ExecutorFragment(Types._Edge, GraphTables.Types._Edge);
 		private static final ExecutorFragment _Edge__Identifiable = new ExecutorFragment(Types._Edge, GraphTables.Types._Identifiable);
 		private static final ExecutorFragment _Edge__OclAny = new ExecutorFragment(Types._Edge, OCLstdlibTables.Types._OclAny);
 		private static final ExecutorFragment _Edge__OclElement = new ExecutorFragment(Types._Edge, OCLstdlibTables.Types._OclElement);
+
+		private static final ExecutorFragment _EdgeLabel__EdgeLabel = new ExecutorFragment(Types._EdgeLabel, GraphTables.Types._EdgeLabel);
+		private static final ExecutorFragment _EdgeLabel__OclAny = new ExecutorFragment(Types._EdgeLabel, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _EdgeLabel__OclElement = new ExecutorFragment(Types._EdgeLabel, OCLstdlibTables.Types._OclElement);
+		private static final ExecutorFragment _EdgeLabel__SecurityLabel = new ExecutorFragment(Types._EdgeLabel, GraphTables.Types._SecurityLabel);
 
 		private static final ExecutorFragment _Graph__Graph = new ExecutorFragment(Types._Graph, GraphTables.Types._Graph);
 		private static final ExecutorFragment _Graph__OclAny = new ExecutorFragment(Types._Graph, OCLstdlibTables.Types._OclAny);
@@ -201,6 +223,10 @@ public class GraphTables extends AbstractTables
 		private static final ExecutorFragment _NodeResponsibility__NodeResponsibility = new ExecutorFragment(Types._NodeResponsibility, GraphTables.Types._NodeResponsibility);
 		private static final ExecutorFragment _NodeResponsibility__OclAny = new ExecutorFragment(Types._NodeResponsibility, OCLstdlibTables.Types._OclAny);
 		private static final ExecutorFragment _NodeResponsibility__OclElement = new ExecutorFragment(Types._NodeResponsibility, OCLstdlibTables.Types._OclElement);
+
+		private static final ExecutorFragment _SecurityLabel__OclAny = new ExecutorFragment(Types._SecurityLabel, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _SecurityLabel__OclElement = new ExecutorFragment(Types._SecurityLabel, OCLstdlibTables.Types._OclElement);
+		private static final ExecutorFragment _SecurityLabel__SecurityLabel = new ExecutorFragment(Types._SecurityLabel, GraphTables.Types._SecurityLabel);
 
 		private static final ExecutorFragment _Subgraphs__Identifiable = new ExecutorFragment(Types._Subgraphs, GraphTables.Types._Identifiable);
 		private static final ExecutorFragment _Subgraphs__OclAny = new ExecutorFragment(Types._Subgraphs, OCLstdlibTables.Types._OclAny);
@@ -281,7 +307,9 @@ public class GraphTables extends AbstractTables
 			Operations.init();
 		}
 
-		public static final ExecutorProperty _Edge__EdgeLabel = new EcoreExecutorProperty(GraphPackage.Literals.EDGE__EDGE_LABEL, Types._Edge, 0);
+		public static final ExecutorProperty _AssetLabel__GraphAsset__assetlabel = new ExecutorPropertyWithImplementation("GraphAsset", Types._AssetLabel, 0, new EcoreLibraryOppositeProperty(GraphPackage.Literals.GRAPH_ASSET__ASSETLABEL));
+
+		public static final ExecutorProperty _Edge__edgelabel = new EcoreExecutorProperty(GraphPackage.Literals.EDGE__EDGELABEL, Types._Edge, 0);
 		public static final ExecutorProperty _Edge__graphassets = new EcoreExecutorProperty(GraphPackage.Literals.EDGE__GRAPHASSETS, Types._Edge, 1);
 		public static final ExecutorProperty _Edge__source = new EcoreExecutorProperty(GraphPackage.Literals.EDGE__SOURCE, Types._Edge, 2);
 		public static final ExecutorProperty _Edge__target = new EcoreExecutorProperty(GraphPackage.Literals.EDGE__TARGET, Types._Edge, 3);
@@ -289,10 +317,12 @@ public class GraphTables extends AbstractTables
 		public static final ExecutorProperty _Edge__Node__inedges = new ExecutorPropertyWithImplementation("Node", Types._Edge, 5, new EcoreLibraryOppositeProperty(GraphPackage.Literals.NODE__INEDGES));
 		public static final ExecutorProperty _Edge__Node__outedges = new ExecutorPropertyWithImplementation("Node", Types._Edge, 6, new EcoreLibraryOppositeProperty(GraphPackage.Literals.NODE__OUTEDGES));
 
+		public static final ExecutorProperty _EdgeLabel__Edge__edgelabel = new ExecutorPropertyWithImplementation("Edge", Types._EdgeLabel, 0, new EcoreLibraryOppositeProperty(GraphPackage.Literals.EDGE__EDGELABEL));
+
 		public static final ExecutorProperty _Graph__subgraphs = new EcoreExecutorProperty(GraphPackage.Literals.GRAPH__SUBGRAPHS, Types._Graph, 0);
 
 		public static final ExecutorProperty _GraphAsset__Encrypted = new EcoreExecutorProperty(GraphPackage.Literals.GRAPH_ASSET__ENCRYPTED, Types._GraphAsset, 0);
-		public static final ExecutorProperty _GraphAsset__Label = new EcoreExecutorProperty(GraphPackage.Literals.GRAPH_ASSET__LABEL, Types._GraphAsset, 1);
+		public static final ExecutorProperty _GraphAsset__assetlabel = new EcoreExecutorProperty(GraphPackage.Literals.GRAPH_ASSET__ASSETLABEL, Types._GraphAsset, 1);
 		public static final ExecutorProperty _GraphAsset__source = new EcoreExecutorProperty(GraphPackage.Literals.GRAPH_ASSET__SOURCE, Types._GraphAsset, 2);
 		public static final ExecutorProperty _GraphAsset__targets = new EcoreExecutorProperty(GraphPackage.Literals.GRAPH_ASSET__TARGETS, Types._GraphAsset, 3);
 		public static final ExecutorProperty _GraphAsset__Edge__graphassets = new ExecutorPropertyWithImplementation("Edge", Types._GraphAsset, 4, new EcoreLibraryOppositeProperty(GraphPackage.Literals.EDGE__GRAPHASSETS));
@@ -321,6 +351,9 @@ public class GraphTables extends AbstractTables
 		public static final ExecutorProperty _NodeResponsibility__outgoingassets = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__OUTGOINGASSETS, Types._NodeResponsibility, 2);
 		public static final ExecutorProperty _NodeResponsibility__Node__responsibility = new ExecutorPropertyWithImplementation("Node", Types._NodeResponsibility, 3, new EcoreLibraryOppositeProperty(GraphPackage.Literals.NODE__RESPONSIBILITY));
 
+		public static final ExecutorProperty _SecurityLabel__level = new EcoreExecutorProperty(GraphPackage.Literals.SECURITY_LABEL__LEVEL, Types._SecurityLabel, 0);
+		public static final ExecutorProperty _SecurityLabel__objective = new EcoreExecutorProperty(GraphPackage.Literals.SECURITY_LABEL__OBJECTIVE, Types._SecurityLabel, 1);
+
 		public static final ExecutorProperty _Subgraphs__assets = new EcoreExecutorProperty(GraphPackage.Literals.SUBGRAPHS__ASSETS, Types._Subgraphs, 0);
 		public static final ExecutorProperty _Subgraphs__nodes = new EcoreExecutorProperty(GraphPackage.Literals.SUBGRAPHS__NODES, Types._Subgraphs, 1);
 		public static final ExecutorProperty _Subgraphs__Graph__subgraphs = new ExecutorPropertyWithImplementation("Graph", Types._Subgraphs, 2, new EcoreLibraryOppositeProperty(GraphPackage.Literals.GRAPH__SUBGRAPHS));
@@ -343,6 +376,15 @@ public class GraphTables extends AbstractTables
 			Properties.init();
 		}
 
+		private static final ExecutorFragment /*@NonNull*/ [] _AssetLabel =
+			{
+				Fragments._AssetLabel__OclAny /* 0 */,
+				Fragments._AssetLabel__OclElement /* 1 */,
+				Fragments._AssetLabel__SecurityLabel /* 2 */,
+				Fragments._AssetLabel__AssetLabel /* 3 */
+			};
+		private static final int /*@NonNull*/ [] __AssetLabel = { 1,1,1,1 };
+
 		private static final ExecutorFragment /*@NonNull*/ [] _Edge =
 			{
 				Fragments._Edge__OclAny /* 0 */,
@@ -351,6 +393,15 @@ public class GraphTables extends AbstractTables
 				Fragments._Edge__Edge /* 3 */
 			};
 		private static final int /*@NonNull*/ [] __Edge = { 1,1,1,1 };
+
+		private static final ExecutorFragment /*@NonNull*/ [] _EdgeLabel =
+			{
+				Fragments._EdgeLabel__OclAny /* 0 */,
+				Fragments._EdgeLabel__OclElement /* 1 */,
+				Fragments._EdgeLabel__SecurityLabel /* 2 */,
+				Fragments._EdgeLabel__EdgeLabel /* 3 */
+			};
+		private static final int /*@NonNull*/ [] __EdgeLabel = { 1,1,1,1 };
 
 		private static final ExecutorFragment /*@NonNull*/ [] _Graph =
 			{
@@ -395,6 +446,14 @@ public class GraphTables extends AbstractTables
 			};
 		private static final int /*@NonNull*/ [] __NodeResponsibility = { 1,1,1,1 };
 
+		private static final ExecutorFragment /*@NonNull*/ [] _SecurityLabel =
+			{
+				Fragments._SecurityLabel__OclAny /* 0 */,
+				Fragments._SecurityLabel__OclElement /* 1 */,
+				Fragments._SecurityLabel__SecurityLabel /* 2 */
+			};
+		private static final int /*@NonNull*/ [] __SecurityLabel = { 1,1,1 };
+
 		private static final ExecutorFragment /*@NonNull*/ [] _Subgraphs =
 			{
 				Fragments._Subgraphs__OclAny /* 0 */,
@@ -408,12 +467,15 @@ public class GraphTables extends AbstractTables
 		 *	Install the fragment descriptors in the class descriptors.
 		 */
 		static {
+			Types._AssetLabel.initFragments(_AssetLabel, __AssetLabel);
 			Types._Edge.initFragments(_Edge, __Edge);
+			Types._EdgeLabel.initFragments(_EdgeLabel, __EdgeLabel);
 			Types._Graph.initFragments(_Graph, __Graph);
 			Types._GraphAsset.initFragments(_GraphAsset, __GraphAsset);
 			Types._Identifiable.initFragments(_Identifiable, __Identifiable);
 			Types._Node.initFragments(_Node, __Node);
 			Types._NodeResponsibility.initFragments(_NodeResponsibility, __NodeResponsibility);
+			Types._SecurityLabel.initFragments(_SecurityLabel, __SecurityLabel);
 			Types._Subgraphs.initFragments(_Subgraphs, __Subgraphs);
 
 			Init.initEnd();
@@ -433,6 +495,40 @@ public class GraphTables extends AbstractTables
 			Init.initStart();
 			TypeFragments.init();
 		}
+
+		private static final ExecutorOperation /*@NonNull*/ [] _AssetLabel__AssetLabel = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _AssetLabel__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _AssetLabel__OclElement = {
+			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
+			OCLstdlibTables.Operations._OclElement__1_oclBase /* oclBase(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclExtension /* oclExtension(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclExtensions /* oclExtensions() */,
+			OCLstdlibTables.Operations._OclElement__1_oclExtensions /* oclExtensions(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _AssetLabel__SecurityLabel = {};
 
 		private static final ExecutorOperation /*@NonNull*/ [] _Edge__Edge = {};
 		private static final ExecutorOperation /*@NonNull*/ [] _Edge__Identifiable = {};
@@ -467,6 +563,40 @@ public class GraphTables extends AbstractTables
 			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
 			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
+
+		private static final ExecutorOperation /*@NonNull*/ [] _EdgeLabel__EdgeLabel = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _EdgeLabel__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _EdgeLabel__OclElement = {
+			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
+			OCLstdlibTables.Operations._OclElement__1_oclBase /* oclBase(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclExtension /* oclExtension(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclExtensions /* oclExtensions() */,
+			OCLstdlibTables.Operations._OclElement__1_oclExtensions /* oclExtensions(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _EdgeLabel__SecurityLabel = {};
 
 		private static final ExecutorOperation /*@NonNull*/ [] _Graph__Graph = {};
 		private static final ExecutorOperation /*@NonNull*/ [] _Graph__OclAny = {
@@ -639,6 +769,39 @@ public class GraphTables extends AbstractTables
 			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityLabel__SecurityLabel = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityLabel__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityLabel__OclElement = {
+			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
+			OCLstdlibTables.Operations._OclElement__1_oclBase /* oclBase(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclExtension /* oclExtension(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclExtensions /* oclExtensions() */,
+			OCLstdlibTables.Operations._OclElement__1_oclExtensions /* oclExtensions(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+
 		private static final ExecutorOperation /*@NonNull*/ [] _Subgraphs__Subgraphs = {};
 		private static final ExecutorOperation /*@NonNull*/ [] _Subgraphs__Identifiable = {};
 		private static final ExecutorOperation /*@NonNull*/ [] _Subgraphs__OclAny = {
@@ -677,10 +840,20 @@ public class GraphTables extends AbstractTables
 		 *	Install the operation descriptors in the fragment descriptors.
 		 */
 		static {
+			Fragments._AssetLabel__AssetLabel.initOperations(_AssetLabel__AssetLabel);
+			Fragments._AssetLabel__OclAny.initOperations(_AssetLabel__OclAny);
+			Fragments._AssetLabel__OclElement.initOperations(_AssetLabel__OclElement);
+			Fragments._AssetLabel__SecurityLabel.initOperations(_AssetLabel__SecurityLabel);
+
 			Fragments._Edge__Edge.initOperations(_Edge__Edge);
 			Fragments._Edge__Identifiable.initOperations(_Edge__Identifiable);
 			Fragments._Edge__OclAny.initOperations(_Edge__OclAny);
 			Fragments._Edge__OclElement.initOperations(_Edge__OclElement);
+
+			Fragments._EdgeLabel__EdgeLabel.initOperations(_EdgeLabel__EdgeLabel);
+			Fragments._EdgeLabel__OclAny.initOperations(_EdgeLabel__OclAny);
+			Fragments._EdgeLabel__OclElement.initOperations(_EdgeLabel__OclElement);
+			Fragments._EdgeLabel__SecurityLabel.initOperations(_EdgeLabel__SecurityLabel);
 
 			Fragments._Graph__Graph.initOperations(_Graph__Graph);
 			Fragments._Graph__OclAny.initOperations(_Graph__OclAny);
@@ -705,6 +878,10 @@ public class GraphTables extends AbstractTables
 			Fragments._NodeResponsibility__OclAny.initOperations(_NodeResponsibility__OclAny);
 			Fragments._NodeResponsibility__OclElement.initOperations(_NodeResponsibility__OclElement);
 
+			Fragments._SecurityLabel__OclAny.initOperations(_SecurityLabel__OclAny);
+			Fragments._SecurityLabel__OclElement.initOperations(_SecurityLabel__OclElement);
+			Fragments._SecurityLabel__SecurityLabel.initOperations(_SecurityLabel__SecurityLabel);
+
 			Fragments._Subgraphs__Identifiable.initOperations(_Subgraphs__Identifiable);
 			Fragments._Subgraphs__OclAny.initOperations(_Subgraphs__OclAny);
 			Fragments._Subgraphs__OclElement.initOperations(_Subgraphs__OclElement);
@@ -728,9 +905,16 @@ public class GraphTables extends AbstractTables
 			FragmentOperations.init();
 		}
 
+		private static final ExecutorProperty /*@NonNull*/ [] _AssetLabel = {
+			GraphTables.Properties._SecurityLabel__level,
+			GraphTables.Properties._SecurityLabel__objective,
+			OCLstdlibTables.Properties._OclElement__oclContainer,
+			OCLstdlibTables.Properties._OclElement__oclContents
+		};
+
 		private static final ExecutorProperty /*@NonNull*/ [] _Edge = {
-			GraphTables.Properties._Edge__EdgeLabel,
 			GraphTables.Properties._Identifiable__ID,
+			GraphTables.Properties._Edge__edgelabel,
 			GraphTables.Properties._Edge__graphassets,
 			GraphTables.Properties._Identifiable__number,
 			OCLstdlibTables.Properties._OclElement__oclContainer,
@@ -738,6 +922,13 @@ public class GraphTables extends AbstractTables
 			GraphTables.Properties._Edge__source,
 			GraphTables.Properties._Edge__target,
 			GraphTables.Properties._Edge__visited
+		};
+
+		private static final ExecutorProperty /*@NonNull*/ [] _EdgeLabel = {
+			GraphTables.Properties._SecurityLabel__level,
+			GraphTables.Properties._SecurityLabel__objective,
+			OCLstdlibTables.Properties._OclElement__oclContainer,
+			OCLstdlibTables.Properties._OclElement__oclContents
 		};
 
 		private static final ExecutorProperty /*@NonNull*/ [] _Graph = {
@@ -749,7 +940,7 @@ public class GraphTables extends AbstractTables
 		private static final ExecutorProperty /*@NonNull*/ [] _GraphAsset = {
 			GraphTables.Properties._GraphAsset__Encrypted,
 			GraphTables.Properties._Identifiable__ID,
-			GraphTables.Properties._GraphAsset__Label,
+			GraphTables.Properties._GraphAsset__assetlabel,
 			GraphTables.Properties._Identifiable__number,
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents,
@@ -788,6 +979,13 @@ public class GraphTables extends AbstractTables
 			GraphTables.Properties._NodeResponsibility__outgoingassets
 		};
 
+		private static final ExecutorProperty /*@NonNull*/ [] _SecurityLabel = {
+			GraphTables.Properties._SecurityLabel__level,
+			GraphTables.Properties._SecurityLabel__objective,
+			OCLstdlibTables.Properties._OclElement__oclContainer,
+			OCLstdlibTables.Properties._OclElement__oclContents
+		};
+
 		private static final ExecutorProperty /*@NonNull*/ [] _Subgraphs = {
 			GraphTables.Properties._Identifiable__ID,
 			GraphTables.Properties._Subgraphs__assets,
@@ -801,12 +999,15 @@ public class GraphTables extends AbstractTables
 		 *	Install the property descriptors in the fragment descriptors.
 		 */
 		static {
+			Fragments._AssetLabel__AssetLabel.initProperties(_AssetLabel);
 			Fragments._Edge__Edge.initProperties(_Edge);
+			Fragments._EdgeLabel__EdgeLabel.initProperties(_EdgeLabel);
 			Fragments._Graph__Graph.initProperties(_Graph);
 			Fragments._GraphAsset__GraphAsset.initProperties(_GraphAsset);
 			Fragments._Identifiable__Identifiable.initProperties(_Identifiable);
 			Fragments._Node__Node.initProperties(_Node);
 			Fragments._NodeResponsibility__NodeResponsibility.initProperties(_NodeResponsibility);
+			Fragments._SecurityLabel__SecurityLabel.initProperties(_SecurityLabel);
 			Fragments._Subgraphs__Subgraphs.initProperties(_Subgraphs);
 
 			Init.initEnd();

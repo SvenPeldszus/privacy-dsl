@@ -68,7 +68,7 @@ public interface NodeResponsibility extends Identifiable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='self.incomingassets-&gt;collect(a | a.Label)-&gt;asSequence()-&gt;last()'"
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='self.incomingassets.assetlabel.level-&gt;max()'"
 	 * @generated
 	 */
 	BigInteger findMostRestrictiveLabel();
@@ -76,7 +76,7 @@ public interface NodeResponsibility extends Identifiable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='self.incomingassets-&gt;collect(a | a.Label)-&gt;asSequence()-&gt;first()'"
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='self.incomingassets.assetlabel.level-&gt;min()'"
 	 * @generated
 	 */
 	BigInteger findLeastRestrictiveLabel();

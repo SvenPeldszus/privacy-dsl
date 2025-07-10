@@ -2,8 +2,6 @@
  */
 package traceability.tests;
 
-import graph.tests.GraphTests;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -33,7 +31,6 @@ public class TraceabilityAllTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new TraceabilityAllTests("Traceability Tests");
-		suite.addTest(GraphTests.suite());
 		return suite;
 	}
 

@@ -104,8 +104,26 @@ pattern targetOfFlow(f : Flow, target : Element){
 	Flow.target(f, target);
 }
 
+/* generic relations between an Asset and the information in its Value list */
+
+pattern assetWithPriority(a : Asset, pr : Priority) {
+    Asset.value.Priority(a, pr);
+}
+
+pattern assetWithObjective(a : Asset, obj : Objective) {
+    Asset.value.Objective(a, obj);
+}
+
+/* negated helper: asset that has no Value for a given Objective */
+
+pattern assetWithoutObjective(a : Asset) {
+    neg find assetWithObjective(a, _);
+}
+
+
+
 //naming: Asset from source model = Asset from target model
-pattern highPriorityAsset(a : Asset){
+/*pattern highPriorityAsset(a : Asset){
 	Asset.value.Priority(a, p);
 	p == Priority::H;
 }
@@ -115,7 +133,7 @@ pattern confidentialAsset(a: Asset){
 }
 pattern publicAsset(a: Asset){
 	neg find confidentialAsset(a);
-}
+}*/
 
 pattern comparatorProcesses(p : Process){
 	Process.responsibility.Action(p, pr);

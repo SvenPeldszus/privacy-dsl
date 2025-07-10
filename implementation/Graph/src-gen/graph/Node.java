@@ -230,7 +230,7 @@ public interface Node extends Identifiable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t-- if a node is malicious then there is a violation if any of the outgoing or incoming edges are private!\n\t\t\tif self.Attacker = true\n\t\t\tthen\n\t\t\t\tself.outedges-&gt;forAll(e |\n\t\t\t\t\te.EdgeLabel &lt; 1\n\t\t\t\t) \n\t\t\t\tand\n\t\t\t\tself.inedges-&gt;forAll(e |\n\t\t\t\t\te.EdgeLabel &lt; 1\n\t\t\t\t)\n\t\t\telse\n\t\t\t\ttrue\n\t\t\tendif\n\t\t'"
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t-- if a node is malicious then there is a violation if any of the outgoing or incoming edges are private!\n\t\t--newly added\n\t\tif self.Attacker = true then\n\t\t     self.outedges-&gt;forAll( e |\n\t\t       e.edgelabel-&gt;forAll(l | l.level &lt;= 1)\n\t\t     )\n\t\t   and\n\t\t     self.inedges -&gt;forAll( e |\n\t\t       e.edgelabel-&gt;forAll(l | l.level &lt;= 1)\n\t\t     )\n\t\t else\n\t\t     true\n\t\t endif\n\t\t\t'"
 	 * @generated
 	 */
 	boolean AttackerObservationViolation(DiagnosticChain diagnostics, Map<Object, Object> context);

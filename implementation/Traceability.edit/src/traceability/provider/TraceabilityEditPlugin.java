@@ -2,11 +2,12 @@
  */
 package traceability.provider;
 
+import graph.provider.GraphEditPlugin;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.secdfd.model.provider.SecdfdEditPlugin;
+import org.secdfd.model.provider.ModelEditPlugin;
 
 /**
  * This is the central singleton for the Traceability edit plugin.
@@ -40,7 +41,8 @@ public final class TraceabilityEditPlugin extends EMFPlugin {
 	public TraceabilityEditPlugin() {
 		super
 		  (new ResourceLocator [] {
-		     SecdfdEditPlugin.INSTANCE,
+		     ModelEditPlugin.INSTANCE,
+		     GraphEditPlugin.INSTANCE,
 		   });
 	}
 

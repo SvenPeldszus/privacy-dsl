@@ -13,6 +13,7 @@ Export-Package: graph.tests,
 Require-Bundle: org.eclipse.core.runtime,
  Traceability;visibility:=reexport,
  org.secdfd.model;visibility:=reexport,
+ Graph;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.junit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

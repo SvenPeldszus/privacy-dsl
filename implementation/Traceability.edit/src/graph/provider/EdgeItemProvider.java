@@ -174,7 +174,7 @@ public class EdgeItemProvider
 				 getResourceLocator(),
 				 getString("_UI_Edge_EdgeLabel_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Edge_EdgeLabel_feature", "_UI_Edge_type"),
-				 GraphPackage.Literals.EDGE__EDGE_LABEL,
+				 GraphPackage.Literals.EDGE__EDGELABEL,
 				 true,
 				 false,
 				 false,
@@ -267,7 +267,7 @@ public class EdgeItemProvider
 		switch (notification.getFeatureID(Edge.class)) {
 			case GraphPackage.EDGE__ID:
 			case GraphPackage.EDGE__NUMBER:
-			case GraphPackage.EDGE__EDGE_LABEL:
+			case GraphPackage.EDGE__EDGELABEL:
 			case GraphPackage.EDGE__VISITED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

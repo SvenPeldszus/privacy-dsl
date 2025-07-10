@@ -100,3 +100,7 @@
 /.Edfd2simplegraph.java._trace
 /.Graph2EndToEnd.java._trace
 /.PublicAsset.java._trace
+/.AssetWithObjective.java._trace
+/.AssetWithPriority.java._trace
+/.AssetWithoutObjective.java._trace
+/SourceOfFlow.java

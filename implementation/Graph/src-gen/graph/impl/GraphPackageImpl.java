@@ -2,7 +2,9 @@
  */
 package graph.impl;
 
+import graph.AssetLabel;
 import graph.Edge;
+import graph.EdgeLabel;
 import graph.Graph;
 import graph.GraphAsset;
 import graph.GraphFactory;
@@ -10,6 +12,7 @@ import graph.GraphPackage;
 import graph.Identifiable;
 import graph.Node;
 import graph.NodeResponsibility;
+import graph.SecurityLabel;
 import graph.Subgraphs;
 
 import graph.util.GraphValidator;
@@ -81,6 +84,27 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	private EClass graphEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass securityLabelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assetLabelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass edgeLabelEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -191,18 +215,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getEdge_EdgeLabel() {
-		return (EAttribute)edgeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getEdge_Graphassets() {
-		return (EReference)edgeEClass.getEStructuralFeatures().get(3);
+		return (EReference)edgeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -212,7 +226,17 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getEdge_Visited() {
-		return (EAttribute)edgeEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)edgeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEdge_Edgelabel() {
+		return (EReference)edgeEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -261,18 +285,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getGraphAsset_Label() {
-		return (EAttribute)graphAssetEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getGraphAsset_Source() {
-		return (EReference)graphAssetEClass.getEStructuralFeatures().get(1);
+		return (EReference)graphAssetEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -282,7 +296,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EReference getGraphAsset_Targets() {
-		return (EReference)graphAssetEClass.getEStructuralFeatures().get(2);
+		return (EReference)graphAssetEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -292,7 +306,17 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 */
 	@Override
 	public EAttribute getGraphAsset_Encrypted() {
-		return (EAttribute)graphAssetEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)graphAssetEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGraphAsset_Assetlabel() {
+		return (EReference)graphAssetEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -631,6 +655,56 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getSecurityLabel() {
+		return securityLabelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSecurityLabel_Objective() {
+		return (EAttribute)securityLabelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSecurityLabel_Level() {
+		return (EAttribute)securityLabelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAssetLabel() {
+		return assetLabelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEdgeLabel() {
+		return edgeLabelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public GraphFactory getGraphFactory() {
 		return (GraphFactory)getEFactoryInstance();
 	}
@@ -657,19 +731,19 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		edgeEClass = createEClass(EDGE);
 		createEReference(edgeEClass, EDGE__TARGET);
 		createEReference(edgeEClass, EDGE__SOURCE);
-		createEAttribute(edgeEClass, EDGE__EDGE_LABEL);
 		createEReference(edgeEClass, EDGE__GRAPHASSETS);
 		createEAttribute(edgeEClass, EDGE__VISITED);
+		createEReference(edgeEClass, EDGE__EDGELABEL);
 
 		identifiableEClass = createEClass(IDENTIFIABLE);
 		createEAttribute(identifiableEClass, IDENTIFIABLE__ID);
 		createEAttribute(identifiableEClass, IDENTIFIABLE__NUMBER);
 
 		graphAssetEClass = createEClass(GRAPH_ASSET);
-		createEAttribute(graphAssetEClass, GRAPH_ASSET__LABEL);
 		createEReference(graphAssetEClass, GRAPH_ASSET__SOURCE);
 		createEReference(graphAssetEClass, GRAPH_ASSET__TARGETS);
 		createEAttribute(graphAssetEClass, GRAPH_ASSET__ENCRYPTED);
+		createEReference(graphAssetEClass, GRAPH_ASSET__ASSETLABEL);
 
 		nodeEClass = createEClass(NODE);
 		createEReference(nodeEClass, NODE__OUTEDGES);
@@ -707,6 +781,14 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 
 		graphEClass = createEClass(GRAPH);
 		createEReference(graphEClass, GRAPH__SUBGRAPHS);
+
+		securityLabelEClass = createEClass(SECURITY_LABEL);
+		createEAttribute(securityLabelEClass, SECURITY_LABEL__OBJECTIVE);
+		createEAttribute(securityLabelEClass, SECURITY_LABEL__LEVEL);
+
+		assetLabelEClass = createEClass(ASSET_LABEL);
+
+		edgeLabelEClass = createEClass(EDGE_LABEL);
 	}
 
 	/**
@@ -745,24 +827,26 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		nodeEClass.getESuperTypes().add(this.getIdentifiable());
 		subgraphsEClass.getESuperTypes().add(this.getIdentifiable());
 		nodeResponsibilityEClass.getESuperTypes().add(this.getIdentifiable());
+		assetLabelEClass.getESuperTypes().add(this.getSecurityLabel());
+		edgeLabelEClass.getESuperTypes().add(this.getSecurityLabel());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(edgeEClass, Edge.class, "Edge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEdge_Target(), this.getNode(), null, "target", null, 0, -1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEdge_Source(), this.getNode(), null, "source", null, 0, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEdge_EdgeLabel(), ecorePackage.getEInt(), "EdgeLabel", "-1", 1, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEdge_Graphassets(), this.getGraphAsset(), null, "graphassets", null, 0, -1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEdge_Visited(), ecorePackage.getEBoolean(), "visited", null, 1, 1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEdge_Edgelabel(), this.getEdgeLabel(), null, "edgelabel", null, 0, -1, Edge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(identifiableEClass, Identifiable.class, "Identifiable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIdentifiable_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Identifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIdentifiable_Number(), ecorePackage.getEInt(), "number", "-1", 1, 1, Identifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(graphAssetEClass, GraphAsset.class, "GraphAsset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getGraphAsset_Label(), ecorePackage.getEInt(), "Label", "-1", 1, 1, GraphAsset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGraphAsset_Source(), this.getNode(), null, "source", null, 1, 1, GraphAsset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGraphAsset_Targets(), this.getNode(), null, "targets", null, 1, -1, GraphAsset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGraphAsset_Encrypted(), ecorePackage.getEBoolean(), "Encrypted", null, 1, 1, GraphAsset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGraphAsset_Assetlabel(), this.getAssetLabel(), null, "assetlabel", null, 0, -1, GraphAsset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNode_Outedges(), this.getEdge(), null, "outedges", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -915,6 +999,14 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEClass(graphEClass, Graph.class, "Graph", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGraph_Subgraphs(), this.getSubgraphs(), null, "subgraphs", null, 0, -1, Graph.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(securityLabelEClass, SecurityLabel.class, "SecurityLabel", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSecurityLabel_Objective(), theModelPackage.getObjective(), "objective", "Integrity", 1, 1, SecurityLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSecurityLabel_Level(), ecorePackage.getEInt(), "level", null, 1, 1, SecurityLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(assetLabelEClass, AssetLabel.class, "AssetLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(edgeLabelEClass, EdgeLabel.class, "EdgeLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		// Create resource
 		createResource(eNS_URI);
 
@@ -1012,7 +1104,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		  (getNode__AttackerObservationViolation__DiagnosticChain_Map(),
 		   source,
 		   new String[] {
-			   "body", "\n\t\t-- if a node is malicious then there is a violation if any of the outgoing or incoming edges are private!\n\t\t\tif self.Attacker = true\n\t\t\tthen\n\t\t\t\tself.outedges->forAll(e |\n\t\t\t\t\te.EdgeLabel < 1\n\t\t\t\t) \n\t\t\t\tand\n\t\t\t\tself.inedges->forAll(e |\n\t\t\t\t\te.EdgeLabel < 1\n\t\t\t\t)\n\t\t\telse\n\t\t\t\ttrue\n\t\t\tendif\n\t\t"
+			   "body", "\n\t\t-- if a node is malicious then there is a violation if any of the outgoing or incoming edges are private!\n\t\t--newly added\n\t\tif self.Attacker = true then\n\t\t     self.outedges->forAll( e |\n\t\t       e.edgelabel->forAll(l | l.level <= 1)\n\t\t     )\n\t\t   and\n\t\t     self.inedges ->forAll( e |\n\t\t       e.edgelabel->forAll(l | l.level <= 1)\n\t\t     )\n\t\t else\n\t\t     true\n\t\t endif\n\t\t\t"
 		   });
 		addAnnotation
 		  (getNode__SplitterSemanticConstraint__DiagnosticChain_Map(),
@@ -1042,13 +1134,13 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		  (getNodeResponsibility__FindMostRestrictiveLabel(),
 		   source,
 		   new String[] {
-			   "body", "self.incomingassets->collect(a | a.Label)->asSequence()->last()"
+			   "body", "self.incomingassets.assetlabel.level->max()"
 		   });
 		addAnnotation
 		  (getNodeResponsibility__FindLeastRestrictiveLabel(),
 		   source,
 		   new String[] {
-			   "body", "self.incomingassets->collect(a | a.Label)->asSequence()->first()"
+			   "body", "self.incomingassets.assetlabel.level->min()"
 		   });
 	}
 

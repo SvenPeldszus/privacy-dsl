@@ -4,6 +4,7 @@ package graph.provider;
 
 
 import graph.Edge;
+import graph.GraphFactory;
 import graph.GraphPackage;
 
 import java.util.Collection;
@@ -14,6 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -64,7 +66,6 @@ public class EdgeItemProvider
 			addNumberPropertyDescriptor(object);
 			addTargetPropertyDescriptor(object);
 			addSourcePropertyDescriptor(object);
-			addEdgeLabelPropertyDescriptor(object);
 			addGraphassetsPropertyDescriptor(object);
 			addVisitedPropertyDescriptor(object);
 		}
@@ -160,28 +161,6 @@ public class EdgeItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Edge Label feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addEdgeLabelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Edge_EdgeLabel_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Edge_EdgeLabel_feature", "_UI_Edge_type"),
-				 GraphPackage.Literals.EDGE__EDGE_LABEL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Graphassets feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -226,6 +205,36 @@ public class EdgeItemProvider
 	}
 
 	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(GraphPackage.Literals.EDGE__EDGELABEL);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * This returns Edge.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -265,9 +274,11 @@ public class EdgeItemProvider
 		switch (notification.getFeatureID(Edge.class)) {
 			case GraphPackage.EDGE__ID:
 			case GraphPackage.EDGE__NUMBER:
-			case GraphPackage.EDGE__EDGE_LABEL:
 			case GraphPackage.EDGE__VISITED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case GraphPackage.EDGE__EDGELABEL:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -283,6 +294,11 @@ public class EdgeItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(GraphPackage.Literals.EDGE__EDGELABEL,
+				 GraphFactory.eINSTANCE.createEdgeLabel()));
 	}
 
 	/**

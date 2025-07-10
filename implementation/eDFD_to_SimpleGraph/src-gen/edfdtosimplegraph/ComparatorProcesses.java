@@ -46,6 +46,19 @@ import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
  * 
  * <p>Original source:
  *         <code><pre>
+ *         //naming: Asset from source model = Asset from target model
+ *         pattern highPriorityAsset(a : Asset){
+ *         	Asset.value.Priority(a, p);
+ *         	p == Priority::H;
+ *         }
+ *         pattern confidentialAsset(a: Asset){
+ *         	Asset.value.Objective(a, o);
+ *         	o == Objective::Confidentiality;
+ *         }
+ *         pattern publicAsset(a: Asset){
+ *         	neg find confidentialAsset(a);
+ *         }
+ *         
  *         pattern comparatorProcesses(p : Process){
  *         	Process.responsibility.Action(p, pr);
  *         	pr == ResponsibilityType::Comparator;
@@ -242,6 +255,19 @@ public final class ComparatorProcesses extends BaseGeneratedEMFQuerySpecificatio
    * 
    * <p>Original source:
    * <code><pre>
+   * //naming: Asset from source model = Asset from target model
+   * pattern highPriorityAsset(a : Asset){
+   * 	Asset.value.Priority(a, p);
+   * 	p == Priority::H;
+   * }
+   * pattern confidentialAsset(a: Asset){
+   * 	Asset.value.Objective(a, o);
+   * 	o == Objective::Confidentiality;
+   * }
+   * pattern publicAsset(a: Asset){
+   * 	neg find confidentialAsset(a);
+   * }
+   * 
    * pattern comparatorProcesses(p : Process){
    * 	Process.responsibility.Action(p, pr);
    * 	pr == ResponsibilityType::Comparator;

@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.EObjectValidator;
@@ -211,6 +210,12 @@ public class GraphValidator extends EObjectValidator {
 				return validateNodeResponsibility((NodeResponsibility)value, diagnostics, context);
 			case GraphPackage.GRAPH:
 				return validateGraph((Graph)value, diagnostics, context);
+			case GraphPackage.SECURITY_LABEL:
+				return validateSecurityLabel((SecurityLabel)value, diagnostics, context);
+			case GraphPackage.ASSET_LABEL:
+				return validateAssetLabel((AssetLabel)value, diagnostics, context);
+			case GraphPackage.EDGE_LABEL:
+				return validateEdgeLabel((EdgeLabel)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -440,6 +445,33 @@ public class GraphValidator extends EObjectValidator {
 	 */
 	public boolean validateGraph(Graph graph, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(graph, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSecurityLabel(SecurityLabel securityLabel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(securityLabel, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAssetLabel(AssetLabel assetLabel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(assetLabel, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEdgeLabel(EdgeLabel edgeLabel, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(edgeLabel, diagnostics, context);
 	}
 
 	/**

@@ -62,6 +62,8 @@ public class GraphFactoryImpl extends EFactoryImpl implements GraphFactory {
 			case GraphPackage.SUBGRAPHS: return createSubgraphs();
 			case GraphPackage.NODE_RESPONSIBILITY: return createNodeResponsibility();
 			case GraphPackage.GRAPH: return createGraph();
+			case GraphPackage.ASSET_LABEL: return createAssetLabel();
+			case GraphPackage.EDGE_LABEL: return createEdgeLabel();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -131,6 +133,28 @@ public class GraphFactoryImpl extends EFactoryImpl implements GraphFactory {
 	public Graph createGraph() {
 		GraphImpl graph = new GraphImpl();
 		return graph;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AssetLabel createAssetLabel() {
+		AssetLabelImpl assetLabel = new AssetLabelImpl();
+		return assetLabel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EdgeLabel createEdgeLabel() {
+		EdgeLabelImpl edgeLabel = new EdgeLabelImpl();
+		return edgeLabel;
 	}
 
 	/**

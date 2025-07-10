@@ -4,6 +4,7 @@ package graph.provider;
 
 
 import graph.GraphAsset;
+import graph.GraphFactory;
 import graph.GraphPackage;
 
 import java.util.Collection;
@@ -14,6 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -62,7 +64,6 @@ public class GraphAssetItemProvider
 
 			addIDPropertyDescriptor(object);
 			addNumberPropertyDescriptor(object);
-			addLabelPropertyDescriptor(object);
 			addSourcePropertyDescriptor(object);
 			addTargetsPropertyDescriptor(object);
 			addEncryptedPropertyDescriptor(object);
@@ -106,28 +107,6 @@ public class GraphAssetItemProvider
 				 getString("_UI_Identifiable_number_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_number_feature", "_UI_Identifiable_type"),
 				 GraphPackage.Literals.IDENTIFIABLE__NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Label feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addLabelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_GraphAsset_Label_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_GraphAsset_Label_feature", "_UI_GraphAsset_type"),
-				 GraphPackage.Literals.GRAPH_ASSET__LABEL,
 				 true,
 				 false,
 				 false,
@@ -203,6 +182,36 @@ public class GraphAssetItemProvider
 	}
 
 	/**
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(GraphPackage.Literals.GRAPH_ASSET__ASSETLABEL);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
 	 * This returns GraphAsset.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -242,9 +251,11 @@ public class GraphAssetItemProvider
 		switch (notification.getFeatureID(GraphAsset.class)) {
 			case GraphPackage.GRAPH_ASSET__ID:
 			case GraphPackage.GRAPH_ASSET__NUMBER:
-			case GraphPackage.GRAPH_ASSET__LABEL:
 			case GraphPackage.GRAPH_ASSET__ENCRYPTED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case GraphPackage.GRAPH_ASSET__ASSETLABEL:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -260,6 +271,11 @@ public class GraphAssetItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(GraphPackage.Literals.GRAPH_ASSET__ASSETLABEL,
+				 GraphFactory.eINSTANCE.createAssetLabel()));
 	}
 
 	/**

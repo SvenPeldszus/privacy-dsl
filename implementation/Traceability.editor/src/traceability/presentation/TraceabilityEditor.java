@@ -715,8 +715,8 @@ public class TraceabilityEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new TraceabilityItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new GraphItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ModelItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new GraphItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

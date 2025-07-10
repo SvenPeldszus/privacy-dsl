@@ -13,10 +13,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link graph.GraphAsset#getLabel <em>Label</em>}</li>
  *   <li>{@link graph.GraphAsset#getSource <em>Source</em>}</li>
  *   <li>{@link graph.GraphAsset#getTargets <em>Targets</em>}</li>
  *   <li>{@link graph.GraphAsset#isEncrypted <em>Encrypted</em>}</li>
+ *   <li>{@link graph.GraphAsset#getAssetlabel <em>Assetlabel</em>}</li>
  * </ul>
  *
  * @see graph.GraphPackage#getGraphAsset()
@@ -24,29 +24,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface GraphAsset extends Identifiable {
-	/**
-	 * Returns the value of the '<em><b>Label</b></em>' attribute.
-	 * The default value is <code>"-1"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Label</em>' attribute.
-	 * @see #setLabel(int)
-	 * @see graph.GraphPackage#getGraphAsset_Label()
-	 * @model default="-1" required="true"
-	 * @generated
-	 */
-	int getLabel();
-
-	/**
-	 * Sets the value of the '{@link graph.GraphAsset#getLabel <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Label</em>' attribute.
-	 * @see #getLabel()
-	 * @generated
-	 */
-	void setLabel(int value);
-
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -102,5 +79,17 @@ public interface GraphAsset extends Identifiable {
 	 * @generated
 	 */
 	void setEncrypted(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Assetlabel</b></em>' containment reference list.
+	 * The list contents are of type {@link graph.AssetLabel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Assetlabel</em>' containment reference list.
+	 * @see graph.GraphPackage#getGraphAsset_Assetlabel()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<AssetLabel> getAssetlabel();
 
 } // GraphAsset

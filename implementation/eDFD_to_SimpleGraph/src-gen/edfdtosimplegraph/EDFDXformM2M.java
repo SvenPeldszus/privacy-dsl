@@ -36,9 +36,9 @@ import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
  * <li>ResponsibilityTypes</li>
  * <li>sourceOfFlow</li>
  * <li>targetOfFlow</li>
- * <li>highPriorityAsset</li>
- * <li>confidentialAsset</li>
- * <li>publicAsset</li>
+ * <li>assetWithPriority</li>
+ * <li>assetWithObjective</li>
+ * <li>assetWithoutObjective</li>
  * <li>comparatorProcesses</li>
  * <li>edfd2simplegraph</li>
  * <li>Graph2EndToEnd</li>
@@ -88,9 +88,9 @@ public final class EDFDXformM2M extends BaseGeneratedPatternGroup {
     querySpecifications.add(ResponsibilityTypes.instance());
     querySpecifications.add(SourceOfFlow.instance());
     querySpecifications.add(TargetOfFlow.instance());
-    querySpecifications.add(HighPriorityAsset.instance());
-    querySpecifications.add(ConfidentialAsset.instance());
-    querySpecifications.add(PublicAsset.instance());
+    querySpecifications.add(AssetWithPriority.instance());
+    querySpecifications.add(AssetWithObjective.instance());
+    querySpecifications.add(AssetWithoutObjective.instance());
     querySpecifications.add(ComparatorProcesses.instance());
     querySpecifications.add(Edfd2simplegraph.instance());
     querySpecifications.add(Graph2EndToEnd.instance());
@@ -264,28 +264,28 @@ public final class EDFDXformM2M extends BaseGeneratedPatternGroup {
     return TargetOfFlow.Matcher.on(engine);
   }
 
-  public HighPriorityAsset getHighPriorityAsset() {
-    return HighPriorityAsset.instance();
+  public AssetWithPriority getAssetWithPriority() {
+    return AssetWithPriority.instance();
   }
 
-  public HighPriorityAsset.Matcher getHighPriorityAsset(final ViatraQueryEngine engine) {
-    return HighPriorityAsset.Matcher.on(engine);
+  public AssetWithPriority.Matcher getAssetWithPriority(final ViatraQueryEngine engine) {
+    return AssetWithPriority.Matcher.on(engine);
   }
 
-  public ConfidentialAsset getConfidentialAsset() {
-    return ConfidentialAsset.instance();
+  public AssetWithObjective getAssetWithObjective() {
+    return AssetWithObjective.instance();
   }
 
-  public ConfidentialAsset.Matcher getConfidentialAsset(final ViatraQueryEngine engine) {
-    return ConfidentialAsset.Matcher.on(engine);
+  public AssetWithObjective.Matcher getAssetWithObjective(final ViatraQueryEngine engine) {
+    return AssetWithObjective.Matcher.on(engine);
   }
 
-  public PublicAsset getPublicAsset() {
-    return PublicAsset.instance();
+  public AssetWithoutObjective getAssetWithoutObjective() {
+    return AssetWithoutObjective.instance();
   }
 
-  public PublicAsset.Matcher getPublicAsset(final ViatraQueryEngine engine) {
-    return PublicAsset.Matcher.on(engine);
+  public AssetWithoutObjective.Matcher getAssetWithoutObjective(final ViatraQueryEngine engine) {
+    return AssetWithoutObjective.Matcher.on(engine);
   }
 
   public ComparatorProcesses getComparatorProcesses() {

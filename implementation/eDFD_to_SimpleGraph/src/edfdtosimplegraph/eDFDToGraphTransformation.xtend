@@ -9,12 +9,16 @@ import org.secdfd.model.Flow
 import org.secdfd.model.NamedEntity
 import org.secdfd.model.Responsibility
 import org.secdfd.model.Value
+import org.secdfd.model.Objective //new
+import org.secdfd.model.Priority //new
 import graph.Edge
 import graph.GraphAsset
 import graph.GraphPackage
 import graph.Identifiable
 import graph.Node
 import graph.NodeResponsibility
+import graph.AssetLabel //new
+import graph.EdgeLabel //new
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.runtime.emf.modelmanipulation.IModelManipulations
@@ -26,6 +30,9 @@ import traceability.EDFDToGraph
 import traceability.TraceabilityPackage
 import graph.Subgraphs
 import java.util.Collections
+import org.eclipse.emf.common.util.EList
+import graph.GraphFactory
+import graph.SecurityLabel
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -71,7 +78,7 @@ class eDFDToGraphTransformation {
  * user defined transformation rules
  */
  
-     val buildFirstSubgraphRule = createRule.precondition(edfdtosimplegraph.EDFD.Matcher.querySpecification).action[
+    val buildFirstSubgraphRule = createRule.precondition(edfdtosimplegraph.EDFD.Matcher.querySpecification).action[
     	val eDFD = it.edfd
     	
  		val graph = edfd2graph.graphs.createChild(graph_Subgraphs, subgraphs) => [
@@ -228,7 +235,14 @@ class eDFDToGraphTransformation {
     	//find subgraph in target model
     	val subgraph = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, eDFD as NamedEntity).filter(Subgraphs).head
     	
-		val gA = subgraph.createChild(subgraphs_Assets, graphAsset) as GraphAsset => [
+    	val gA = subgraph.createChild(subgraphs_Assets, graphAsset) as GraphAsset
+
+
+		/* overwrite with the priorities coming from the eDFD model */
+		for (Value v : eDFDAssetValues) {
+		  upsertLabel_Asset(gA.assetlabel, v.objective, lvl(v.priority))          
+		}
+		/*val gA = subgraph.createChild(subgraphs_Assets, graphAsset) as GraphAsset => [
 	    	var confidential = false
 	    	for (Value av : eDFDAssetValues){
 	    		//if there is any confidentiality values then the label is secret
@@ -244,7 +258,7 @@ class eDFDToGraphTransformation {
 	    		// 0 means public
 	    		set(graphAsset_Label, 0)
 	    	}
-    	]
+    	]*/
     	gA.ID = eDFDAsset.name
 
     	edfd2graph.createChild(EDFDToGraph_EdfdGraphTraces, EDFDGraphTrace) => [
@@ -434,7 +448,7 @@ class eDFDToGraphTransformation {
  	].build
  	
  	
-    val initLabels = createRule.precondition(edfdtosimplegraph.EEandDSElement.Matcher.querySpecification).action[
+    /*val initLabels = createRule.precondition(edfdtosimplegraph.EEandDSElement.Matcher.querySpecification).action[
     	print('''Inferring labels for: «it.el.name»''')
     	
     	//find subgraph in target model
@@ -461,9 +475,33 @@ class eDFDToGraphTransformation {
     		println()
     	}
 
-    ].build
+    ].build*/
     
-    def Boolean recursiveDFS (Node node){ 
+    //updated
+    val initLabels = createRule.precondition(edfdtosimplegraph.EEandDSElement.Matcher.querySpecification).action [
+
+	    println('''Inferring labels for «it.el.name»''')
+	
+	    val sub = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, null).filter(Subgraphs).head
+	
+	    var gn = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, it.el as NamedEntity).filter(Node).head
+	    for (n : sub.nodes) {
+	      if (n.name == gn.name) gn = n
+		}
+		
+	    for (Edge e : gn.outedges) {
+	      e.visited = true
+	      for (o : Objective.values) {
+	        val max = e.graphassets.map [ levelOf(assetlabel, o) ].max
+	        upsertLabel_Edge(e.edgelabel, o, max ?: 0)
+	      }
+	      println('''  → edge «e.ID» labelled
+	                   ${e.edgelabel.map[objective.literal + '=' + level].join(', ')}''')
+	    }
+	    
+	  ].build
+    
+    /*def Boolean recursiveDFS (Node node){ 
     	//exit when all nodes have been visited
 		if (node.visited == false){
 			//mark node
@@ -596,10 +634,10 @@ class eDFDToGraphTransformation {
 							edgecontainingassets = e
 					}
 					
-		    		/*for (GraphAsset gs: outgoing.graphassets){
+		    		for (GraphAsset gs: outgoing.graphassets){
 		    			if (gs.label > setlabel)
 		    				setlabel = gs.label	
-		    		}*/
+		    		}
 		    		outgoing.edgeLabel = edgecontainingassets.edgeLabel
 					print('''Label inferred for edge «outgoing.ID»''')
 					print(''' to «outgoing.edgeLabel»''')
@@ -657,9 +695,9 @@ class eDFDToGraphTransformation {
 	    	println('''Starting propagation at: «it.ee.name»''')  
 	    	recursiveDFS(locate_correct_graph_node) 
     	}
-    ].build 
+    ].build */
     
-    val propagateLabelsInOrder = createRule.precondition(edfdtosimplegraph.EDFD.Matcher.querySpecification).action[
+    /*val propagateLabelsInOrder = createRule.precondition(edfdtosimplegraph.EDFD.Matcher.querySpecification).action[
     	val all_elements = it.edfd.elements
 			
     	//print(all_elements)
@@ -824,8 +862,116 @@ class eDFDToGraphTransformation {
     	}
     	
     	
-    ].build
+    ].build*/
  
+ 	//updated
+ 	val propagateLabelsInOrder = createRule.precondition(edfdtosimplegraph.EDFD.Matcher.querySpecification).action[
+		
+		val all_elements = it.edfd.elements
+	    val allFlows = newArrayList
+	    for (Element e : all_elements){
+	      allFlows.addAll(e.outflows)
+	    }
+	
+	    Collections.sort(allFlows) [ a , b | a.number - b.number ]
+	
+	    for (Element f : allFlows) {
+	
+	      val outgoing = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, f as NamedEntity).filter(Edge).head
+	      val node     = outgoing.source
+	      outgoing.visited = true
+
+	      for (GraphAsset ga : outgoing.graphassets) {
+			//for each asset, collect what kind of responsibility they are part of in the node	        
+			val r = newArrayList
+	        for (NodeResponsibility nr : node.responsibility) {
+	          if (nr.outgoingassets.contains(ga)) r.add(nr)
+	        }
+			//go through responsibilities
+	        for (NodeResponsibility nr : r) {
+	          switch nr.operation.toString {
+	            case "[EncryptOrHash]" : {
+	              for (o : Objective.values)
+	                upsertLabel_Edge(outgoing.edgelabel, o, 0)
+	            }
+	            case "[Decrypt]" : {
+	              for (o : Objective.values) {
+	                var max = 0
+	                for (ina : nr.incomingassets)
+	                  max = Math::max(max, levelOf(ina.assetlabel, o))
+	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	              }
+	            }
+	            case "[Comparator]" : {                
+	              for (o : Objective.values) {         
+	                var max = 0                        
+	                for (ina : nr.incomingassets)      
+	                  max = Math::max(max, levelOf(ina.assetlabel, o))
+	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	              }
+	            }
+	            case "[Joiner]"   : {
+	              for (o : Objective.values) {
+	                var max = 0
+	                for (ina : nr.incomingassets)
+	                  max = Math::max(max, levelOf(ina.assetlabel, o))
+	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	              }
+	            }
+	            case "[User]"     : {
+	              for (o : Objective.values) {
+	                var max = 0
+	                for (ina : nr.incomingassets)
+	                  max = Math::max(max, levelOf(ina.assetlabel, o))
+	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	              }
+	            }
+	            case "[Splitter]" : {
+	              for (o : Objective.values) {
+	                var max = 0
+	                for (ina : nr.incomingassets)
+	                  max = Math::max(max, levelOf(ina.assetlabel, o))
+	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	              }
+	            }
+	            case "[Copier]" : {                     
+	              for (o : Objective.values)
+	                upsertLabel_Edge(outgoing.edgelabel, o, levelOf(nr.incomingassets.get(0).assetlabel, o))
+	            }
+	            case "[Forward]" : {                    
+	              for (o : Objective.values)
+	                upsertLabel_Edge(outgoing.edgelabel, o, levelOf(nr.incomingassets.get(0).assetlabel, o))
+	            }
+	            case "[Store]" : {                      // most-restrictive input
+	              for (o : Objective.values) {
+	                var max = 0
+	                for (ina : nr.incomingassets)
+	                  max = Math::max(max, levelOf(ina.assetlabel, o))
+	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	              }
+	            }
+	
+	            default : { /* no confidentiality effect */ }
+	          }
+	        }
+	      }
+	
+	      
+	      //edge still unlabeled?  fall back to asset labels
+	      if (outgoing.edgelabel.empty) {
+	        for (o : Objective.values) {
+	          var max = 0
+	          for (gs : outgoing.graphassets)
+	            max = Math::max(max, levelOf(gs.assetlabel, o))
+	          if (max > 0)
+	            upsertLabel_Edge(outgoing.edgelabel, o, max)
+	        }
+	      }
+	
+	      logEdge(outgoing)
+	    }
+	].build
+ 	 	
 
     public def execute() {
 
@@ -873,4 +1019,85 @@ class eDFDToGraphTransformation {
         transformation = null
         return
     }
+    
+    //newly added
+    /** Return the label-level for OBJ or 0 if the label is missing           */
+	def int levelOf(EList<? extends SecurityLabel> list, Objective obj) {
+	  val l = list.findFirst[objective == obj]
+	  l === null ? 0 : l.level
+	}
+	
+    //newly added 
+    def int lvl(Priority p) {
+	  switch p {
+	    case Priority::H : 3
+	    case Priority::M : 2
+	    case Priority::L : 1
+	    default          : 0
+	  }
+	}
+    
+    //newly added
+	def void upsertLabel_Asset(EList<AssetLabel> list, Objective o, int level) {
+	  val l = list.findFirst[objective == o]
+	  
+	  if (level <= 0) {
+    	if (l !== null) list.remove(l)   // ggf. altes 0-Label löschen
+    		return
+  	  }
+  
+	  if (l === null) {
+	    val n = GraphFactory.eINSTANCE.createAssetLabel
+	    n.objective = o
+	    n.level     = level
+	    list += n
+	  } else {
+	    l.level = level
+	  }
+	}
+	def void upsertLabel_Edge(EList<EdgeLabel> list, Objective o, int level) {
+	  val l = list.findFirst[objective == o]
+	  
+	  
+	  if (level <= 0) {
+    	if (l !== null) list.remove(l)   // ggf. altes 0-Label löschen
+    		return
+  	  }
+  	  
+	  if (l === null) {
+	    val n = GraphFactory.eINSTANCE.createEdgeLabel
+	    n.objective = o
+	    n.level     = level
+	    list += n
+	  } else {
+	    l.level = level
+	  }
+	}
+	
+	//newly added helper function for printing information during label propagation
+	def void logEdge(Edge e) {
+    val sb = new StringBuilder
+
+    /* 1️⃣   number + edge-ID */
+    sb.append(String.format("%03d  %-20s", e.number, e.ID))
+
+    /* 2️⃣   labels */
+    val lbls = e.edgelabel.filter[level > 0]
+                          .sortBy[objective.literal]
+                          .map[o | o.objective.literal + "=" + o.level]
+    sb.append("  ").append(
+        lbls.empty ? "[no-label]" : lbls.join(", ")
+    )
+
+    /* 3️⃣   originating operations (Encrypt, Joiner …)             */
+    val ops = e.source.responsibility
+                   .filter[r | r.outgoingassets.exists[e.graphassets.contains(it)]]
+                   .map[operation.toString.replace("[","").replace("]","")]
+                   .toSet
+    sb.append("  via ").append(
+        ops.empty ? "no-rule" : ops.join("+")
+    )
+
+    println(sb.toString)
+}
 }

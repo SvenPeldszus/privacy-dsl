@@ -21,7 +21,7 @@ EDFD Encrypt_Test[
 			targets: "P3: credit application" , "D1: DB" , "P4: calculate asset risk score (AI) - R1.2" ,
 		Asset "Applicant data"
 			type: Object
-			values: [ C ]
+			values: [ M Av ]
 			source: "E1: Applicant"
 			targets: "P3: credit application" , "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)" , "D1: DB" ,
 		Asset "credit history"
@@ -31,7 +31,7 @@ EDFD Encrypt_Test[
 			targets: "P2: show overview", "E1: Applicant",
 		Asset "payment history"
 			type: Object
-			values: [ C ]
+			values: [ Ac ]
 			source: "D1: DB"
 			targets: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)",
 		Asset "asset risk score"
@@ -41,7 +41,7 @@ EDFD Encrypt_Test[
 			targets: "P6: loan decision (AI) R1 -  Homomorphic Encryption" , "P8: encrypt asset risk score" ,
 		Asset "applicant risk score"
 			type: String
-			values: [ C ]
+			values: [ P ]
 			source: "P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"
 			targets: "P6: loan decision (AI) R1 -  Homomorphic Encryption" , "P10: encrypt applicant risk score" ,
 		Asset "asset category"

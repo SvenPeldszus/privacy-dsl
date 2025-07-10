@@ -3,6 +3,7 @@
 package graph.impl;
 
 import graph.Edge;
+import graph.EdgeLabel;
 import graph.GraphAsset;
 import graph.GraphPackage;
 import graph.GraphTables;
@@ -1843,8 +1844,10 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 			 *       let
 			 *         result : Boolean[?] = if self.Attacker = true
 			 *         then
-			 *           self.outedges->forAll(e | e.EdgeLabel < 1) and
-			 *           self.inedges->forAll(e | e.EdgeLabel < 1)
+			 *           self.outedges->forAll(e |
+			 *             e.edgelabel->forAll(l | l.level <= 1)) and
+			 *           self.inedges->forAll(e |
+			 *             e.edgelabel->forAll(l | l.level <= 1))
 			 *         else true
 			 *         endif
 			 *       in
@@ -1865,84 +1868,182 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 					final /*@NonInvalid*/ boolean Attacker = this.isAttacker();
 					/*@Thrown*/ Boolean result;
 					if (Attacker) {
-						final /*@NonInvalid*/ List<Edge> outedges = this.getOutedges();
-						final /*@NonInvalid*/ OrderedSetValue BOXED_outedges = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_Edge, outedges);
-						/*@Thrown*/ Object accumulator = ValueUtil.TRUE_VALUE;
-						Iterator<Object> ITERATOR_e_0 = BOXED_outedges.iterator();
-						/*@NonInvalid*/ Boolean forAll;
-						while (true) {
-							if (!ITERATOR_e_0.hasNext()) {
-								if (accumulator == ValueUtil.TRUE_VALUE) {
-									forAll = ValueUtil.TRUE_VALUE;
-								}
-								else {
-									throw (InvalidValueException)accumulator;
-								}
-								break;
-							}
-							/*@NonInvalid*/ Edge e_0 = (Edge)ITERATOR_e_0.next();
-							/**
-							 * e.EdgeLabel < 1
-							 */
-							final /*@NonInvalid*/ int EdgeLabel = e_0.getEdgeLabel();
-							final /*@NonInvalid*/ IntegerValue BOXED_EdgeLabel = ValueUtil.integerValueOf(EdgeLabel);
-							final /*@NonInvalid*/ boolean lt = OclComparableLessThanOperation.INSTANCE.evaluate(executor, BOXED_EdgeLabel, GraphTables.INT_1).booleanValue();
-							//
-							if (!lt) {					// Normal unsuccessful body evaluation result
-								forAll = ValueUtil.FALSE_VALUE;
-								break;														// Stop immediately
-							}
-							else if (lt) {				// Normal successful body evaluation result
-								;															// Carry on
-							}
-							else {															// Impossible badly typed result
-								accumulator = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
-							}
-						}
-						final /*@Thrown*/ Boolean and;
-						if (forAll == ValueUtil.FALSE_VALUE) {
-							and = ValueUtil.FALSE_VALUE;
-						}
-						else {
-							final /*@NonInvalid*/ List<Edge> inedges = this.getInedges();
-							final /*@NonInvalid*/ OrderedSetValue BOXED_inedges = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_Edge, inedges);
-							/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
-							Iterator<Object> ITERATOR_e_1 = BOXED_inedges.iterator();
-							/*@NonInvalid*/ Boolean forAll_0;
+						/*@Caught*/ Object CAUGHT_forAll;
+						try {
+							final /*@NonInvalid*/ List<Edge> outedges = this.getOutedges();
+							final /*@NonInvalid*/ OrderedSetValue BOXED_outedges = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_Edge, outedges);
+							/*@Thrown*/ Object accumulator = ValueUtil.TRUE_VALUE;
+							Iterator<Object> ITERATOR_e_0 = BOXED_outedges.iterator();
+							/*@Thrown*/ Boolean forAll;
 							while (true) {
-								if (!ITERATOR_e_1.hasNext()) {
-									if (accumulator_0 == ValueUtil.TRUE_VALUE) {
-										forAll_0 = ValueUtil.TRUE_VALUE;
+								if (!ITERATOR_e_0.hasNext()) {
+									if (accumulator == null) {
+										forAll = null;
+									}
+									else if (accumulator == ValueUtil.TRUE_VALUE) {
+										forAll = ValueUtil.TRUE_VALUE;
 									}
 									else {
-										throw (InvalidValueException)accumulator_0;
+										throw (InvalidValueException)accumulator;
 									}
 									break;
 								}
-								/*@NonInvalid*/ Edge e_1 = (Edge)ITERATOR_e_1.next();
+								/*@NonInvalid*/ Edge e_0 = (Edge)ITERATOR_e_0.next();
 								/**
-								 * e.EdgeLabel < 1
+								 * e.edgelabel->forAll(l | l.level <= 1)
 								 */
-								final /*@NonInvalid*/ int EdgeLabel_0 = e_1.getEdgeLabel();
-								final /*@NonInvalid*/ IntegerValue BOXED_EdgeLabel_0 = ValueUtil.integerValueOf(EdgeLabel_0);
-								final /*@NonInvalid*/ boolean lt_0 = OclComparableLessThanOperation.INSTANCE.evaluate(executor, BOXED_EdgeLabel_0, GraphTables.INT_1).booleanValue();
+								final /*@NonInvalid*/ List<EdgeLabel> edgelabel = e_0.getEdgelabel();
+								final /*@NonInvalid*/ OrderedSetValue BOXED_edgelabel = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_EdgeLabel, edgelabel);
+								/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+								Iterator<Object> ITERATOR_l = BOXED_edgelabel.iterator();
+								/*@NonInvalid*/ Boolean forAll_0;
+								while (true) {
+									if (!ITERATOR_l.hasNext()) {
+										if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+											forAll_0 = ValueUtil.TRUE_VALUE;
+										}
+										else {
+											throw (InvalidValueException)accumulator_0;
+										}
+										break;
+									}
+									/*@NonInvalid*/ EdgeLabel l = (EdgeLabel)ITERATOR_l.next();
+									/**
+									 * l.level <= 1
+									 */
+									final /*@NonInvalid*/ int level = l.getLevel();
+									final /*@NonInvalid*/ IntegerValue BOXED_level = ValueUtil.integerValueOf(level);
+									final /*@NonInvalid*/ boolean le_0 = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, BOXED_level, GraphTables.INT_1).booleanValue();
+									//
+									if (!le_0) {					// Normal unsuccessful body evaluation result
+										forAll_0 = ValueUtil.FALSE_VALUE;
+										break;														// Stop immediately
+									}
+									else if (le_0) {				// Normal successful body evaluation result
+										;															// Carry on
+									}
+									else {															// Impossible badly typed result
+										accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+									}
+								}
 								//
-								if (!lt_0) {					// Normal unsuccessful body evaluation result
-									forAll_0 = ValueUtil.FALSE_VALUE;
+								if (forAll_0 == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+									forAll = ValueUtil.FALSE_VALUE;
 									break;														// Stop immediately
 								}
-								else if (lt_0) {				// Normal successful body evaluation result
+								else if (forAll_0 == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
 									;															// Carry on
 								}
+								else if (forAll_0 == null) {								// Abnormal null body evaluation result
+									if (accumulator == ValueUtil.TRUE_VALUE) {
+										accumulator = null;										// Cache a null failure
+									}
+								}
 								else {															// Impossible badly typed result
-									accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+									accumulator = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
 								}
 							}
-							if (forAll_0 == ValueUtil.FALSE_VALUE) {
+							CAUGHT_forAll = forAll;
+						}
+						catch (Exception e) {
+							CAUGHT_forAll = ValueUtil.createInvalidValue(e);
+						}
+						final /*@Thrown*/ Boolean and;
+						if (CAUGHT_forAll == ValueUtil.FALSE_VALUE) {
+							and = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							/*@Caught*/ Object CAUGHT_forAll_1;
+							try {
+								final /*@NonInvalid*/ List<Edge> inedges = this.getInedges();
+								final /*@NonInvalid*/ OrderedSetValue BOXED_inedges = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_Edge, inedges);
+								/*@Thrown*/ Object accumulator_1 = ValueUtil.TRUE_VALUE;
+								Iterator<Object> ITERATOR_e_1 = BOXED_inedges.iterator();
+								/*@Thrown*/ Boolean forAll_1;
+								while (true) {
+									if (!ITERATOR_e_1.hasNext()) {
+										if (accumulator_1 == null) {
+											forAll_1 = null;
+										}
+										else if (accumulator_1 == ValueUtil.TRUE_VALUE) {
+											forAll_1 = ValueUtil.TRUE_VALUE;
+										}
+										else {
+											throw (InvalidValueException)accumulator_1;
+										}
+										break;
+									}
+									/*@NonInvalid*/ Edge e_1 = (Edge)ITERATOR_e_1.next();
+									/**
+									 * e.edgelabel->forAll(l | l.level <= 1)
+									 */
+									final /*@NonInvalid*/ List<EdgeLabel> edgelabel_0 = e_1.getEdgelabel();
+									final /*@NonInvalid*/ OrderedSetValue BOXED_edgelabel_0 = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_EdgeLabel, edgelabel_0);
+									/*@Thrown*/ Object accumulator_2 = ValueUtil.TRUE_VALUE;
+									Iterator<Object> ITERATOR_l_0 = BOXED_edgelabel_0.iterator();
+									/*@NonInvalid*/ Boolean forAll_2;
+									while (true) {
+										if (!ITERATOR_l_0.hasNext()) {
+											if (accumulator_2 == ValueUtil.TRUE_VALUE) {
+												forAll_2 = ValueUtil.TRUE_VALUE;
+											}
+											else {
+												throw (InvalidValueException)accumulator_2;
+											}
+											break;
+										}
+										/*@NonInvalid*/ EdgeLabel l_0 = (EdgeLabel)ITERATOR_l_0.next();
+										/**
+										 * l.level <= 1
+										 */
+										final /*@NonInvalid*/ int level_0 = l_0.getLevel();
+										final /*@NonInvalid*/ IntegerValue BOXED_level_0 = ValueUtil.integerValueOf(level_0);
+										final /*@NonInvalid*/ boolean le_1 = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, BOXED_level_0, GraphTables.INT_1).booleanValue();
+										//
+										if (!le_1) {					// Normal unsuccessful body evaluation result
+											forAll_2 = ValueUtil.FALSE_VALUE;
+											break;														// Stop immediately
+										}
+										else if (le_1) {				// Normal successful body evaluation result
+											;															// Carry on
+										}
+										else {															// Impossible badly typed result
+											accumulator_2 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+										}
+									}
+									//
+									if (forAll_2 == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+										forAll_1 = ValueUtil.FALSE_VALUE;
+										break;														// Stop immediately
+									}
+									else if (forAll_2 == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+										;															// Carry on
+									}
+									else if (forAll_2 == null) {								// Abnormal null body evaluation result
+										if (accumulator_1 == ValueUtil.TRUE_VALUE) {
+											accumulator_1 = null;										// Cache a null failure
+										}
+									}
+									else {															// Impossible badly typed result
+										accumulator_1 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+									}
+								}
+								CAUGHT_forAll_1 = forAll_1;
+							}
+							catch (Exception e) {
+								CAUGHT_forAll_1 = ValueUtil.createInvalidValue(e);
+							}
+							if (CAUGHT_forAll_1 == ValueUtil.FALSE_VALUE) {
 								and = ValueUtil.FALSE_VALUE;
 							}
 							else {
-								if ((forAll == null) || (forAll_0 == null)) {
+								if (CAUGHT_forAll instanceof InvalidValueException) {
+									throw (InvalidValueException)CAUGHT_forAll;
+								}
+								if (CAUGHT_forAll_1 instanceof InvalidValueException) {
+									throw (InvalidValueException)CAUGHT_forAll_1;
+								}
+								if ((CAUGHT_forAll == null) || (CAUGHT_forAll_1 == null)) {
 									and = null;
 								}
 								else {

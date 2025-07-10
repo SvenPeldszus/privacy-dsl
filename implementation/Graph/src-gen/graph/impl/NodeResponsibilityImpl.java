@@ -2,6 +2,7 @@
  */
 package graph.impl;
 
+import graph.AssetLabel;
 import graph.GraphAsset;
 import graph.GraphPackage;
 import graph.GraphTables;
@@ -30,11 +31,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.ocl.pivot.evaluation.Executor;
 
 import org.eclipse.ocl.pivot.ids.IdResolver;
-
-import org.eclipse.ocl.pivot.library.collection.CollectionAsSequenceOperation;
-import org.eclipse.ocl.pivot.library.collection.OrderedCollectionFirstOperation;
-import org.eclipse.ocl.pivot.library.collection.OrderedCollectionLastOperation;
-
+import org.eclipse.ocl.pivot.library.collection.CollectionMaxOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionMinOperation;
 import org.eclipse.ocl.pivot.utilities.PivotUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
 
@@ -246,33 +244,51 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public BigInteger findMostRestrictiveLabel() {
 		/**
-		 * self.incomingassets->collect(a | a.Label)->asSequence()->last()
+		 * self.incomingassets.assetlabel.level->max()
 		 */
 		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
 		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
 		final /*@NonInvalid*/ List<GraphAsset> incomingassets = this.getIncomingassets();
 		final /*@NonInvalid*/ OrderedSetValue BOXED_incomingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, incomingassets);
-		/*@Thrown*/ Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(GraphTables.SEQ_DATAid_EInt);
-		Iterator<Object> ITERATOR_a = BOXED_incomingassets.iterator();
-		/*@NonInvalid*/ SequenceValue collect;
+		/*@Thrown*/ Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(GraphTables.SEQ_CLSSid_AssetLabel);
+		Iterator<Object> ITERATOR__1 = BOXED_incomingassets.iterator();
+		/*@NonInvalid*/ SequenceValue collect_0;
 		while (true) {
-			if (!ITERATOR_a.hasNext()) {
-				collect = accumulator;
+			if (!ITERATOR__1.hasNext()) {
+				collect_0 = accumulator;
 				break;
 			}
-			/*@NonInvalid*/ GraphAsset a = (GraphAsset)ITERATOR_a.next();
+			/*@NonInvalid*/ GraphAsset _1 = (GraphAsset)ITERATOR__1.next();
 			/**
-			 * a.Label
+			 * assetlabel
 			 */
-			final /*@NonInvalid*/ int Label = a.getLabel();
-			final /*@NonInvalid*/ IntegerValue BOXED_Label = ValueUtil.integerValueOf(Label);
+			final /*@NonInvalid*/ List<AssetLabel> assetlabel = _1.getAssetlabel();
+			final /*@NonInvalid*/ OrderedSetValue BOXED_assetlabel = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_AssetLabel, assetlabel);
 			//
-			accumulator.add(BOXED_Label);
+			for (Object value : BOXED_assetlabel.flatten().getElements()) {
+				accumulator.add(value);
+			}
 		}
-		final /*@NonInvalid*/ SequenceValue asSequence = CollectionAsSequenceOperation.INSTANCE.evaluate(collect);
-		final /*@Thrown*/ IntegerValue last = (IntegerValue)OrderedCollectionLastOperation.INSTANCE.evaluate(asSequence);
-		final BigInteger ECORE_last = ValueUtil.bigIntegerValueOf(last);
-		return ECORE_last;
+		/*@Thrown*/ Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(GraphTables.SEQ_DATAid_EInt);
+		Iterator<Object> ITERATOR__1_0 = collect_0.iterator();
+		/*@NonInvalid*/ SequenceValue collect;
+		while (true) {
+			if (!ITERATOR__1_0.hasNext()) {
+				collect = accumulator_0;
+				break;
+			}
+			/*@NonInvalid*/ AssetLabel _1_0 = (AssetLabel)ITERATOR__1_0.next();
+			/**
+			 * level
+			 */
+			final /*@NonInvalid*/ int level = _1_0.getLevel();
+			final /*@NonInvalid*/ IntegerValue BOXED_level = ValueUtil.integerValueOf(level);
+			//
+			accumulator_0.add(BOXED_level);
+		}
+		final /*@NonInvalid*/ IntegerValue max = (IntegerValue)CollectionMaxOperation.INSTANCE.evaluate(collect);
+		final BigInteger ECORE_max = ValueUtil.bigIntegerValueOf(max);
+		return ECORE_max;
 	}
 
 	/**
@@ -283,33 +299,51 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 	@Override
 	public BigInteger findLeastRestrictiveLabel() {
 		/**
-		 * self.incomingassets->collect(a | a.Label)->asSequence()->first()
+		 * self.incomingassets.assetlabel.level->min()
 		 */
 		final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
 		final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
 		final /*@NonInvalid*/ List<GraphAsset> incomingassets = this.getIncomingassets();
 		final /*@NonInvalid*/ OrderedSetValue BOXED_incomingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, incomingassets);
-		/*@Thrown*/ Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(GraphTables.SEQ_DATAid_EInt);
-		Iterator<Object> ITERATOR_a = BOXED_incomingassets.iterator();
-		/*@NonInvalid*/ SequenceValue collect;
+		/*@Thrown*/ Accumulator accumulator = ValueUtil.createSequenceAccumulatorValue(GraphTables.SEQ_CLSSid_AssetLabel);
+		Iterator<Object> ITERATOR__1 = BOXED_incomingassets.iterator();
+		/*@NonInvalid*/ SequenceValue collect_0;
 		while (true) {
-			if (!ITERATOR_a.hasNext()) {
-				collect = accumulator;
+			if (!ITERATOR__1.hasNext()) {
+				collect_0 = accumulator;
 				break;
 			}
-			/*@NonInvalid*/ GraphAsset a = (GraphAsset)ITERATOR_a.next();
+			/*@NonInvalid*/ GraphAsset _1 = (GraphAsset)ITERATOR__1.next();
 			/**
-			 * a.Label
+			 * assetlabel
 			 */
-			final /*@NonInvalid*/ int Label = a.getLabel();
-			final /*@NonInvalid*/ IntegerValue BOXED_Label = ValueUtil.integerValueOf(Label);
+			final /*@NonInvalid*/ List<AssetLabel> assetlabel = _1.getAssetlabel();
+			final /*@NonInvalid*/ OrderedSetValue BOXED_assetlabel = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_AssetLabel, assetlabel);
 			//
-			accumulator.add(BOXED_Label);
+			for (Object value : BOXED_assetlabel.flatten().getElements()) {
+				accumulator.add(value);
+			}
 		}
-		final /*@NonInvalid*/ SequenceValue asSequence = CollectionAsSequenceOperation.INSTANCE.evaluate(collect);
-		final /*@Thrown*/ IntegerValue first = (IntegerValue)OrderedCollectionFirstOperation.INSTANCE.evaluate(asSequence);
-		final BigInteger ECORE_first = ValueUtil.bigIntegerValueOf(first);
-		return ECORE_first;
+		/*@Thrown*/ Accumulator accumulator_0 = ValueUtil.createSequenceAccumulatorValue(GraphTables.SEQ_DATAid_EInt);
+		Iterator<Object> ITERATOR__1_0 = collect_0.iterator();
+		/*@NonInvalid*/ SequenceValue collect;
+		while (true) {
+			if (!ITERATOR__1_0.hasNext()) {
+				collect = accumulator_0;
+				break;
+			}
+			/*@NonInvalid*/ AssetLabel _1_0 = (AssetLabel)ITERATOR__1_0.next();
+			/**
+			 * level
+			 */
+			final /*@NonInvalid*/ int level = _1_0.getLevel();
+			final /*@NonInvalid*/ IntegerValue BOXED_level = ValueUtil.integerValueOf(level);
+			//
+			accumulator_0.add(BOXED_level);
+		}
+		final /*@NonInvalid*/ IntegerValue min = (IntegerValue)CollectionMinOperation.INSTANCE.evaluate(collect);
+		final BigInteger ECORE_min = ValueUtil.bigIntegerValueOf(min);
+		return ECORE_min;
 	}
 
 	/**

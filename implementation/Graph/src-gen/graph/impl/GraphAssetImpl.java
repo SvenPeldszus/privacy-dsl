@@ -2,6 +2,7 @@
  */
 package graph.impl;
 
+import graph.AssetLabel;
 import graph.GraphAsset;
 import graph.GraphPackage;
 import graph.Node;
@@ -10,6 +11,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -18,7 +20,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,10 +34,10 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <ul>
  *   <li>{@link graph.impl.GraphAssetImpl#getID <em>ID</em>}</li>
  *   <li>{@link graph.impl.GraphAssetImpl#getNumber <em>Number</em>}</li>
- *   <li>{@link graph.impl.GraphAssetImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link graph.impl.GraphAssetImpl#getSource <em>Source</em>}</li>
  *   <li>{@link graph.impl.GraphAssetImpl#getTargets <em>Targets</em>}</li>
  *   <li>{@link graph.impl.GraphAssetImpl#isEncrypted <em>Encrypted</em>}</li>
+ *   <li>{@link graph.impl.GraphAssetImpl#getAssetlabel <em>Assetlabel</em>}</li>
  * </ul>
  *
  * @generated
@@ -80,26 +84,6 @@ public class GraphAssetImpl extends MinimalEObjectImpl.Container implements Grap
 	protected int number = NUMBER_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLabel()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int LABEL_EDEFAULT = -1;
-
-	/**
-	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLabel()
-	 * @generated
-	 * @ordered
-	 */
-	protected int label = LABEL_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -138,6 +122,16 @@ public class GraphAssetImpl extends MinimalEObjectImpl.Container implements Grap
 	 * @ordered
 	 */
 	protected boolean encrypted = ENCRYPTED_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getAssetlabel() <em>Assetlabel</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAssetlabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AssetLabel> assetlabel;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -202,29 +196,6 @@ public class GraphAssetImpl extends MinimalEObjectImpl.Container implements Grap
 		number = newNumber;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GRAPH_ASSET__NUMBER, oldNumber, number));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int getLabel() {
-		return label;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setLabel(int newLabel) {
-		int oldLabel = label;
-		label = newLabel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.GRAPH_ASSET__LABEL, oldLabel, label));
 	}
 
 	/**
@@ -309,14 +280,39 @@ public class GraphAssetImpl extends MinimalEObjectImpl.Container implements Grap
 	 * @generated
 	 */
 	@Override
+	public EList<AssetLabel> getAssetlabel() {
+		if (assetlabel == null) {
+			assetlabel = new EObjectContainmentEList<AssetLabel>(AssetLabel.class, this, GraphPackage.GRAPH_ASSET__ASSETLABEL);
+		}
+		return assetlabel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GraphPackage.GRAPH_ASSET__ASSETLABEL:
+				return ((InternalEList<?>)getAssetlabel()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GraphPackage.GRAPH_ASSET__ID:
 				return getID();
 			case GraphPackage.GRAPH_ASSET__NUMBER:
 				return getNumber();
-			case GraphPackage.GRAPH_ASSET__LABEL:
-				return getLabel();
 			case GraphPackage.GRAPH_ASSET__SOURCE:
 				if (resolve) return getSource();
 				return basicGetSource();
@@ -324,6 +320,8 @@ public class GraphAssetImpl extends MinimalEObjectImpl.Container implements Grap
 				return getTargets();
 			case GraphPackage.GRAPH_ASSET__ENCRYPTED:
 				return isEncrypted();
+			case GraphPackage.GRAPH_ASSET__ASSETLABEL:
+				return getAssetlabel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -343,9 +341,6 @@ public class GraphAssetImpl extends MinimalEObjectImpl.Container implements Grap
 			case GraphPackage.GRAPH_ASSET__NUMBER:
 				setNumber((Integer)newValue);
 				return;
-			case GraphPackage.GRAPH_ASSET__LABEL:
-				setLabel((Integer)newValue);
-				return;
 			case GraphPackage.GRAPH_ASSET__SOURCE:
 				setSource((Node)newValue);
 				return;
@@ -355,6 +350,10 @@ public class GraphAssetImpl extends MinimalEObjectImpl.Container implements Grap
 				return;
 			case GraphPackage.GRAPH_ASSET__ENCRYPTED:
 				setEncrypted((Boolean)newValue);
+				return;
+			case GraphPackage.GRAPH_ASSET__ASSETLABEL:
+				getAssetlabel().clear();
+				getAssetlabel().addAll((Collection<? extends AssetLabel>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -374,9 +373,6 @@ public class GraphAssetImpl extends MinimalEObjectImpl.Container implements Grap
 			case GraphPackage.GRAPH_ASSET__NUMBER:
 				setNumber(NUMBER_EDEFAULT);
 				return;
-			case GraphPackage.GRAPH_ASSET__LABEL:
-				setLabel(LABEL_EDEFAULT);
-				return;
 			case GraphPackage.GRAPH_ASSET__SOURCE:
 				setSource((Node)null);
 				return;
@@ -385,6 +381,9 @@ public class GraphAssetImpl extends MinimalEObjectImpl.Container implements Grap
 				return;
 			case GraphPackage.GRAPH_ASSET__ENCRYPTED:
 				setEncrypted(ENCRYPTED_EDEFAULT);
+				return;
+			case GraphPackage.GRAPH_ASSET__ASSETLABEL:
+				getAssetlabel().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -402,14 +401,14 @@ public class GraphAssetImpl extends MinimalEObjectImpl.Container implements Grap
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case GraphPackage.GRAPH_ASSET__NUMBER:
 				return number != NUMBER_EDEFAULT;
-			case GraphPackage.GRAPH_ASSET__LABEL:
-				return label != LABEL_EDEFAULT;
 			case GraphPackage.GRAPH_ASSET__SOURCE:
 				return source != null;
 			case GraphPackage.GRAPH_ASSET__TARGETS:
 				return targets != null && !targets.isEmpty();
 			case GraphPackage.GRAPH_ASSET__ENCRYPTED:
 				return encrypted != ENCRYPTED_EDEFAULT;
+			case GraphPackage.GRAPH_ASSET__ASSETLABEL:
+				return assetlabel != null && !assetlabel.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -428,8 +427,6 @@ public class GraphAssetImpl extends MinimalEObjectImpl.Container implements Grap
 		result.append(id);
 		result.append(", number: ");
 		result.append(number);
-		result.append(", Label: ");
-		result.append(label);
 		result.append(", Encrypted: ");
 		result.append(encrypted);
 		result.append(')');

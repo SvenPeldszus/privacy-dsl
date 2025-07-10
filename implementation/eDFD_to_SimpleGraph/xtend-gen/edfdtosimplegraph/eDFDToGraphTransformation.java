@@ -4,25 +4,29 @@ import com.google.common.collect.Iterables;
 import edfdtosimplegraph.Assets;
 import edfdtosimplegraph.Boundaries;
 import edfdtosimplegraph.BoundariesAssets;
-import edfdtosimplegraph.DSElements;
 import edfdtosimplegraph.EDFD;
 import edfdtosimplegraph.EDFDAsset;
-import edfdtosimplegraph.EEElements;
 import edfdtosimplegraph.EEandDSElement;
 import edfdtosimplegraph.NodeElements;
 import edfdtosimplegraph.ProcessElements;
 import edfdtosimplegraph.Responsibilities;
+import graph.AssetLabel;
 import graph.Edge;
+import graph.EdgeLabel;
 import graph.GraphAsset;
+import graph.GraphFactory;
 import graph.GraphPackage;
 import graph.Identifiable;
 import graph.Node;
 import graph.NodeResponsibility;
+import graph.SecurityLabel;
 import graph.Subgraphs;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -36,20 +40,21 @@ import org.eclipse.viatra.transformation.runtime.emf.transformation.batch.BatchT
 import org.eclipse.viatra.transformation.runtime.emf.transformation.batch.BatchTransformationStatements;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.secdfd.model.Asset;
 import org.secdfd.model.AttackerProfile;
-import org.secdfd.model.DataStore;
 import org.secdfd.model.Element;
-import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
 import org.secdfd.model.NamedEntity;
+import org.secdfd.model.Objective;
+import org.secdfd.model.Priority;
 import org.secdfd.model.Responsibility;
 import org.secdfd.model.ResponsibilityType;
 import org.secdfd.model.TrustZone;
@@ -316,29 +321,13 @@ public class eDFDToGraphTransformation {
         InputOutput.<String>println(_builder.toString());
         final Subgraphs subgraph = IterableExtensions.<Subgraphs>head(Iterables.<Subgraphs>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, ((NamedEntity) eDFD)), Subgraphs.class));
         EObject _createChild = this.manipulation.createChild(subgraph, this.graphPackage.getSubgraphs_Assets(), this.graphPackage.getGraphAsset());
-        final Procedure1<GraphAsset> _function = (GraphAsset it_1) -> {
-          try {
-            boolean confidential = false;
-            for (final Value av : eDFDAssetValues) {
-              String _string = av.getObjective().toString();
-              boolean _equals = Objects.equals(_string, "Confidentiality");
-              if (_equals) {
-                confidential = true;
-              }
-            }
-            if ((confidential == true)) {
-              this.manipulation.set(it_1, this.graphPackage.getGraphAsset_Label(), Integer.valueOf(1));
-            } else {
-              this.manipulation.set(it_1, this.graphPackage.getGraphAsset_Label(), Integer.valueOf(0));
-            }
-          } catch (Throwable _e) {
-            throw Exceptions.sneakyThrow(_e);
-          }
-        };
-        final GraphAsset gA = ObjectExtensions.<GraphAsset>operator_doubleArrow(((GraphAsset) _createChild), _function);
+        final GraphAsset gA = ((GraphAsset) _createChild);
+        for (final Value v : eDFDAssetValues) {
+          this.upsertLabel_Asset(gA.getAssetlabel(), v.getObjective(), this.lvl(v.getPriority()));
+        }
         gA.setID(eDFDAsset.getName());
         EObject _createChild_1 = this.manipulation.createChild(this.edfd2graph, this.trPackage.getEDFDToGraph_EdfdGraphTraces(), this.trPackage.getEDFDGraphTrace());
-        final Procedure1<EObject> _function_1 = (EObject it_1) -> {
+        final Procedure1<EObject> _function = (EObject it_1) -> {
           try {
             this.manipulation.addTo(it_1, this.trPackage.getEDFDGraphTrace_EdfdElements(), eDFDAsset);
             this.manipulation.addTo(it_1, this.trPackage.getEDFDGraphTrace_GraphElements(), gA);
@@ -346,7 +335,7 @@ public class eDFDToGraphTransformation {
             throw Exceptions.sneakyThrow(_e);
           }
         };
-        ObjectExtensions.<EObject>operator_doubleArrow(_createChild_1, _function_1);
+        ObjectExtensions.<EObject>operator_doubleArrow(_createChild_1, _function);
       } catch (Throwable _e) {
         throw Exceptions.sneakyThrow(_e);
       }
@@ -543,773 +532,411 @@ public class eDFDToGraphTransformation {
       subgraph.getAssets().addAll(graph_assets);
     })).build();
 
-  private final BatchTransformationRule<EEandDSElement.Match, EEandDSElement.Matcher> initLabels = this._batchTransformationRuleFactory.<EEandDSElement.Match, EEandDSElement.Matcher>createRule().precondition(EEandDSElement.Matcher.querySpecification()).action(
-    ((Consumer<EEandDSElement.Match>) (EEandDSElement.Match it) -> {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Inferring labels for: ");
-      String _name = it.getEl().getName();
-      _builder.append(_name);
-      InputOutput.<String>print(_builder.toString());
-      final Subgraphs subgraph = IterableExtensions.<Subgraphs>head(Iterables.<Subgraphs>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, null), Subgraphs.class));
-      Element _el = it.getEl();
-      Node locate_correct_graph_node = IterableExtensions.<Node>head(Iterables.<Node>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, ((NamedEntity) _el)), Node.class));
-      EList<Node> _nodes = subgraph.getNodes();
-      for (final Node n : _nodes) {
-        String _name_1 = n.getName();
-        String _name_2 = locate_correct_graph_node.getName();
-        boolean _equals = Objects.equals(_name_1, _name_2);
-        if (_equals) {
-          locate_correct_graph_node = n;
-        }
+  /**
+   * val initLabels = createRule.precondition(edfdtosimplegraph.EEandDSElement.Matcher.querySpecification).action[
+   * print('''Inferring labels for: «it.el.name»''')
+   * 
+   * //find subgraph in target model
+   * val subgraph = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, null).filter(Subgraphs).head
+   * // get the node of EE or DS
+   * var locate_correct_graph_node = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, it.el as NamedEntity).filter(Node).head
+   * for (Node n : subgraph.nodes){
+   * if (n.name == locate_correct_graph_node.name){
+   * locate_correct_graph_node = n
+   * }
+   * }
+   * 
+   * // set the nodes of the outgoing flows only
+   * for (Edge e : locate_correct_graph_node.outedges){
+   * // for each set label according to the most restrictive asset on the flow
+   * e.visited = true
+   * var setlabel = -1 // not set
+   * for (GraphAsset gs: e.graphassets){
+   * if (gs.label > setlabel)
+   * setlabel = gs.label
+   * }
+   * e.edgeLabel = setlabel
+   * print(''' to «e.edgeLabel»''')
+   * println()
+   * }
+   * 
+   * ].build
+   */
+  private final BatchTransformationRule<EEandDSElement.Match, EEandDSElement.Matcher> initLabels = this._batchTransformationRuleFactory.<EEandDSElement.Match, EEandDSElement.Matcher>createRule().precondition(EEandDSElement.Matcher.querySpecification()).action(((Consumer<EEandDSElement.Match>) (EEandDSElement.Match it) -> {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("Inferring labels for ");
+    String _name = it.getEl().getName();
+    _builder.append(_name);
+    InputOutput.<String>println(_builder.toString());
+    final Subgraphs sub = IterableExtensions.<Subgraphs>head(Iterables.<Subgraphs>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, null), Subgraphs.class));
+    Element _el = it.getEl();
+    Node gn = IterableExtensions.<Node>head(Iterables.<Node>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, ((NamedEntity) _el)), Node.class));
+    EList<Node> _nodes = sub.getNodes();
+    for (final Node n : _nodes) {
+      String _name_1 = n.getName();
+      String _name_2 = gn.getName();
+      boolean _equals = Objects.equals(_name_1, _name_2);
+      if (_equals) {
+        gn = n;
       }
-      EList<Edge> _outedges = locate_correct_graph_node.getOutedges();
-      for (final Edge e : _outedges) {
-        {
-          e.setVisited(true);
-          int setlabel = (-1);
-          EList<GraphAsset> _graphassets = e.getGraphassets();
-          for (final GraphAsset gs : _graphassets) {
-            int _label = gs.getLabel();
-            boolean _greaterThan = (_label > setlabel);
-            if (_greaterThan) {
-              setlabel = gs.getLabel();
-            }
-          }
-          e.setEdgeLabel(setlabel);
-          StringConcatenation _builder_1 = new StringConcatenation();
-          _builder_1.append(" ");
-          _builder_1.append("to ");
-          int _edgeLabel = e.getEdgeLabel();
-          _builder_1.append(_edgeLabel, " ");
-          InputOutput.<String>print(_builder_1.toString());
-          InputOutput.println();
-        }
-      }
-    })).build();
-
-  public Boolean recursiveDFS(final Node node) {
-    boolean _isVisited = node.isVisited();
-    boolean _equals = (_isVisited == false);
-    if (_equals) {
-      node.setVisited(true);
-      final ArrayList<Node> neighbor_nodes = CollectionLiterals.<Node>newArrayList();
-      EList<Edge> _outedges = node.getOutedges();
-      for (final Edge outgoing : _outedges) {
-        {
-          outgoing.setVisited(true);
-          EList<GraphAsset> _graphassets = outgoing.getGraphassets();
-          for (final GraphAsset ga : _graphassets) {
-            {
-              ArrayList<NodeResponsibility> r = CollectionLiterals.<NodeResponsibility>newArrayList();
-              EList<NodeResponsibility> _responsibility = node.getResponsibility();
-              for (final NodeResponsibility noder : _responsibility) {
-                boolean _contains = noder.getOutgoingassets().contains(ga);
-                if (_contains) {
-                  r.add(noder);
-                }
-              }
-              for (final NodeResponsibility nr : r) {
-                String _string = nr.getOperation().toString();
-                if (_string != null) {
-                  switch (_string) {
-                    case "[EncryptOrHash]":
-                      outgoing.setEdgeLabel(0);
-                      StringConcatenation _builder = new StringConcatenation();
-                      _builder.append("Label propagation of edge ");
-                      String _iD = outgoing.getID();
-                      _builder.append(_iD);
-                      InputOutput.<String>print(_builder.toString());
-                      StringConcatenation _builder_1 = new StringConcatenation();
-                      _builder_1.append(" ");
-                      _builder_1.append("is ");
-                      int _edgeLabel = outgoing.getEdgeLabel();
-                      _builder_1.append(_edgeLabel, " ");
-                      InputOutput.<String>print(_builder_1.toString());
-                      StringConcatenation _builder_2 = new StringConcatenation();
-                      _builder_2.append(" ");
-                      _builder_2.append("for encrypting asset:");
-                      String _iD_1 = ga.getID();
-                      _builder_2.append(_iD_1, " ");
-                      InputOutput.<String>print(_builder_2.toString());
-                      InputOutput.println();
-                      break;
-                    case "[Decrypt]":
-                      int most_restrictive = (-1);
-                      EList<GraphAsset> _incomingassets = nr.getIncomingassets();
-                      for (final GraphAsset i : _incomingassets) {
-                        int _label = i.getLabel();
-                        boolean _greaterThan = (_label > most_restrictive);
-                        if (_greaterThan) {
-                          most_restrictive = i.getLabel();
-                        }
-                      }
-                      if ((most_restrictive == 1)) {
-                        outgoing.setEdgeLabel(1);
-                      } else {
-                        outgoing.setEdgeLabel(0);
-                      }
-                      StringConcatenation _builder_3 = new StringConcatenation();
-                      _builder_3.append("Label propagation of edge ");
-                      String _iD_2 = outgoing.getID();
-                      _builder_3.append(_iD_2);
-                      InputOutput.<String>print(_builder_3.toString());
-                      StringConcatenation _builder_4 = new StringConcatenation();
-                      _builder_4.append(" ");
-                      _builder_4.append("is ");
-                      int _edgeLabel_1 = outgoing.getEdgeLabel();
-                      _builder_4.append(_edgeLabel_1, " ");
-                      InputOutput.<String>print(_builder_4.toString());
-                      StringConcatenation _builder_5 = new StringConcatenation();
-                      _builder_5.append(" ");
-                      _builder_5.append("for decrypting asset:");
-                      String _iD_3 = ga.getID();
-                      _builder_5.append(_iD_3, " ");
-                      InputOutput.<String>print(_builder_5.toString());
-                      InputOutput.println();
-                      break;
-                    case "[Comparator]":
-                      int most_restrictive_1 = (-1);
-                      EList<GraphAsset> _incomingassets_1 = nr.getIncomingassets();
-                      for (final GraphAsset i_1 : _incomingassets_1) {
-                        int _label_1 = i_1.getLabel();
-                        boolean _greaterThan_1 = (_label_1 > most_restrictive_1);
-                        if (_greaterThan_1) {
-                          most_restrictive_1 = i_1.getLabel();
-                        }
-                      }
-                      outgoing.setEdgeLabel(most_restrictive_1);
-                      StringConcatenation _builder_6 = new StringConcatenation();
-                      _builder_6.append("Label propagation of edge ");
-                      String _iD_4 = outgoing.getID();
-                      _builder_6.append(_iD_4);
-                      InputOutput.<String>print(_builder_6.toString());
-                      StringConcatenation _builder_7 = new StringConcatenation();
-                      _builder_7.append(" ");
-                      _builder_7.append("is ");
-                      int _edgeLabel_2 = outgoing.getEdgeLabel();
-                      _builder_7.append(_edgeLabel_2, " ");
-                      InputOutput.<String>print(_builder_7.toString());
-                      StringConcatenation _builder_8 = new StringConcatenation();
-                      _builder_8.append(" ");
-                      _builder_8.append("for comparing asset:");
-                      String _iD_5 = ga.getID();
-                      _builder_8.append(_iD_5, " ");
-                      InputOutput.<String>print(_builder_8.toString());
-                      InputOutput.println();
-                      break;
-                    case "[Joiner]":
-                      int most_restrictive_2 = (-1);
-                      EList<GraphAsset> _incomingassets_2 = nr.getIncomingassets();
-                      for (final GraphAsset i_2 : _incomingassets_2) {
-                        int _label_2 = i_2.getLabel();
-                        boolean _greaterThan_2 = (_label_2 > most_restrictive_2);
-                        if (_greaterThan_2) {
-                          most_restrictive_2 = i_2.getLabel();
-                        }
-                      }
-                      outgoing.setEdgeLabel(most_restrictive_2);
-                      StringConcatenation _builder_9 = new StringConcatenation();
-                      _builder_9.append("Label propagation of edge ");
-                      String _iD_6 = outgoing.getID();
-                      _builder_9.append(_iD_6);
-                      InputOutput.<String>print(_builder_9.toString());
-                      StringConcatenation _builder_10 = new StringConcatenation();
-                      _builder_10.append(" ");
-                      _builder_10.append("is ");
-                      int _edgeLabel_3 = outgoing.getEdgeLabel();
-                      _builder_10.append(_edgeLabel_3, " ");
-                      InputOutput.<String>print(_builder_10.toString());
-                      StringConcatenation _builder_11 = new StringConcatenation();
-                      _builder_11.append(" ");
-                      _builder_11.append("for joining asset:");
-                      String _iD_7 = ga.getID();
-                      _builder_11.append(_iD_7, " ");
-                      InputOutput.<String>print(_builder_11.toString());
-                      InputOutput.println();
-                      break;
-                    case "[Splitter]":
-                      int most_restrictive_3 = (-1);
-                      EList<GraphAsset> _incomingassets_3 = nr.getIncomingassets();
-                      for (final GraphAsset i_3 : _incomingassets_3) {
-                        int _label_3 = i_3.getLabel();
-                        boolean _greaterThan_3 = (_label_3 > most_restrictive_3);
-                        if (_greaterThan_3) {
-                          most_restrictive_3 = i_3.getLabel();
-                        }
-                      }
-                      outgoing.setEdgeLabel(most_restrictive_3);
-                      StringConcatenation _builder_12 = new StringConcatenation();
-                      _builder_12.append("Label propagation of edge ");
-                      String _iD_8 = outgoing.getID();
-                      _builder_12.append(_iD_8);
-                      InputOutput.<String>print(_builder_12.toString());
-                      StringConcatenation _builder_13 = new StringConcatenation();
-                      _builder_13.append(" ");
-                      _builder_13.append("is ");
-                      int _edgeLabel_4 = outgoing.getEdgeLabel();
-                      _builder_13.append(_edgeLabel_4, " ");
-                      InputOutput.<String>print(_builder_13.toString());
-                      StringConcatenation _builder_14 = new StringConcatenation();
-                      _builder_14.append(" ");
-                      _builder_14.append("for spliting asset:");
-                      String _iD_9 = ga.getID();
-                      _builder_14.append(_iD_9, " ");
-                      InputOutput.<String>print(_builder_14.toString());
-                      InputOutput.println();
-                      break;
-                    case "[User]":
-                      int most_restrictive_4 = (-1);
-                      EList<GraphAsset> _incomingassets_4 = nr.getIncomingassets();
-                      for (final GraphAsset i_4 : _incomingassets_4) {
-                        int _label_4 = i_4.getLabel();
-                        boolean _greaterThan_4 = (_label_4 > most_restrictive_4);
-                        if (_greaterThan_4) {
-                          most_restrictive_4 = i_4.getLabel();
-                        }
-                      }
-                      outgoing.setEdgeLabel(most_restrictive_4);
-                      StringConcatenation _builder_15 = new StringConcatenation();
-                      _builder_15.append("Label propagation of edge ");
-                      String _iD_10 = outgoing.getID();
-                      _builder_15.append(_iD_10);
-                      InputOutput.<String>print(_builder_15.toString());
-                      StringConcatenation _builder_16 = new StringConcatenation();
-                      _builder_16.append(" ");
-                      _builder_16.append("is ");
-                      int _edgeLabel_5 = outgoing.getEdgeLabel();
-                      _builder_16.append(_edgeLabel_5, " ");
-                      InputOutput.<String>print(_builder_16.toString());
-                      StringConcatenation _builder_17 = new StringConcatenation();
-                      _builder_17.append(" ");
-                      _builder_17.append("for using asset:");
-                      String _iD_11 = ga.getID();
-                      _builder_17.append(_iD_11, " ");
-                      InputOutput.<String>print(_builder_17.toString());
-                      InputOutput.println();
-                      break;
-                    case "[Copier]":
-                      outgoing.setEdgeLabel(nr.getIncomingassets().get(0).getLabel());
-                      StringConcatenation _builder_18 = new StringConcatenation();
-                      _builder_18.append("Label propagation of edge ");
-                      String _iD_12 = outgoing.getID();
-                      _builder_18.append(_iD_12);
-                      InputOutput.<String>print(_builder_18.toString());
-                      StringConcatenation _builder_19 = new StringConcatenation();
-                      _builder_19.append(" ");
-                      _builder_19.append("is ");
-                      int _edgeLabel_6 = outgoing.getEdgeLabel();
-                      _builder_19.append(_edgeLabel_6, " ");
-                      InputOutput.<String>print(_builder_19.toString());
-                      StringConcatenation _builder_20 = new StringConcatenation();
-                      _builder_20.append(" ");
-                      _builder_20.append("for copying asset:");
-                      String _iD_13 = ga.getID();
-                      _builder_20.append(_iD_13, " ");
-                      InputOutput.<String>print(_builder_20.toString());
-                      InputOutput.println();
-                      break;
-                    case "[Forward]":
-                      outgoing.setEdgeLabel(nr.getIncomingassets().get(0).getLabel());
-                      StringConcatenation _builder_21 = new StringConcatenation();
-                      _builder_21.append("Label propagation of edge ");
-                      String _iD_14 = outgoing.getID();
-                      _builder_21.append(_iD_14);
-                      InputOutput.<String>print(_builder_21.toString());
-                      StringConcatenation _builder_22 = new StringConcatenation();
-                      _builder_22.append(" ");
-                      _builder_22.append("is ");
-                      int _edgeLabel_7 = outgoing.getEdgeLabel();
-                      _builder_22.append(_edgeLabel_7, " ");
-                      InputOutput.<String>print(_builder_22.toString());
-                      StringConcatenation _builder_23 = new StringConcatenation();
-                      _builder_23.append(" ");
-                      _builder_23.append("for forwarding asset:");
-                      String _iD_15 = ga.getID();
-                      _builder_23.append(_iD_15, " ");
-                      InputOutput.<String>print(_builder_23.toString());
-                      InputOutput.println();
-                      break;
-                    default:
-                      {
-                        InputOutput.<String>print(nr.getOperation().toString());
-                        InputOutput.<String>print("Does not effect confidentiality label propagation.");
-                        InputOutput.println();
-                      }
-                      break;
-                  }
-                } else {
-                  {
-                    InputOutput.<String>print(nr.getOperation().toString());
-                    InputOutput.<String>print("Does not effect confidentiality label propagation.");
-                    InputOutput.println();
-                  }
-                }
-              }
-            }
-          }
-          int _edgeLabel = outgoing.getEdgeLabel();
-          boolean _equals_1 = (_edgeLabel == (-1));
-          if (_equals_1) {
-            Edge edgecontainingassets = node.getInedges().get(0);
-            EList<Edge> _inedges = node.getInedges();
-            for (final Edge e : _inedges) {
-              boolean _containsAll = e.getGraphassets().containsAll(outgoing.getGraphassets());
-              if (_containsAll) {
-                edgecontainingassets = e;
-              }
-            }
-            outgoing.setEdgeLabel(edgecontainingassets.getEdgeLabel());
-            StringConcatenation _builder = new StringConcatenation();
-            _builder.append("Label inferred for edge ");
-            String _iD = outgoing.getID();
-            _builder.append(_iD);
-            InputOutput.<String>print(_builder.toString());
-            StringConcatenation _builder_1 = new StringConcatenation();
-            _builder_1.append(" ");
-            _builder_1.append("to ");
-            int _edgeLabel_1 = outgoing.getEdgeLabel();
-            _builder_1.append(_edgeLabel_1, " ");
-            InputOutput.<String>print(_builder_1.toString());
-            StringConcatenation _builder_2 = new StringConcatenation();
-            _builder_2.append(" ");
-            _builder_2.append("since no label propagation rules apply to this edge.");
-            InputOutput.<String>print(_builder_2.toString());
-            InputOutput.println();
-          }
-          neighbor_nodes.addAll(outgoing.getTarget());
-        }
-      }
-      for (final Node neighbor : neighbor_nodes) {
-        {
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("...Next target: ");
-          String _name = neighbor.getName();
-          _builder.append(_name);
-          InputOutput.<String>println(_builder.toString());
-          this.recursiveDFS(neighbor);
-        }
-      }
-      return Boolean.valueOf(true);
     }
-    return Boolean.valueOf(true);
-  }
-
-  private final BatchTransformationRule<DSElements.Match, DSElements.Matcher> propagateLabelsDS = this._batchTransformationRuleFactory.<DSElements.Match, DSElements.Matcher>createRule().precondition(DSElements.Matcher.querySpecification()).action(
-    ((Consumer<DSElements.Match>) (DSElements.Match it) -> {
-      int _length = ((Object[])Conversions.unwrapArray(it.getDs().getOutflows(), Object.class)).length;
-      boolean _greaterThan = (_length > 0);
-      if (_greaterThan) {
-        final Subgraphs subgraph = IterableExtensions.<Subgraphs>head(Iterables.<Subgraphs>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, null), Subgraphs.class));
-        DataStore _ds = it.getDs();
-        Node locate_correct_graph_node = IterableExtensions.<Node>head(Iterables.<Node>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, ((NamedEntity) _ds)), Node.class));
-        EList<Node> _nodes = subgraph.getNodes();
-        for (final Node n : _nodes) {
-          String _name = n.getName();
-          String _name_1 = locate_correct_graph_node.getName();
-          boolean _equals = Objects.equals(_name, _name_1);
-          if (_equals) {
-            locate_correct_graph_node = n;
+    EList<Edge> _outedges = gn.getOutedges();
+    for (final Edge e : _outedges) {
+      {
+        e.setVisited(true);
+        Objective[] _values = Objective.values();
+        for (final Objective o : _values) {
+          {
+            final Function1<GraphAsset, Integer> _function = (GraphAsset it_1) -> {
+              return Integer.valueOf(this.levelOf(it_1.getAssetlabel(), o));
+            };
+            final Integer max = IterableExtensions.<Integer>max(ListExtensions.<GraphAsset, Integer>map(e.getGraphassets(), _function));
+            EList<EdgeLabel> _edgelabel = e.getEdgelabel();
+            Integer _elvis = null;
+            if (max != null) {
+              _elvis = max;
+            } else {
+              _elvis = Integer.valueOf(0);
+            }
+            this.upsertLabel_Edge(_edgelabel, o, (_elvis).intValue());
           }
         }
-        InputOutput.println();
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("Starting propagation at: ");
-        String _name_2 = it.getDs().getName();
-        _builder.append(_name_2);
-        InputOutput.<String>println(_builder.toString());
-        this.recursiveDFS(locate_correct_graph_node);
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("  ");
+        _builder_1.append("→ edge ");
+        String _iD = e.getID();
+        _builder_1.append(_iD, "  ");
+        _builder_1.append(" labelled");
+        _builder_1.newLineIfNotEmpty();
+        _builder_1.append("\t                   ");
+        _builder_1.append("${e.edgelabel.map[objective.literal + \'=\' + level].join(\', \')}");
+        InputOutput.<String>println(_builder_1.toString());
       }
-    })).build();
+    }
+  })).build();
 
-  private final BatchTransformationRule<EEElements.Match, EEElements.Matcher> propagateLabelsEE = this._batchTransformationRuleFactory.<EEElements.Match, EEElements.Matcher>createRule().precondition(EEElements.Matcher.querySpecification()).action(
-    ((Consumer<EEElements.Match>) (EEElements.Match it) -> {
-      int _length = ((Object[])Conversions.unwrapArray(it.getEe().getOutflows(), Object.class)).length;
-      boolean _greaterThan = (_length > 0);
-      if (_greaterThan) {
-        final Subgraphs subgraph = IterableExtensions.<Subgraphs>head(Iterables.<Subgraphs>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, null), Subgraphs.class));
-        ExternalEntity _ee = it.getEe();
-        Node locate_correct_graph_node = IterableExtensions.<Node>head(Iterables.<Node>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, ((NamedEntity) _ee)), Node.class));
-        EList<Node> _nodes = subgraph.getNodes();
-        for (final Node n : _nodes) {
-          String _name = n.getName();
-          String _name_1 = locate_correct_graph_node.getName();
-          boolean _equals = Objects.equals(_name, _name_1);
-          if (_equals) {
-            locate_correct_graph_node = n;
-          }
-        }
-        InputOutput.println();
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("Starting propagation at: ");
-        String _name_2 = it.getEe().getName();
-        _builder.append(_name_2);
-        InputOutput.<String>println(_builder.toString());
-        this.recursiveDFS(locate_correct_graph_node);
-      }
-    })).build();
-
+  /**
+   * val propagateLabelsInOrder = createRule.precondition(edfdtosimplegraph.EDFD.Matcher.querySpecification).action[
+   * val all_elements = it.edfd.elements
+   * 
+   * //print(all_elements)
+   * val all_flows = newArrayList()
+   * for (Element e : all_elements){
+   * all_flows.addAll(e.outflows)
+   * }
+   * Collections.sort(all_flows) [ a, b |
+   * a.number - b.number
+   * ]
+   * for (Element f : all_flows){
+   * var outgoing = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, f as NamedEntity).filter(Edge).head
+   * var node = outgoing.source
+   * outgoing.visited = true
+   * for (GraphAsset ga : outgoing.graphassets){
+   * //for each asset, collect what kind of responsibility they are part of in the node
+   * var r = newArrayList()
+   * for (NodeResponsibility noder : node.responsibility){
+   * if (noder.outgoingassets.contains(ga)) r.add(noder)
+   * }
+   * //go through responsibilities
+   * for (NodeResponsibility nr : r){
+   * switch(nr.operation.toString){
+   * case "[EncryptOrHash]":{
+   * //set low output
+   * outgoing.edgeLabel = 0
+   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
+   * print(''' is «outgoing.edgeLabel»''')
+   * print(''' for ecrypting asset:«ga.ID»''')
+   * println()
+   * }
+   * case "[Decrypt]": {
+   * var most_restrictive = -1
+   * for (GraphAsset i : nr.incomingassets){
+   * if	(i.label > most_restrictive) most_restrictive = i.label
+   * }
+   * 
+   * 
+   * //set high output if the most sensitive asset being decrypted was high before
+   * if (most_restrictive ==	1){
+   * outgoing.edgeLabel = 1
+   * }else{
+   * //if sth low is decrypted it remains low
+   * outgoing.edgeLabel = 0
+   * }
+   * 
+   * outgoing.edgeLabel = 1
+   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
+   * print(''' is «outgoing.edgeLabel»''')
+   * print(''' for decrypting asset:«ga.ID»''')
+   * println()
+   * }
+   * //Comparator, Joiner, User => the same propagation
+   * case "[Comparator]":{
+   * //join labels (most restrictive input to node responsibility)
+   * var most_restrictive = -1
+   * for (GraphAsset i : nr.incomingassets){
+   * if	(i.label > most_restrictive) most_restrictive = i.label
+   * }
+   * outgoing.edgeLabel = most_restrictive
+   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
+   * print(''' is «outgoing.edgeLabel»''')
+   * print(''' for comparing asset:«ga.ID»''')
+   * println()
+   * }
+   * case "[Joiner]":{
+   * //join labels (most restrictive input to node responsibility
+   * var most_restrictive = -1
+   * for (GraphAsset i : nr.incomingassets){
+   * if	(i.label > most_restrictive) most_restrictive = i.label
+   * }
+   * outgoing.edgeLabel = most_restrictive
+   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
+   * print(''' is «outgoing.edgeLabel»''')
+   * print(''' for joining asset:«ga.ID»''')
+   * println()
+   * }
+   * //splitter should be included (substring), to remain conservative
+   * case "[Splitter]":{
+   * //join labels (most restrictive input to node responsibility
+   * var most_restrictive = -1
+   * for (GraphAsset i : nr.incomingassets){
+   * if	(i.label > most_restrictive) most_restrictive = i.label
+   * }
+   * outgoing.edgeLabel = most_restrictive
+   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
+   * print(''' is «outgoing.edgeLabel»''')
+   * print(''' for spliting asset:«ga.ID»''')
+   * println()
+   * }
+   * case "[User]":{
+   * //join labels (most restrictive input to node responsibility)
+   * var most_restrictive = -1
+   * for (GraphAsset i : nr.incomingassets){
+   * if	(i.label > most_restrictive) most_restrictive = i.label
+   * }
+   * outgoing.edgeLabel = most_restrictive
+   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
+   * print(''' is «outgoing.edgeLabel»''')
+   * print(''' for using asset:«ga.ID»''')
+   * println()
+   * }
+   * //Copier and Forward => the same
+   * case "[Copier]":{
+   * //copy labels (add semantic constraint - all assets in one copy responsibility must have the same label)
+   * outgoing.edgeLabel = nr.incomingassets.get(0).label
+   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
+   * print(''' is «outgoing.edgeLabel»''')
+   * print(''' for copying asset:«ga.ID»''')
+   * println()
+   * }
+   * case "[Forward]":{
+   * //copy labels (add semantic constraint - all assets in one forward responsibility must have the same label)
+   * outgoing.edgeLabel = nr.incomingassets.get(0).label
+   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
+   * print(''' is «outgoing.edgeLabel»''')
+   * print(''' for forwarding asset:«ga.ID»''')
+   * println()
+   * }
+   * case "[Store]":{
+   * //most restrictive stored asset
+   * var most_restrictive = -1
+   * for (GraphAsset i : nr.incomingassets){
+   * if	(i.label > most_restrictive) most_restrictive = i.label
+   * }
+   * outgoing.edgeLabel = most_restrictive
+   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
+   * print(''' is «outgoing.edgeLabel»''')
+   * print(''' for using asset:«ga.ID»''')
+   * println()
+   * }
+   * //case "[Discarder]":
+   * //case "[Verifier]":
+   * //case "[Authenticator]":
+   * //case "[Authoriser]":
+   * default :{
+   * print(nr.operation.toString)
+   * print("Does not effect confidentiality label propagation.")
+   * println()
+   * }
+   * }
+   * }
+   * 
+   * //if the flow has no connected responsibility, inferr the label from the most restrictive asset
+   * if (outgoing.edgeLabel == -1){
+   * var most_restrictive = -1
+   * for (GraphAsset i : outgoing.graphassets){
+   * if	(i.label > most_restrictive) most_restrictive = i.label
+   * }
+   * outgoing.edgeLabel = most_restrictive
+   * print('''Label inferred for edge «outgoing.ID»''')
+   * print(''' to «outgoing.edgeLabel»''')
+   * print(''' since no label propagation rules apply to this edge.''')
+   * println()
+   * }
+   * 
+   * print(f.number)
+   * print(''': ''')
+   * print(outgoing.edgeLabel)
+   * println()
+   * }
+   * }
+   * 
+   * 
+   * ].build
+   */
   private final BatchTransformationRule<EDFD.Match, EDFD.Matcher> propagateLabelsInOrder = this._batchTransformationRuleFactory.<EDFD.Match, EDFD.Matcher>createRule().precondition(EDFD.Matcher.querySpecification()).action(
     ((Consumer<EDFD.Match>) (EDFD.Match it) -> {
       final EList<Element> all_elements = it.getEdfd().getElements();
-      final ArrayList<Flow> all_flows = CollectionLiterals.<Flow>newArrayList();
+      final ArrayList<Flow> allFlows = CollectionLiterals.<Flow>newArrayList();
       for (final Element e : all_elements) {
-        all_flows.addAll(e.getOutflows());
+        allFlows.addAll(e.getOutflows());
       }
       final Comparator<Flow> _function = (Flow a, Flow b) -> {
         int _number = a.getNumber();
         int _number_1 = b.getNumber();
         return (_number - _number_1);
       };
-      Collections.<Flow>sort(all_flows, _function);
-      for (final Element f : all_flows) {
+      Collections.<Flow>sort(allFlows, _function);
+      for (final Element f : allFlows) {
         {
-          Edge outgoing = IterableExtensions.<Edge>head(Iterables.<Edge>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, ((NamedEntity) f)), Edge.class));
-          Node node = outgoing.getSource();
+          final Edge outgoing = IterableExtensions.<Edge>head(Iterables.<Edge>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, ((NamedEntity) f)), Edge.class));
+          final Node node = outgoing.getSource();
           outgoing.setVisited(true);
           EList<GraphAsset> _graphassets = outgoing.getGraphassets();
           for (final GraphAsset ga : _graphassets) {
             {
-              ArrayList<NodeResponsibility> r = CollectionLiterals.<NodeResponsibility>newArrayList();
+              final ArrayList<NodeResponsibility> r = CollectionLiterals.<NodeResponsibility>newArrayList();
               EList<NodeResponsibility> _responsibility = node.getResponsibility();
-              for (final NodeResponsibility noder : _responsibility) {
-                boolean _contains = noder.getOutgoingassets().contains(ga);
+              for (final NodeResponsibility nr : _responsibility) {
+                boolean _contains = nr.getOutgoingassets().contains(ga);
                 if (_contains) {
-                  r.add(noder);
+                  r.add(nr);
                 }
               }
-              for (final NodeResponsibility nr : r) {
-                String _string = nr.getOperation().toString();
+              for (final NodeResponsibility nr_1 : r) {
+                String _string = nr_1.getOperation().toString();
                 if (_string != null) {
                   switch (_string) {
                     case "[EncryptOrHash]":
-                      outgoing.setEdgeLabel(0);
-                      StringConcatenation _builder = new StringConcatenation();
-                      _builder.append("Label propagation of edge ");
-                      String _iD = outgoing.getID();
-                      _builder.append(_iD);
-                      _builder.append(", ");
-                      int _number = outgoing.getNumber();
-                      _builder.append(_number);
-                      InputOutput.<String>print(_builder.toString());
-                      StringConcatenation _builder_1 = new StringConcatenation();
-                      _builder_1.append(" ");
-                      _builder_1.append("is ");
-                      int _edgeLabel = outgoing.getEdgeLabel();
-                      _builder_1.append(_edgeLabel, " ");
-                      InputOutput.<String>print(_builder_1.toString());
-                      StringConcatenation _builder_2 = new StringConcatenation();
-                      _builder_2.append(" ");
-                      _builder_2.append("for ecrypting asset:");
-                      String _iD_1 = ga.getID();
-                      _builder_2.append(_iD_1, " ");
-                      InputOutput.<String>print(_builder_2.toString());
-                      InputOutput.println();
+                      Objective[] _values = Objective.values();
+                      for (final Objective o : _values) {
+                        this.upsertLabel_Edge(outgoing.getEdgelabel(), o, 0);
+                      }
                       break;
                     case "[Decrypt]":
-                      int most_restrictive = (-1);
-                      EList<GraphAsset> _incomingassets = nr.getIncomingassets();
-                      for (final GraphAsset i : _incomingassets) {
-                        int _label = i.getLabel();
-                        boolean _greaterThan = (_label > most_restrictive);
-                        if (_greaterThan) {
-                          most_restrictive = i.getLabel();
+                      Objective[] _values_1 = Objective.values();
+                      for (final Objective o_1 : _values_1) {
+                        {
+                          int max = 0;
+                          EList<GraphAsset> _incomingassets = nr_1.getIncomingassets();
+                          for (final GraphAsset ina : _incomingassets) {
+                            max = Math.max(max, this.levelOf(ina.getAssetlabel(), o_1));
+                          }
+                          this.upsertLabel_Edge(outgoing.getEdgelabel(), o_1, max);
                         }
                       }
-                      if ((most_restrictive == 1)) {
-                        outgoing.setEdgeLabel(1);
-                      } else {
-                        outgoing.setEdgeLabel(0);
-                      }
-                      outgoing.setEdgeLabel(1);
-                      StringConcatenation _builder_3 = new StringConcatenation();
-                      _builder_3.append("Label propagation of edge ");
-                      String _iD_2 = outgoing.getID();
-                      _builder_3.append(_iD_2);
-                      _builder_3.append(", ");
-                      int _number_1 = outgoing.getNumber();
-                      _builder_3.append(_number_1);
-                      InputOutput.<String>print(_builder_3.toString());
-                      StringConcatenation _builder_4 = new StringConcatenation();
-                      _builder_4.append(" ");
-                      _builder_4.append("is ");
-                      int _edgeLabel_1 = outgoing.getEdgeLabel();
-                      _builder_4.append(_edgeLabel_1, " ");
-                      InputOutput.<String>print(_builder_4.toString());
-                      StringConcatenation _builder_5 = new StringConcatenation();
-                      _builder_5.append(" ");
-                      _builder_5.append("for decrypting asset:");
-                      String _iD_3 = ga.getID();
-                      _builder_5.append(_iD_3, " ");
-                      InputOutput.<String>print(_builder_5.toString());
-                      InputOutput.println();
                       break;
                     case "[Comparator]":
-                      int most_restrictive_1 = (-1);
-                      EList<GraphAsset> _incomingassets_1 = nr.getIncomingassets();
-                      for (final GraphAsset i_1 : _incomingassets_1) {
-                        int _label_1 = i_1.getLabel();
-                        boolean _greaterThan_1 = (_label_1 > most_restrictive_1);
-                        if (_greaterThan_1) {
-                          most_restrictive_1 = i_1.getLabel();
+                      Objective[] _values_2 = Objective.values();
+                      for (final Objective o_2 : _values_2) {
+                        {
+                          int max = 0;
+                          EList<GraphAsset> _incomingassets = nr_1.getIncomingassets();
+                          for (final GraphAsset ina : _incomingassets) {
+                            max = Math.max(max, this.levelOf(ina.getAssetlabel(), o_2));
+                          }
+                          this.upsertLabel_Edge(outgoing.getEdgelabel(), o_2, max);
                         }
                       }
-                      outgoing.setEdgeLabel(most_restrictive_1);
-                      StringConcatenation _builder_6 = new StringConcatenation();
-                      _builder_6.append("Label propagation of edge ");
-                      String _iD_4 = outgoing.getID();
-                      _builder_6.append(_iD_4);
-                      _builder_6.append(", ");
-                      int _number_2 = outgoing.getNumber();
-                      _builder_6.append(_number_2);
-                      InputOutput.<String>print(_builder_6.toString());
-                      StringConcatenation _builder_7 = new StringConcatenation();
-                      _builder_7.append(" ");
-                      _builder_7.append("is ");
-                      int _edgeLabel_2 = outgoing.getEdgeLabel();
-                      _builder_7.append(_edgeLabel_2, " ");
-                      InputOutput.<String>print(_builder_7.toString());
-                      StringConcatenation _builder_8 = new StringConcatenation();
-                      _builder_8.append(" ");
-                      _builder_8.append("for comparing asset:");
-                      String _iD_5 = ga.getID();
-                      _builder_8.append(_iD_5, " ");
-                      InputOutput.<String>print(_builder_8.toString());
-                      InputOutput.println();
                       break;
                     case "[Joiner]":
-                      int most_restrictive_2 = (-1);
-                      EList<GraphAsset> _incomingassets_2 = nr.getIncomingassets();
-                      for (final GraphAsset i_2 : _incomingassets_2) {
-                        int _label_2 = i_2.getLabel();
-                        boolean _greaterThan_2 = (_label_2 > most_restrictive_2);
-                        if (_greaterThan_2) {
-                          most_restrictive_2 = i_2.getLabel();
+                      Objective[] _values_3 = Objective.values();
+                      for (final Objective o_3 : _values_3) {
+                        {
+                          int max = 0;
+                          EList<GraphAsset> _incomingassets = nr_1.getIncomingassets();
+                          for (final GraphAsset ina : _incomingassets) {
+                            max = Math.max(max, this.levelOf(ina.getAssetlabel(), o_3));
+                          }
+                          this.upsertLabel_Edge(outgoing.getEdgelabel(), o_3, max);
                         }
                       }
-                      outgoing.setEdgeLabel(most_restrictive_2);
-                      StringConcatenation _builder_9 = new StringConcatenation();
-                      _builder_9.append("Label propagation of edge ");
-                      String _iD_6 = outgoing.getID();
-                      _builder_9.append(_iD_6);
-                      _builder_9.append(", ");
-                      int _number_3 = outgoing.getNumber();
-                      _builder_9.append(_number_3);
-                      InputOutput.<String>print(_builder_9.toString());
-                      StringConcatenation _builder_10 = new StringConcatenation();
-                      _builder_10.append(" ");
-                      _builder_10.append("is ");
-                      int _edgeLabel_3 = outgoing.getEdgeLabel();
-                      _builder_10.append(_edgeLabel_3, " ");
-                      InputOutput.<String>print(_builder_10.toString());
-                      StringConcatenation _builder_11 = new StringConcatenation();
-                      _builder_11.append(" ");
-                      _builder_11.append("for joining asset:");
-                      String _iD_7 = ga.getID();
-                      _builder_11.append(_iD_7, " ");
-                      InputOutput.<String>print(_builder_11.toString());
-                      InputOutput.println();
-                      break;
-                    case "[Splitter]":
-                      int most_restrictive_3 = (-1);
-                      EList<GraphAsset> _incomingassets_3 = nr.getIncomingassets();
-                      for (final GraphAsset i_3 : _incomingassets_3) {
-                        int _label_3 = i_3.getLabel();
-                        boolean _greaterThan_3 = (_label_3 > most_restrictive_3);
-                        if (_greaterThan_3) {
-                          most_restrictive_3 = i_3.getLabel();
-                        }
-                      }
-                      outgoing.setEdgeLabel(most_restrictive_3);
-                      StringConcatenation _builder_12 = new StringConcatenation();
-                      _builder_12.append("Label propagation of edge ");
-                      String _iD_8 = outgoing.getID();
-                      _builder_12.append(_iD_8);
-                      _builder_12.append(", ");
-                      int _number_4 = outgoing.getNumber();
-                      _builder_12.append(_number_4);
-                      InputOutput.<String>print(_builder_12.toString());
-                      StringConcatenation _builder_13 = new StringConcatenation();
-                      _builder_13.append(" ");
-                      _builder_13.append("is ");
-                      int _edgeLabel_4 = outgoing.getEdgeLabel();
-                      _builder_13.append(_edgeLabel_4, " ");
-                      InputOutput.<String>print(_builder_13.toString());
-                      StringConcatenation _builder_14 = new StringConcatenation();
-                      _builder_14.append(" ");
-                      _builder_14.append("for spliting asset:");
-                      String _iD_9 = ga.getID();
-                      _builder_14.append(_iD_9, " ");
-                      InputOutput.<String>print(_builder_14.toString());
-                      InputOutput.println();
                       break;
                     case "[User]":
-                      int most_restrictive_4 = (-1);
-                      EList<GraphAsset> _incomingassets_4 = nr.getIncomingassets();
-                      for (final GraphAsset i_4 : _incomingassets_4) {
-                        int _label_4 = i_4.getLabel();
-                        boolean _greaterThan_4 = (_label_4 > most_restrictive_4);
-                        if (_greaterThan_4) {
-                          most_restrictive_4 = i_4.getLabel();
+                      Objective[] _values_4 = Objective.values();
+                      for (final Objective o_4 : _values_4) {
+                        {
+                          int max = 0;
+                          EList<GraphAsset> _incomingassets = nr_1.getIncomingassets();
+                          for (final GraphAsset ina : _incomingassets) {
+                            max = Math.max(max, this.levelOf(ina.getAssetlabel(), o_4));
+                          }
+                          this.upsertLabel_Edge(outgoing.getEdgelabel(), o_4, max);
                         }
                       }
-                      outgoing.setEdgeLabel(most_restrictive_4);
-                      StringConcatenation _builder_15 = new StringConcatenation();
-                      _builder_15.append("Label propagation of edge ");
-                      String _iD_10 = outgoing.getID();
-                      _builder_15.append(_iD_10);
-                      _builder_15.append(", ");
-                      int _number_5 = outgoing.getNumber();
-                      _builder_15.append(_number_5);
-                      InputOutput.<String>print(_builder_15.toString());
-                      StringConcatenation _builder_16 = new StringConcatenation();
-                      _builder_16.append(" ");
-                      _builder_16.append("is ");
-                      int _edgeLabel_5 = outgoing.getEdgeLabel();
-                      _builder_16.append(_edgeLabel_5, " ");
-                      InputOutput.<String>print(_builder_16.toString());
-                      StringConcatenation _builder_17 = new StringConcatenation();
-                      _builder_17.append(" ");
-                      _builder_17.append("for using asset:");
-                      String _iD_11 = ga.getID();
-                      _builder_17.append(_iD_11, " ");
-                      InputOutput.<String>print(_builder_17.toString());
-                      InputOutput.println();
+                      break;
+                    case "[Splitter]":
+                      Objective[] _values_5 = Objective.values();
+                      for (final Objective o_5 : _values_5) {
+                        {
+                          int max = 0;
+                          EList<GraphAsset> _incomingassets = nr_1.getIncomingassets();
+                          for (final GraphAsset ina : _incomingassets) {
+                            max = Math.max(max, this.levelOf(ina.getAssetlabel(), o_5));
+                          }
+                          this.upsertLabel_Edge(outgoing.getEdgelabel(), o_5, max);
+                        }
+                      }
                       break;
                     case "[Copier]":
-                      outgoing.setEdgeLabel(nr.getIncomingassets().get(0).getLabel());
-                      StringConcatenation _builder_18 = new StringConcatenation();
-                      _builder_18.append("Label propagation of edge ");
-                      String _iD_12 = outgoing.getID();
-                      _builder_18.append(_iD_12);
-                      _builder_18.append(", ");
-                      int _number_6 = outgoing.getNumber();
-                      _builder_18.append(_number_6);
-                      InputOutput.<String>print(_builder_18.toString());
-                      StringConcatenation _builder_19 = new StringConcatenation();
-                      _builder_19.append(" ");
-                      _builder_19.append("is ");
-                      int _edgeLabel_6 = outgoing.getEdgeLabel();
-                      _builder_19.append(_edgeLabel_6, " ");
-                      InputOutput.<String>print(_builder_19.toString());
-                      StringConcatenation _builder_20 = new StringConcatenation();
-                      _builder_20.append(" ");
-                      _builder_20.append("for copying asset:");
-                      String _iD_13 = ga.getID();
-                      _builder_20.append(_iD_13, " ");
-                      InputOutput.<String>print(_builder_20.toString());
-                      InputOutput.println();
+                      Objective[] _values_6 = Objective.values();
+                      for (final Objective o_6 : _values_6) {
+                        this.upsertLabel_Edge(outgoing.getEdgelabel(), o_6, this.levelOf(nr_1.getIncomingassets().get(0).getAssetlabel(), o_6));
+                      }
                       break;
                     case "[Forward]":
-                      outgoing.setEdgeLabel(nr.getIncomingassets().get(0).getLabel());
-                      StringConcatenation _builder_21 = new StringConcatenation();
-                      _builder_21.append("Label propagation of edge ");
-                      String _iD_14 = outgoing.getID();
-                      _builder_21.append(_iD_14);
-                      _builder_21.append(", ");
-                      int _number_7 = outgoing.getNumber();
-                      _builder_21.append(_number_7);
-                      InputOutput.<String>print(_builder_21.toString());
-                      StringConcatenation _builder_22 = new StringConcatenation();
-                      _builder_22.append(" ");
-                      _builder_22.append("is ");
-                      int _edgeLabel_7 = outgoing.getEdgeLabel();
-                      _builder_22.append(_edgeLabel_7, " ");
-                      InputOutput.<String>print(_builder_22.toString());
-                      StringConcatenation _builder_23 = new StringConcatenation();
-                      _builder_23.append(" ");
-                      _builder_23.append("for forwarding asset:");
-                      String _iD_15 = ga.getID();
-                      _builder_23.append(_iD_15, " ");
-                      InputOutput.<String>print(_builder_23.toString());
-                      InputOutput.println();
+                      Objective[] _values_7 = Objective.values();
+                      for (final Objective o_7 : _values_7) {
+                        this.upsertLabel_Edge(outgoing.getEdgelabel(), o_7, this.levelOf(nr_1.getIncomingassets().get(0).getAssetlabel(), o_7));
+                      }
                       break;
                     case "[Store]":
-                      int most_restrictive_5 = (-1);
-                      EList<GraphAsset> _incomingassets_5 = nr.getIncomingassets();
-                      for (final GraphAsset i_5 : _incomingassets_5) {
-                        int _label_5 = i_5.getLabel();
-                        boolean _greaterThan_5 = (_label_5 > most_restrictive_5);
-                        if (_greaterThan_5) {
-                          most_restrictive_5 = i_5.getLabel();
+                      Objective[] _values_8 = Objective.values();
+                      for (final Objective o_8 : _values_8) {
+                        {
+                          int max = 0;
+                          EList<GraphAsset> _incomingassets = nr_1.getIncomingassets();
+                          for (final GraphAsset ina : _incomingassets) {
+                            max = Math.max(max, this.levelOf(ina.getAssetlabel(), o_8));
+                          }
+                          this.upsertLabel_Edge(outgoing.getEdgelabel(), o_8, max);
                         }
                       }
-                      outgoing.setEdgeLabel(most_restrictive_5);
-                      StringConcatenation _builder_24 = new StringConcatenation();
-                      _builder_24.append("Label propagation of edge ");
-                      String _iD_16 = outgoing.getID();
-                      _builder_24.append(_iD_16);
-                      _builder_24.append(", ");
-                      int _number_8 = outgoing.getNumber();
-                      _builder_24.append(_number_8);
-                      InputOutput.<String>print(_builder_24.toString());
-                      StringConcatenation _builder_25 = new StringConcatenation();
-                      _builder_25.append(" ");
-                      _builder_25.append("is ");
-                      int _edgeLabel_8 = outgoing.getEdgeLabel();
-                      _builder_25.append(_edgeLabel_8, " ");
-                      InputOutput.<String>print(_builder_25.toString());
-                      StringConcatenation _builder_26 = new StringConcatenation();
-                      _builder_26.append(" ");
-                      _builder_26.append("for using asset:");
-                      String _iD_17 = ga.getID();
-                      _builder_26.append(_iD_17, " ");
-                      InputOutput.<String>print(_builder_26.toString());
-                      InputOutput.println();
                       break;
                     default:
-                      {
-                        InputOutput.<String>print(nr.getOperation().toString());
-                        InputOutput.<String>print("Does not effect confidentiality label propagation.");
-                        InputOutput.println();
-                      }
                       break;
                   }
                 } else {
-                  {
-                    InputOutput.<String>print(nr.getOperation().toString());
-                    InputOutput.<String>print("Does not effect confidentiality label propagation.");
-                    InputOutput.println();
-                  }
                 }
               }
-              int _edgeLabel_9 = outgoing.getEdgeLabel();
-              boolean _equals = (_edgeLabel_9 == (-1));
-              if (_equals) {
-                int most_restrictive_6 = (-1);
-                EList<GraphAsset> _graphassets_1 = outgoing.getGraphassets();
-                for (final GraphAsset i_6 : _graphassets_1) {
-                  int _label_6 = i_6.getLabel();
-                  boolean _greaterThan_6 = (_label_6 > most_restrictive_6);
-                  if (_greaterThan_6) {
-                    most_restrictive_6 = i_6.getLabel();
-                  }
-                }
-                outgoing.setEdgeLabel(most_restrictive_6);
-                StringConcatenation _builder_27 = new StringConcatenation();
-                _builder_27.append("Label inferred for edge ");
-                String _iD_18 = outgoing.getID();
-                _builder_27.append(_iD_18);
-                InputOutput.<String>print(_builder_27.toString());
-                StringConcatenation _builder_28 = new StringConcatenation();
-                _builder_28.append(" ");
-                _builder_28.append("to ");
-                int _edgeLabel_10 = outgoing.getEdgeLabel();
-                _builder_28.append(_edgeLabel_10, " ");
-                InputOutput.<String>print(_builder_28.toString());
-                StringConcatenation _builder_29 = new StringConcatenation();
-                _builder_29.append(" ");
-                _builder_29.append("since no label propagation rules apply to this edge.");
-                InputOutput.<String>print(_builder_29.toString());
-                InputOutput.println();
-              }
-              InputOutput.<Integer>print(Integer.valueOf(f.getNumber()));
-              StringConcatenation _builder_30 = new StringConcatenation();
-              _builder_30.append(": ");
-              InputOutput.<String>print(_builder_30.toString());
-              InputOutput.<Integer>print(Integer.valueOf(outgoing.getEdgeLabel()));
-              InputOutput.println();
             }
           }
+          boolean _isEmpty = outgoing.getEdgelabel().isEmpty();
+          if (_isEmpty) {
+            Objective[] _values = Objective.values();
+            for (final Objective o : _values) {
+              {
+                int max = 0;
+                EList<GraphAsset> _graphassets_1 = outgoing.getGraphassets();
+                for (final GraphAsset gs : _graphassets_1) {
+                  max = Math.max(max, this.levelOf(gs.getAssetlabel(), o));
+                }
+                if ((max > 0)) {
+                  this.upsertLabel_Edge(outgoing.getEdgelabel(), o, max);
+                }
+              }
+            }
+          }
+          this.logEdge(outgoing);
         }
       }
     })).build();
@@ -1344,5 +971,142 @@ public class eDFDToGraphTransformation {
     }
     this.transformation = null;
     return;
+  }
+
+  /**
+   * Return the label-level for OBJ or 0 if the label is missing
+   */
+  public int levelOf(final EList<? extends SecurityLabel> list, final Objective obj) {
+    int _xblockexpression = (int) 0;
+    {
+      final Function1<SecurityLabel, Boolean> _function = (SecurityLabel it) -> {
+        Objective _objective = it.getObjective();
+        return Boolean.valueOf(Objects.equals(_objective, obj));
+      };
+      final SecurityLabel l = IterableExtensions.findFirst(list, _function);
+      int _xifexpression = (int) 0;
+      if ((l == null)) {
+        _xifexpression = 0;
+      } else {
+        _xifexpression = l.getLevel();
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
+  }
+
+  public int lvl(final Priority p) {
+    int _switchResult = (int) 0;
+    if (p != null) {
+      switch (p) {
+        case H:
+          _switchResult = 3;
+          break;
+        case M:
+          _switchResult = 2;
+          break;
+        case L:
+          _switchResult = 1;
+          break;
+        default:
+          _switchResult = 0;
+          break;
+      }
+    } else {
+      _switchResult = 0;
+    }
+    return _switchResult;
+  }
+
+  public void upsertLabel_Asset(final EList<AssetLabel> list, final Objective o, final int level) {
+    final Function1<AssetLabel, Boolean> _function = (AssetLabel it) -> {
+      Objective _objective = it.getObjective();
+      return Boolean.valueOf(Objects.equals(_objective, o));
+    };
+    final AssetLabel l = IterableExtensions.<AssetLabel>findFirst(list, _function);
+    if ((level <= 0)) {
+      if ((l != null)) {
+        list.remove(l);
+      }
+      return;
+    }
+    if ((l == null)) {
+      final AssetLabel n = GraphFactory.eINSTANCE.createAssetLabel();
+      n.setObjective(o);
+      n.setLevel(level);
+      list.add(n);
+    } else {
+      l.setLevel(level);
+    }
+  }
+
+  public void upsertLabel_Edge(final EList<EdgeLabel> list, final Objective o, final int level) {
+    final Function1<EdgeLabel, Boolean> _function = (EdgeLabel it) -> {
+      Objective _objective = it.getObjective();
+      return Boolean.valueOf(Objects.equals(_objective, o));
+    };
+    final EdgeLabel l = IterableExtensions.<EdgeLabel>findFirst(list, _function);
+    if ((level <= 0)) {
+      if ((l != null)) {
+        list.remove(l);
+      }
+      return;
+    }
+    if ((l == null)) {
+      final EdgeLabel n = GraphFactory.eINSTANCE.createEdgeLabel();
+      n.setObjective(o);
+      n.setLevel(level);
+      list.add(n);
+    } else {
+      l.setLevel(level);
+    }
+  }
+
+  public void logEdge(final Edge e) {
+    final StringBuilder sb = new StringBuilder();
+    sb.append(String.format("%03d  %-20s", Integer.valueOf(e.getNumber()), e.getID()));
+    final Function1<EdgeLabel, Boolean> _function = (EdgeLabel it) -> {
+      int _level = it.getLevel();
+      return Boolean.valueOf((_level > 0));
+    };
+    final Function1<EdgeLabel, String> _function_1 = (EdgeLabel it) -> {
+      return it.getObjective().getLiteral();
+    };
+    final Function1<EdgeLabel, String> _function_2 = (EdgeLabel o) -> {
+      String _literal = o.getObjective().getLiteral();
+      String _plus = (_literal + "=");
+      int _level = o.getLevel();
+      return (_plus + Integer.valueOf(_level));
+    };
+    final List<String> lbls = ListExtensions.<EdgeLabel, String>map(IterableExtensions.<EdgeLabel, String>sortBy(IterableExtensions.<EdgeLabel>filter(e.getEdgelabel(), _function), _function_1), _function_2);
+    StringBuilder _append = sb.append("  ");
+    String _xifexpression = null;
+    boolean _isEmpty = lbls.isEmpty();
+    if (_isEmpty) {
+      _xifexpression = "[no-label]";
+    } else {
+      _xifexpression = IterableExtensions.join(lbls, ", ");
+    }
+    _append.append(_xifexpression);
+    final Function1<NodeResponsibility, Boolean> _function_3 = (NodeResponsibility r) -> {
+      final Function1<GraphAsset, Boolean> _function_4 = (GraphAsset it) -> {
+        return Boolean.valueOf(e.getGraphassets().contains(it));
+      };
+      return Boolean.valueOf(IterableExtensions.<GraphAsset>exists(r.getOutgoingassets(), _function_4));
+    };
+    final Function1<NodeResponsibility, String> _function_4 = (NodeResponsibility it) -> {
+      return it.getOperation().toString().replace("[", "").replace("]", "");
+    };
+    final Set<String> ops = IterableExtensions.<String>toSet(IterableExtensions.<NodeResponsibility, String>map(IterableExtensions.<NodeResponsibility>filter(e.getSource().getResponsibility(), _function_3), _function_4));
+    StringBuilder _append_1 = sb.append("  via ");
+    String _xifexpression_1 = null;
+    boolean _isEmpty_1 = ops.isEmpty();
+    if (_isEmpty_1) {
+      _xifexpression_1 = "no-rule";
+    } else {
+      _xifexpression_1 = IterableExtensions.join(ops, "+");
+    }
+    _append_1.append(_xifexpression_1);
+    InputOutput.<String>println(sb.toString());
   }
 }

@@ -96,6 +96,18 @@ public class GraphAdapterFactory extends AdapterFactoryImpl {
 				return createGraphAdapter();
 			}
 			@Override
+			public Adapter caseSecurityLabel(SecurityLabel object) {
+				return createSecurityLabelAdapter();
+			}
+			@Override
+			public Adapter caseAssetLabel(AssetLabel object) {
+				return createAssetLabelAdapter();
+			}
+			@Override
+			public Adapter caseEdgeLabel(EdgeLabel object) {
+				return createEdgeLabelAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -210,6 +222,48 @@ public class GraphAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGraphAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graph.SecurityLabel <em>Security Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graph.SecurityLabel
+	 * @generated
+	 */
+	public Adapter createSecurityLabelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graph.AssetLabel <em>Asset Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graph.AssetLabel
+	 * @generated
+	 */
+	public Adapter createAssetLabelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link graph.EdgeLabel <em>Edge Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see graph.EdgeLabel
+	 * @generated
+	 */
+	public Adapter createEdgeLabelAdapter() {
 		return null;
 	}
 

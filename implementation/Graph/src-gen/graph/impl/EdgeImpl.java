@@ -3,6 +3,7 @@
 package graph.impl;
 
 import graph.Edge;
+import graph.EdgeLabel;
 import graph.GraphAsset;
 import graph.GraphPackage;
 import graph.Node;
@@ -11,6 +12,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -19,7 +21,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,9 +37,9 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link graph.impl.EdgeImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link graph.impl.EdgeImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link graph.impl.EdgeImpl#getSource <em>Source</em>}</li>
- *   <li>{@link graph.impl.EdgeImpl#getEdgeLabel <em>Edge Label</em>}</li>
  *   <li>{@link graph.impl.EdgeImpl#getGraphassets <em>Graphassets</em>}</li>
  *   <li>{@link graph.impl.EdgeImpl#isVisited <em>Visited</em>}</li>
+ *   <li>{@link graph.impl.EdgeImpl#getEdgelabel <em>Edgelabel</em>}</li>
  * </ul>
  *
  * @generated
@@ -102,26 +106,6 @@ public class EdgeImpl extends MinimalEObjectImpl.Container implements Edge {
 	protected Node source;
 
 	/**
-	 * The default value of the '{@link #getEdgeLabel() <em>Edge Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEdgeLabel()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int EDGE_LABEL_EDEFAULT = -1;
-
-	/**
-	 * The cached value of the '{@link #getEdgeLabel() <em>Edge Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEdgeLabel()
-	 * @generated
-	 * @ordered
-	 */
-	protected int edgeLabel = EDGE_LABEL_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getGraphassets() <em>Graphassets</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,6 +134,16 @@ public class EdgeImpl extends MinimalEObjectImpl.Container implements Edge {
 	 * @ordered
 	 */
 	protected boolean visited = VISITED_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getEdgelabel() <em>Edgelabel</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEdgelabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EdgeLabel> edgelabel;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -275,29 +269,6 @@ public class EdgeImpl extends MinimalEObjectImpl.Container implements Edge {
 	 * @generated
 	 */
 	@Override
-	public int getEdgeLabel() {
-		return edgeLabel;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setEdgeLabel(int newEdgeLabel) {
-		int oldEdgeLabel = edgeLabel;
-		edgeLabel = newEdgeLabel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.EDGE__EDGE_LABEL, oldEdgeLabel, edgeLabel));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<GraphAsset> getGraphassets() {
 		if (graphassets == null) {
 			graphassets = new EObjectResolvingEList<GraphAsset>(GraphAsset.class, this, GraphPackage.EDGE__GRAPHASSETS);
@@ -334,6 +305,33 @@ public class EdgeImpl extends MinimalEObjectImpl.Container implements Edge {
 	 * @generated
 	 */
 	@Override
+	public EList<EdgeLabel> getEdgelabel() {
+		if (edgelabel == null) {
+			edgelabel = new EObjectContainmentEList<EdgeLabel>(EdgeLabel.class, this, GraphPackage.EDGE__EDGELABEL);
+		}
+		return edgelabel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case GraphPackage.EDGE__EDGELABEL:
+				return ((InternalEList<?>)getEdgelabel()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GraphPackage.EDGE__ID:
@@ -345,12 +343,12 @@ public class EdgeImpl extends MinimalEObjectImpl.Container implements Edge {
 			case GraphPackage.EDGE__SOURCE:
 				if (resolve) return getSource();
 				return basicGetSource();
-			case GraphPackage.EDGE__EDGE_LABEL:
-				return getEdgeLabel();
 			case GraphPackage.EDGE__GRAPHASSETS:
 				return getGraphassets();
 			case GraphPackage.EDGE__VISITED:
 				return isVisited();
+			case GraphPackage.EDGE__EDGELABEL:
+				return getEdgelabel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -377,15 +375,16 @@ public class EdgeImpl extends MinimalEObjectImpl.Container implements Edge {
 			case GraphPackage.EDGE__SOURCE:
 				setSource((Node)newValue);
 				return;
-			case GraphPackage.EDGE__EDGE_LABEL:
-				setEdgeLabel((Integer)newValue);
-				return;
 			case GraphPackage.EDGE__GRAPHASSETS:
 				getGraphassets().clear();
 				getGraphassets().addAll((Collection<? extends GraphAsset>)newValue);
 				return;
 			case GraphPackage.EDGE__VISITED:
 				setVisited((Boolean)newValue);
+				return;
+			case GraphPackage.EDGE__EDGELABEL:
+				getEdgelabel().clear();
+				getEdgelabel().addAll((Collection<? extends EdgeLabel>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -411,14 +410,14 @@ public class EdgeImpl extends MinimalEObjectImpl.Container implements Edge {
 			case GraphPackage.EDGE__SOURCE:
 				setSource((Node)null);
 				return;
-			case GraphPackage.EDGE__EDGE_LABEL:
-				setEdgeLabel(EDGE_LABEL_EDEFAULT);
-				return;
 			case GraphPackage.EDGE__GRAPHASSETS:
 				getGraphassets().clear();
 				return;
 			case GraphPackage.EDGE__VISITED:
 				setVisited(VISITED_EDEFAULT);
+				return;
+			case GraphPackage.EDGE__EDGELABEL:
+				getEdgelabel().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -440,12 +439,12 @@ public class EdgeImpl extends MinimalEObjectImpl.Container implements Edge {
 				return target != null && !target.isEmpty();
 			case GraphPackage.EDGE__SOURCE:
 				return source != null;
-			case GraphPackage.EDGE__EDGE_LABEL:
-				return edgeLabel != EDGE_LABEL_EDEFAULT;
 			case GraphPackage.EDGE__GRAPHASSETS:
 				return graphassets != null && !graphassets.isEmpty();
 			case GraphPackage.EDGE__VISITED:
 				return visited != VISITED_EDEFAULT;
+			case GraphPackage.EDGE__EDGELABEL:
+				return edgelabel != null && !edgelabel.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -464,8 +463,6 @@ public class EdgeImpl extends MinimalEObjectImpl.Container implements Edge {
 		result.append(id);
 		result.append(", number: ");
 		result.append(number);
-		result.append(", EdgeLabel: ");
-		result.append(edgeLabel);
 		result.append(", visited: ");
 		result.append(visited);
 		result.append(')');

@@ -76,6 +76,24 @@ public interface GraphFactory extends EFactory {
 	Graph createGraph();
 
 	/**
+	 * Returns a new object of class '<em>Asset Label</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Asset Label</em>'.
+	 * @generated
+	 */
+	AssetLabel createAssetLabel();
+
+	/**
+	 * Returns a new object of class '<em>Edge Label</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Edge Label</em>'.
+	 * @generated
+	 */
+	EdgeLabel createEdgeLabel();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

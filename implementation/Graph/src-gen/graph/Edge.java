@@ -15,9 +15,9 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link graph.Edge#getTarget <em>Target</em>}</li>
  *   <li>{@link graph.Edge#getSource <em>Source</em>}</li>
- *   <li>{@link graph.Edge#getEdgeLabel <em>Edge Label</em>}</li>
  *   <li>{@link graph.Edge#getGraphassets <em>Graphassets</em>}</li>
  *   <li>{@link graph.Edge#isVisited <em>Visited</em>}</li>
+ *   <li>{@link graph.Edge#getEdgelabel <em>Edgelabel</em>}</li>
  * </ul>
  *
  * @see graph.GraphPackage#getEdge()
@@ -60,29 +60,6 @@ public interface Edge extends Identifiable {
 	void setSource(Node value);
 
 	/**
-	 * Returns the value of the '<em><b>Edge Label</b></em>' attribute.
-	 * The default value is <code>"-1"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Edge Label</em>' attribute.
-	 * @see #setEdgeLabel(int)
-	 * @see graph.GraphPackage#getEdge_EdgeLabel()
-	 * @model default="-1" required="true"
-	 * @generated
-	 */
-	int getEdgeLabel();
-
-	/**
-	 * Sets the value of the '{@link graph.Edge#getEdgeLabel <em>Edge Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Edge Label</em>' attribute.
-	 * @see #getEdgeLabel()
-	 * @generated
-	 */
-	void setEdgeLabel(int value);
-
-	/**
 	 * Returns the value of the '<em><b>Graphassets</b></em>' reference list.
 	 * The list contents are of type {@link graph.GraphAsset}.
 	 * <!-- begin-user-doc -->
@@ -115,5 +92,17 @@ public interface Edge extends Identifiable {
 	 * @generated
 	 */
 	void setVisited(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Edgelabel</b></em>' containment reference list.
+	 * The list contents are of type {@link graph.EdgeLabel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Edgelabel</em>' containment reference list.
+	 * @see graph.GraphPackage#getEdge_Edgelabel()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<EdgeLabel> getEdgelabel();
 
 } // Edge

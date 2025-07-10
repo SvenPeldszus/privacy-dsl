@@ -32,7 +32,6 @@ import org.eclipse.viatra.query.runtime.matchers.psystem.PBody;
 import org.eclipse.viatra.query.runtime.matchers.psystem.PVariable;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.Equality;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.ExportedParameter;
-import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.ConstantValue;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.TypeConstraint;
 import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameter;
 import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameterDirection;
@@ -41,16 +40,17 @@ import org.eclipse.viatra.query.runtime.matchers.tuple.Tuple;
 import org.eclipse.viatra.query.runtime.matchers.tuple.Tuples;
 import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
 import org.secdfd.model.Asset;
+import org.secdfd.model.Priority;
 
 /**
  * A pattern-specific query specification that can instantiate Matcher in a type-safe way.
  * 
  * <p>Original source:
  *         <code><pre>
- *         //naming: Asset from source model = Asset from target model
- *         pattern highPriorityAsset(a : Asset){
- *         	Asset.value.Priority(a, p);
- *         	p == Priority::H;
+ *         generic relations between an Asset and the information in its Value list 
+ *         
+ *         pattern assetWithPriority(a : Asset, pr : Priority) {
+ *             Asset.value.Priority(a, pr);
  *         }
  * </pre></code>
  * 
@@ -60,9 +60,9 @@ import org.secdfd.model.Asset;
  */
 @SuppressWarnings("all")
 @Generated("org.eclipse.xtext.xbase.compiler.JvmModelGenerator")
-public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<HighPriorityAsset.Matcher> {
+public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<AssetWithPriority.Matcher> {
   /**
-   * Pattern-specific match representation of the edfdtosimplegraph.highPriorityAsset pattern,
+   * Pattern-specific match representation of the edfdtosimplegraph.assetWithPriority pattern,
    * to be used in conjunction with {@link Matcher}.
    * 
    * <p>Class fields correspond to parameters of the pattern. Fields with value null are considered unassigned.
@@ -77,16 +77,20 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
   public static abstract class Match extends BasePatternMatch {
     private Asset fA;
 
-    private static List<String> parameterNames = makeImmutableList("a");
+    private Priority fPr;
 
-    private Match(final Asset pA) {
+    private static List<String> parameterNames = makeImmutableList("a", "pr");
+
+    private Match(final Asset pA, final Priority pPr) {
       this.fA = pA;
+      this.fPr = pPr;
     }
 
     @Override
     public Object get(final String parameterName) {
       switch(parameterName) {
           case "a": return this.fA;
+          case "pr": return this.fPr;
           default: return null;
       }
     }
@@ -95,6 +99,7 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
     public Object get(final int index) {
       switch(index) {
           case 0: return this.fA;
+          case 1: return this.fPr;
           default: return null;
       }
     }
@@ -103,11 +108,19 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
       return this.fA;
     }
 
+    public Priority getPr() {
+      return this.fPr;
+    }
+
     @Override
     public boolean set(final String parameterName, final Object newValue) {
       if (!isMutable()) throw new java.lang.UnsupportedOperationException();
       if ("a".equals(parameterName) ) {
           this.fA = (Asset) newValue;
+          return true;
+      }
+      if ("pr".equals(parameterName) ) {
+          this.fPr = (Priority) newValue;
           return true;
       }
       return false;
@@ -118,36 +131,42 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
       this.fA = pA;
     }
 
+    public void setPr(final Priority pPr) {
+      if (!isMutable()) throw new java.lang.UnsupportedOperationException();
+      this.fPr = pPr;
+    }
+
     @Override
     public String patternName() {
-      return "edfdtosimplegraph.highPriorityAsset";
+      return "edfdtosimplegraph.assetWithPriority";
     }
 
     @Override
     public List<String> parameterNames() {
-      return HighPriorityAsset.Match.parameterNames;
+      return AssetWithPriority.Match.parameterNames;
     }
 
     @Override
     public Object[] toArray() {
-      return new Object[]{fA};
+      return new Object[]{fA, fPr};
     }
 
     @Override
-    public HighPriorityAsset.Match toImmutable() {
-      return isMutable() ? newMatch(fA) : this;
+    public AssetWithPriority.Match toImmutable() {
+      return isMutable() ? newMatch(fA, fPr) : this;
     }
 
     @Override
     public String prettyPrint() {
       StringBuilder result = new StringBuilder();
-      result.append("\"a\"=" + prettyPrintValue(fA));
+      result.append("\"a\"=" + prettyPrintValue(fA) + ", ");
+      result.append("\"pr\"=" + prettyPrintValue(fPr));
       return result.toString();
     }
 
     @Override
     public int hashCode() {
-      return Objects.hash(fA);
+      return Objects.hash(fA, fPr);
     }
 
     @Override
@@ -157,9 +176,9 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
       if (obj == null) {
           return false;
       }
-      if ((obj instanceof HighPriorityAsset.Match)) {
-          HighPriorityAsset.Match other = (HighPriorityAsset.Match) obj;
-          return Objects.equals(fA, other.fA);
+      if ((obj instanceof AssetWithPriority.Match)) {
+          AssetWithPriority.Match other = (AssetWithPriority.Match) obj;
+          return Objects.equals(fA, other.fA) && Objects.equals(fPr, other.fPr);
       } else {
           // this should be infrequent
           if (!(obj instanceof IPatternMatch)) {
@@ -171,8 +190,8 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
     }
 
     @Override
-    public HighPriorityAsset specification() {
-      return HighPriorityAsset.instance();
+    public AssetWithPriority specification() {
+      return AssetWithPriority.instance();
     }
 
     /**
@@ -182,8 +201,8 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
      * @return the empty match.
      * 
      */
-    public static HighPriorityAsset.Match newEmptyMatch() {
-      return new Mutable(null);
+    public static AssetWithPriority.Match newEmptyMatch() {
+      return new Mutable(null, null);
     }
 
     /**
@@ -191,11 +210,12 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
      * Fields of the mutable match can be filled to create a partial match, usable as matcher input.
      * 
      * @param pA the fixed value of pattern parameter a, or null if not bound.
+     * @param pPr the fixed value of pattern parameter pr, or null if not bound.
      * @return the new, mutable (partial) match object.
      * 
      */
-    public static HighPriorityAsset.Match newMutableMatch(final Asset pA) {
-      return new Mutable(pA);
+    public static AssetWithPriority.Match newMutableMatch(final Asset pA, final Priority pPr) {
+      return new Mutable(pA, pPr);
     }
 
     /**
@@ -203,16 +223,17 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
      * This can be used e.g. to call the matcher with a partial match.
      * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
      * @param pA the fixed value of pattern parameter a, or null if not bound.
+     * @param pPr the fixed value of pattern parameter pr, or null if not bound.
      * @return the (partial) match object.
      * 
      */
-    public static HighPriorityAsset.Match newMatch(final Asset pA) {
-      return new Immutable(pA);
+    public static AssetWithPriority.Match newMatch(final Asset pA, final Priority pPr) {
+      return new Immutable(pA, pPr);
     }
 
-    private static final class Mutable extends HighPriorityAsset.Match {
-      Mutable(final Asset pA) {
-        super(pA);
+    private static final class Mutable extends AssetWithPriority.Match {
+      Mutable(final Asset pA, final Priority pPr) {
+        super(pA, pPr);
       }
 
       @Override
@@ -221,9 +242,9 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
       }
     }
 
-    private static final class Immutable extends HighPriorityAsset.Match {
-      Immutable(final Asset pA) {
-        super(pA);
+    private static final class Immutable extends AssetWithPriority.Match {
+      Immutable(final Asset pA, final Priority pPr) {
+        super(pA, pPr);
       }
 
       @Override
@@ -234,7 +255,7 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
   }
 
   /**
-   * Generated pattern matcher API of the edfdtosimplegraph.highPriorityAsset pattern,
+   * Generated pattern matcher API of the edfdtosimplegraph.assetWithPriority pattern,
    * providing pattern-specific query methods.
    * 
    * <p>Use the pattern matcher on a given model via {@link #on(ViatraQueryEngine)},
@@ -244,19 +265,19 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
    * 
    * <p>Original source:
    * <code><pre>
-   * //naming: Asset from source model = Asset from target model
-   * pattern highPriorityAsset(a : Asset){
-   * 	Asset.value.Priority(a, p);
-   * 	p == Priority::H;
+   * generic relations between an Asset and the information in its Value list 
+   * 
+   * pattern assetWithPriority(a : Asset, pr : Priority) {
+   *     Asset.value.Priority(a, pr);
    * }
    * </pre></code>
    * 
    * @see Match
    *  @see Processor
-   * @see HighPriorityAsset
+   * @see AssetWithPriority
    * 
    */
-  public static class Matcher extends BaseMatcher<HighPriorityAsset.Match> {
+  public static class Matcher extends BaseMatcher<AssetWithPriority.Match> {
     /**
      * Initializes the pattern matcher within an existing VIATRA Query engine.
      * If the pattern matcher is already constructed in the engine, only a light-weight reference is returned.
@@ -265,7 +286,7 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
      * @throws ViatraQueryRuntimeException if an error occurs during pattern matcher creation
      * 
      */
-    public static HighPriorityAsset.Matcher on(final ViatraQueryEngine engine) {
+    public static AssetWithPriority.Matcher on(final ViatraQueryEngine engine) {
       // check if matcher already exists
       Matcher matcher = engine.getExistingMatcher(querySpecification());
       if (matcher == null) {
@@ -280,13 +301,15 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
      * @noreference This method is for internal matcher initialization by the framework, do not call it manually.
      * 
      */
-    public static HighPriorityAsset.Matcher create() {
+    public static AssetWithPriority.Matcher create() {
       return new Matcher();
     }
 
     private static final int POSITION_A = 0;
 
-    private static final Logger LOGGER = ViatraQueryLoggingUtil.getLogger(HighPriorityAsset.Matcher.class);
+    private static final int POSITION_PR = 1;
+
+    private static final Logger LOGGER = ViatraQueryLoggingUtil.getLogger(AssetWithPriority.Matcher.class);
 
     /**
      * Initializes the pattern matcher within an existing VIATRA Query engine.
@@ -303,11 +326,12 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
     /**
      * Returns the set of all matches of the pattern that conform to the given fixed values of some parameters.
      * @param pA the fixed value of pattern parameter a, or null if not bound.
+     * @param pPr the fixed value of pattern parameter pr, or null if not bound.
      * @return matches represented as a Match object.
      * 
      */
-    public Collection<HighPriorityAsset.Match> getAllMatches(final Asset pA) {
-      return rawStreamAllMatches(new Object[]{pA}).collect(Collectors.toSet());
+    public Collection<AssetWithPriority.Match> getAllMatches(final Asset pA, final Priority pPr) {
+      return rawStreamAllMatches(new Object[]{pA, pPr}).collect(Collectors.toSet());
     }
 
     /**
@@ -317,65 +341,71 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
      * If the match set of the pattern changes during processing, the contents of the stream is <strong>undefined</strong>.
      * In such cases, either rely on {@link #getAllMatches()} or collect the results of the stream in end-user code.
      * @param pA the fixed value of pattern parameter a, or null if not bound.
+     * @param pPr the fixed value of pattern parameter pr, or null if not bound.
      * @return a stream of matches represented as a Match object.
      * 
      */
-    public Stream<HighPriorityAsset.Match> streamAllMatches(final Asset pA) {
-      return rawStreamAllMatches(new Object[]{pA});
+    public Stream<AssetWithPriority.Match> streamAllMatches(final Asset pA, final Priority pPr) {
+      return rawStreamAllMatches(new Object[]{pA, pPr});
     }
 
     /**
      * Returns an arbitrarily chosen match of the pattern that conforms to the given fixed values of some parameters.
      * Neither determinism nor randomness of selection is guaranteed.
      * @param pA the fixed value of pattern parameter a, or null if not bound.
+     * @param pPr the fixed value of pattern parameter pr, or null if not bound.
      * @return a match represented as a Match object, or null if no match is found.
      * 
      */
-    public Optional<HighPriorityAsset.Match> getOneArbitraryMatch(final Asset pA) {
-      return rawGetOneArbitraryMatch(new Object[]{pA});
+    public Optional<AssetWithPriority.Match> getOneArbitraryMatch(final Asset pA, final Priority pPr) {
+      return rawGetOneArbitraryMatch(new Object[]{pA, pPr});
     }
 
     /**
      * Indicates whether the given combination of specified pattern parameters constitute a valid pattern match,
      * under any possible substitution of the unspecified parameters (if any).
      * @param pA the fixed value of pattern parameter a, or null if not bound.
+     * @param pPr the fixed value of pattern parameter pr, or null if not bound.
      * @return true if the input is a valid (partial) match of the pattern.
      * 
      */
-    public boolean hasMatch(final Asset pA) {
-      return rawHasMatch(new Object[]{pA});
+    public boolean hasMatch(final Asset pA, final Priority pPr) {
+      return rawHasMatch(new Object[]{pA, pPr});
     }
 
     /**
      * Returns the number of all matches of the pattern that conform to the given fixed values of some parameters.
      * @param pA the fixed value of pattern parameter a, or null if not bound.
+     * @param pPr the fixed value of pattern parameter pr, or null if not bound.
      * @return the number of pattern matches found.
      * 
      */
-    public int countMatches(final Asset pA) {
-      return rawCountMatches(new Object[]{pA});
+    public int countMatches(final Asset pA, final Priority pPr) {
+      return rawCountMatches(new Object[]{pA, pPr});
     }
 
     /**
      * Executes the given processor on each match of the pattern that conforms to the given fixed values of some parameters.
      * @param pA the fixed value of pattern parameter a, or null if not bound.
+     * @param pPr the fixed value of pattern parameter pr, or null if not bound.
      * @param processor the action that will process each pattern match.
      * 
      */
-    public void forEachMatch(final Asset pA, final Consumer<? super HighPriorityAsset.Match> processor) {
-      rawForEachMatch(new Object[]{pA}, processor);
+    public void forEachMatch(final Asset pA, final Priority pPr, final Consumer<? super AssetWithPriority.Match> processor) {
+      rawForEachMatch(new Object[]{pA, pPr}, processor);
     }
 
     /**
      * Executes the given processor on an arbitrarily chosen match of the pattern that conforms to the given fixed values of some parameters.
      * Neither determinism nor randomness of selection is guaranteed.
      * @param pA the fixed value of pattern parameter a, or null if not bound.
+     * @param pPr the fixed value of pattern parameter pr, or null if not bound.
      * @param processor the action that will process the selected match.
      * @return true if the pattern has at least one match with the given parameter values, false if the processor was not invoked
      * 
      */
-    public boolean forOneArbitraryMatch(final Asset pA, final Consumer<? super HighPriorityAsset.Match> processor) {
-      return rawForOneArbitraryMatch(new Object[]{pA}, processor);
+    public boolean forOneArbitraryMatch(final Asset pA, final Priority pPr, final Consumer<? super AssetWithPriority.Match> processor) {
+      return rawForOneArbitraryMatch(new Object[]{pA, pPr}, processor);
     }
 
     /**
@@ -383,11 +413,12 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
      * This can be used e.g. to call the matcher with a partial match.
      * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
      * @param pA the fixed value of pattern parameter a, or null if not bound.
+     * @param pPr the fixed value of pattern parameter pr, or null if not bound.
      * @return the (partial) match object.
      * 
      */
-    public HighPriorityAsset.Match newMatch(final Asset pA) {
-      return HighPriorityAsset.Match.newMatch(pA);
+    public AssetWithPriority.Match newMatch(final Asset pA, final Priority pPr) {
+      return AssetWithPriority.Match.newMatch(pA, pPr);
     }
 
     /**
@@ -417,10 +448,129 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
       return rawStreamAllValuesOfa(emptyArray());
     }
 
+    /**
+     * Retrieve the set of values that occur in matches for a.
+     * </p>
+     * <strong>NOTE</strong>: It is important not to modify the source model while the stream is being processed.
+     * If the match set of the pattern changes during processing, the contents of the stream is <strong>undefined</strong>.
+     * In such cases, either rely on {@link #getAllMatches()} or collect the results of the stream in end-user code.
+     *      
+     * @return the Stream of all values or empty set if there are no matches
+     * 
+     */
+    public Stream<Asset> streamAllValuesOfa(final AssetWithPriority.Match partialMatch) {
+      return rawStreamAllValuesOfa(partialMatch.toArray());
+    }
+
+    /**
+     * Retrieve the set of values that occur in matches for a.
+     * </p>
+     * <strong>NOTE</strong>: It is important not to modify the source model while the stream is being processed.
+     * If the match set of the pattern changes during processing, the contents of the stream is <strong>undefined</strong>.
+     * In such cases, either rely on {@link #getAllMatches()} or collect the results of the stream in end-user code.
+     *      
+     * @return the Stream of all values or empty set if there are no matches
+     * 
+     */
+    public Stream<Asset> streamAllValuesOfa(final Priority pPr) {
+      return rawStreamAllValuesOfa(new Object[]{null, pPr});
+    }
+
+    /**
+     * Retrieve the set of values that occur in matches for a.
+     * @return the Set of all values or empty set if there are no matches
+     * 
+     */
+    public Set<Asset> getAllValuesOfa(final AssetWithPriority.Match partialMatch) {
+      return rawStreamAllValuesOfa(partialMatch.toArray()).collect(Collectors.toSet());
+    }
+
+    /**
+     * Retrieve the set of values that occur in matches for a.
+     * @return the Set of all values or empty set if there are no matches
+     * 
+     */
+    public Set<Asset> getAllValuesOfa(final Priority pPr) {
+      return rawStreamAllValuesOfa(new Object[]{null, pPr}).collect(Collectors.toSet());
+    }
+
+    /**
+     * Retrieve the set of values that occur in matches for pr.
+     * @return the Set of all values or empty set if there are no matches
+     * 
+     */
+    protected Stream<Priority> rawStreamAllValuesOfpr(final Object[] parameters) {
+      return rawStreamAllValues(POSITION_PR, parameters).map(Priority.class::cast);
+    }
+
+    /**
+     * Retrieve the set of values that occur in matches for pr.
+     * @return the Set of all values or empty set if there are no matches
+     * 
+     */
+    public Set<Priority> getAllValuesOfpr() {
+      return rawStreamAllValuesOfpr(emptyArray()).collect(Collectors.toSet());
+    }
+
+    /**
+     * Retrieve the set of values that occur in matches for pr.
+     * @return the Set of all values or empty set if there are no matches
+     * 
+     */
+    public Stream<Priority> streamAllValuesOfpr() {
+      return rawStreamAllValuesOfpr(emptyArray());
+    }
+
+    /**
+     * Retrieve the set of values that occur in matches for pr.
+     * </p>
+     * <strong>NOTE</strong>: It is important not to modify the source model while the stream is being processed.
+     * If the match set of the pattern changes during processing, the contents of the stream is <strong>undefined</strong>.
+     * In such cases, either rely on {@link #getAllMatches()} or collect the results of the stream in end-user code.
+     *      
+     * @return the Stream of all values or empty set if there are no matches
+     * 
+     */
+    public Stream<Priority> streamAllValuesOfpr(final AssetWithPriority.Match partialMatch) {
+      return rawStreamAllValuesOfpr(partialMatch.toArray());
+    }
+
+    /**
+     * Retrieve the set of values that occur in matches for pr.
+     * </p>
+     * <strong>NOTE</strong>: It is important not to modify the source model while the stream is being processed.
+     * If the match set of the pattern changes during processing, the contents of the stream is <strong>undefined</strong>.
+     * In such cases, either rely on {@link #getAllMatches()} or collect the results of the stream in end-user code.
+     *      
+     * @return the Stream of all values or empty set if there are no matches
+     * 
+     */
+    public Stream<Priority> streamAllValuesOfpr(final Asset pA) {
+      return rawStreamAllValuesOfpr(new Object[]{pA, null});
+    }
+
+    /**
+     * Retrieve the set of values that occur in matches for pr.
+     * @return the Set of all values or empty set if there are no matches
+     * 
+     */
+    public Set<Priority> getAllValuesOfpr(final AssetWithPriority.Match partialMatch) {
+      return rawStreamAllValuesOfpr(partialMatch.toArray()).collect(Collectors.toSet());
+    }
+
+    /**
+     * Retrieve the set of values that occur in matches for pr.
+     * @return the Set of all values or empty set if there are no matches
+     * 
+     */
+    public Set<Priority> getAllValuesOfpr(final Asset pA) {
+      return rawStreamAllValuesOfpr(new Object[]{pA, null}).collect(Collectors.toSet());
+    }
+
     @Override
-    protected HighPriorityAsset.Match tupleToMatch(final Tuple t) {
+    protected AssetWithPriority.Match tupleToMatch(final Tuple t) {
       try {
-          return HighPriorityAsset.Match.newMatch((Asset) t.get(POSITION_A));
+          return AssetWithPriority.Match.newMatch((Asset) t.get(POSITION_A), (Priority) t.get(POSITION_PR));
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in tuple not properly typed!",e);
           return null;
@@ -428,9 +578,9 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
     }
 
     @Override
-    protected HighPriorityAsset.Match arrayToMatch(final Object[] match) {
+    protected AssetWithPriority.Match arrayToMatch(final Object[] match) {
       try {
-          return HighPriorityAsset.Match.newMatch((Asset) match[POSITION_A]);
+          return AssetWithPriority.Match.newMatch((Asset) match[POSITION_A], (Priority) match[POSITION_PR]);
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in array not properly typed!",e);
           return null;
@@ -438,9 +588,9 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
     }
 
     @Override
-    protected HighPriorityAsset.Match arrayToMatchMutable(final Object[] match) {
+    protected AssetWithPriority.Match arrayToMatchMutable(final Object[] match) {
       try {
-          return HighPriorityAsset.Match.newMutableMatch((Asset) match[POSITION_A]);
+          return AssetWithPriority.Match.newMutableMatch((Asset) match[POSITION_A], (Priority) match[POSITION_PR]);
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in array not properly typed!",e);
           return null;
@@ -452,32 +602,33 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
      * @throws ViatraQueryRuntimeException if the pattern definition could not be loaded
      * 
      */
-    public static IQuerySpecification<HighPriorityAsset.Matcher> querySpecification() {
-      return HighPriorityAsset.instance();
+    public static IQuerySpecification<AssetWithPriority.Matcher> querySpecification() {
+      return AssetWithPriority.instance();
     }
   }
 
   /**
-   * A match processor tailored for the edfdtosimplegraph.highPriorityAsset pattern.
+   * A match processor tailored for the edfdtosimplegraph.assetWithPriority pattern.
    * 
    * Clients should derive an (anonymous) class that implements the abstract process().
    * 
    */
-  public static abstract class Processor implements Consumer<HighPriorityAsset.Match> {
+  public static abstract class Processor implements Consumer<AssetWithPriority.Match> {
     /**
      * Defines the action that is to be executed on each match.
      * @param pA the value of pattern parameter a in the currently processed match
+     * @param pPr the value of pattern parameter pr in the currently processed match
      * 
      */
-    public abstract void accept(final Asset pA);
+    public abstract void accept(final Asset pA, final Priority pPr);
 
     @Override
-    public void accept(final HighPriorityAsset.Match match) {
-      accept(match.getA());
+    public void accept(final AssetWithPriority.Match match) {
+      accept(match.getA(), match.getPr());
     }
   }
 
-  private HighPriorityAsset() {
+  private AssetWithPriority() {
     super(GeneratedPQuery.INSTANCE);
   }
 
@@ -486,7 +637,7 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
    * @throws ViatraQueryRuntimeException if the pattern definition could not be loaded
    * 
    */
-  public static HighPriorityAsset instance() {
+  public static AssetWithPriority instance() {
     try{
         return LazyHolder.INSTANCE;
     } catch (ExceptionInInitializerError err) {
@@ -495,35 +646,35 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
   }
 
   @Override
-  protected HighPriorityAsset.Matcher instantiate(final ViatraQueryEngine engine) {
-    return HighPriorityAsset.Matcher.on(engine);
+  protected AssetWithPriority.Matcher instantiate(final ViatraQueryEngine engine) {
+    return AssetWithPriority.Matcher.on(engine);
   }
 
   @Override
-  public HighPriorityAsset.Matcher instantiate() {
-    return HighPriorityAsset.Matcher.create();
+  public AssetWithPriority.Matcher instantiate() {
+    return AssetWithPriority.Matcher.create();
   }
 
   @Override
-  public HighPriorityAsset.Match newEmptyMatch() {
-    return HighPriorityAsset.Match.newEmptyMatch();
+  public AssetWithPriority.Match newEmptyMatch() {
+    return AssetWithPriority.Match.newEmptyMatch();
   }
 
   @Override
-  public HighPriorityAsset.Match newMatch(final Object... parameters) {
-    return HighPriorityAsset.Match.newMatch((Asset) parameters[0]);
+  public AssetWithPriority.Match newMatch(final Object... parameters) {
+    return AssetWithPriority.Match.newMatch((Asset) parameters[0], (Priority) parameters[1]);
   }
 
   /**
-   * Inner class allowing the singleton instance of {@link HighPriorityAsset} to be created 
+   * Inner class allowing the singleton instance of {@link AssetWithPriority} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link HighPriorityAsset#instance()}.
+   *     but rather at the first call to {@link AssetWithPriority#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 
    */
   private static class LazyHolder {
-    private static final HighPriorityAsset INSTANCE = new HighPriorityAsset();
+    private static final AssetWithPriority INSTANCE = new AssetWithPriority();
 
     /**
      * Statically initializes the query specification <b>after</b> the field {@link #INSTANCE} is assigned.
@@ -541,11 +692,13 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
   }
 
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
-    private static final HighPriorityAsset.GeneratedPQuery INSTANCE = new GeneratedPQuery();
+    private static final AssetWithPriority.GeneratedPQuery INSTANCE = new GeneratedPQuery();
 
     private final PParameter parameter_a = new PParameter("a", "org.secdfd.model.Asset", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.secdfd.org/secdfd", "Asset")), PParameterDirection.INOUT);
 
-    private final List<PParameter> parameters = Arrays.asList(parameter_a);
+    private final PParameter parameter_pr = new PParameter("pr", "org.secdfd.model.Priority", new EDataTypeInSlotsKey((EDataType)getClassifierLiteralSafe("http://www.secdfd.org/secdfd", "Priority")), PParameterDirection.INOUT);
+
+    private final List<PParameter> parameters = Arrays.asList(parameter_a, parameter_pr);
 
     private GeneratedPQuery() {
       super(PVisibility.PUBLIC);
@@ -553,12 +706,12 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
 
     @Override
     public String getFullyQualifiedName() {
-      return "edfdtosimplegraph.highPriorityAsset";
+      return "edfdtosimplegraph.assetWithPriority";
     }
 
     @Override
     public List<String> getParameterNames() {
-      return Arrays.asList("a");
+      return Arrays.asList("a","pr");
     }
 
     @Override
@@ -573,12 +726,14 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
       {
           PBody body = new PBody(this);
           PVariable var_a = body.getOrCreateVariableByName("a");
-          PVariable var_p = body.getOrCreateVariableByName("p");
+          PVariable var_pr = body.getOrCreateVariableByName("pr");
           new TypeConstraint(body, Tuples.flatTupleOf(var_a), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Asset")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_pr), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "Priority")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
-             new ExportedParameter(body, var_a, parameter_a)
+             new ExportedParameter(body, var_a, parameter_a),
+             new ExportedParameter(body, var_pr, parameter_pr)
           ));
-          // 	Asset.value.Priority(a, p)
+          //     Asset.value.Priority(a, pr)
           new TypeConstraint(body, Tuples.flatTupleOf(var_a), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Asset")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
           new TypeConstraint(body, Tuples.flatTupleOf(var_a, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Asset", "value")));
@@ -586,11 +741,7 @@ public final class HighPriorityAsset extends BaseGeneratedEMFQuerySpecification<
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
           new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Value", "Priority")));
           new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "Priority")));
-          new Equality(body, var__virtual_1_, var_p);
-          // 	p == Priority::H
-          PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
-          new ConstantValue(body, var__virtual_2_, getEnumLiteral("http://www.secdfd.org/secdfd", "Priority", "H").getInstance());
-          new Equality(body, var_p, var__virtual_2_);
+          new Equality(body, var__virtual_1_, var_pr);
           bodies.add(body);
       }
       return bodies;

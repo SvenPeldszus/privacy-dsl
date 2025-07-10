@@ -16,7 +16,6 @@ import java.util.stream.Stream;
 import javax.annotation.Generated;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
@@ -25,14 +24,11 @@ import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFQuerySpecificat
 import org.eclipse.viatra.query.runtime.api.impl.BaseMatcher;
 import org.eclipse.viatra.query.runtime.api.impl.BasePatternMatch;
 import org.eclipse.viatra.query.runtime.emf.types.EClassTransitiveInstancesKey;
-import org.eclipse.viatra.query.runtime.emf.types.EDataTypeInSlotsKey;
-import org.eclipse.viatra.query.runtime.emf.types.EStructuralFeatureInstancesKey;
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.matchers.psystem.PBody;
 import org.eclipse.viatra.query.runtime.matchers.psystem.PVariable;
-import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.Equality;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.ExportedParameter;
-import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.ConstantValue;
+import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.NegativePatternCall;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.TypeConstraint;
 import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameter;
 import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameterDirection;
@@ -47,9 +43,10 @@ import org.secdfd.model.Asset;
  * 
  * <p>Original source:
  *         <code><pre>
- *         pattern confidentialAsset(a: Asset){
- *         	Asset.value.Objective(a, o);
- *         	o == Objective::Confidentiality;
+ *         negated helper: asset that has no Value for a given Objective 
+ *         
+ *         pattern assetWithoutObjective(a : Asset) {
+ *             neg find assetWithObjective(a, _);
  *         }
  * </pre></code>
  * 
@@ -59,9 +56,9 @@ import org.secdfd.model.Asset;
  */
 @SuppressWarnings("all")
 @Generated("org.eclipse.xtext.xbase.compiler.JvmModelGenerator")
-public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<ConfidentialAsset.Matcher> {
+public final class AssetWithoutObjective extends BaseGeneratedEMFQuerySpecification<AssetWithoutObjective.Matcher> {
   /**
-   * Pattern-specific match representation of the edfdtosimplegraph.confidentialAsset pattern,
+   * Pattern-specific match representation of the edfdtosimplegraph.assetWithoutObjective pattern,
    * to be used in conjunction with {@link Matcher}.
    * 
    * <p>Class fields correspond to parameters of the pattern. Fields with value null are considered unassigned.
@@ -119,12 +116,12 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
 
     @Override
     public String patternName() {
-      return "edfdtosimplegraph.confidentialAsset";
+      return "edfdtosimplegraph.assetWithoutObjective";
     }
 
     @Override
     public List<String> parameterNames() {
-      return ConfidentialAsset.Match.parameterNames;
+      return AssetWithoutObjective.Match.parameterNames;
     }
 
     @Override
@@ -133,7 +130,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
     }
 
     @Override
-    public ConfidentialAsset.Match toImmutable() {
+    public AssetWithoutObjective.Match toImmutable() {
       return isMutable() ? newMatch(fA) : this;
     }
 
@@ -156,8 +153,8 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
       if (obj == null) {
           return false;
       }
-      if ((obj instanceof ConfidentialAsset.Match)) {
-          ConfidentialAsset.Match other = (ConfidentialAsset.Match) obj;
+      if ((obj instanceof AssetWithoutObjective.Match)) {
+          AssetWithoutObjective.Match other = (AssetWithoutObjective.Match) obj;
           return Objects.equals(fA, other.fA);
       } else {
           // this should be infrequent
@@ -170,8 +167,8 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
     }
 
     @Override
-    public ConfidentialAsset specification() {
-      return ConfidentialAsset.instance();
+    public AssetWithoutObjective specification() {
+      return AssetWithoutObjective.instance();
     }
 
     /**
@@ -181,7 +178,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
      * @return the empty match.
      * 
      */
-    public static ConfidentialAsset.Match newEmptyMatch() {
+    public static AssetWithoutObjective.Match newEmptyMatch() {
       return new Mutable(null);
     }
 
@@ -193,7 +190,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
      * @return the new, mutable (partial) match object.
      * 
      */
-    public static ConfidentialAsset.Match newMutableMatch(final Asset pA) {
+    public static AssetWithoutObjective.Match newMutableMatch(final Asset pA) {
       return new Mutable(pA);
     }
 
@@ -205,11 +202,11 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
      * @return the (partial) match object.
      * 
      */
-    public static ConfidentialAsset.Match newMatch(final Asset pA) {
+    public static AssetWithoutObjective.Match newMatch(final Asset pA) {
       return new Immutable(pA);
     }
 
-    private static final class Mutable extends ConfidentialAsset.Match {
+    private static final class Mutable extends AssetWithoutObjective.Match {
       Mutable(final Asset pA) {
         super(pA);
       }
@@ -220,7 +217,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
       }
     }
 
-    private static final class Immutable extends ConfidentialAsset.Match {
+    private static final class Immutable extends AssetWithoutObjective.Match {
       Immutable(final Asset pA) {
         super(pA);
       }
@@ -233,7 +230,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
   }
 
   /**
-   * Generated pattern matcher API of the edfdtosimplegraph.confidentialAsset pattern,
+   * Generated pattern matcher API of the edfdtosimplegraph.assetWithoutObjective pattern,
    * providing pattern-specific query methods.
    * 
    * <p>Use the pattern matcher on a given model via {@link #on(ViatraQueryEngine)},
@@ -243,18 +240,19 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
    * 
    * <p>Original source:
    * <code><pre>
-   * pattern confidentialAsset(a: Asset){
-   * 	Asset.value.Objective(a, o);
-   * 	o == Objective::Confidentiality;
+   * negated helper: asset that has no Value for a given Objective 
+   * 
+   * pattern assetWithoutObjective(a : Asset) {
+   *     neg find assetWithObjective(a, _);
    * }
    * </pre></code>
    * 
    * @see Match
    *  @see Processor
-   * @see ConfidentialAsset
+   * @see AssetWithoutObjective
    * 
    */
-  public static class Matcher extends BaseMatcher<ConfidentialAsset.Match> {
+  public static class Matcher extends BaseMatcher<AssetWithoutObjective.Match> {
     /**
      * Initializes the pattern matcher within an existing VIATRA Query engine.
      * If the pattern matcher is already constructed in the engine, only a light-weight reference is returned.
@@ -263,7 +261,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
      * @throws ViatraQueryRuntimeException if an error occurs during pattern matcher creation
      * 
      */
-    public static ConfidentialAsset.Matcher on(final ViatraQueryEngine engine) {
+    public static AssetWithoutObjective.Matcher on(final ViatraQueryEngine engine) {
       // check if matcher already exists
       Matcher matcher = engine.getExistingMatcher(querySpecification());
       if (matcher == null) {
@@ -278,13 +276,13 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
      * @noreference This method is for internal matcher initialization by the framework, do not call it manually.
      * 
      */
-    public static ConfidentialAsset.Matcher create() {
+    public static AssetWithoutObjective.Matcher create() {
       return new Matcher();
     }
 
     private static final int POSITION_A = 0;
 
-    private static final Logger LOGGER = ViatraQueryLoggingUtil.getLogger(ConfidentialAsset.Matcher.class);
+    private static final Logger LOGGER = ViatraQueryLoggingUtil.getLogger(AssetWithoutObjective.Matcher.class);
 
     /**
      * Initializes the pattern matcher within an existing VIATRA Query engine.
@@ -304,7 +302,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
      * @return matches represented as a Match object.
      * 
      */
-    public Collection<ConfidentialAsset.Match> getAllMatches(final Asset pA) {
+    public Collection<AssetWithoutObjective.Match> getAllMatches(final Asset pA) {
       return rawStreamAllMatches(new Object[]{pA}).collect(Collectors.toSet());
     }
 
@@ -318,7 +316,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
      * @return a stream of matches represented as a Match object.
      * 
      */
-    public Stream<ConfidentialAsset.Match> streamAllMatches(final Asset pA) {
+    public Stream<AssetWithoutObjective.Match> streamAllMatches(final Asset pA) {
       return rawStreamAllMatches(new Object[]{pA});
     }
 
@@ -329,7 +327,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
      * @return a match represented as a Match object, or null if no match is found.
      * 
      */
-    public Optional<ConfidentialAsset.Match> getOneArbitraryMatch(final Asset pA) {
+    public Optional<AssetWithoutObjective.Match> getOneArbitraryMatch(final Asset pA) {
       return rawGetOneArbitraryMatch(new Object[]{pA});
     }
 
@@ -360,7 +358,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
      * @param processor the action that will process each pattern match.
      * 
      */
-    public void forEachMatch(final Asset pA, final Consumer<? super ConfidentialAsset.Match> processor) {
+    public void forEachMatch(final Asset pA, final Consumer<? super AssetWithoutObjective.Match> processor) {
       rawForEachMatch(new Object[]{pA}, processor);
     }
 
@@ -372,7 +370,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
      * @return true if the pattern has at least one match with the given parameter values, false if the processor was not invoked
      * 
      */
-    public boolean forOneArbitraryMatch(final Asset pA, final Consumer<? super ConfidentialAsset.Match> processor) {
+    public boolean forOneArbitraryMatch(final Asset pA, final Consumer<? super AssetWithoutObjective.Match> processor) {
       return rawForOneArbitraryMatch(new Object[]{pA}, processor);
     }
 
@@ -384,8 +382,8 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
      * @return the (partial) match object.
      * 
      */
-    public ConfidentialAsset.Match newMatch(final Asset pA) {
-      return ConfidentialAsset.Match.newMatch(pA);
+    public AssetWithoutObjective.Match newMatch(final Asset pA) {
+      return AssetWithoutObjective.Match.newMatch(pA);
     }
 
     /**
@@ -416,9 +414,9 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
     }
 
     @Override
-    protected ConfidentialAsset.Match tupleToMatch(final Tuple t) {
+    protected AssetWithoutObjective.Match tupleToMatch(final Tuple t) {
       try {
-          return ConfidentialAsset.Match.newMatch((Asset) t.get(POSITION_A));
+          return AssetWithoutObjective.Match.newMatch((Asset) t.get(POSITION_A));
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in tuple not properly typed!",e);
           return null;
@@ -426,9 +424,9 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
     }
 
     @Override
-    protected ConfidentialAsset.Match arrayToMatch(final Object[] match) {
+    protected AssetWithoutObjective.Match arrayToMatch(final Object[] match) {
       try {
-          return ConfidentialAsset.Match.newMatch((Asset) match[POSITION_A]);
+          return AssetWithoutObjective.Match.newMatch((Asset) match[POSITION_A]);
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in array not properly typed!",e);
           return null;
@@ -436,9 +434,9 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
     }
 
     @Override
-    protected ConfidentialAsset.Match arrayToMatchMutable(final Object[] match) {
+    protected AssetWithoutObjective.Match arrayToMatchMutable(final Object[] match) {
       try {
-          return ConfidentialAsset.Match.newMutableMatch((Asset) match[POSITION_A]);
+          return AssetWithoutObjective.Match.newMutableMatch((Asset) match[POSITION_A]);
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in array not properly typed!",e);
           return null;
@@ -450,18 +448,18 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
      * @throws ViatraQueryRuntimeException if the pattern definition could not be loaded
      * 
      */
-    public static IQuerySpecification<ConfidentialAsset.Matcher> querySpecification() {
-      return ConfidentialAsset.instance();
+    public static IQuerySpecification<AssetWithoutObjective.Matcher> querySpecification() {
+      return AssetWithoutObjective.instance();
     }
   }
 
   /**
-   * A match processor tailored for the edfdtosimplegraph.confidentialAsset pattern.
+   * A match processor tailored for the edfdtosimplegraph.assetWithoutObjective pattern.
    * 
    * Clients should derive an (anonymous) class that implements the abstract process().
    * 
    */
-  public static abstract class Processor implements Consumer<ConfidentialAsset.Match> {
+  public static abstract class Processor implements Consumer<AssetWithoutObjective.Match> {
     /**
      * Defines the action that is to be executed on each match.
      * @param pA the value of pattern parameter a in the currently processed match
@@ -470,12 +468,12 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
     public abstract void accept(final Asset pA);
 
     @Override
-    public void accept(final ConfidentialAsset.Match match) {
+    public void accept(final AssetWithoutObjective.Match match) {
       accept(match.getA());
     }
   }
 
-  private ConfidentialAsset() {
+  private AssetWithoutObjective() {
     super(GeneratedPQuery.INSTANCE);
   }
 
@@ -484,7 +482,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
    * @throws ViatraQueryRuntimeException if the pattern definition could not be loaded
    * 
    */
-  public static ConfidentialAsset instance() {
+  public static AssetWithoutObjective instance() {
     try{
         return LazyHolder.INSTANCE;
     } catch (ExceptionInInitializerError err) {
@@ -493,35 +491,35 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
   }
 
   @Override
-  protected ConfidentialAsset.Matcher instantiate(final ViatraQueryEngine engine) {
-    return ConfidentialAsset.Matcher.on(engine);
+  protected AssetWithoutObjective.Matcher instantiate(final ViatraQueryEngine engine) {
+    return AssetWithoutObjective.Matcher.on(engine);
   }
 
   @Override
-  public ConfidentialAsset.Matcher instantiate() {
-    return ConfidentialAsset.Matcher.create();
+  public AssetWithoutObjective.Matcher instantiate() {
+    return AssetWithoutObjective.Matcher.create();
   }
 
   @Override
-  public ConfidentialAsset.Match newEmptyMatch() {
-    return ConfidentialAsset.Match.newEmptyMatch();
+  public AssetWithoutObjective.Match newEmptyMatch() {
+    return AssetWithoutObjective.Match.newEmptyMatch();
   }
 
   @Override
-  public ConfidentialAsset.Match newMatch(final Object... parameters) {
-    return ConfidentialAsset.Match.newMatch((Asset) parameters[0]);
+  public AssetWithoutObjective.Match newMatch(final Object... parameters) {
+    return AssetWithoutObjective.Match.newMatch((Asset) parameters[0]);
   }
 
   /**
-   * Inner class allowing the singleton instance of {@link ConfidentialAsset} to be created 
+   * Inner class allowing the singleton instance of {@link AssetWithoutObjective} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link ConfidentialAsset#instance()}.
+   *     but rather at the first call to {@link AssetWithoutObjective#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 
    */
   private static class LazyHolder {
-    private static final ConfidentialAsset INSTANCE = new ConfidentialAsset();
+    private static final AssetWithoutObjective INSTANCE = new AssetWithoutObjective();
 
     /**
      * Statically initializes the query specification <b>after</b> the field {@link #INSTANCE} is assigned.
@@ -539,7 +537,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
   }
 
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
-    private static final ConfidentialAsset.GeneratedPQuery INSTANCE = new GeneratedPQuery();
+    private static final AssetWithoutObjective.GeneratedPQuery INSTANCE = new GeneratedPQuery();
 
     private final PParameter parameter_a = new PParameter("a", "org.secdfd.model.Asset", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.secdfd.org/secdfd", "Asset")), PParameterDirection.INOUT);
 
@@ -551,7 +549,7 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
 
     @Override
     public String getFullyQualifiedName() {
-      return "edfdtosimplegraph.confidentialAsset";
+      return "edfdtosimplegraph.assetWithoutObjective";
     }
 
     @Override
@@ -571,24 +569,13 @@ public final class ConfidentialAsset extends BaseGeneratedEMFQuerySpecification<
       {
           PBody body = new PBody(this);
           PVariable var_a = body.getOrCreateVariableByName("a");
-          PVariable var_o = body.getOrCreateVariableByName("o");
+          PVariable var___0_ = body.getOrCreateVariableByName("_<0>");
           new TypeConstraint(body, Tuples.flatTupleOf(var_a), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Asset")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_a, parameter_a)
           ));
-          // 	Asset.value.Objective(a, o)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_a), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Asset")));
-          PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_a, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Asset", "value")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Value")));
-          PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Value", "Objective")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "Objective")));
-          new Equality(body, var__virtual_1_, var_o);
-          // 	o == Objective::Confidentiality
-          PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
-          new ConstantValue(body, var__virtual_2_, getEnumLiteral("http://www.secdfd.org/secdfd", "Objective", "Confidentiality").getInstance());
-          new Equality(body, var_o, var__virtual_2_);
+          //     neg find assetWithObjective(a, _)
+          new NegativePatternCall(body, Tuples.flatTupleOf(var_a, var___0_), AssetWithObjective.instance().getInternalQueryRepresentation());
           bodies.add(body);
       }
       return bodies;

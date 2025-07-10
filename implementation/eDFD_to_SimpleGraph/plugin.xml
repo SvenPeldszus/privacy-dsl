@@ -22,9 +22,9 @@
       <query-specification fqn="edfdtosimplegraph.ResponsibilityTypes"/>
       <query-specification fqn="edfdtosimplegraph.sourceOfFlow"/>
       <query-specification fqn="edfdtosimplegraph.targetOfFlow"/>
-      <query-specification fqn="edfdtosimplegraph.highPriorityAsset"/>
-      <query-specification fqn="edfdtosimplegraph.confidentialAsset"/>
-      <query-specification fqn="edfdtosimplegraph.publicAsset"/>
+      <query-specification fqn="edfdtosimplegraph.assetWithPriority"/>
+      <query-specification fqn="edfdtosimplegraph.assetWithObjective"/>
+      <query-specification fqn="edfdtosimplegraph.assetWithoutObjective"/>
       <query-specification fqn="edfdtosimplegraph.comparatorProcesses"/>
       <query-specification fqn="edfdtosimplegraph.edfd2simplegraph"/>
       <query-specification fqn="edfdtosimplegraph.Graph2EndToEnd"/>

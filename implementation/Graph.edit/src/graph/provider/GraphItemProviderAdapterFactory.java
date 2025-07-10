@@ -210,6 +210,52 @@ public class GraphItemProviderAdapterFactory extends GraphAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link graph.AssetLabel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AssetLabelItemProvider assetLabelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link graph.AssetLabel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAssetLabelAdapter() {
+		if (assetLabelItemProvider == null) {
+			assetLabelItemProvider = new AssetLabelItemProvider(this);
+		}
+
+		return assetLabelItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link graph.EdgeLabel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EdgeLabelItemProvider edgeLabelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link graph.EdgeLabel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEdgeLabelAdapter() {
+		if (edgeLabelItemProvider == null) {
+			edgeLabelItemProvider = new EdgeLabelItemProvider(this);
+		}
+
+		return edgeLabelItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -320,6 +366,8 @@ public class GraphItemProviderAdapterFactory extends GraphAdapterFactory impleme
 		if (subgraphsItemProvider != null) subgraphsItemProvider.dispose();
 		if (nodeResponsibilityItemProvider != null) nodeResponsibilityItemProvider.dispose();
 		if (graphItemProvider != null) graphItemProvider.dispose();
+		if (assetLabelItemProvider != null) assetLabelItemProvider.dispose();
+		if (edgeLabelItemProvider != null) edgeLabelItemProvider.dispose();
 	}
 
 }

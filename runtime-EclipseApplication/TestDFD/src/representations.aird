@@ -4,10 +4,9 @@
     <semanticResources>TestDFD.secdfd</semanticResources>
     <semanticResources>TestDFD.graph</semanticResources>
     <semanticResources>TestDFD.traceability</semanticResources>
-    <semanticResources>approaches/approach1/encrypt_TestDFD.secdfd</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_9xU9IFX4EfCEWrPAOkJfWQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9xgjUFX4EfCEWrPAOkJfWQ" name="TestDFD" repPath="#_9xc48FX4EfCEWrPAOkJfWQ" changeId="1751837717519">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9xgjUFX4EfCEWrPAOkJfWQ" name="TestDFD" repPath="#_9xc48FX4EfCEWrPAOkJfWQ" changeId="1752021726569">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
         <target xmi:type="org.secdfd:EDFD" href="TestDFD.secdfd#Test"/>
       </ownedRepresentationDescriptors>
@@ -255,9 +254,9 @@
             <children xmi:type="notation:Node" xmi:id="_mbU1kFpiEfCkeuhtJ1qVvQ" type="5001">
               <layoutConstraint xmi:type="notation:Location" xmi:id="_mbU1kVpiEfCkeuhtJ1qVvQ" y="5"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_mbU1lVpiEfCkeuhtJ1qVvQ" type="3017" element="_mbP9EFpiEfCkeuhtJ1qVvQ">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_mbU1llpiEfCkeuhtJ1qVvQ" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mbU1l1piEfCkeuhtJ1qVvQ"/>
+            <children xmi:type="notation:Node" xmi:id="_IdLDYFxdEfC0zrbF9r5Ufg" type="3017" element="_IcnCsVxdEfC0zrbF9r5Ufg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_IdLDYVxdEfC0zrbF9r5Ufg" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IdLDYlxdEfC0zrbF9r5Ufg"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_mbUOhlpiEfCkeuhtJ1qVvQ" fontName="Segoe UI" fontHeight="12"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mbUOh1piEfCkeuhtJ1qVvQ" x="91" y="47" width="50" height="30"/>
@@ -955,11 +954,11 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_mbOu8FpiEfCkeuhtJ1qVvQ" name="asset risk score" outgoingEdges="_oq0zHFpiEfCkeuhtJ1qVvQ" width="10" height="3" resizeKind="NSEW">
       <target xmi:type="org.secdfd:Asset" href="TestDFD.secdfd#asset risk score"/>
       <semanticElements xmi:type="org.secdfd:Asset" href="TestDFD.secdfd#asset risk score"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_mbPWAlpiEfCkeuhtJ1qVvQ" name="Co" width="5" height="3" resizeKind="NSEW">
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_mbPWAlpiEfCkeuhtJ1qVvQ" name="Confidentiality" width="5" height="3" resizeKind="NSEW">
         <target xmi:type="org.secdfd:Value" href="TestDFD.secdfd#//@asset.7/@value.0"/>
         <semanticElements xmi:type="org.secdfd:Value" href="TestDFD.secdfd#//@asset.7/@value.0"/>
-        <ownedStyle xmi:type="diagram:Lozenge" uid="_mbP9EFpiEfCkeuhtJ1qVvQ" labelSize="12" labelPosition="node" width="5" height="3" color="239,41,41">
-          <description xmi:type="style:LozengeNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']/@borderedNodeMappings[name='Value']/@conditionnalStyles.0/@style"/>
+        <ownedStyle xmi:type="diagram:Lozenge" uid="_IcnCsVxdEfC0zrbF9r5Ufg" labelSize="12" labelPosition="node" width="5" height="3" color="255,245,181">
+          <description xmi:type="style:LozengeNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']/@borderedNodeMappings[name='Value']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']/@borderedNodeMappings[name='Value']"/>
       </ownedBorderedNodes>

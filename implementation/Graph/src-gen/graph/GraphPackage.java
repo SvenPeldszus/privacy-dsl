@@ -151,22 +151,13 @@ public interface GraphPackage extends EPackage {
 	int EDGE__SOURCE = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Edge Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EDGE__EDGE_LABEL = IDENTIFIABLE_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Graphassets</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EDGE__GRAPHASSETS = IDENTIFIABLE_FEATURE_COUNT + 3;
+	int EDGE__GRAPHASSETS = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Visited</b></em>' attribute.
@@ -175,7 +166,16 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EDGE__VISITED = IDENTIFIABLE_FEATURE_COUNT + 4;
+	int EDGE__VISITED = IDENTIFIABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Edgelabel</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDGE__EDGELABEL = IDENTIFIABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Edge</em>' class.
@@ -224,22 +224,13 @@ public interface GraphPackage extends EPackage {
 	int GRAPH_ASSET__NUMBER = IDENTIFIABLE__NUMBER;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GRAPH_ASSET__LABEL = IDENTIFIABLE_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GRAPH_ASSET__SOURCE = IDENTIFIABLE_FEATURE_COUNT + 1;
+	int GRAPH_ASSET__SOURCE = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Targets</b></em>' reference list.
@@ -248,7 +239,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GRAPH_ASSET__TARGETS = IDENTIFIABLE_FEATURE_COUNT + 2;
+	int GRAPH_ASSET__TARGETS = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Encrypted</b></em>' attribute.
@@ -257,7 +248,16 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GRAPH_ASSET__ENCRYPTED = IDENTIFIABLE_FEATURE_COUNT + 3;
+	int GRAPH_ASSET__ENCRYPTED = IDENTIFIABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Assetlabel</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAPH_ASSET__ASSETLABEL = IDENTIFIABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Asset</em>' class.
@@ -706,6 +706,145 @@ public interface GraphPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link graph.impl.SecurityLabelImpl <em>Security Label</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graph.impl.SecurityLabelImpl
+	 * @see graph.impl.GraphPackageImpl#getSecurityLabel()
+	 * @generated
+	 */
+	int SECURITY_LABEL = 7;
+
+	/**
+	 * The feature id for the '<em><b>Objective</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECURITY_LABEL__OBJECTIVE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECURITY_LABEL__LEVEL = 1;
+
+	/**
+	 * The number of structural features of the '<em>Security Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECURITY_LABEL_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Security Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SECURITY_LABEL_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link graph.impl.AssetLabelImpl <em>Asset Label</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graph.impl.AssetLabelImpl
+	 * @see graph.impl.GraphPackageImpl#getAssetLabel()
+	 * @generated
+	 */
+	int ASSET_LABEL = 8;
+
+	/**
+	 * The feature id for the '<em><b>Objective</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSET_LABEL__OBJECTIVE = SECURITY_LABEL__OBJECTIVE;
+
+	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSET_LABEL__LEVEL = SECURITY_LABEL__LEVEL;
+
+	/**
+	 * The number of structural features of the '<em>Asset Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSET_LABEL_FEATURE_COUNT = SECURITY_LABEL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Asset Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSET_LABEL_OPERATION_COUNT = SECURITY_LABEL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link graph.impl.EdgeLabelImpl <em>Edge Label</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see graph.impl.EdgeLabelImpl
+	 * @see graph.impl.GraphPackageImpl#getEdgeLabel()
+	 * @generated
+	 */
+	int EDGE_LABEL = 9;
+
+	/**
+	 * The feature id for the '<em><b>Objective</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDGE_LABEL__OBJECTIVE = SECURITY_LABEL__OBJECTIVE;
+
+	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDGE_LABEL__LEVEL = SECURITY_LABEL__LEVEL;
+
+	/**
+	 * The number of structural features of the '<em>Edge Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDGE_LABEL_FEATURE_COUNT = SECURITY_LABEL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Edge Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EDGE_LABEL_OPERATION_COUNT = SECURITY_LABEL_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link graph.Edge <em>Edge</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -738,17 +877,6 @@ public interface GraphPackage extends EPackage {
 	EReference getEdge_Source();
 
 	/**
-	 * Returns the meta object for the attribute '{@link graph.Edge#getEdgeLabel <em>Edge Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Edge Label</em>'.
-	 * @see graph.Edge#getEdgeLabel()
-	 * @see #getEdge()
-	 * @generated
-	 */
-	EAttribute getEdge_EdgeLabel();
-
-	/**
 	 * Returns the meta object for the reference list '{@link graph.Edge#getGraphassets <em>Graphassets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -769,6 +897,17 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getEdge_Visited();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link graph.Edge#getEdgelabel <em>Edgelabel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Edgelabel</em>'.
+	 * @see graph.Edge#getEdgelabel()
+	 * @see #getEdge()
+	 * @generated
+	 */
+	EReference getEdge_Edgelabel();
 
 	/**
 	 * Returns the meta object for class '{@link graph.Identifiable <em>Identifiable</em>}'.
@@ -813,17 +952,6 @@ public interface GraphPackage extends EPackage {
 	EClass getGraphAsset();
 
 	/**
-	 * Returns the meta object for the attribute '{@link graph.GraphAsset#getLabel <em>Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Label</em>'.
-	 * @see graph.GraphAsset#getLabel()
-	 * @see #getGraphAsset()
-	 * @generated
-	 */
-	EAttribute getGraphAsset_Label();
-
-	/**
 	 * Returns the meta object for the reference '{@link graph.GraphAsset#getSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -855,6 +983,17 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGraphAsset_Encrypted();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link graph.GraphAsset#getAssetlabel <em>Assetlabel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Assetlabel</em>'.
+	 * @see graph.GraphAsset#getAssetlabel()
+	 * @see #getGraphAsset()
+	 * @generated
+	 */
+	EReference getGraphAsset_Assetlabel();
 
 	/**
 	 * Returns the meta object for class '{@link graph.Node <em>Node</em>}'.
@@ -1200,6 +1339,58 @@ public interface GraphPackage extends EPackage {
 	EReference getGraph_Subgraphs();
 
 	/**
+	 * Returns the meta object for class '{@link graph.SecurityLabel <em>Security Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Security Label</em>'.
+	 * @see graph.SecurityLabel
+	 * @generated
+	 */
+	EClass getSecurityLabel();
+
+	/**
+	 * Returns the meta object for the attribute '{@link graph.SecurityLabel#getObjective <em>Objective</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Objective</em>'.
+	 * @see graph.SecurityLabel#getObjective()
+	 * @see #getSecurityLabel()
+	 * @generated
+	 */
+	EAttribute getSecurityLabel_Objective();
+
+	/**
+	 * Returns the meta object for the attribute '{@link graph.SecurityLabel#getLevel <em>Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see graph.SecurityLabel#getLevel()
+	 * @see #getSecurityLabel()
+	 * @generated
+	 */
+	EAttribute getSecurityLabel_Level();
+
+	/**
+	 * Returns the meta object for class '{@link graph.AssetLabel <em>Asset Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Asset Label</em>'.
+	 * @see graph.AssetLabel
+	 * @generated
+	 */
+	EClass getAssetLabel();
+
+	/**
+	 * Returns the meta object for class '{@link graph.EdgeLabel <em>Edge Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Edge Label</em>'.
+	 * @see graph.EdgeLabel
+	 * @generated
+	 */
+	EClass getEdgeLabel();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1249,14 +1440,6 @@ public interface GraphPackage extends EPackage {
 		EReference EDGE__SOURCE = eINSTANCE.getEdge_Source();
 
 		/**
-		 * The meta object literal for the '<em><b>Edge Label</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EDGE__EDGE_LABEL = eINSTANCE.getEdge_EdgeLabel();
-
-		/**
 		 * The meta object literal for the '<em><b>Graphassets</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1271,6 +1454,14 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EDGE__VISITED = eINSTANCE.getEdge_Visited();
+
+		/**
+		 * The meta object literal for the '<em><b>Edgelabel</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EDGE__EDGELABEL = eINSTANCE.getEdge_Edgelabel();
 
 		/**
 		 * The meta object literal for the '{@link graph.Identifiable <em>Identifiable</em>}' class.
@@ -1309,14 +1500,6 @@ public interface GraphPackage extends EPackage {
 		EClass GRAPH_ASSET = eINSTANCE.getGraphAsset();
 
 		/**
-		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute GRAPH_ASSET__LABEL = eINSTANCE.getGraphAsset_Label();
-
-		/**
 		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1339,6 +1522,14 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GRAPH_ASSET__ENCRYPTED = eINSTANCE.getGraphAsset_Encrypted();
+
+		/**
+		 * The meta object literal for the '<em><b>Assetlabel</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GRAPH_ASSET__ASSETLABEL = eINSTANCE.getGraphAsset_Assetlabel();
 
 		/**
 		 * The meta object literal for the '{@link graph.impl.NodeImpl <em>Node</em>}' class.
@@ -1611,6 +1802,52 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EReference GRAPH__SUBGRAPHS = eINSTANCE.getGraph_Subgraphs();
+
+		/**
+		 * The meta object literal for the '{@link graph.impl.SecurityLabelImpl <em>Security Label</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graph.impl.SecurityLabelImpl
+		 * @see graph.impl.GraphPackageImpl#getSecurityLabel()
+		 * @generated
+		 */
+		EClass SECURITY_LABEL = eINSTANCE.getSecurityLabel();
+
+		/**
+		 * The meta object literal for the '<em><b>Objective</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SECURITY_LABEL__OBJECTIVE = eINSTANCE.getSecurityLabel_Objective();
+
+		/**
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SECURITY_LABEL__LEVEL = eINSTANCE.getSecurityLabel_Level();
+
+		/**
+		 * The meta object literal for the '{@link graph.impl.AssetLabelImpl <em>Asset Label</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graph.impl.AssetLabelImpl
+		 * @see graph.impl.GraphPackageImpl#getAssetLabel()
+		 * @generated
+		 */
+		EClass ASSET_LABEL = eINSTANCE.getAssetLabel();
+
+		/**
+		 * The meta object literal for the '{@link graph.impl.EdgeLabelImpl <em>Edge Label</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see graph.impl.EdgeLabelImpl
+		 * @see graph.impl.GraphPackageImpl#getEdgeLabel()
+		 * @generated
+		 */
+		EClass EDGE_LABEL = eINSTANCE.getEdgeLabel();
 
 	}
 

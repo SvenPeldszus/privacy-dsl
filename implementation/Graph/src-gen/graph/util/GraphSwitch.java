@@ -113,6 +113,26 @@ public class GraphSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case GraphPackage.SECURITY_LABEL: {
+				SecurityLabel securityLabel = (SecurityLabel)theEObject;
+				T result = caseSecurityLabel(securityLabel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case GraphPackage.ASSET_LABEL: {
+				AssetLabel assetLabel = (AssetLabel)theEObject;
+				T result = caseAssetLabel(assetLabel);
+				if (result == null) result = caseSecurityLabel(assetLabel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case GraphPackage.EDGE_LABEL: {
+				EdgeLabel edgeLabel = (EdgeLabel)theEObject;
+				T result = caseEdgeLabel(edgeLabel);
+				if (result == null) result = caseSecurityLabel(edgeLabel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -219,6 +239,51 @@ public class GraphSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGraph(Graph object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Security Label</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Security Label</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSecurityLabel(SecurityLabel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Asset Label</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Asset Label</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAssetLabel(AssetLabel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Edge Label</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Edge Label</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEdgeLabel(EdgeLabel object) {
 		return null;
 	}
 

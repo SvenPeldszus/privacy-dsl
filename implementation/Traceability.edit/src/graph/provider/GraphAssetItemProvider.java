@@ -129,7 +129,7 @@ public class GraphAssetItemProvider
 				 getResourceLocator(),
 				 getString("_UI_GraphAsset_Label_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_GraphAsset_Label_feature", "_UI_GraphAsset_type"),
-				 GraphPackage.Literals.GRAPH_ASSET__LABEL,
+				 GraphPackage.Literals.GRAPH_ASSET__ASSETLABEL,
 				 true,
 				 false,
 				 false,
@@ -244,7 +244,7 @@ public class GraphAssetItemProvider
 		switch (notification.getFeatureID(GraphAsset.class)) {
 			case GraphPackage.GRAPH_ASSET__ID:
 			case GraphPackage.GRAPH_ASSET__NUMBER:
-			case GraphPackage.GRAPH_ASSET__LABEL:
+			case GraphPackage.GRAPH_ASSET__ASSETLABEL:
 			case GraphPackage.GRAPH_ASSET__ENCRYPTED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
