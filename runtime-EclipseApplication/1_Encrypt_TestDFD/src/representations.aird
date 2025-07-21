@@ -6,7 +6,7 @@
     <semanticResources>Encrypt_TestDFD.traceability</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_EqlQkFqyEfCz38snPK4luA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_EqvBkFqyEfCz38snPK4luA" name="Encrypt_TestDFD" repPath="#_EqslUFqyEfCz38snPK4luA" changeId="1752070447247">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_EqvBkFqyEfCz38snPK4luA" name="Encrypt_TestDFD" repPath="#_EqslUFqyEfCz38snPK4luA" changeId="1753104161718">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
         <target xmi:type="org.secdfd:EDFD" href="Encrypt_TestDFD.secdfd#Encrypt_Test"/>
       </ownedRepresentationDescriptors>
@@ -45,6 +45,17 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_VkDvJFqyEfCz38snPK4luA" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkDvJVqyEfCz38snPK4luA"/>
           </children>
+          <children xmi:type="notation:Node" xmi:id="_x6D2QGY1EfC9xbU2q0F28w" type="3001" element="_x42VUWY1EfC9xbU2q0F28w">
+            <children xmi:type="notation:Node" xmi:id="_x6EdUGY1EfC9xbU2q0F28w" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_x6EdUWY1EfC9xbU2q0F28w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_x6EdUmY1EfC9xbU2q0F28w" type="3002" element="_x42VUmY1EfC9xbU2q0F28w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_x6EdU2Y1EfC9xbU2q0F28w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6EdVGY1EfC9xbU2q0F28w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_x6D2QWY1EfC9xbU2q0F28w" fontName="Segoe UI" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6D2QmY1EfC9xbU2q0F28w" x="-22" width="30" height="30"/>
+          </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_FeR-ZVqyEfCz38snPK4luA" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vj1ssVqyEfCz38snPK4luA" x="570" y="165" width="100" height="100"/>
         </children>
@@ -56,6 +67,28 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_VkDvJ1qyEfCz38snPK4luA" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkDvKFqyEfCz38snPK4luA"/>
           </children>
+          <children xmi:type="notation:Node" xmi:id="_x6FEYGY1EfC9xbU2q0F28w" type="3001" element="_x428YGY1EfC9xbU2q0F28w">
+            <children xmi:type="notation:Node" xmi:id="_x6FEY2Y1EfC9xbU2q0F28w" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_x6FEZGY1EfC9xbU2q0F28w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_x6GSgGY1EfC9xbU2q0F28w" type="3002" element="_x428YWY1EfC9xbU2q0F28w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_x6GSgWY1EfC9xbU2q0F28w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6GSgmY1EfC9xbU2q0F28w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_x6FEYWY1EfC9xbU2q0F28w" fontName="Segoe UI" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6FEYmY1EfC9xbU2q0F28w" x="-22" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_x6FrcGY1EfC9xbU2q0F28w" type="3001" element="_x43jcWY1EfC9xbU2q0F28w">
+            <children xmi:type="notation:Node" xmi:id="_x6Frc2Y1EfC9xbU2q0F28w" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_x6FrdGY1EfC9xbU2q0F28w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_x6GSg2Y1EfC9xbU2q0F28w" type="3002" element="_x43jcmY1EfC9xbU2q0F28w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_x6GShGY1EfC9xbU2q0F28w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6GShWY1EfC9xbU2q0F28w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_x6FrcWY1EfC9xbU2q0F28w" fontName="Segoe UI" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6FrcmY1EfC9xbU2q0F28w" x="-22" y="31" width="30" height="30"/>
+          </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_FeSlcVqyEfCz38snPK4luA" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vj260VqyEfCz38snPK4luA" x="1485" y="-140" width="119" height="96"/>
         </children>
@@ -66,6 +99,17 @@
           <children xmi:type="notation:Node" xmi:id="_VkDvKVqyEfCz38snPK4luA" type="3016" element="_Vj4I-lqyEfCz38snPK4luA">
             <styles xmi:type="notation:ShapeStyle" xmi:id="_VkDvKlqyEfCz38snPK4luA" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkDvK1qyEfCz38snPK4luA"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_x6GShmY1EfC9xbU2q0F28w" type="3001" element="_x43jdGY1EfC9xbU2q0F28w">
+            <children xmi:type="notation:Node" xmi:id="_x6G5kGY1EfC9xbU2q0F28w" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_x6G5kWY1EfC9xbU2q0F28w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_x6HgoGY1EfC9xbU2q0F28w" type="3002" element="_x44KgGY1EfC9xbU2q0F28w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_x6HgoWY1EfC9xbU2q0F28w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6HgomY1EfC9xbU2q0F28w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_x6GSh2Y1EfC9xbU2q0F28w" fontName="Segoe UI" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6GSiGY1EfC9xbU2q0F28w" x="-22" width="30" height="30"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_FeSldlqyEfCz38snPK4luA" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vj4I-VqyEfCz38snPK4luA" x="885" y="26" width="100" height="100"/>
@@ -89,6 +133,17 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_VkEWNFqyEfCz38snPK4luA" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkEWNVqyEfCz38snPK4luA"/>
           </children>
+          <children xmi:type="notation:Node" xmi:id="_x6Hgo2Y1EfC9xbU2q0F28w" type="3001" element="_x44KgmY1EfC9xbU2q0F28w">
+            <children xmi:type="notation:Node" xmi:id="_x6HgpmY1EfC9xbU2q0F28w" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_x6Hgp2Y1EfC9xbU2q0F28w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_x6IHsGY1EfC9xbU2q0F28w" type="3002" element="_x44Kg2Y1EfC9xbU2q0F28w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_x6IHsWY1EfC9xbU2q0F28w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6IHsmY1EfC9xbU2q0F28w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_x6HgpGY1EfC9xbU2q0F28w" fontName="Segoe UI" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6HgpWY1EfC9xbU2q0F28w" x="-22" width="30" height="30"/>
+          </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_FeTMg1qyEfCz38snPK4luA" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vj4wBVqyEfCz38snPK4luA" x="1610" y="152" width="229" height="194"/>
         </children>
@@ -100,6 +155,17 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_VkEWN1qyEfCz38snPK4luA" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkEWOFqyEfCz38snPK4luA"/>
           </children>
+          <children xmi:type="notation:Node" xmi:id="_x6IHs2Y1EfC9xbU2q0F28w" type="3001" element="_x46mwGY1EfC9xbU2q0F28w">
+            <children xmi:type="notation:Node" xmi:id="_x6IHtmY1EfC9xbU2q0F28w" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_x6IHt2Y1EfC9xbU2q0F28w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_x6IuwGY1EfC9xbU2q0F28w" type="3002" element="_x46mwWY1EfC9xbU2q0F28w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_x6IuwWY1EfC9xbU2q0F28w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6IuwmY1EfC9xbU2q0F28w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_x6IHtGY1EfC9xbU2q0F28w" fontName="Segoe UI" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6IHtWY1EfC9xbU2q0F28w" x="-22" width="30" height="30"/>
+          </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_FeTMiFqyEfCz38snPK4luA" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vj5XEVqyEfCz38snPK4luA" x="2305" y="198" width="228" height="106"/>
         </children>
@@ -110,6 +176,17 @@
           <children xmi:type="notation:Node" xmi:id="_VkE9QFqyEfCz38snPK4luA" type="3016" element="_Vj5XGVqyEfCz38snPK4luA">
             <styles xmi:type="notation:ShapeStyle" xmi:id="_VkE9QVqyEfCz38snPK4luA" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkE9QlqyEfCz38snPK4luA"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_x6Iuw2Y1EfC9xbU2q0F28w" type="3001" element="_x44xkWY1EfC9xbU2q0F28w">
+            <children xmi:type="notation:Node" xmi:id="_x6JV0GY1EfC9xbU2q0F28w" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_x6JV0WY1EfC9xbU2q0F28w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_x6J84GY1EfC9xbU2q0F28w" type="3002" element="_x44xkmY1EfC9xbU2q0F28w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_x6J84WY1EfC9xbU2q0F28w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6J84mY1EfC9xbU2q0F28w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_x6IuxGY1EfC9xbU2q0F28w" fontName="Segoe UI" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6IuxWY1EfC9xbU2q0F28w" x="-22" width="30" height="30"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_FeTzkVqyEfCz38snPK4luA" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vj5XGFqyEfCz38snPK4luA" x="365" y="885" width="100" height="100"/>
@@ -342,6 +419,17 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_bTMKQVq0EfCz38snPK4luA" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bTMKQlq0EfCz38snPK4luA"/>
           </children>
+          <children xmi:type="notation:Node" xmi:id="_x6J842Y1EfC9xbU2q0F28w" type="3001" element="_x44xlGY1EfC9xbU2q0F28w">
+            <children xmi:type="notation:Node" xmi:id="_x6Kj8GY1EfC9xbU2q0F28w" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_x6Kj8WY1EfC9xbU2q0F28w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_x6Kj8mY1EfC9xbU2q0F28w" type="3002" element="_x45YoGY1EfC9xbU2q0F28w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_x6Kj82Y1EfC9xbU2q0F28w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6Kj9GY1EfC9xbU2q0F28w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_x6J85GY1EfC9xbU2q0F28w" fontName="Segoe UI" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6J85WY1EfC9xbU2q0F28w" x="-22" width="30" height="30"/>
+          </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_bTFckVq0EfCz38snPK4luA" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bTFcklq0EfCz38snPK4luA" x="2075" y="33" width="163" height="86"/>
         </children>
@@ -353,6 +441,17 @@
             <styles xmi:type="notation:ShapeStyle" xmi:id="_kK5KwVq0EfCz38snPK4luA" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kK5Kwlq0EfCz38snPK4luA"/>
           </children>
+          <children xmi:type="notation:Node" xmi:id="_x6LLAGY1EfC9xbU2q0F28w" type="3001" element="_x45YomY1EfC9xbU2q0F28w">
+            <children xmi:type="notation:Node" xmi:id="_x6LLA2Y1EfC9xbU2q0F28w" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_x6LLBGY1EfC9xbU2q0F28w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_x6LLBWY1EfC9xbU2q0F28w" type="3002" element="_x45Yo2Y1EfC9xbU2q0F28w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_x6LLBmY1EfC9xbU2q0F28w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6LLB2Y1EfC9xbU2q0F28w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_x6LLAWY1EfC9xbU2q0F28w" fontName="Segoe UI" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6LLAmY1EfC9xbU2q0F28w" x="-22" width="30" height="30"/>
+          </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_kK4jsVq0EfCz38snPK4luA" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kK4jslq0EfCz38snPK4luA" x="1940" y="118" width="163" height="66"/>
         </children>
@@ -363,6 +462,17 @@
           <children xmi:type="notation:Node" xmi:id="_ooYpwlq0EfCz38snPK4luA" type="3016" element="_ooPf0Vq0EfCz38snPK4luA">
             <styles xmi:type="notation:ShapeStyle" xmi:id="_ooYpw1q0EfCz38snPK4luA" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ooYpxFq0EfCz38snPK4luA"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_x6LLCGY1EfC9xbU2q0F28w" type="3001" element="_x45_sWY1EfC9xbU2q0F28w">
+            <children xmi:type="notation:Node" xmi:id="_x6LLC2Y1EfC9xbU2q0F28w" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_x6LLDGY1EfC9xbU2q0F28w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_x6LyEGY1EfC9xbU2q0F28w" type="3002" element="_x45_smY1EfC9xbU2q0F28w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_x6LyEWY1EfC9xbU2q0F28w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6LyEmY1EfC9xbU2q0F28w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_x6LLCWY1EfC9xbU2q0F28w" fontName="Segoe UI" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6LLCmY1EfC9xbU2q0F28w" x="-22" width="30" height="30"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_ooYCsVq0EfCz38snPK4luA" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ooYCslq0EfCz38snPK4luA" x="1940" y="229" width="176" height="76"/>
@@ -407,6 +517,17 @@
           <children xmi:type="notation:Node" xmi:id="_8i7ZsFrBEfC1SPr8LaGRZQ" type="3016" element="_8ipF0VrBEfC1SPr8LaGRZQ">
             <styles xmi:type="notation:ShapeStyle" xmi:id="_8i7ZsVrBEfC1SPr8LaGRZQ" fontName="Segoe UI"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8i7ZslrBEfC1SPr8LaGRZQ"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_x6LyE2Y1EfC9xbU2q0F28w" type="3001" element="_x46mw2Y1EfC9xbU2q0F28w">
+            <children xmi:type="notation:Node" xmi:id="_x6MZIGY1EfC9xbU2q0F28w" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_x6MZIWY1EfC9xbU2q0F28w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_x6MZImY1EfC9xbU2q0F28w" type="3002" element="_x47N0GY1EfC9xbU2q0F28w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_x6MZI2Y1EfC9xbU2q0F28w" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6MZJGY1EfC9xbU2q0F28w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_x6LyFGY1EfC9xbU2q0F28w" fontName="Segoe UI" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_x6LyFWY1EfC9xbU2q0F28w" x="-22" width="30" height="30"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_8i49cVrBEfC1SPr8LaGRZQ" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8i49clrBEfC1SPr8LaGRZQ" x="1971" y="725" width="100" height="100"/>
@@ -1018,6 +1139,15 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_ErWso1qyEfCz38snPK4luA" name="P1: Login" outgoingEdges="_FeKCklqyEfCz38snPK4luA" incomingEdges="_FeL3wFqyEfCz38snPK4luA _FeOUBVqyEfCz38snPK4luA" width="10" height="10" resizeKind="NORTH_SOUTH">
       <target xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P1: Login"/>
       <semanticElements xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P1: Login"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_x42VUWY1EfC9xbU2q0F28w" name="[User]" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.0/@responsibility.0"/>
+        <semanticElements xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.0/@responsibility.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_x42VUmY1EfC9xbU2q0F28w" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="138,226,52">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']"/>
+      </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:Ellipse" uid="_Vj1sslqyEfCz38snPK4luA" labelSize="12" borderSize="2" borderSizeComputationExpression="2" labelPosition="node" color="255,255,255">
         <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@style"/>
       </ownedStyle>
@@ -1026,6 +1156,24 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_ErXTslqyEfCz38snPK4luA" name="P3: credit application" outgoingEdges="_FeL31VqyEfCz38snPK4luA _FeMe0FqyEfCz38snPK4luA _FeMe11qyEfCz38snPK4luA _DS0sK1q1EfCz38snPK4luA" incomingEdges="_FeL3x1qyEfCz38snPK4luA _FeL3zlqyEfCz38snPK4luA _FeO7JFqyEfCz38snPK4luA" width="10" height="10" resizeKind="NORTH_SOUTH">
       <target xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P3: credit application"/>
       <semanticElements xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P3: credit application"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_x428YGY1EfC9xbU2q0F28w" name="[Store]" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.2/@responsibility.0"/>
+        <semanticElements xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.2/@responsibility.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_x428YWY1EfC9xbU2q0F28w" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="138,226,52">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']"/>
+      </ownedBorderedNodes>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_x43jcWY1EfC9xbU2q0F28w" name="[Forward]" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.2/@responsibility.1"/>
+        <semanticElements xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.2/@responsibility.1"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_x43jcmY1EfC9xbU2q0F28w" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="138,226,52">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']"/>
+      </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:Ellipse" uid="_Vj260lqyEfCz38snPK4luA" labelSize="12" borderSize="2" borderSizeComputationExpression="2" labelPosition="node" color="255,255,255">
         <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@style"/>
       </ownedStyle>
@@ -1034,6 +1182,15 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_ErXTtVqyEfCz38snPK4luA" name="P2: show overview" outgoingEdges="_FeNF6lqyEfCz38snPK4luA" incomingEdges="_FeMe5VqyEfCz38snPK4luA" width="10" height="10" resizeKind="NORTH_SOUTH">
       <target xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P2: show overview"/>
       <semanticElements xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P2: show overview"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_x43jdGY1EfC9xbU2q0F28w" name="[Forward]" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.4/@responsibility.0"/>
+        <semanticElements xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.4/@responsibility.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_x44KgGY1EfC9xbU2q0F28w" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="138,226,52">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']"/>
+      </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:Ellipse" uid="_Vj4I-lqyEfCz38snPK4luA" labelSize="12" borderSize="2" borderSizeComputationExpression="2" labelPosition="node" color="255,255,255">
         <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@style"/>
       </ownedStyle>
@@ -1050,6 +1207,15 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_ErX6wFqyEfCz38snPK4luA" name="P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)" outgoingEdges="_Nbb7Elq1EfCz38snPK4luA" incomingEdges="_FeMe11qyEfCz38snPK4luA _FeMe7FqyEfCz38snPK4luA _FeO7H1qyEfCz38snPK4luA" width="10" height="10" resizeKind="NORTH_SOUTH">
       <target xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"/>
       <semanticElements xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_x44KgmY1EfC9xbU2q0F28w" name="[Joiner]" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.6/@responsibility.0"/>
+        <semanticElements xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.6/@responsibility.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_x44Kg2Y1EfC9xbU2q0F28w" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="138,226,52">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']"/>
+      </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:Ellipse" uid="_Vj4wBlqyEfCz38snPK4luA" labelSize="12" borderSize="2" borderSizeComputationExpression="2" labelPosition="node" color="255,255,255">
         <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@style"/>
       </ownedStyle>
@@ -1058,6 +1224,15 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_ErX6xlqyEfCz38snPK4luA" name="P7: show request result" outgoingEdges="_FeNs91qyEfCz38snPK4luA" incomingEdges="_FeNF41qyEfCz38snPK4luA" width="10" height="10" resizeKind="NORTH_SOUTH">
       <target xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P7: show request result"/>
       <semanticElements xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P7: show request result"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_x44xkWY1EfC9xbU2q0F28w" name="[Forward]" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.7/@responsibility.0"/>
+        <semanticElements xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.7/@responsibility.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_x44xkmY1EfC9xbU2q0F28w" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="138,226,52">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']"/>
+      </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:Ellipse" uid="_Vj5XGVqyEfCz38snPK4luA" labelSize="12" borderSize="2" borderSizeComputationExpression="2" labelPosition="node" color="255,255,255">
         <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@style"/>
       </ownedStyle>
@@ -1066,6 +1241,15 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_bSwFYFq0EfCz38snPK4luA" name="P8: encrypt asset risk score" outgoingEdges="_SA4cL1q1EfCz38snPK4luA" incomingEdges="_yrGsNFq0EfCz38snPK4luA _PLXxFlrBEfC1SPr8LaGRZQ" width="10" height="10" resizeKind="NORTH_SOUTH">
       <target xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P8: encrypt asset risk score"/>
       <semanticElements xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P8: encrypt asset risk score"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_x44xlGY1EfC9xbU2q0F28w" name="[EncryptOrHash]" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.8/@responsibility.0"/>
+        <semanticElements xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.8/@responsibility.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_x45YoGY1EfC9xbU2q0F28w" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="138,226,52">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']"/>
+      </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:Ellipse" uid="_bSwscFq0EfCz38snPK4luA" labelSize="12" borderSize="2" borderSizeComputationExpression="2" labelPosition="node" color="255,255,255">
         <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@style"/>
       </ownedStyle>
@@ -1074,6 +1258,15 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_kKxO8Fq0EfCz38snPK4luA" name="P9: encrypt asset category" outgoingEdges="_Sbf7pVq1EfCz38snPK4luA" incomingEdges="_DS0sK1q1EfCz38snPK4luA _VeulZFrBEfC1SPr8LaGRZQ" width="10" height="10" resizeKind="NORTH_SOUTH">
       <target xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P9: encrypt asset category"/>
       <semanticElements xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P9: encrypt asset category"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_x45YomY1EfC9xbU2q0F28w" name="[EncryptOrHash]" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.9/@responsibility.0"/>
+        <semanticElements xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.9/@responsibility.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_x45Yo2Y1EfC9xbU2q0F28w" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="138,226,52">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']"/>
+      </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:Ellipse" uid="_kKxO8Vq0EfCz38snPK4luA" labelSize="12" borderSize="2" borderSizeComputationExpression="2" labelPosition="node" color="255,255,255">
         <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@style"/>
       </ownedStyle>
@@ -1082,6 +1275,15 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_ooPf0Fq0EfCz38snPK4luA" name="P10: encrypt applicant risk score" outgoingEdges="_S6tABFq1EfCz38snPK4luA" incomingEdges="_Nbb7Elq1EfCz38snPK4luA _enUh0FrBEfC1SPr8LaGRZQ" width="10" height="10" resizeKind="NORTH_SOUTH">
       <target xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P10: encrypt applicant risk score"/>
       <semanticElements xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P10: encrypt applicant risk score"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_x45_sWY1EfC9xbU2q0F28w" name="[EncryptOrHash]" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.10/@responsibility.0"/>
+        <semanticElements xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.10/@responsibility.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_x45_smY1EfC9xbU2q0F28w" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="138,226,52">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']"/>
+      </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:Ellipse" uid="_ooPf0Vq0EfCz38snPK4luA" labelSize="12" borderSize="2" borderSizeComputationExpression="2" labelPosition="node" color="255,255,255">
         <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@style"/>
       </ownedStyle>
@@ -1090,6 +1292,15 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_ErX6w1qyEfCz38snPK4luA" name="P6: loan decision (AI) R1 -  Homomorphic Encryption" outgoingEdges="_HNHEnVrCEfC1SPr8LaGRZQ" incomingEdges="_FeO7KVqyEfCz38snPK4luA _SA4cL1q1EfCz38snPK4luA _Sbf7pVq1EfCz38snPK4luA _S6tABFq1EfCz38snPK4luA" width="10" height="10" resizeKind="NORTH_SOUTH">
       <target xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P6: loan decision (AI) R1 -  Homomorphic Encryption"/>
       <semanticElements xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P6: loan decision (AI) R1 -  Homomorphic Encryption"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_x46mwGY1EfC9xbU2q0F28w" name="[Joiner]" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.11/@responsibility.0"/>
+        <semanticElements xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.11/@responsibility.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_x46mwWY1EfC9xbU2q0F28w" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="138,226,52">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']"/>
+      </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:Ellipse" uid="_Vj5XElqyEfCz38snPK4luA" labelSize="12" borderSize="2" borderSizeComputationExpression="2" labelPosition="node" color="255,255,255">
         <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@style"/>
       </ownedStyle>
@@ -1098,6 +1309,15 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_8ipF0FrBEfC1SPr8LaGRZQ" name="P11: decrypt decision details" outgoingEdges="_O8VaXFrCEfC1SPr8LaGRZQ" incomingEdges="_HNHEnVrCEfC1SPr8LaGRZQ _U4TCSFrCEfC1SPr8LaGRZQ" width="10" height="10" resizeKind="NORTH_SOUTH">
       <target xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P11: decrypt decision details"/>
       <semanticElements xmi:type="org.secdfd:Process" href="Encrypt_TestDFD.secdfd#P11: decrypt decision details"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_x46mw2Y1EfC9xbU2q0F28w" name="[Decrypt]" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.12/@responsibility.0"/>
+        <semanticElements xmi:type="org.secdfd:Responsibility" href="Encrypt_TestDFD.secdfd#//@elements.12/@responsibility.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_x47N0GY1EfC9xbU2q0F28w" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="138,226,52">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']"/>
+      </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:Ellipse" uid="_8ipF0VrBEfC1SPr8LaGRZQ" labelSize="12" borderSize="2" borderSizeComputationExpression="2" labelPosition="node" color="255,255,255">
         <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@style"/>
       </ownedStyle>
