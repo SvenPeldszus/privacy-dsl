@@ -243,7 +243,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-
           <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="clearHighlights" precondition="aql:true" elementsToSelect="var:container" candidatesExpression="aql:self">
             <element name="container"/>
             <containerView name="containerView"/>
@@ -252,7 +251,6 @@
               <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="clearHighlights" id="org.secdfd.model.presentation.Services.clearHighlights"/>
             </initialOperation>
           </ownedTools>
-
           <decorationDescriptions xsi:type="description_1:DiagramDecorationDescription">
             <triggers>
               <trigger xsi:type="tool_1:PopupMenu" name="Clear Highlights">
