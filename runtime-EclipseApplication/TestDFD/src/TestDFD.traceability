@@ -1,5 +1,90 @@
 <?xml version="1.0" encoding="ASCII"?>
-<traceability:EDFDToGraph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:traceability="http://www.example.org/traceability">
+<traceability:EDFDToGraph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:graph="http://www.example.org/graph" xmlns:org.secdfd="http://www.secdfd.org/secdfd" xmlns:traceability="http://www.example.org/traceability">
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:EDFD" href="TestDFD.secdfd#Test"/>
+    <graphElements xsi:type="graph:Subgraphs" href="TestDFD.graph#//@subgraphs.0"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Asset" href="TestDFD.secdfd#Asset data"/>
+    <graphElements xsi:type="graph:GraphAsset" href="TestDFD.graph#Asset data"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Asset" href="TestDFD.secdfd#ID"/>
+    <graphElements xsi:type="graph:GraphAsset" href="TestDFD.graph#ID"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Asset" href="TestDFD.secdfd#asset category"/>
+    <graphElements xsi:type="graph:GraphAsset" href="TestDFD.graph#asset category"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Asset" href="TestDFD.secdfd#asset risk score"/>
+    <graphElements xsi:type="graph:GraphAsset" href="TestDFD.graph#asset risk score"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Asset" href="TestDFD.secdfd#Token"/>
+    <graphElements xsi:type="graph:GraphAsset" href="TestDFD.graph#Token"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Asset" href="TestDFD.secdfd#payment history"/>
+    <graphElements xsi:type="graph:GraphAsset" href="TestDFD.graph#payment history"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Asset" href="TestDFD.secdfd#Applicant data"/>
+    <graphElements xsi:type="graph:GraphAsset" href="TestDFD.graph#Applicant data"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Asset" href="TestDFD.secdfd#decision details"/>
+    <graphElements xsi:type="graph:GraphAsset" href="TestDFD.graph#decision details"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Asset" href="TestDFD.secdfd#applicant risk score"/>
+    <graphElements xsi:type="graph:GraphAsset" href="TestDFD.graph#applicant risk score"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Asset" href="TestDFD.secdfd#Password"/>
+    <graphElements xsi:type="graph:GraphAsset" href="TestDFD.graph#Password"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Asset" href="TestDFD.secdfd#credit history"/>
+    <graphElements xsi:type="graph:GraphAsset" href="TestDFD.graph#credit history"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Process" href="TestDFD.secdfd#P6: loan decision (AI) R1"/>
+    <graphElements xsi:type="graph:Node" href="TestDFD.graph#//@subgraphs.0/@nodes.0"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:DataStore" href="TestDFD.secdfd#D1: DB"/>
+    <graphElements xsi:type="graph:Node" href="TestDFD.graph#//@subgraphs.0/@nodes.1"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Process" href="TestDFD.secdfd#P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"/>
+    <graphElements xsi:type="graph:Node" href="TestDFD.graph#//@subgraphs.0/@nodes.2"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:ExternalEntity" href="TestDFD.secdfd#E1: Applicant"/>
+    <graphElements xsi:type="graph:Node" href="TestDFD.graph#//@subgraphs.0/@nodes.3"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Process" href="TestDFD.secdfd#P3: credit application"/>
+    <graphElements xsi:type="graph:Node" href="TestDFD.graph#//@subgraphs.0/@nodes.4"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Process" href="TestDFD.secdfd#P4: calculate asset risk score (AI) - R1.2"/>
+    <graphElements xsi:type="graph:Node" href="TestDFD.graph#//@subgraphs.0/@nodes.5"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Process" href="TestDFD.secdfd#P2: show overview"/>
+    <graphElements xsi:type="graph:Node" href="TestDFD.graph#//@subgraphs.0/@nodes.6"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Process" href="TestDFD.secdfd#P1: Login"/>
+    <graphElements xsi:type="graph:Node" href="TestDFD.graph#//@subgraphs.0/@nodes.7"/>
+  </edfdGraphTraces>
+  <edfdGraphTraces>
+    <edfdElements xsi:type="org.secdfd:Process" href="TestDFD.secdfd#P7: show request result"/>
+    <graphElements xsi:type="graph:Node" href="TestDFD.graph#//@subgraphs.0/@nodes.8"/>
+  </edfdGraphTraces>
   <edfds href="TestDFD.secdfd#Test"/>
   <graphs href="TestDFD.graph#/"/>
+  <endtoendgraph href="TestDFD.graph#/"/>
 </traceability:EDFDToGraph>

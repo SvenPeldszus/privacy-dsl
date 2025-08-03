@@ -315,13 +315,12 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model::AttackerProfile" referenceName="attackerprofile">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:attName"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="Observation" valueExpression="var:attObs"/>
                 </subModelOperations>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="attackerprofile" valueExpression="var:instance"/>
                 <subModelOperations xsi:type="tool_1:ArrangeLayout"/>
               </firstModelOperations>
             </initialOperation>
             <askStringVariable name="attName" prompt="Attacker name"/>
-            <askStringVariable name="attObs" prompt="Observation (integer)"/>
           </ownedTools>
           <ownedTools xsi:type="tool:SelectionWizardDescription" name="highlightAssetFlows" candidatesExpression="aql:self.asset" elementsToSelect="var:selectedAsset" precondition="aql:true">
     <element name="selectedAsset"/>
