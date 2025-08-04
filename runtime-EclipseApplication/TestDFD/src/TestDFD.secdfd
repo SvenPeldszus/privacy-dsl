@@ -136,4 +136,4 @@ EDFD Test[
 						observation: 1
 					]
 				elements: "P6: loan decision (AI) R1"
-			] , Attackerzone2 [ attacker profiles: Externalhackman [ observation: 2 ] elements: "P1: Login" ] ]
+			] , Attackerzone2 [ attacker profiles: Hackman [ observation: 2 ] elements: "P1: Login" ] ]

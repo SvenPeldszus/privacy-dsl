@@ -322,6 +322,17 @@
             </initialOperation>
             <askStringVariable name="attName" prompt="Attacker name"/>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="RemoveElementFromTrustZone" precondition="aql:self.oclIsKindOf(model::TrustZone)" elementsToSelect="var:elementToRemove" candidatesExpression="aql:self.elements">
+            <element name="elementToRemove"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="elements" elementExpression="var:elementToRemove"/>
+              </firstModelOperations>
+              <subModelOperations xsi:type="tool_1:ArrangeLayout"/>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:SelectionWizardDescription" name="highlightAssetFlows" candidatesExpression="aql:self.asset" elementsToSelect="var:selectedAsset" precondition="aql:true">
     <element name="selectedAsset"/>
     <containerView name="containerView"/>
