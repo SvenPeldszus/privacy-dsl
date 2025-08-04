@@ -243,7 +243,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-
           <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="clearHighlights" precondition="aql:true" elementsToSelect="var:container" candidatesExpression="aql:self">
             <element name="container"/>
             <containerView name="containerView"/>
@@ -252,7 +251,6 @@
               <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="clearHighlights" id="org.secdfd.model.presentation.Services.clearHighlights"/>
             </initialOperation>
           </ownedTools>
-
           <decorationDescriptions xsi:type="description_1:DiagramDecorationDescription">
             <triggers>
               <trigger xsi:type="tool_1:PopupMenu" name="Clear Highlights">
@@ -317,13 +315,23 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model::AttackerProfile" referenceName="attackerprofile">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:attName"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="Observation" valueExpression="var:attObs"/>
                 </subModelOperations>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="attackerprofile" valueExpression="var:instance"/>
                 <subModelOperations xsi:type="tool_1:ArrangeLayout"/>
               </firstModelOperations>
             </initialOperation>
             <askStringVariable name="attName" prompt="Attacker name"/>
-            <askStringVariable name="attObs" prompt="Observation (integer)"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="RemoveElementFromTrustZone" precondition="aql:self.oclIsKindOf(model::TrustZone)" elementsToSelect="var:elementToRemove" candidatesExpression="aql:self.elements">
+            <element name="elementToRemove"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="elements" elementExpression="var:elementToRemove"/>
+              </firstModelOperations>
+              <subModelOperations xsi:type="tool_1:ArrangeLayout"/>
+            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:SelectionWizardDescription" name="highlightAssetFlows" candidatesExpression="aql:self.asset" elementsToSelect="var:selectedAsset" precondition="aql:true">
     <element name="selectedAsset"/>

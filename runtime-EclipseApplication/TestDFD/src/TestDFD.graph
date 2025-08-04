@@ -1,2 +1,45 @@
 <?xml version="1.0" encoding="ASCII"?>
-<graph:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:graph="http://www.example.org/graph"/>
+<graph:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:graph="http://www.example.org/graph">
+  <subgraphs>
+    <nodes name="P6: loan decision (AI) R1"/>
+    <nodes name="D1: DB"/>
+    <nodes name="P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"/>
+    <nodes name="E1: Applicant"/>
+    <nodes name="P3: credit application"/>
+    <nodes name="P4: calculate asset risk score (AI) - R1.2"/>
+    <nodes name="P2: show overview"/>
+    <nodes name="P1: Login" Attacker="true"/>
+    <nodes name="P7: show request result"/>
+    <assets ID="Asset data">
+      <assetlabel objective="Confidentiality" level="3"/>
+    </assets>
+    <assets ID="ID"/>
+    <assets ID="asset category">
+      <assetlabel level="3"/>
+    </assets>
+    <assets ID="asset risk score">
+      <assetlabel objective="Confidentiality" level="1"/>
+    </assets>
+    <assets ID="Token">
+      <assetlabel objective="Confidentiality" level="3"/>
+    </assets>
+    <assets ID="payment history">
+      <assetlabel objective="Confidentiality" level="3"/>
+    </assets>
+    <assets ID="Applicant data">
+      <assetlabel objective="Confidentiality" level="3"/>
+    </assets>
+    <assets ID="decision details">
+      <assetlabel objective="Confidentiality" level="3"/>
+    </assets>
+    <assets ID="applicant risk score">
+      <assetlabel level="3"/>
+    </assets>
+    <assets ID="Password">
+      <assetlabel objective="Confidentiality" level="3"/>
+    </assets>
+    <assets ID="credit history">
+      <assetlabel objective="Confidentiality" level="3"/>
+    </assets>
+  </subgraphs>
+</graph:Graph>
