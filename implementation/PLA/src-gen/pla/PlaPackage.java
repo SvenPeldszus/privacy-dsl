@@ -78,22 +78,13 @@ public interface PlaPackage extends EPackage {
 	int IDENTIFIABLE__ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IDENTIFIABLE__NUMBER = 1;
-
-	/**
 	 * The number of structural features of the '<em>Identifiable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IDENTIFIABLE_FEATURE_COUNT = 2;
+	int IDENTIFIABLE_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Identifiable</em>' class.
@@ -122,15 +113,6 @@ public interface PlaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTOR__ID = IDENTIFIABLE__ID;
-
-	/**
-	 * The feature id for the '<em><b>Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__NUMBER = IDENTIFIABLE__NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -197,15 +179,6 @@ public interface PlaPackage extends EPackage {
 	int THIRD_PARTY__ID = ACTOR__ID;
 
 	/**
-	 * The feature id for the '<em><b>Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THIRD_PARTY__NUMBER = ACTOR__NUMBER;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -268,15 +241,6 @@ public interface PlaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_STORAGE__ID = ACTOR__ID;
-
-	/**
-	 * The feature id for the '<em><b>Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_STORAGE__NUMBER = ACTOR__NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -343,15 +307,6 @@ public interface PlaPackage extends EPackage {
 	int PERSONAL_DATA_ASSET__ID = IDENTIFIABLE__ID;
 
 	/**
-	 * The feature id for the '<em><b>Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSONAL_DATA_ASSET__NUMBER = IDENTIFIABLE__NUMBER;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -388,13 +343,31 @@ public interface PlaPackage extends EPackage {
 	int PERSONAL_DATA_ASSET__LEGAL_BASIS = IDENTIFIABLE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Purposes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONAL_DATA_ASSET__PURPOSES = IDENTIFIABLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Actors</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONAL_DATA_ASSET__ACTORS = IDENTIFIABLE_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Personal Data Asset</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONAL_DATA_ASSET_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 4;
+	int PERSONAL_DATA_ASSET_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Personal Data Asset</em>' class.
@@ -425,15 +398,6 @@ public interface PlaPackage extends EPackage {
 	int PURPOSE__ID = IDENTIFIABLE__ID;
 
 	/**
-	 * The feature id for the '<em><b>Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PURPOSE__NUMBER = IDENTIFIABLE__NUMBER;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -461,31 +425,13 @@ public interface PlaPackage extends EPackage {
 	int PURPOSE__ACTIONS = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Income Assets</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PURPOSE__INCOME_ASSETS = IDENTIFIABLE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Outcome Assets</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PURPOSE__OUTCOME_ASSETS = IDENTIFIABLE_FEATURE_COUNT + 4;
-
-	/**
 	 * The number of structural features of the '<em>Purpose</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PURPOSE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 5;
+	int PURPOSE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Purpose</em>' class.
@@ -514,15 +460,6 @@ public interface PlaPackage extends EPackage {
 	 * @ordered
 	 */
 	int PL_AS__ID = IDENTIFIABLE__ID;
-
-	/**
-	 * The feature id for the '<em><b>Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PL_AS__NUMBER = IDENTIFIABLE__NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
@@ -736,6 +673,28 @@ public interface PlaPackage extends EPackage {
 	EAttribute getPersonalDataAsset_LegalBasis();
 
 	/**
+	 * Returns the meta object for the reference list '{@link pla.PersonalDataAsset#getPurposes <em>Purposes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Purposes</em>'.
+	 * @see pla.PersonalDataAsset#getPurposes()
+	 * @see #getPersonalDataAsset()
+	 * @generated
+	 */
+	EReference getPersonalDataAsset_Purposes();
+
+	/**
+	 * Returns the meta object for the reference list '{@link pla.PersonalDataAsset#getActors <em>Actors</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Actors</em>'.
+	 * @see pla.PersonalDataAsset#getActors()
+	 * @see #getPersonalDataAsset()
+	 * @generated
+	 */
+	EReference getPersonalDataAsset_Actors();
+
+	/**
 	 * Returns the meta object for class '{@link pla.Purpose <em>Purpose</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -777,28 +736,6 @@ public interface PlaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPurpose_Actions();
-
-	/**
-	 * Returns the meta object for the reference list '{@link pla.Purpose#getIncomeAssets <em>Income Assets</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Income Assets</em>'.
-	 * @see pla.Purpose#getIncomeAssets()
-	 * @see #getPurpose()
-	 * @generated
-	 */
-	EReference getPurpose_IncomeAssets();
-
-	/**
-	 * Returns the meta object for the reference list '{@link pla.Purpose#getOutcomeAssets <em>Outcome Assets</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Outcome Assets</em>'.
-	 * @see pla.Purpose#getOutcomeAssets()
-	 * @see #getPurpose()
-	 * @generated
-	 */
-	EReference getPurpose_OutcomeAssets();
 
 	/**
 	 * Returns the meta object for class '{@link pla.PLAs <em>PL As</em>}'.
@@ -894,17 +831,6 @@ public interface PlaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getIdentifiable_ID();
-
-	/**
-	 * Returns the meta object for the attribute '{@link pla.Identifiable#getNumber <em>Number</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Number</em>'.
-	 * @see pla.Identifiable#getNumber()
-	 * @see #getIdentifiable()
-	 * @generated
-	 */
-	EAttribute getIdentifiable_Number();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1026,6 +952,22 @@ public interface PlaPackage extends EPackage {
 		EAttribute PERSONAL_DATA_ASSET__LEGAL_BASIS = eINSTANCE.getPersonalDataAsset_LegalBasis();
 
 		/**
+		 * The meta object literal for the '<em><b>Purposes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSONAL_DATA_ASSET__PURPOSES = eINSTANCE.getPersonalDataAsset_Purposes();
+
+		/**
+		 * The meta object literal for the '<em><b>Actors</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSONAL_DATA_ASSET__ACTORS = eINSTANCE.getPersonalDataAsset_Actors();
+
+		/**
 		 * The meta object literal for the '{@link pla.impl.PurposeImpl <em>Purpose</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1058,22 +1000,6 @@ public interface PlaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PURPOSE__ACTIONS = eINSTANCE.getPurpose_Actions();
-
-		/**
-		 * The meta object literal for the '<em><b>Income Assets</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PURPOSE__INCOME_ASSETS = eINSTANCE.getPurpose_IncomeAssets();
-
-		/**
-		 * The meta object literal for the '<em><b>Outcome Assets</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PURPOSE__OUTCOME_ASSETS = eINSTANCE.getPurpose_OutcomeAssets();
 
 		/**
 		 * The meta object literal for the '{@link pla.impl.PLAsImpl <em>PL As</em>}' class.
@@ -1154,14 +1080,6 @@ public interface PlaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute IDENTIFIABLE__ID = eINSTANCE.getIdentifiable_ID();
-
-		/**
-		 * The meta object literal for the '<em><b>Number</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute IDENTIFIABLE__NUMBER = eINSTANCE.getIdentifiable_Number();
 
 	}
 

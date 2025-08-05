@@ -61,11 +61,12 @@ public class PersonalDataAssetItemProvider
 			super.getPropertyDescriptors(object);
 
 			addIDPropertyDescriptor(object);
-			addNumberPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addTypePropertyDescriptor(object);
 			addPrivacyLabelPropertyDescriptor(object);
 			addLegalBasisPropertyDescriptor(object);
+			addPurposesPropertyDescriptor(object);
+			addActorsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -88,28 +89,6 @@ public class PersonalDataAssetItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Number feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Identifiable_number_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_number_feature", "_UI_Identifiable_type"),
-				 PlaPackage.Literals.IDENTIFIABLE__NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -203,6 +182,50 @@ public class PersonalDataAssetItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Purposes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPurposesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PersonalDataAsset_purposes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PersonalDataAsset_purposes_feature", "_UI_PersonalDataAsset_type"),
+				 PlaPackage.Literals.PERSONAL_DATA_ASSET__PURPOSES,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Actors feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addActorsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PersonalDataAsset_actors_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PersonalDataAsset_actors_feature", "_UI_PersonalDataAsset_type"),
+				 PlaPackage.Literals.PERSONAL_DATA_ASSET__ACTORS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns PersonalDataAsset.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -241,7 +264,6 @@ public class PersonalDataAssetItemProvider
 
 		switch (notification.getFeatureID(PersonalDataAsset.class)) {
 			case PlaPackage.PERSONAL_DATA_ASSET__ID:
-			case PlaPackage.PERSONAL_DATA_ASSET__NUMBER:
 			case PlaPackage.PERSONAL_DATA_ASSET__NAME:
 			case PlaPackage.PERSONAL_DATA_ASSET__TYPE:
 			case PlaPackage.PERSONAL_DATA_ASSET__PRIVACY_LABEL:

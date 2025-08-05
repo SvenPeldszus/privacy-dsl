@@ -21,7 +21,6 @@ import pla.PlaPackage;
  * </p>
  * <ul>
  *   <li>{@link pla.impl.ActorImpl#getID <em>ID</em>}</li>
- *   <li>{@link pla.impl.ActorImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link pla.impl.ActorImpl#getName <em>Name</em>}</li>
  *   <li>{@link pla.impl.ActorImpl#getContact <em>Contact</em>}</li>
  *   <li>{@link pla.impl.ActorImpl#getAddress <em>Address</em>}</li>
@@ -49,26 +48,6 @@ public abstract class ActorImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getNumber() <em>Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int NUMBER_EDEFAULT = -1;
-
-	/**
-	 * The cached value of the '{@link #getNumber() <em>Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected int number = NUMBER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -178,29 +157,6 @@ public abstract class ActorImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
-	public int getNumber() {
-		return number;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setNumber(int newNumber) {
-		int oldNumber = number;
-		number = newNumber;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PlaPackage.ACTOR__NUMBER, oldNumber, number));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -274,8 +230,6 @@ public abstract class ActorImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case PlaPackage.ACTOR__ID:
 				return getID();
-			case PlaPackage.ACTOR__NUMBER:
-				return getNumber();
 			case PlaPackage.ACTOR__NAME:
 				return getName();
 			case PlaPackage.ACTOR__CONTACT:
@@ -296,9 +250,6 @@ public abstract class ActorImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case PlaPackage.ACTOR__ID:
 				setID((String)newValue);
-				return;
-			case PlaPackage.ACTOR__NUMBER:
-				setNumber((Integer)newValue);
 				return;
 			case PlaPackage.ACTOR__NAME:
 				setName((String)newValue);
@@ -324,9 +275,6 @@ public abstract class ActorImpl extends MinimalEObjectImpl.Container implements 
 			case PlaPackage.ACTOR__ID:
 				setID(ID_EDEFAULT);
 				return;
-			case PlaPackage.ACTOR__NUMBER:
-				setNumber(NUMBER_EDEFAULT);
-				return;
 			case PlaPackage.ACTOR__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -350,8 +298,6 @@ public abstract class ActorImpl extends MinimalEObjectImpl.Container implements 
 		switch (featureID) {
 			case PlaPackage.ACTOR__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case PlaPackage.ACTOR__NUMBER:
-				return number != NUMBER_EDEFAULT;
 			case PlaPackage.ACTOR__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case PlaPackage.ACTOR__CONTACT:
@@ -374,8 +320,6 @@ public abstract class ActorImpl extends MinimalEObjectImpl.Container implements 
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (ID: ");
 		result.append(id);
-		result.append(", number: ");
-		result.append(number);
 		result.append(", name: ");
 		result.append(name);
 		result.append(", contact: ");

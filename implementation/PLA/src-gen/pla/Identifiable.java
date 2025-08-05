@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link pla.Identifiable#getID <em>ID</em>}</li>
- *   <li>{@link pla.Identifiable#getNumber <em>Number</em>}</li>
  * </ul>
  *
  * @see pla.PlaPackage#getIdentifiable()
@@ -43,28 +42,5 @@ public interface Identifiable extends EObject {
 	 * @generated
 	 */
 	void setID(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Number</b></em>' attribute.
-	 * The default value is <code>"-1"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Number</em>' attribute.
-	 * @see #setNumber(int)
-	 * @see pla.PlaPackage#getIdentifiable_Number()
-	 * @model default="-1" required="true"
-	 * @generated
-	 */
-	int getNumber();
-
-	/**
-	 * Sets the value of the '{@link pla.Identifiable#getNumber <em>Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Number</em>' attribute.
-	 * @see #getNumber()
-	 * @generated
-	 */
-	void setNumber(int value);
 
 } // Identifiable

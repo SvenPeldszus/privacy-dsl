@@ -267,6 +267,26 @@ public class PlaPackageImpl extends EPackageImpl implements PlaPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getPersonalDataAsset_Purposes() {
+		return (EReference)personalDataAssetEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPersonalDataAsset_Actors() {
+		return (EReference)personalDataAssetEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPurpose() {
 		return purposeEClass;
 	}
@@ -299,26 +319,6 @@ public class PlaPackageImpl extends EPackageImpl implements PlaPackage {
 	@Override
 	public EAttribute getPurpose_Actions() {
 		return (EAttribute)purposeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPurpose_IncomeAssets() {
-		return (EReference)purposeEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPurpose_OutcomeAssets() {
-		return (EReference)purposeEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -417,16 +417,6 @@ public class PlaPackageImpl extends EPackageImpl implements PlaPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getIdentifiable_Number() {
-		return (EAttribute)identifiableEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public PlaFactory getPlaFactory() {
 		return (PlaFactory)getEFactoryInstance();
 	}
@@ -464,13 +454,13 @@ public class PlaPackageImpl extends EPackageImpl implements PlaPackage {
 		createEAttribute(personalDataAssetEClass, PERSONAL_DATA_ASSET__TYPE);
 		createEAttribute(personalDataAssetEClass, PERSONAL_DATA_ASSET__PRIVACY_LABEL);
 		createEAttribute(personalDataAssetEClass, PERSONAL_DATA_ASSET__LEGAL_BASIS);
+		createEReference(personalDataAssetEClass, PERSONAL_DATA_ASSET__PURPOSES);
+		createEReference(personalDataAssetEClass, PERSONAL_DATA_ASSET__ACTORS);
 
 		purposeEClass = createEClass(PURPOSE);
 		createEAttribute(purposeEClass, PURPOSE__NAME);
 		createEAttribute(purposeEClass, PURPOSE__PURPOSE_TEXT);
 		createEAttribute(purposeEClass, PURPOSE__ACTIONS);
-		createEReference(purposeEClass, PURPOSE__INCOME_ASSETS);
-		createEReference(purposeEClass, PURPOSE__OUTCOME_ASSETS);
 
 		plAsEClass = createEClass(PL_AS);
 		createEReference(plAsEClass, PL_AS__ACTORS);
@@ -479,7 +469,6 @@ public class PlaPackageImpl extends EPackageImpl implements PlaPackage {
 
 		identifiableEClass = createEClass(IDENTIFIABLE);
 		createEAttribute(identifiableEClass, IDENTIFIABLE__ID);
-		createEAttribute(identifiableEClass, IDENTIFIABLE__NUMBER);
 
 		plaEClass = createEClass(PLA);
 		createEReference(plaEClass, PLA__PLAS);
@@ -538,13 +527,13 @@ public class PlaPackageImpl extends EPackageImpl implements PlaPackage {
 		initEAttribute(getPersonalDataAsset_Type(), ecorePackage.getEString(), "type", null, 0, 1, PersonalDataAsset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPersonalDataAsset_PrivacyLabel(), ecorePackage.getEString(), "privacyLabel", null, 0, 1, PersonalDataAsset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPersonalDataAsset_LegalBasis(), this.getLegalBasis(), "legalBasis", null, 1, 1, PersonalDataAsset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPersonalDataAsset_Purposes(), this.getPurpose(), null, "purposes", null, 0, -1, PersonalDataAsset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPersonalDataAsset_Actors(), this.getActor(), null, "actors", null, 0, -1, PersonalDataAsset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(purposeEClass, Purpose.class, "Purpose", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPurpose_Name(), ecorePackage.getEString(), "name", null, 0, 1, Purpose.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPurpose_PurposeText(), ecorePackage.getEString(), "purposeText", null, 0, 1, Purpose.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPurpose_Actions(), ecorePackage.getEString(), "actions", null, 0, -1, Purpose.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPurpose_IncomeAssets(), this.getPersonalDataAsset(), null, "incomeAssets", null, 0, -1, Purpose.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPurpose_OutcomeAssets(), this.getPersonalDataAsset(), null, "outcomeAssets", null, 0, -1, Purpose.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(plAsEClass, PLAs.class, "PLAs", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPLAs_Actors(), this.getActor(), null, "actors", null, 0, -1, PLAs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -553,7 +542,6 @@ public class PlaPackageImpl extends EPackageImpl implements PlaPackage {
 
 		initEClass(identifiableEClass, Identifiable.class, "Identifiable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIdentifiable_ID(), ecorePackage.getEString(), "ID", null, 0, 1, Identifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIdentifiable_Number(), ecorePackage.getEInt(), "number", "-1", 1, 1, Identifiable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(plaEClass, pla.PLA.class, "PLA", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPLA_Plas(), this.getPLAs(), null, "plas", null, 0, -1, pla.PLA.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

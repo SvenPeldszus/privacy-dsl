@@ -2,16 +2,21 @@
  */
 package pla.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import pla.Actor;
 import pla.LegalBasis;
 import pla.PersonalDataAsset;
 import pla.PlaPackage;
+import pla.Purpose;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,11 +27,12 @@ import pla.PlaPackage;
  * </p>
  * <ul>
  *   <li>{@link pla.impl.PersonalDataAssetImpl#getID <em>ID</em>}</li>
- *   <li>{@link pla.impl.PersonalDataAssetImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link pla.impl.PersonalDataAssetImpl#getName <em>Name</em>}</li>
  *   <li>{@link pla.impl.PersonalDataAssetImpl#getType <em>Type</em>}</li>
  *   <li>{@link pla.impl.PersonalDataAssetImpl#getPrivacyLabel <em>Privacy Label</em>}</li>
  *   <li>{@link pla.impl.PersonalDataAssetImpl#getLegalBasis <em>Legal Basis</em>}</li>
+ *   <li>{@link pla.impl.PersonalDataAssetImpl#getPurposes <em>Purposes</em>}</li>
+ *   <li>{@link pla.impl.PersonalDataAssetImpl#getActors <em>Actors</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,26 +57,6 @@ public class PersonalDataAssetImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getNumber() <em>Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int NUMBER_EDEFAULT = -1;
-
-	/**
-	 * The cached value of the '{@link #getNumber() <em>Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected int number = NUMBER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -153,6 +139,26 @@ public class PersonalDataAssetImpl extends MinimalEObjectImpl.Container implemen
 	protected LegalBasis legalBasis = LEGAL_BASIS_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getPurposes() <em>Purposes</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPurposes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Purpose> purposes;
+
+	/**
+	 * The cached value of the '{@link #getActors() <em>Actors</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActors()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Actor> actors;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -192,29 +198,6 @@ public class PersonalDataAssetImpl extends MinimalEObjectImpl.Container implemen
 		id = newID;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, PlaPackage.PERSONAL_DATA_ASSET__ID, oldID, id));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int getNumber() {
-		return number;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setNumber(int newNumber) {
-		int oldNumber = number;
-		number = newNumber;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PlaPackage.PERSONAL_DATA_ASSET__NUMBER, oldNumber, number));
 	}
 
 	/**
@@ -315,12 +298,36 @@ public class PersonalDataAssetImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 */
 	@Override
+	public EList<Purpose> getPurposes() {
+		if (purposes == null) {
+			purposes = new EObjectResolvingEList<Purpose>(Purpose.class, this, PlaPackage.PERSONAL_DATA_ASSET__PURPOSES);
+		}
+		return purposes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Actor> getActors() {
+		if (actors == null) {
+			actors = new EObjectResolvingEList<Actor>(Actor.class, this, PlaPackage.PERSONAL_DATA_ASSET__ACTORS);
+		}
+		return actors;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case PlaPackage.PERSONAL_DATA_ASSET__ID:
 				return getID();
-			case PlaPackage.PERSONAL_DATA_ASSET__NUMBER:
-				return getNumber();
 			case PlaPackage.PERSONAL_DATA_ASSET__NAME:
 				return getName();
 			case PlaPackage.PERSONAL_DATA_ASSET__TYPE:
@@ -329,6 +336,10 @@ public class PersonalDataAssetImpl extends MinimalEObjectImpl.Container implemen
 				return getPrivacyLabel();
 			case PlaPackage.PERSONAL_DATA_ASSET__LEGAL_BASIS:
 				return getLegalBasis();
+			case PlaPackage.PERSONAL_DATA_ASSET__PURPOSES:
+				return getPurposes();
+			case PlaPackage.PERSONAL_DATA_ASSET__ACTORS:
+				return getActors();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -338,14 +349,12 @@ public class PersonalDataAssetImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PlaPackage.PERSONAL_DATA_ASSET__ID:
 				setID((String)newValue);
-				return;
-			case PlaPackage.PERSONAL_DATA_ASSET__NUMBER:
-				setNumber((Integer)newValue);
 				return;
 			case PlaPackage.PERSONAL_DATA_ASSET__NAME:
 				setName((String)newValue);
@@ -358,6 +367,14 @@ public class PersonalDataAssetImpl extends MinimalEObjectImpl.Container implemen
 				return;
 			case PlaPackage.PERSONAL_DATA_ASSET__LEGAL_BASIS:
 				setLegalBasis((LegalBasis)newValue);
+				return;
+			case PlaPackage.PERSONAL_DATA_ASSET__PURPOSES:
+				getPurposes().clear();
+				getPurposes().addAll((Collection<? extends Purpose>)newValue);
+				return;
+			case PlaPackage.PERSONAL_DATA_ASSET__ACTORS:
+				getActors().clear();
+				getActors().addAll((Collection<? extends Actor>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -374,9 +391,6 @@ public class PersonalDataAssetImpl extends MinimalEObjectImpl.Container implemen
 			case PlaPackage.PERSONAL_DATA_ASSET__ID:
 				setID(ID_EDEFAULT);
 				return;
-			case PlaPackage.PERSONAL_DATA_ASSET__NUMBER:
-				setNumber(NUMBER_EDEFAULT);
-				return;
 			case PlaPackage.PERSONAL_DATA_ASSET__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -388,6 +402,12 @@ public class PersonalDataAssetImpl extends MinimalEObjectImpl.Container implemen
 				return;
 			case PlaPackage.PERSONAL_DATA_ASSET__LEGAL_BASIS:
 				setLegalBasis(LEGAL_BASIS_EDEFAULT);
+				return;
+			case PlaPackage.PERSONAL_DATA_ASSET__PURPOSES:
+				getPurposes().clear();
+				return;
+			case PlaPackage.PERSONAL_DATA_ASSET__ACTORS:
+				getActors().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -403,8 +423,6 @@ public class PersonalDataAssetImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 			case PlaPackage.PERSONAL_DATA_ASSET__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case PlaPackage.PERSONAL_DATA_ASSET__NUMBER:
-				return number != NUMBER_EDEFAULT;
 			case PlaPackage.PERSONAL_DATA_ASSET__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case PlaPackage.PERSONAL_DATA_ASSET__TYPE:
@@ -413,6 +431,10 @@ public class PersonalDataAssetImpl extends MinimalEObjectImpl.Container implemen
 				return PRIVACY_LABEL_EDEFAULT == null ? privacyLabel != null : !PRIVACY_LABEL_EDEFAULT.equals(privacyLabel);
 			case PlaPackage.PERSONAL_DATA_ASSET__LEGAL_BASIS:
 				return legalBasis != LEGAL_BASIS_EDEFAULT;
+			case PlaPackage.PERSONAL_DATA_ASSET__PURPOSES:
+				return purposes != null && !purposes.isEmpty();
+			case PlaPackage.PERSONAL_DATA_ASSET__ACTORS:
+				return actors != null && !actors.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -429,8 +451,6 @@ public class PersonalDataAssetImpl extends MinimalEObjectImpl.Container implemen
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (ID: ");
 		result.append(id);
-		result.append(", number: ");
-		result.append(number);
 		result.append(", name: ");
 		result.append(name);
 		result.append(", type: ");

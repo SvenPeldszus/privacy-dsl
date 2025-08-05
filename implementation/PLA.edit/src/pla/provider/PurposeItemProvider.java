@@ -61,12 +61,9 @@ public class PurposeItemProvider
 			super.getPropertyDescriptors(object);
 
 			addIDPropertyDescriptor(object);
-			addNumberPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addPurposeTextPropertyDescriptor(object);
 			addActionsPropertyDescriptor(object);
-			addIncomeAssetsPropertyDescriptor(object);
-			addOutcomeAssetsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -89,28 +86,6 @@ public class PurposeItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Number feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Identifiable_number_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_number_feature", "_UI_Identifiable_type"),
-				 PlaPackage.Literals.IDENTIFIABLE__NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -182,50 +157,6 @@ public class PurposeItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Income Assets feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIncomeAssetsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Purpose_incomeAssets_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Purpose_incomeAssets_feature", "_UI_Purpose_type"),
-				 PlaPackage.Literals.PURPOSE__INCOME_ASSETS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Outcome Assets feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOutcomeAssetsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Purpose_outcomeAssets_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Purpose_outcomeAssets_feature", "_UI_Purpose_type"),
-				 PlaPackage.Literals.PURPOSE__OUTCOME_ASSETS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns Purpose.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -264,7 +195,6 @@ public class PurposeItemProvider
 
 		switch (notification.getFeatureID(Purpose.class)) {
 			case PlaPackage.PURPOSE__ID:
-			case PlaPackage.PURPOSE__NUMBER:
 			case PlaPackage.PURPOSE__NAME:
 			case PlaPackage.PURPOSE__PURPOSE_TEXT:
 			case PlaPackage.PURPOSE__ACTIONS:

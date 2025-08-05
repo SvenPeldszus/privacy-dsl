@@ -33,7 +33,6 @@ import pla.Purpose;
  * </p>
  * <ul>
  *   <li>{@link pla.impl.PLAsImpl#getID <em>ID</em>}</li>
- *   <li>{@link pla.impl.PLAsImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link pla.impl.PLAsImpl#getActors <em>Actors</em>}</li>
  *   <li>{@link pla.impl.PLAsImpl#getPurposes <em>Purposes</em>}</li>
  *   <li>{@link pla.impl.PLAsImpl#getPersonalDataAssets <em>Personal Data Assets</em>}</li>
@@ -61,26 +60,6 @@ public class PLAsImpl extends MinimalEObjectImpl.Container implements PLAs {
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getNumber() <em>Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int NUMBER_EDEFAULT = -1;
-
-	/**
-	 * The cached value of the '{@link #getNumber() <em>Number</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNumber()
-	 * @generated
-	 * @ordered
-	 */
-	protected int number = NUMBER_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getActors() <em>Actors</em>}' containment reference list.
@@ -160,29 +139,6 @@ public class PLAsImpl extends MinimalEObjectImpl.Container implements PLAs {
 	 * @generated
 	 */
 	@Override
-	public int getNumber() {
-		return number;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setNumber(int newNumber) {
-		int oldNumber = number;
-		number = newNumber;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PlaPackage.PL_AS__NUMBER, oldNumber, number));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<Actor> getActors() {
 		if (actors == null) {
 			actors = new EObjectContainmentEList<Actor>(Actor.class, this, PlaPackage.PL_AS__ACTORS);
@@ -244,8 +200,6 @@ public class PLAsImpl extends MinimalEObjectImpl.Container implements PLAs {
 		switch (featureID) {
 			case PlaPackage.PL_AS__ID:
 				return getID();
-			case PlaPackage.PL_AS__NUMBER:
-				return getNumber();
 			case PlaPackage.PL_AS__ACTORS:
 				return getActors();
 			case PlaPackage.PL_AS__PURPOSES:
@@ -267,9 +221,6 @@ public class PLAsImpl extends MinimalEObjectImpl.Container implements PLAs {
 		switch (featureID) {
 			case PlaPackage.PL_AS__ID:
 				setID((String)newValue);
-				return;
-			case PlaPackage.PL_AS__NUMBER:
-				setNumber((Integer)newValue);
 				return;
 			case PlaPackage.PL_AS__ACTORS:
 				getActors().clear();
@@ -298,9 +249,6 @@ public class PLAsImpl extends MinimalEObjectImpl.Container implements PLAs {
 			case PlaPackage.PL_AS__ID:
 				setID(ID_EDEFAULT);
 				return;
-			case PlaPackage.PL_AS__NUMBER:
-				setNumber(NUMBER_EDEFAULT);
-				return;
 			case PlaPackage.PL_AS__ACTORS:
 				getActors().clear();
 				return;
@@ -324,8 +272,6 @@ public class PLAsImpl extends MinimalEObjectImpl.Container implements PLAs {
 		switch (featureID) {
 			case PlaPackage.PL_AS__ID:
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-			case PlaPackage.PL_AS__NUMBER:
-				return number != NUMBER_EDEFAULT;
 			case PlaPackage.PL_AS__ACTORS:
 				return actors != null && !actors.isEmpty();
 			case PlaPackage.PL_AS__PURPOSES:
@@ -348,8 +294,6 @@ public class PLAsImpl extends MinimalEObjectImpl.Container implements PLAs {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (ID: ");
 		result.append(id);
-		result.append(", number: ");
-		result.append(number);
 		result.append(')');
 		return result.toString();
 	}

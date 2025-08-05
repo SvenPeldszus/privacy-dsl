@@ -61,7 +61,6 @@ public class ActorItemProvider
 			super.getPropertyDescriptors(object);
 
 			addIDPropertyDescriptor(object);
-			addNumberPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addContactPropertyDescriptor(object);
 			addAddressPropertyDescriptor(object);
@@ -87,28 +86,6 @@ public class ActorItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Number feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Identifiable_number_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_number_feature", "_UI_Identifiable_type"),
-				 PlaPackage.Literals.IDENTIFIABLE__NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -207,7 +184,6 @@ public class ActorItemProvider
 
 		switch (notification.getFeatureID(Actor.class)) {
 			case PlaPackage.ACTOR__ID:
-			case PlaPackage.ACTOR__NUMBER:
 			case PlaPackage.ACTOR__NAME:
 			case PlaPackage.ACTOR__CONTACT:
 			case PlaPackage.ACTOR__ADDRESS:

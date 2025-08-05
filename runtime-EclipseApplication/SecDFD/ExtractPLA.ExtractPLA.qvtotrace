@@ -13,7 +13,7 @@
     <result>
       <result kind="OUT" name="result" type="PLA">
         <value>
-          <modelElement href="ExtractPLA.pla#/"/>
+          <modelElement href="ExtractPLA.pla#/0"/>
         </value>
       </result>
     </result>
@@ -32,6 +32,60 @@
       <result kind="OUT" name="result" type="PLAs">
         <value>
           <modelElement href="ExtractPLA.pla#Test"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="asset2PDA" package="ExtractPLA" module="ExtractPLA"/>
+    <context>
+      <context name="self" type="Asset">
+        <value>
+          <modelElement href="src/My.secdfd#Applicant data"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="PersonalDataAsset">
+        <value>
+          <modelElement href="ExtractPLA.pla#Applicant_data"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="process2Purpose" package="ExtractPLA" module="ExtractPLA"/>
+    <context>
+      <context name="self" type="Process">
+        <value>
+          <modelElement href="src/My.secdfd#P3: credit application"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Purpose">
+        <value>
+          <modelElement href="ExtractPLA.pla#P3__credit_application"/>
+        </value>
+      </result>
+    </result>
+  </traceRecords>
+  <traceRecords>
+    <mappingOperation name="process2Purpose" package="ExtractPLA" module="ExtractPLA"/>
+    <context>
+      <context name="self" type="Process">
+        <value>
+          <modelElement href="src/My.secdfd#P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"/>
+        </value>
+      </context>
+    </context>
+    <parameters/>
+    <result>
+      <result kind="OUT" name="result" type="Purpose">
+        <value>
+          <modelElement href="ExtractPLA.pla#P5__calculate_applicant_risk_score__AI___R1_1__R1_2__R1_4_"/>
         </value>
       </result>
     </result>
@@ -73,96 +127,6 @@
     </result>
   </traceRecords>
   <traceRecords>
-    <mappingOperation name="process2Purpose" package="ExtractPLA" module="ExtractPLA"/>
-    <context>
-      <context name="self" type="Process">
-        <value>
-          <modelElement href="src/My.secdfd#P1: Login"/>
-        </value>
-      </context>
-    </context>
-    <parameters>
-      <parameters name="secdfd" type="EDFD">
-        <value>
-          <modelElement href="src/My.secdfd#Test"/>
-        </value>
-      </parameters>
-    </parameters>
-    <result>
-      <result kind="OUT" name="result" type="Purpose">
-        <value>
-          <modelElement href="ExtractPLA.pla#P1__Login"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="process2Purpose" package="ExtractPLA" module="ExtractPLA"/>
-    <context>
-      <context name="self" type="Process">
-        <value>
-          <modelElement href="src/My.secdfd#P3: credit application"/>
-        </value>
-      </context>
-    </context>
-    <parameters>
-      <parameters name="secdfd" type="EDFD">
-        <value>
-          <modelElement href="src/My.secdfd#Test"/>
-        </value>
-      </parameters>
-    </parameters>
-    <result>
-      <result kind="OUT" name="result" type="Purpose">
-        <value>
-          <modelElement href="ExtractPLA.pla#P3__credit_application"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="asset2PDA" package="ExtractPLA" module="ExtractPLA"/>
-    <context>
-      <context name="self" type="Asset">
-        <value>
-          <modelElement href="src/My.secdfd#Applicant data"/>
-        </value>
-      </context>
-    </context>
-    <parameters/>
-    <result>
-      <result kind="OUT" name="result" type="PersonalDataAsset">
-        <value>
-          <modelElement href="ExtractPLA.pla#Applicant_data"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="process2Purpose" package="ExtractPLA" module="ExtractPLA"/>
-    <context>
-      <context name="self" type="Process">
-        <value>
-          <modelElement href="src/My.secdfd#P2: show overview"/>
-        </value>
-      </context>
-    </context>
-    <parameters>
-      <parameters name="secdfd" type="EDFD">
-        <value>
-          <modelElement href="src/My.secdfd#Test"/>
-        </value>
-      </parameters>
-    </parameters>
-    <result>
-      <result kind="OUT" name="result" type="Purpose">
-        <value>
-          <modelElement href="ExtractPLA.pla#P2__show_overview"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
     <mappingOperation name="asset2PDA" package="ExtractPLA" module="ExtractPLA"/>
     <context>
       <context name="self" type="Asset">
@@ -185,45 +149,15 @@
     <context>
       <context name="self" type="Process">
         <value>
-          <modelElement href="src/My.secdfd#P4: calculate asset risk score (AI) - R1.2"/>
+          <modelElement href="src/My.secdfd#P2: show overview"/>
         </value>
       </context>
     </context>
-    <parameters>
-      <parameters name="secdfd" type="EDFD">
-        <value>
-          <modelElement href="src/My.secdfd#Test"/>
-        </value>
-      </parameters>
-    </parameters>
+    <parameters/>
     <result>
       <result kind="OUT" name="result" type="Purpose">
         <value>
-          <modelElement href="ExtractPLA.pla#P4__calculate_asset_risk_score__AI____R1_2"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="process2Purpose" package="ExtractPLA" module="ExtractPLA"/>
-    <context>
-      <context name="self" type="Process">
-        <value>
-          <modelElement href="src/My.secdfd#P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)"/>
-        </value>
-      </context>
-    </context>
-    <parameters>
-      <parameters name="secdfd" type="EDFD">
-        <value>
-          <modelElement href="src/My.secdfd#Test"/>
-        </value>
-      </parameters>
-    </parameters>
-    <result>
-      <result kind="OUT" name="result" type="Purpose">
-        <value>
-          <modelElement href="ExtractPLA.pla#P5__calculate_applicant_risk_score__AI___R1_1__R1_2__R1_4_"/>
+          <modelElement href="ExtractPLA.pla#P2__show_overview"/>
         </value>
       </result>
     </result>
@@ -273,41 +207,11 @@
         </value>
       </context>
     </context>
-    <parameters>
-      <parameters name="secdfd" type="EDFD">
-        <value>
-          <modelElement href="src/My.secdfd#Test"/>
-        </value>
-      </parameters>
-    </parameters>
+    <parameters/>
     <result>
       <result kind="OUT" name="result" type="Purpose">
         <value>
           <modelElement href="ExtractPLA.pla#P6__loan_decision__AI__R1"/>
-        </value>
-      </result>
-    </result>
-  </traceRecords>
-  <traceRecords>
-    <mappingOperation name="process2Purpose" package="ExtractPLA" module="ExtractPLA"/>
-    <context>
-      <context name="self" type="Process">
-        <value>
-          <modelElement href="src/My.secdfd#P7: show request result"/>
-        </value>
-      </context>
-    </context>
-    <parameters>
-      <parameters name="secdfd" type="EDFD">
-        <value>
-          <modelElement href="src/My.secdfd#Test"/>
-        </value>
-      </parameters>
-    </parameters>
-    <result>
-      <result kind="OUT" name="result" type="Purpose">
-        <value>
-          <modelElement href="ExtractPLA.pla#P7__show_request_result"/>
         </value>
       </result>
     </result>

@@ -64,7 +64,6 @@ public class PLAsItemProvider
 			super.getPropertyDescriptors(object);
 
 			addIDPropertyDescriptor(object);
-			addNumberPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -87,28 +86,6 @@ public class PLAsItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Number feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNumberPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Identifiable_number_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_number_feature", "_UI_Identifiable_type"),
-				 PlaPackage.Literals.IDENTIFIABLE__NUMBER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -184,7 +161,6 @@ public class PLAsItemProvider
 
 		switch (notification.getFeatureID(PLAs.class)) {
 			case PlaPackage.PL_AS__ID:
-			case PlaPackage.PL_AS__NUMBER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case PlaPackage.PL_AS__ACTORS:

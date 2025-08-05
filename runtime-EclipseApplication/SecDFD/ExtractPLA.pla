@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pla:PLA xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pla="http://www.example.org/pla">
-  <plas ID="Test" number="0">
-    <actors xsi:type="pla:ThirdParty" ID="E1__Applicant" number="0" name="E1: Applicant" contact="" address=""/>
-    <actors xsi:type="pla:DataStorage" ID="D1__DB" number="0" name="D1: DB" contact="" address=""/>
-    <purposes ID="P1__Login" number="0" name="P1: Login" purposeText="">
-      <actions>User</actions>
-    </purposes>
-    <purposes ID="P3__credit_application" number="0" name="P3: credit application" purposeText="" incomeAssets="Applicant_data" outcomeAssets="Applicant_data">
-      <actions>Store</actions>
-      <actions>Forward</actions>
-    </purposes>
-    <purposes ID="P2__show_overview" number="0" name="P2: show overview" purposeText="" incomeAssets="credit_history" outcomeAssets="credit_history">
-      <actions>Forward</actions>
-    </purposes>
-    <purposes ID="P4__calculate_asset_risk_score__AI____R1_2" number="0" name="P4: calculate asset risk score (AI) - R1.2" purposeText=""/>
-    <purposes ID="P5__calculate_applicant_risk_score__AI___R1_1__R1_2__R1_4_" number="0" name="P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)" purposeText="" incomeAssets="Applicant_data payment_history credit_history" outcomeAssets="applicant_risk_score">
-      <actions>Joiner</actions>
-    </purposes>
-    <purposes ID="P6__loan_decision__AI__R1" number="0" name="P6: loan decision (AI) R1" purposeText="" incomeAssets="applicant_risk_score">
-      <actions>Joiner</actions>
-    </purposes>
-    <purposes ID="P7__show_request_result" number="0" name="P7: show request result" purposeText="">
-      <actions>Forward</actions>
-    </purposes>
-    <personalDataAssets ID="Applicant_data" number="0" name="Applicant data" type="Object" privacyLabel="H" legalBasis="Contract"/>
-    <personalDataAssets ID="credit_history" number="0" name="credit history" type="Object" privacyLabel="L"/>
-    <personalDataAssets ID="payment_history" number="0" name="payment history" type="Object" privacyLabel="L"/>
-    <personalDataAssets ID="applicant_risk_score" number="0" name="applicant risk score" type="String" privacyLabel="M"/>
-  </plas>
-</pla:PLA>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pla="http://www.example.org/pla">
+  <pla:PLA>
+    <plas ID="Test">
+      <personalDataAssets ID="Applicant_data" name="Applicant data" type="Object" privacyLabel="H" purposes="P5__calculate_applicant_risk_score__AI___R1_1__R1_2__R1_4_ P3__credit_application" actors="D1__DB"/>
+      <personalDataAssets ID="credit_history" name="credit history" type="Object" privacyLabel="L" purposes="P2__show_overview" actors="E1__Applicant"/>
+      <personalDataAssets ID="payment_history" name="payment history" type="Object" privacyLabel="L" legalBasis="Contract" purposes="P5__calculate_applicant_risk_score__AI___R1_1__R1_2__R1_4_"/>
+      <personalDataAssets ID="applicant_risk_score" name="applicant risk score" type="String" privacyLabel="M" legalBasis="Contract" purposes="P6__loan_decision__AI__R1"/>
+    </plas>
+  </pla:PLA>
+  <pla:Purpose ID="P3__credit_application" name="P3: credit application" purposeText="">
+    <actions>Store</actions>
+    <actions>Forward</actions>
+  </pla:Purpose>
+  <pla:Purpose ID="P5__calculate_applicant_risk_score__AI___R1_1__R1_2__R1_4_" name="P5: calculate applicant risk score (AI) (R1.1, R1.2, R1.4)" purposeText="">
+    <actions>Joiner</actions>
+  </pla:Purpose>
+  <pla:ThirdParty ID="E1__Applicant" name="E1: Applicant" contact="" address=""/>
+  <pla:DataStorage ID="D1__DB" name="D1: DB" contact="" address=""/>
+  <pla:Purpose ID="P2__show_overview" name="P2: show overview" purposeText="">
+    <actions>Forward</actions>
+  </pla:Purpose>
+  <pla:Purpose ID="P6__loan_decision__AI__R1" name="P6: loan decision (AI) R1" purposeText="">
+    <actions>Joiner</actions>
+  </pla:Purpose>
+</xmi:XMI>

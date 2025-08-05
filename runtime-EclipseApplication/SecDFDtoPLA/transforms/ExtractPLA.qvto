@@ -4,37 +4,32 @@ modeltype PLA uses "http://www.example.org/pla";
 transformation ExtractPLA(in s:SecDFD, out p:PLA);
 
 main() {
-// For each root EDFD in the SecDFD input, create a PLA root and then PLAs under it
     s.rootObjects()[EDFD] -> map secdfd2PLA();
 }
 
-// This mapping creates one PLA root with multiple PLAs (one per input EDFD)
 mapping SecDFD::EDFD::secdfd2PLA() : PLA::PLA {
     plas := self ->map edfd2PLAs();
 }
 
 mapping SecDFD::EDFD::edfd2PLAs() : PLA::PLAs {
     ID    := self.name.replaceAll("[^A-Za-z0-9_]", "_");
-    number := self.number;
+     //actors := self.elements
+     //   ->select(e | e.oclIsKindOf(ExternalEntity))
+     //   ->collect(e | e.oclAsType(ExternalEntity)->map ee2ThirdParty())
+     //   ->asOrderedSet()
+	//	->union(
+    //      self.elements
+    //          ->select(e | e.oclIsKindOf(DataStore))
+    //          ->collect(e | e.oclAsType(DataStore)->map ds2DataStorage())
+    //          ->asOrderedSet()
+    //  );
+    
+    //purposes := self.elements
+    //    ->select(e | e.oclIsKindOf(Process))
+    //    ->collect(e | e.oclAsType(Process)->map process2Purpose(self))
+    //    ->asOrderedSet();
 
-// Actors: ExternalEntity→ThirdParty, DataStore→DataStorage
-     actors := self.elements
-        ->select(e | e.oclIsKindOf(ExternalEntity))
-        ->collect(e | e.oclAsType(ExternalEntity)->map ee2ThirdParty())
-        ->asOrderedSet()
-		->union(
-          self.elements
-              ->select(e | e.oclIsKindOf(DataStore))
-              ->collect(e | e.oclAsType(DataStore)->map ds2DataStorage())
-              ->asOrderedSet()
-      );
-    // Purposes from Processes
-    purposes := self.elements
-        ->select(e | e.oclIsKindOf(Process))
-        ->collect(e | e.oclAsType(Process)->map process2Purpose(self))
-        ->asOrderedSet();
-
-    // Personal Data Assets (only assets with Value.Objective = Privacy)
+    // only assets with Value.Objective = Privacy
     personalDataAssets := self.asset
         ->select(a | a.value->exists(v | v.Objective = Objective::Privacy))
         ->collect(a | a.map asset2PDA())
@@ -46,7 +41,6 @@ mapping ExternalEntity::ee2ThirdParty() : PLA::ThirdParty {
     contact := "";
     address := "";
     ID      := self.name.replaceAll("[^A-Za-z0-9_]", "_");
-    number  := self.number;
 }
 
 mapping DataStore::ds2DataStorage() : PLA::DataStorage {
@@ -54,36 +48,72 @@ mapping DataStore::ds2DataStorage() : PLA::DataStorage {
     contact := "";
     address := "";
     ID      := self.name.replaceAll("[^A-Za-z0-9_]", "_");
-    number  := self.number;
 }
 
 mapping Asset::asset2PDA() : PLA::PersonalDataAsset {
     name         := self.name;
     type         := self.Type.toString();
     ID           := self.name.replaceAll("[^A-Za-z0-9_]", "_");
-    number       := self.number;
-    // privacyLabel from Value with Objective=Privacy, pick the Priority
+    
     privacyLabel := self.value->any(v | v.Objective = Objective::Privacy).Priority.toString();
     legalBasis := null;
+    purposes := self.source
+    ->select(e | e.oclIsKindOf(Process))
+    ->collect(e | e.oclAsType(Process))
+    ->collect(p | p.map process2Purpose())
+    ->asSet();
+    
+     purposes := self.targets
+    ->select(e | e.oclIsKindOf(Process))
+    ->collect(e | e.oclAsType(Process))
+    ->collect(p | p.map process2Purpose())
+    ->asSet();
+
+
+    // Actors: alle, die dieses Asset "sehen" (z.B. ExternalEntity, DataStore)
+    actors := self.source 
+        ->select(e | 
+            (e.oclIsKindOf(ExternalEntity) or e.oclIsKindOf(DataStore))
+            and e.assets->includes(self)
+        )
+        ->collect(e | 
+            if (e.oclIsKindOf(ExternalEntity)) then
+                e.oclAsType(ExternalEntity).map ee2ThirdParty()
+            else
+                e.oclAsType(DataStore).map ds2DataStorage()
+            endif
+        )
+        ->asSet();
+        
+        actors := self.targets 
+        ->select(e | 
+            (e.oclIsKindOf(ExternalEntity) or e.oclIsKindOf(DataStore))
+            and e.assets->includes(self)
+        )
+        ->collect(e | 
+            if (e.oclIsKindOf(ExternalEntity)) then
+                e.oclAsType(ExternalEntity).map ee2ThirdParty()
+            else
+                e.oclAsType(DataStore).map ds2DataStorage()
+            endif
+        )
+        ->asSet();
 }
 
-mapping Process::process2Purpose(secdfd : SecDFD::EDFD) : PLA::Purpose {
+mapping Process::process2Purpose() : PLA::Purpose {
     name        := self.name;
     ID          := self.name.replaceAll("[^A-Za-z0-9_]", "_");
-    number      := self.number;
-    // Use Responsibility.Action as actions, if present
     actions     := self.responsibility->collect(r | r.Action->collect(a | a.toString()))->flatten()->asSequence();
-    // incomeAssets & outcomeAssets, only if asset has privacy objective and is mapped
-    incomeAssets  := self.responsibility->collect(r | r.incomeassets)
-                   ->flatten()
-                   ->select(a | a.value->exists(v | v.Objective = Objective::Privacy))
-                   ->map asset2PDA()
-                   ->asSet();
+    //incomeAssets  := self.responsibility->collect(r | r.incomeassets)
+   //               ->flatten()
+   //                ->select(a | a.value->exists(v | v.Objective = Objective::Privacy))
+   //                ->map asset2PDA()
+   //                ->asSet();
 
-    outcomeAssets := self.responsibility->collect(r | r.outcomeassets)
-                   ->flatten()
-                   ->select(a | a.value->exists(v | v.Objective = Objective::Privacy))
-                   ->map asset2PDA()
-                   ->asSet();
-    purposeText := ""; // Optionally fill with custom logic
+    //outcomeAssets := self.responsibility->collect(r | r.outcomeassets)
+    //               ->flatten()
+    //               ->select(a | a.value->exists(v | v.Objective = Objective::Privacy))
+   //                ->map asset2PDA()
+   //                ->asSet();
+    purposeText := ""; 
 }

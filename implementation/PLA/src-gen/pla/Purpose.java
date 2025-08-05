@@ -16,8 +16,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link pla.Purpose#getName <em>Name</em>}</li>
  *   <li>{@link pla.Purpose#getPurposeText <em>Purpose Text</em>}</li>
  *   <li>{@link pla.Purpose#getActions <em>Actions</em>}</li>
- *   <li>{@link pla.Purpose#getIncomeAssets <em>Income Assets</em>}</li>
- *   <li>{@link pla.Purpose#getOutcomeAssets <em>Outcome Assets</em>}</li>
  * </ul>
  *
  * @see pla.PlaPackage#getPurpose()
@@ -80,29 +78,5 @@ public interface Purpose extends Identifiable {
 	 * @generated
 	 */
 	EList<String> getActions();
-
-	/**
-	 * Returns the value of the '<em><b>Income Assets</b></em>' reference list.
-	 * The list contents are of type {@link pla.PersonalDataAsset}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Income Assets</em>' reference list.
-	 * @see pla.PlaPackage#getPurpose_IncomeAssets()
-	 * @model
-	 * @generated
-	 */
-	EList<PersonalDataAsset> getIncomeAssets();
-
-	/**
-	 * Returns the value of the '<em><b>Outcome Assets</b></em>' reference list.
-	 * The list contents are of type {@link pla.PersonalDataAsset}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outcome Assets</em>' reference list.
-	 * @see pla.PlaPackage#getPurpose_OutcomeAssets()
-	 * @model
-	 * @generated
-	 */
-	EList<PersonalDataAsset> getOutcomeAssets();
 
 } // Purpose

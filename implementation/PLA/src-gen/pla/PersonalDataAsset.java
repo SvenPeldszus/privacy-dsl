@@ -2,6 +2,8 @@
  */
 package pla;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Personal Data Asset</b></em>'.
@@ -15,6 +17,8 @@ package pla;
  *   <li>{@link pla.PersonalDataAsset#getType <em>Type</em>}</li>
  *   <li>{@link pla.PersonalDataAsset#getPrivacyLabel <em>Privacy Label</em>}</li>
  *   <li>{@link pla.PersonalDataAsset#getLegalBasis <em>Legal Basis</em>}</li>
+ *   <li>{@link pla.PersonalDataAsset#getPurposes <em>Purposes</em>}</li>
+ *   <li>{@link pla.PersonalDataAsset#getActors <em>Actors</em>}</li>
  * </ul>
  *
  * @see pla.PlaPackage#getPersonalDataAsset()
@@ -112,5 +116,29 @@ public interface PersonalDataAsset extends Identifiable {
 	 * @generated
 	 */
 	void setLegalBasis(LegalBasis value);
+
+	/**
+	 * Returns the value of the '<em><b>Purposes</b></em>' reference list.
+	 * The list contents are of type {@link pla.Purpose}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Purposes</em>' reference list.
+	 * @see pla.PlaPackage#getPersonalDataAsset_Purposes()
+	 * @model
+	 * @generated
+	 */
+	EList<Purpose> getPurposes();
+
+	/**
+	 * Returns the value of the '<em><b>Actors</b></em>' reference list.
+	 * The list contents are of type {@link pla.Actor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Actors</em>' reference list.
+	 * @see pla.PlaPackage#getPersonalDataAsset_Actors()
+	 * @model
+	 * @generated
+	 */
+	EList<Actor> getActors();
 
 } // PersonalDataAsset
