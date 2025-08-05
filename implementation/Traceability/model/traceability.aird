@@ -13,7 +13,7 @@
     <semanticResources>platform:/resource/Graph/model/graph.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_C2M60DcaEei8T_IMKYEgVA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_C2wUcDcaEei8T_IMKYEgVA" name="traceability" repPath="#_C2w7gDcaEei8T_IMKYEgVA" changeId="1749939334915">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_C2wUcDcaEei8T_IMKYEgVA" name="traceability" repPath="#_C2w7gDcaEei8T_IMKYEgVA" changeId="1754348179942">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="traceability.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -97,7 +97,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_D10N819MEeih89kTdYnfFA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_D1y_0V9MEeih89kTdYnfFA" fontName=".AppleSystemUIFont" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D1y_0l9MEeih89kTdYnfFA" x="333" y="279" width="120" height="100"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D1y_0l9MEeih89kTdYnfFA" x="333" y="279" width="120" height="239"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_C2xikjcaEei8T_IMKYEgVA"/>
         <edges xmi:type="notation:Edge" xmi:id="_PWLCgDcaEei8T_IMKYEgVA" type="4001" element="_PWHYIDcaEei8T_IMKYEgVA" source="_D9ujkDcaEei8T_IMKYEgVA" target="_LD1DkDcaEei8T_IMKYEgVA">

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pla" nsURI="http://www.example.org/pla" nsPrefix="pla">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Actor" abstract="true" eSuperTypes="#//Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contact" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="address" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ThirdParty" eSuperTypes="#//Actor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataStorage" eSuperTypes="#//Actor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PersonalDataAsset" eSuperTypes="#//Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="privacyLabel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="legalBasis" lowerBound="1"
+        eType="#//LegalBasis"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Purpose" eSuperTypes="#//Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="purposeText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actions" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incomeAssets" upperBound="-1"
+        eType="#//PersonalDataAsset"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outcomeAssets" upperBound="-1"
+        eType="#//PersonalDataAsset"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PLAs" eSuperTypes="#//Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actors" upperBound="-1"
+        eType="#//Actor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="purposes" upperBound="-1"
+        eType="#//Purpose" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="personalDataAssets" upperBound="-1"
+        eType="#//PersonalDataAsset" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Identifiable" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="-1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PLA">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="plas" upperBound="-1" eType="#//PLAs"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LegalBasis">
+    <eLiterals name="Consent"/>
+    <eLiterals name="Contract" value="1"/>
+    <eLiterals name="LegalObligation" value="2"/>
+    <eLiterals name="LegitimateInterest" value="3"/>
+    <eLiterals name="VitalInterest" value="4"/>
+    <eLiterals name="PublicTask" value="5"/>
+  </eClassifiers>
+</ecore:EPackage>

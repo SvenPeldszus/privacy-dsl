@@ -6,7 +6,7 @@
     <semanticResources>TestDFD.traceability</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_9xU9IFX4EfCEWrPAOkJfWQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9xgjUFX4EfCEWrPAOkJfWQ" name="TestDFD" repPath="#_9xc48FX4EfCEWrPAOkJfWQ" changeId="1754315181388">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_9xgjUFX4EfCEWrPAOkJfWQ" name="TestDFD" repPath="#_9xc48FX4EfCEWrPAOkJfWQ" changeId="1754319850667">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
         <target xmi:type="org.secdfd:EDFD" href="TestDFD.secdfd#Test"/>
       </ownedRepresentationDescriptors>
@@ -1608,20 +1608,20 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_hWlJYlpiEfCkeuhtJ1qVvQ" name="[applicant risk score]" sourceNode="_i9kAIFpgEfCkeuhtJ1qVvQ" targetNode="_c25R8FpiEfCkeuhtJ1qVvQ">
       <target xmi:type="org.secdfd:Flow" href="TestDFD.secdfd#F11: applicant risk score"/>
       <semanticElements xmi:type="org.secdfd:Flow" href="TestDFD.secdfd#F11: applicant risk score"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_hWlJY1piEfCkeuhtJ1qVvQ" size="2">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_RrYb5nFEEfCD8vycoPj4uA" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']/@style"/>
-        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_hWlJZFpiEfCkeuhtJ1qVvQ" labelSize="12"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_hWlJZVpiEfCkeuhtJ1qVvQ" labelSize="12"/>
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_RrYb53FEEfCD8vycoPj4uA" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_RrYb6HFEEfCD8vycoPj4uA" labelSize="12"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_iK_o7lpiEfCkeuhtJ1qVvQ" name="[asset category]" sourceNode="_Vv1z4FpbEfCkeuhtJ1qVvQ" targetNode="_c25R8FpiEfCkeuhtJ1qVvQ">
       <target xmi:type="org.secdfd:Flow" href="TestDFD.secdfd#F12: asset category"/>
       <semanticElements xmi:type="org.secdfd:Flow" href="TestDFD.secdfd#F12: asset category"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_iK_o71piEfCkeuhtJ1qVvQ" size="2">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QxwMkHFBEfCvp_qESP2KUQ" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']/@style"/>
-        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_iK_o8FpiEfCkeuhtJ1qVvQ" labelSize="12"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_iK_o8VpiEfCkeuhtJ1qVvQ" labelSize="12"/>
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_QxwMkXFBEfCvp_qESP2KUQ" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QxwMknFBEfCvp_qESP2KUQ" labelSize="12"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']"/>
     </ownedDiagramElements>

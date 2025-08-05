@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="traceabilityPLA" nsURI="http://www.example.org/traceabilityPLA"
+    nsPrefix="traceabilityPLA">
+  <eClassifiers xsi:type="ecore:EClass" name="EDFDToPLA">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platraces" upperBound="-1"
+        eType="#//PLATrace" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edfds" eType="ecore:EClass ../../org.secdfd.model/model/model.ecore#//EDFD"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pla" eType="ecore:EClass ../../PLA/model/PLA.ecore#//PLA"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PLATrace">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edfdElements" upperBound="-1"
+        eType="ecore:EClass ../../org.secdfd.model/model/model.ecore#//NamedEntity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="plaElements" upperBound="-1"
+        eType="ecore:EClass ../../PLA/model/PLA.ecore#//Identifiable"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -42,7 +42,7 @@ public class Services extends AbstractHandler implements IExternalJavaAction {
         if (asset != null) {
             highlightedAssets.add(asset);
             highlightedFlows.addAll(getAssetFlowPath(asset));
-            refreshDiagram(asset);
+            //refreshDiagram(asset);
         }
     }
 
@@ -50,7 +50,7 @@ public class Services extends AbstractHandler implements IExternalJavaAction {
         if (!highlightedAssets.isEmpty() || !highlightedFlows.isEmpty()) {
             highlightedAssets.clear();
             highlightedFlows.clear();
-            refreshDiagram(null);
+            //refreshDiagram(null);
         }
     }
 

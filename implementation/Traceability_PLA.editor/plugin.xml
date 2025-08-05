@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated traceability_pla -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="traceabilityPLA.presentation.TraceabilityPLAModelWizardID"
+            name="%_UI_TraceabilityPLAModelWizard_label"
+            class="traceabilityPLA.presentation.TraceabilityPLAModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/TraceabilityPLAModelFile.gif">
+         <description>%_UI_TraceabilityPLAModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated traceability_pla -->
+      <editor
+            id="traceabilityPLA.presentation.TraceabilityPLAEditorID"
+            name="%_UI_TraceabilityPLAEditor_label"
+            icon="icons/full/obj16/TraceabilityPLAModelFile.gif"
+            extensions="traceabilitypla"
+            class="traceabilityPLA.presentation.TraceabilityPLAEditor"
+            contributorClass="traceabilityPLA.presentation.TraceabilityPLAActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
