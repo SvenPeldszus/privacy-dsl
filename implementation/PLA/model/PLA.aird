@@ -4,7 +4,7 @@
     <semanticResources>PLA.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_KpBMwHGOEfCYVf1oB2BJXw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p3zikHITEfCx7ZuD_yU5QQ" name="pla class diagram" repPath="#_p3s04HITEfCx7ZuD_yU5QQ" changeId="1754427789703">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p3zikHITEfCx7ZuD_yU5QQ" name="pla class diagram" repPath="#_p3s04HITEfCx7ZuD_yU5QQ" changeId="1754433966506">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="PLA.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -705,20 +705,20 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7ImOxnIwEfCx7ZuD_yU5QQ" name="[0..*] purposes" sourceNode="_qSDOknITEfCx7ZuD_yU5QQ" targetNode="_qSD1oXITEfCx7ZuD_yU5QQ">
       <target xmi:type="ecore:EReference" href="PLA.ecore#//PersonalDataAsset/purposes"/>
       <semanticElements xmi:type="ecore:EReference" href="PLA.ecore#//PersonalDataAsset/purposes"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_1rMVcHIxEfCx7ZuD_yU5QQ" routingStyle="manhattan" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-Q2S8HJNEfCx7ZuD_yU5QQ" routingStyle="manhattan" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_1rMVcnIxEfCx7ZuD_yU5QQ" showIcon="false"/>
-        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_1rMVcXIxEfCx7ZuD_yU5QQ" labelSize="6" showIcon="false" labelColor="39,76,114"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-Q2S8nJNEfCx7ZuD_yU5QQ" showIcon="false"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_-Q2S8XJNEfCx7ZuD_yU5QQ" labelSize="6" showIcon="false" labelColor="39,76,114"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_BSK1FnIxEfCx7ZuD_yU5QQ" name="[0..*] actors" sourceNode="_qSDOknITEfCx7ZuD_yU5QQ" targetNode="_qR-9IHITEfCx7ZuD_yU5QQ">
       <target xmi:type="ecore:EReference" href="PLA.ecore#//PersonalDataAsset/actors"/>
       <semanticElements xmi:type="ecore:EReference" href="PLA.ecore#//PersonalDataAsset/actors"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_xf0hMHIxEfCx7ZuD_yU5QQ" routingStyle="manhattan" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_9k9dU3JNEfCx7ZuD_yU5QQ" routingStyle="manhattan" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_xf0hMnIxEfCx7ZuD_yU5QQ" showIcon="false"/>
-        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_xf0hMXIxEfCx7ZuD_yU5QQ" labelSize="6" showIcon="false" labelColor="39,76,114"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_9k9dVXJNEfCx7ZuD_yU5QQ" showIcon="false"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_9k9dVHJNEfCx7ZuD_yU5QQ" labelSize="6" showIcon="false" labelColor="39,76,114"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
