@@ -2,10 +2,10 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pla="http://www.example.org/pla">
   <pla:PLA>
     <plas ID="Test">
-      <personalDataAssets ID="Applicant_data" name="Applicant data" type="Object" privacyLabel="H" purposes="P5__calculate_applicant_risk_score__AI___R1_1__R1_2__R1_4_ P3__credit_application" actors="D1__DB"/>
-      <personalDataAssets ID="credit_history" name="credit history" type="Object" privacyLabel="L" purposes="P2__show_overview" actors="E1__Applicant"/>
+      <personalDataAssets ID="Applicant_data" name="Applicant data" type="Object" privacyLabel="H" purposes="P3__credit_application P5__calculate_applicant_risk_score__AI___R1_1__R1_2__R1_4_" actors="D1__DB"/>
+      <personalDataAssets ID="credit_history" name="credit history" type="Object" privacyLabel="L" legalBasis="Contract" purposes="P2__show_overview" actors="E1__Applicant"/>
       <personalDataAssets ID="payment_history" name="payment history" type="Object" privacyLabel="L" purposes="P5__calculate_applicant_risk_score__AI___R1_1__R1_2__R1_4_"/>
-      <personalDataAssets ID="applicant_risk_score" name="applicant risk score" type="String" privacyLabel="M" purposes="P6__loan_decision__AI__R1"/>
+      <personalDataAssets ID="applicant_risk_score" name="applicant risk score" type="String" privacyLabel="M" legalBasis="Contract" purposes="P6__loan_decision__AI__R1"/>
     </plas>
   </pla:PLA>
   <pla:Purpose ID="P3__credit_application" name="P3: credit application" purposeText="">

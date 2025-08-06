@@ -25,7 +25,7 @@
           </style>
         </nodeMappings>
         <nodeMappings name="Process" domainClass="model::Process">
-          <borderedNodeMappings name="Responsibility" semanticCandidatesExpression="feature:eAllContents" domainClass="model::Responsibility">
+          <borderedNodeMappings name="Contract" semanticCandidatesExpression="feature:eAllContents" domainClass="model::Responsibility">
             <style xsi:type="style:DotDescription" labelSize="12" showIcon="false" labelExpression="feature:Action" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
@@ -217,7 +217,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="createResponsibility" nodeMappings="//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Responsibility']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createContract" nodeMappings="//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Contract']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -231,7 +231,7 @@
             <askChoiceVariable name="respAction" multiple="false" candidatesExpression="aql:ecore::ResponsibilityType.eLiterals" prompt="Action"/>
             <subModelOperations xsi:type="tool_1:SetValue" featureName="Action" valueExpression="var:respAction"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="highlightAssetFlows" precondition="aql:true" elementsToSelect="var:selectedAsset" candidatesExpression="aql:self.asset">
+          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="highlightAssetFlows" precondition="aql:true" elementsToSelect="var:selectedAsset" candidatesExpression="aql:self.asset" multiple="true">
             <element name="selectedAsset"/>
             <containerView name="containerView"/>
             <container name="container"/>

@@ -5,10 +5,7 @@ import org.secdfd.model.Flow;
 import org.secdfd.model.Element;
 import org.secdfd.model.EDFD;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -20,10 +17,26 @@ public class Services extends AbstractHandler implements IExternalJavaAction {
 
     @Override
     public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
+        Set<Asset> assetsToHighlight = new HashSet<>();
+
         Object assetParam = parameters.get("asset");
-        setHighlightedAsset(assetParam instanceof Asset ? (Asset) assetParam :
-                           !selections.isEmpty() && selections.iterator().next() instanceof Asset ? 
-                           (Asset) selections.iterator().next() : null);
+        if (assetParam instanceof Asset) {
+            assetsToHighlight.add((Asset) assetParam);
+        } else if (assetParam instanceof Collection<?>) {
+            for (Object obj : (Collection<?>) assetParam) {
+                if (obj instanceof Asset) {
+                    assetsToHighlight.add((Asset) obj);
+                }
+            }
+        }
+
+        for (EObject selection : selections) {
+            if (selection instanceof Asset) {
+                assetsToHighlight.add((Asset) selection);
+            }
+        }
+
+        setHighlightedAssets(assetsToHighlight);
     }
 
     @Override
@@ -37,12 +50,11 @@ public class Services extends AbstractHandler implements IExternalJavaAction {
         return null;
     }
 
-    public void setHighlightedAsset(Asset asset) {
+    public void setHighlightedAssets(Collection<Asset> assets) {
         clearHighlights();
-        if (asset != null) {
+        for (Asset asset : assets) {
             highlightedAssets.add(asset);
             highlightedFlows.addAll(getAssetFlowPath(asset));
-            //refreshDiagram(asset);
         }
     }
 
@@ -50,22 +62,6 @@ public class Services extends AbstractHandler implements IExternalJavaAction {
         if (!highlightedAssets.isEmpty() || !highlightedFlows.isEmpty()) {
             highlightedAssets.clear();
             highlightedFlows.clear();
-            //refreshDiagram(null);
-        }
-    }
-
-    private void refreshDiagram(EObject context) {
-        Session session = context != null ? SessionManager.INSTANCE.getSession(context) :
-                         SessionManager.INSTANCE.getSessions().stream().findFirst().orElse(null);
-        
-        if (session != null) {
-            session.getTransactionalEditingDomain().getCommandStack().execute(
-                new org.eclipse.emf.common.command.AbstractCommand() {
-                    protected boolean prepare() { return true; }
-                    public void execute() {}
-                    public void redo() { execute(); }
-                }
-            );
         }
     }
 
@@ -103,4 +99,4 @@ public class Services extends AbstractHandler implements IExternalJavaAction {
     public static boolean isFlowHighlightedEnhancedStatic(Flow flow) {
         return highlightedFlows.contains(flow);
     }
-} 
+}
