@@ -1117,6 +1117,106 @@ public interface ModelPackage extends EPackage {
 	int RESPONSIBILITY_OPERATION_COUNT = NAMED_ENTITY_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.secdfd.model.impl.MLResponsibilityImpl <em>ML Responsibility</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.secdfd.model.impl.MLResponsibilityImpl
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getMLResponsibility()
+	 * @generated
+	 */
+	int ML_RESPONSIBILITY = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ML_RESPONSIBILITY__NAME = RESPONSIBILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ML_RESPONSIBILITY__NUMBER = RESPONSIBILITY__NUMBER;
+
+	/**
+	 * The feature id for the '<em><b>Action</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ML_RESPONSIBILITY__ACTION = RESPONSIBILITY__ACTION;
+
+	/**
+	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ML_RESPONSIBILITY__INCOMEASSETS = RESPONSIBILITY__INCOMEASSETS;
+
+	/**
+	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ML_RESPONSIBILITY__OUTCOMEASSETS = RESPONSIBILITY__OUTCOMEASSETS;
+
+	/**
+	 * The feature id for the '<em><b>Process</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ML_RESPONSIBILITY__PROCESS = RESPONSIBILITY__PROCESS;
+
+	/**
+	 * The feature id for the '<em><b>Ml Action</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ML_RESPONSIBILITY__ML_ACTION = RESPONSIBILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>ML Responsibility</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ML_RESPONSIBILITY_FEATURE_COUNT = RESPONSIBILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Constraint ml responsibility</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ML_RESPONSIBILITY___CONSTRAINT_ML_RESPONSIBILITY__DIAGNOSTICCHAIN_MAP = RESPONSIBILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>ML Responsibility</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ML_RESPONSIBILITY_OPERATION_COUNT = RESPONSIBILITY_OPERATION_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1124,7 +1224,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getPriority()
 	 * @generated
 	 */
-	int PRIORITY = 13;
+	int PRIORITY = 14;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Channel <em>Channel</em>}' enum.
@@ -1134,7 +1234,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getChannel()
 	 * @generated
 	 */
-	int CHANNEL = 14;
+	int CHANNEL = 15;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.ResponsibilityType <em>Responsibility Type</em>}' enum.
@@ -1144,7 +1244,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getResponsibilityType()
 	 * @generated
 	 */
-	int RESPONSIBILITY_TYPE = 15;
+	int RESPONSIBILITY_TYPE = 16;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Objective <em>Objective</em>}' enum.
@@ -1154,7 +1254,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 16;
+	int OBJECTIVE = 17;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Layer <em>Layer</em>}' enum.
@@ -1164,7 +1264,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getLayer()
 	 * @generated
 	 */
-	int LAYER = 17;
+	int LAYER = 18;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.AssetType <em>Asset Type</em>}' enum.
@@ -1174,7 +1274,18 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getAssetType()
 	 * @generated
 	 */
-	int ASSET_TYPE = 18;
+	int ASSET_TYPE = 19;
+
+
+	/**
+	 * The meta object id for the '{@link org.secdfd.model.MLResponsibilityType <em>ML Responsibility Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.secdfd.model.MLResponsibilityType
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getMLResponsibilityType()
+	 * @generated
+	 */
+	int ML_RESPONSIBILITY_TYPE = 20;
 
 
 	/**
@@ -1659,6 +1770,37 @@ public interface ModelPackage extends EPackage {
 	EReference getResponsibility_Process();
 
 	/**
+	 * Returns the meta object for class '{@link org.secdfd.model.MLResponsibility <em>ML Responsibility</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>ML Responsibility</em>'.
+	 * @see org.secdfd.model.MLResponsibility
+	 * @generated
+	 */
+	EClass getMLResponsibility();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.secdfd.model.MLResponsibility#getMlAction <em>Ml Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Ml Action</em>'.
+	 * @see org.secdfd.model.MLResponsibility#getMlAction()
+	 * @see #getMLResponsibility()
+	 * @generated
+	 */
+	EAttribute getMLResponsibility_MlAction();
+
+	/**
+	 * Returns the meta object for the '{@link org.secdfd.model.MLResponsibility#constraint_ml_responsibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Constraint ml responsibility</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Constraint ml responsibility</em>' operation.
+	 * @see org.secdfd.model.MLResponsibility#constraint_ml_responsibility(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getMLResponsibility__Constraint_ml_responsibility__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for enum '{@link org.secdfd.model.Priority <em>Priority</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1717,6 +1859,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getAssetType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.secdfd.model.MLResponsibilityType <em>ML Responsibility Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>ML Responsibility Type</em>'.
+	 * @see org.secdfd.model.MLResponsibilityType
+	 * @generated
+	 */
+	EEnum getMLResponsibilityType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2128,6 +2280,32 @@ public interface ModelPackage extends EPackage {
 		EReference RESPONSIBILITY__PROCESS = eINSTANCE.getResponsibility_Process();
 
 		/**
+		 * The meta object literal for the '{@link org.secdfd.model.impl.MLResponsibilityImpl <em>ML Responsibility</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.secdfd.model.impl.MLResponsibilityImpl
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getMLResponsibility()
+		 * @generated
+		 */
+		EClass ML_RESPONSIBILITY = eINSTANCE.getMLResponsibility();
+
+		/**
+		 * The meta object literal for the '<em><b>Ml Action</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ML_RESPONSIBILITY__ML_ACTION = eINSTANCE.getMLResponsibility_MlAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraint ml responsibility</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ML_RESPONSIBILITY___CONSTRAINT_ML_RESPONSIBILITY__DIAGNOSTICCHAIN_MAP = eINSTANCE.getMLResponsibility__Constraint_ml_responsibility__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2186,6 +2364,16 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum ASSET_TYPE = eINSTANCE.getAssetType();
+
+		/**
+		 * The meta object literal for the '{@link org.secdfd.model.MLResponsibilityType <em>ML Responsibility Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.secdfd.model.MLResponsibilityType
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getMLResponsibilityType()
+		 * @generated
+		 */
+		EEnum ML_RESPONSIBILITY_TYPE = eINSTANCE.getMLResponsibilityType();
 
 	}
 

@@ -121,6 +121,15 @@ public interface ModelFactory extends EFactory {
 	Responsibility createResponsibility();
 
 	/**
+	 * Returns a new object of class '<em>ML Responsibility</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>ML Responsibility</em>'.
+	 * @generated
+	 */
+	MLResponsibility createMLResponsibility();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -17,6 +17,7 @@ import org.secdfd.model.EDFD;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
+import org.secdfd.model.MLResponsibility;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Responsibility;
@@ -130,6 +131,10 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseResponsibility(Responsibility object) {
 				return createResponsibilityAdapter();
+			}
+			@Override
+			public Adapter caseMLResponsibility(MLResponsibility object) {
+				return createMLResponsibilityAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -330,6 +335,20 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createResponsibilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.secdfd.model.MLResponsibility <em>ML Responsibility</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.secdfd.model.MLResponsibility
+	 * @generated
+	 */
+	public Adapter createMLResponsibilityAdapter() {
 		return null;
 	}
 

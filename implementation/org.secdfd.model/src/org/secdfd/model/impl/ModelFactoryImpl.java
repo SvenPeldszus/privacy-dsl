@@ -21,6 +21,8 @@ import org.secdfd.model.EDFD;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
 import org.secdfd.model.Layer;
+import org.secdfd.model.MLResponsibility;
+import org.secdfd.model.MLResponsibilityType;
 import org.secdfd.model.ModelFactory;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.Objective;
@@ -85,6 +87,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.ATTACKER_PROFILE: return createAttackerProfile();
 			case ModelPackage.TRUST_ZONE: return createTrustZone();
 			case ModelPackage.RESPONSIBILITY: return createResponsibility();
+			case ModelPackage.ML_RESPONSIBILITY: return createMLResponsibility();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -110,6 +113,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 				return createLayerFromString(eDataType, initialValue);
 			case ModelPackage.ASSET_TYPE:
 				return createAssetTypeFromString(eDataType, initialValue);
+			case ModelPackage.ML_RESPONSIBILITY_TYPE:
+				return createMLResponsibilityTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -135,6 +140,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 				return convertLayerToString(eDataType, instanceValue);
 			case ModelPackage.ASSET_TYPE:
 				return convertAssetTypeToString(eDataType, instanceValue);
+			case ModelPackage.ML_RESPONSIBILITY_TYPE:
+				return convertMLResponsibilityTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -266,6 +273,17 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public MLResponsibility createMLResponsibility() {
+		MLResponsibilityImpl mlResponsibility = new MLResponsibilityImpl();
+		return mlResponsibility;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Priority createPriorityFromString(EDataType eDataType, String initialValue) {
 		Priority result = Priority.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -378,6 +396,26 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public String convertAssetTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MLResponsibilityType createMLResponsibilityTypeFromString(EDataType eDataType, String initialValue) {
+		MLResponsibilityType result = MLResponsibilityType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertMLResponsibilityTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

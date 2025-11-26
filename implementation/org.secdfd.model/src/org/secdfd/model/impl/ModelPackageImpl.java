@@ -23,6 +23,8 @@ import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
 import org.secdfd.model.Layer;
+import org.secdfd.model.MLResponsibility;
+import org.secdfd.model.MLResponsibilityType;
 import org.secdfd.model.ModelFactory;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
@@ -137,6 +139,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass mlResponsibilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum priorityEEnum = null;
 
 	/**
@@ -173,6 +182,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EEnum assetTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum mlResponsibilityTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -701,6 +717,36 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getMLResponsibility() {
+		return mlResponsibilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getMLResponsibility_MlAction() {
+		return (EAttribute)mlResponsibilityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getMLResponsibility__Constraint_ml_responsibility__DiagnosticChain_Map() {
+		return mlResponsibilityEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getPriority() {
 		return priorityEEnum;
 	}
@@ -753,6 +799,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	@Override
 	public EEnum getAssetType() {
 		return assetTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getMLResponsibilityType() {
+		return mlResponsibilityTypeEEnum;
 	}
 
 	/**
@@ -842,6 +898,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEReference(responsibilityEClass, RESPONSIBILITY__OUTCOMEASSETS);
 		createEReference(responsibilityEClass, RESPONSIBILITY__PROCESS);
 
+		mlResponsibilityEClass = createEClass(ML_RESPONSIBILITY);
+		createEAttribute(mlResponsibilityEClass, ML_RESPONSIBILITY__ML_ACTION);
+		createEOperation(mlResponsibilityEClass, ML_RESPONSIBILITY___CONSTRAINT_ML_RESPONSIBILITY__DIAGNOSTICCHAIN_MAP);
+
 		// Create enums
 		priorityEEnum = createEEnum(PRIORITY);
 		channelEEnum = createEEnum(CHANNEL);
@@ -849,6 +909,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		objectiveEEnum = createEEnum(OBJECTIVE);
 		layerEEnum = createEEnum(LAYER);
 		assetTypeEEnum = createEEnum(ASSET_TYPE);
+		mlResponsibilityTypeEEnum = createEEnum(ML_RESPONSIBILITY_TYPE);
 	}
 
 	/**
@@ -889,6 +950,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		attackerProfileEClass.getESuperTypes().add(this.getNamedEntity());
 		trustZoneEClass.getESuperTypes().add(this.getElement());
 		responsibilityEClass.getESuperTypes().add(this.getNamedEntity());
+		mlResponsibilityEClass.getESuperTypes().add(this.getResponsibility());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(assetEClass, Asset.class, "Asset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -957,6 +1019,18 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getResponsibility_Outcomeassets(), this.getAsset(), null, "outcomeassets", null, 0, -1, Responsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResponsibility_Process(), this.getProcess(), this.getProcess_Responsibility(), "process", null, 0, 1, Responsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(mlResponsibilityEClass, MLResponsibility.class, "MLResponsibility", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMLResponsibility_MlAction(), this.getMLResponsibilityType(), "mlAction", null, 0, -1, MLResponsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getMLResponsibility__Constraint_ml_responsibility__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "constraint_ml_responsibility", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(priorityEEnum, Priority.class, "Priority");
 		addEEnumLiteral(priorityEEnum, Priority.H);
@@ -1003,6 +1077,15 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEEnumLiteral(assetTypeEEnum, AssetType.VECTOR);
 		addEEnumLiteral(assetTypeEEnum, AssetType.BOOLEAN);
 
+		initEEnum(mlResponsibilityTypeEEnum, MLResponsibilityType.class, "MLResponsibilityType");
+		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.CLASSIFICATION);
+		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.DECISION_MAKING);
+		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.REGRESSION);
+		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.CLUSTERING);
+		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.ANOMALY_DETECTION);
+		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.NATURAL_LANGUAGE_PROCESSING);
+		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.COMPUTER_VISION);
+
 		// Create resource
 		createResource(eNS_URI);
 
@@ -1032,6 +1115,12 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		   new String[] {
 			   "constraints", "constraint_1"
 		   });
+		addAnnotation
+		  (mlResponsibilityEClass,
+		   source,
+		   new String[] {
+			   "constraints", "constraint_ml_responsibility"
+		   });
 	}
 
 	/**
@@ -1047,6 +1136,12 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		   source,
 		   new String[] {
 			   "body", "Tuple {\n\tmessage : String = \'Privacy as objective can only have a high or low priority.\',\n\tstatus : Boolean = \n\t\t\tself.Objective = Objective::Privacy implies (self.Priority = Priority::H or self.Priority = Priority::L)\n}.status"
+		   });
+		addAnnotation
+		  (getMLResponsibility__Constraint_ml_responsibility__DiagnosticChain_Map(),
+		   source,
+		   new String[] {
+			   "body", "Tuple {\n\tmessage : String = \'MLResponsibility can only be used when ML is selected as a ResponsibilityType in Action.\',\n\tstatus : Boolean = \n\t\t\tself.Action->includes(ResponsibilityType::ML)\n}.status"
 		   });
 	}
 

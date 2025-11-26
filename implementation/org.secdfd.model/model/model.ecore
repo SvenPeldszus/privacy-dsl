@@ -144,4 +144,23 @@
     <eLiterals name="Vector" value="3" literal="Vector"/>
     <eLiterals name="Boolean" value="4" literal="Boolean"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MLResponsibilityType">
+    <eLiterals name="Classification"/>
+    <eLiterals name="DecisionMaking" value="1" literal="Decision-Making"/>
+    <eLiterals name="Regression" value="2"/>
+    <eLiterals name="Clustering" value="3"/>
+    <eLiterals name="AnomalyDetection" value="4"/>
+    <eLiterals name="NaturalLanguageProcessing" value="5" literal="Natural-Language-Processing"/>
+    <eLiterals name="ComputerVision" value="6" literal="Computer-Vision"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MLResponsibility" eSuperTypes="#//Responsibility">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="constraint_ml_responsibility"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="constraint_ml_responsibility" value="Tuple {&#xA;&#x9;message : String = 'MLResponsibility can only be used when ML is selected as a ResponsibilityType in Action.',&#xA;&#x9;status : Boolean = &#xA;&#x9;&#x9;&#x9;self.Action->includes(ResponsibilityType::ML)&#xA;}.status"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mlAction" upperBound="-1"
+        eType="#//MLResponsibilityType"/>
+  </eClassifiers>
 </ecore:EPackage>

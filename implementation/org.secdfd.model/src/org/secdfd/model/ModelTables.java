@@ -75,6 +75,7 @@ public class ModelTables extends AbstractTables
 	public static final /*@NonInvalid*/ ClassId CLSSid_EDFD = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("EDFD", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Element = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("Element", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Flow = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("Flow", 0);
+	public static final /*@NonInvalid*/ ClassId CLSSid_MLResponsibility = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("MLResponsibility", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Process = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("Process", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Responsibility = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("Responsibility", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_TrustZone = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("TrustZone", 0);
@@ -83,12 +84,14 @@ public class ModelTables extends AbstractTables
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_AssetType = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("AssetType");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Channel = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Channel");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Layer = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Layer");
+	public static final /*@NonInvalid*/ EnumerationId ENUMid_MLResponsibilityType = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("MLResponsibilityType");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Objective = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Objective");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Priority = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Priority");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_ResponsibilityType = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("ResponsibilityType");
 	public static final /*@NonInvalid*/ IntegerValue INT_0 = ValueUtil.integerValueOf("0");
 	public static final /*@NonInvalid*/ TuplePartId PARTid_ = IdManager.getTuplePartId(0, "message", TypeId.STRING);
 	public static final /*@NonInvalid*/ TuplePartId PARTid__0 = IdManager.getTuplePartId(1, "status", TypeId.BOOLEAN);
+	public static final /*@NonInvalid*/ String STR_MLResponsibility_32_can_32_only_32_be_32_used_32_when_32_ML_32_is_32_selected_32_as_32_a_32_Respo = "MLResponsibility can only be used when ML is selected as a ResponsibilityType in Action.";
 	public static final /*@NonInvalid*/ String STR_Privacy_32_as_32_objective_32_can_32_only_32_have_32_a_32_high_32_or_32_low_32_priority = "Privacy as objective can only have a high or low priority.";
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Asset = TypeId.BAG.getSpecializedId(ModelTables.CLSSid_Asset, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Element = TypeId.BAG.getSpecializedId(ModelTables.CLSSid_Element, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
@@ -97,6 +100,7 @@ public class ModelTables extends AbstractTables
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_TrustZone = TypeId.BAG.getSpecializedId(ModelTables.CLSSid_TrustZone, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ EnumerationLiteralId ELITid_H = ModelTables.ENUMid_Priority.getEnumerationLiteralId("H");
 	public static final /*@NonInvalid*/ EnumerationLiteralId ELITid_L = ModelTables.ENUMid_Priority.getEnumerationLiteralId("L");
+	public static final /*@NonInvalid*/ EnumerationLiteralId ELITid_ML = ModelTables.ENUMid_ResponsibilityType.getEnumerationLiteralId("ML");
 	public static final /*@NonInvalid*/ EnumerationLiteralId ELITid_Privacy = ModelTables.ENUMid_Objective.getEnumerationLiteralId("Privacy");
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Asset = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_Asset, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Assumption = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_Assumption, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
@@ -107,6 +111,7 @@ public class ModelTables extends AbstractTables
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Responsibility = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_Responsibility, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_TrustZone = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_TrustZone, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Value = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_Value, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
+	public static final /*@NonInvalid*/ CollectionTypeId ORD_ENUMid_MLResponsibilityType = TypeId.ORDERED_SET.getSpecializedId(ModelTables.ENUMid_MLResponsibilityType, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_ENUMid_Objective = TypeId.ORDERED_SET.getSpecializedId(ModelTables.ENUMid_Objective, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_ENUMid_ResponsibilityType = TypeId.ORDERED_SET.getSpecializedId(ModelTables.ENUMid_ResponsibilityType, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ TupleTypeId TUPLid_ = IdManager.getTupleTypeId("Tuple", ModelTables.PARTid_, ModelTables.PARTid__0);
@@ -150,6 +155,8 @@ public class ModelTables extends AbstractTables
 		public static final EcoreExecutorType _ExternalEntity = new EcoreExecutorType(ModelPackage.Literals.EXTERNAL_ENTITY, PACKAGE, 0);
 		public static final EcoreExecutorType _Flow = new EcoreExecutorType(ModelPackage.Literals.FLOW, PACKAGE, 0);
 		public static final EcoreExecutorEnumeration _Layer = new EcoreExecutorEnumeration(ModelPackage.Literals.LAYER, PACKAGE, 0);
+		public static final EcoreExecutorType _MLResponsibility = new EcoreExecutorType(ModelPackage.Literals.ML_RESPONSIBILITY, PACKAGE, 0);
+		public static final EcoreExecutorEnumeration _MLResponsibilityType = new EcoreExecutorEnumeration(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE, PACKAGE, 0);
 		public static final EcoreExecutorType _NamedEntity = new EcoreExecutorType(ModelPackage.Literals.NAMED_ENTITY, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final EcoreExecutorEnumeration _Objective = new EcoreExecutorEnumeration(ModelPackage.Literals.OBJECTIVE, PACKAGE, 0);
 		public static final EcoreExecutorEnumeration _Priority = new EcoreExecutorEnumeration(ModelPackage.Literals.PRIORITY, PACKAGE, 0);
@@ -171,6 +178,8 @@ public class ModelTables extends AbstractTables
 			_ExternalEntity,
 			_Flow,
 			_Layer,
+			_MLResponsibility,
+			_MLResponsibilityType,
 			_NamedEntity,
 			_Objective,
 			_Priority,
@@ -263,6 +272,18 @@ public class ModelTables extends AbstractTables
 		private static final ExecutorFragment _Layer__OclElement = new ExecutorFragment(Types._Layer, OCLstdlibTables.Types._OclElement);
 		private static final ExecutorFragment _Layer__OclEnumeration = new ExecutorFragment(Types._Layer, OCLstdlibTables.Types._OclEnumeration);
 		private static final ExecutorFragment _Layer__OclType = new ExecutorFragment(Types._Layer, OCLstdlibTables.Types._OclType);
+
+		private static final ExecutorFragment _MLResponsibility__MLResponsibility = new ExecutorFragment(Types._MLResponsibility, ModelTables.Types._MLResponsibility);
+		private static final ExecutorFragment _MLResponsibility__NamedEntity = new ExecutorFragment(Types._MLResponsibility, ModelTables.Types._NamedEntity);
+		private static final ExecutorFragment _MLResponsibility__OclAny = new ExecutorFragment(Types._MLResponsibility, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _MLResponsibility__OclElement = new ExecutorFragment(Types._MLResponsibility, OCLstdlibTables.Types._OclElement);
+		private static final ExecutorFragment _MLResponsibility__Responsibility = new ExecutorFragment(Types._MLResponsibility, ModelTables.Types._Responsibility);
+
+		private static final ExecutorFragment _MLResponsibilityType__MLResponsibilityType = new ExecutorFragment(Types._MLResponsibilityType, ModelTables.Types._MLResponsibilityType);
+		private static final ExecutorFragment _MLResponsibilityType__OclAny = new ExecutorFragment(Types._MLResponsibilityType, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _MLResponsibilityType__OclElement = new ExecutorFragment(Types._MLResponsibilityType, OCLstdlibTables.Types._OclElement);
+		private static final ExecutorFragment _MLResponsibilityType__OclEnumeration = new ExecutorFragment(Types._MLResponsibilityType, OCLstdlibTables.Types._OclEnumeration);
+		private static final ExecutorFragment _MLResponsibilityType__OclType = new ExecutorFragment(Types._MLResponsibilityType, OCLstdlibTables.Types._OclType);
 
 		private static final ExecutorFragment _NamedEntity__NamedEntity = new ExecutorFragment(Types._NamedEntity, ModelTables.Types._NamedEntity);
 		private static final ExecutorFragment _NamedEntity__OclAny = new ExecutorFragment(Types._NamedEntity, OCLstdlibTables.Types._OclAny);
@@ -415,6 +436,8 @@ public class ModelTables extends AbstractTables
 		public static final ExecutorProperty _Flow__Element__inflows = new ExecutorPropertyWithImplementation("Element", Types._Flow, 4, new EcoreLibraryOppositeProperty(ModelPackage.Literals.ELEMENT__INFLOWS));
 		public static final ExecutorProperty _Flow__Element__outflows = new ExecutorPropertyWithImplementation("Element", Types._Flow, 5, new EcoreLibraryOppositeProperty(ModelPackage.Literals.ELEMENT__OUTFLOWS));
 
+		public static final ExecutorProperty _MLResponsibility__mlAction = new EcoreExecutorProperty(ModelPackage.Literals.ML_RESPONSIBILITY__ML_ACTION, Types._MLResponsibility, 0);
+
 		public static final ExecutorProperty _NamedEntity__name = new EcoreExecutorProperty(ModelPackage.Literals.NAMED_ENTITY__NAME, Types._NamedEntity, 0);
 		public static final ExecutorProperty _NamedEntity__number = new EcoreExecutorProperty(ModelPackage.Literals.NAMED_ENTITY__NUMBER, Types._NamedEntity, 1);
 
@@ -557,6 +580,26 @@ public class ModelTables extends AbstractTables
 			};
 		private static final int /*@NonNull*/ [] __Layer = { 1,1,1,1,1 };
 
+		private static final ExecutorFragment /*@NonNull*/ [] _MLResponsibility =
+			{
+				Fragments._MLResponsibility__OclAny /* 0 */,
+				Fragments._MLResponsibility__OclElement /* 1 */,
+				Fragments._MLResponsibility__NamedEntity /* 2 */,
+				Fragments._MLResponsibility__Responsibility /* 3 */,
+				Fragments._MLResponsibility__MLResponsibility /* 4 */
+			};
+		private static final int /*@NonNull*/ [] __MLResponsibility = { 1,1,1,1,1 };
+
+		private static final ExecutorFragment /*@NonNull*/ [] _MLResponsibilityType =
+			{
+				Fragments._MLResponsibilityType__OclAny /* 0 */,
+				Fragments._MLResponsibilityType__OclElement /* 1 */,
+				Fragments._MLResponsibilityType__OclType /* 2 */,
+				Fragments._MLResponsibilityType__OclEnumeration /* 3 */,
+				Fragments._MLResponsibilityType__MLResponsibilityType /* 4 */
+			};
+		private static final int /*@NonNull*/ [] __MLResponsibilityType = { 1,1,1,1,1 };
+
 		private static final ExecutorFragment /*@NonNull*/ [] _NamedEntity =
 			{
 				Fragments._NamedEntity__OclAny /* 0 */,
@@ -647,6 +690,8 @@ public class ModelTables extends AbstractTables
 			Types._ExternalEntity.initFragments(_ExternalEntity, __ExternalEntity);
 			Types._Flow.initFragments(_Flow, __Flow);
 			Types._Layer.initFragments(_Layer, __Layer);
+			Types._MLResponsibility.initFragments(_MLResponsibility, __MLResponsibility);
+			Types._MLResponsibilityType.initFragments(_MLResponsibilityType, __MLResponsibilityType);
 			Types._NamedEntity.initFragments(_NamedEntity, __NamedEntity);
 			Types._Objective.initFragments(_Objective, __Objective);
 			Types._Priority.initFragments(_Priority, __Priority);
@@ -1065,6 +1110,80 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
 		};
 
+		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibility__MLResponsibility = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibility__NamedEntity = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibility__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibility__OclElement = {
+			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
+			OCLstdlibTables.Operations._OclElement__1_oclBase /* oclBase(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclExtension /* oclExtension(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclExtensions /* oclExtensions() */,
+			OCLstdlibTables.Operations._OclElement__1_oclExtensions /* oclExtensions(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibility__Responsibility = {};
+
+		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibilityType__MLResponsibilityType = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibilityType__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibilityType__OclElement = {
+			OCLstdlibTables.Operations._OclEnumeration__allInstances /* allInstances(Integer[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
+			OCLstdlibTables.Operations._OclElement__1_oclBase /* oclBase(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclExtension /* oclExtension(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclExtensions /* oclExtensions() */,
+			OCLstdlibTables.Operations._OclElement__1_oclExtensions /* oclExtensions(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibilityType__OclEnumeration = {
+			OCLstdlibTables.Operations._OclEnumeration__allInstances /* allInstances(Integer[1]) */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibilityType__OclType = {
+			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
+		};
+
 		private static final ExecutorOperation /*@NonNull*/ [] _NamedEntity__NamedEntity = {};
 		private static final ExecutorOperation /*@NonNull*/ [] _NamedEntity__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
@@ -1416,6 +1535,18 @@ public class ModelTables extends AbstractTables
 			Fragments._Layer__OclEnumeration.initOperations(_Layer__OclEnumeration);
 			Fragments._Layer__OclType.initOperations(_Layer__OclType);
 
+			Fragments._MLResponsibility__MLResponsibility.initOperations(_MLResponsibility__MLResponsibility);
+			Fragments._MLResponsibility__NamedEntity.initOperations(_MLResponsibility__NamedEntity);
+			Fragments._MLResponsibility__OclAny.initOperations(_MLResponsibility__OclAny);
+			Fragments._MLResponsibility__OclElement.initOperations(_MLResponsibility__OclElement);
+			Fragments._MLResponsibility__Responsibility.initOperations(_MLResponsibility__Responsibility);
+
+			Fragments._MLResponsibilityType__MLResponsibilityType.initOperations(_MLResponsibilityType__MLResponsibilityType);
+			Fragments._MLResponsibilityType__OclAny.initOperations(_MLResponsibilityType__OclAny);
+			Fragments._MLResponsibilityType__OclElement.initOperations(_MLResponsibilityType__OclElement);
+			Fragments._MLResponsibilityType__OclEnumeration.initOperations(_MLResponsibilityType__OclEnumeration);
+			Fragments._MLResponsibilityType__OclType.initOperations(_MLResponsibilityType__OclType);
+
 			Fragments._NamedEntity__NamedEntity.initOperations(_NamedEntity__NamedEntity);
 			Fragments._NamedEntity__OclAny.initOperations(_NamedEntity__OclAny);
 			Fragments._NamedEntity__OclElement.initOperations(_NamedEntity__OclElement);
@@ -1580,6 +1711,23 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Properties._OclElement__oclContents
 		};
 
+		private static final ExecutorProperty /*@NonNull*/ [] _MLResponsibility = {
+			ModelTables.Properties._Responsibility__Action,
+			ModelTables.Properties._Responsibility__incomeassets,
+			ModelTables.Properties._MLResponsibility__mlAction,
+			ModelTables.Properties._NamedEntity__name,
+			ModelTables.Properties._NamedEntity__number,
+			OCLstdlibTables.Properties._OclElement__oclContainer,
+			OCLstdlibTables.Properties._OclElement__oclContents,
+			ModelTables.Properties._Responsibility__outcomeassets,
+			ModelTables.Properties._Responsibility__process
+		};
+
+		private static final ExecutorProperty /*@NonNull*/ [] _MLResponsibilityType = {
+			OCLstdlibTables.Properties._OclElement__oclContainer,
+			OCLstdlibTables.Properties._OclElement__oclContents
+		};
+
 		private static final ExecutorProperty /*@NonNull*/ [] _NamedEntity = {
 			ModelTables.Properties._NamedEntity__name,
 			ModelTables.Properties._NamedEntity__number,
@@ -1663,6 +1811,8 @@ public class ModelTables extends AbstractTables
 			Fragments._ExternalEntity__ExternalEntity.initProperties(_ExternalEntity);
 			Fragments._Flow__Flow.initProperties(_Flow);
 			Fragments._Layer__Layer.initProperties(_Layer);
+			Fragments._MLResponsibility__MLResponsibility.initProperties(_MLResponsibility);
+			Fragments._MLResponsibilityType__MLResponsibilityType.initProperties(_MLResponsibilityType);
 			Fragments._NamedEntity__NamedEntity.initProperties(_NamedEntity);
 			Fragments._Objective__Objective.initProperties(_Objective);
 			Fragments._Priority__Priority.initProperties(_Priority);
@@ -1719,6 +1869,23 @@ public class ModelTables extends AbstractTables
 			_Layer__Transport,
 			_Layer__Architectural,
 			_Layer__Application
+		};
+
+		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__Classification = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("Classification"), Types._MLResponsibilityType, 0);
+		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__DecisionMaking = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("DecisionMaking"), Types._MLResponsibilityType, 1);
+		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__Regression = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("Regression"), Types._MLResponsibilityType, 2);
+		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__Clustering = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("Clustering"), Types._MLResponsibilityType, 3);
+		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__AnomalyDetection = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("AnomalyDetection"), Types._MLResponsibilityType, 4);
+		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__NaturalLanguageProcessing = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("NaturalLanguageProcessing"), Types._MLResponsibilityType, 5);
+		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__ComputerVision = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("ComputerVision"), Types._MLResponsibilityType, 6);
+		private static final EcoreExecutorEnumerationLiteral /*@NonNull*/ [] _MLResponsibilityType = {
+			_MLResponsibilityType__Classification,
+			_MLResponsibilityType__DecisionMaking,
+			_MLResponsibilityType__Regression,
+			_MLResponsibilityType__Clustering,
+			_MLResponsibilityType__AnomalyDetection,
+			_MLResponsibilityType__NaturalLanguageProcessing,
+			_MLResponsibilityType__ComputerVision
 		};
 
 		public static final EcoreExecutorEnumerationLiteral _Objective__Integrity = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.OBJECTIVE.getEEnumLiteral("Integrity"), Types._Objective, 0);
@@ -1781,6 +1948,7 @@ public class ModelTables extends AbstractTables
 			Types._AssetType.initLiterals(_AssetType);
 			Types._Channel.initLiterals(_Channel);
 			Types._Layer.initLiterals(_Layer);
+			Types._MLResponsibilityType.initLiterals(_MLResponsibilityType);
 			Types._Objective.initLiterals(_Objective);
 			Types._Priority.initLiterals(_Priority);
 			Types._ResponsibilityType.initLiterals(_ResponsibilityType);

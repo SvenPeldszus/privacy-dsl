@@ -15,6 +15,7 @@ import org.secdfd.model.EDFD;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
+import org.secdfd.model.MLResponsibility;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Responsibility;
@@ -168,6 +169,14 @@ public class ModelSwitch<T> extends Switch<T> {
 				Responsibility responsibility = (Responsibility)theEObject;
 				T result = caseResponsibility(responsibility);
 				if (result == null) result = caseNamedEntity(responsibility);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.ML_RESPONSIBILITY: {
+				MLResponsibility mlResponsibility = (MLResponsibility)theEObject;
+				T result = caseMLResponsibility(mlResponsibility);
+				if (result == null) result = caseResponsibility(mlResponsibility);
+				if (result == null) result = caseNamedEntity(mlResponsibility);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -367,6 +376,21 @@ public class ModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseResponsibility(Responsibility object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>ML Responsibility</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>ML Responsibility</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMLResponsibility(MLResponsibility object) {
 		return null;
 	}
 

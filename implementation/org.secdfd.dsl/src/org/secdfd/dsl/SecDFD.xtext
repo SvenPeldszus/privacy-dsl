@@ -57,6 +57,18 @@ Process returns Process:
 	']';
 
 Responsibility:
+	MLResponsibility | StandardResponsibility
+;
+
+MLResponsibility returns MLResponsibility:
+	{MLResponsibility}
+	'['
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* Action+=ResponsibilityType '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+		('mlActions:' mlAction+=MLResponsibilityType ( "," mlAction+=MLResponsibilityType)+ )
+	']'
+;
+
+StandardResponsibility returns Responsibility:
 	{Responsibility}
 	'['
 		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* Action+=ResponsibilityType '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
@@ -142,3 +154,6 @@ enum Channel returns Channel:
 
 enum AssetType returns AssetType:
 				String = 'String' | Number = 'Number' | Object = 'Object' | Vector = 'Vector';
+
+enum MLResponsibilityType returns MLResponsibilityType:
+				Classification = 'Classification' | DecisionMaking = 'Decision-Making' | Regression = 'Regression' | Clustering = 'Clustering' | AnomalyDetection = 'AnomalyDetection' | NaturalLanguageProcessing = 'Natural-Language-Processing' | ComputerVision = 'Computer-Vision';
