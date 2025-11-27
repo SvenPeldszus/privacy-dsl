@@ -2,9 +2,6 @@
  */
 package org.secdfd.model;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -20,10 +17,10 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.secdfd.model.ModelPackage#getMLResponsibility()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='constraint_ml_responsibility'"
+ * @model
  * @generated
  */
-public interface MLResponsibility extends Responsibility {
+public interface MLResponsibility extends ResponsibilityBase {
 	/**
 	 * Returns the value of the '<em><b>Ml Action</b></em>' attribute list.
 	 * The list contents are of type {@link org.secdfd.model.MLResponsibilityType}.
@@ -37,13 +34,5 @@ public interface MLResponsibility extends Responsibility {
 	 * @generated
 	 */
 	EList<MLResponsibilityType> getMlAction();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='Tuple {\n\tmessage : String = \'MLResponsibility can only be used when ML is selected as a ResponsibilityType in Action.\',\n\tstatus : Boolean = \n\t\t\tself.Action-&gt;includes(ResponsibilityType::ML)\n}.status'"
-	 * @generated
-	 */
-	boolean constraint_ml_responsibility(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // MLResponsibility

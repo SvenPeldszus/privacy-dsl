@@ -52,10 +52,13 @@ import org.secdfd.model.Asset;
 import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.Element;
 import org.secdfd.model.Flow;
+import org.secdfd.model.MLResponsibility;
+import org.secdfd.model.MLResponsibilityType;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
 import org.secdfd.model.Priority;
 import org.secdfd.model.Responsibility;
+import org.secdfd.model.ResponsibilityBase;
 import org.secdfd.model.ResponsibilityType;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
@@ -344,12 +347,25 @@ public class eDFDToGraphTransformation {
   private final BatchTransformationRule<Responsibilities.Match, Responsibilities.Matcher> eDFDProcessResponsibilitiesRule = this._batchTransformationRuleFactory.<Responsibilities.Match, Responsibilities.Matcher>createRule().precondition(Responsibilities.Matcher.querySpecification()).action(
     ((Consumer<Responsibilities.Match>) (Responsibilities.Match it) -> {
       try {
-        final Responsibility eDFDResponsibility = it.getR();
+        final ResponsibilityBase eDFDResponsibility = it.getR();
         org.secdfd.model.Process _process = eDFDResponsibility.getProcess();
         final NamedEntity eDFDResponsibilityProcess = ((NamedEntity) _process);
         final EList<Asset> eDFDIncomingAssets = eDFDResponsibility.getIncomeassets();
         final EList<Asset> eDFDOutgoingAssets = eDFDResponsibility.getOutcomeassets();
-        final EList<ResponsibilityType> eDFDResponsibilityActions = eDFDResponsibility.getAction();
+        List<ResponsibilityType> _xifexpression = null;
+        if ((eDFDResponsibility instanceof Responsibility)) {
+          _xifexpression = ((Responsibility) eDFDResponsibility).getAction();
+        } else {
+          _xifexpression = CollectionLiterals.<ResponsibilityType>newArrayList();
+        }
+        final List<ResponsibilityType> eDFDResponsibilityActions = _xifexpression;
+        List<MLResponsibilityType> _xifexpression_1 = null;
+        if ((eDFDResponsibility instanceof MLResponsibility)) {
+          _xifexpression_1 = ((MLResponsibility) eDFDResponsibility).getMlAction();
+        } else {
+          _xifexpression_1 = CollectionLiterals.<MLResponsibilityType>newArrayList();
+        }
+        final List<MLResponsibilityType> eDFDMLResponsibilityActions = _xifexpression_1;
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("Mapping eDFD Responsibility with Graph NodeResponsibility: ");
         String _name = eDFDResponsibilityProcess.getName();
@@ -375,13 +391,31 @@ public class eDFDToGraphTransformation {
           try {
             this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_Incomingassets(), incomingassets_of_process);
             this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_Outgoingassets(), outgoingassets_of_process);
-            this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_Operation(), eDFDResponsibilityActions);
+            if (((eDFDResponsibility instanceof Responsibility) && (!eDFDResponsibilityActions.isEmpty()))) {
+              this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_Operation(), eDFDResponsibilityActions);
+            }
+            if (((eDFDResponsibility instanceof MLResponsibility) && (!eDFDMLResponsibilityActions.isEmpty()))) {
+              this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_MlOperation(), eDFDMLResponsibilityActions);
+            }
           } catch (Throwable _e) {
             throw Exceptions.sneakyThrow(_e);
           }
         };
         final Identifiable graphResponsibility = ObjectExtensions.<Identifiable>operator_doubleArrow(((Identifiable) _createChild), _function);
-        graphResponsibility.setID(eDFDResponsibilityProcess.getName().concat(eDFDResponsibilityActions.toString()).concat(eDFDResponsibility.getIncomeassets().toString()));
+        String _xifexpression_2 = null;
+        if ((eDFDResponsibility instanceof Responsibility)) {
+          _xifexpression_2 = eDFDResponsibilityActions.toString();
+        } else {
+          String _xifexpression_3 = null;
+          if ((eDFDResponsibility instanceof MLResponsibility)) {
+            _xifexpression_3 = eDFDMLResponsibilityActions.toString();
+          } else {
+            _xifexpression_3 = "";
+          }
+          _xifexpression_2 = _xifexpression_3;
+        }
+        final String actionsString = _xifexpression_2;
+        graphResponsibility.setID(eDFDResponsibilityProcess.getName().concat(actionsString).concat(eDFDResponsibility.getIncomeassets().toString()));
         EObject _createChild_1 = this.manipulation.createChild(this.edfd2graph, this.trPackage.getEDFDToGraph_EdfdGraphTraces(), this.trPackage.getEDFDGraphTrace());
         final Procedure1<EObject> _function_1 = (EObject it_1) -> {
           try {
@@ -402,7 +436,7 @@ public class eDFDToGraphTransformation {
       final org.secdfd.model.Process eDFDProcess = it.getP();
       final EList<Flow> eDFDProcessOutgoingFlows = eDFDProcess.getOutflows();
       final String eDFDProcessName = eDFDProcess.getName();
-      final EList<Responsibility> eDFDProcessResponsibilities = eDFDProcess.getResponsibility();
+      final EList<ResponsibilityBase> eDFDProcessResponsibilities = eDFDProcess.getResponsibility();
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Mapping Process properties with Graph Node: ");
       _builder.append(eDFDProcessName);
@@ -417,7 +451,7 @@ public class eDFDToGraphTransformation {
       }
       node_of_process.getOutedges().addAll(outgoingflows);
       final ArrayList<NodeResponsibility> responsibilities_of_process = CollectionLiterals.<NodeResponsibility>newArrayList();
-      for (final Responsibility r : eDFDProcessResponsibilities) {
+      for (final ResponsibilityBase r : eDFDProcessResponsibilities) {
         {
           final NamedEntity o = ((NamedEntity) r);
           responsibilities_of_process.add(IterableExtensions.<NodeResponsibility>head(Iterables.<NodeResponsibility>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, o), NodeResponsibility.class)));

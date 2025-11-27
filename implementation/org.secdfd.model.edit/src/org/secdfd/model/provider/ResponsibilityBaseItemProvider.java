@@ -22,17 +22,16 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.secdfd.model.Assumption;
-import org.secdfd.model.Layer;
 import org.secdfd.model.ModelPackage;
+import org.secdfd.model.ResponsibilityBase;
 
 /**
- * This is the item provider adapter for a {@link org.secdfd.model.Assumption} object.
+ * This is the item provider adapter for a {@link org.secdfd.model.ResponsibilityBase} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class AssumptionItemProvider 
+public class ResponsibilityBaseItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -46,7 +45,7 @@ public class AssumptionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AssumptionItemProvider(AdapterFactory adapterFactory) {
+	public ResponsibilityBaseItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -61,26 +60,28 @@ public class AssumptionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addObjectivePropertyDescriptor(object);
-			addLayerPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
+			addNumberPropertyDescriptor(object);
+			addIncomeassetsPropertyDescriptor(object);
+			addOutcomeassetsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Objective feature.
+	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addObjectivePropertyDescriptor(Object object) {
+	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Assumption_Objective_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Assumption_Objective_feature", "_UI_Assumption_type"),
-				 ModelPackage.Literals.ASSUMPTION__OBJECTIVE,
+				 getString("_UI_NamedEntity_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_NamedEntity_name_feature", "_UI_NamedEntity_type"),
+				 ModelPackage.Literals.NAMED_ENTITY__NAME,
 				 true,
 				 false,
 				 false,
@@ -90,36 +91,69 @@ public class AssumptionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Layer feature.
+	 * This adds a property descriptor for the Number feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addLayerPropertyDescriptor(Object object) {
+	protected void addNumberPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Assumption_Layer_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Assumption_Layer_feature", "_UI_Assumption_type"),
-				 ModelPackage.Literals.ASSUMPTION__LAYER,
+				 getString("_UI_NamedEntity_number_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_NamedEntity_number_feature", "_UI_NamedEntity_type"),
+				 ModelPackage.Literals.NAMED_ENTITY__NUMBER,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This returns Assumption.gif.
+	 * This adds a property descriptor for the Incomeassets feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Assumption"));
+	protected void addIncomeassetsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ResponsibilityBase_incomeassets_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ResponsibilityBase_incomeassets_feature", "_UI_ResponsibilityBase_type"),
+				 ModelPackage.Literals.RESPONSIBILITY_BASE__INCOMEASSETS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Outcomeassets feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOutcomeassetsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ResponsibilityBase_outcomeassets_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ResponsibilityBase_outcomeassets_feature", "_UI_ResponsibilityBase_type"),
+				 ModelPackage.Literals.RESPONSIBILITY_BASE__OUTCOMEASSETS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -130,11 +164,10 @@ public class AssumptionItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Layer labelValue = ((Assumption)object).getLayer();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((ResponsibilityBase)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Assumption_type") :
-			getString("_UI_Assumption_type") + " " + label;
+			getString("_UI_ResponsibilityBase_type") :
+			getString("_UI_ResponsibilityBase_type") + " " + label;
 	}
 
 
@@ -149,9 +182,9 @@ public class AssumptionItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Assumption.class)) {
-			case ModelPackage.ASSUMPTION__OBJECTIVE:
-			case ModelPackage.ASSUMPTION__LAYER:
+		switch (notification.getFeatureID(ResponsibilityBase.class)) {
+			case ModelPackage.RESPONSIBILITY_BASE__NAME:
+			case ModelPackage.RESPONSIBILITY_BASE__NUMBER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -4,20 +4,16 @@ package org.secdfd.model.tests;
 
 import junit.textui.TestRunner;
 
+import org.secdfd.model.MLResponsibility;
 import org.secdfd.model.ModelFactory;
-import org.secdfd.model.Responsibility;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Responsibility</b></em>'.
+ * A test case for the model object '<em><b>ML Responsibility</b></em>'.
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResponsibilityTest extends ResponsibilityBaseTest {
-
-	public void test() {
-		//TODO: Implement test here
-	}
+public class MLResponsibilityTest extends ResponsibilityBaseTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -25,28 +21,28 @@ public class ResponsibilityTest extends ResponsibilityBaseTest {
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(ResponsibilityTest.class);
+		TestRunner.run(MLResponsibilityTest.class);
 	}
 
 	/**
-	 * Constructs a new Responsibility test case with the given name.
+	 * Constructs a new ML Responsibility test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResponsibilityTest(String name) {
+	public MLResponsibilityTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Returns the fixture for this Responsibility test case.
+	 * Returns the fixture for this ML Responsibility test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	protected Responsibility getFixture() {
-		return (Responsibility)fixture;
+	protected MLResponsibility getFixture() {
+		return (MLResponsibility)fixture;
 	}
 
 	/**
@@ -57,7 +53,7 @@ public class ResponsibilityTest extends ResponsibilityBaseTest {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(ModelFactory.eINSTANCE.createResponsibility());
+		setFixture(ModelFactory.eINSTANCE.createMLResponsibility());
 	}
 
 	/**
@@ -71,4 +67,4 @@ public class ResponsibilityTest extends ResponsibilityBaseTest {
 		setFixture(null);
 	}
 
-} //ResponsibilityTest
+} //MLResponsibilityTest

@@ -88,8 +88,8 @@ pattern Assets(a: Asset){
 	Asset(a);
 }
 
-pattern Responsibilities(r: Responsibility){
-	Responsibility(r);
+pattern Responsibilities(r: ResponsibilityBase){
+	ResponsibilityBase(r);
 }
 
 pattern ResponsibilityTypes(rt : ResponsibilityType){
@@ -136,7 +136,8 @@ pattern publicAsset(a: Asset){
 }*/
 
 pattern comparatorProcesses(p : Process){
-	Process.responsibility.Action(p, pr);
+	Process.responsibility(p, r);
+	Responsibility.Action(r, pr);
 	pr == ResponsibilityType::Comparator;
 }
 

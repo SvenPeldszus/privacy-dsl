@@ -42,6 +42,7 @@ import org.eclipse.ocl.pivot.values.SequenceValue;
 
 import org.eclipse.ocl.pivot.values.SequenceValue.Accumulator;
 
+import org.secdfd.model.MLResponsibilityType;
 import org.secdfd.model.ResponsibilityType;
 
 /**
@@ -55,6 +56,7 @@ import org.secdfd.model.ResponsibilityType;
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getID <em>ID</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getOperation <em>Operation</em>}</li>
+ *   <li>{@link graph.impl.NodeResponsibilityImpl#getMlOperation <em>Ml Operation</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getOutgoingassets <em>Outgoingassets</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getIncomingassets <em>Incomingassets</em>}</li>
  * </ul>
@@ -111,6 +113,16 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 	 * @ordered
 	 */
 	protected EList<ResponsibilityType> operation;
+
+	/**
+	 * The cached value of the '{@link #getMlOperation() <em>Ml Operation</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMlOperation()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<MLResponsibilityType> mlOperation;
 
 	/**
 	 * The cached value of the '{@link #getOutgoingassets() <em>Outgoingassets</em>}' reference list.
@@ -208,6 +220,19 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 			operation = new EDataTypeUniqueEList<ResponsibilityType>(ResponsibilityType.class, this, GraphPackage.NODE_RESPONSIBILITY__OPERATION);
 		}
 		return operation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<MLResponsibilityType> getMlOperation() {
+		if (mlOperation == null) {
+			mlOperation = new EDataTypeUniqueEList<MLResponsibilityType>(MLResponsibilityType.class, this, GraphPackage.NODE_RESPONSIBILITY__ML_OPERATION);
+		}
+		return mlOperation;
 	}
 
 	/**
@@ -360,6 +385,8 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 				return getNumber();
 			case GraphPackage.NODE_RESPONSIBILITY__OPERATION:
 				return getOperation();
+			case GraphPackage.NODE_RESPONSIBILITY__ML_OPERATION:
+				return getMlOperation();
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				return getOutgoingassets();
 			case GraphPackage.NODE_RESPONSIBILITY__INCOMINGASSETS:
@@ -386,6 +413,10 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 			case GraphPackage.NODE_RESPONSIBILITY__OPERATION:
 				getOperation().clear();
 				getOperation().addAll((Collection<? extends ResponsibilityType>)newValue);
+				return;
+			case GraphPackage.NODE_RESPONSIBILITY__ML_OPERATION:
+				getMlOperation().clear();
+				getMlOperation().addAll((Collection<? extends MLResponsibilityType>)newValue);
 				return;
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				getOutgoingassets().clear();
@@ -416,6 +447,9 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 			case GraphPackage.NODE_RESPONSIBILITY__OPERATION:
 				getOperation().clear();
 				return;
+			case GraphPackage.NODE_RESPONSIBILITY__ML_OPERATION:
+				getMlOperation().clear();
+				return;
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				getOutgoingassets().clear();
 				return;
@@ -440,6 +474,8 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 				return number != NUMBER_EDEFAULT;
 			case GraphPackage.NODE_RESPONSIBILITY__OPERATION:
 				return operation != null && !operation.isEmpty();
+			case GraphPackage.NODE_RESPONSIBILITY__ML_OPERATION:
+				return mlOperation != null && !mlOperation.isEmpty();
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				return outgoingassets != null && !outgoingassets.isEmpty();
 			case GraphPackage.NODE_RESPONSIBILITY__INCOMINGASSETS:
@@ -480,6 +516,8 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 		result.append(number);
 		result.append(", operation: ");
 		result.append(operation);
+		result.append(", mlOperation: ");
+		result.append(mlOperation);
 		result.append(')');
 		return result.toString();
 	}

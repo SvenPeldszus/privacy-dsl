@@ -8,29 +8,29 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.secdfd.model.MLResponsibility;
 import org.secdfd.model.ModelPackage;
-import org.secdfd.model.Responsibility;
 
 /**
- * This is the item provider adapter for a {@link org.secdfd.model.Responsibility} object.
+ * This is the item provider adapter for a {@link org.secdfd.model.MLResponsibility} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResponsibilityItemProvider 
-	extends ResponsibilityBaseItemProvider {
+public class MLResponsibilityItemProvider extends ResponsibilityBaseItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResponsibilityItemProvider(AdapterFactory adapterFactory) {
+	public MLResponsibilityItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -45,25 +45,25 @@ public class ResponsibilityItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addActionPropertyDescriptor(object);
+			addMlActionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Action feature.
+	 * This adds a property descriptor for the Ml Action feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addActionPropertyDescriptor(Object object) {
+	protected void addMlActionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Responsibility_Action_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Responsibility_Action_feature", "_UI_Responsibility_type"),
-				 ModelPackage.Literals.RESPONSIBILITY__ACTION,
+				 getString("_UI_MLResponsibility_mlAction_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MLResponsibility_mlAction_feature", "_UI_MLResponsibility_type"),
+				 ModelPackage.Literals.ML_RESPONSIBILITY__ML_ACTION,
 				 true,
 				 false,
 				 false,
@@ -73,14 +73,14 @@ public class ResponsibilityItemProvider
 	}
 
 	/**
-	 * This returns Responsibility.gif.
+	 * This returns MLResponsibility.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Responsibility"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/MLResponsibility"));
 	}
 
 	/**
@@ -91,10 +91,10 @@ public class ResponsibilityItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Responsibility)object).getName();
+		String label = ((MLResponsibility)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Responsibility_type") :
-			getString("_UI_Responsibility_type") + " " + label;
+			getString("_UI_MLResponsibility_type") :
+			getString("_UI_MLResponsibility_type") + " " + label;
 	}
 
 
@@ -109,8 +109,8 @@ public class ResponsibilityItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Responsibility.class)) {
-			case ModelPackage.RESPONSIBILITY__ACTION:
+		switch (notification.getFeatureID(MLResponsibility.class)) {
+			case ModelPackage.ML_RESPONSIBILITY__ML_ACTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

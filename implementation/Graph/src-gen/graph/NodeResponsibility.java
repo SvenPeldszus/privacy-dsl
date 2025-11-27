@@ -6,6 +6,7 @@ import java.math.BigInteger;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.secdfd.model.MLResponsibilityType;
 import org.secdfd.model.ResponsibilityType;
 
 /**
@@ -18,6 +19,7 @@ import org.secdfd.model.ResponsibilityType;
  * </p>
  * <ul>
  *   <li>{@link graph.NodeResponsibility#getOperation <em>Operation</em>}</li>
+ *   <li>{@link graph.NodeResponsibility#getMlOperation <em>Ml Operation</em>}</li>
  *   <li>{@link graph.NodeResponsibility#getOutgoingassets <em>Outgoingassets</em>}</li>
  *   <li>{@link graph.NodeResponsibility#getIncomingassets <em>Incomingassets</em>}</li>
  * </ul>
@@ -40,6 +42,20 @@ public interface NodeResponsibility extends Identifiable {
 	 * @generated
 	 */
 	EList<ResponsibilityType> getOperation();
+
+	/**
+	 * Returns the value of the '<em><b>Ml Operation</b></em>' attribute list.
+	 * The list contents are of type {@link org.secdfd.model.MLResponsibilityType}.
+	 * The literals are from the enumeration {@link org.secdfd.model.MLResponsibilityType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ml Operation</em>' attribute list.
+	 * @see org.secdfd.model.MLResponsibilityType
+	 * @see graph.GraphPackage#getNodeResponsibility_MlOperation()
+	 * @model
+	 * @generated
+	 */
+	EList<MLResponsibilityType> getMlOperation();
 
 	/**
 	 * Returns the value of the '<em><b>Outgoingassets</b></em>' reference list.

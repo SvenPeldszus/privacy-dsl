@@ -77,6 +77,7 @@ public class GraphTables extends AbstractTables
 	public static final /*@NonInvalid*/ ClassId CLSSid_NodeResponsibility = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("NodeResponsibility", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Subgraphs = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("Subgraphs", 0);
 	public static final /*@NonInvalid*/ DataTypeId DATAid_EInt = GraphTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EInt", 0);
+	public static final /*@NonInvalid*/ EnumerationId ENUMid_MLResponsibilityType = GraphTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("MLResponsibilityType");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Objective = GraphTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Objective");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_ResponsibilityType = GraphTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("ResponsibilityType");
 	public static final /*@NonInvalid*/ IntegerValue INT_0 = ValueUtil.integerValueOf("0");
@@ -107,6 +108,7 @@ public class GraphTables extends AbstractTables
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_NodeResponsibility = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_NodeResponsibility, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Node_0 = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_Node, true, ValueUtil.ONE_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Subgraphs = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_Subgraphs, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
+	public static final /*@NonInvalid*/ CollectionTypeId ORD_ENUMid_MLResponsibilityType = TypeId.ORDERED_SET.getSpecializedId(GraphTables.ENUMid_MLResponsibilityType, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_ENUMid_ResponsibilityType = TypeId.ORDERED_SET.getSpecializedId(GraphTables.ENUMid_ResponsibilityType, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_AssetLabel = TypeId.SEQUENCE.getSpecializedId(GraphTables.CLSSid_AssetLabel, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId SEQ_DATAid_EInt = TypeId.SEQUENCE.getSpecializedId(GraphTables.DATAid_EInt, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
@@ -347,9 +349,10 @@ public class GraphTables extends AbstractTables
 		public static final ExecutorProperty _Node__Subgraphs__nodes = new ExecutorPropertyWithImplementation("Subgraphs", Types._Node, 11, new EcoreLibraryOppositeProperty(GraphPackage.Literals.SUBGRAPHS__NODES));
 
 		public static final ExecutorProperty _NodeResponsibility__incomingassets = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__INCOMINGASSETS, Types._NodeResponsibility, 0);
-		public static final ExecutorProperty _NodeResponsibility__operation = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__OPERATION, Types._NodeResponsibility, 1);
-		public static final ExecutorProperty _NodeResponsibility__outgoingassets = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__OUTGOINGASSETS, Types._NodeResponsibility, 2);
-		public static final ExecutorProperty _NodeResponsibility__Node__responsibility = new ExecutorPropertyWithImplementation("Node", Types._NodeResponsibility, 3, new EcoreLibraryOppositeProperty(GraphPackage.Literals.NODE__RESPONSIBILITY));
+		public static final ExecutorProperty _NodeResponsibility__mlOperation = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__ML_OPERATION, Types._NodeResponsibility, 1);
+		public static final ExecutorProperty _NodeResponsibility__operation = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__OPERATION, Types._NodeResponsibility, 2);
+		public static final ExecutorProperty _NodeResponsibility__outgoingassets = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__OUTGOINGASSETS, Types._NodeResponsibility, 3);
+		public static final ExecutorProperty _NodeResponsibility__Node__responsibility = new ExecutorPropertyWithImplementation("Node", Types._NodeResponsibility, 4, new EcoreLibraryOppositeProperty(GraphPackage.Literals.NODE__RESPONSIBILITY));
 
 		public static final ExecutorProperty _SecurityLabel__level = new EcoreExecutorProperty(GraphPackage.Literals.SECURITY_LABEL__LEVEL, Types._SecurityLabel, 0);
 		public static final ExecutorProperty _SecurityLabel__objective = new EcoreExecutorProperty(GraphPackage.Literals.SECURITY_LABEL__OBJECTIVE, Types._SecurityLabel, 1);
@@ -972,6 +975,7 @@ public class GraphTables extends AbstractTables
 		private static final ExecutorProperty /*@NonNull*/ [] _NodeResponsibility = {
 			GraphTables.Properties._Identifiable__ID,
 			GraphTables.Properties._NodeResponsibility__incomingassets,
+			GraphTables.Properties._NodeResponsibility__mlOperation,
 			GraphTables.Properties._Identifiable__number,
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents,

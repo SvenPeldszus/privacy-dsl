@@ -29,6 +29,7 @@ import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
 import org.secdfd.model.Priority;
 import org.secdfd.model.Responsibility;
+import org.secdfd.model.ResponsibilityBase;
 import org.secdfd.model.ResponsibilityType;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
@@ -68,20 +69,12 @@ public class ModelValidator extends EObjectValidator {
 	public static final int VALUE__CONSTRAINT_1 = 1;
 
 	/**
-	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Constraint ml responsibility' of 'ML Responsibility'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final int ML_RESPONSIBILITY__CONSTRAINT_ML_RESPONSIBILITY = 2;
-
-	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 2;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 1;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -145,6 +138,8 @@ public class ModelValidator extends EObjectValidator {
 				return validateAttackerProfile((AttackerProfile)value, diagnostics, context);
 			case ModelPackage.TRUST_ZONE:
 				return validateTrustZone((TrustZone)value, diagnostics, context);
+			case ModelPackage.RESPONSIBILITY_BASE:
+				return validateResponsibilityBase((ResponsibilityBase)value, diagnostics, context);
 			case ModelPackage.RESPONSIBILITY:
 				return validateResponsibility((Responsibility)value, diagnostics, context);
 			case ModelPackage.ML_RESPONSIBILITY:
@@ -301,6 +296,15 @@ public class ModelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateResponsibilityBase(ResponsibilityBase responsibilityBase, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(responsibilityBase, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateResponsibility(Responsibility responsibility, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(responsibility, diagnostics, context);
 	}
@@ -311,27 +315,7 @@ public class ModelValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMLResponsibility(MLResponsibility mlResponsibility, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(mlResponsibility, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(mlResponsibility, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(mlResponsibility, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(mlResponsibility, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(mlResponsibility, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(mlResponsibility, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(mlResponsibility, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(mlResponsibility, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(mlResponsibility, diagnostics, context);
-		if (result || diagnostics != null) result &= validateMLResponsibility_constraint_ml_responsibility(mlResponsibility, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * Validates the constraint_ml_responsibility constraint of '<em>ML Responsibility</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateMLResponsibility_constraint_ml_responsibility(MLResponsibility mlResponsibility, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return mlResponsibility.constraint_ml_responsibility(diagnostics, context);
+		return validate_EveryDefaultConstraint(mlResponsibility, diagnostics, context);
 	}
 
 	/**

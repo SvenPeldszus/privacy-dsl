@@ -31,6 +31,7 @@ import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
 import org.secdfd.model.Priority;
 import org.secdfd.model.Responsibility;
+import org.secdfd.model.ResponsibilityBase;
 import org.secdfd.model.ResponsibilityType;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
@@ -126,6 +127,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EClass trustZoneEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass responsibilityBaseEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -667,6 +675,46 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getResponsibilityBase() {
+		return responsibilityBaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getResponsibilityBase_Incomeassets() {
+		return (EReference)responsibilityBaseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getResponsibilityBase_Outcomeassets() {
+		return (EReference)responsibilityBaseEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getResponsibilityBase_Process() {
+		return (EReference)responsibilityBaseEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getResponsibility() {
 		return responsibilityEClass;
 	}
@@ -687,36 +735,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getResponsibility_Incomeassets() {
-		return (EReference)responsibilityEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getResponsibility_Outcomeassets() {
-		return (EReference)responsibilityEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getResponsibility_Process() {
-		return (EReference)responsibilityEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getMLResponsibility() {
 		return mlResponsibilityEClass;
 	}
@@ -729,16 +747,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	@Override
 	public EAttribute getMLResponsibility_MlAction() {
 		return (EAttribute)mlResponsibilityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getMLResponsibility__Constraint_ml_responsibility__DiagnosticChain_Map() {
-		return mlResponsibilityEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -892,15 +900,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEReference(trustZoneEClass, TRUST_ZONE__SUBZONES);
 		createEReference(trustZoneEClass, TRUST_ZONE__ATTACKERPROFILE);
 
+		responsibilityBaseEClass = createEClass(RESPONSIBILITY_BASE);
+		createEReference(responsibilityBaseEClass, RESPONSIBILITY_BASE__INCOMEASSETS);
+		createEReference(responsibilityBaseEClass, RESPONSIBILITY_BASE__OUTCOMEASSETS);
+		createEReference(responsibilityBaseEClass, RESPONSIBILITY_BASE__PROCESS);
+
 		responsibilityEClass = createEClass(RESPONSIBILITY);
 		createEAttribute(responsibilityEClass, RESPONSIBILITY__ACTION);
-		createEReference(responsibilityEClass, RESPONSIBILITY__INCOMEASSETS);
-		createEReference(responsibilityEClass, RESPONSIBILITY__OUTCOMEASSETS);
-		createEReference(responsibilityEClass, RESPONSIBILITY__PROCESS);
 
 		mlResponsibilityEClass = createEClass(ML_RESPONSIBILITY);
 		createEAttribute(mlResponsibilityEClass, ML_RESPONSIBILITY__ML_ACTION);
-		createEOperation(mlResponsibilityEClass, ML_RESPONSIBILITY___CONSTRAINT_ML_RESPONSIBILITY__DIAGNOSTICCHAIN_MAP);
 
 		// Create enums
 		priorityEEnum = createEEnum(PRIORITY);
@@ -949,8 +958,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		elementEClass.getESuperTypes().add(this.getNamedEntity());
 		attackerProfileEClass.getESuperTypes().add(this.getNamedEntity());
 		trustZoneEClass.getESuperTypes().add(this.getElement());
-		responsibilityEClass.getESuperTypes().add(this.getNamedEntity());
-		mlResponsibilityEClass.getESuperTypes().add(this.getResponsibility());
+		responsibilityBaseEClass.getESuperTypes().add(this.getNamedEntity());
+		responsibilityEClass.getESuperTypes().add(this.getResponsibilityBase());
+		mlResponsibilityEClass.getESuperTypes().add(this.getResponsibilityBase());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(assetEClass, Asset.class, "Asset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -960,7 +970,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getAsset_Type(), this.getAssetType(), "Type", "String", 0, 1, Asset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processEClass, org.secdfd.model.Process.class, "Process", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProcess_Responsibility(), this.getResponsibility(), this.getResponsibility_Process(), "responsibility", null, 0, -1, org.secdfd.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcess_Responsibility(), this.getResponsibilityBase(), this.getResponsibilityBase_Process(), "responsibility", null, 0, -1, org.secdfd.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(edfdEClass, org.secdfd.model.EDFD.class, "EDFD", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEDFD_Asset(), this.getAsset(), null, "asset", null, 0, -1, org.secdfd.model.EDFD.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1013,23 +1023,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getTrustZone_Subzones(), this.getTrustZone(), null, "subzones", null, 0, -1, TrustZone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrustZone_Attackerprofile(), this.getAttackerProfile(), null, "attackerprofile", null, 0, -1, TrustZone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(responsibilityBaseEClass, ResponsibilityBase.class, "ResponsibilityBase", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getResponsibilityBase_Incomeassets(), this.getAsset(), null, "incomeassets", null, 0, -1, ResponsibilityBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResponsibilityBase_Outcomeassets(), this.getAsset(), null, "outcomeassets", null, 0, -1, ResponsibilityBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResponsibilityBase_Process(), this.getProcess(), this.getProcess_Responsibility(), "process", null, 0, 1, ResponsibilityBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(responsibilityEClass, Responsibility.class, "Responsibility", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getResponsibility_Action(), this.getResponsibilityType(), "Action", null, 0, -1, Responsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResponsibility_Incomeassets(), this.getAsset(), null, "incomeassets", null, 0, -1, Responsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResponsibility_Outcomeassets(), this.getAsset(), null, "outcomeassets", null, 0, -1, Responsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResponsibility_Process(), this.getProcess(), this.getProcess_Responsibility(), "process", null, 0, 1, Responsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mlResponsibilityEClass, MLResponsibility.class, "MLResponsibility", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMLResponsibility_MlAction(), this.getMLResponsibilityType(), "mlAction", null, 0, -1, MLResponsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		op = initEOperation(getMLResponsibility__Constraint_ml_responsibility__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "constraint_ml_responsibility", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(ecorePackage.getEMap());
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(priorityEEnum, Priority.class, "Priority");
@@ -1056,7 +1059,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.AUTHORISER);
 		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.VERIFIER);
 		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.USER);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.ML);
 
 		initEEnum(objectiveEEnum, Objective.class, "Objective");
 		addEEnumLiteral(objectiveEEnum, Objective.INTEGRITY);
@@ -1115,12 +1117,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		   new String[] {
 			   "constraints", "constraint_1"
 		   });
-		addAnnotation
-		  (mlResponsibilityEClass,
-		   source,
-		   new String[] {
-			   "constraints", "constraint_ml_responsibility"
-		   });
 	}
 
 	/**
@@ -1136,12 +1132,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		   source,
 		   new String[] {
 			   "body", "Tuple {\n\tmessage : String = \'Privacy as objective can only have a high or low priority.\',\n\tstatus : Boolean = \n\t\t\tself.Objective = Objective::Privacy implies (self.Priority = Priority::H or self.Priority = Priority::L)\n}.status"
-		   });
-		addAnnotation
-		  (getMLResponsibility__Constraint_ml_responsibility__DiagnosticChain_Map(),
-		   source,
-		   new String[] {
-			   "body", "Tuple {\n\tmessage : String = \'MLResponsibility can only be used when ML is selected as a ResponsibilityType in Action.\',\n\tstatus : Boolean = \n\t\t\tself.Action->includes(ResponsibilityType::ML)\n}.status"
 		   });
 	}
 

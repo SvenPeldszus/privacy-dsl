@@ -19,6 +19,7 @@ import org.secdfd.model.MLResponsibility;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Responsibility;
+import org.secdfd.model.ResponsibilityBase;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 
@@ -165,9 +166,17 @@ public class ModelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ModelPackage.RESPONSIBILITY_BASE: {
+				ResponsibilityBase responsibilityBase = (ResponsibilityBase)theEObject;
+				T result = caseResponsibilityBase(responsibilityBase);
+				if (result == null) result = caseNamedEntity(responsibilityBase);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ModelPackage.RESPONSIBILITY: {
 				Responsibility responsibility = (Responsibility)theEObject;
 				T result = caseResponsibility(responsibility);
+				if (result == null) result = caseResponsibilityBase(responsibility);
 				if (result == null) result = caseNamedEntity(responsibility);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -175,7 +184,7 @@ public class ModelSwitch<T> extends Switch<T> {
 			case ModelPackage.ML_RESPONSIBILITY: {
 				MLResponsibility mlResponsibility = (MLResponsibility)theEObject;
 				T result = caseMLResponsibility(mlResponsibility);
-				if (result == null) result = caseResponsibility(mlResponsibility);
+				if (result == null) result = caseResponsibilityBase(mlResponsibility);
 				if (result == null) result = caseNamedEntity(mlResponsibility);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -361,6 +370,21 @@ public class ModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTrustZone(TrustZone object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Responsibility Base</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Responsibility Base</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseResponsibilityBase(ResponsibilityBase object) {
 		return null;
 	}
 

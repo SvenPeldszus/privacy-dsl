@@ -33,6 +33,8 @@ import java.util.Collections
 import org.eclipse.emf.common.util.EList
 import graph.GraphFactory
 import graph.SecurityLabel
+import org.secdfd.model.ResponsibilityBase
+import org.secdfd.model.MLResponsibility
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -274,7 +276,17 @@ class eDFDToGraphTransformation {
     	val eDFDResponsibilityProcess = eDFDResponsibility.process as NamedEntity
     	val eDFDIncomingAssets = eDFDResponsibility.incomeassets
     	val eDFDOutgoingAssets = eDFDResponsibility.outcomeassets
-    	val eDFDResponsibilityActions = eDFDResponsibility.action
+    	val eDFDResponsibilityActions = if (eDFDResponsibility instanceof Responsibility) {
+    		(eDFDResponsibility as Responsibility).action
+    	} else {
+    		newArrayList()
+    	}
+    	
+    	val eDFDMLResponsibilityActions = if (eDFDResponsibility instanceof MLResponsibility) {
+    		(eDFDResponsibility as MLResponsibility).mlAction
+    	} else {
+    		newArrayList()
+    	}
     	
     	println('''Mapping eDFD Responsibility with Graph NodeResponsibility: «eDFDResponsibilityProcess.name»''')
     	
@@ -300,10 +312,23 @@ class eDFDToGraphTransformation {
     		addTo(nodeResponsibility_Incomingassets, incomingassets_of_process)
     		//set outgoing assets
 			addTo(nodeResponsibility_Outgoingassets, outgoingassets_of_process)
-    		//set operations
-    		addTo(nodeResponsibility_Operation, eDFDResponsibilityActions)
+    		//set operations for Responsibility
+    		if (eDFDResponsibility instanceof Responsibility && !eDFDResponsibilityActions.empty) {
+    			addTo(nodeResponsibility_Operation, eDFDResponsibilityActions)
+    		}
+    		//set mlOperations for MLResponsibility
+    		if (eDFDResponsibility instanceof MLResponsibility && !eDFDMLResponsibilityActions.empty) {
+    			addTo(nodeResponsibility_MlOperation, eDFDMLResponsibilityActions)
+    		}
     	]
-    	graphResponsibility.ID = eDFDResponsibilityProcess.name.concat(eDFDResponsibilityActions.toString).concat(eDFDResponsibility.incomeassets.toString)
+    	val actionsString = if (eDFDResponsibility instanceof Responsibility) {
+    		eDFDResponsibilityActions.toString
+    	} else if (eDFDResponsibility instanceof MLResponsibility) {
+    		eDFDMLResponsibilityActions.toString
+    	} else {
+    		''
+    	}
+    	graphResponsibility.ID = eDFDResponsibilityProcess.name.concat(actionsString).concat(eDFDResponsibility.incomeassets.toString)
     	
     	edfd2graph.createChild(EDFDToGraph_EdfdGraphTraces, EDFDGraphTrace) => [
     		addTo(EDFDGraphTrace_EdfdElements, eDFDResponsibility)
@@ -335,7 +360,7 @@ class eDFDToGraphTransformation {
    		
    		//find target process responsibilities (in graph)
    		val responsibilities_of_process  = newArrayList()
-   		for (Responsibility r : eDFDProcessResponsibilities){
+   		for (ResponsibilityBase r : eDFDProcessResponsibilities){
    			val o = r as NamedEntity
    			responsibilities_of_process.add(engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, o).filter(NodeResponsibility).head)
    		}

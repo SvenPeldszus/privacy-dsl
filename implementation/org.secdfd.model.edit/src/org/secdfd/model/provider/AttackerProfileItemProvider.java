@@ -200,7 +200,7 @@ public class AttackerProfileItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return SecdfdEditPlugin.INSTANCE;
+		return ModelEditPlugin.INSTANCE;
 	}
 
 }

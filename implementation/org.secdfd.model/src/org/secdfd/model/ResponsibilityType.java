@@ -146,15 +146,7 @@ public enum ResponsibilityType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	USER(13, "User", "User"), /**
-	 * The '<em><b>ML</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ML_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	ML(14, "ML", "ML");
+	USER(13, "User", "User");
 
 	/**
 	 * The '<em><b>Store</b></em>' literal value.
@@ -300,17 +292,6 @@ public enum ResponsibilityType implements Enumerator {
 	public static final int USER_VALUE = 13;
 
 	/**
-	 * The '<em><b>ML</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ML
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ML_VALUE = 14;
-
-	/**
 	 * An array of all the '<em><b>Responsibility Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -331,7 +312,6 @@ public enum ResponsibilityType implements Enumerator {
 			AUTHORISER,
 			VERIFIER,
 			USER,
-			ML,
 		};
 
 	/**
@@ -401,7 +381,6 @@ public enum ResponsibilityType implements Enumerator {
 			case AUTHORISER_VALUE: return AUTHORISER;
 			case VERIFIER_VALUE: return VERIFIER;
 			case USER_VALUE: return USER;
-			case ML_VALUE: return ML;
 		}
 		return null;
 	}

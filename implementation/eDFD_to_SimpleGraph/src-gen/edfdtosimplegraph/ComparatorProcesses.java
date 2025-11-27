@@ -60,7 +60,8 @@ import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
  *         }
  *         
  *         pattern comparatorProcesses(p : Process){
- *         	Process.responsibility.Action(p, pr);
+ *         	Process.responsibility(p, r);
+ *         	Responsibility.Action(r, pr);
  *         	pr == ResponsibilityType::Comparator;
  *         }
  * </pre></code>
@@ -269,7 +270,8 @@ public final class ComparatorProcesses extends BaseGeneratedEMFQuerySpecificatio
    * }
    * 
    * pattern comparatorProcesses(p : Process){
-   * 	Process.responsibility.Action(p, pr);
+   * 	Process.responsibility(p, r);
+   * 	Responsibility.Action(r, pr);
    * 	pr == ResponsibilityType::Comparator;
    * }
    * </pre></code>
@@ -596,18 +598,22 @@ public final class ComparatorProcesses extends BaseGeneratedEMFQuerySpecificatio
       {
           PBody body = new PBody(this);
           PVariable var_p = body.getOrCreateVariableByName("p");
+          PVariable var_r = body.getOrCreateVariableByName("r");
           PVariable var_pr = body.getOrCreateVariableByName("pr");
           new TypeConstraint(body, Tuples.flatTupleOf(var_p), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Process")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_p, parameter_p)
           ));
-          // 	Process.responsibility.Action(p, pr)
+          // 	Process.responsibility(p, r)
           new TypeConstraint(body, Tuples.flatTupleOf(var_p), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Process")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
           new TypeConstraint(body, Tuples.flatTupleOf(var_p, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Process", "responsibility")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Responsibility")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "ResponsibilityBase")));
+          new Equality(body, var__virtual_0_, var_r);
+          // 	Responsibility.Action(r, pr)
+          new TypeConstraint(body, Tuples.flatTupleOf(var_r), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Responsibility")));
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Responsibility", "Action")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_r, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Responsibility", "Action")));
           new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "ResponsibilityType")));
           new Equality(body, var__virtual_1_, var_pr);
           // 	pr == ResponsibilityType::Comparator

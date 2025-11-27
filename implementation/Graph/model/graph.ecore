@@ -91,6 +91,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="operation" upperBound="-1"
         eType="ecore:EEnum ../../org.secdfd.model/model/model.ecore#//ResponsibilityType"
         defaultValueLiteral="Store"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mlOperation" upperBound="-1"
+        eType="ecore:EEnum ../../org.secdfd.model/model/model.ecore#//MLResponsibilityType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingassets" upperBound="-1"
         eType="#//GraphAsset"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingassets" upperBound="-1"

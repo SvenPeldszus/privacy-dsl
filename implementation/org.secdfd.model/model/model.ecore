@@ -29,7 +29,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Process" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EReference" name="responsibility" upperBound="-1"
-        eType="#//Responsibility" containment="true" eOpposite="#//Responsibility/process"/>
+        eType="#//ResponsibilityBase" containment="true" eOpposite="#//ResponsibilityBase/process"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Channel">
     <eLiterals name="WiFi"/>
@@ -58,7 +58,6 @@
     <eLiterals name="Authoriser" value="11"/>
     <eLiterals name="Verifier" value="12"/>
     <eLiterals name="User" value="13"/>
-    <eLiterals name="ML" value="14"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataStore" eSuperTypes="#//Element"/>
   <eClassifiers xsi:type="ecore:EClass" name="Flow" eSuperTypes="#//Element">
@@ -127,15 +126,18 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="attackerprofile" upperBound="-1"
         eType="#//AttackerProfile" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Responsibility" eSuperTypes="#//NamedEntity">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Action" upperBound="-1"
-        eType="#//ResponsibilityType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ResponsibilityBase" abstract="true"
+      eSuperTypes="#//NamedEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomeassets" upperBound="-1"
         eType="#//Asset"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outcomeassets" upperBound="-1"
         eType="#//Asset"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="process" eType="#//Process"
         eOpposite="#//Process/responsibility"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Responsibility" eSuperTypes="#//ResponsibilityBase">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Action" upperBound="-1"
+        eType="#//ResponsibilityType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="AssetType">
     <eLiterals name="String" literal="String"/>
@@ -153,13 +155,7 @@
     <eLiterals name="NaturalLanguageProcessing" value="5" literal="Natural-Language-Processing"/>
     <eLiterals name="ComputerVision" value="6" literal="Computer-Vision"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MLResponsibility" eSuperTypes="#//Responsibility">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="constraint_ml_responsibility"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="constraint_ml_responsibility" value="Tuple {&#xA;&#x9;message : String = 'MLResponsibility can only be used when ML is selected as a ResponsibilityType in Action.',&#xA;&#x9;status : Boolean = &#xA;&#x9;&#x9;&#x9;self.Action->includes(ResponsibilityType::ML)&#xA;}.status"/>
-    </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="MLResponsibility" eSuperTypes="#//ResponsibilityBase">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mlAction" upperBound="-1"
         eType="#//MLResponsibilityType"/>
   </eClassifiers>
