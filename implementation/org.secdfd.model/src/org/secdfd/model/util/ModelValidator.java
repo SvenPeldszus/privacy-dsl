@@ -16,21 +16,21 @@ import org.secdfd.model.AssetType;
 import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.Channel;
+import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.EDFD;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
 import org.secdfd.model.Layer;
-import org.secdfd.model.MLResponsibility;
-import org.secdfd.model.MLResponsibilityType;
+import org.secdfd.model.MLContract;
+import org.secdfd.model.MLContractType;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
 import org.secdfd.model.Priority;
-import org.secdfd.model.Responsibility;
-import org.secdfd.model.ResponsibilityBase;
-import org.secdfd.model.ResponsibilityType;
+import org.secdfd.model.SecurityContract;
+import org.secdfd.model.SecurityContractType;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 
@@ -138,26 +138,26 @@ public class ModelValidator extends EObjectValidator {
 				return validateAttackerProfile((AttackerProfile)value, diagnostics, context);
 			case ModelPackage.TRUST_ZONE:
 				return validateTrustZone((TrustZone)value, diagnostics, context);
-			case ModelPackage.RESPONSIBILITY_BASE:
-				return validateResponsibilityBase((ResponsibilityBase)value, diagnostics, context);
-			case ModelPackage.RESPONSIBILITY:
-				return validateResponsibility((Responsibility)value, diagnostics, context);
-			case ModelPackage.ML_RESPONSIBILITY:
-				return validateMLResponsibility((MLResponsibility)value, diagnostics, context);
+			case ModelPackage.CONTRACT_BASE:
+				return validateContractBase((ContractBase)value, diagnostics, context);
+			case ModelPackage.SECURITY_CONTRACT:
+				return validateSecurityContract((SecurityContract)value, diagnostics, context);
+			case ModelPackage.ML_CONTRACT:
+				return validateMLContract((MLContract)value, diagnostics, context);
 			case ModelPackage.PRIORITY:
 				return validatePriority((Priority)value, diagnostics, context);
 			case ModelPackage.CHANNEL:
 				return validateChannel((Channel)value, diagnostics, context);
-			case ModelPackage.RESPONSIBILITY_TYPE:
-				return validateResponsibilityType((ResponsibilityType)value, diagnostics, context);
+			case ModelPackage.SECURITY_CONTRACT_TYPE:
+				return validateSecurityContractType((SecurityContractType)value, diagnostics, context);
 			case ModelPackage.OBJECTIVE:
 				return validateObjective((Objective)value, diagnostics, context);
 			case ModelPackage.LAYER:
 				return validateLayer((Layer)value, diagnostics, context);
 			case ModelPackage.ASSET_TYPE:
 				return validateAssetType((AssetType)value, diagnostics, context);
-			case ModelPackage.ML_RESPONSIBILITY_TYPE:
-				return validateMLResponsibilityType((MLResponsibilityType)value, diagnostics, context);
+			case ModelPackage.ML_CONTRACT_TYPE:
+				return validateMLContractType((MLContractType)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -296,8 +296,8 @@ public class ModelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateResponsibilityBase(ResponsibilityBase responsibilityBase, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(responsibilityBase, diagnostics, context);
+	public boolean validateContractBase(ContractBase contractBase, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(contractBase, diagnostics, context);
 	}
 
 	/**
@@ -305,8 +305,8 @@ public class ModelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateResponsibility(Responsibility responsibility, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(responsibility, diagnostics, context);
+	public boolean validateSecurityContract(SecurityContract securityContract, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(securityContract, diagnostics, context);
 	}
 
 	/**
@@ -314,8 +314,8 @@ public class ModelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMLResponsibility(MLResponsibility mlResponsibility, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(mlResponsibility, diagnostics, context);
+	public boolean validateMLContract(MLContract mlContract, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(mlContract, diagnostics, context);
 	}
 
 	/**
@@ -341,7 +341,7 @@ public class ModelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateResponsibilityType(ResponsibilityType responsibilityType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateSecurityContractType(SecurityContractType securityContractType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -377,7 +377,7 @@ public class ModelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateMLResponsibilityType(MLResponsibilityType mlResponsibilityType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateMLContractType(MLContractType mlContractType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

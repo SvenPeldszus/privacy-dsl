@@ -22,16 +22,16 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.secdfd.model.ContractBase;
 import org.secdfd.model.ModelPackage;
-import org.secdfd.model.ResponsibilityBase;
 
 /**
- * This is the item provider adapter for a {@link org.secdfd.model.ResponsibilityBase} object.
+ * This is the item provider adapter for a {@link org.secdfd.model.ContractBase} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResponsibilityBaseItemProvider 
+public class ContractBaseItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -45,7 +45,7 @@ public class ResponsibilityBaseItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResponsibilityBaseItemProvider(AdapterFactory adapterFactory) {
+	public ContractBaseItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -123,9 +123,9 @@ public class ResponsibilityBaseItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ResponsibilityBase_incomeassets_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResponsibilityBase_incomeassets_feature", "_UI_ResponsibilityBase_type"),
-				 ModelPackage.Literals.RESPONSIBILITY_BASE__INCOMEASSETS,
+				 getString("_UI_ContractBase_incomeassets_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ContractBase_incomeassets_feature", "_UI_ContractBase_type"),
+				 ModelPackage.Literals.CONTRACT_BASE__INCOMEASSETS,
 				 true,
 				 false,
 				 true,
@@ -145,9 +145,9 @@ public class ResponsibilityBaseItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ResponsibilityBase_outcomeassets_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ResponsibilityBase_outcomeassets_feature", "_UI_ResponsibilityBase_type"),
-				 ModelPackage.Literals.RESPONSIBILITY_BASE__OUTCOMEASSETS,
+				 getString("_UI_ContractBase_outcomeassets_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ContractBase_outcomeassets_feature", "_UI_ContractBase_type"),
+				 ModelPackage.Literals.CONTRACT_BASE__OUTCOMEASSETS,
 				 true,
 				 false,
 				 true,
@@ -164,10 +164,10 @@ public class ResponsibilityBaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ResponsibilityBase)object).getName();
+		String label = ((ContractBase)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ResponsibilityBase_type") :
-			getString("_UI_ResponsibilityBase_type") + " " + label;
+			getString("_UI_ContractBase_type") :
+			getString("_UI_ContractBase_type") + " " + label;
 	}
 
 
@@ -182,9 +182,9 @@ public class ResponsibilityBaseItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ResponsibilityBase.class)) {
-			case ModelPackage.RESPONSIBILITY_BASE__NAME:
-			case ModelPackage.RESPONSIBILITY_BASE__NUMBER:
+		switch (notification.getFeatureID(ContractBase.class)) {
+			case ModelPackage.CONTRACT_BASE__NAME:
+			case ModelPackage.CONTRACT_BASE__NUMBER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

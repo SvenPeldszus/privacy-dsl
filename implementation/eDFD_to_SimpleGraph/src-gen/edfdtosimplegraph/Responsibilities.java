@@ -35,15 +35,15 @@ import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PVisibility;
 import org.eclipse.viatra.query.runtime.matchers.tuple.Tuple;
 import org.eclipse.viatra.query.runtime.matchers.tuple.Tuples;
 import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
-import org.secdfd.model.ResponsibilityBase;
+import org.secdfd.model.ContractBase;
 
 /**
  * A pattern-specific query specification that can instantiate Matcher in a type-safe way.
  * 
  * <p>Original source:
  *         <code><pre>
- *         pattern Responsibilities(r: ResponsibilityBase){
- *         	ResponsibilityBase(r);
+ *         pattern Responsibilities(r: ContractBase){
+ *         	ContractBase(r);
  *         }
  * </pre></code>
  * 
@@ -68,11 +68,11 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
    * 
    */
   public static abstract class Match extends BasePatternMatch {
-    private ResponsibilityBase fR;
+    private ContractBase fR;
 
     private static List<String> parameterNames = makeImmutableList("r");
 
-    private Match(final ResponsibilityBase pR) {
+    private Match(final ContractBase pR) {
       this.fR = pR;
     }
 
@@ -92,7 +92,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
       }
     }
 
-    public ResponsibilityBase getR() {
+    public ContractBase getR() {
       return this.fR;
     }
 
@@ -100,13 +100,13 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
     public boolean set(final String parameterName, final Object newValue) {
       if (!isMutable()) throw new java.lang.UnsupportedOperationException();
       if ("r".equals(parameterName) ) {
-          this.fR = (ResponsibilityBase) newValue;
+          this.fR = (ContractBase) newValue;
           return true;
       }
       return false;
     }
 
-    public void setR(final ResponsibilityBase pR) {
+    public void setR(final ContractBase pR) {
       if (!isMutable()) throw new java.lang.UnsupportedOperationException();
       this.fR = pR;
     }
@@ -187,7 +187,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @return the new, mutable (partial) match object.
      * 
      */
-    public static Responsibilities.Match newMutableMatch(final ResponsibilityBase pR) {
+    public static Responsibilities.Match newMutableMatch(final ContractBase pR) {
       return new Mutable(pR);
     }
 
@@ -199,12 +199,12 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @return the (partial) match object.
      * 
      */
-    public static Responsibilities.Match newMatch(final ResponsibilityBase pR) {
+    public static Responsibilities.Match newMatch(final ContractBase pR) {
       return new Immutable(pR);
     }
 
     private static final class Mutable extends Responsibilities.Match {
-      Mutable(final ResponsibilityBase pR) {
+      Mutable(final ContractBase pR) {
         super(pR);
       }
 
@@ -215,7 +215,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
     }
 
     private static final class Immutable extends Responsibilities.Match {
-      Immutable(final ResponsibilityBase pR) {
+      Immutable(final ContractBase pR) {
         super(pR);
       }
 
@@ -237,8 +237,8 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
    * 
    * <p>Original source:
    * <code><pre>
-   * pattern Responsibilities(r: ResponsibilityBase){
-   * 	ResponsibilityBase(r);
+   * pattern Responsibilities(r: ContractBase){
+   * 	ContractBase(r);
    * }
    * </pre></code>
    * 
@@ -297,7 +297,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @return matches represented as a Match object.
      * 
      */
-    public Collection<Responsibilities.Match> getAllMatches(final ResponsibilityBase pR) {
+    public Collection<Responsibilities.Match> getAllMatches(final ContractBase pR) {
       return rawStreamAllMatches(new Object[]{pR}).collect(Collectors.toSet());
     }
 
@@ -311,7 +311,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @return a stream of matches represented as a Match object.
      * 
      */
-    public Stream<Responsibilities.Match> streamAllMatches(final ResponsibilityBase pR) {
+    public Stream<Responsibilities.Match> streamAllMatches(final ContractBase pR) {
       return rawStreamAllMatches(new Object[]{pR});
     }
 
@@ -322,7 +322,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @return a match represented as a Match object, or null if no match is found.
      * 
      */
-    public Optional<Responsibilities.Match> getOneArbitraryMatch(final ResponsibilityBase pR) {
+    public Optional<Responsibilities.Match> getOneArbitraryMatch(final ContractBase pR) {
       return rawGetOneArbitraryMatch(new Object[]{pR});
     }
 
@@ -333,7 +333,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @return true if the input is a valid (partial) match of the pattern.
      * 
      */
-    public boolean hasMatch(final ResponsibilityBase pR) {
+    public boolean hasMatch(final ContractBase pR) {
       return rawHasMatch(new Object[]{pR});
     }
 
@@ -343,7 +343,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @return the number of pattern matches found.
      * 
      */
-    public int countMatches(final ResponsibilityBase pR) {
+    public int countMatches(final ContractBase pR) {
       return rawCountMatches(new Object[]{pR});
     }
 
@@ -353,7 +353,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @param processor the action that will process each pattern match.
      * 
      */
-    public void forEachMatch(final ResponsibilityBase pR, final Consumer<? super Responsibilities.Match> processor) {
+    public void forEachMatch(final ContractBase pR, final Consumer<? super Responsibilities.Match> processor) {
       rawForEachMatch(new Object[]{pR}, processor);
     }
 
@@ -365,7 +365,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @return true if the pattern has at least one match with the given parameter values, false if the processor was not invoked
      * 
      */
-    public boolean forOneArbitraryMatch(final ResponsibilityBase pR, final Consumer<? super Responsibilities.Match> processor) {
+    public boolean forOneArbitraryMatch(final ContractBase pR, final Consumer<? super Responsibilities.Match> processor) {
       return rawForOneArbitraryMatch(new Object[]{pR}, processor);
     }
 
@@ -377,7 +377,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @return the (partial) match object.
      * 
      */
-    public Responsibilities.Match newMatch(final ResponsibilityBase pR) {
+    public Responsibilities.Match newMatch(final ContractBase pR) {
       return Responsibilities.Match.newMatch(pR);
     }
 
@@ -386,8 +386,8 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @return the Set of all values or empty set if there are no matches
      * 
      */
-    protected Stream<ResponsibilityBase> rawStreamAllValuesOfr(final Object[] parameters) {
-      return rawStreamAllValues(POSITION_R, parameters).map(ResponsibilityBase.class::cast);
+    protected Stream<ContractBase> rawStreamAllValuesOfr(final Object[] parameters) {
+      return rawStreamAllValues(POSITION_R, parameters).map(ContractBase.class::cast);
     }
 
     /**
@@ -395,7 +395,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @return the Set of all values or empty set if there are no matches
      * 
      */
-    public Set<ResponsibilityBase> getAllValuesOfr() {
+    public Set<ContractBase> getAllValuesOfr() {
       return rawStreamAllValuesOfr(emptyArray()).collect(Collectors.toSet());
     }
 
@@ -404,14 +404,14 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @return the Set of all values or empty set if there are no matches
      * 
      */
-    public Stream<ResponsibilityBase> streamAllValuesOfr() {
+    public Stream<ContractBase> streamAllValuesOfr() {
       return rawStreamAllValuesOfr(emptyArray());
     }
 
     @Override
     protected Responsibilities.Match tupleToMatch(final Tuple t) {
       try {
-          return Responsibilities.Match.newMatch((ResponsibilityBase) t.get(POSITION_R));
+          return Responsibilities.Match.newMatch((ContractBase) t.get(POSITION_R));
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in tuple not properly typed!",e);
           return null;
@@ -421,7 +421,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
     @Override
     protected Responsibilities.Match arrayToMatch(final Object[] match) {
       try {
-          return Responsibilities.Match.newMatch((ResponsibilityBase) match[POSITION_R]);
+          return Responsibilities.Match.newMatch((ContractBase) match[POSITION_R]);
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in array not properly typed!",e);
           return null;
@@ -431,7 +431,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
     @Override
     protected Responsibilities.Match arrayToMatchMutable(final Object[] match) {
       try {
-          return Responsibilities.Match.newMutableMatch((ResponsibilityBase) match[POSITION_R]);
+          return Responsibilities.Match.newMutableMatch((ContractBase) match[POSITION_R]);
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in array not properly typed!",e);
           return null;
@@ -460,7 +460,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
      * @param pR the value of pattern parameter r in the currently processed match
      * 
      */
-    public abstract void accept(final ResponsibilityBase pR);
+    public abstract void accept(final ContractBase pR);
 
     @Override
     public void accept(final Responsibilities.Match match) {
@@ -502,7 +502,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
 
   @Override
   public Responsibilities.Match newMatch(final Object... parameters) {
-    return Responsibilities.Match.newMatch((ResponsibilityBase) parameters[0]);
+    return Responsibilities.Match.newMatch((ContractBase) parameters[0]);
   }
 
   /**
@@ -534,7 +534,7 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private static final Responsibilities.GeneratedPQuery INSTANCE = new GeneratedPQuery();
 
-    private final PParameter parameter_r = new PParameter("r", "org.secdfd.model.ResponsibilityBase", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.secdfd.org/secdfd", "ResponsibilityBase")), PParameterDirection.INOUT);
+    private final PParameter parameter_r = new PParameter("r", "org.secdfd.model.ContractBase", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.secdfd.org/secdfd", "ContractBase")), PParameterDirection.INOUT);
 
     private final List<PParameter> parameters = Arrays.asList(parameter_r);
 
@@ -564,12 +564,12 @@ public final class Responsibilities extends BaseGeneratedEMFQuerySpecification<R
       {
           PBody body = new PBody(this);
           PVariable var_r = body.getOrCreateVariableByName("r");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_r), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "ResponsibilityBase")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_r), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "ContractBase")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_r, parameter_r)
           ));
-          // 	ResponsibilityBase(r)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_r), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "ResponsibilityBase")));
+          // 	ContractBase(r)
+          new TypeConstraint(body, Tuples.flatTupleOf(var_r), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "ContractBase")));
           bodies.add(body);
       }
       return bodies;

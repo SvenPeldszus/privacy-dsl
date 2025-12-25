@@ -42,8 +42,8 @@ import org.eclipse.ocl.pivot.values.SequenceValue;
 
 import org.eclipse.ocl.pivot.values.SequenceValue.Accumulator;
 
-import org.secdfd.model.MLResponsibilityType;
-import org.secdfd.model.ResponsibilityType;
+import org.secdfd.model.MLContractType;
+import org.secdfd.model.SecurityContractType;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,8 +55,8 @@ import org.secdfd.model.ResponsibilityType;
  * <ul>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getID <em>ID</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getNumber <em>Number</em>}</li>
- *   <li>{@link graph.impl.NodeResponsibilityImpl#getOperation <em>Operation</em>}</li>
- *   <li>{@link graph.impl.NodeResponsibilityImpl#getMlOperation <em>Ml Operation</em>}</li>
+ *   <li>{@link graph.impl.NodeResponsibilityImpl#getTask <em>Task</em>}</li>
+ *   <li>{@link graph.impl.NodeResponsibilityImpl#getMlTask <em>Ml Task</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getOutgoingassets <em>Outgoingassets</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getIncomingassets <em>Incomingassets</em>}</li>
  * </ul>
@@ -105,24 +105,24 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 	protected int number = NUMBER_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' attribute list.
+	 * The cached value of the '{@link #getTask() <em>Task</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOperation()
+	 * @see #getTask()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ResponsibilityType> operation;
+	protected EList<SecurityContractType> task;
 
 	/**
-	 * The cached value of the '{@link #getMlOperation() <em>Ml Operation</em>}' attribute list.
+	 * The cached value of the '{@link #getMlTask() <em>Ml Task</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMlOperation()
+	 * @see #getMlTask()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<MLResponsibilityType> mlOperation;
+	protected EList<MLContractType> mlTask;
 
 	/**
 	 * The cached value of the '{@link #getOutgoingassets() <em>Outgoingassets</em>}' reference list.
@@ -215,11 +215,11 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	@Override
-	public EList<ResponsibilityType> getOperation() {
-		if (operation == null) {
-			operation = new EDataTypeUniqueEList<ResponsibilityType>(ResponsibilityType.class, this, GraphPackage.NODE_RESPONSIBILITY__OPERATION);
+	public EList<SecurityContractType> getTask() {
+		if (task == null) {
+			task = new EDataTypeUniqueEList<SecurityContractType>(SecurityContractType.class, this, GraphPackage.NODE_RESPONSIBILITY__TASK);
 		}
-		return operation;
+		return task;
 	}
 
 	/**
@@ -228,11 +228,11 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	@Override
-	public EList<MLResponsibilityType> getMlOperation() {
-		if (mlOperation == null) {
-			mlOperation = new EDataTypeUniqueEList<MLResponsibilityType>(MLResponsibilityType.class, this, GraphPackage.NODE_RESPONSIBILITY__ML_OPERATION);
+	public EList<MLContractType> getMlTask() {
+		if (mlTask == null) {
+			mlTask = new EDataTypeUniqueEList<MLContractType>(MLContractType.class, this, GraphPackage.NODE_RESPONSIBILITY__ML_TASK);
 		}
-		return mlOperation;
+		return mlTask;
 	}
 
 	/**
@@ -383,10 +383,10 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 				return getID();
 			case GraphPackage.NODE_RESPONSIBILITY__NUMBER:
 				return getNumber();
-			case GraphPackage.NODE_RESPONSIBILITY__OPERATION:
-				return getOperation();
-			case GraphPackage.NODE_RESPONSIBILITY__ML_OPERATION:
-				return getMlOperation();
+			case GraphPackage.NODE_RESPONSIBILITY__TASK:
+				return getTask();
+			case GraphPackage.NODE_RESPONSIBILITY__ML_TASK:
+				return getMlTask();
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				return getOutgoingassets();
 			case GraphPackage.NODE_RESPONSIBILITY__INCOMINGASSETS:
@@ -410,13 +410,13 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 			case GraphPackage.NODE_RESPONSIBILITY__NUMBER:
 				setNumber((Integer)newValue);
 				return;
-			case GraphPackage.NODE_RESPONSIBILITY__OPERATION:
-				getOperation().clear();
-				getOperation().addAll((Collection<? extends ResponsibilityType>)newValue);
+			case GraphPackage.NODE_RESPONSIBILITY__TASK:
+				getTask().clear();
+				getTask().addAll((Collection<? extends SecurityContractType>)newValue);
 				return;
-			case GraphPackage.NODE_RESPONSIBILITY__ML_OPERATION:
-				getMlOperation().clear();
-				getMlOperation().addAll((Collection<? extends MLResponsibilityType>)newValue);
+			case GraphPackage.NODE_RESPONSIBILITY__ML_TASK:
+				getMlTask().clear();
+				getMlTask().addAll((Collection<? extends MLContractType>)newValue);
 				return;
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				getOutgoingassets().clear();
@@ -444,11 +444,11 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 			case GraphPackage.NODE_RESPONSIBILITY__NUMBER:
 				setNumber(NUMBER_EDEFAULT);
 				return;
-			case GraphPackage.NODE_RESPONSIBILITY__OPERATION:
-				getOperation().clear();
+			case GraphPackage.NODE_RESPONSIBILITY__TASK:
+				getTask().clear();
 				return;
-			case GraphPackage.NODE_RESPONSIBILITY__ML_OPERATION:
-				getMlOperation().clear();
+			case GraphPackage.NODE_RESPONSIBILITY__ML_TASK:
+				getMlTask().clear();
 				return;
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				getOutgoingassets().clear();
@@ -472,10 +472,10 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case GraphPackage.NODE_RESPONSIBILITY__NUMBER:
 				return number != NUMBER_EDEFAULT;
-			case GraphPackage.NODE_RESPONSIBILITY__OPERATION:
-				return operation != null && !operation.isEmpty();
-			case GraphPackage.NODE_RESPONSIBILITY__ML_OPERATION:
-				return mlOperation != null && !mlOperation.isEmpty();
+			case GraphPackage.NODE_RESPONSIBILITY__TASK:
+				return task != null && !task.isEmpty();
+			case GraphPackage.NODE_RESPONSIBILITY__ML_TASK:
+				return mlTask != null && !mlTask.isEmpty();
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				return outgoingassets != null && !outgoingassets.isEmpty();
 			case GraphPackage.NODE_RESPONSIBILITY__INCOMINGASSETS:
@@ -514,10 +514,10 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 		result.append(id);
 		result.append(", number: ");
 		result.append(number);
-		result.append(", operation: ");
-		result.append(operation);
-		result.append(", mlOperation: ");
-		result.append(mlOperation);
+		result.append(", task: ");
+		result.append(task);
+		result.append(", mlTask: ");
+		result.append(mlTask);
 		result.append(')');
 		return result.toString();
 	}

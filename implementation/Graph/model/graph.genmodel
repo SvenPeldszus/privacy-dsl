@@ -37,8 +37,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graph.ecore#//Subgraphs/assets"/>
     </genClasses>
     <genClasses ecoreClass="graph.ecore#//NodeResponsibility">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//NodeResponsibility/operation"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//NodeResponsibility/mlOperation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//NodeResponsibility/task"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graph.ecore#//NodeResponsibility/mlTask"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//NodeResponsibility/outgoingassets"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graph.ecore#//NodeResponsibility/incomingassets"/>
       <genOperations ecoreOperation="graph.ecore#//NodeResponsibility/findMostRestrictiveLabel"/>

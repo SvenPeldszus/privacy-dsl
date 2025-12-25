@@ -1035,14 +1035,14 @@ public interface ModelPackage extends EPackage {
 	int TRUST_ZONE_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.secdfd.model.impl.ResponsibilityBaseImpl <em>Responsibility Base</em>}' class.
+	 * The meta object id for the '{@link org.secdfd.model.impl.ContractBaseImpl <em>Contract Base</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.impl.ResponsibilityBaseImpl
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getResponsibilityBase()
+	 * @see org.secdfd.model.impl.ContractBaseImpl
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getContractBase()
 	 * @generated
 	 */
-	int RESPONSIBILITY_BASE = 12;
+	int CONTRACT_BASE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1051,7 +1051,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY_BASE__NAME = NAMED_ENTITY__NAME;
+	int CONTRACT_BASE__NAME = NAMED_ENTITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Number</b></em>' attribute.
@@ -1060,7 +1060,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY_BASE__NUMBER = NAMED_ENTITY__NUMBER;
+	int CONTRACT_BASE__NUMBER = NAMED_ENTITY__NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
@@ -1069,7 +1069,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY_BASE__INCOMEASSETS = NAMED_ENTITY_FEATURE_COUNT + 0;
+	int CONTRACT_BASE__INCOMEASSETS = NAMED_ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
@@ -1078,7 +1078,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY_BASE__OUTCOMEASSETS = NAMED_ENTITY_FEATURE_COUNT + 1;
+	int CONTRACT_BASE__OUTCOMEASSETS = NAMED_ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Process</b></em>' container reference.
@@ -1087,35 +1087,35 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY_BASE__PROCESS = NAMED_ENTITY_FEATURE_COUNT + 2;
+	int CONTRACT_BASE__PROCESS = NAMED_ENTITY_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Responsibility Base</em>' class.
+	 * The number of structural features of the '<em>Contract Base</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY_BASE_FEATURE_COUNT = NAMED_ENTITY_FEATURE_COUNT + 3;
+	int CONTRACT_BASE_FEATURE_COUNT = NAMED_ENTITY_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Responsibility Base</em>' class.
+	 * The number of operations of the '<em>Contract Base</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY_BASE_OPERATION_COUNT = NAMED_ENTITY_OPERATION_COUNT + 0;
+	int CONTRACT_BASE_OPERATION_COUNT = NAMED_ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.secdfd.model.impl.ResponsibilityImpl <em>Responsibility</em>}' class.
+	 * The meta object id for the '{@link org.secdfd.model.impl.SecurityContractImpl <em>Security Contract</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.impl.ResponsibilityImpl
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getResponsibility()
+	 * @see org.secdfd.model.impl.SecurityContractImpl
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getSecurityContract()
 	 * @generated
 	 */
-	int RESPONSIBILITY = 13;
+	int SECURITY_CONTRACT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1124,7 +1124,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY__NAME = RESPONSIBILITY_BASE__NAME;
+	int SECURITY_CONTRACT__NAME = CONTRACT_BASE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Number</b></em>' attribute.
@@ -1133,7 +1133,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY__NUMBER = RESPONSIBILITY_BASE__NUMBER;
+	int SECURITY_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
@@ -1142,7 +1142,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY__INCOMEASSETS = RESPONSIBILITY_BASE__INCOMEASSETS;
+	int SECURITY_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
 
 	/**
 	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
@@ -1151,7 +1151,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY__OUTCOMEASSETS = RESPONSIBILITY_BASE__OUTCOMEASSETS;
+	int SECURITY_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
 
 	/**
 	 * The feature id for the '<em><b>Process</b></em>' container reference.
@@ -1160,44 +1160,44 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY__PROCESS = RESPONSIBILITY_BASE__PROCESS;
+	int SECURITY_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
 
 	/**
-	 * The feature id for the '<em><b>Action</b></em>' attribute list.
+	 * The feature id for the '<em><b>Task</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY__ACTION = RESPONSIBILITY_BASE_FEATURE_COUNT + 0;
+	int SECURITY_CONTRACT__TASK = CONTRACT_BASE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Responsibility</em>' class.
+	 * The number of structural features of the '<em>Security Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY_FEATURE_COUNT = RESPONSIBILITY_BASE_FEATURE_COUNT + 1;
+	int SECURITY_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Responsibility</em>' class.
+	 * The number of operations of the '<em>Security Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSIBILITY_OPERATION_COUNT = RESPONSIBILITY_BASE_OPERATION_COUNT + 0;
+	int SECURITY_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.secdfd.model.impl.MLResponsibilityImpl <em>ML Responsibility</em>}' class.
+	 * The meta object id for the '{@link org.secdfd.model.impl.MLContractImpl <em>ML Contract</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.impl.MLResponsibilityImpl
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getMLResponsibility()
+	 * @see org.secdfd.model.impl.MLContractImpl
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getMLContract()
 	 * @generated
 	 */
-	int ML_RESPONSIBILITY = 14;
+	int ML_CONTRACT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1206,7 +1206,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ML_RESPONSIBILITY__NAME = RESPONSIBILITY_BASE__NAME;
+	int ML_CONTRACT__NAME = CONTRACT_BASE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Number</b></em>' attribute.
@@ -1215,7 +1215,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ML_RESPONSIBILITY__NUMBER = RESPONSIBILITY_BASE__NUMBER;
+	int ML_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
@@ -1224,7 +1224,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ML_RESPONSIBILITY__INCOMEASSETS = RESPONSIBILITY_BASE__INCOMEASSETS;
+	int ML_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
 
 	/**
 	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
@@ -1233,7 +1233,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ML_RESPONSIBILITY__OUTCOMEASSETS = RESPONSIBILITY_BASE__OUTCOMEASSETS;
+	int ML_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
 
 	/**
 	 * The feature id for the '<em><b>Process</b></em>' container reference.
@@ -1242,34 +1242,34 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ML_RESPONSIBILITY__PROCESS = RESPONSIBILITY_BASE__PROCESS;
+	int ML_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
 
 	/**
-	 * The feature id for the '<em><b>Ml Action</b></em>' attribute list.
+	 * The feature id for the '<em><b>ML Task</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ML_RESPONSIBILITY__ML_ACTION = RESPONSIBILITY_BASE_FEATURE_COUNT + 0;
+	int ML_CONTRACT__ML_TASK = CONTRACT_BASE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>ML Responsibility</em>' class.
+	 * The number of structural features of the '<em>ML Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ML_RESPONSIBILITY_FEATURE_COUNT = RESPONSIBILITY_BASE_FEATURE_COUNT + 1;
+	int ML_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>ML Responsibility</em>' class.
+	 * The number of operations of the '<em>ML Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ML_RESPONSIBILITY_OPERATION_COUNT = RESPONSIBILITY_BASE_OPERATION_COUNT + 0;
+	int ML_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.
@@ -1292,14 +1292,14 @@ public interface ModelPackage extends EPackage {
 	int CHANNEL = 16;
 
 	/**
-	 * The meta object id for the '{@link org.secdfd.model.ResponsibilityType <em>Responsibility Type</em>}' enum.
+	 * The meta object id for the '{@link org.secdfd.model.SecurityContractType <em>Security Contract Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.ResponsibilityType
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getResponsibilityType()
+	 * @see org.secdfd.model.SecurityContractType
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getSecurityContractType()
 	 * @generated
 	 */
-	int RESPONSIBILITY_TYPE = 17;
+	int SECURITY_CONTRACT_TYPE = 17;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Objective <em>Objective</em>}' enum.
@@ -1333,15 +1333,14 @@ public interface ModelPackage extends EPackage {
 
 
 	/**
-	 * The meta object id for the '{@link org.secdfd.model.MLResponsibilityType <em>ML Responsibility Type</em>}' enum.
+	 * The meta object id for the '{@link org.secdfd.model.MLContractType <em>ML Contract Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.MLResponsibilityType
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getMLResponsibilityType()
+	 * @see org.secdfd.model.MLContractType
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getMLContractType()
 	 * @generated
 	 */
-	int ML_RESPONSIBILITY_TYPE = 21;
-
+	int ML_CONTRACT_TYPE = 21;
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.Asset <em>Asset</em>}'.
@@ -1771,89 +1770,89 @@ public interface ModelPackage extends EPackage {
 	EReference getTrustZone_Attackerprofile();
 
 	/**
-	 * Returns the meta object for class '{@link org.secdfd.model.ResponsibilityBase <em>Responsibility Base</em>}'.
+	 * Returns the meta object for class '{@link org.secdfd.model.ContractBase <em>Contract Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Responsibility Base</em>'.
-	 * @see org.secdfd.model.ResponsibilityBase
+	 * @return the meta object for class '<em>Contract Base</em>'.
+	 * @see org.secdfd.model.ContractBase
 	 * @generated
 	 */
-	EClass getResponsibilityBase();
+	EClass getContractBase();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.secdfd.model.ResponsibilityBase#getIncomeassets <em>Incomeassets</em>}'.
+	 * Returns the meta object for the reference list '{@link org.secdfd.model.ContractBase#getIncomeassets <em>Incomeassets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Incomeassets</em>'.
-	 * @see org.secdfd.model.ResponsibilityBase#getIncomeassets()
-	 * @see #getResponsibilityBase()
+	 * @see org.secdfd.model.ContractBase#getIncomeassets()
+	 * @see #getContractBase()
 	 * @generated
 	 */
-	EReference getResponsibilityBase_Incomeassets();
+	EReference getContractBase_Incomeassets();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.secdfd.model.ResponsibilityBase#getOutcomeassets <em>Outcomeassets</em>}'.
+	 * Returns the meta object for the reference list '{@link org.secdfd.model.ContractBase#getOutcomeassets <em>Outcomeassets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Outcomeassets</em>'.
-	 * @see org.secdfd.model.ResponsibilityBase#getOutcomeassets()
-	 * @see #getResponsibilityBase()
+	 * @see org.secdfd.model.ContractBase#getOutcomeassets()
+	 * @see #getContractBase()
 	 * @generated
 	 */
-	EReference getResponsibilityBase_Outcomeassets();
+	EReference getContractBase_Outcomeassets();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.secdfd.model.ResponsibilityBase#getProcess <em>Process</em>}'.
+	 * Returns the meta object for the container reference '{@link org.secdfd.model.ContractBase#getProcess <em>Process</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the container reference '<em>Process</em>'.
-	 * @see org.secdfd.model.ResponsibilityBase#getProcess()
-	 * @see #getResponsibilityBase()
+	 * @see org.secdfd.model.ContractBase#getProcess()
+	 * @see #getContractBase()
 	 * @generated
 	 */
-	EReference getResponsibilityBase_Process();
+	EReference getContractBase_Process();
 
 	/**
-	 * Returns the meta object for class '{@link org.secdfd.model.Responsibility <em>Responsibility</em>}'.
+	 * Returns the meta object for class '{@link org.secdfd.model.SecurityContract <em>Security Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Responsibility</em>'.
-	 * @see org.secdfd.model.Responsibility
+	 * @return the meta object for class '<em>Security Contract</em>'.
+	 * @see org.secdfd.model.SecurityContract
 	 * @generated
 	 */
-	EClass getResponsibility();
+	EClass getSecurityContract();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.secdfd.model.Responsibility#getAction <em>Action</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.secdfd.model.SecurityContract#getTask <em>Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Action</em>'.
-	 * @see org.secdfd.model.Responsibility#getAction()
-	 * @see #getResponsibility()
+	 * @return the meta object for the attribute list '<em>Task</em>'.
+	 * @see org.secdfd.model.SecurityContract#getTask()
+	 * @see #getSecurityContract()
 	 * @generated
 	 */
-	EAttribute getResponsibility_Action();
+	EAttribute getSecurityContract_Task();
 
 	/**
-	 * Returns the meta object for class '{@link org.secdfd.model.MLResponsibility <em>ML Responsibility</em>}'.
+	 * Returns the meta object for class '{@link org.secdfd.model.MLContract <em>ML Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>ML Responsibility</em>'.
-	 * @see org.secdfd.model.MLResponsibility
+	 * @return the meta object for class '<em>ML Contract</em>'.
+	 * @see org.secdfd.model.MLContract
 	 * @generated
 	 */
-	EClass getMLResponsibility();
+	EClass getMLContract();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.secdfd.model.MLResponsibility#getMlAction <em>Ml Action</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.secdfd.model.MLContract#getMLTask <em>ML Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Ml Action</em>'.
-	 * @see org.secdfd.model.MLResponsibility#getMlAction()
-	 * @see #getMLResponsibility()
+	 * @return the meta object for the attribute list '<em>ML Task</em>'.
+	 * @see org.secdfd.model.MLContract#getMLTask()
+	 * @see #getMLContract()
 	 * @generated
 	 */
-	EAttribute getMLResponsibility_MlAction();
+	EAttribute getMLContract_MLTask();
 
 	/**
 	 * Returns the meta object for enum '{@link org.secdfd.model.Priority <em>Priority</em>}'.
@@ -1876,14 +1875,14 @@ public interface ModelPackage extends EPackage {
 	EEnum getChannel();
 
 	/**
-	 * Returns the meta object for enum '{@link org.secdfd.model.ResponsibilityType <em>Responsibility Type</em>}'.
+	 * Returns the meta object for enum '{@link org.secdfd.model.SecurityContractType <em>Security Contract Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Responsibility Type</em>'.
-	 * @see org.secdfd.model.ResponsibilityType
+	 * @return the meta object for enum '<em>Security Contract Type</em>'.
+	 * @see org.secdfd.model.SecurityContractType
 	 * @generated
 	 */
-	EEnum getResponsibilityType();
+	EEnum getSecurityContractType();
 
 	/**
 	 * Returns the meta object for enum '{@link org.secdfd.model.Objective <em>Objective</em>}'.
@@ -1916,14 +1915,14 @@ public interface ModelPackage extends EPackage {
 	EEnum getAssetType();
 
 	/**
-	 * Returns the meta object for enum '{@link org.secdfd.model.MLResponsibilityType <em>ML Responsibility Type</em>}'.
+	 * Returns the meta object for enum '{@link org.secdfd.model.MLContractType <em>ML Contract Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>ML Responsibility Type</em>'.
-	 * @see org.secdfd.model.MLResponsibilityType
+	 * @return the meta object for enum '<em>ML Contract Type</em>'.
+	 * @see org.secdfd.model.MLContractType
 	 * @generated
 	 */
-	EEnum getMLResponsibilityType();
+	EEnum getMLContractType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2293,14 +2292,14 @@ public interface ModelPackage extends EPackage {
 		EReference TRUST_ZONE__ATTACKERPROFILE = eINSTANCE.getTrustZone_Attackerprofile();
 
 		/**
-		 * The meta object literal for the '{@link org.secdfd.model.impl.ResponsibilityBaseImpl <em>Responsibility Base</em>}' class.
+		 * The meta object literal for the '{@link org.secdfd.model.impl.ContractBaseImpl <em>Contract Base</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.impl.ResponsibilityBaseImpl
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getResponsibilityBase()
+		 * @see org.secdfd.model.impl.ContractBaseImpl
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getContractBase()
 		 * @generated
 		 */
-		EClass RESPONSIBILITY_BASE = eINSTANCE.getResponsibilityBase();
+		EClass CONTRACT_BASE = eINSTANCE.getContractBase();
 
 		/**
 		 * The meta object literal for the '<em><b>Incomeassets</b></em>' reference list feature.
@@ -2308,7 +2307,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RESPONSIBILITY_BASE__INCOMEASSETS = eINSTANCE.getResponsibilityBase_Incomeassets();
+		EReference CONTRACT_BASE__INCOMEASSETS = eINSTANCE.getContractBase_Incomeassets();
 
 		/**
 		 * The meta object literal for the '<em><b>Outcomeassets</b></em>' reference list feature.
@@ -2316,7 +2315,7 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RESPONSIBILITY_BASE__OUTCOMEASSETS = eINSTANCE.getResponsibilityBase_Outcomeassets();
+		EReference CONTRACT_BASE__OUTCOMEASSETS = eINSTANCE.getContractBase_Outcomeassets();
 
 		/**
 		 * The meta object literal for the '<em><b>Process</b></em>' container reference feature.
@@ -2324,43 +2323,43 @@ public interface ModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RESPONSIBILITY_BASE__PROCESS = eINSTANCE.getResponsibilityBase_Process();
+		EReference CONTRACT_BASE__PROCESS = eINSTANCE.getContractBase_Process();
 
 		/**
-		 * The meta object literal for the '{@link org.secdfd.model.impl.ResponsibilityImpl <em>Responsibility</em>}' class.
+		 * The meta object literal for the '{@link org.secdfd.model.impl.SecurityContractImpl <em>Security Contract</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.impl.ResponsibilityImpl
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getResponsibility()
+		 * @see org.secdfd.model.impl.SecurityContractImpl
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getSecurityContract()
 		 * @generated
 		 */
-		EClass RESPONSIBILITY = eINSTANCE.getResponsibility();
+		EClass SECURITY_CONTRACT = eINSTANCE.getSecurityContract();
 
 		/**
-		 * The meta object literal for the '<em><b>Action</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESPONSIBILITY__ACTION = eINSTANCE.getResponsibility_Action();
-
-		/**
-		 * The meta object literal for the '{@link org.secdfd.model.impl.MLResponsibilityImpl <em>ML Responsibility</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.impl.MLResponsibilityImpl
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getMLResponsibility()
-		 * @generated
-		 */
-		EClass ML_RESPONSIBILITY = eINSTANCE.getMLResponsibility();
-
-		/**
-		 * The meta object literal for the '<em><b>Ml Action</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Task</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ML_RESPONSIBILITY__ML_ACTION = eINSTANCE.getMLResponsibility_MlAction();
+		EAttribute SECURITY_CONTRACT__TASK = eINSTANCE.getSecurityContract_Task();
+
+		/**
+		 * The meta object literal for the '{@link org.secdfd.model.impl.MLContractImpl <em>ML Contract</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.secdfd.model.impl.MLContractImpl
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getMLContract()
+		 * @generated
+		 */
+		EClass ML_CONTRACT = eINSTANCE.getMLContract();
+
+		/**
+		 * The meta object literal for the '<em><b>ML Task</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ML_CONTRACT__ML_TASK = eINSTANCE.getMLContract_MLTask();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.
@@ -2383,14 +2382,14 @@ public interface ModelPackage extends EPackage {
 		EEnum CHANNEL = eINSTANCE.getChannel();
 
 		/**
-		 * The meta object literal for the '{@link org.secdfd.model.ResponsibilityType <em>Responsibility Type</em>}' enum.
+		 * The meta object literal for the '{@link org.secdfd.model.SecurityContractType <em>Security Contract Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.ResponsibilityType
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getResponsibilityType()
+		 * @see org.secdfd.model.SecurityContractType
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getSecurityContractType()
 		 * @generated
 		 */
-		EEnum RESPONSIBILITY_TYPE = eINSTANCE.getResponsibilityType();
+		EEnum SECURITY_CONTRACT_TYPE = eINSTANCE.getSecurityContractType();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.Objective <em>Objective</em>}' enum.
@@ -2423,14 +2422,14 @@ public interface ModelPackage extends EPackage {
 		EEnum ASSET_TYPE = eINSTANCE.getAssetType();
 
 		/**
-		 * The meta object literal for the '{@link org.secdfd.model.MLResponsibilityType <em>ML Responsibility Type</em>}' enum.
+		 * The meta object literal for the '{@link org.secdfd.model.MLContractType <em>ML Contract Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.MLResponsibilityType
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getMLResponsibilityType()
+		 * @see org.secdfd.model.MLContractType
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getMLContractType()
 		 * @generated
 		 */
-		EEnum ML_RESPONSIBILITY_TYPE = eINSTANCE.getMLResponsibilityType();
+		EEnum ML_CONTRACT_TYPE = eINSTANCE.getMLContractType();
 
 	}
 

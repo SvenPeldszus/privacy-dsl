@@ -10,16 +10,16 @@ import org.eclipse.emf.ecore.util.Switch;
 import org.secdfd.model.Asset;
 import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
+import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.EDFD;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
-import org.secdfd.model.MLResponsibility;
+import org.secdfd.model.MLContract;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
-import org.secdfd.model.Responsibility;
-import org.secdfd.model.ResponsibilityBase;
+import org.secdfd.model.SecurityContract;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 
@@ -166,26 +166,26 @@ public class ModelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ModelPackage.RESPONSIBILITY_BASE: {
-				ResponsibilityBase responsibilityBase = (ResponsibilityBase)theEObject;
-				T result = caseResponsibilityBase(responsibilityBase);
-				if (result == null) result = caseNamedEntity(responsibilityBase);
+			case ModelPackage.CONTRACT_BASE: {
+				ContractBase contractBase = (ContractBase)theEObject;
+				T result = caseContractBase(contractBase);
+				if (result == null) result = caseNamedEntity(contractBase);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ModelPackage.RESPONSIBILITY: {
-				Responsibility responsibility = (Responsibility)theEObject;
-				T result = caseResponsibility(responsibility);
-				if (result == null) result = caseResponsibilityBase(responsibility);
-				if (result == null) result = caseNamedEntity(responsibility);
+			case ModelPackage.SECURITY_CONTRACT: {
+				SecurityContract securityContract = (SecurityContract)theEObject;
+				T result = caseSecurityContract(securityContract);
+				if (result == null) result = caseContractBase(securityContract);
+				if (result == null) result = caseNamedEntity(securityContract);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ModelPackage.ML_RESPONSIBILITY: {
-				MLResponsibility mlResponsibility = (MLResponsibility)theEObject;
-				T result = caseMLResponsibility(mlResponsibility);
-				if (result == null) result = caseResponsibilityBase(mlResponsibility);
-				if (result == null) result = caseNamedEntity(mlResponsibility);
+			case ModelPackage.ML_CONTRACT: {
+				MLContract mlContract = (MLContract)theEObject;
+				T result = caseMLContract(mlContract);
+				if (result == null) result = caseContractBase(mlContract);
+				if (result == null) result = caseNamedEntity(mlContract);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -374,47 +374,47 @@ public class ModelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Responsibility Base</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Contract Base</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Responsibility Base</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Contract Base</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseResponsibilityBase(ResponsibilityBase object) {
+	public T caseContractBase(ContractBase object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Responsibility</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Security Contract</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Responsibility</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Security Contract</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseResponsibility(Responsibility object) {
+	public T caseSecurityContract(SecurityContract object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>ML Responsibility</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>ML Contract</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>ML Responsibility</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>ML Contract</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMLResponsibility(MLResponsibility object) {
+	public T caseMLContract(MLContract object) {
 		return null;
 	}
 

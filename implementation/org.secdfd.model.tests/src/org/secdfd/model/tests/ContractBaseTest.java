@@ -4,20 +4,16 @@ package org.secdfd.model.tests;
 
 import junit.textui.TestRunner;
 
+import org.secdfd.model.ContractBase;
 import org.secdfd.model.ModelFactory;
-import org.secdfd.model.SecurityContract;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>Security Contract</b></em>'.
+ * A test case for the model object '<em><b>Contract Base</b></em>'.
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResponsibilityTest extends ContractBaseTest {
-
-	public void test() {
-		//TODO: Implement test here
-	}
+public abstract class ContractBaseTest extends NamedEntityTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -25,28 +21,45 @@ public class ResponsibilityTest extends ContractBaseTest {
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(ResponsibilityTest.class);
+		TestRunner.run(ContractBaseTest.class);
 	}
 
 	/**
-	 * Constructs a new Security Contract test case with the given name.
+	 * The fixture for this Contract Base test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResponsibilityTest(String name) {
+	protected ContractBase fixture = null;
+
+	/**
+	 * Constructs a new Contract Base test case with the given name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContractBaseTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Returns the fixture for this Security Contract test case.
+	 * Sets the fixture for this Contract Base test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected SecurityContract getFixture() {
-		return (SecurityContract)fixture;
+	protected void setFixture(ContractBase fixture) {
+		this.fixture = fixture;
+	}
+
+	/**
+	 * Returns the fixture for this Contract Base test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContractBase getFixture() {
+		return fixture;
 	}
 
 	/**
@@ -57,6 +70,7 @@ public class ResponsibilityTest extends ContractBaseTest {
 	 */
 	@Override
 	protected void setUp() throws Exception {
+		// ContractBase is abstract, use SecurityContract instead
 		setFixture(ModelFactory.eINSTANCE.createSecurityContract());
 	}
 
@@ -71,4 +85,5 @@ public class ResponsibilityTest extends ContractBaseTest {
 		setFixture(null);
 	}
 
-} //ResponsibilityTest
+} //ContractBaseTest
+

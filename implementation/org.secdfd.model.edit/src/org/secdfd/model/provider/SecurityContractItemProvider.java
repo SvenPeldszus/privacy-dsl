@@ -14,23 +14,23 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.secdfd.model.MLResponsibility;
 import org.secdfd.model.ModelPackage;
+import org.secdfd.model.SecurityContract;
 
 /**
- * This is the item provider adapter for a {@link org.secdfd.model.MLResponsibility} object.
+ * This is the item provider adapter for a {@link org.secdfd.model.SecurityContract} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class MLResponsibilityItemProvider extends ResponsibilityBaseItemProvider {
+public class SecurityContractItemProvider extends ContractBaseItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MLResponsibilityItemProvider(AdapterFactory adapterFactory) {
+	public SecurityContractItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -45,25 +45,25 @@ public class MLResponsibilityItemProvider extends ResponsibilityBaseItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addMlActionPropertyDescriptor(object);
+			addTaskPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Ml Action feature.
+	 * This adds a property descriptor for the Task feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addMlActionPropertyDescriptor(Object object) {
+	protected void addTaskPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_MLResponsibility_mlAction_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MLResponsibility_mlAction_feature", "_UI_MLResponsibility_type"),
-				 ModelPackage.Literals.ML_RESPONSIBILITY__ML_ACTION,
+				 getString("_UI_SecurityContract_Task_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SecurityContract_Task_feature", "_UI_SecurityContract_type"),
+				 ModelPackage.Literals.SECURITY_CONTRACT__TASK,
 				 true,
 				 false,
 				 false,
@@ -73,14 +73,14 @@ public class MLResponsibilityItemProvider extends ResponsibilityBaseItemProvider
 	}
 
 	/**
-	 * This returns MLResponsibility.gif.
+	 * This returns SecurityContract.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/MLResponsibility"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SecurityContract"));
 	}
 
 	/**
@@ -91,10 +91,10 @@ public class MLResponsibilityItemProvider extends ResponsibilityBaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((MLResponsibility)object).getName();
+		String label = ((SecurityContract)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_MLResponsibility_type") :
-			getString("_UI_MLResponsibility_type") + " " + label;
+			getString("_UI_SecurityContract_type") :
+			getString("_UI_SecurityContract_type") + " " + label;
 	}
 
 
@@ -109,8 +109,8 @@ public class MLResponsibilityItemProvider extends ResponsibilityBaseItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(MLResponsibility.class)) {
-			case ModelPackage.ML_RESPONSIBILITY__ML_ACTION:
+		switch (notification.getFeatureID(SecurityContract.class)) {
+			case ModelPackage.SECURITY_CONTRACT__TASK:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

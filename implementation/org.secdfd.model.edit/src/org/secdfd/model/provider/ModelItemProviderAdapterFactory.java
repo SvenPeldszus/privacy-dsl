@@ -302,49 +302,49 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.secdfd.model.Responsibility} instances.
+	 * This keeps track of the one adapter used for all {@link org.secdfd.model.SecurityContract} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ResponsibilityItemProvider responsibilityItemProvider;
+	protected SecurityContractItemProvider securityContractItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.secdfd.model.Responsibility}.
+	 * This creates an adapter for a {@link org.secdfd.model.SecurityContract}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createResponsibilityAdapter() {
-		if (responsibilityItemProvider == null) {
-			responsibilityItemProvider = new ResponsibilityItemProvider(this);
+	public Adapter createSecurityContractAdapter() {
+		if (securityContractItemProvider == null) {
+			securityContractItemProvider = new SecurityContractItemProvider(this);
 		}
 
-		return responsibilityItemProvider;
+		return securityContractItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.secdfd.model.MLResponsibility} instances.
+	 * This keeps track of the one adapter used for all {@link org.secdfd.model.MLContract} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MLResponsibilityItemProvider mlResponsibilityItemProvider;
+	protected MLContractItemProvider mlContractItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.secdfd.model.MLResponsibility}.
+	 * This creates an adapter for a {@link org.secdfd.model.MLContract}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createMLResponsibilityAdapter() {
-		if (mlResponsibilityItemProvider == null) {
-			mlResponsibilityItemProvider = new MLResponsibilityItemProvider(this);
+	public Adapter createMLContractAdapter() {
+		if (mlContractItemProvider == null) {
+			mlContractItemProvider = new MLContractItemProvider(this);
 		}
 
-		return mlResponsibilityItemProvider;
+		return mlContractItemProvider;
 	}
 
 	/**
@@ -462,8 +462,8 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 		if (assumptionItemProvider != null) assumptionItemProvider.dispose();
 		if (attackerProfileItemProvider != null) attackerProfileItemProvider.dispose();
 		if (trustZoneItemProvider != null) trustZoneItemProvider.dispose();
-		if (responsibilityItemProvider != null) responsibilityItemProvider.dispose();
-		if (mlResponsibilityItemProvider != null) mlResponsibilityItemProvider.dispose();
+		if (securityContractItemProvider != null) securityContractItemProvider.dispose();
+		if (mlContractItemProvider != null) mlContractItemProvider.dispose();
 	}
 
 }

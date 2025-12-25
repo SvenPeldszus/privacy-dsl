@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.secdfd.model.ContractBase;
 import org.secdfd.model.ModelPackage;
-import org.secdfd.model.ResponsibilityBase;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +39,7 @@ public class ProcessImpl extends ElementImpl implements org.secdfd.model.Process
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ResponsibilityBase> responsibility;
+	protected EList<ContractBase> responsibility;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -66,9 +66,9 @@ public class ProcessImpl extends ElementImpl implements org.secdfd.model.Process
 	 * @generated
 	 */
 	@Override
-	public EList<ResponsibilityBase> getResponsibility() {
+	public EList<ContractBase> getResponsibility() {
 		if (responsibility == null) {
-			responsibility = new EObjectContainmentWithInverseEList<ResponsibilityBase>(ResponsibilityBase.class, this, ModelPackage.PROCESS__RESPONSIBILITY, ModelPackage.RESPONSIBILITY_BASE__PROCESS);
+			responsibility = new EObjectContainmentWithInverseEList<ContractBase>(ContractBase.class, this, ModelPackage.PROCESS__RESPONSIBILITY, ModelPackage.CONTRACT_BASE__PROCESS);
 		}
 		return responsibility;
 	}
@@ -127,7 +127,7 @@ public class ProcessImpl extends ElementImpl implements org.secdfd.model.Process
 		switch (featureID) {
 			case ModelPackage.PROCESS__RESPONSIBILITY:
 				getResponsibility().clear();
-				getResponsibility().addAll((Collection<? extends ResponsibilityBase>)newValue);
+				getResponsibility().addAll((Collection<? extends ContractBase>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

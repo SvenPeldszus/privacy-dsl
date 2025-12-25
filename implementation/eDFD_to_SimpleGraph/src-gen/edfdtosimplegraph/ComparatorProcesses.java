@@ -61,8 +61,8 @@ import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
  *         
  *         pattern comparatorProcesses(p : Process){
  *         	Process.responsibility(p, r);
- *         	Responsibility.Action(r, pr);
- *         	pr == ResponsibilityType::Comparator;
+ *         	SecurityContract.Task(r, pr);
+ *         	pr == SecurityContractType::Comparator;
  *         }
  * </pre></code>
  * 
@@ -271,8 +271,8 @@ public final class ComparatorProcesses extends BaseGeneratedEMFQuerySpecificatio
    * 
    * pattern comparatorProcesses(p : Process){
    * 	Process.responsibility(p, r);
-   * 	Responsibility.Action(r, pr);
-   * 	pr == ResponsibilityType::Comparator;
+   * 	SecurityContract.Task(r, pr);
+   * 	pr == SecurityContractType::Comparator;
    * }
    * </pre></code>
    * 
@@ -608,17 +608,17 @@ public final class ComparatorProcesses extends BaseGeneratedEMFQuerySpecificatio
           new TypeConstraint(body, Tuples.flatTupleOf(var_p), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Process")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
           new TypeConstraint(body, Tuples.flatTupleOf(var_p, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Process", "responsibility")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "ResponsibilityBase")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "ContractBase")));
           new Equality(body, var__virtual_0_, var_r);
-          // 	Responsibility.Action(r, pr)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_r), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Responsibility")));
+          // 	SecurityContract.Task(r, pr)
+          new TypeConstraint(body, Tuples.flatTupleOf(var_r), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "SecurityContract")));
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_r, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Responsibility", "Action")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "ResponsibilityType")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_r, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "SecurityContract", "Task")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "SecurityContractType")));
           new Equality(body, var__virtual_1_, var_pr);
-          // 	pr == ResponsibilityType::Comparator
+          // 	pr == SecurityContractType::Comparator
           PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
-          new ConstantValue(body, var__virtual_2_, getEnumLiteral("http://www.secdfd.org/secdfd", "ResponsibilityType", "Comparator").getInstance());
+          new ConstantValue(body, var__virtual_2_, getEnumLiteral("http://www.secdfd.org/secdfd", "SecurityContractType", "Comparator").getInstance());
           new Equality(body, var_pr, var__virtual_2_);
           bodies.add(body);
       }

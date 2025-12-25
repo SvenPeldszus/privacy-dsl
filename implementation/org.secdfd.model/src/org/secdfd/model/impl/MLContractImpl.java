@@ -3,44 +3,47 @@
 package org.secdfd.model.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
+import org.secdfd.model.MLContract;
+import org.secdfd.model.MLContractType;
 import org.secdfd.model.ModelPackage;
-import org.secdfd.model.Responsibility;
-import org.secdfd.model.ResponsibilityType;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Responsibility</b></em>'.
+ * An implementation of the model object '<em><b>ML Contract</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.secdfd.model.impl.ResponsibilityImpl#getAction <em>Action</em>}</li>
+ *   <li>{@link org.secdfd.model.impl.MLContractImpl#getMLTask <em>ML Task</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ResponsibilityImpl extends ResponsibilityBaseImpl implements Responsibility {
+public class MLContractImpl extends ContractBaseImpl implements MLContract {
 	/**
-	 * The cached value of the '{@link #getAction() <em>Action</em>}' attribute list.
+	 * The cached value of the '{@link #getMLTask() <em>ML Task</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAction()
+	 * @see #getMLTask()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ResponsibilityType> action;
+	protected EList<MLContractType> mlTask;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ResponsibilityImpl() {
+	protected MLContractImpl() {
 		super();
 	}
 
@@ -51,7 +54,7 @@ public class ResponsibilityImpl extends ResponsibilityBaseImpl implements Respon
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ModelPackage.Literals.RESPONSIBILITY;
+		return ModelPackage.Literals.ML_CONTRACT;
 	}
 
 	/**
@@ -60,11 +63,11 @@ public class ResponsibilityImpl extends ResponsibilityBaseImpl implements Respon
 	 * @generated
 	 */
 	@Override
-	public EList<ResponsibilityType> getAction() {
-		if (action == null) {
-			action = new EDataTypeUniqueEList<ResponsibilityType>(ResponsibilityType.class, this, ModelPackage.RESPONSIBILITY__ACTION);
+	public EList<MLContractType> getMLTask() {
+		if (mlTask == null) {
+			mlTask = new EDataTypeUniqueEList<MLContractType>(MLContractType.class, this, ModelPackage.ML_CONTRACT__ML_TASK);
 		}
-		return action;
+		return mlTask;
 	}
 
 	/**
@@ -75,8 +78,8 @@ public class ResponsibilityImpl extends ResponsibilityBaseImpl implements Respon
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ModelPackage.RESPONSIBILITY__ACTION:
-				return getAction();
+			case ModelPackage.ML_CONTRACT__ML_TASK:
+				return getMLTask();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -90,9 +93,9 @@ public class ResponsibilityImpl extends ResponsibilityBaseImpl implements Respon
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ModelPackage.RESPONSIBILITY__ACTION:
-				getAction().clear();
-				getAction().addAll((Collection<? extends ResponsibilityType>)newValue);
+			case ModelPackage.ML_CONTRACT__ML_TASK:
+				getMLTask().clear();
+				getMLTask().addAll((Collection<? extends MLContractType>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -106,8 +109,8 @@ public class ResponsibilityImpl extends ResponsibilityBaseImpl implements Respon
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ModelPackage.RESPONSIBILITY__ACTION:
-				getAction().clear();
+			case ModelPackage.ML_CONTRACT__ML_TASK:
+				getMLTask().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -121,8 +124,8 @@ public class ResponsibilityImpl extends ResponsibilityBaseImpl implements Respon
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ModelPackage.RESPONSIBILITY__ACTION:
-				return action != null && !action.isEmpty();
+			case ModelPackage.ML_CONTRACT__ML_TASK:
+				return mlTask != null && !mlTask.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -137,10 +140,10 @@ public class ResponsibilityImpl extends ResponsibilityBaseImpl implements Respon
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (Action: ");
-		result.append(action);
+		result.append(" (MLTask: ");
+		result.append(mlTask);
 		result.append(')');
 		return result.toString();
 	}
 
-} //ResponsibilityImpl
+} //MLContractImpl

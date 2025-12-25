@@ -29,7 +29,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Process" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EReference" name="responsibility" upperBound="-1"
-        eType="#//ResponsibilityBase" containment="true" eOpposite="#//ResponsibilityBase/process"/>
+        eType="#//ContractBase" containment="true" eOpposite="#//ContractBase/process"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Channel">
     <eLiterals name="WiFi"/>
@@ -44,7 +44,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//Element" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ResponsibilityType">
+  <eClassifiers xsi:type="ecore:EEnum" name="SecurityContractType">
     <eLiterals name="Store" value="1"/>
     <eLiterals name="Comparator" value="2"/>
     <eLiterals name="Discarder" value="3"/>
@@ -126,8 +126,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="attackerprofile" upperBound="-1"
         eType="#//AttackerProfile" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ResponsibilityBase" abstract="true"
-      eSuperTypes="#//NamedEntity">
+  <eClassifiers xsi:type="ecore:EClass" name="ContractBase" abstract="true" eSuperTypes="#//NamedEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomeassets" upperBound="-1"
         eType="#//Asset"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outcomeassets" upperBound="-1"
@@ -135,9 +134,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="process" eType="#//Process"
         eOpposite="#//Process/responsibility"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Responsibility" eSuperTypes="#//ResponsibilityBase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Action" upperBound="-1"
-        eType="#//ResponsibilityType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SecurityContract" eSuperTypes="#//ContractBase">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Task" upperBound="-1" eType="#//SecurityContractType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="AssetType">
     <eLiterals name="String" literal="String"/>
@@ -146,17 +144,12 @@
     <eLiterals name="Vector" value="3" literal="Vector"/>
     <eLiterals name="Boolean" value="4" literal="Boolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="MLResponsibilityType">
+  <eClassifiers xsi:type="ecore:EEnum" name="MLContractType">
     <eLiterals name="Classification"/>
-    <eLiterals name="DecisionMaking" value="1" literal="Decision-Making"/>
-    <eLiterals name="Regression" value="2"/>
     <eLiterals name="Clustering" value="3"/>
-    <eLiterals name="AnomalyDetection" value="4"/>
-    <eLiterals name="NaturalLanguageProcessing" value="5" literal="Natural-Language-Processing"/>
-    <eLiterals name="ComputerVision" value="6" literal="Computer-Vision"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MLResponsibility" eSuperTypes="#//ResponsibilityBase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mlAction" upperBound="-1"
-        eType="#//MLResponsibilityType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MLContract" eSuperTypes="#//ContractBase">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="MLTask" upperBound="-1"
+        eType="#//MLContractType"/>
   </eClassifiers>
 </ecore:EPackage>

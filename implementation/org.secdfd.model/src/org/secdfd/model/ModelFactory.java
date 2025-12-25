@@ -112,22 +112,22 @@ public interface ModelFactory extends EFactory {
 	TrustZone createTrustZone();
 
 	/**
-	 * Returns a new object of class '<em>Responsibility</em>'.
+	 * Returns a new object of class '<em>Security Contract</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Responsibility</em>'.
+	 * @return a new object of class '<em>Security Contract</em>'.
 	 * @generated
 	 */
-	Responsibility createResponsibility();
+	SecurityContract createSecurityContract();
 
 	/**
-	 * Returns a new object of class '<em>ML Responsibility</em>'.
+	 * Returns a new object of class '<em>ML Contract</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>ML Responsibility</em>'.
+	 * @return a new object of class '<em>ML Contract</em>'.
 	 * @generated
 	 */
-	MLResponsibility createMLResponsibility();
+	MLContract createMLContract();
 
 	/**
 	 * Returns the package supported by this factory.

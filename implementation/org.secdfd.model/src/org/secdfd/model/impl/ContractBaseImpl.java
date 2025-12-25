@@ -19,27 +19,27 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.secdfd.model.Asset;
+import org.secdfd.model.ContractBase;
 import org.secdfd.model.ModelPackage;
-import org.secdfd.model.ResponsibilityBase;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Responsibility Base</b></em>'.
+ * An implementation of the model object '<em><b>Contract Base</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.secdfd.model.impl.ResponsibilityBaseImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.secdfd.model.impl.ResponsibilityBaseImpl#getNumber <em>Number</em>}</li>
- *   <li>{@link org.secdfd.model.impl.ResponsibilityBaseImpl#getIncomeassets <em>Incomeassets</em>}</li>
- *   <li>{@link org.secdfd.model.impl.ResponsibilityBaseImpl#getOutcomeassets <em>Outcomeassets</em>}</li>
- *   <li>{@link org.secdfd.model.impl.ResponsibilityBaseImpl#getProcess <em>Process</em>}</li>
+ *   <li>{@link org.secdfd.model.impl.ContractBaseImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.secdfd.model.impl.ContractBaseImpl#getNumber <em>Number</em>}</li>
+ *   <li>{@link org.secdfd.model.impl.ContractBaseImpl#getIncomeassets <em>Incomeassets</em>}</li>
+ *   <li>{@link org.secdfd.model.impl.ContractBaseImpl#getOutcomeassets <em>Outcomeassets</em>}</li>
+ *   <li>{@link org.secdfd.model.impl.ContractBaseImpl#getProcess <em>Process</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Container implements ResponsibilityBase {
+public abstract class ContractBaseImpl extends MinimalEObjectImpl.Container implements ContractBase {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -105,7 +105,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ResponsibilityBaseImpl() {
+	protected ContractBaseImpl() {
 		super();
 	}
 
@@ -116,7 +116,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ModelPackage.Literals.RESPONSIBILITY_BASE;
+		return ModelPackage.Literals.CONTRACT_BASE;
 	}
 
 	/**
@@ -139,7 +139,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.RESPONSIBILITY_BASE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CONTRACT_BASE__NAME, oldName, name));
 	}
 
 	/**
@@ -162,7 +162,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 		int oldNumber = number;
 		number = newNumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.RESPONSIBILITY_BASE__NUMBER, oldNumber, number));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CONTRACT_BASE__NUMBER, oldNumber, number));
 	}
 
 	/**
@@ -173,7 +173,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public EList<Asset> getIncomeassets() {
 		if (incomeassets == null) {
-			incomeassets = new EObjectResolvingEList<Asset>(Asset.class, this, ModelPackage.RESPONSIBILITY_BASE__INCOMEASSETS);
+			incomeassets = new EObjectResolvingEList<Asset>(Asset.class, this, ModelPackage.CONTRACT_BASE__INCOMEASSETS);
 		}
 		return incomeassets;
 	}
@@ -186,7 +186,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public EList<Asset> getOutcomeassets() {
 		if (outcomeassets == null) {
-			outcomeassets = new EObjectResolvingEList<Asset>(Asset.class, this, ModelPackage.RESPONSIBILITY_BASE__OUTCOMEASSETS);
+			outcomeassets = new EObjectResolvingEList<Asset>(Asset.class, this, ModelPackage.CONTRACT_BASE__OUTCOMEASSETS);
 		}
 		return outcomeassets;
 	}
@@ -198,7 +198,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	 */
 	@Override
 	public org.secdfd.model.Process getProcess() {
-		if (eContainerFeatureID() != ModelPackage.RESPONSIBILITY_BASE__PROCESS) return null;
+		if (eContainerFeatureID() != ModelPackage.CONTRACT_BASE__PROCESS) return null;
 		return (org.secdfd.model.Process)eInternalContainer();
 	}
 
@@ -208,7 +208,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	 * @generated
 	 */
 	public NotificationChain basicSetProcess(org.secdfd.model.Process newProcess, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newProcess, ModelPackage.RESPONSIBILITY_BASE__PROCESS, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newProcess, ModelPackage.CONTRACT_BASE__PROCESS, msgs);
 		return msgs;
 	}
 
@@ -219,7 +219,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	 */
 	@Override
 	public void setProcess(org.secdfd.model.Process newProcess) {
-		if (newProcess != eInternalContainer() || (eContainerFeatureID() != ModelPackage.RESPONSIBILITY_BASE__PROCESS && newProcess != null)) {
+		if (newProcess != eInternalContainer() || (eContainerFeatureID() != ModelPackage.CONTRACT_BASE__PROCESS && newProcess != null)) {
 			if (EcoreUtil.isAncestor(this, newProcess))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
@@ -231,7 +231,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.RESPONSIBILITY_BASE__PROCESS, newProcess, newProcess));
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CONTRACT_BASE__PROCESS, newProcess, newProcess));
 	}
 
 	/**
@@ -242,7 +242,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ModelPackage.RESPONSIBILITY_BASE__PROCESS:
+			case ModelPackage.CONTRACT_BASE__PROCESS:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetProcess((org.secdfd.model.Process)otherEnd, msgs);
@@ -258,7 +258,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ModelPackage.RESPONSIBILITY_BASE__PROCESS:
+			case ModelPackage.CONTRACT_BASE__PROCESS:
 				return basicSetProcess(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -272,7 +272,7 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case ModelPackage.RESPONSIBILITY_BASE__PROCESS:
+			case ModelPackage.CONTRACT_BASE__PROCESS:
 				return eInternalContainer().eInverseRemove(this, ModelPackage.PROCESS__RESPONSIBILITY, org.secdfd.model.Process.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -286,15 +286,15 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ModelPackage.RESPONSIBILITY_BASE__NAME:
+			case ModelPackage.CONTRACT_BASE__NAME:
 				return getName();
-			case ModelPackage.RESPONSIBILITY_BASE__NUMBER:
+			case ModelPackage.CONTRACT_BASE__NUMBER:
 				return getNumber();
-			case ModelPackage.RESPONSIBILITY_BASE__INCOMEASSETS:
+			case ModelPackage.CONTRACT_BASE__INCOMEASSETS:
 				return getIncomeassets();
-			case ModelPackage.RESPONSIBILITY_BASE__OUTCOMEASSETS:
+			case ModelPackage.CONTRACT_BASE__OUTCOMEASSETS:
 				return getOutcomeassets();
-			case ModelPackage.RESPONSIBILITY_BASE__PROCESS:
+			case ModelPackage.CONTRACT_BASE__PROCESS:
 				return getProcess();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -309,21 +309,21 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ModelPackage.RESPONSIBILITY_BASE__NAME:
+			case ModelPackage.CONTRACT_BASE__NAME:
 				setName((String)newValue);
 				return;
-			case ModelPackage.RESPONSIBILITY_BASE__NUMBER:
+			case ModelPackage.CONTRACT_BASE__NUMBER:
 				setNumber((Integer)newValue);
 				return;
-			case ModelPackage.RESPONSIBILITY_BASE__INCOMEASSETS:
+			case ModelPackage.CONTRACT_BASE__INCOMEASSETS:
 				getIncomeassets().clear();
 				getIncomeassets().addAll((Collection<? extends Asset>)newValue);
 				return;
-			case ModelPackage.RESPONSIBILITY_BASE__OUTCOMEASSETS:
+			case ModelPackage.CONTRACT_BASE__OUTCOMEASSETS:
 				getOutcomeassets().clear();
 				getOutcomeassets().addAll((Collection<? extends Asset>)newValue);
 				return;
-			case ModelPackage.RESPONSIBILITY_BASE__PROCESS:
+			case ModelPackage.CONTRACT_BASE__PROCESS:
 				setProcess((org.secdfd.model.Process)newValue);
 				return;
 		}
@@ -338,19 +338,19 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ModelPackage.RESPONSIBILITY_BASE__NAME:
+			case ModelPackage.CONTRACT_BASE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case ModelPackage.RESPONSIBILITY_BASE__NUMBER:
+			case ModelPackage.CONTRACT_BASE__NUMBER:
 				setNumber(NUMBER_EDEFAULT);
 				return;
-			case ModelPackage.RESPONSIBILITY_BASE__INCOMEASSETS:
+			case ModelPackage.CONTRACT_BASE__INCOMEASSETS:
 				getIncomeassets().clear();
 				return;
-			case ModelPackage.RESPONSIBILITY_BASE__OUTCOMEASSETS:
+			case ModelPackage.CONTRACT_BASE__OUTCOMEASSETS:
 				getOutcomeassets().clear();
 				return;
-			case ModelPackage.RESPONSIBILITY_BASE__PROCESS:
+			case ModelPackage.CONTRACT_BASE__PROCESS:
 				setProcess((org.secdfd.model.Process)null);
 				return;
 		}
@@ -365,15 +365,15 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ModelPackage.RESPONSIBILITY_BASE__NAME:
+			case ModelPackage.CONTRACT_BASE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ModelPackage.RESPONSIBILITY_BASE__NUMBER:
+			case ModelPackage.CONTRACT_BASE__NUMBER:
 				return number != NUMBER_EDEFAULT;
-			case ModelPackage.RESPONSIBILITY_BASE__INCOMEASSETS:
+			case ModelPackage.CONTRACT_BASE__INCOMEASSETS:
 				return incomeassets != null && !incomeassets.isEmpty();
-			case ModelPackage.RESPONSIBILITY_BASE__OUTCOMEASSETS:
+			case ModelPackage.CONTRACT_BASE__OUTCOMEASSETS:
 				return outcomeassets != null && !outcomeassets.isEmpty();
-			case ModelPackage.RESPONSIBILITY_BASE__PROCESS:
+			case ModelPackage.CONTRACT_BASE__PROCESS:
 				return getProcess() != null;
 		}
 		return super.eIsSet(featureID);
@@ -397,4 +397,4 @@ public abstract class ResponsibilityBaseImpl extends MinimalEObjectImpl.Containe
 		return result.toString();
 	}
 
-} //ResponsibilityBaseImpl
+} //ContractBaseImpl

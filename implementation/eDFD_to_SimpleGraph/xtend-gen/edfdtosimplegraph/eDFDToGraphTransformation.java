@@ -50,16 +50,16 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.secdfd.model.Asset;
 import org.secdfd.model.AttackerProfile;
+import org.secdfd.model.ContractBase;
 import org.secdfd.model.Element;
 import org.secdfd.model.Flow;
-import org.secdfd.model.MLResponsibility;
-import org.secdfd.model.MLResponsibilityType;
+import org.secdfd.model.MLContract;
+import org.secdfd.model.MLContractType;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
 import org.secdfd.model.Priority;
-import org.secdfd.model.Responsibility;
-import org.secdfd.model.ResponsibilityBase;
-import org.secdfd.model.ResponsibilityType;
+import org.secdfd.model.SecurityContract;
+import org.secdfd.model.SecurityContractType;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 import traceability.EDFDToGraph;
@@ -347,25 +347,25 @@ public class eDFDToGraphTransformation {
   private final BatchTransformationRule<Responsibilities.Match, Responsibilities.Matcher> eDFDProcessResponsibilitiesRule = this._batchTransformationRuleFactory.<Responsibilities.Match, Responsibilities.Matcher>createRule().precondition(Responsibilities.Matcher.querySpecification()).action(
     ((Consumer<Responsibilities.Match>) (Responsibilities.Match it) -> {
       try {
-        final ResponsibilityBase eDFDResponsibility = it.getR();
+        final ContractBase eDFDResponsibility = it.getR();
         org.secdfd.model.Process _process = eDFDResponsibility.getProcess();
         final NamedEntity eDFDResponsibilityProcess = ((NamedEntity) _process);
         final EList<Asset> eDFDIncomingAssets = eDFDResponsibility.getIncomeassets();
         final EList<Asset> eDFDOutgoingAssets = eDFDResponsibility.getOutcomeassets();
-        List<ResponsibilityType> _xifexpression = null;
-        if ((eDFDResponsibility instanceof Responsibility)) {
-          _xifexpression = ((Responsibility) eDFDResponsibility).getAction();
+        List<SecurityContractType> _xifexpression = null;
+        if ((eDFDResponsibility instanceof SecurityContract)) {
+          _xifexpression = ((SecurityContract) eDFDResponsibility).getTask();
         } else {
-          _xifexpression = CollectionLiterals.<ResponsibilityType>newArrayList();
+          _xifexpression = CollectionLiterals.<SecurityContractType>newArrayList();
         }
-        final List<ResponsibilityType> eDFDResponsibilityActions = _xifexpression;
-        List<MLResponsibilityType> _xifexpression_1 = null;
-        if ((eDFDResponsibility instanceof MLResponsibility)) {
-          _xifexpression_1 = ((MLResponsibility) eDFDResponsibility).getMlAction();
+        final List<SecurityContractType> eDFDResponsibilityActions = _xifexpression;
+        List<MLContractType> _xifexpression_1 = null;
+        if ((eDFDResponsibility instanceof MLContract)) {
+          _xifexpression_1 = ((MLContract) eDFDResponsibility).getMLTask();
         } else {
-          _xifexpression_1 = CollectionLiterals.<MLResponsibilityType>newArrayList();
+          _xifexpression_1 = CollectionLiterals.<MLContractType>newArrayList();
         }
-        final List<MLResponsibilityType> eDFDMLResponsibilityActions = _xifexpression_1;
+        final List<MLContractType> eDFDMLResponsibilityActions = _xifexpression_1;
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("Mapping eDFD Responsibility with Graph NodeResponsibility: ");
         String _name = eDFDResponsibilityProcess.getName();
@@ -391,11 +391,11 @@ public class eDFDToGraphTransformation {
           try {
             this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_Incomingassets(), incomingassets_of_process);
             this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_Outgoingassets(), outgoingassets_of_process);
-            if (((eDFDResponsibility instanceof Responsibility) && (!eDFDResponsibilityActions.isEmpty()))) {
-              this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_Operation(), eDFDResponsibilityActions);
+            if (((eDFDResponsibility instanceof SecurityContract) && (!eDFDResponsibilityActions.isEmpty()))) {
+              this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_Task(), eDFDResponsibilityActions);
             }
-            if (((eDFDResponsibility instanceof MLResponsibility) && (!eDFDMLResponsibilityActions.isEmpty()))) {
-              this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_MlOperation(), eDFDMLResponsibilityActions);
+            if (((eDFDResponsibility instanceof MLContract) && (!eDFDMLResponsibilityActions.isEmpty()))) {
+              this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_MlTask(), eDFDMLResponsibilityActions);
             }
           } catch (Throwable _e) {
             throw Exceptions.sneakyThrow(_e);
@@ -403,11 +403,11 @@ public class eDFDToGraphTransformation {
         };
         final Identifiable graphResponsibility = ObjectExtensions.<Identifiable>operator_doubleArrow(((Identifiable) _createChild), _function);
         String _xifexpression_2 = null;
-        if ((eDFDResponsibility instanceof Responsibility)) {
+        if ((eDFDResponsibility instanceof SecurityContract)) {
           _xifexpression_2 = eDFDResponsibilityActions.toString();
         } else {
           String _xifexpression_3 = null;
-          if ((eDFDResponsibility instanceof MLResponsibility)) {
+          if ((eDFDResponsibility instanceof MLContract)) {
             _xifexpression_3 = eDFDMLResponsibilityActions.toString();
           } else {
             _xifexpression_3 = "";
@@ -436,7 +436,7 @@ public class eDFDToGraphTransformation {
       final org.secdfd.model.Process eDFDProcess = it.getP();
       final EList<Flow> eDFDProcessOutgoingFlows = eDFDProcess.getOutflows();
       final String eDFDProcessName = eDFDProcess.getName();
-      final EList<ResponsibilityBase> eDFDProcessResponsibilities = eDFDProcess.getResponsibility();
+      final EList<ContractBase> eDFDProcessResponsibilities = eDFDProcess.getResponsibility();
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Mapping Process properties with Graph Node: ");
       _builder.append(eDFDProcessName);
@@ -451,7 +451,7 @@ public class eDFDToGraphTransformation {
       }
       node_of_process.getOutedges().addAll(outgoingflows);
       final ArrayList<NodeResponsibility> responsibilities_of_process = CollectionLiterals.<NodeResponsibility>newArrayList();
-      for (final ResponsibilityBase r : eDFDProcessResponsibilities) {
+      for (final ContractBase r : eDFDProcessResponsibilities) {
         {
           final NamedEntity o = ((NamedEntity) r);
           responsibilities_of_process.add(IterableExtensions.<NodeResponsibility>head(Iterables.<NodeResponsibility>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, o), NodeResponsibility.class)));
@@ -673,7 +673,7 @@ public class eDFDToGraphTransformation {
    * }
    * //go through responsibilities
    * for (NodeResponsibility nr : r){
-   * switch(nr.operation.toString){
+   * switch(nr.task.toString){
    * case "[EncryptOrHash]":{
    * //set low output
    * outgoing.edgeLabel = 0
@@ -847,7 +847,7 @@ public class eDFDToGraphTransformation {
                 }
               }
               for (final NodeResponsibility nr_1 : r) {
-                String _string = nr_1.getOperation().toString();
+                String _string = nr_1.getTask().toString();
                 if (_string != null) {
                   switch (_string) {
                     case "[EncryptOrHash]":
@@ -1129,7 +1129,7 @@ public class eDFDToGraphTransformation {
       return Boolean.valueOf(IterableExtensions.<GraphAsset>exists(r.getOutgoingassets(), _function_4));
     };
     final Function1<NodeResponsibility, String> _function_4 = (NodeResponsibility it) -> {
-      return it.getOperation().toString().replace("[", "").replace("]", "");
+      return it.getTask().toString().replace("[", "").replace("]", "");
     };
     final Set<String> ops = IterableExtensions.<String>toSet(IterableExtensions.<NodeResponsibility, String>map(IterableExtensions.<NodeResponsibility>filter(e.getSource().getResponsibility(), _function_3), _function_4));
     StringBuilder _append_1 = sb.append("  via ");

@@ -13,7 +13,7 @@ import org.secdfd.model.ModelFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MLResponsibilityTest extends ContractBaseTest {
+public class MLContractTest extends ContractBaseTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -21,7 +21,7 @@ public class MLResponsibilityTest extends ContractBaseTest {
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(MLResponsibilityTest.class);
+		TestRunner.run(MLContractTest.class);
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class MLResponsibilityTest extends ContractBaseTest {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MLResponsibilityTest(String name) {
+	public MLContractTest(String name) {
 		super(name);
 	}
 
@@ -67,4 +67,4 @@ public class MLResponsibilityTest extends ContractBaseTest {
 		setFixture(null);
 	}
 
-} //MLResponsibilityTest
+} //MLContractTest

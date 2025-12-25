@@ -605,22 +605,22 @@ public interface GraphPackage extends EPackage {
 	int NODE_RESPONSIBILITY__NUMBER = IDENTIFIABLE__NUMBER;
 
 	/**
-	 * The feature id for the '<em><b>Operation</b></em>' attribute list.
+	 * The feature id for the '<em><b>Task</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_RESPONSIBILITY__OPERATION = IDENTIFIABLE_FEATURE_COUNT + 0;
+	int NODE_RESPONSIBILITY__TASK = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Ml Operation</b></em>' attribute list.
+	 * The feature id for the '<em><b>Ml Task</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_RESPONSIBILITY__ML_OPERATION = IDENTIFIABLE_FEATURE_COUNT + 1;
+	int NODE_RESPONSIBILITY__ML_TASK = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Outgoingassets</b></em>' reference list.
@@ -1274,26 +1274,26 @@ public interface GraphPackage extends EPackage {
 	EClass getNodeResponsibility();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link graph.NodeResponsibility#getOperation <em>Operation</em>}'.
+	 * Returns the meta object for the attribute list '{@link graph.NodeResponsibility#getTask <em>Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Operation</em>'.
-	 * @see graph.NodeResponsibility#getOperation()
+	 * @return the meta object for the attribute list '<em>Task</em>'.
+	 * @see graph.NodeResponsibility#getTask()
 	 * @see #getNodeResponsibility()
 	 * @generated
 	 */
-	EAttribute getNodeResponsibility_Operation();
+	EAttribute getNodeResponsibility_Task();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link graph.NodeResponsibility#getMlOperation <em>Ml Operation</em>}'.
+	 * Returns the meta object for the attribute list '{@link graph.NodeResponsibility#getMlTask <em>Ml Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Ml Operation</em>'.
-	 * @see graph.NodeResponsibility#getMlOperation()
+	 * @return the meta object for the attribute list '<em>Ml Task</em>'.
+	 * @see graph.NodeResponsibility#getMlTask()
 	 * @see #getNodeResponsibility()
 	 * @generated
 	 */
-	EAttribute getNodeResponsibility_MlOperation();
+	EAttribute getNodeResponsibility_MlTask();
 
 	/**
 	 * Returns the meta object for the reference list '{@link graph.NodeResponsibility#getOutgoingassets <em>Outgoingassets</em>}'.
@@ -1766,20 +1766,20 @@ public interface GraphPackage extends EPackage {
 		EClass NODE_RESPONSIBILITY = eINSTANCE.getNodeResponsibility();
 
 		/**
-		 * The meta object literal for the '<em><b>Operation</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Task</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NODE_RESPONSIBILITY__OPERATION = eINSTANCE.getNodeResponsibility_Operation();
+		EAttribute NODE_RESPONSIBILITY__TASK = eINSTANCE.getNodeResponsibility_Task();
 
 		/**
-		 * The meta object literal for the '<em><b>Ml Operation</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Ml Task</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NODE_RESPONSIBILITY__ML_OPERATION = eINSTANCE.getNodeResponsibility_MlOperation();
+		EAttribute NODE_RESPONSIBILITY__ML_TASK = eINSTANCE.getNodeResponsibility_MlTask();
 
 		/**
 		 * The meta object literal for the '<em><b>Outgoingassets</b></em>' reference list feature.

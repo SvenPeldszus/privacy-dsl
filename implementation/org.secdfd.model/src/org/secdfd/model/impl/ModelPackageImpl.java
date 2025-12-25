@@ -18,21 +18,21 @@ import org.secdfd.model.AssetType;
 import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.Channel;
+import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
 import org.secdfd.model.Layer;
-import org.secdfd.model.MLResponsibility;
-import org.secdfd.model.MLResponsibilityType;
+import org.secdfd.model.MLContract;
+import org.secdfd.model.MLContractType;
 import org.secdfd.model.ModelFactory;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
 import org.secdfd.model.Priority;
-import org.secdfd.model.Responsibility;
-import org.secdfd.model.ResponsibilityBase;
-import org.secdfd.model.ResponsibilityType;
+import org.secdfd.model.SecurityContract;
+import org.secdfd.model.SecurityContractType;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 import org.secdfd.model.util.ModelValidator;
@@ -133,21 +133,21 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass responsibilityBaseEClass = null;
+	private EClass contractBaseEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass responsibilityEClass = null;
+	private EClass securityContractEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass mlResponsibilityEClass = null;
+	private EClass mlContractEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -168,7 +168,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum responsibilityTypeEEnum = null;
+	private EEnum securityContractTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -196,7 +196,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum mlResponsibilityTypeEEnum = null;
+	private EEnum mlContractTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -675,8 +675,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getResponsibilityBase() {
-		return responsibilityBaseEClass;
+	public EClass getContractBase() {
+		return contractBaseEClass;
 	}
 
 	/**
@@ -685,8 +685,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getResponsibilityBase_Incomeassets() {
-		return (EReference)responsibilityBaseEClass.getEStructuralFeatures().get(0);
+	public EReference getContractBase_Incomeassets() {
+		return (EReference)contractBaseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -695,8 +695,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getResponsibilityBase_Outcomeassets() {
-		return (EReference)responsibilityBaseEClass.getEStructuralFeatures().get(1);
+	public EReference getContractBase_Outcomeassets() {
+		return (EReference)contractBaseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -705,8 +705,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getResponsibilityBase_Process() {
-		return (EReference)responsibilityBaseEClass.getEStructuralFeatures().get(2);
+	public EReference getContractBase_Process() {
+		return (EReference)contractBaseEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -715,8 +715,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getResponsibility() {
-		return responsibilityEClass;
+	public EClass getSecurityContract() {
+		return securityContractEClass;
 	}
 
 	/**
@@ -725,8 +725,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getResponsibility_Action() {
-		return (EAttribute)responsibilityEClass.getEStructuralFeatures().get(0);
+	public EAttribute getSecurityContract_Task() {
+		return (EAttribute)securityContractEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -735,8 +735,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getMLResponsibility() {
-		return mlResponsibilityEClass;
+	public EClass getMLContract() {
+		return mlContractEClass;
 	}
 
 	/**
@@ -745,8 +745,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getMLResponsibility_MlAction() {
-		return (EAttribute)mlResponsibilityEClass.getEStructuralFeatures().get(0);
+	public EAttribute getMLContract_MLTask() {
+		return (EAttribute)mlContractEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -775,8 +775,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EEnum getResponsibilityType() {
-		return responsibilityTypeEEnum;
+	public EEnum getSecurityContractType() {
+		return securityContractTypeEEnum;
 	}
 
 	/**
@@ -815,8 +815,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EEnum getMLResponsibilityType() {
-		return mlResponsibilityTypeEEnum;
+	public EEnum getMLContractType() {
+		return mlContractTypeEEnum;
 	}
 
 	/**
@@ -900,25 +900,25 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEReference(trustZoneEClass, TRUST_ZONE__SUBZONES);
 		createEReference(trustZoneEClass, TRUST_ZONE__ATTACKERPROFILE);
 
-		responsibilityBaseEClass = createEClass(RESPONSIBILITY_BASE);
-		createEReference(responsibilityBaseEClass, RESPONSIBILITY_BASE__INCOMEASSETS);
-		createEReference(responsibilityBaseEClass, RESPONSIBILITY_BASE__OUTCOMEASSETS);
-		createEReference(responsibilityBaseEClass, RESPONSIBILITY_BASE__PROCESS);
+		contractBaseEClass = createEClass(CONTRACT_BASE);
+		createEReference(contractBaseEClass, CONTRACT_BASE__INCOMEASSETS);
+		createEReference(contractBaseEClass, CONTRACT_BASE__OUTCOMEASSETS);
+		createEReference(contractBaseEClass, CONTRACT_BASE__PROCESS);
 
-		responsibilityEClass = createEClass(RESPONSIBILITY);
-		createEAttribute(responsibilityEClass, RESPONSIBILITY__ACTION);
+		securityContractEClass = createEClass(SECURITY_CONTRACT);
+		createEAttribute(securityContractEClass, SECURITY_CONTRACT__TASK);
 
-		mlResponsibilityEClass = createEClass(ML_RESPONSIBILITY);
-		createEAttribute(mlResponsibilityEClass, ML_RESPONSIBILITY__ML_ACTION);
+		mlContractEClass = createEClass(ML_CONTRACT);
+		createEAttribute(mlContractEClass, ML_CONTRACT__ML_TASK);
 
 		// Create enums
 		priorityEEnum = createEEnum(PRIORITY);
 		channelEEnum = createEEnum(CHANNEL);
-		responsibilityTypeEEnum = createEEnum(RESPONSIBILITY_TYPE);
+		securityContractTypeEEnum = createEEnum(SECURITY_CONTRACT_TYPE);
 		objectiveEEnum = createEEnum(OBJECTIVE);
 		layerEEnum = createEEnum(LAYER);
 		assetTypeEEnum = createEEnum(ASSET_TYPE);
-		mlResponsibilityTypeEEnum = createEEnum(ML_RESPONSIBILITY_TYPE);
+		mlContractTypeEEnum = createEEnum(ML_CONTRACT_TYPE);
 	}
 
 	/**
@@ -958,9 +958,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		elementEClass.getESuperTypes().add(this.getNamedEntity());
 		attackerProfileEClass.getESuperTypes().add(this.getNamedEntity());
 		trustZoneEClass.getESuperTypes().add(this.getElement());
-		responsibilityBaseEClass.getESuperTypes().add(this.getNamedEntity());
-		responsibilityEClass.getESuperTypes().add(this.getResponsibilityBase());
-		mlResponsibilityEClass.getESuperTypes().add(this.getResponsibilityBase());
+		contractBaseEClass.getESuperTypes().add(this.getNamedEntity());
+		securityContractEClass.getESuperTypes().add(this.getContractBase());
+		mlContractEClass.getESuperTypes().add(this.getContractBase());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(assetEClass, Asset.class, "Asset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -970,7 +970,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getAsset_Type(), this.getAssetType(), "Type", "String", 0, 1, Asset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processEClass, org.secdfd.model.Process.class, "Process", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProcess_Responsibility(), this.getResponsibilityBase(), this.getResponsibilityBase_Process(), "responsibility", null, 0, -1, org.secdfd.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcess_Responsibility(), this.getContractBase(), this.getContractBase_Process(), "responsibility", null, 0, -1, org.secdfd.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(edfdEClass, org.secdfd.model.EDFD.class, "EDFD", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEDFD_Asset(), this.getAsset(), null, "asset", null, 0, -1, org.secdfd.model.EDFD.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1023,16 +1023,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getTrustZone_Subzones(), this.getTrustZone(), null, "subzones", null, 0, -1, TrustZone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrustZone_Attackerprofile(), this.getAttackerProfile(), null, "attackerprofile", null, 0, -1, TrustZone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(responsibilityBaseEClass, ResponsibilityBase.class, "ResponsibilityBase", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getResponsibilityBase_Incomeassets(), this.getAsset(), null, "incomeassets", null, 0, -1, ResponsibilityBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResponsibilityBase_Outcomeassets(), this.getAsset(), null, "outcomeassets", null, 0, -1, ResponsibilityBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResponsibilityBase_Process(), this.getProcess(), this.getProcess_Responsibility(), "process", null, 0, 1, ResponsibilityBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(contractBaseEClass, ContractBase.class, "ContractBase", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getContractBase_Incomeassets(), this.getAsset(), null, "incomeassets", null, 0, -1, ContractBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContractBase_Outcomeassets(), this.getAsset(), null, "outcomeassets", null, 0, -1, ContractBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContractBase_Process(), this.getProcess(), this.getProcess_Responsibility(), "process", null, 0, 1, ContractBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(responsibilityEClass, Responsibility.class, "Responsibility", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getResponsibility_Action(), this.getResponsibilityType(), "Action", null, 0, -1, Responsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(securityContractEClass, SecurityContract.class, "SecurityContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSecurityContract_Task(), this.getSecurityContractType(), "Task", null, 0, -1, SecurityContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(mlResponsibilityEClass, MLResponsibility.class, "MLResponsibility", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMLResponsibility_MlAction(), this.getMLResponsibilityType(), "mlAction", null, 0, -1, MLResponsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(mlContractEClass, MLContract.class, "MLContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMLContract_MLTask(), this.getMLContractType(), "MLTask", null, 0, -1, MLContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(priorityEEnum, Priority.class, "Priority");
@@ -1045,20 +1045,20 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEEnumLiteral(channelEEnum, Channel.VLAN);
 		addEEnumLiteral(channelEEnum, Channel.ETH);
 
-		initEEnum(responsibilityTypeEEnum, ResponsibilityType.class, "ResponsibilityType");
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.STORE);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.COMPARATOR);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.DISCARDER);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.JOINER);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.COPIER);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.SPLITTER);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.FORWARD);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.ENCRYPT_OR_HASH);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.DECRYPT);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.AUTHENTICATOR);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.AUTHORISER);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.VERIFIER);
-		addEEnumLiteral(responsibilityTypeEEnum, ResponsibilityType.USER);
+		initEEnum(securityContractTypeEEnum, SecurityContractType.class, "SecurityContractType");
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.STORE);
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.COMPARATOR);
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.DISCARDER);
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.JOINER);
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.COPIER);
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.SPLITTER);
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.FORWARD);
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.ENCRYPT_OR_HASH);
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.DECRYPT);
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.AUTHENTICATOR);
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.AUTHORISER);
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.VERIFIER);
+		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.USER);
 
 		initEEnum(objectiveEEnum, Objective.class, "Objective");
 		addEEnumLiteral(objectiveEEnum, Objective.INTEGRITY);
@@ -1079,14 +1079,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEEnumLiteral(assetTypeEEnum, AssetType.VECTOR);
 		addEEnumLiteral(assetTypeEEnum, AssetType.BOOLEAN);
 
-		initEEnum(mlResponsibilityTypeEEnum, MLResponsibilityType.class, "MLResponsibilityType");
-		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.CLASSIFICATION);
-		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.DECISION_MAKING);
-		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.REGRESSION);
-		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.CLUSTERING);
-		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.ANOMALY_DETECTION);
-		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.NATURAL_LANGUAGE_PROCESSING);
-		addEEnumLiteral(mlResponsibilityTypeEEnum, MLResponsibilityType.COMPUTER_VISION);
+		initEEnum(mlContractTypeEEnum, MLContractType.class, "MLContractType");
+		addEEnumLiteral(mlContractTypeEEnum, MLContractType.CLASSIFICATION);
+		addEEnumLiteral(mlContractTypeEEnum, MLContractType.CLUSTERING);
 
 		// Create resource
 		createResource(eNS_URI);

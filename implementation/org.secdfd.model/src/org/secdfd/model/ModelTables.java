@@ -72,29 +72,29 @@ public class ModelTables extends AbstractTables
 	public static final /*@NonInvalid*/ ClassId CLSSid_Asset = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("Asset", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Assumption = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("Assumption", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_AttackerProfile = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("AttackerProfile", 0);
+	public static final /*@NonInvalid*/ ClassId CLSSid_ContractBase = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("ContractBase", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_EDFD = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("EDFD", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Element = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("Element", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Flow = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("Flow", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Process = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("Process", 0);
-	public static final /*@NonInvalid*/ ClassId CLSSid_ResponsibilityBase = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("ResponsibilityBase", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_TrustZone = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("TrustZone", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Value = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getClassId("Value", 0);
 	public static final /*@NonInvalid*/ DataTypeId DATAid_EInt = ModelTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EInt", 0);
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_AssetType = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("AssetType");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Channel = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Channel");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Layer = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Layer");
-	public static final /*@NonInvalid*/ EnumerationId ENUMid_MLResponsibilityType = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("MLResponsibilityType");
+	public static final /*@NonInvalid*/ EnumerationId ENUMid_MLContractType = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("MLContractType");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Objective = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Objective");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Priority = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Priority");
-	public static final /*@NonInvalid*/ EnumerationId ENUMid_ResponsibilityType = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("ResponsibilityType");
+	public static final /*@NonInvalid*/ EnumerationId ENUMid_SecurityContractType = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("SecurityContractType");
 	public static final /*@NonInvalid*/ IntegerValue INT_0 = ValueUtil.integerValueOf("0");
 	public static final /*@NonInvalid*/ TuplePartId PARTid_ = IdManager.getTuplePartId(0, "message", TypeId.STRING);
 	public static final /*@NonInvalid*/ TuplePartId PARTid__0 = IdManager.getTuplePartId(1, "status", TypeId.BOOLEAN);
 	public static final /*@NonInvalid*/ String STR_Privacy_32_as_32_objective_32_can_32_only_32_have_32_a_32_high_32_or_32_low_32_priority = "Privacy as objective can only have a high or low priority.";
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Asset = TypeId.BAG.getSpecializedId(ModelTables.CLSSid_Asset, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
+	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_ContractBase = TypeId.BAG.getSpecializedId(ModelTables.CLSSid_ContractBase, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Element = TypeId.BAG.getSpecializedId(ModelTables.CLSSid_Element, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Flow = TypeId.BAG.getSpecializedId(ModelTables.CLSSid_Flow, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
-	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_ResponsibilityBase = TypeId.BAG.getSpecializedId(ModelTables.CLSSid_ResponsibilityBase, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_TrustZone = TypeId.BAG.getSpecializedId(ModelTables.CLSSid_TrustZone, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ EnumerationLiteralId ELITid_H = ModelTables.ENUMid_Priority.getEnumerationLiteralId("H");
 	public static final /*@NonInvalid*/ EnumerationLiteralId ELITid_L = ModelTables.ENUMid_Priority.getEnumerationLiteralId("L");
@@ -102,15 +102,15 @@ public class ModelTables extends AbstractTables
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Asset = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_Asset, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Assumption = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_Assumption, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_AttackerProfile = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_AttackerProfile, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
+	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_ContractBase = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_ContractBase, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Element = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_Element, true, ValueUtil.ONE_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Element_0 = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_Element, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Flow = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_Flow, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
-	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_ResponsibilityBase = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_ResponsibilityBase, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_TrustZone = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_TrustZone, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Value = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_Value, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
-	public static final /*@NonInvalid*/ CollectionTypeId ORD_ENUMid_MLResponsibilityType = TypeId.ORDERED_SET.getSpecializedId(ModelTables.ENUMid_MLResponsibilityType, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
+	public static final /*@NonInvalid*/ CollectionTypeId ORD_ENUMid_MLContractType = TypeId.ORDERED_SET.getSpecializedId(ModelTables.ENUMid_MLContractType, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_ENUMid_Objective = TypeId.ORDERED_SET.getSpecializedId(ModelTables.ENUMid_Objective, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
-	public static final /*@NonInvalid*/ CollectionTypeId ORD_ENUMid_ResponsibilityType = TypeId.ORDERED_SET.getSpecializedId(ModelTables.ENUMid_ResponsibilityType, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
+	public static final /*@NonInvalid*/ CollectionTypeId ORD_ENUMid_SecurityContractType = TypeId.ORDERED_SET.getSpecializedId(ModelTables.ENUMid_SecurityContractType, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ TupleTypeId TUPLid_ = IdManager.getTupleTypeId("Tuple", ModelTables.PARTid_, ModelTables.PARTid__0);
 
 	/**
@@ -146,21 +146,21 @@ public class ModelTables extends AbstractTables
 		public static final EcoreExecutorType _Assumption = new EcoreExecutorType(ModelPackage.Literals.ASSUMPTION, PACKAGE, 0);
 		public static final EcoreExecutorType _AttackerProfile = new EcoreExecutorType(ModelPackage.Literals.ATTACKER_PROFILE, PACKAGE, 0);
 		public static final EcoreExecutorEnumeration _Channel = new EcoreExecutorEnumeration(ModelPackage.Literals.CHANNEL, PACKAGE, 0);
+		public static final EcoreExecutorType _ContractBase = new EcoreExecutorType(ModelPackage.Literals.CONTRACT_BASE, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final EcoreExecutorType _DataStore = new EcoreExecutorType(ModelPackage.Literals.DATA_STORE, PACKAGE, 0);
 		public static final EcoreExecutorType _EDFD = new EcoreExecutorType(ModelPackage.Literals.EDFD, PACKAGE, 0);
 		public static final EcoreExecutorType _Element = new EcoreExecutorType(ModelPackage.Literals.ELEMENT, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final EcoreExecutorType _ExternalEntity = new EcoreExecutorType(ModelPackage.Literals.EXTERNAL_ENTITY, PACKAGE, 0);
 		public static final EcoreExecutorType _Flow = new EcoreExecutorType(ModelPackage.Literals.FLOW, PACKAGE, 0);
 		public static final EcoreExecutorEnumeration _Layer = new EcoreExecutorEnumeration(ModelPackage.Literals.LAYER, PACKAGE, 0);
-		public static final EcoreExecutorType _MLResponsibility = new EcoreExecutorType(ModelPackage.Literals.ML_RESPONSIBILITY, PACKAGE, 0);
-		public static final EcoreExecutorEnumeration _MLResponsibilityType = new EcoreExecutorEnumeration(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE, PACKAGE, 0);
+		public static final EcoreExecutorType _MLContract = new EcoreExecutorType(ModelPackage.Literals.ML_CONTRACT, PACKAGE, 0);
+		public static final EcoreExecutorEnumeration _MLContractType = new EcoreExecutorEnumeration(ModelPackage.Literals.ML_CONTRACT_TYPE, PACKAGE, 0);
 		public static final EcoreExecutorType _NamedEntity = new EcoreExecutorType(ModelPackage.Literals.NAMED_ENTITY, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final EcoreExecutorEnumeration _Objective = new EcoreExecutorEnumeration(ModelPackage.Literals.OBJECTIVE, PACKAGE, 0);
 		public static final EcoreExecutorEnumeration _Priority = new EcoreExecutorEnumeration(ModelPackage.Literals.PRIORITY, PACKAGE, 0);
 		public static final EcoreExecutorType _Process = new EcoreExecutorType(ModelPackage.Literals.PROCESS, PACKAGE, 0);
-		public static final EcoreExecutorType _Responsibility = new EcoreExecutorType(ModelPackage.Literals.RESPONSIBILITY, PACKAGE, 0);
-		public static final EcoreExecutorType _ResponsibilityBase = new EcoreExecutorType(ModelPackage.Literals.RESPONSIBILITY_BASE, PACKAGE, 0 | ExecutorType.ABSTRACT);
-		public static final EcoreExecutorEnumeration _ResponsibilityType = new EcoreExecutorEnumeration(ModelPackage.Literals.RESPONSIBILITY_TYPE, PACKAGE, 0);
+		public static final EcoreExecutorType _SecurityContract = new EcoreExecutorType(ModelPackage.Literals.SECURITY_CONTRACT, PACKAGE, 0);
+		public static final EcoreExecutorEnumeration _SecurityContractType = new EcoreExecutorEnumeration(ModelPackage.Literals.SECURITY_CONTRACT_TYPE, PACKAGE, 0);
 		public static final EcoreExecutorType _TrustZone = new EcoreExecutorType(ModelPackage.Literals.TRUST_ZONE, PACKAGE, 0);
 		public static final EcoreExecutorType _Value = new EcoreExecutorType(ModelPackage.Literals.VALUE, PACKAGE, 0);
 
@@ -170,21 +170,21 @@ public class ModelTables extends AbstractTables
 			_Assumption,
 			_AttackerProfile,
 			_Channel,
+			_ContractBase,
 			_DataStore,
 			_EDFD,
 			_Element,
 			_ExternalEntity,
 			_Flow,
 			_Layer,
-			_MLResponsibility,
-			_MLResponsibilityType,
+			_MLContract,
+			_MLContractType,
 			_NamedEntity,
 			_Objective,
 			_Priority,
 			_Process,
-			_Responsibility,
-			_ResponsibilityBase,
-			_ResponsibilityType,
+			_SecurityContract,
+			_SecurityContractType,
 			_TrustZone,
 			_Value
 		};
@@ -238,6 +238,11 @@ public class ModelTables extends AbstractTables
 		private static final ExecutorFragment _Channel__OclEnumeration = new ExecutorFragment(Types._Channel, OCLstdlibTables.Types._OclEnumeration);
 		private static final ExecutorFragment _Channel__OclType = new ExecutorFragment(Types._Channel, OCLstdlibTables.Types._OclType);
 
+		private static final ExecutorFragment _ContractBase__ContractBase = new ExecutorFragment(Types._ContractBase, ModelTables.Types._ContractBase);
+		private static final ExecutorFragment _ContractBase__NamedEntity = new ExecutorFragment(Types._ContractBase, ModelTables.Types._NamedEntity);
+		private static final ExecutorFragment _ContractBase__OclAny = new ExecutorFragment(Types._ContractBase, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _ContractBase__OclElement = new ExecutorFragment(Types._ContractBase, OCLstdlibTables.Types._OclElement);
+
 		private static final ExecutorFragment _DataStore__DataStore = new ExecutorFragment(Types._DataStore, ModelTables.Types._DataStore);
 		private static final ExecutorFragment _DataStore__Element = new ExecutorFragment(Types._DataStore, ModelTables.Types._Element);
 		private static final ExecutorFragment _DataStore__NamedEntity = new ExecutorFragment(Types._DataStore, ModelTables.Types._NamedEntity);
@@ -272,17 +277,17 @@ public class ModelTables extends AbstractTables
 		private static final ExecutorFragment _Layer__OclEnumeration = new ExecutorFragment(Types._Layer, OCLstdlibTables.Types._OclEnumeration);
 		private static final ExecutorFragment _Layer__OclType = new ExecutorFragment(Types._Layer, OCLstdlibTables.Types._OclType);
 
-		private static final ExecutorFragment _MLResponsibility__MLResponsibility = new ExecutorFragment(Types._MLResponsibility, ModelTables.Types._MLResponsibility);
-		private static final ExecutorFragment _MLResponsibility__NamedEntity = new ExecutorFragment(Types._MLResponsibility, ModelTables.Types._NamedEntity);
-		private static final ExecutorFragment _MLResponsibility__OclAny = new ExecutorFragment(Types._MLResponsibility, OCLstdlibTables.Types._OclAny);
-		private static final ExecutorFragment _MLResponsibility__OclElement = new ExecutorFragment(Types._MLResponsibility, OCLstdlibTables.Types._OclElement);
-		private static final ExecutorFragment _MLResponsibility__ResponsibilityBase = new ExecutorFragment(Types._MLResponsibility, ModelTables.Types._ResponsibilityBase);
+		private static final ExecutorFragment _MLContract__ContractBase = new ExecutorFragment(Types._MLContract, ModelTables.Types._ContractBase);
+		private static final ExecutorFragment _MLContract__MLContract = new ExecutorFragment(Types._MLContract, ModelTables.Types._MLContract);
+		private static final ExecutorFragment _MLContract__NamedEntity = new ExecutorFragment(Types._MLContract, ModelTables.Types._NamedEntity);
+		private static final ExecutorFragment _MLContract__OclAny = new ExecutorFragment(Types._MLContract, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _MLContract__OclElement = new ExecutorFragment(Types._MLContract, OCLstdlibTables.Types._OclElement);
 
-		private static final ExecutorFragment _MLResponsibilityType__MLResponsibilityType = new ExecutorFragment(Types._MLResponsibilityType, ModelTables.Types._MLResponsibilityType);
-		private static final ExecutorFragment _MLResponsibilityType__OclAny = new ExecutorFragment(Types._MLResponsibilityType, OCLstdlibTables.Types._OclAny);
-		private static final ExecutorFragment _MLResponsibilityType__OclElement = new ExecutorFragment(Types._MLResponsibilityType, OCLstdlibTables.Types._OclElement);
-		private static final ExecutorFragment _MLResponsibilityType__OclEnumeration = new ExecutorFragment(Types._MLResponsibilityType, OCLstdlibTables.Types._OclEnumeration);
-		private static final ExecutorFragment _MLResponsibilityType__OclType = new ExecutorFragment(Types._MLResponsibilityType, OCLstdlibTables.Types._OclType);
+		private static final ExecutorFragment _MLContractType__MLContractType = new ExecutorFragment(Types._MLContractType, ModelTables.Types._MLContractType);
+		private static final ExecutorFragment _MLContractType__OclAny = new ExecutorFragment(Types._MLContractType, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _MLContractType__OclElement = new ExecutorFragment(Types._MLContractType, OCLstdlibTables.Types._OclElement);
+		private static final ExecutorFragment _MLContractType__OclEnumeration = new ExecutorFragment(Types._MLContractType, OCLstdlibTables.Types._OclEnumeration);
+		private static final ExecutorFragment _MLContractType__OclType = new ExecutorFragment(Types._MLContractType, OCLstdlibTables.Types._OclType);
 
 		private static final ExecutorFragment _NamedEntity__NamedEntity = new ExecutorFragment(Types._NamedEntity, ModelTables.Types._NamedEntity);
 		private static final ExecutorFragment _NamedEntity__OclAny = new ExecutorFragment(Types._NamedEntity, OCLstdlibTables.Types._OclAny);
@@ -306,22 +311,17 @@ public class ModelTables extends AbstractTables
 		private static final ExecutorFragment _Process__OclElement = new ExecutorFragment(Types._Process, OCLstdlibTables.Types._OclElement);
 		private static final ExecutorFragment _Process__Process = new ExecutorFragment(Types._Process, ModelTables.Types._Process);
 
-		private static final ExecutorFragment _Responsibility__NamedEntity = new ExecutorFragment(Types._Responsibility, ModelTables.Types._NamedEntity);
-		private static final ExecutorFragment _Responsibility__OclAny = new ExecutorFragment(Types._Responsibility, OCLstdlibTables.Types._OclAny);
-		private static final ExecutorFragment _Responsibility__OclElement = new ExecutorFragment(Types._Responsibility, OCLstdlibTables.Types._OclElement);
-		private static final ExecutorFragment _Responsibility__Responsibility = new ExecutorFragment(Types._Responsibility, ModelTables.Types._Responsibility);
-		private static final ExecutorFragment _Responsibility__ResponsibilityBase = new ExecutorFragment(Types._Responsibility, ModelTables.Types._ResponsibilityBase);
+		private static final ExecutorFragment _SecurityContract__ContractBase = new ExecutorFragment(Types._SecurityContract, ModelTables.Types._ContractBase);
+		private static final ExecutorFragment _SecurityContract__NamedEntity = new ExecutorFragment(Types._SecurityContract, ModelTables.Types._NamedEntity);
+		private static final ExecutorFragment _SecurityContract__OclAny = new ExecutorFragment(Types._SecurityContract, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _SecurityContract__OclElement = new ExecutorFragment(Types._SecurityContract, OCLstdlibTables.Types._OclElement);
+		private static final ExecutorFragment _SecurityContract__SecurityContract = new ExecutorFragment(Types._SecurityContract, ModelTables.Types._SecurityContract);
 
-		private static final ExecutorFragment _ResponsibilityBase__NamedEntity = new ExecutorFragment(Types._ResponsibilityBase, ModelTables.Types._NamedEntity);
-		private static final ExecutorFragment _ResponsibilityBase__OclAny = new ExecutorFragment(Types._ResponsibilityBase, OCLstdlibTables.Types._OclAny);
-		private static final ExecutorFragment _ResponsibilityBase__OclElement = new ExecutorFragment(Types._ResponsibilityBase, OCLstdlibTables.Types._OclElement);
-		private static final ExecutorFragment _ResponsibilityBase__ResponsibilityBase = new ExecutorFragment(Types._ResponsibilityBase, ModelTables.Types._ResponsibilityBase);
-
-		private static final ExecutorFragment _ResponsibilityType__OclAny = new ExecutorFragment(Types._ResponsibilityType, OCLstdlibTables.Types._OclAny);
-		private static final ExecutorFragment _ResponsibilityType__OclElement = new ExecutorFragment(Types._ResponsibilityType, OCLstdlibTables.Types._OclElement);
-		private static final ExecutorFragment _ResponsibilityType__OclEnumeration = new ExecutorFragment(Types._ResponsibilityType, OCLstdlibTables.Types._OclEnumeration);
-		private static final ExecutorFragment _ResponsibilityType__OclType = new ExecutorFragment(Types._ResponsibilityType, OCLstdlibTables.Types._OclType);
-		private static final ExecutorFragment _ResponsibilityType__ResponsibilityType = new ExecutorFragment(Types._ResponsibilityType, ModelTables.Types._ResponsibilityType);
+		private static final ExecutorFragment _SecurityContractType__OclAny = new ExecutorFragment(Types._SecurityContractType, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _SecurityContractType__OclElement = new ExecutorFragment(Types._SecurityContractType, OCLstdlibTables.Types._OclElement);
+		private static final ExecutorFragment _SecurityContractType__OclEnumeration = new ExecutorFragment(Types._SecurityContractType, OCLstdlibTables.Types._OclEnumeration);
+		private static final ExecutorFragment _SecurityContractType__OclType = new ExecutorFragment(Types._SecurityContractType, OCLstdlibTables.Types._OclType);
+		private static final ExecutorFragment _SecurityContractType__SecurityContractType = new ExecutorFragment(Types._SecurityContractType, ModelTables.Types._SecurityContractType);
 
 		private static final ExecutorFragment _TrustZone__Element = new ExecutorFragment(Types._TrustZone, ModelTables.Types._Element);
 		private static final ExecutorFragment _TrustZone__NamedEntity = new ExecutorFragment(Types._TrustZone, ModelTables.Types._NamedEntity);
@@ -406,10 +406,10 @@ public class ModelTables extends AbstractTables
 		public static final ExecutorProperty _Asset__source = new EcoreExecutorProperty(ModelPackage.Literals.ASSET__SOURCE, Types._Asset, 1);
 		public static final ExecutorProperty _Asset__targets = new EcoreExecutorProperty(ModelPackage.Literals.ASSET__TARGETS, Types._Asset, 2);
 		public static final ExecutorProperty _Asset__value = new EcoreExecutorProperty(ModelPackage.Literals.ASSET__VALUE, Types._Asset, 3);
-		public static final ExecutorProperty _Asset__EDFD__asset = new ExecutorPropertyWithImplementation("EDFD", Types._Asset, 4, new EcoreLibraryOppositeProperty(ModelPackage.Literals.EDFD__ASSET));
-		public static final ExecutorProperty _Asset__Element__assets = new ExecutorPropertyWithImplementation("Element", Types._Asset, 5, new EcoreLibraryOppositeProperty(ModelPackage.Literals.ELEMENT__ASSETS));
-		public static final ExecutorProperty _Asset__ResponsibilityBase__incomeassets = new ExecutorPropertyWithImplementation("ResponsibilityBase", Types._Asset, 6, new EcoreLibraryOppositeProperty(ModelPackage.Literals.RESPONSIBILITY_BASE__INCOMEASSETS));
-		public static final ExecutorProperty _Asset__ResponsibilityBase__outcomeassets = new ExecutorPropertyWithImplementation("ResponsibilityBase", Types._Asset, 7, new EcoreLibraryOppositeProperty(ModelPackage.Literals.RESPONSIBILITY_BASE__OUTCOMEASSETS));
+		public static final ExecutorProperty _Asset__ContractBase__incomeassets = new ExecutorPropertyWithImplementation("ContractBase", Types._Asset, 4, new EcoreLibraryOppositeProperty(ModelPackage.Literals.CONTRACT_BASE__INCOMEASSETS));
+		public static final ExecutorProperty _Asset__ContractBase__outcomeassets = new ExecutorPropertyWithImplementation("ContractBase", Types._Asset, 5, new EcoreLibraryOppositeProperty(ModelPackage.Literals.CONTRACT_BASE__OUTCOMEASSETS));
+		public static final ExecutorProperty _Asset__EDFD__asset = new ExecutorPropertyWithImplementation("EDFD", Types._Asset, 6, new EcoreLibraryOppositeProperty(ModelPackage.Literals.EDFD__ASSET));
+		public static final ExecutorProperty _Asset__Element__assets = new ExecutorPropertyWithImplementation("Element", Types._Asset, 7, new EcoreLibraryOppositeProperty(ModelPackage.Literals.ELEMENT__ASSETS));
 
 		public static final ExecutorProperty _Assumption__Layer = new EcoreExecutorProperty(ModelPackage.Literals.ASSUMPTION__LAYER, Types._Assumption, 0);
 		public static final ExecutorProperty _Assumption__Objective = new EcoreExecutorProperty(ModelPackage.Literals.ASSUMPTION__OBJECTIVE, Types._Assumption, 1);
@@ -417,6 +417,10 @@ public class ModelTables extends AbstractTables
 
 		public static final ExecutorProperty _AttackerProfile__Observation = new EcoreExecutorProperty(ModelPackage.Literals.ATTACKER_PROFILE__OBSERVATION, Types._AttackerProfile, 0);
 		public static final ExecutorProperty _AttackerProfile__TrustZone__attackerprofile = new ExecutorPropertyWithImplementation("TrustZone", Types._AttackerProfile, 1, new EcoreLibraryOppositeProperty(ModelPackage.Literals.TRUST_ZONE__ATTACKERPROFILE));
+
+		public static final ExecutorProperty _ContractBase__incomeassets = new EcoreExecutorProperty(ModelPackage.Literals.CONTRACT_BASE__INCOMEASSETS, Types._ContractBase, 0);
+		public static final ExecutorProperty _ContractBase__outcomeassets = new EcoreExecutorProperty(ModelPackage.Literals.CONTRACT_BASE__OUTCOMEASSETS, Types._ContractBase, 1);
+		public static final ExecutorProperty _ContractBase__process = new EcoreExecutorProperty(ModelPackage.Literals.CONTRACT_BASE__PROCESS, Types._ContractBase, 2);
 
 		public static final ExecutorProperty _EDFD__asset = new EcoreExecutorProperty(ModelPackage.Literals.EDFD__ASSET, Types._EDFD, 0);
 		public static final ExecutorProperty _EDFD__elements = new EcoreExecutorProperty(ModelPackage.Literals.EDFD__ELEMENTS, Types._EDFD, 1);
@@ -441,18 +445,14 @@ public class ModelTables extends AbstractTables
 		public static final ExecutorProperty _Flow__Element__inflows = new ExecutorPropertyWithImplementation("Element", Types._Flow, 4, new EcoreLibraryOppositeProperty(ModelPackage.Literals.ELEMENT__INFLOWS));
 		public static final ExecutorProperty _Flow__Element__outflows = new ExecutorPropertyWithImplementation("Element", Types._Flow, 5, new EcoreLibraryOppositeProperty(ModelPackage.Literals.ELEMENT__OUTFLOWS));
 
-		public static final ExecutorProperty _MLResponsibility__mlAction = new EcoreExecutorProperty(ModelPackage.Literals.ML_RESPONSIBILITY__ML_ACTION, Types._MLResponsibility, 0);
+		public static final ExecutorProperty _MLContract__MLTask = new EcoreExecutorProperty(ModelPackage.Literals.ML_CONTRACT__ML_TASK, Types._MLContract, 0);
 
 		public static final ExecutorProperty _NamedEntity__name = new EcoreExecutorProperty(ModelPackage.Literals.NAMED_ENTITY__NAME, Types._NamedEntity, 0);
 		public static final ExecutorProperty _NamedEntity__number = new EcoreExecutorProperty(ModelPackage.Literals.NAMED_ENTITY__NUMBER, Types._NamedEntity, 1);
 
 		public static final ExecutorProperty _Process__responsibility = new EcoreExecutorProperty(ModelPackage.Literals.PROCESS__RESPONSIBILITY, Types._Process, 0);
 
-		public static final ExecutorProperty _Responsibility__Action = new EcoreExecutorProperty(ModelPackage.Literals.RESPONSIBILITY__ACTION, Types._Responsibility, 0);
-
-		public static final ExecutorProperty _ResponsibilityBase__incomeassets = new EcoreExecutorProperty(ModelPackage.Literals.RESPONSIBILITY_BASE__INCOMEASSETS, Types._ResponsibilityBase, 0);
-		public static final ExecutorProperty _ResponsibilityBase__outcomeassets = new EcoreExecutorProperty(ModelPackage.Literals.RESPONSIBILITY_BASE__OUTCOMEASSETS, Types._ResponsibilityBase, 1);
-		public static final ExecutorProperty _ResponsibilityBase__process = new EcoreExecutorProperty(ModelPackage.Literals.RESPONSIBILITY_BASE__PROCESS, Types._ResponsibilityBase, 2);
+		public static final ExecutorProperty _SecurityContract__Task = new EcoreExecutorProperty(ModelPackage.Literals.SECURITY_CONTRACT__TASK, Types._SecurityContract, 0);
 
 		public static final ExecutorProperty _TrustZone__attackerprofile = new EcoreExecutorProperty(ModelPackage.Literals.TRUST_ZONE__ATTACKERPROFILE, Types._TrustZone, 0);
 		public static final ExecutorProperty _TrustZone__elements = new EcoreExecutorProperty(ModelPackage.Literals.TRUST_ZONE__ELEMENTS, Types._TrustZone, 1);
@@ -528,6 +528,15 @@ public class ModelTables extends AbstractTables
 			};
 		private static final int /*@NonNull*/ [] __Channel = { 1,1,1,1,1 };
 
+		private static final ExecutorFragment /*@NonNull*/ [] _ContractBase =
+			{
+				Fragments._ContractBase__OclAny /* 0 */,
+				Fragments._ContractBase__OclElement /* 1 */,
+				Fragments._ContractBase__NamedEntity /* 2 */,
+				Fragments._ContractBase__ContractBase /* 3 */
+			};
+		private static final int /*@NonNull*/ [] __ContractBase = { 1,1,1,1 };
+
 		private static final ExecutorFragment /*@NonNull*/ [] _DataStore =
 			{
 				Fragments._DataStore__OclAny /* 0 */,
@@ -586,25 +595,25 @@ public class ModelTables extends AbstractTables
 			};
 		private static final int /*@NonNull*/ [] __Layer = { 1,1,1,1,1 };
 
-		private static final ExecutorFragment /*@NonNull*/ [] _MLResponsibility =
+		private static final ExecutorFragment /*@NonNull*/ [] _MLContract =
 			{
-				Fragments._MLResponsibility__OclAny /* 0 */,
-				Fragments._MLResponsibility__OclElement /* 1 */,
-				Fragments._MLResponsibility__NamedEntity /* 2 */,
-				Fragments._MLResponsibility__ResponsibilityBase /* 3 */,
-				Fragments._MLResponsibility__MLResponsibility /* 4 */
+				Fragments._MLContract__OclAny /* 0 */,
+				Fragments._MLContract__OclElement /* 1 */,
+				Fragments._MLContract__NamedEntity /* 2 */,
+				Fragments._MLContract__ContractBase /* 3 */,
+				Fragments._MLContract__MLContract /* 4 */
 			};
-		private static final int /*@NonNull*/ [] __MLResponsibility = { 1,1,1,1,1 };
+		private static final int /*@NonNull*/ [] __MLContract = { 1,1,1,1,1 };
 
-		private static final ExecutorFragment /*@NonNull*/ [] _MLResponsibilityType =
+		private static final ExecutorFragment /*@NonNull*/ [] _MLContractType =
 			{
-				Fragments._MLResponsibilityType__OclAny /* 0 */,
-				Fragments._MLResponsibilityType__OclElement /* 1 */,
-				Fragments._MLResponsibilityType__OclType /* 2 */,
-				Fragments._MLResponsibilityType__OclEnumeration /* 3 */,
-				Fragments._MLResponsibilityType__MLResponsibilityType /* 4 */
+				Fragments._MLContractType__OclAny /* 0 */,
+				Fragments._MLContractType__OclElement /* 1 */,
+				Fragments._MLContractType__OclType /* 2 */,
+				Fragments._MLContractType__OclEnumeration /* 3 */,
+				Fragments._MLContractType__MLContractType /* 4 */
 			};
-		private static final int /*@NonNull*/ [] __MLResponsibilityType = { 1,1,1,1,1 };
+		private static final int /*@NonNull*/ [] __MLContractType = { 1,1,1,1,1 };
 
 		private static final ExecutorFragment /*@NonNull*/ [] _NamedEntity =
 			{
@@ -644,34 +653,25 @@ public class ModelTables extends AbstractTables
 			};
 		private static final int /*@NonNull*/ [] __Process = { 1,1,1,1,1 };
 
-		private static final ExecutorFragment /*@NonNull*/ [] _Responsibility =
+		private static final ExecutorFragment /*@NonNull*/ [] _SecurityContract =
 			{
-				Fragments._Responsibility__OclAny /* 0 */,
-				Fragments._Responsibility__OclElement /* 1 */,
-				Fragments._Responsibility__NamedEntity /* 2 */,
-				Fragments._Responsibility__ResponsibilityBase /* 3 */,
-				Fragments._Responsibility__Responsibility /* 4 */
+				Fragments._SecurityContract__OclAny /* 0 */,
+				Fragments._SecurityContract__OclElement /* 1 */,
+				Fragments._SecurityContract__NamedEntity /* 2 */,
+				Fragments._SecurityContract__ContractBase /* 3 */,
+				Fragments._SecurityContract__SecurityContract /* 4 */
 			};
-		private static final int /*@NonNull*/ [] __Responsibility = { 1,1,1,1,1 };
+		private static final int /*@NonNull*/ [] __SecurityContract = { 1,1,1,1,1 };
 
-		private static final ExecutorFragment /*@NonNull*/ [] _ResponsibilityBase =
+		private static final ExecutorFragment /*@NonNull*/ [] _SecurityContractType =
 			{
-				Fragments._ResponsibilityBase__OclAny /* 0 */,
-				Fragments._ResponsibilityBase__OclElement /* 1 */,
-				Fragments._ResponsibilityBase__NamedEntity /* 2 */,
-				Fragments._ResponsibilityBase__ResponsibilityBase /* 3 */
+				Fragments._SecurityContractType__OclAny /* 0 */,
+				Fragments._SecurityContractType__OclElement /* 1 */,
+				Fragments._SecurityContractType__OclType /* 2 */,
+				Fragments._SecurityContractType__OclEnumeration /* 3 */,
+				Fragments._SecurityContractType__SecurityContractType /* 4 */
 			};
-		private static final int /*@NonNull*/ [] __ResponsibilityBase = { 1,1,1,1 };
-
-		private static final ExecutorFragment /*@NonNull*/ [] _ResponsibilityType =
-			{
-				Fragments._ResponsibilityType__OclAny /* 0 */,
-				Fragments._ResponsibilityType__OclElement /* 1 */,
-				Fragments._ResponsibilityType__OclType /* 2 */,
-				Fragments._ResponsibilityType__OclEnumeration /* 3 */,
-				Fragments._ResponsibilityType__ResponsibilityType /* 4 */
-			};
-		private static final int /*@NonNull*/ [] __ResponsibilityType = { 1,1,1,1,1 };
+		private static final int /*@NonNull*/ [] __SecurityContractType = { 1,1,1,1,1 };
 
 		private static final ExecutorFragment /*@NonNull*/ [] _TrustZone =
 			{
@@ -700,21 +700,21 @@ public class ModelTables extends AbstractTables
 			Types._Assumption.initFragments(_Assumption, __Assumption);
 			Types._AttackerProfile.initFragments(_AttackerProfile, __AttackerProfile);
 			Types._Channel.initFragments(_Channel, __Channel);
+			Types._ContractBase.initFragments(_ContractBase, __ContractBase);
 			Types._DataStore.initFragments(_DataStore, __DataStore);
 			Types._EDFD.initFragments(_EDFD, __EDFD);
 			Types._Element.initFragments(_Element, __Element);
 			Types._ExternalEntity.initFragments(_ExternalEntity, __ExternalEntity);
 			Types._Flow.initFragments(_Flow, __Flow);
 			Types._Layer.initFragments(_Layer, __Layer);
-			Types._MLResponsibility.initFragments(_MLResponsibility, __MLResponsibility);
-			Types._MLResponsibilityType.initFragments(_MLResponsibilityType, __MLResponsibilityType);
+			Types._MLContract.initFragments(_MLContract, __MLContract);
+			Types._MLContractType.initFragments(_MLContractType, __MLContractType);
 			Types._NamedEntity.initFragments(_NamedEntity, __NamedEntity);
 			Types._Objective.initFragments(_Objective, __Objective);
 			Types._Priority.initFragments(_Priority, __Priority);
 			Types._Process.initFragments(_Process, __Process);
-			Types._Responsibility.initFragments(_Responsibility, __Responsibility);
-			Types._ResponsibilityBase.initFragments(_ResponsibilityBase, __ResponsibilityBase);
-			Types._ResponsibilityType.initFragments(_ResponsibilityType, __ResponsibilityType);
+			Types._SecurityContract.initFragments(_SecurityContract, __SecurityContract);
+			Types._SecurityContractType.initFragments(_SecurityContractType, __SecurityContractType);
 			Types._TrustZone.initFragments(_TrustZone, __TrustZone);
 			Types._Value.initFragments(_Value, __Value);
 
@@ -913,6 +913,40 @@ public class ModelTables extends AbstractTables
 		};
 		private static final ExecutorOperation /*@NonNull*/ [] _Channel__OclType = {
 			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
+		};
+
+		private static final ExecutorOperation /*@NonNull*/ [] _ContractBase__ContractBase = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _ContractBase__NamedEntity = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _ContractBase__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _ContractBase__OclElement = {
+			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
+			OCLstdlibTables.Operations._OclElement__1_oclBase /* oclBase(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclExtension /* oclExtension(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclExtensions /* oclExtensions() */,
+			OCLstdlibTables.Operations._OclElement__1_oclExtensions /* oclExtensions(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
 		private static final ExecutorOperation /*@NonNull*/ [] _DataStore__DataStore = {};
@@ -1127,9 +1161,10 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
 		};
 
-		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibility__MLResponsibility = {};
-		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibility__NamedEntity = {};
-		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibility__OclAny = {
+		private static final ExecutorOperation /*@NonNull*/ [] _MLContract__MLContract = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _MLContract__ContractBase = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _MLContract__NamedEntity = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _MLContract__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -1146,7 +1181,7 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibility__OclElement = {
+		private static final ExecutorOperation /*@NonNull*/ [] _MLContract__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
 			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
 			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
@@ -1160,10 +1195,9 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
 			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
-		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibility__ResponsibilityBase = {};
 
-		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibilityType__MLResponsibilityType = {};
-		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibilityType__OclAny = {
+		private static final ExecutorOperation /*@NonNull*/ [] _MLContractType__MLContractType = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _MLContractType__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -1180,7 +1214,7 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibilityType__OclElement = {
+		private static final ExecutorOperation /*@NonNull*/ [] _MLContractType__OclElement = {
 			OCLstdlibTables.Operations._OclEnumeration__allInstances /* allInstances(Integer[1]) */,
 			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
 			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
@@ -1194,10 +1228,10 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
 			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
-		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibilityType__OclEnumeration = {
+		private static final ExecutorOperation /*@NonNull*/ [] _MLContractType__OclEnumeration = {
 			OCLstdlibTables.Operations._OclEnumeration__allInstances /* allInstances(Integer[1]) */
 		};
-		private static final ExecutorOperation /*@NonNull*/ [] _MLResponsibilityType__OclType = {
+		private static final ExecutorOperation /*@NonNull*/ [] _MLContractType__OclType = {
 			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
 		};
 
@@ -1347,9 +1381,10 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final ExecutorOperation /*@NonNull*/ [] _Responsibility__Responsibility = {};
-		private static final ExecutorOperation /*@NonNull*/ [] _Responsibility__NamedEntity = {};
-		private static final ExecutorOperation /*@NonNull*/ [] _Responsibility__OclAny = {
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContract__SecurityContract = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContract__ContractBase = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContract__NamedEntity = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContract__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -1366,42 +1401,7 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final ExecutorOperation /*@NonNull*/ [] _Responsibility__OclElement = {
-			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
-			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
-			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
-			OCLstdlibTables.Operations._OclElement__1_oclBase /* oclBase(OclType[1]) */,
-			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
-			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
-			OCLstdlibTables.Operations._OclElement__oclExtension /* oclExtension(OclStereotype[1]) */,
-			OCLstdlibTables.Operations._OclElement__0_oclExtensions /* oclExtensions() */,
-			OCLstdlibTables.Operations._OclElement__1_oclExtensions /* oclExtensions(OclStereotype[1]) */,
-			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
-			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
-			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
-		};
-		private static final ExecutorOperation /*@NonNull*/ [] _Responsibility__ResponsibilityBase = {};
-
-		private static final ExecutorOperation /*@NonNull*/ [] _ResponsibilityBase__ResponsibilityBase = {};
-		private static final ExecutorOperation /*@NonNull*/ [] _ResponsibilityBase__NamedEntity = {};
-		private static final ExecutorOperation /*@NonNull*/ [] _ResponsibilityBase__OclAny = {
-			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
-			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
-			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
-			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
-			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
-			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
-			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
-			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
-			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
-			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
-			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
-			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
-			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
-			OCLstdlibTables.Operations._OclAny__toString /* toString() */
-		};
-		private static final ExecutorOperation /*@NonNull*/ [] _ResponsibilityBase__OclElement = {
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContract__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
 			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
 			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
@@ -1416,8 +1416,8 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final ExecutorOperation /*@NonNull*/ [] _ResponsibilityType__ResponsibilityType = {};
-		private static final ExecutorOperation /*@NonNull*/ [] _ResponsibilityType__OclAny = {
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContractType__SecurityContractType = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContractType__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -1434,7 +1434,7 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final ExecutorOperation /*@NonNull*/ [] _ResponsibilityType__OclElement = {
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContractType__OclElement = {
 			OCLstdlibTables.Operations._OclEnumeration__allInstances /* allInstances(Integer[1]) */,
 			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
 			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
@@ -1448,10 +1448,10 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
 			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
-		private static final ExecutorOperation /*@NonNull*/ [] _ResponsibilityType__OclEnumeration = {
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContractType__OclEnumeration = {
 			OCLstdlibTables.Operations._OclEnumeration__allInstances /* allInstances(Integer[1]) */
 		};
-		private static final ExecutorOperation /*@NonNull*/ [] _ResponsibilityType__OclType = {
+		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContractType__OclType = {
 			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
 		};
 
@@ -1553,6 +1553,11 @@ public class ModelTables extends AbstractTables
 			Fragments._Channel__OclEnumeration.initOperations(_Channel__OclEnumeration);
 			Fragments._Channel__OclType.initOperations(_Channel__OclType);
 
+			Fragments._ContractBase__ContractBase.initOperations(_ContractBase__ContractBase);
+			Fragments._ContractBase__NamedEntity.initOperations(_ContractBase__NamedEntity);
+			Fragments._ContractBase__OclAny.initOperations(_ContractBase__OclAny);
+			Fragments._ContractBase__OclElement.initOperations(_ContractBase__OclElement);
+
 			Fragments._DataStore__DataStore.initOperations(_DataStore__DataStore);
 			Fragments._DataStore__Element.initOperations(_DataStore__Element);
 			Fragments._DataStore__NamedEntity.initOperations(_DataStore__NamedEntity);
@@ -1587,17 +1592,17 @@ public class ModelTables extends AbstractTables
 			Fragments._Layer__OclEnumeration.initOperations(_Layer__OclEnumeration);
 			Fragments._Layer__OclType.initOperations(_Layer__OclType);
 
-			Fragments._MLResponsibility__MLResponsibility.initOperations(_MLResponsibility__MLResponsibility);
-			Fragments._MLResponsibility__NamedEntity.initOperations(_MLResponsibility__NamedEntity);
-			Fragments._MLResponsibility__OclAny.initOperations(_MLResponsibility__OclAny);
-			Fragments._MLResponsibility__OclElement.initOperations(_MLResponsibility__OclElement);
-			Fragments._MLResponsibility__ResponsibilityBase.initOperations(_MLResponsibility__ResponsibilityBase);
+			Fragments._MLContract__ContractBase.initOperations(_MLContract__ContractBase);
+			Fragments._MLContract__MLContract.initOperations(_MLContract__MLContract);
+			Fragments._MLContract__NamedEntity.initOperations(_MLContract__NamedEntity);
+			Fragments._MLContract__OclAny.initOperations(_MLContract__OclAny);
+			Fragments._MLContract__OclElement.initOperations(_MLContract__OclElement);
 
-			Fragments._MLResponsibilityType__MLResponsibilityType.initOperations(_MLResponsibilityType__MLResponsibilityType);
-			Fragments._MLResponsibilityType__OclAny.initOperations(_MLResponsibilityType__OclAny);
-			Fragments._MLResponsibilityType__OclElement.initOperations(_MLResponsibilityType__OclElement);
-			Fragments._MLResponsibilityType__OclEnumeration.initOperations(_MLResponsibilityType__OclEnumeration);
-			Fragments._MLResponsibilityType__OclType.initOperations(_MLResponsibilityType__OclType);
+			Fragments._MLContractType__MLContractType.initOperations(_MLContractType__MLContractType);
+			Fragments._MLContractType__OclAny.initOperations(_MLContractType__OclAny);
+			Fragments._MLContractType__OclElement.initOperations(_MLContractType__OclElement);
+			Fragments._MLContractType__OclEnumeration.initOperations(_MLContractType__OclEnumeration);
+			Fragments._MLContractType__OclType.initOperations(_MLContractType__OclType);
 
 			Fragments._NamedEntity__NamedEntity.initOperations(_NamedEntity__NamedEntity);
 			Fragments._NamedEntity__OclAny.initOperations(_NamedEntity__OclAny);
@@ -1621,22 +1626,17 @@ public class ModelTables extends AbstractTables
 			Fragments._Process__OclElement.initOperations(_Process__OclElement);
 			Fragments._Process__Process.initOperations(_Process__Process);
 
-			Fragments._Responsibility__NamedEntity.initOperations(_Responsibility__NamedEntity);
-			Fragments._Responsibility__OclAny.initOperations(_Responsibility__OclAny);
-			Fragments._Responsibility__OclElement.initOperations(_Responsibility__OclElement);
-			Fragments._Responsibility__Responsibility.initOperations(_Responsibility__Responsibility);
-			Fragments._Responsibility__ResponsibilityBase.initOperations(_Responsibility__ResponsibilityBase);
+			Fragments._SecurityContract__ContractBase.initOperations(_SecurityContract__ContractBase);
+			Fragments._SecurityContract__NamedEntity.initOperations(_SecurityContract__NamedEntity);
+			Fragments._SecurityContract__OclAny.initOperations(_SecurityContract__OclAny);
+			Fragments._SecurityContract__OclElement.initOperations(_SecurityContract__OclElement);
+			Fragments._SecurityContract__SecurityContract.initOperations(_SecurityContract__SecurityContract);
 
-			Fragments._ResponsibilityBase__NamedEntity.initOperations(_ResponsibilityBase__NamedEntity);
-			Fragments._ResponsibilityBase__OclAny.initOperations(_ResponsibilityBase__OclAny);
-			Fragments._ResponsibilityBase__OclElement.initOperations(_ResponsibilityBase__OclElement);
-			Fragments._ResponsibilityBase__ResponsibilityBase.initOperations(_ResponsibilityBase__ResponsibilityBase);
-
-			Fragments._ResponsibilityType__OclAny.initOperations(_ResponsibilityType__OclAny);
-			Fragments._ResponsibilityType__OclElement.initOperations(_ResponsibilityType__OclElement);
-			Fragments._ResponsibilityType__OclEnumeration.initOperations(_ResponsibilityType__OclEnumeration);
-			Fragments._ResponsibilityType__OclType.initOperations(_ResponsibilityType__OclType);
-			Fragments._ResponsibilityType__ResponsibilityType.initOperations(_ResponsibilityType__ResponsibilityType);
+			Fragments._SecurityContractType__OclAny.initOperations(_SecurityContractType__OclAny);
+			Fragments._SecurityContractType__OclElement.initOperations(_SecurityContractType__OclElement);
+			Fragments._SecurityContractType__OclEnumeration.initOperations(_SecurityContractType__OclEnumeration);
+			Fragments._SecurityContractType__OclType.initOperations(_SecurityContractType__OclType);
+			Fragments._SecurityContractType__SecurityContractType.initOperations(_SecurityContractType__SecurityContractType);
 
 			Fragments._TrustZone__Element.initOperations(_TrustZone__Element);
 			Fragments._TrustZone__NamedEntity.initOperations(_TrustZone__NamedEntity);
@@ -1700,6 +1700,16 @@ public class ModelTables extends AbstractTables
 		private static final ExecutorProperty /*@NonNull*/ [] _Channel = {
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents
+		};
+
+		private static final ExecutorProperty /*@NonNull*/ [] _ContractBase = {
+			ModelTables.Properties._ContractBase__incomeassets,
+			ModelTables.Properties._NamedEntity__name,
+			ModelTables.Properties._NamedEntity__number,
+			OCLstdlibTables.Properties._OclElement__oclContainer,
+			OCLstdlibTables.Properties._OclElement__oclContents,
+			ModelTables.Properties._ContractBase__outcomeassets,
+			ModelTables.Properties._ContractBase__process
 		};
 
 		private static final ExecutorProperty /*@NonNull*/ [] _DataStore = {
@@ -1769,18 +1779,18 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Properties._OclElement__oclContents
 		};
 
-		private static final ExecutorProperty /*@NonNull*/ [] _MLResponsibility = {
-			ModelTables.Properties._ResponsibilityBase__incomeassets,
-			ModelTables.Properties._MLResponsibility__mlAction,
+		private static final ExecutorProperty /*@NonNull*/ [] _MLContract = {
+			ModelTables.Properties._MLContract__MLTask,
+			ModelTables.Properties._ContractBase__incomeassets,
 			ModelTables.Properties._NamedEntity__name,
 			ModelTables.Properties._NamedEntity__number,
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents,
-			ModelTables.Properties._ResponsibilityBase__outcomeassets,
-			ModelTables.Properties._ResponsibilityBase__process
+			ModelTables.Properties._ContractBase__outcomeassets,
+			ModelTables.Properties._ContractBase__process
 		};
 
-		private static final ExecutorProperty /*@NonNull*/ [] _MLResponsibilityType = {
+		private static final ExecutorProperty /*@NonNull*/ [] _MLContractType = {
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents
 		};
@@ -1815,28 +1825,18 @@ public class ModelTables extends AbstractTables
 			ModelTables.Properties._Process__responsibility
 		};
 
-		private static final ExecutorProperty /*@NonNull*/ [] _Responsibility = {
-			ModelTables.Properties._Responsibility__Action,
-			ModelTables.Properties._ResponsibilityBase__incomeassets,
+		private static final ExecutorProperty /*@NonNull*/ [] _SecurityContract = {
+			ModelTables.Properties._SecurityContract__Task,
+			ModelTables.Properties._ContractBase__incomeassets,
 			ModelTables.Properties._NamedEntity__name,
 			ModelTables.Properties._NamedEntity__number,
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents,
-			ModelTables.Properties._ResponsibilityBase__outcomeassets,
-			ModelTables.Properties._ResponsibilityBase__process
+			ModelTables.Properties._ContractBase__outcomeassets,
+			ModelTables.Properties._ContractBase__process
 		};
 
-		private static final ExecutorProperty /*@NonNull*/ [] _ResponsibilityBase = {
-			ModelTables.Properties._ResponsibilityBase__incomeassets,
-			ModelTables.Properties._NamedEntity__name,
-			ModelTables.Properties._NamedEntity__number,
-			OCLstdlibTables.Properties._OclElement__oclContainer,
-			OCLstdlibTables.Properties._OclElement__oclContents,
-			ModelTables.Properties._ResponsibilityBase__outcomeassets,
-			ModelTables.Properties._ResponsibilityBase__process
-		};
-
-		private static final ExecutorProperty /*@NonNull*/ [] _ResponsibilityType = {
+		private static final ExecutorProperty /*@NonNull*/ [] _SecurityContractType = {
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents
 		};
@@ -1872,21 +1872,21 @@ public class ModelTables extends AbstractTables
 			Fragments._Assumption__Assumption.initProperties(_Assumption);
 			Fragments._AttackerProfile__AttackerProfile.initProperties(_AttackerProfile);
 			Fragments._Channel__Channel.initProperties(_Channel);
+			Fragments._ContractBase__ContractBase.initProperties(_ContractBase);
 			Fragments._DataStore__DataStore.initProperties(_DataStore);
 			Fragments._EDFD__EDFD.initProperties(_EDFD);
 			Fragments._Element__Element.initProperties(_Element);
 			Fragments._ExternalEntity__ExternalEntity.initProperties(_ExternalEntity);
 			Fragments._Flow__Flow.initProperties(_Flow);
 			Fragments._Layer__Layer.initProperties(_Layer);
-			Fragments._MLResponsibility__MLResponsibility.initProperties(_MLResponsibility);
-			Fragments._MLResponsibilityType__MLResponsibilityType.initProperties(_MLResponsibilityType);
+			Fragments._MLContract__MLContract.initProperties(_MLContract);
+			Fragments._MLContractType__MLContractType.initProperties(_MLContractType);
 			Fragments._NamedEntity__NamedEntity.initProperties(_NamedEntity);
 			Fragments._Objective__Objective.initProperties(_Objective);
 			Fragments._Priority__Priority.initProperties(_Priority);
 			Fragments._Process__Process.initProperties(_Process);
-			Fragments._Responsibility__Responsibility.initProperties(_Responsibility);
-			Fragments._ResponsibilityBase__ResponsibilityBase.initProperties(_ResponsibilityBase);
-			Fragments._ResponsibilityType__ResponsibilityType.initProperties(_ResponsibilityType);
+			Fragments._SecurityContract__SecurityContract.initProperties(_SecurityContract);
+			Fragments._SecurityContractType__SecurityContractType.initProperties(_SecurityContractType);
 			Fragments._TrustZone__TrustZone.initProperties(_TrustZone);
 			Fragments._Value__Value.initProperties(_Value);
 
@@ -1939,21 +1939,11 @@ public class ModelTables extends AbstractTables
 			_Layer__Application
 		};
 
-		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__Classification = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("Classification"), Types._MLResponsibilityType, 0);
-		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__DecisionMaking = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("DecisionMaking"), Types._MLResponsibilityType, 1);
-		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__Regression = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("Regression"), Types._MLResponsibilityType, 2);
-		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__Clustering = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("Clustering"), Types._MLResponsibilityType, 3);
-		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__AnomalyDetection = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("AnomalyDetection"), Types._MLResponsibilityType, 4);
-		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__NaturalLanguageProcessing = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("NaturalLanguageProcessing"), Types._MLResponsibilityType, 5);
-		public static final EcoreExecutorEnumerationLiteral _MLResponsibilityType__ComputerVision = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_RESPONSIBILITY_TYPE.getEEnumLiteral("ComputerVision"), Types._MLResponsibilityType, 6);
-		private static final EcoreExecutorEnumerationLiteral /*@NonNull*/ [] _MLResponsibilityType = {
-			_MLResponsibilityType__Classification,
-			_MLResponsibilityType__DecisionMaking,
-			_MLResponsibilityType__Regression,
-			_MLResponsibilityType__Clustering,
-			_MLResponsibilityType__AnomalyDetection,
-			_MLResponsibilityType__NaturalLanguageProcessing,
-			_MLResponsibilityType__ComputerVision
+		public static final EcoreExecutorEnumerationLiteral _MLContractType__Classification = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_CONTRACT_TYPE.getEEnumLiteral("Classification"), Types._MLContractType, 0);
+		public static final EcoreExecutorEnumerationLiteral _MLContractType__Clustering = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.ML_CONTRACT_TYPE.getEEnumLiteral("Clustering"), Types._MLContractType, 1);
+		private static final EcoreExecutorEnumerationLiteral /*@NonNull*/ [] _MLContractType = {
+			_MLContractType__Classification,
+			_MLContractType__Clustering
 		};
 
 		public static final EcoreExecutorEnumerationLiteral _Objective__Integrity = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.OBJECTIVE.getEEnumLiteral("Integrity"), Types._Objective, 0);
@@ -1978,33 +1968,33 @@ public class ModelTables extends AbstractTables
 			_Priority__L
 		};
 
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__Store = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("Store"), Types._ResponsibilityType, 0);
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__Comparator = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("Comparator"), Types._ResponsibilityType, 1);
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__Discarder = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("Discarder"), Types._ResponsibilityType, 2);
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__Joiner = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("Joiner"), Types._ResponsibilityType, 3);
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__Copier = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("Copier"), Types._ResponsibilityType, 4);
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__Splitter = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("Splitter"), Types._ResponsibilityType, 5);
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__Forward = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("Forward"), Types._ResponsibilityType, 6);
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__EncryptOrHash = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("EncryptOrHash"), Types._ResponsibilityType, 7);
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__Decrypt = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("Decrypt"), Types._ResponsibilityType, 8);
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__Authenticator = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("Authenticator"), Types._ResponsibilityType, 9);
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__Authoriser = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("Authoriser"), Types._ResponsibilityType, 10);
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__Verifier = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("Verifier"), Types._ResponsibilityType, 11);
-		public static final EcoreExecutorEnumerationLiteral _ResponsibilityType__User = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.RESPONSIBILITY_TYPE.getEEnumLiteral("User"), Types._ResponsibilityType, 12);
-		private static final EcoreExecutorEnumerationLiteral /*@NonNull*/ [] _ResponsibilityType = {
-			_ResponsibilityType__Store,
-			_ResponsibilityType__Comparator,
-			_ResponsibilityType__Discarder,
-			_ResponsibilityType__Joiner,
-			_ResponsibilityType__Copier,
-			_ResponsibilityType__Splitter,
-			_ResponsibilityType__Forward,
-			_ResponsibilityType__EncryptOrHash,
-			_ResponsibilityType__Decrypt,
-			_ResponsibilityType__Authenticator,
-			_ResponsibilityType__Authoriser,
-			_ResponsibilityType__Verifier,
-			_ResponsibilityType__User
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__Store = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("Store"), Types._SecurityContractType, 0);
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__Comparator = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("Comparator"), Types._SecurityContractType, 1);
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__Discarder = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("Discarder"), Types._SecurityContractType, 2);
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__Joiner = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("Joiner"), Types._SecurityContractType, 3);
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__Copier = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("Copier"), Types._SecurityContractType, 4);
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__Splitter = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("Splitter"), Types._SecurityContractType, 5);
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__Forward = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("Forward"), Types._SecurityContractType, 6);
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__EncryptOrHash = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("EncryptOrHash"), Types._SecurityContractType, 7);
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__Decrypt = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("Decrypt"), Types._SecurityContractType, 8);
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__Authenticator = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("Authenticator"), Types._SecurityContractType, 9);
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__Authoriser = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("Authoriser"), Types._SecurityContractType, 10);
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__Verifier = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("Verifier"), Types._SecurityContractType, 11);
+		public static final EcoreExecutorEnumerationLiteral _SecurityContractType__User = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.SECURITY_CONTRACT_TYPE.getEEnumLiteral("User"), Types._SecurityContractType, 12);
+		private static final EcoreExecutorEnumerationLiteral /*@NonNull*/ [] _SecurityContractType = {
+			_SecurityContractType__Store,
+			_SecurityContractType__Comparator,
+			_SecurityContractType__Discarder,
+			_SecurityContractType__Joiner,
+			_SecurityContractType__Copier,
+			_SecurityContractType__Splitter,
+			_SecurityContractType__Forward,
+			_SecurityContractType__EncryptOrHash,
+			_SecurityContractType__Decrypt,
+			_SecurityContractType__Authenticator,
+			_SecurityContractType__Authoriser,
+			_SecurityContractType__Verifier,
+			_SecurityContractType__User
 		};
 
 		/**
@@ -2014,10 +2004,10 @@ public class ModelTables extends AbstractTables
 			Types._AssetType.initLiterals(_AssetType);
 			Types._Channel.initLiterals(_Channel);
 			Types._Layer.initLiterals(_Layer);
-			Types._MLResponsibilityType.initLiterals(_MLResponsibilityType);
+			Types._MLContractType.initLiterals(_MLContractType);
 			Types._Objective.initLiterals(_Objective);
 			Types._Priority.initLiterals(_Priority);
-			Types._ResponsibilityType.initLiterals(_ResponsibilityType);
+			Types._SecurityContractType.initLiterals(_SecurityContractType);
 
 			Init.initEnd();
 		}

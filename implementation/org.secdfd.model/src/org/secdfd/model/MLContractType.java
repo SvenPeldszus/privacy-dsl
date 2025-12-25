@@ -10,14 +10,14 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>ML Responsibility Type</b></em>',
+ * A representation of the literals of the enumeration '<em><b>ML Contract Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.secdfd.model.ModelPackage#getMLResponsibilityType()
+ * @see org.secdfd.model.ModelPackage#getMLContractType()
  * @model
  * @generated
  */
-public enum MLResponsibilityType implements Enumerator {
+public enum MLContractType implements Enumerator {
 	/**
 	 * The '<em><b>Classification</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -61,36 +61,36 @@ public enum MLResponsibilityType implements Enumerator {
 	public static final int CLUSTERING_VALUE = 3;
 
 	/**
-	 * An array of all the '<em><b>ML Responsibility Type</b></em>' enumerators.
+	 * An array of all the '<em><b>ML Contract Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final MLResponsibilityType[] VALUES_ARRAY =
-		new MLResponsibilityType[] {
+	private static final MLContractType[] VALUES_ARRAY =
+		new MLContractType[] {
 			CLASSIFICATION,
 			CLUSTERING,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>ML Responsibility Type</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>ML Contract Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<MLResponsibilityType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<MLContractType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>ML Responsibility Type</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>ML Contract Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static MLResponsibilityType get(String literal) {
+	public static MLContractType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			MLResponsibilityType result = VALUES_ARRAY[i];
+			MLContractType result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -99,16 +99,16 @@ public enum MLResponsibilityType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>ML Responsibility Type</b></em>' literal with the specified name.
+	 * Returns the '<em><b>ML Contract Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static MLResponsibilityType getByName(String name) {
+	public static MLContractType getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			MLResponsibilityType result = VALUES_ARRAY[i];
+			MLContractType result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -117,14 +117,14 @@ public enum MLResponsibilityType implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>ML Responsibility Type</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>ML Contract Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static MLResponsibilityType get(int value) {
+	public static MLContractType get(int value) {
 		switch (value) {
 			case CLASSIFICATION_VALUE: return CLASSIFICATION;
 			case CLUSTERING_VALUE: return CLUSTERING;
@@ -159,7 +159,7 @@ public enum MLResponsibilityType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private MLResponsibilityType(int value, String name, String literal) {
+	private MLContractType(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -206,4 +206,4 @@ public enum MLResponsibilityType implements Enumerator {
 		return literal;
 	}
 	
-} //MLResponsibilityType
+} //MLContractType

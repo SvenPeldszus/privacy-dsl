@@ -88,12 +88,12 @@ pattern Assets(a: Asset){
 	Asset(a);
 }
 
-pattern Responsibilities(r: ResponsibilityBase){
-	ResponsibilityBase(r);
+pattern Responsibilities(r: ContractBase){
+	ContractBase(r);
 }
 
-pattern ResponsibilityTypes(rt : ResponsibilityType){
-	ResponsibilityType(rt);
+pattern ResponsibilityTypes(rt : SecurityContractType){
+	SecurityContractType(rt);
 }
 
 pattern sourceOfFlow(f : Flow, source : Element){
@@ -137,8 +137,8 @@ pattern publicAsset(a: Asset){
 
 pattern comparatorProcesses(p : Process){
 	Process.responsibility(p, r);
-	Responsibility.Action(r, pr);
-	pr == ResponsibilityType::Comparator;
+	SecurityContract.Task(r, pr);
+	pr == SecurityContractType::Comparator;
 }
 
 //pattern graph2endtoend(graph : Graph)

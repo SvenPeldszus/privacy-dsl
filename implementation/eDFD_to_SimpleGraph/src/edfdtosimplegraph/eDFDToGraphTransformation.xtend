@@ -7,7 +7,7 @@ import org.secdfd.model.AttackerProfile
 import org.secdfd.model.Element
 import org.secdfd.model.Flow
 import org.secdfd.model.NamedEntity
-import org.secdfd.model.Responsibility
+import org.secdfd.model.SecurityContract
 import org.secdfd.model.Value
 import org.secdfd.model.Objective //new
 import org.secdfd.model.Priority //new
@@ -33,8 +33,8 @@ import java.util.Collections
 import org.eclipse.emf.common.util.EList
 import graph.GraphFactory
 import graph.SecurityLabel
-import org.secdfd.model.ResponsibilityBase
-import org.secdfd.model.MLResponsibility
+import org.secdfd.model.ContractBase
+import org.secdfd.model.MLContract
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -276,14 +276,14 @@ class eDFDToGraphTransformation {
     	val eDFDResponsibilityProcess = eDFDResponsibility.process as NamedEntity
     	val eDFDIncomingAssets = eDFDResponsibility.incomeassets
     	val eDFDOutgoingAssets = eDFDResponsibility.outcomeassets
-    	val eDFDResponsibilityActions = if (eDFDResponsibility instanceof Responsibility) {
-    		(eDFDResponsibility as Responsibility).action
+    	val eDFDResponsibilityActions = if (eDFDResponsibility instanceof SecurityContract) {
+    		(eDFDResponsibility as SecurityContract).task
     	} else {
     		newArrayList()
     	}
     	
-    	val eDFDMLResponsibilityActions = if (eDFDResponsibility instanceof MLResponsibility) {
-    		(eDFDResponsibility as MLResponsibility).mlAction
+    	val eDFDMLResponsibilityActions = if (eDFDResponsibility instanceof MLContract) {
+    		(eDFDResponsibility as MLContract).MLTask
     	} else {
     		newArrayList()
     	}
@@ -312,18 +312,18 @@ class eDFDToGraphTransformation {
     		addTo(nodeResponsibility_Incomingassets, incomingassets_of_process)
     		//set outgoing assets
 			addTo(nodeResponsibility_Outgoingassets, outgoingassets_of_process)
-    		//set operations for Responsibility
-    		if (eDFDResponsibility instanceof Responsibility && !eDFDResponsibilityActions.empty) {
-    			addTo(nodeResponsibility_Operation, eDFDResponsibilityActions)
+    		//set operations for SecurityContract
+    		if (eDFDResponsibility instanceof SecurityContract && !eDFDResponsibilityActions.empty) {
+    			addTo(nodeResponsibility_Task, eDFDResponsibilityActions)
     		}
-    		//set mlOperations for MLResponsibility
-    		if (eDFDResponsibility instanceof MLResponsibility && !eDFDMLResponsibilityActions.empty) {
-    			addTo(nodeResponsibility_MlOperation, eDFDMLResponsibilityActions)
+    		//set mlTasks for MLContract
+    		if (eDFDResponsibility instanceof MLContract && !eDFDMLResponsibilityActions.empty) {
+    			addTo(nodeResponsibility_MlTask, eDFDMLResponsibilityActions)
     		}
     	]
-    	val actionsString = if (eDFDResponsibility instanceof Responsibility) {
+    	val actionsString = if (eDFDResponsibility instanceof SecurityContract) {
     		eDFDResponsibilityActions.toString
-    	} else if (eDFDResponsibility instanceof MLResponsibility) {
+    	} else if (eDFDResponsibility instanceof MLContract) {
     		eDFDMLResponsibilityActions.toString
     	} else {
     		''
@@ -360,7 +360,7 @@ class eDFDToGraphTransformation {
    		
    		//find target process responsibilities (in graph)
    		val responsibilities_of_process  = newArrayList()
-   		for (ResponsibilityBase r : eDFDProcessResponsibilities){
+   		for (ContractBase r : eDFDProcessResponsibilities){
    			val o = r as NamedEntity
    			responsibilities_of_process.add(engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, o).filter(NodeResponsibility).head)
    		}
@@ -543,7 +543,7 @@ class eDFDToGraphTransformation {
 					}
 					//go through these responsibilities
 					for (NodeResponsibility nr : r){
-						switch(nr.operation.toString){
+						switch(nr.task.toString){
 							case "[EncryptOrHash]":{
 								//set low output
 								outgoing.edgeLabel = 0
@@ -642,7 +642,7 @@ class eDFDToGraphTransformation {
 							//case "[Authoriser]":
 							//case "[Store]":
 							default :{
-								print(nr.operation.toString)
+								print(nr.task.toString)
 								print("Does not effect confidentiality label propagation.")
 								println()		
 							}
@@ -745,7 +745,7 @@ class eDFDToGraphTransformation {
 				}
 				//go through responsibilities
 				for (NodeResponsibility nr : r){
-					switch(nr.operation.toString){
+					switch(nr.task.toString){
 						case "[EncryptOrHash]":{
 							//set low output
 							outgoing.edgeLabel = 0
@@ -914,7 +914,7 @@ class eDFDToGraphTransformation {
 	        }
 			//go through responsibilities
 	        for (NodeResponsibility nr : r) {
-	          switch nr.operation.toString {
+	          switch nr.task.toString {
 	            case "[EncryptOrHash]" : {
 	              for (o : Objective.values)
 	                upsertLabel_Edge(outgoing.edgelabel, o, 0)
@@ -1117,7 +1117,7 @@ class eDFDToGraphTransformation {
     /* 3️⃣   originating operations (Encrypt, Joiner …)             */
     val ops = e.source.responsibility
                    .filter[r | r.outgoingassets.exists[e.graphassets.contains(it)]]
-                   .map[operation.toString.replace("[","").replace("]","")]
+                   .map[task.toString.replace("[","").replace("]","")]
                    .toSet
     sb.append("  via ").append(
         ops.empty ? "no-rule" : ops.join("+")

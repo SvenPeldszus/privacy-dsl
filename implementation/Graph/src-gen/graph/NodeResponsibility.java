@@ -6,8 +6,8 @@ import java.math.BigInteger;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.secdfd.model.MLResponsibilityType;
-import org.secdfd.model.ResponsibilityType;
+import org.secdfd.model.MLContractType;
+import org.secdfd.model.SecurityContractType;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,8 +18,8 @@ import org.secdfd.model.ResponsibilityType;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link graph.NodeResponsibility#getOperation <em>Operation</em>}</li>
- *   <li>{@link graph.NodeResponsibility#getMlOperation <em>Ml Operation</em>}</li>
+ *   <li>{@link graph.NodeResponsibility#getTask <em>Task</em>}</li>
+ *   <li>{@link graph.NodeResponsibility#getMlTask <em>Ml Task</em>}</li>
  *   <li>{@link graph.NodeResponsibility#getOutgoingassets <em>Outgoingassets</em>}</li>
  *   <li>{@link graph.NodeResponsibility#getIncomingassets <em>Incomingassets</em>}</li>
  * </ul>
@@ -30,32 +30,32 @@ import org.secdfd.model.ResponsibilityType;
  */
 public interface NodeResponsibility extends Identifiable {
 	/**
-	 * Returns the value of the '<em><b>Operation</b></em>' attribute list.
-	 * The list contents are of type {@link org.secdfd.model.ResponsibilityType}.
-	 * The literals are from the enumeration {@link org.secdfd.model.ResponsibilityType}.
+	 * Returns the value of the '<em><b>Task</b></em>' attribute list.
+	 * The list contents are of type {@link org.secdfd.model.SecurityContractType}.
+	 * The literals are from the enumeration {@link org.secdfd.model.SecurityContractType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Operation</em>' attribute list.
-	 * @see org.secdfd.model.ResponsibilityType
-	 * @see graph.GraphPackage#getNodeResponsibility_Operation()
+	 * @return the value of the '<em>Task</em>' attribute list.
+	 * @see org.secdfd.model.SecurityContractType
+	 * @see graph.GraphPackage#getNodeResponsibility_Task()
 	 * @model default="Store"
 	 * @generated
 	 */
-	EList<ResponsibilityType> getOperation();
+	EList<SecurityContractType> getTask();
 
 	/**
-	 * Returns the value of the '<em><b>Ml Operation</b></em>' attribute list.
-	 * The list contents are of type {@link org.secdfd.model.MLResponsibilityType}.
-	 * The literals are from the enumeration {@link org.secdfd.model.MLResponsibilityType}.
+	 * Returns the value of the '<em><b>Ml Task</b></em>' attribute list.
+	 * The list contents are of type {@link org.secdfd.model.MLContractType}.
+	 * The literals are from the enumeration {@link org.secdfd.model.MLContractType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ml Operation</em>' attribute list.
-	 * @see org.secdfd.model.MLResponsibilityType
-	 * @see graph.GraphPackage#getNodeResponsibility_MlOperation()
+	 * @return the value of the '<em>Ml Task</em>' attribute list.
+	 * @see org.secdfd.model.MLContractType
+	 * @see graph.GraphPackage#getNodeResponsibility_MlTask()
 	 * @model
 	 * @generated
 	 */
-	EList<MLResponsibilityType> getMlOperation();
+	EList<MLContractType> getMlTask();
 
 	/**
 	 * Returns the value of the '<em><b>Outgoingassets</b></em>' reference list.

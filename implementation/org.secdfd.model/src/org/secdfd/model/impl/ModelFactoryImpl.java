@@ -21,14 +21,14 @@ import org.secdfd.model.EDFD;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
 import org.secdfd.model.Layer;
-import org.secdfd.model.MLResponsibility;
-import org.secdfd.model.MLResponsibilityType;
+import org.secdfd.model.MLContract;
+import org.secdfd.model.MLContractType;
 import org.secdfd.model.ModelFactory;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.Objective;
 import org.secdfd.model.Priority;
-import org.secdfd.model.Responsibility;
-import org.secdfd.model.ResponsibilityType;
+import org.secdfd.model.SecurityContract;
+import org.secdfd.model.SecurityContractType;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 
@@ -86,8 +86,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.ASSUMPTION: return createAssumption();
 			case ModelPackage.ATTACKER_PROFILE: return createAttackerProfile();
 			case ModelPackage.TRUST_ZONE: return createTrustZone();
-			case ModelPackage.RESPONSIBILITY: return createResponsibility();
-			case ModelPackage.ML_RESPONSIBILITY: return createMLResponsibility();
+			case ModelPackage.SECURITY_CONTRACT: return createSecurityContract();
+			case ModelPackage.ML_CONTRACT: return createMLContract();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -105,16 +105,16 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 				return createPriorityFromString(eDataType, initialValue);
 			case ModelPackage.CHANNEL:
 				return createChannelFromString(eDataType, initialValue);
-			case ModelPackage.RESPONSIBILITY_TYPE:
-				return createResponsibilityTypeFromString(eDataType, initialValue);
+			case ModelPackage.SECURITY_CONTRACT_TYPE:
+				return createSecurityContractTypeFromString(eDataType, initialValue);
 			case ModelPackage.OBJECTIVE:
 				return createObjectiveFromString(eDataType, initialValue);
 			case ModelPackage.LAYER:
 				return createLayerFromString(eDataType, initialValue);
 			case ModelPackage.ASSET_TYPE:
 				return createAssetTypeFromString(eDataType, initialValue);
-			case ModelPackage.ML_RESPONSIBILITY_TYPE:
-				return createMLResponsibilityTypeFromString(eDataType, initialValue);
+			case ModelPackage.ML_CONTRACT_TYPE:
+				return createMLContractTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -132,16 +132,16 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 				return convertPriorityToString(eDataType, instanceValue);
 			case ModelPackage.CHANNEL:
 				return convertChannelToString(eDataType, instanceValue);
-			case ModelPackage.RESPONSIBILITY_TYPE:
-				return convertResponsibilityTypeToString(eDataType, instanceValue);
+			case ModelPackage.SECURITY_CONTRACT_TYPE:
+				return convertSecurityContractTypeToString(eDataType, instanceValue);
 			case ModelPackage.OBJECTIVE:
 				return convertObjectiveToString(eDataType, instanceValue);
 			case ModelPackage.LAYER:
 				return convertLayerToString(eDataType, instanceValue);
 			case ModelPackage.ASSET_TYPE:
 				return convertAssetTypeToString(eDataType, instanceValue);
-			case ModelPackage.ML_RESPONSIBILITY_TYPE:
-				return convertMLResponsibilityTypeToString(eDataType, instanceValue);
+			case ModelPackage.ML_CONTRACT_TYPE:
+				return convertMLContractTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -263,9 +263,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	@Override
-	public Responsibility createResponsibility() {
-		ResponsibilityImpl responsibility = new ResponsibilityImpl();
-		return responsibility;
+	public SecurityContract createSecurityContract() {
+		SecurityContractImpl securityContract = new SecurityContractImpl();
+		return securityContract;
 	}
 
 	/**
@@ -274,9 +274,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	@Override
-	public MLResponsibility createMLResponsibility() {
-		MLResponsibilityImpl mlResponsibility = new MLResponsibilityImpl();
-		return mlResponsibility;
+	public MLContract createMLContract() {
+		MLContractImpl mlContract = new MLContractImpl();
+		return mlContract;
 	}
 
 	/**
@@ -324,8 +324,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResponsibilityType createResponsibilityTypeFromString(EDataType eDataType, String initialValue) {
-		ResponsibilityType result = ResponsibilityType.get(initialValue);
+	public SecurityContractType createSecurityContractTypeFromString(EDataType eDataType, String initialValue) {
+		SecurityContractType result = SecurityContractType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -335,7 +335,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertResponsibilityTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertSecurityContractTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -404,8 +404,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MLResponsibilityType createMLResponsibilityTypeFromString(EDataType eDataType, String initialValue) {
-		MLResponsibilityType result = MLResponsibilityType.get(initialValue);
+	public MLContractType createMLContractTypeFromString(EDataType eDataType, String initialValue) {
+		MLContractType result = MLContractType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -415,7 +415,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertMLResponsibilityTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertMLContractTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -62,11 +62,11 @@ public class NodeResponsibilityItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIDPropertyDescriptor(object);
-			addNumberPropertyDescriptor(object);
-			addOperationPropertyDescriptor(object);
-			addOutgoingassetsPropertyDescriptor(object);
-			addIncomingassetsPropertyDescriptor(object);
+		addIDPropertyDescriptor(object);
+		addNumberPropertyDescriptor(object);
+		addTaskPropertyDescriptor(object);
+		addOutgoingassetsPropertyDescriptor(object);
+		addIncomingassetsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -116,19 +116,19 @@ public class NodeResponsibilityItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Operation feature.
+	 * This adds a property descriptor for the Task feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addOperationPropertyDescriptor(Object object) {
+	protected void addTaskPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_NodeResponsibility_operation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NodeResponsibility_operation_feature", "_UI_NodeResponsibility_type"),
-				 GraphPackage.Literals.NODE_RESPONSIBILITY__OPERATION,
+				 getString("_UI_NodeResponsibility_task_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_NodeResponsibility_task_feature", "_UI_NodeResponsibility_type"),
+				 GraphPackage.Literals.NODE_RESPONSIBILITY__TASK,
 				 true,
 				 false,
 				 false,
@@ -221,7 +221,7 @@ public class NodeResponsibilityItemProvider
 		switch (notification.getFeatureID(NodeResponsibility.class)) {
 			case GraphPackage.NODE_RESPONSIBILITY__ID:
 			case GraphPackage.NODE_RESPONSIBILITY__NUMBER:
-			case GraphPackage.NODE_RESPONSIBILITY__OPERATION:
+			case GraphPackage.NODE_RESPONSIBILITY__TASK:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

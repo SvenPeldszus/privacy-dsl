@@ -25,15 +25,15 @@
           </style>
         </nodeMappings>
         <nodeMappings name="Process" domainClass="model::Process">
-          <borderedNodeMappings name="Contract" semanticCandidatesExpression="feature:eAllContents" domainClass="model::ResponsibilityBase">
-            <style xsi:type="style:DotDescription" labelSize="12" showIcon="false" labelExpression="feature:Action" labelPosition="node" resizeKind="NSEW">
+          <borderedNodeMappings name="Contract" semanticCandidatesExpression="feature:eAllContents" domainClass="model::ContractBase">
+            <style xsi:type="style:DotDescription" labelSize="12" showIcon="false" labelExpression="feature:Task" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             </style>
-            <conditionnalStyles predicateExpression="aql:self.oclIsKindOf(model::MLResponsibility)">
-              <style xsi:type="style:DotDescription" labelSize="12" showIcon="false" labelExpression="feature:mlAction" labelPosition="node" resizeKind="NSEW">
+            <conditionnalStyles predicateExpression="aql:self.oclIsKindOf(model::MLContract)">
+              <style xsi:type="style:DotDescription" labelSize="12" showIcon="false" labelExpression="feature:MLTask" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -230,25 +230,25 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model::Responsibility" referenceName="responsibility">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model::SecurityContract" referenceName="responsibility">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:var:respAction.name"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="Action" valueExpression="var:respAction"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="Task" valueExpression="var:respAction"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
-            <askChoiceVariable name="respAction" multiple="false" candidatesExpression="aql:ecore::ResponsibilityType.eLiterals" prompt="Action"/>
+            <askChoiceVariable name="respAction" multiple="false" candidatesExpression="aql:ecore::SecurityContractType.eLiterals" prompt="Task"/>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="createMLContract" nodeMappings="//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Contract']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model::MLResponsibility" referenceName="responsibility">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="mlAction" valueExpression="aql:var:mlActions->collect(l | l.instance)"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model::MLContract" referenceName="responsibility">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="MLTask" valueExpression="aql:var:mlActions->collect(l | l.instance)"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
-            <askChoiceVariable name="mlActions" multiple="true" candidatesExpression="aql:ecore::MLResponsibilityType.eLiterals" prompt="ML Actions"/>
+            <askChoiceVariable name="mlActions" multiple="true" candidatesExpression="aql:ecore::MLContractType.eLiterals" prompt="ML Tasks"/>
           </ownedTools>
           <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="highlightAssetFlows" precondition="aql:true" elementsToSelect="var:selectedAsset" candidatesExpression="aql:self.asset" multiple="true">
             <element name="selectedAsset"/>
@@ -375,8 +375,8 @@
       <pages name="sirius_default_rules_defaultpage" labelExpression="aql:input.emfEditServices(self).getTabName()" semanticCandidateExpression="aql:input.getAllSemanticElements()" groups="//@extensions.0/@categories.0/@groups.0"/>
       <groups name="sirius_default_rules_defaultgroup" labelExpression="Properties" semanticCandidateExpression="var:self" preconditionExpression="">
         <controls xsi:type="properties:DynamicMappingForDescription" name="sirius_default_rules_structural_features_for" iterator="eStructuralFeature" iterableExpression="aql:input.emfEditServices(self).getEStructuralFeatures()">
-          <ifs name="sirius_default_rules_enum_many_if" predicateExpression="aql:eStructuralFeature.name = 'Action' and eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and self.oclIsKindOf(model::Responsibility)">
-            <widget xsi:type="properties:SelectDescription" name="sirius_default_rules_enum_many_action" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.oclAsType(model::Responsibility).Action" candidatesExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).eLiterals" candidateDisplayExpression="aql:candidate.name" multiple="true">
+          <ifs name="sirius_default_rules_enum_many_if" predicateExpression="aql:eStructuralFeature.name = 'Task' and eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and self.oclIsKindOf(model::SecurityContract)">
+            <widget xsi:type="properties:SelectDescription" name="sirius_default_rules_enum_many_action" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.oclAsType(model::SecurityContract).Task" candidatesExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).eLiterals" candidateDisplayExpression="aql:candidate.name" multiple="true">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setMultiValuedEnumValue" id="org.secdfd.model.presentation.Services.setMultiValuedEnumValue">
@@ -388,8 +388,8 @@
               </initialOperation>
             </widget>
           </ifs>
-          <ifs name="sirius_default_rules_enum_many_mlaction_if" predicateExpression="aql:eStructuralFeature.name = 'mlAction' and eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and self.oclIsKindOf(model::MLResponsibility)">
-            <widget xsi:type="properties:SelectDescription" name="sirius_default_rules_enum_many_mlaction" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.oclAsType(model::MLResponsibility).mlAction" candidatesExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).eLiterals" candidateDisplayExpression="aql:candidate.name" multiple="true">
+          <ifs name="sirius_default_rules_enum_many_mlaction_if" predicateExpression="aql:eStructuralFeature.name = 'MLTask' and eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and self.oclIsKindOf(model::MLContract)">
+            <widget xsi:type="properties:SelectDescription" name="sirius_default_rules_enum_many_mlaction" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.oclAsType(model::MLContract).MLTask" candidatesExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).eLiterals" candidateDisplayExpression="aql:candidate.name" multiple="true">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="setMultiValuedEnumValue" id="org.secdfd.model.presentation.Services.setMultiValuedEnumValue">
@@ -401,7 +401,7 @@
               </initialOperation>
             </widget>
           </ifs>
-          <ifs name="sirius_default_rules_enum_many_generic_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and eStructuralFeature.name &lt;> 'Action' and eStructuralFeature.name &lt;> 'mlAction'">
+          <ifs name="sirius_default_rules_enum_many_generic_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and eStructuralFeature.name &lt;> 'Task' and eStructuralFeature.name &lt;> 'MLTask'">
             <widget xsi:type="properties:ListDescription" name="sirius_default_rules_enum_many_generic" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)" displayExpression="aql:value.toString()">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, newValue)"/>
@@ -456,7 +456,7 @@
               </conditionalStyles>
             </widget>
           </ifs>
-          <ifs name="sirius_default_rules_eattribute_many_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many and not(eStructuralFeature.eType.oclIsKindOf(ecore::EEnum)) and eStructuralFeature.name &lt;> 'Action' and eStructuralFeature.name &lt;> 'mlAction'">
+          <ifs name="sirius_default_rules_eattribute_many_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many and not(eStructuralFeature.eType.oclIsKindOf(ecore::EEnum)) and eStructuralFeature.name &lt;> 'Task' and eStructuralFeature.name &lt;> 'MLTask'">
             <widget xsi:type="properties:ListDescription" name="sirius_default_rules_eattribute_many" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)" displayExpression="aql:value.toString()"/>
           </ifs>
           <ifs name="sirius_default_rules_ereference_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EReference)">

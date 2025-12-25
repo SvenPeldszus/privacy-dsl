@@ -35,15 +35,15 @@ import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PVisibility;
 import org.eclipse.viatra.query.runtime.matchers.tuple.Tuple;
 import org.eclipse.viatra.query.runtime.matchers.tuple.Tuples;
 import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
-import org.secdfd.model.ResponsibilityType;
+import org.secdfd.model.SecurityContractType;
 
 /**
  * A pattern-specific query specification that can instantiate Matcher in a type-safe way.
  * 
  * <p>Original source:
  *         <code><pre>
- *         pattern ResponsibilityTypes(rt : ResponsibilityType){
- *         	ResponsibilityType(rt);
+ *         pattern ResponsibilityTypes(rt : SecurityContractType){
+ *         	SecurityContractType(rt);
  *         }
  * </pre></code>
  * 
@@ -68,11 +68,11 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
    * 
    */
   public static abstract class Match extends BasePatternMatch {
-    private ResponsibilityType fRt;
+    private SecurityContractType fRt;
 
     private static List<String> parameterNames = makeImmutableList("rt");
 
-    private Match(final ResponsibilityType pRt) {
+    private Match(final SecurityContractType pRt) {
       this.fRt = pRt;
     }
 
@@ -92,7 +92,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
       }
     }
 
-    public ResponsibilityType getRt() {
+    public SecurityContractType getRt() {
       return this.fRt;
     }
 
@@ -100,13 +100,13 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
     public boolean set(final String parameterName, final Object newValue) {
       if (!isMutable()) throw new java.lang.UnsupportedOperationException();
       if ("rt".equals(parameterName) ) {
-          this.fRt = (ResponsibilityType) newValue;
+          this.fRt = (SecurityContractType) newValue;
           return true;
       }
       return false;
     }
 
-    public void setRt(final ResponsibilityType pRt) {
+    public void setRt(final SecurityContractType pRt) {
       if (!isMutable()) throw new java.lang.UnsupportedOperationException();
       this.fRt = pRt;
     }
@@ -187,7 +187,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @return the new, mutable (partial) match object.
      * 
      */
-    public static ResponsibilityTypes.Match newMutableMatch(final ResponsibilityType pRt) {
+    public static ResponsibilityTypes.Match newMutableMatch(final SecurityContractType pRt) {
       return new Mutable(pRt);
     }
 
@@ -199,12 +199,12 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @return the (partial) match object.
      * 
      */
-    public static ResponsibilityTypes.Match newMatch(final ResponsibilityType pRt) {
+    public static ResponsibilityTypes.Match newMatch(final SecurityContractType pRt) {
       return new Immutable(pRt);
     }
 
     private static final class Mutable extends ResponsibilityTypes.Match {
-      Mutable(final ResponsibilityType pRt) {
+      Mutable(final SecurityContractType pRt) {
         super(pRt);
       }
 
@@ -215,7 +215,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
     }
 
     private static final class Immutable extends ResponsibilityTypes.Match {
-      Immutable(final ResponsibilityType pRt) {
+      Immutable(final SecurityContractType pRt) {
         super(pRt);
       }
 
@@ -237,8 +237,8 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
    * 
    * <p>Original source:
    * <code><pre>
-   * pattern ResponsibilityTypes(rt : ResponsibilityType){
-   * 	ResponsibilityType(rt);
+   * pattern ResponsibilityTypes(rt : SecurityContractType){
+   * 	SecurityContractType(rt);
    * }
    * </pre></code>
    * 
@@ -297,7 +297,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @return matches represented as a Match object.
      * 
      */
-    public Collection<ResponsibilityTypes.Match> getAllMatches(final ResponsibilityType pRt) {
+    public Collection<ResponsibilityTypes.Match> getAllMatches(final SecurityContractType pRt) {
       return rawStreamAllMatches(new Object[]{pRt}).collect(Collectors.toSet());
     }
 
@@ -311,7 +311,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @return a stream of matches represented as a Match object.
      * 
      */
-    public Stream<ResponsibilityTypes.Match> streamAllMatches(final ResponsibilityType pRt) {
+    public Stream<ResponsibilityTypes.Match> streamAllMatches(final SecurityContractType pRt) {
       return rawStreamAllMatches(new Object[]{pRt});
     }
 
@@ -322,7 +322,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @return a match represented as a Match object, or null if no match is found.
      * 
      */
-    public Optional<ResponsibilityTypes.Match> getOneArbitraryMatch(final ResponsibilityType pRt) {
+    public Optional<ResponsibilityTypes.Match> getOneArbitraryMatch(final SecurityContractType pRt) {
       return rawGetOneArbitraryMatch(new Object[]{pRt});
     }
 
@@ -333,7 +333,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @return true if the input is a valid (partial) match of the pattern.
      * 
      */
-    public boolean hasMatch(final ResponsibilityType pRt) {
+    public boolean hasMatch(final SecurityContractType pRt) {
       return rawHasMatch(new Object[]{pRt});
     }
 
@@ -343,7 +343,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @return the number of pattern matches found.
      * 
      */
-    public int countMatches(final ResponsibilityType pRt) {
+    public int countMatches(final SecurityContractType pRt) {
       return rawCountMatches(new Object[]{pRt});
     }
 
@@ -353,7 +353,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @param processor the action that will process each pattern match.
      * 
      */
-    public void forEachMatch(final ResponsibilityType pRt, final Consumer<? super ResponsibilityTypes.Match> processor) {
+    public void forEachMatch(final SecurityContractType pRt, final Consumer<? super ResponsibilityTypes.Match> processor) {
       rawForEachMatch(new Object[]{pRt}, processor);
     }
 
@@ -365,7 +365,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @return true if the pattern has at least one match with the given parameter values, false if the processor was not invoked
      * 
      */
-    public boolean forOneArbitraryMatch(final ResponsibilityType pRt, final Consumer<? super ResponsibilityTypes.Match> processor) {
+    public boolean forOneArbitraryMatch(final SecurityContractType pRt, final Consumer<? super ResponsibilityTypes.Match> processor) {
       return rawForOneArbitraryMatch(new Object[]{pRt}, processor);
     }
 
@@ -377,7 +377,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @return the (partial) match object.
      * 
      */
-    public ResponsibilityTypes.Match newMatch(final ResponsibilityType pRt) {
+    public ResponsibilityTypes.Match newMatch(final SecurityContractType pRt) {
       return ResponsibilityTypes.Match.newMatch(pRt);
     }
 
@@ -386,8 +386,8 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @return the Set of all values or empty set if there are no matches
      * 
      */
-    protected Stream<ResponsibilityType> rawStreamAllValuesOfrt(final Object[] parameters) {
-      return rawStreamAllValues(POSITION_RT, parameters).map(ResponsibilityType.class::cast);
+    protected Stream<SecurityContractType> rawStreamAllValuesOfrt(final Object[] parameters) {
+      return rawStreamAllValues(POSITION_RT, parameters).map(SecurityContractType.class::cast);
     }
 
     /**
@@ -395,7 +395,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @return the Set of all values or empty set if there are no matches
      * 
      */
-    public Set<ResponsibilityType> getAllValuesOfrt() {
+    public Set<SecurityContractType> getAllValuesOfrt() {
       return rawStreamAllValuesOfrt(emptyArray()).collect(Collectors.toSet());
     }
 
@@ -404,14 +404,14 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @return the Set of all values or empty set if there are no matches
      * 
      */
-    public Stream<ResponsibilityType> streamAllValuesOfrt() {
+    public Stream<SecurityContractType> streamAllValuesOfrt() {
       return rawStreamAllValuesOfrt(emptyArray());
     }
 
     @Override
     protected ResponsibilityTypes.Match tupleToMatch(final Tuple t) {
       try {
-          return ResponsibilityTypes.Match.newMatch((ResponsibilityType) t.get(POSITION_RT));
+          return ResponsibilityTypes.Match.newMatch((SecurityContractType) t.get(POSITION_RT));
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in tuple not properly typed!",e);
           return null;
@@ -421,7 +421,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
     @Override
     protected ResponsibilityTypes.Match arrayToMatch(final Object[] match) {
       try {
-          return ResponsibilityTypes.Match.newMatch((ResponsibilityType) match[POSITION_RT]);
+          return ResponsibilityTypes.Match.newMatch((SecurityContractType) match[POSITION_RT]);
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in array not properly typed!",e);
           return null;
@@ -431,7 +431,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
     @Override
     protected ResponsibilityTypes.Match arrayToMatchMutable(final Object[] match) {
       try {
-          return ResponsibilityTypes.Match.newMutableMatch((ResponsibilityType) match[POSITION_RT]);
+          return ResponsibilityTypes.Match.newMutableMatch((SecurityContractType) match[POSITION_RT]);
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in array not properly typed!",e);
           return null;
@@ -460,7 +460,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
      * @param pRt the value of pattern parameter rt in the currently processed match
      * 
      */
-    public abstract void accept(final ResponsibilityType pRt);
+    public abstract void accept(final SecurityContractType pRt);
 
     @Override
     public void accept(final ResponsibilityTypes.Match match) {
@@ -502,7 +502,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
 
   @Override
   public ResponsibilityTypes.Match newMatch(final Object... parameters) {
-    return ResponsibilityTypes.Match.newMatch((ResponsibilityType) parameters[0]);
+    return ResponsibilityTypes.Match.newMatch((SecurityContractType) parameters[0]);
   }
 
   /**
@@ -534,7 +534,7 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private static final ResponsibilityTypes.GeneratedPQuery INSTANCE = new GeneratedPQuery();
 
-    private final PParameter parameter_rt = new PParameter("rt", "org.secdfd.model.ResponsibilityType", new EDataTypeInSlotsKey((EDataType)getClassifierLiteralSafe("http://www.secdfd.org/secdfd", "ResponsibilityType")), PParameterDirection.INOUT);
+    private final PParameter parameter_rt = new PParameter("rt", "org.secdfd.model.SecurityContractType", new EDataTypeInSlotsKey((EDataType)getClassifierLiteralSafe("http://www.secdfd.org/secdfd", "SecurityContractType")), PParameterDirection.INOUT);
 
     private final List<PParameter> parameters = Arrays.asList(parameter_rt);
 
@@ -564,12 +564,12 @@ public final class ResponsibilityTypes extends BaseGeneratedEMFQuerySpecificatio
       {
           PBody body = new PBody(this);
           PVariable var_rt = body.getOrCreateVariableByName("rt");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_rt), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "ResponsibilityType")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_rt), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "SecurityContractType")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_rt, parameter_rt)
           ));
-          // 	ResponsibilityType(rt)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_rt), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "ResponsibilityType")));
+          // 	SecurityContractType(rt)
+          new TypeConstraint(body, Tuples.flatTupleOf(var_rt), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "SecurityContractType")));
           bodies.add(body);
       }
       return bodies;

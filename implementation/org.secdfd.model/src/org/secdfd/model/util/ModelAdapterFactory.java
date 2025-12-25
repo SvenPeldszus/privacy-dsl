@@ -12,16 +12,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.secdfd.model.Asset;
 import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
+import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.EDFD;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
-import org.secdfd.model.MLResponsibility;
+import org.secdfd.model.MLContract;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
-import org.secdfd.model.Responsibility;
-import org.secdfd.model.ResponsibilityBase;
+import org.secdfd.model.SecurityContract;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 
@@ -130,16 +130,16 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 				return createTrustZoneAdapter();
 			}
 			@Override
-			public Adapter caseResponsibilityBase(ResponsibilityBase object) {
-				return createResponsibilityBaseAdapter();
+			public Adapter caseContractBase(ContractBase object) {
+				return createContractBaseAdapter();
 			}
 			@Override
-			public Adapter caseResponsibility(Responsibility object) {
-				return createResponsibilityAdapter();
+			public Adapter caseSecurityContract(SecurityContract object) {
+				return createSecurityContractAdapter();
 			}
 			@Override
-			public Adapter caseMLResponsibility(MLResponsibility object) {
-				return createMLResponsibilityAdapter();
+			public Adapter caseMLContract(MLContract object) {
+				return createMLContractAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -330,44 +330,44 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.secdfd.model.ResponsibilityBase <em>Responsibility Base</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.secdfd.model.ContractBase <em>Contract Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.secdfd.model.ResponsibilityBase
+	 * @see org.secdfd.model.ContractBase
 	 * @generated
 	 */
-	public Adapter createResponsibilityBaseAdapter() {
+	public Adapter createContractBaseAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.secdfd.model.Responsibility <em>Responsibility</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.secdfd.model.SecurityContract <em>Security Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.secdfd.model.Responsibility
+	 * @see org.secdfd.model.SecurityContract
 	 * @generated
 	 */
-	public Adapter createResponsibilityAdapter() {
+	public Adapter createSecurityContractAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.secdfd.model.MLResponsibility <em>ML Responsibility</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.secdfd.model.MLContract <em>ML Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.secdfd.model.MLResponsibility
+	 * @see org.secdfd.model.MLContract
 	 * @generated
 	 */
-	public Adapter createMLResponsibilityAdapter() {
+	public Adapter createMLContractAdapter() {
 		return null;
 	}
 

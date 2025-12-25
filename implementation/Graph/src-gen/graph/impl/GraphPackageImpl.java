@@ -585,7 +585,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getNodeResponsibility_Operation() {
+	public EAttribute getNodeResponsibility_Task() {
 		return (EAttribute)nodeResponsibilityEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -595,7 +595,7 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getNodeResponsibility_MlOperation() {
+	public EAttribute getNodeResponsibility_MlTask() {
 		return (EAttribute)nodeResponsibilityEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -783,8 +783,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		createEReference(subgraphsEClass, SUBGRAPHS__ASSETS);
 
 		nodeResponsibilityEClass = createEClass(NODE_RESPONSIBILITY);
-		createEAttribute(nodeResponsibilityEClass, NODE_RESPONSIBILITY__OPERATION);
-		createEAttribute(nodeResponsibilityEClass, NODE_RESPONSIBILITY__ML_OPERATION);
+		createEAttribute(nodeResponsibilityEClass, NODE_RESPONSIBILITY__TASK);
+		createEAttribute(nodeResponsibilityEClass, NODE_RESPONSIBILITY__ML_TASK);
 		createEReference(nodeResponsibilityEClass, NODE_RESPONSIBILITY__OUTGOINGASSETS);
 		createEReference(nodeResponsibilityEClass, NODE_RESPONSIBILITY__INCOMINGASSETS);
 		createEOperation(nodeResponsibilityEClass, NODE_RESPONSIBILITY___FIND_MOST_RESTRICTIVE_LABEL);
@@ -999,8 +999,8 @@ public class GraphPackageImpl extends EPackageImpl implements GraphPackage {
 		initEReference(getSubgraphs_Assets(), this.getGraphAsset(), null, "assets", null, 0, -1, Subgraphs.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeResponsibilityEClass, NodeResponsibility.class, "NodeResponsibility", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNodeResponsibility_Operation(), theModelPackage.getResponsibilityType(), "operation", "Store", 0, -1, NodeResponsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNodeResponsibility_MlOperation(), theModelPackage.getMLResponsibilityType(), "mlOperation", null, 0, -1, NodeResponsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNodeResponsibility_Task(), theModelPackage.getSecurityContractType(), "task", "Store", 0, -1, NodeResponsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNodeResponsibility_MlTask(), theModelPackage.getMLContractType(), "mlTask", null, 0, -1, NodeResponsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNodeResponsibility_Outgoingassets(), this.getGraphAsset(), null, "outgoingassets", null, 0, -1, NodeResponsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNodeResponsibility_Incomingassets(), this.getGraphAsset(), null, "incomingassets", null, 0, -1, NodeResponsibility.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

@@ -4,16 +4,16 @@ package org.secdfd.model.tests;
 
 import junit.textui.TestRunner;
 
-import org.secdfd.model.MLContract;
 import org.secdfd.model.ModelFactory;
+import org.secdfd.model.SecurityContract;
 
 /**
  * <!-- begin-user-doc -->
- * A test case for the model object '<em><b>ML Contract</b></em>'.
+ * A test case for the model object '<em><b>Security Contract</b></em>'.
  * <!-- end-user-doc -->
  * @generated
  */
-public class MLResponsibilityTest extends ContractBaseTest {
+public class SecurityContractTest extends ContractBaseTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -21,28 +21,28 @@ public class MLResponsibilityTest extends ContractBaseTest {
 	 * @generated
 	 */
 	public static void main(String[] args) {
-		TestRunner.run(MLResponsibilityTest.class);
+		TestRunner.run(SecurityContractTest.class);
 	}
 
 	/**
-	 * Constructs a new ML Contract test case with the given name.
+	 * Constructs a new Security Contract test case with the given name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MLResponsibilityTest(String name) {
+	public SecurityContractTest(String name) {
 		super(name);
 	}
 
 	/**
-	 * Returns the fixture for this ML Contract test case.
+	 * Returns the fixture for this Security Contract test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	protected MLContract getFixture() {
-		return (MLContract)fixture;
+	protected SecurityContract getFixture() {
+		return (SecurityContract)fixture;
 	}
 
 	/**
@@ -53,7 +53,7 @@ public class MLResponsibilityTest extends ContractBaseTest {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(ModelFactory.eINSTANCE.createMLContract());
+		setFixture(ModelFactory.eINSTANCE.createSecurityContract());
 	}
 
 	/**
@@ -67,4 +67,4 @@ public class MLResponsibilityTest extends ContractBaseTest {
 		setFixture(null);
 	}
 
-} //MLResponsibilityTest
+} //SecurityContractTest
