@@ -13,6 +13,7 @@ import org.secdfd.model.Asset;
 import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.ClassificationContract;
+import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.EDFD;
@@ -145,6 +146,10 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseClassificationContract(ClassificationContract object) {
 				return createClassificationContractAdapter();
+			}
+			@Override
+			public Adapter caseClusteringContract(ClusteringContract object) {
+				return createClusteringContractAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -387,6 +392,20 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createClassificationContractAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.secdfd.model.ClusteringContract <em>Clustering Contract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.secdfd.model.ClusteringContract
+	 * @generated
+	 */
+	public Adapter createClusteringContractAdapter() {
 		return null;
 	}
 

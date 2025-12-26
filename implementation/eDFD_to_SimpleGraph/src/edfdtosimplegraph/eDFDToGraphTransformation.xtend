@@ -36,6 +36,7 @@ import graph.SecurityLabel
 import org.secdfd.model.ContractBase
 import org.secdfd.model.MLContract
 import org.secdfd.model.ClassificationContract
+import org.secdfd.model.ClusteringContract
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -328,6 +329,8 @@ class eDFDToGraphTransformation {
     		eDFDMLResponsibilityActions.toString
     	} else if (eDFDResponsibility instanceof ClassificationContract) {
     		"[Classification]"
+    	} else if (eDFDResponsibility instanceof ClusteringContract) {
+    		"[Clustering]"
     	} else {
     		''
     	}
@@ -918,54 +921,63 @@ class eDFDToGraphTransformation {
 	      
 	      for (NodeResponsibility nr : node.responsibility) {
 	        val contract = findContract(nr)
-	        val privacyLevel = getPrivacyLabelFromContract(contract)
 	        
-	        if (privacyLevel !== null && !privacyLabelContractFound) {
+	        // Handle ClassificationContract: uses PClass attribute
+	        if (contract instanceof ClassificationContract && !privacyLabelContractFound) {
 	          privacyLabelContractFound = true
-	          privacyLabelLevel = privacyLevel
+	          privacyLabelContractName = "ClassificationContract"
+	          val pClass = (contract as ClassificationContract).getPClass() ?: Priority.L
+	          privacyLabelLevel = lvl(pClass)
+	          // lbl_classification(p_1, ..., p_n, p_class) = p_class for Privacy
+	          upsertLabel_Edge(outgoing.edgelabel, Objective.PRIVACY, privacyLabelLevel)
 	          
-	          // Get contract name for debugging
-	          if (contract instanceof ClassificationContract) {
-	            privacyLabelContractName = "ClassificationContract"
-	            val pClass = (contract as ClassificationContract).getPClass() ?: Priority.L
-	            // lbl_classification(p_1, ..., p_n, p_class) = p_class for Privacy
-	            upsertLabel_Edge(outgoing.edgelabel, Objective.PRIVACY, privacyLabelLevel)
-	            
-	            println('''[DEBUG] Label propagation of edge «outgoing.ID», «outgoing.number»''')
-	            println('''[DEBUG]   Found «privacyLabelContractName», setting Privacy=«privacyLabelLevel» (from pClass=«pClass.getName()»)''')
-	            println('''[DEBUG]   Edge labels after setting Privacy: «outgoing.edgelabel.map[objective.literal + '=' + level].join(', ')»''')
-	          }
-	          // TODO: Add other contract types here (e.g., ClusteringContract)
-	          // else if (contract instanceof ClusteringContract) {
-	          //   privacyLabelContractName = "ClusteringContract"
-	          //   // lbl_clustering(...) = ...
-	          //   upsertLabel_Edge(outgoing.edgelabel, Objective.PRIVACY, privacyLabelLevel)
-	          // }
+	          println('''[DEBUG] Label propagation of edge «outgoing.ID», «outgoing.number»''')
+	          println('''[DEBUG]   Found «privacyLabelContractName», setting Privacy=«privacyLabelLevel» (from pClass=«pClass.getName()»)''')
+	          println('''[DEBUG]   Edge labels after setting Privacy: «outgoing.edgelabel.map[objective.literal + '=' + level].join(', ')»''')
+	        }
+	        
+	        // Handle ClusteringContract: lbl_clustering(p_1, ..., p_n) = N, if p_1 ⊔ p_2 ⊔ ... ⊔ p_n = N; L, otherwise
+	        if (contract instanceof ClusteringContract && !privacyLabelContractFound) {
+	          privacyLabelContractFound = true
+	          privacyLabelContractName = "ClusteringContract"
+	          
+	          // Check all incoming assets' Privacy labels
+	          // All are N if no asset has a Privacy level != 0
+	          val allPrivacyLabelsAreN = !nr.incomingassets.exists[ina |
+	            val inaPrivacyLevel = levelOf(ina.assetlabel, Objective.PRIVACY)
+	            inaPrivacyLevel != 0 // 0 = N, anything else is not N
+	          ]
+	          
+	          privacyLabelLevel = if (allPrivacyLabelsAreN) 0 else 1 // N=0, L=1
+	          upsertLabel_Edge(outgoing.edgelabel, Objective.PRIVACY, privacyLabelLevel)
+	          
+	          println('''[DEBUG] Label propagation of edge «outgoing.ID», «outgoing.number»''')
+	          println('''[DEBUG]   Found «privacyLabelContractName», setting Privacy=«privacyLabelLevel» (all inputs N=«allPrivacyLabelsAreN»)''')
+	          println('''[DEBUG]   Edge labels after setting Privacy: «outgoing.edgelabel.map[objective.literal + '=' + level].join(', ')»''')
 	        }
 	      }
 
-	      // Check if any contract that sets Privacy exists BEFORE asset loop
 	      val hasPrivacyLabelContract = privacyLabelContractFound
 	      
 	      for (GraphAsset ga : outgoing.graphassets) {
 			//for each asset, collect what kind of responsibility they are part of in the node	        
 			val r = newArrayList
-	        for (NodeResponsibility nr : node.responsibility) {
-	          if (nr.outgoingassets.contains(ga)) r.add(nr)
+	        for (NodeResponsibility nrCollect : node.responsibility) {
+	          if (nrCollect.outgoingassets.contains(ga)) r.add(nrCollect)
 	        }
 			//go through responsibilities
-	        for (NodeResponsibility nr : r) {
-	          // Check if this contract sets Privacy labels (generic check)
-	          val contract = findContract(nr)
-	          val hasPrivacyLabel = getPrivacyLabelFromContract(contract) !== null
+	        for (NodeResponsibility nrProcess : r) {
+	          // Check if this contract sets Privacy labels (ClassificationContract or ClusteringContract)
+	          val contractProcess = findContract(nrProcess)
+	          val hasPrivacyLabel = getPrivacyLabelFromContract(contractProcess) !== null || contractProcess instanceof ClusteringContract
 	          
 	          if (hasPrivacyLabel) {
-	            // Contract that sets Privacy already handled above (Privacy label set), but set other Objectives
+	            // ClassificationContract or ClusteringContract: Privacy already handled above, set other Objectives
 	            // Für andere Objectives: Standard-Logik (most restrictive aus Input-Labels)
 	            for (o : Objective.values) {
 	              if (o != Objective.PRIVACY) {
 	                var max = 0
-	                for (ina : nr.incomingassets)
+	                for (ina : nrProcess.incomingassets)
 	                  max = Math::max(max, levelOf(ina.assetlabel, o))
 	                upsertLabel_Edge(outgoing.edgelabel, o, max)
 	              }
@@ -973,7 +985,7 @@ class eDFDToGraphTransformation {
 	          } else {
 	            // Standard SecurityContract/MLContract handling
 	            // IMPORTANT: Skip Privacy if ClassificationContract exists (already set above)
-	            switch nr.task.toString {
+	            switch nrProcess.task.toString {
 	            case "[EncryptOrHash]" : {
 	              for (o : Objective.values) {
 	                if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
@@ -989,7 +1001,7 @@ class eDFDToGraphTransformation {
 	                  // Skip Privacy - already set by contract
 	                } else {
 	                  var max = 0
-	                  for (ina : nr.incomingassets)
+	                  for (ina : nrProcess.incomingassets)
 	                    max = Math::max(max, levelOf(ina.assetlabel, o))
 	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
 	                }
@@ -1001,7 +1013,7 @@ class eDFDToGraphTransformation {
 	                  // Skip Privacy - already set by contract
 	                } else {
 	                  var max = 0                        
-	                  for (ina : nr.incomingassets)      
+	                  for (ina : nrProcess.incomingassets)      
 	                    max = Math::max(max, levelOf(ina.assetlabel, o))
 	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
 	                }
@@ -1013,7 +1025,7 @@ class eDFDToGraphTransformation {
 	                  // Skip Privacy - already set by contract
 	                } else {
 	                  var max = 0
-	                  for (ina : nr.incomingassets)
+	                  for (ina : nrProcess.incomingassets)
 	                    max = Math::max(max, levelOf(ina.assetlabel, o))
 	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
 	                }
@@ -1025,7 +1037,7 @@ class eDFDToGraphTransformation {
 	                  // Skip Privacy - already set by contract
 	                } else {
 	                  var max = 0
-	                  for (ina : nr.incomingassets)
+	                  for (ina : nrProcess.incomingassets)
 	                    max = Math::max(max, levelOf(ina.assetlabel, o))
 	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
 	                }
@@ -1037,7 +1049,7 @@ class eDFDToGraphTransformation {
 	                  // Skip Privacy - already set by contract
 	                } else {
 	                  var max = 0
-	                  for (ina : nr.incomingassets)
+	                  for (ina : nrProcess.incomingassets)
 	                    max = Math::max(max, levelOf(ina.assetlabel, o))
 	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
 	                }
@@ -1048,7 +1060,7 @@ class eDFDToGraphTransformation {
 	                if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
 	                  // Skip Privacy - already set by contract
 	                } else {
-	                  upsertLabel_Edge(outgoing.edgelabel, o, levelOf(nr.incomingassets.get(0).assetlabel, o))
+	                  upsertLabel_Edge(outgoing.edgelabel, o, levelOf(nrProcess.incomingassets.get(0).assetlabel, o))
 	                }
 	              }
 	            }
@@ -1057,7 +1069,7 @@ class eDFDToGraphTransformation {
 	                if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
 	                  // Skip Privacy - already set by contract
 	                } else {
-	                  upsertLabel_Edge(outgoing.edgelabel, o, levelOf(nr.incomingassets.get(0).assetlabel, o))
+	                  upsertLabel_Edge(outgoing.edgelabel, o, levelOf(nrProcess.incomingassets.get(0).assetlabel, o))
 	                }
 	              }
 	            }
@@ -1067,7 +1079,7 @@ class eDFDToGraphTransformation {
 	                  // Skip Privacy - already set by contract
 	                } else {
 	                  var max = 0
-	                  for (ina : nr.incomingassets)
+	                  for (ina : nrProcess.incomingassets)
 	                    max = Math::max(max, levelOf(ina.assetlabel, o))
 	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
 	                }
@@ -1216,6 +1228,20 @@ class eDFDToGraphTransformation {
 		return null
 	}
 	
+	// Helper to find ClusteringContract from NodeResponsibility via traces
+	def ClusteringContract findClusteringContract(NodeResponsibility nr) {
+		for (trace : edfd2graph.edfdGraphTraces) {
+			if (trace.graphElements.contains(nr)) {
+				for (edfdElement : trace.edfdElements) {
+					if (edfdElement instanceof ClusteringContract) {
+						return edfdElement as ClusteringContract
+					}
+				}
+			}
+		}
+		return null
+	}
+	
 	// Generic helper to find ContractBase from NodeResponsibility via traces
 	def ContractBase findContract(NodeResponsibility nr) {
 		for (trace : edfd2graph.edfdGraphTraces) {
@@ -1232,6 +1258,7 @@ class eDFDToGraphTransformation {
 	
 	// Generic helper to get Privacy label level from a contract
 	// Returns the privacy level (as int) if the contract sets one, null otherwise
+	// Note: ClusteringContract returns null here because it needs input assets to calculate the label
 	def Integer getPrivacyLabelFromContract(ContractBase contract) {
 		if (contract === null) {
 			return null
@@ -1243,14 +1270,20 @@ class eDFDToGraphTransformation {
 			return if (pClass !== null) lvl(pClass) else lvl(Priority.L) // Default to L
 		}
 		
-		// ClusteringContract: TODO - implement when ClusteringContract is created
-		// if (contract instanceof ClusteringContract) {
-		//   val pClass = (contract as ClusteringContract).getPClass()
-		//   return if (pClass !== null) lvl(pClass) else null
-		// }
+		// ClusteringContract: returns null because it needs input assets to calculate
+		// The actual calculation happens in the asset loop based on input assets
+		// This ensures it's not marked as "already handled" in the first loop
+		if (contract instanceof ClusteringContract) {
+			return null // Will be handled in asset loop
+		}
 		
 		// Other contract types don't set Privacy labels
 		return null
+	}
+	
+	// Helper to check if a contract is a ClusteringContract (needs special handling)
+	def boolean isClusteringContract(ContractBase contract) {
+		return contract instanceof ClusteringContract
 	}
 	
 	// Generic helper to check if a NodeResponsibility has a contract that sets Privacy labels
@@ -1316,9 +1349,11 @@ class eDFDToGraphTransformation {
     val ops = e.source.responsibility
                    .filter[r | r.outgoingassets.exists[e.graphassets.contains(it)]]
                    .map[
-                     val classificationContract = findClassificationContract(it)
-                     if (classificationContract !== null) {
+                     val contract = findContract(it)
+                     if (contract instanceof ClassificationContract) {
                        "Classification"
+                     } else if (contract instanceof ClusteringContract) {
+                       "Clustering"
                      } else if (it.task !== null && !it.task.empty) {
                        it.task.toString.replace("[","").replace("]","")
                      } else {

@@ -57,7 +57,7 @@ Process returns Process:
 	']';
 
 ContractBase:
-	SecurityContract | MLContract | ClassificationContract
+	SecurityContract | MLContract | ClassificationContract | ClusteringContract
 ;
 
 MLContract returns MLContract:
@@ -82,6 +82,15 @@ ClassificationContract returns ClassificationContract:
 	(name=EString)?
 	'['
 		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('PClass' '=' PClass=Priority)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+	']'
+;
+
+ClusteringContract returns ClusteringContract:
+	{ClusteringContract}
+	'Clustering' // Keyword for serialization
+	(name=EString)?
+	'['
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
 	']'
 ;
 

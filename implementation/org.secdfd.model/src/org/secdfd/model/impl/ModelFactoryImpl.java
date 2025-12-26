@@ -17,6 +17,7 @@ import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.Channel;
 import org.secdfd.model.ClassificationContract;
+import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.EDFD;
 import org.secdfd.model.ExternalEntity;
@@ -90,6 +91,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.SECURITY_CONTRACT: return createSecurityContract();
 			case ModelPackage.ML_CONTRACT: return createMLContract();
 			case ModelPackage.CLASSIFICATION_CONTRACT: return createClassificationContract();
+			case ModelPackage.CLUSTERING_CONTRACT: return createClusteringContract();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -290,6 +292,17 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public ClassificationContract createClassificationContract() {
 		ClassificationContractImpl classificationContract = new ClassificationContractImpl();
 		return classificationContract;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ClusteringContract createClusteringContract() {
+		ClusteringContractImpl clusteringContract = new ClusteringContractImpl();
+		return clusteringContract;
 	}
 
 	/**

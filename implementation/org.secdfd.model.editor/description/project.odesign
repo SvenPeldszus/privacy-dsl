@@ -48,6 +48,14 @@
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
               </style>
             </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.oclIsKindOf(model::ClusteringContract)">
+              <style xsi:type="style:DotDescription" labelSize="12" showIcon="false" labelExpression="'Clustering'" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              </style>
+            </conditionnalStyles>
           </borderedNodeMappings>
           <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="2" labelSize="12" sizeComputationExpression="10" labelPosition="node" resizeKind="NORTH_SOUTH">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -272,6 +280,18 @@
             <askStringVariable name="contractName" prompt="Contract Name (optional)"/>
             <askChoiceVariable name="pClassValue" candidatesExpression="aql:model::Priority.eLiterals" candidateDisplayExpression="aql:candidate.name" prompt="Privacy Level of Most Critical Class Label" multiple="false"/>
           </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createClusteringContract" nodeMappings="//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Contract']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model::ClusteringContract" referenceName="responsibility">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:if var:contractName &lt;> null and not var:contractName.oclIsUndefined() then var:contractName else 'Clustering' endif"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <askStringVariable name="contractName" prompt="Contract Name (optional)"/>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="highlightAssetFlows" precondition="aql:true" elementsToSelect="var:selectedAsset" candidatesExpression="aql:self.asset" multiple="true">
             <element name="selectedAsset"/>
             <containerView name="containerView"/>
@@ -424,7 +444,7 @@
             </widget>
           </ifs>
           <ifs name="classification_pClass_if" predicateExpression="aql:self.oclIsKindOf(model::ClassificationContract) and eStructuralFeature.name = 'PClass'">
-            <widget xsi:type="properties:SelectDescription" name="classification_pClass_widget" labelExpression="Privacy Level of Most Critical Class Label:" helpExpression="Select the privacy level of your most critical class label:&#xA;N = generic categories | L = privacy-relevant | M = personal data | H = identifiers | C = sensitive data" valueExpression="aql:if self.oclAsType(model::ClassificationContract).getPClass() &lt;> null then self.oclAsType(model::ClassificationContract).getPClass() else model::Priority::L endif" candidatesExpression="aql:model::Priority.eLiterals" candidateDisplayExpression="aql:candidate.name">
+            <widget xsi:type="properties:SelectDescription" name="classification_pClass_widget" labelExpression="What is the privacy level of the most privacy-critical class label?" helpExpression="Select the privacy label of your most critical class label: N = non-personal | L = privacy-relevant | M = personal | H = unique identifiers | C = special category" valueExpression="aql:if self.oclAsType(model::ClassificationContract).getPClass() &lt;> null then self.oclAsType(model::ClassificationContract).getPClass() else model::Priority::L endif" candidatesExpression="aql:model::Priority.eLiterals" candidateDisplayExpression="aql:candidate.name">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.oclAsType(model::ClassificationContract)">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="PClass" valueExpression="aql:if newValue &lt;> null then newValue.instance else null endif"/>

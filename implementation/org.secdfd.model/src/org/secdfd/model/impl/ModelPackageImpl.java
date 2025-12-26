@@ -19,6 +19,7 @@ import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.Channel;
 import org.secdfd.model.ClassificationContract;
+import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.Element;
@@ -156,6 +157,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EClass classificationContractEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass clusteringContractEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -783,6 +791,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getClusteringContract() {
+		return clusteringContractEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getPriority() {
 		return priorityEEnum;
 	}
@@ -942,6 +960,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		classificationContractEClass = createEClass(CLASSIFICATION_CONTRACT);
 		createEAttribute(classificationContractEClass, CLASSIFICATION_CONTRACT__PCLASS);
 
+		clusteringContractEClass = createEClass(CLUSTERING_CONTRACT);
+
 		// Create enums
 		priorityEEnum = createEEnum(PRIORITY);
 		channelEEnum = createEEnum(CHANNEL);
@@ -993,6 +1013,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		securityContractEClass.getESuperTypes().add(this.getContractBase());
 		mlContractEClass.getESuperTypes().add(this.getContractBase());
 		classificationContractEClass.getESuperTypes().add(this.getContractBase());
+		clusteringContractEClass.getESuperTypes().add(this.getContractBase());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(assetEClass, Asset.class, "Asset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1068,6 +1089,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		initEClass(classificationContractEClass, ClassificationContract.class, "ClassificationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClassificationContract_PClass(), this.getPriority(), "PClass", "L", 0, 1, ClassificationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(clusteringContractEClass, ClusteringContract.class, "ClusteringContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(priorityEEnum, Priority.class, "Priority");

@@ -371,6 +371,29 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.secdfd.model.ClusteringContract} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClusteringContractItemProvider clusteringContractItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.secdfd.model.ClusteringContract}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createClusteringContractAdapter() {
+		if (clusteringContractItemProvider == null) {
+			clusteringContractItemProvider = new ClusteringContractItemProvider(this);
+		}
+
+		return clusteringContractItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -488,6 +511,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 		if (securityContractItemProvider != null) securityContractItemProvider.dispose();
 		if (mlContractItemProvider != null) mlContractItemProvider.dispose();
 		if (classificationContractItemProvider != null) classificationContractItemProvider.dispose();
+		if (clusteringContractItemProvider != null) clusteringContractItemProvider.dispose();
 	}
 
 }

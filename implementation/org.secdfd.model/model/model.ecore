@@ -158,4 +158,5 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="PClass" eType="#//Priority"
         defaultValueLiteral="L"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClusteringContract" eSuperTypes="#//ContractBase"/>
 </ecore:EPackage>

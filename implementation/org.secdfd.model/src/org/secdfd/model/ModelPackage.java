@@ -1354,6 +1354,79 @@ public interface ModelPackage extends EPackage {
 	int CLASSIFICATION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.secdfd.model.impl.ClusteringContractImpl <em>Clustering Contract</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.secdfd.model.impl.ClusteringContractImpl
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getClusteringContract()
+	 * @generated
+	 */
+	int CLUSTERING_CONTRACT = 16;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTERING_CONTRACT__NAME = CONTRACT_BASE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTERING_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
+
+	/**
+	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTERING_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
+
+	/**
+	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTERING_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
+
+	/**
+	 * The feature id for the '<em><b>Process</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTERING_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
+
+	/**
+	 * The number of structural features of the '<em>Clustering Contract</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTERING_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Clustering Contract</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTERING_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1361,7 +1434,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getPriority()
 	 * @generated
 	 */
-	int PRIORITY = 16;
+	int PRIORITY = 17;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Channel <em>Channel</em>}' enum.
@@ -1371,7 +1444,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getChannel()
 	 * @generated
 	 */
-	int CHANNEL = 17;
+	int CHANNEL = 18;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.SecurityContractType <em>Security Contract Type</em>}' enum.
@@ -1381,7 +1454,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getSecurityContractType()
 	 * @generated
 	 */
-	int SECURITY_CONTRACT_TYPE = 18;
+	int SECURITY_CONTRACT_TYPE = 19;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Objective <em>Objective</em>}' enum.
@@ -1391,7 +1464,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 19;
+	int OBJECTIVE = 20;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Layer <em>Layer</em>}' enum.
@@ -1401,7 +1474,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getLayer()
 	 * @generated
 	 */
-	int LAYER = 20;
+	int LAYER = 21;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.AssetType <em>Asset Type</em>}' enum.
@@ -1411,7 +1484,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getAssetType()
 	 * @generated
 	 */
-	int ASSET_TYPE = 21;
+	int ASSET_TYPE = 22;
 
 
 	/**
@@ -1422,7 +1495,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getMLContractType()
 	 * @generated
 	 */
-	int ML_CONTRACT_TYPE = 22;
+	int ML_CONTRACT_TYPE = 23;
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.Asset <em>Asset</em>}'.
@@ -1958,6 +2031,16 @@ public interface ModelPackage extends EPackage {
 	EAttribute getClassificationContract_PClass();
 
 	/**
+	 * Returns the meta object for class '{@link org.secdfd.model.ClusteringContract <em>Clustering Contract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Clustering Contract</em>'.
+	 * @see org.secdfd.model.ClusteringContract
+	 * @generated
+	 */
+	EClass getClusteringContract();
+
+	/**
 	 * Returns the meta object for enum '{@link org.secdfd.model.Priority <em>Priority</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2481,6 +2564,16 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CLASSIFICATION_CONTRACT__PCLASS = eINSTANCE.getClassificationContract_PClass();
+
+		/**
+		 * The meta object literal for the '{@link org.secdfd.model.impl.ClusteringContractImpl <em>Clustering Contract</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.secdfd.model.impl.ClusteringContractImpl
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getClusteringContract()
+		 * @generated
+		 */
+		EClass CLUSTERING_CONTRACT = eINSTANCE.getClusteringContract();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.
