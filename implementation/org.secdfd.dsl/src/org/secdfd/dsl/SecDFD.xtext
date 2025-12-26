@@ -57,7 +57,7 @@ Process returns Process:
 	']';
 
 ContractBase:
-	SecurityContract | MLContract | ClassificationContract | ClusteringContract | DecisionMakingContract | RecommendationContract
+	SecurityContract | MLContract | ClassificationContract | ClusteringContract | DecisionMakingContract | RecommendationContract | PredictionContract
 ;
 
 MLContract returns MLContract:
@@ -106,6 +106,15 @@ DecisionMakingContract returns DecisionMakingContract:
 RecommendationContract returns RecommendationContract:
 	{RecommendationContract}
 	'Recommendation' // Keyword for serialization
+	(name=EString)?
+	'['
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('S' '=' S=EBoolean)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+	']'
+;
+
+PredictionContract returns PredictionContract:
+	{PredictionContract}
+	'Prediction' // Keyword for serialization
 	(name=EString)?
 	'['
 		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('S' '=' S=EBoolean)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?

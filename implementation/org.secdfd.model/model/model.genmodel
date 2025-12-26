@@ -127,5 +127,8 @@
     <genClasses ecoreClass="model.ecore#//RecommendationContract">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//RecommendationContract/S"/>
     </genClasses>
+    <genClasses ecoreClass="model.ecore#//PredictionContract">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//PredictionContract/S"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

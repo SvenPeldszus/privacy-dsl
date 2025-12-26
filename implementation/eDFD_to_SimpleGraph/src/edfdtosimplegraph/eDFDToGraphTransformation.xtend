@@ -39,6 +39,7 @@ import org.secdfd.model.ClassificationContract
 import org.secdfd.model.ClusteringContract
 import org.secdfd.model.DecisionMakingContract
 import org.secdfd.model.RecommendationContract
+import org.secdfd.model.PredictionContract
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -335,6 +336,10 @@ class eDFDToGraphTransformation {
     		"[Clustering]"
     	} else if (eDFDResponsibility instanceof DecisionMakingContract) {
     		"[DecisionMaking]"
+    	} else if (eDFDResponsibility instanceof RecommendationContract) {
+    		"[Recommendation]"
+    	} else if (eDFDResponsibility instanceof PredictionContract) {
+    		"[Prediction]"
     	} else {
     		''
     	}
@@ -999,19 +1004,54 @@ class eDFDToGraphTransformation {
 	        }
 			//go through responsibilities
 	        for (NodeResponsibility nrProcess : r) {
-	          // Check if this contract sets Privacy labels (ClassificationContract or ClusteringContract)
+	          // Check if this contract sets Privacy labels (ClassificationContract, ClusteringContract, or PredictionContract)
 	          val contractProcess = findContract(nrProcess)
-	          val hasPrivacyLabel = getPrivacyLabelFromContract(contractProcess) !== null || contractProcess instanceof ClusteringContract
+	          val hasPrivacyLabel = getPrivacyLabelFromContract(contractProcess) !== null || contractProcess instanceof ClusteringContract || contractProcess instanceof PredictionContract
 	          
 	          if (hasPrivacyLabel) {
-	            // ClassificationContract or ClusteringContract: Privacy already handled above, set other Objectives
-	            // Für andere Objectives: Standard-Logik (most restrictive aus Input-Labels)
-	            for (o : Objective.values) {
-	              if (o != Objective.PRIVACY) {
-	                var max = 0
-	                for (ina : nrProcess.incomingassets)
-	                  max = Math::max(max, levelOf(ina.assetlabel, o))
-	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	            // Handle PredictionContract: lbl_prediction(p_1, ..., p_n, s) = N, if p_max = N; p_max, if p_max ≥ L ∧ s = true; L, if p_max ≥ L ∧ s = false
+	            if (contractProcess instanceof PredictionContract) {
+	              val s = (contractProcess as PredictionContract).isS()
+	              // Calculate p_max = p_1 ⊔ p_2 ⊔ ... ⊔ p_n (most restrictive)
+	              var pMax = 0
+	              for (ina : nrProcess.incomingassets) {
+	                val inaPrivacyLevel = levelOf(ina.assetlabel, Objective.PRIVACY)
+	                pMax = Math::max(pMax, inaPrivacyLevel)
+	              }
+	              
+	              // lbl_prediction(p_1, ..., p_n, s) = N, if p_max = N; p_max, if p_max ≥ L ∧ s = true; L, if p_max ≥ L ∧ s = false
+	              val privacyLevel = if (pMax == 0) {
+	                0 // N, if p_max = N
+	              } else if (s) {
+	                pMax // p_max, if p_max ≥ L ∧ s = true
+	              } else {
+	                1 // L, if p_max ≥ L ∧ s = false
+	              }
+	              
+	              upsertLabel_Edge(outgoing.edgelabel, Objective.PRIVACY, privacyLevel)
+	              
+	              println('''[DEBUG] Label propagation of edge «outgoing.ID», «outgoing.number»''')
+	              println('''[DEBUG]   Found PredictionContract, p_max=«pMax», s=«s», setting Privacy=«privacyLevel»''')
+	              
+	              // Set other Objectives: Standard-Logik (most restrictive aus Input-Labels)
+	              for (o : Objective.values) {
+	                if (o != Objective.PRIVACY) {
+	                  var max = 0
+	                  for (ina : nrProcess.incomingassets)
+	                    max = Math::max(max, levelOf(ina.assetlabel, o))
+	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                }
+	              }
+	            } else {
+	              // ClassificationContract, ClusteringContract, or RecommendationContract: Privacy already handled above, set other Objectives
+	              // Für andere Objectives: Standard-Logik (most restrictive aus Input-Labels)
+	              for (o : Objective.values) {
+	                if (o != Objective.PRIVACY) {
+	                  var max = 0
+	                  for (ina : nrProcess.incomingassets)
+	                    max = Math::max(max, levelOf(ina.assetlabel, o))
+	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                }
 	              }
 	            }
 	          } else {
@@ -1399,8 +1439,10 @@ class eDFDToGraphTransformation {
                        "Classification"
                      } else if (contract instanceof DecisionMakingContract) {
                        "DecisionMaking"
-                     } else if (contract instanceof RecommendationContract) {
+                     } else                      if (contract instanceof RecommendationContract) {
                        "Recommendation"
+                     } else if (contract instanceof PredictionContract) {
+                       "Prediction"
                      } else if (contract instanceof ClusteringContract) {
                        "Clustering"
                      } else if (it.task !== null && !it.task.empty) {

@@ -160,6 +160,7 @@ public class ModelTables extends AbstractTables
 		public static final EcoreExecutorEnumeration _MLContractType = new EcoreExecutorEnumeration(ModelPackage.Literals.ML_CONTRACT_TYPE, PACKAGE, 0);
 		public static final EcoreExecutorType _NamedEntity = new EcoreExecutorType(ModelPackage.Literals.NAMED_ENTITY, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final EcoreExecutorEnumeration _Objective = new EcoreExecutorEnumeration(ModelPackage.Literals.OBJECTIVE, PACKAGE, 0);
+		public static final EcoreExecutorType _PredictionContract = new EcoreExecutorType(ModelPackage.Literals.PREDICTION_CONTRACT, PACKAGE, 0);
 		public static final EcoreExecutorEnumeration _Priority = new EcoreExecutorEnumeration(ModelPackage.Literals.PRIORITY, PACKAGE, 0);
 		public static final EcoreExecutorType _Process = new EcoreExecutorType(ModelPackage.Literals.PROCESS, PACKAGE, 0);
 		public static final EcoreExecutorType _RecommendationContract = new EcoreExecutorType(ModelPackage.Literals.RECOMMENDATION_CONTRACT, PACKAGE, 0);
@@ -188,6 +189,7 @@ public class ModelTables extends AbstractTables
 			_MLContractType,
 			_NamedEntity,
 			_Objective,
+			_PredictionContract,
 			_Priority,
 			_Process,
 			_RecommendationContract,
@@ -324,6 +326,12 @@ public class ModelTables extends AbstractTables
 		private static final ExecutorFragment _Objective__OclElement = new ExecutorFragment(Types._Objective, OCLstdlibTables.Types._OclElement);
 		private static final ExecutorFragment _Objective__OclEnumeration = new ExecutorFragment(Types._Objective, OCLstdlibTables.Types._OclEnumeration);
 		private static final ExecutorFragment _Objective__OclType = new ExecutorFragment(Types._Objective, OCLstdlibTables.Types._OclType);
+
+		private static final ExecutorFragment _PredictionContract__ContractBase = new ExecutorFragment(Types._PredictionContract, ModelTables.Types._ContractBase);
+		private static final ExecutorFragment _PredictionContract__NamedEntity = new ExecutorFragment(Types._PredictionContract, ModelTables.Types._NamedEntity);
+		private static final ExecutorFragment _PredictionContract__OclAny = new ExecutorFragment(Types._PredictionContract, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _PredictionContract__OclElement = new ExecutorFragment(Types._PredictionContract, OCLstdlibTables.Types._OclElement);
+		private static final ExecutorFragment _PredictionContract__PredictionContract = new ExecutorFragment(Types._PredictionContract, ModelTables.Types._PredictionContract);
 
 		private static final ExecutorFragment _Priority__OclAny = new ExecutorFragment(Types._Priority, OCLstdlibTables.Types._OclAny);
 		private static final ExecutorFragment _Priority__OclElement = new ExecutorFragment(Types._Priority, OCLstdlibTables.Types._OclElement);
@@ -485,6 +493,8 @@ public class ModelTables extends AbstractTables
 
 		public static final ExecutorProperty _NamedEntity__name = new EcoreExecutorProperty(ModelPackage.Literals.NAMED_ENTITY__NAME, Types._NamedEntity, 0);
 		public static final ExecutorProperty _NamedEntity__number = new EcoreExecutorProperty(ModelPackage.Literals.NAMED_ENTITY__NUMBER, Types._NamedEntity, 1);
+
+		public static final ExecutorProperty _PredictionContract__S = new EcoreExecutorProperty(ModelPackage.Literals.PREDICTION_CONTRACT__S, Types._PredictionContract, 0);
 
 		public static final ExecutorProperty _Process__responsibility = new EcoreExecutorProperty(ModelPackage.Literals.PROCESS__RESPONSIBILITY, Types._Process, 0);
 
@@ -701,6 +711,16 @@ public class ModelTables extends AbstractTables
 			};
 		private static final int /*@NonNull*/ [] __Objective = { 1,1,1,1,1 };
 
+		private static final ExecutorFragment /*@NonNull*/ [] _PredictionContract =
+			{
+				Fragments._PredictionContract__OclAny /* 0 */,
+				Fragments._PredictionContract__OclElement /* 1 */,
+				Fragments._PredictionContract__NamedEntity /* 2 */,
+				Fragments._PredictionContract__ContractBase /* 3 */,
+				Fragments._PredictionContract__PredictionContract /* 4 */
+			};
+		private static final int /*@NonNull*/ [] __PredictionContract = { 1,1,1,1,1 };
+
 		private static final ExecutorFragment /*@NonNull*/ [] _Priority =
 			{
 				Fragments._Priority__OclAny /* 0 */,
@@ -792,6 +812,7 @@ public class ModelTables extends AbstractTables
 			Types._MLContractType.initFragments(_MLContractType, __MLContractType);
 			Types._NamedEntity.initFragments(_NamedEntity, __NamedEntity);
 			Types._Objective.initFragments(_Objective, __Objective);
+			Types._PredictionContract.initFragments(_PredictionContract, __PredictionContract);
 			Types._Priority.initFragments(_Priority, __Priority);
 			Types._Process.initFragments(_Process, __Process);
 			Types._RecommendationContract.initFragments(_RecommendationContract, __RecommendationContract);
@@ -1494,6 +1515,41 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
 		};
 
+		private static final ExecutorOperation /*@NonNull*/ [] _PredictionContract__PredictionContract = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _PredictionContract__ContractBase = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _PredictionContract__NamedEntity = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _PredictionContract__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _PredictionContract__OclElement = {
+			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
+			OCLstdlibTables.Operations._OclElement__1_oclBase /* oclBase(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclExtension /* oclExtension(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclExtensions /* oclExtensions() */,
+			OCLstdlibTables.Operations._OclElement__1_oclExtensions /* oclExtensions(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+
 		private static final ExecutorOperation /*@NonNull*/ [] _Priority__Priority = {};
 		private static final ExecutorOperation /*@NonNull*/ [] _Priority__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
@@ -1854,6 +1910,12 @@ public class ModelTables extends AbstractTables
 			Fragments._Objective__OclEnumeration.initOperations(_Objective__OclEnumeration);
 			Fragments._Objective__OclType.initOperations(_Objective__OclType);
 
+			Fragments._PredictionContract__ContractBase.initOperations(_PredictionContract__ContractBase);
+			Fragments._PredictionContract__NamedEntity.initOperations(_PredictionContract__NamedEntity);
+			Fragments._PredictionContract__OclAny.initOperations(_PredictionContract__OclAny);
+			Fragments._PredictionContract__OclElement.initOperations(_PredictionContract__OclElement);
+			Fragments._PredictionContract__PredictionContract.initOperations(_PredictionContract__PredictionContract);
+
 			Fragments._Priority__OclAny.initOperations(_Priority__OclAny);
 			Fragments._Priority__OclElement.initOperations(_Priority__OclElement);
 			Fragments._Priority__OclEnumeration.initOperations(_Priority__OclEnumeration);
@@ -2085,6 +2147,17 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Properties._OclElement__oclContents
 		};
 
+		private static final ExecutorProperty /*@NonNull*/ [] _PredictionContract = {
+			ModelTables.Properties._PredictionContract__S,
+			ModelTables.Properties._ContractBase__incomeassets,
+			ModelTables.Properties._NamedEntity__name,
+			ModelTables.Properties._NamedEntity__number,
+			OCLstdlibTables.Properties._OclElement__oclContainer,
+			OCLstdlibTables.Properties._OclElement__oclContents,
+			ModelTables.Properties._ContractBase__outcomeassets,
+			ModelTables.Properties._ContractBase__process
+		};
+
 		private static final ExecutorProperty /*@NonNull*/ [] _Priority = {
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents
@@ -2175,6 +2248,7 @@ public class ModelTables extends AbstractTables
 			Fragments._MLContractType__MLContractType.initProperties(_MLContractType);
 			Fragments._NamedEntity__NamedEntity.initProperties(_NamedEntity);
 			Fragments._Objective__Objective.initProperties(_Objective);
+			Fragments._PredictionContract__PredictionContract.initProperties(_PredictionContract);
 			Fragments._Priority__Priority.initProperties(_Priority);
 			Fragments._Process__Process.initProperties(_Process);
 			Fragments._RecommendationContract__RecommendationContract.initProperties(_RecommendationContract);

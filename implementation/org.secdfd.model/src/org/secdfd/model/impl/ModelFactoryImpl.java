@@ -29,6 +29,7 @@ import org.secdfd.model.MLContractType;
 import org.secdfd.model.ModelFactory;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.Objective;
+import org.secdfd.model.PredictionContract;
 import org.secdfd.model.Priority;
 import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
@@ -96,6 +97,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.CLUSTERING_CONTRACT: return createClusteringContract();
 			case ModelPackage.DECISION_MAKING_CONTRACT: return createDecisionMakingContract();
 			case ModelPackage.RECOMMENDATION_CONTRACT: return createRecommendationContract();
+			case ModelPackage.PREDICTION_CONTRACT: return createPredictionContract();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -329,6 +331,17 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public RecommendationContract createRecommendationContract() {
 		RecommendationContractImpl recommendationContract = new RecommendationContractImpl();
 		return recommendationContract;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public PredictionContract createPredictionContract() {
+		PredictionContractImpl predictionContract = new PredictionContractImpl();
+		return predictionContract;
 	}
 
 	/**

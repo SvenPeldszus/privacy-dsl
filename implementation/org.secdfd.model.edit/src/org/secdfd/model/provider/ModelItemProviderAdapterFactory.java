@@ -440,6 +440,29 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.secdfd.model.PredictionContract} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PredictionContractItemProvider predictionContractItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.secdfd.model.PredictionContract}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPredictionContractAdapter() {
+		if (predictionContractItemProvider == null) {
+			predictionContractItemProvider = new PredictionContractItemProvider(this);
+		}
+
+		return predictionContractItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -560,6 +583,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 		if (clusteringContractItemProvider != null) clusteringContractItemProvider.dispose();
 		if (decisionMakingContractItemProvider != null) decisionMakingContractItemProvider.dispose();
 		if (recommendationContractItemProvider != null) recommendationContractItemProvider.dispose();
+		if (predictionContractItemProvider != null) predictionContractItemProvider.dispose();
 	}
 
 }

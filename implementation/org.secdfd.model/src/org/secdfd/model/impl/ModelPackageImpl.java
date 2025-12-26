@@ -33,6 +33,7 @@ import org.secdfd.model.ModelFactory;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
+import org.secdfd.model.PredictionContract;
 import org.secdfd.model.Priority;
 import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
@@ -180,6 +181,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EClass recommendationContractEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass predictionContractEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -857,6 +865,26 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getPredictionContract() {
+		return predictionContractEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPredictionContract_S() {
+		return (EAttribute)predictionContractEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getPriority() {
 		return priorityEEnum;
 	}
@@ -1024,6 +1052,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		recommendationContractEClass = createEClass(RECOMMENDATION_CONTRACT);
 		createEAttribute(recommendationContractEClass, RECOMMENDATION_CONTRACT__S);
 
+		predictionContractEClass = createEClass(PREDICTION_CONTRACT);
+		createEAttribute(predictionContractEClass, PREDICTION_CONTRACT__S);
+
 		// Create enums
 		priorityEEnum = createEEnum(PRIORITY);
 		channelEEnum = createEEnum(CHANNEL);
@@ -1078,6 +1109,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		clusteringContractEClass.getESuperTypes().add(this.getContractBase());
 		decisionMakingContractEClass.getESuperTypes().add(this.getContractBase());
 		recommendationContractEClass.getESuperTypes().add(this.getContractBase());
+		predictionContractEClass.getESuperTypes().add(this.getContractBase());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(assetEClass, Asset.class, "Asset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1161,6 +1193,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		initEClass(recommendationContractEClass, RecommendationContract.class, "RecommendationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRecommendationContract_S(), ecorePackage.getEBoolean(), "S", "false", 0, 1, RecommendationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(predictionContractEClass, PredictionContract.class, "PredictionContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPredictionContract_S(), ecorePackage.getEBoolean(), "S", "false", 0, 1, PredictionContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(priorityEEnum, Priority.class, "Priority");

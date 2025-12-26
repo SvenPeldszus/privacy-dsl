@@ -166,6 +166,15 @@ public interface ModelFactory extends EFactory {
 	RecommendationContract createRecommendationContract();
 
 	/**
+	 * Returns a new object of class '<em>Prediction Contract</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Prediction Contract</em>'.
+	 * @generated
+	 */
+	PredictionContract createPredictionContract();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

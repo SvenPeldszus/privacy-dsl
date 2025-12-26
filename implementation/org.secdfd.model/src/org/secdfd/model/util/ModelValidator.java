@@ -31,6 +31,7 @@ import org.secdfd.model.MLContractType;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
+import org.secdfd.model.PredictionContract;
 import org.secdfd.model.Priority;
 import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
@@ -156,6 +157,8 @@ public class ModelValidator extends EObjectValidator {
 				return validateDecisionMakingContract((DecisionMakingContract)value, diagnostics, context);
 			case ModelPackage.RECOMMENDATION_CONTRACT:
 				return validateRecommendationContract((RecommendationContract)value, diagnostics, context);
+			case ModelPackage.PREDICTION_CONTRACT:
+				return validatePredictionContract((PredictionContract)value, diagnostics, context);
 			case ModelPackage.PRIORITY:
 				return validatePriority((Priority)value, diagnostics, context);
 			case ModelPackage.CHANNEL:
@@ -364,6 +367,15 @@ public class ModelValidator extends EObjectValidator {
 	 */
 	public boolean validateRecommendationContract(RecommendationContract recommendationContract, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(recommendationContract, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePredictionContract(PredictionContract predictionContract, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(predictionContract, diagnostics, context);
 	}
 
 	/**
