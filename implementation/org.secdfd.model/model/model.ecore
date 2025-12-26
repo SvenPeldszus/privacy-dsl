@@ -13,9 +13,11 @@
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EEnum" name="Priority">
-    <eLiterals name="H"/>
-    <eLiterals name="M" value="1"/>
-    <eLiterals name="L" value="2"/>
+    <eLiterals name="N"/>
+    <eLiterals name="L" value="1"/>
+    <eLiterals name="M" value="2"/>
+    <eLiterals name="H" value="3"/>
+    <eLiterals name="C" value="4"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Asset" eSuperTypes="#//NamedEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
@@ -151,5 +153,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="MLContract" eSuperTypes="#//ContractBase">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="MLTask" upperBound="-1"
         eType="#//MLContractType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassificationContract" eSuperTypes="#//ContractBase">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PClass" eType="#//Priority"
+        defaultValueLiteral="L"/>
   </eClassifiers>
 </ecore:EPackage>

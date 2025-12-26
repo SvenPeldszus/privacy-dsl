@@ -16,6 +16,7 @@ import org.secdfd.model.AssetType;
 import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.Channel;
+import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.EDFD;
@@ -144,6 +145,8 @@ public class ModelValidator extends EObjectValidator {
 				return validateSecurityContract((SecurityContract)value, diagnostics, context);
 			case ModelPackage.ML_CONTRACT:
 				return validateMLContract((MLContract)value, diagnostics, context);
+			case ModelPackage.CLASSIFICATION_CONTRACT:
+				return validateClassificationContract((ClassificationContract)value, diagnostics, context);
 			case ModelPackage.PRIORITY:
 				return validatePriority((Priority)value, diagnostics, context);
 			case ModelPackage.CHANNEL:
@@ -316,6 +319,15 @@ public class ModelValidator extends EObjectValidator {
 	 */
 	public boolean validateMLContract(MLContract mlContract, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(mlContract, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateClassificationContract(ClassificationContract classificationContract, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(classificationContract, diagnostics, context);
 	}
 
 	/**

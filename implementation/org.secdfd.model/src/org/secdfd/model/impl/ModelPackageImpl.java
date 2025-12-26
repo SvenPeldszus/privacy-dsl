@@ -18,6 +18,7 @@ import org.secdfd.model.AssetType;
 import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.Channel;
+import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.Element;
@@ -148,6 +149,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EClass mlContractEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass classificationContractEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -755,6 +763,26 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getClassificationContract() {
+		return classificationContractEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getClassificationContract_PClass() {
+		return (EAttribute)classificationContractEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getPriority() {
 		return priorityEEnum;
 	}
@@ -911,6 +939,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		mlContractEClass = createEClass(ML_CONTRACT);
 		createEAttribute(mlContractEClass, ML_CONTRACT__ML_TASK);
 
+		classificationContractEClass = createEClass(CLASSIFICATION_CONTRACT);
+		createEAttribute(classificationContractEClass, CLASSIFICATION_CONTRACT__PCLASS);
+
 		// Create enums
 		priorityEEnum = createEEnum(PRIORITY);
 		channelEEnum = createEEnum(CHANNEL);
@@ -961,6 +992,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		contractBaseEClass.getESuperTypes().add(this.getNamedEntity());
 		securityContractEClass.getESuperTypes().add(this.getContractBase());
 		mlContractEClass.getESuperTypes().add(this.getContractBase());
+		classificationContractEClass.getESuperTypes().add(this.getContractBase());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(assetEClass, Asset.class, "Asset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1034,11 +1066,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEClass(mlContractEClass, MLContract.class, "MLContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMLContract_MLTask(), this.getMLContractType(), "MLTask", null, 0, -1, MLContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(classificationContractEClass, ClassificationContract.class, "ClassificationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getClassificationContract_PClass(), this.getPriority(), "PClass", "L", 0, 1, ClassificationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(priorityEEnum, Priority.class, "Priority");
-		addEEnumLiteral(priorityEEnum, Priority.H);
-		addEEnumLiteral(priorityEEnum, Priority.M);
+		addEEnumLiteral(priorityEEnum, Priority.N);
 		addEEnumLiteral(priorityEEnum, Priority.L);
+		addEEnumLiteral(priorityEEnum, Priority.M);
+		addEEnumLiteral(priorityEEnum, Priority.H);
+		addEEnumLiteral(priorityEEnum, Priority.C);
 
 		initEEnum(channelEEnum, Channel.class, "Channel");
 		addEEnumLiteral(channelEEnum, Channel.WI_FI);

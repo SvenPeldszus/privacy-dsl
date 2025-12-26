@@ -8,9 +8,11 @@
   <genPackages prefix="Model" basePackage="org.secdfd" disposableProviderFactory="true"
       ecorePackage="model.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//Priority">
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Priority/H"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Priority/M"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Priority/N"/>
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//Priority/L"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Priority/M"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Priority/H"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Priority/C"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//Channel">
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//Channel/WiFi"/>
@@ -114,6 +116,9 @@
     </genClasses>
     <genClasses ecoreClass="model.ecore#//MLContract">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//MLContract/MLTask"/>
+    </genClasses>
+    <genClasses ecoreClass="model.ecore#//ClassificationContract">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ClassificationContract/PClass"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

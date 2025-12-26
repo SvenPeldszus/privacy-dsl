@@ -348,6 +348,29 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.secdfd.model.ClassificationContract} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClassificationContractItemProvider classificationContractItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.secdfd.model.ClassificationContract}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createClassificationContractAdapter() {
+		if (classificationContractItemProvider == null) {
+			classificationContractItemProvider = new ClassificationContractItemProvider(this);
+		}
+
+		return classificationContractItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -464,6 +487,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 		if (trustZoneItemProvider != null) trustZoneItemProvider.dispose();
 		if (securityContractItemProvider != null) securityContractItemProvider.dispose();
 		if (mlContractItemProvider != null) mlContractItemProvider.dispose();
+		if (classificationContractItemProvider != null) classificationContractItemProvider.dispose();
 	}
 
 }

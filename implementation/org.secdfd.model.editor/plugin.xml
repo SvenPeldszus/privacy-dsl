@@ -85,5 +85,6 @@
     <extension point="org.eclipse.sirius.externalJavaAction">
         <javaActions id="org.secdfd.model.presentation.Services.isFlowHighlightedEnhancedStatic" actionClass="org.secdfd.model.presentation.Services"/>
         <javaActions id="org.secdfd.model.presentation.Services.setMultiValuedEnumValue" actionClass="org.secdfd.model.presentation.Services"/>
+        <javaActions id="org.secdfd.model.presentation.Services.joinEnumNames" actionClass="org.secdfd.model.presentation.Services"/>
     </extension>
 </plugin>

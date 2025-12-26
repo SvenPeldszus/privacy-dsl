@@ -57,7 +57,7 @@ Process returns Process:
 	']';
 
 ContractBase:
-	MLContract | SecurityContract
+	SecurityContract | MLContract | ClassificationContract
 ;
 
 MLContract returns MLContract:
@@ -73,6 +73,15 @@ SecurityContract returns SecurityContract:
 	(name=EString)?
 	'['
 		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* Task+=SecurityContractType '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+	']'
+;
+
+ClassificationContract returns ClassificationContract:
+	{ClassificationContract}
+	'Classification' // Keyword for serialization
+	(name=EString)?
+	'['
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('PClass' '=' PClass=Priority)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
 	']'
 ;
 
@@ -139,7 +148,7 @@ EInt returns ecore::EInt:
 	'-'? INT;
 
 enum Priority returns Priority:
-				H = 'H' | M = 'M' | L = 'L';
+				N = 'N' | L = 'L' | M = 'M' | H = 'H' | C = 'C';
 				
 enum Objective returns Objective:
 				Integrity = 'I' | Confidentiality = 'C' | Availability = 'Av' | Accountability = 'Ac' | Privacy = 'P';

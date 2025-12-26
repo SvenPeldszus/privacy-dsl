@@ -1272,6 +1272,88 @@ public interface ModelPackage extends EPackage {
 	int ML_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.secdfd.model.impl.ClassificationContractImpl <em>Classification Contract</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.secdfd.model.impl.ClassificationContractImpl
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getClassificationContract()
+	 * @generated
+	 */
+	int CLASSIFICATION_CONTRACT = 15;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_CONTRACT__NAME = CONTRACT_BASE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
+
+	/**
+	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
+
+	/**
+	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
+
+	/**
+	 * The feature id for the '<em><b>Process</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
+
+	/**
+	 * The feature id for the '<em><b>PClass</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_CONTRACT__PCLASS = CONTRACT_BASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Classification Contract</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Classification Contract</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1279,7 +1361,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getPriority()
 	 * @generated
 	 */
-	int PRIORITY = 15;
+	int PRIORITY = 16;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Channel <em>Channel</em>}' enum.
@@ -1289,7 +1371,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getChannel()
 	 * @generated
 	 */
-	int CHANNEL = 16;
+	int CHANNEL = 17;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.SecurityContractType <em>Security Contract Type</em>}' enum.
@@ -1299,7 +1381,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getSecurityContractType()
 	 * @generated
 	 */
-	int SECURITY_CONTRACT_TYPE = 17;
+	int SECURITY_CONTRACT_TYPE = 18;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Objective <em>Objective</em>}' enum.
@@ -1309,7 +1391,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 18;
+	int OBJECTIVE = 19;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Layer <em>Layer</em>}' enum.
@@ -1319,7 +1401,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getLayer()
 	 * @generated
 	 */
-	int LAYER = 19;
+	int LAYER = 20;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.AssetType <em>Asset Type</em>}' enum.
@@ -1329,7 +1411,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getAssetType()
 	 * @generated
 	 */
-	int ASSET_TYPE = 20;
+	int ASSET_TYPE = 21;
 
 
 	/**
@@ -1340,7 +1422,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getMLContractType()
 	 * @generated
 	 */
-	int ML_CONTRACT_TYPE = 21;
+	int ML_CONTRACT_TYPE = 22;
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.Asset <em>Asset</em>}'.
@@ -1855,6 +1937,27 @@ public interface ModelPackage extends EPackage {
 	EAttribute getMLContract_MLTask();
 
 	/**
+	 * Returns the meta object for class '{@link org.secdfd.model.ClassificationContract <em>Classification Contract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Classification Contract</em>'.
+	 * @see org.secdfd.model.ClassificationContract
+	 * @generated
+	 */
+	EClass getClassificationContract();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.secdfd.model.ClassificationContract#getPClass <em>PClass</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>PClass</em>'.
+	 * @see org.secdfd.model.ClassificationContract#getPClass()
+	 * @see #getClassificationContract()
+	 * @generated
+	 */
+	EAttribute getClassificationContract_PClass();
+
+	/**
 	 * Returns the meta object for enum '{@link org.secdfd.model.Priority <em>Priority</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2360,6 +2463,24 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ML_CONTRACT__ML_TASK = eINSTANCE.getMLContract_MLTask();
+
+		/**
+		 * The meta object literal for the '{@link org.secdfd.model.impl.ClassificationContractImpl <em>Classification Contract</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.secdfd.model.impl.ClassificationContractImpl
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getClassificationContract()
+		 * @generated
+		 */
+		EClass CLASSIFICATION_CONTRACT = eINSTANCE.getClassificationContract();
+
+		/**
+		 * The meta object literal for the '<em><b>PClass</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASSIFICATION_CONTRACT__PCLASS = eINSTANCE.getClassificationContract_PClass();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.

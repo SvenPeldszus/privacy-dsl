@@ -178,4 +178,62 @@ public class Services extends AbstractHandler implements IExternalJavaAction {
         
         return object;
     }
+    
+    /**
+     * Joins enum literal names from a collection into a comma-separated string.
+     * This is used in AQL expressions to display multi-valued enum attributes.
+     * 
+     * @param enumCollection The collection of enum literals or enum instances
+     * @param separator The separator string (default: ", ")
+     * @return A comma-separated string of enum names
+     */
+    public static String joinEnumNames(Object enumCollection, String separator) {
+        if (enumCollection == null) {
+            return "";
+        }
+        
+        if (separator == null) {
+            separator = ", ";
+        }
+        
+        List<String> names = new ArrayList<>();
+        
+        if (enumCollection instanceof Collection<?>) {
+            Collection<?> collection = (Collection<?>) enumCollection;
+            for (Object item : collection) {
+                if (item instanceof EEnumLiteral) {
+                    names.add(((EEnumLiteral) item).getName());
+                } else if (item != null) {
+                    // Try to get the name via reflection or toString
+                    try {
+                        String name = item.toString();
+                        // Remove package prefix if present
+                        if (name.contains("::")) {
+                            name = name.substring(name.lastIndexOf("::") + 2);
+                        }
+                        names.add(name);
+                    } catch (Exception e) {
+                        names.add(item.toString());
+                    }
+                }
+            }
+        } else if (enumCollection instanceof EEnumLiteral) {
+            names.add(((EEnumLiteral) enumCollection).getName());
+        } else if (enumCollection != null) {
+            String name = enumCollection.toString();
+            if (name.contains("::")) {
+                name = name.substring(name.lastIndexOf("::") + 2);
+            }
+            names.add(name);
+        }
+        
+        return String.join(separator, names);
+    }
+    
+    /**
+     * Overloaded method with default separator.
+     */
+    public static String joinEnumNames(Object enumCollection) {
+        return joinEnumNames(enumCollection, ", ");
+    }
 }

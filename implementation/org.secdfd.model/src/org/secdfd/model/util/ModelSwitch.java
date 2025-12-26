@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.util.Switch;
 import org.secdfd.model.Asset;
 import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
+import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.EDFD;
@@ -186,6 +187,14 @@ public class ModelSwitch<T> extends Switch<T> {
 				T result = caseMLContract(mlContract);
 				if (result == null) result = caseContractBase(mlContract);
 				if (result == null) result = caseNamedEntity(mlContract);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.CLASSIFICATION_CONTRACT: {
+				ClassificationContract classificationContract = (ClassificationContract)theEObject;
+				T result = caseClassificationContract(classificationContract);
+				if (result == null) result = caseContractBase(classificationContract);
+				if (result == null) result = caseNamedEntity(classificationContract);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -415,6 +424,21 @@ public class ModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMLContract(MLContract object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Classification Contract</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Classification Contract</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClassificationContract(ClassificationContract object) {
 		return null;
 	}
 

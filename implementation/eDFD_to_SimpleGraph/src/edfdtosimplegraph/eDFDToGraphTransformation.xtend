@@ -35,6 +35,7 @@ import graph.GraphFactory
 import graph.SecurityLabel
 import org.secdfd.model.ContractBase
 import org.secdfd.model.MLContract
+import org.secdfd.model.ClassificationContract
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -325,6 +326,8 @@ class eDFDToGraphTransformation {
     		eDFDResponsibilityActions.toString
     	} else if (eDFDResponsibility instanceof MLContract) {
     		eDFDMLResponsibilityActions.toString
+    	} else if (eDFDResponsibility instanceof ClassificationContract) {
+    		"[Classification]"
     	} else {
     		''
     	}
@@ -906,6 +909,44 @@ class eDFDToGraphTransformation {
 	      val node     = outgoing.source
 	      outgoing.visited = true
 
+	      // FIRST: Check for contracts that set Privacy labels (generic approach)
+	      // This must run BEFORE the asset loop to ensure Privacy label is always set
+	      // Find first contract that sets Privacy and apply its label propagation rule
+	      var privacyLabelContractFound = false
+	      var privacyLabelLevel = 0
+	      var privacyLabelContractName = ""
+	      
+	      for (NodeResponsibility nr : node.responsibility) {
+	        val contract = findContract(nr)
+	        val privacyLevel = getPrivacyLabelFromContract(contract)
+	        
+	        if (privacyLevel !== null && !privacyLabelContractFound) {
+	          privacyLabelContractFound = true
+	          privacyLabelLevel = privacyLevel
+	          
+	          // Get contract name for debugging
+	          if (contract instanceof ClassificationContract) {
+	            privacyLabelContractName = "ClassificationContract"
+	            val pClass = (contract as ClassificationContract).getPClass() ?: Priority.L
+	            // lbl_classification(p_1, ..., p_n, p_class) = p_class for Privacy
+	            upsertLabel_Edge(outgoing.edgelabel, Objective.PRIVACY, privacyLabelLevel)
+	            
+	            println('''[DEBUG] Label propagation of edge «outgoing.ID», «outgoing.number»''')
+	            println('''[DEBUG]   Found «privacyLabelContractName», setting Privacy=«privacyLabelLevel» (from pClass=«pClass.getName()»)''')
+	            println('''[DEBUG]   Edge labels after setting Privacy: «outgoing.edgelabel.map[objective.literal + '=' + level].join(', ')»''')
+	          }
+	          // TODO: Add other contract types here (e.g., ClusteringContract)
+	          // else if (contract instanceof ClusteringContract) {
+	          //   privacyLabelContractName = "ClusteringContract"
+	          //   // lbl_clustering(...) = ...
+	          //   upsertLabel_Edge(outgoing.edgelabel, Objective.PRIVACY, privacyLabelLevel)
+	          // }
+	        }
+	      }
+
+	      // Check if any contract that sets Privacy exists BEFORE asset loop
+	      val hasPrivacyLabelContract = privacyLabelContractFound
+	      
 	      for (GraphAsset ga : outgoing.graphassets) {
 			//for each asset, collect what kind of responsibility they are part of in the node	        
 			val r = newArrayList
@@ -914,82 +955,179 @@ class eDFDToGraphTransformation {
 	        }
 			//go through responsibilities
 	        for (NodeResponsibility nr : r) {
-	          switch nr.task.toString {
-	            case "[EncryptOrHash]" : {
-	              for (o : Objective.values)
-	                upsertLabel_Edge(outgoing.edgelabel, o, 0)
-	            }
-	            case "[Decrypt]" : {
-	              for (o : Objective.values) {
+	          // Check if this contract sets Privacy labels (generic check)
+	          val contract = findContract(nr)
+	          val hasPrivacyLabel = getPrivacyLabelFromContract(contract) !== null
+	          
+	          if (hasPrivacyLabel) {
+	            // Contract that sets Privacy already handled above (Privacy label set), but set other Objectives
+	            // Für andere Objectives: Standard-Logik (most restrictive aus Input-Labels)
+	            for (o : Objective.values) {
+	              if (o != Objective.PRIVACY) {
 	                var max = 0
 	                for (ina : nr.incomingassets)
 	                  max = Math::max(max, levelOf(ina.assetlabel, o))
 	                upsertLabel_Edge(outgoing.edgelabel, o, max)
 	              }
 	            }
+	          } else {
+	            // Standard SecurityContract/MLContract handling
+	            // IMPORTANT: Skip Privacy if ClassificationContract exists (already set above)
+	            switch nr.task.toString {
+	            case "[EncryptOrHash]" : {
+	              for (o : Objective.values) {
+	                if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
+	                  // Skip Privacy - already set by contract
+	                } else {
+	                  upsertLabel_Edge(outgoing.edgelabel, o, 0)
+	                }
+	              }
+	            }
+	            case "[Decrypt]" : {
+	              for (o : Objective.values) {
+	                if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
+	                  // Skip Privacy - already set by contract
+	                } else {
+	                  var max = 0
+	                  for (ina : nr.incomingassets)
+	                    max = Math::max(max, levelOf(ina.assetlabel, o))
+	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                }
+	              }
+	            }
 	            case "[Comparator]" : {                
-	              for (o : Objective.values) {         
-	                var max = 0                        
-	                for (ina : nr.incomingassets)      
-	                  max = Math::max(max, levelOf(ina.assetlabel, o))
-	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	              for (o : Objective.values) {
+	                if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
+	                  // Skip Privacy - already set by contract
+	                } else {
+	                  var max = 0                        
+	                  for (ina : nr.incomingassets)      
+	                    max = Math::max(max, levelOf(ina.assetlabel, o))
+	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                }
 	              }
 	            }
 	            case "[Joiner]"   : {
 	              for (o : Objective.values) {
-	                var max = 0
-	                for (ina : nr.incomingassets)
-	                  max = Math::max(max, levelOf(ina.assetlabel, o))
-	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
+	                  // Skip Privacy - already set by contract
+	                } else {
+	                  var max = 0
+	                  for (ina : nr.incomingassets)
+	                    max = Math::max(max, levelOf(ina.assetlabel, o))
+	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                }
 	              }
 	            }
 	            case "[User]"     : {
 	              for (o : Objective.values) {
-	                var max = 0
-	                for (ina : nr.incomingassets)
-	                  max = Math::max(max, levelOf(ina.assetlabel, o))
-	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
+	                  // Skip Privacy - already set by contract
+	                } else {
+	                  var max = 0
+	                  for (ina : nr.incomingassets)
+	                    max = Math::max(max, levelOf(ina.assetlabel, o))
+	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                }
 	              }
 	            }
 	            case "[Splitter]" : {
 	              for (o : Objective.values) {
-	                var max = 0
-	                for (ina : nr.incomingassets)
-	                  max = Math::max(max, levelOf(ina.assetlabel, o))
-	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
+	                  // Skip Privacy - already set by contract
+	                } else {
+	                  var max = 0
+	                  for (ina : nr.incomingassets)
+	                    max = Math::max(max, levelOf(ina.assetlabel, o))
+	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                }
 	              }
 	            }
-	            case "[Copier]" : {                     
-	              for (o : Objective.values)
-	                upsertLabel_Edge(outgoing.edgelabel, o, levelOf(nr.incomingassets.get(0).assetlabel, o))
+	            case "[Copier]" : {
+	              for (o : Objective.values) {
+	                if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
+	                  // Skip Privacy - already set by contract
+	                } else {
+	                  upsertLabel_Edge(outgoing.edgelabel, o, levelOf(nr.incomingassets.get(0).assetlabel, o))
+	                }
+	              }
 	            }
-	            case "[Forward]" : {                    
-	              for (o : Objective.values)
-	                upsertLabel_Edge(outgoing.edgelabel, o, levelOf(nr.incomingassets.get(0).assetlabel, o))
+	            case "[Forward]" : {
+	              for (o : Objective.values) {
+	                if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
+	                  // Skip Privacy - already set by contract
+	                } else {
+	                  upsertLabel_Edge(outgoing.edgelabel, o, levelOf(nr.incomingassets.get(0).assetlabel, o))
+	                }
+	              }
 	            }
 	            case "[Store]" : {                      // most-restrictive input
 	              for (o : Objective.values) {
-	                var max = 0
-	                for (ina : nr.incomingassets)
-	                  max = Math::max(max, levelOf(ina.assetlabel, o))
-	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
+	                  // Skip Privacy - already set by contract
+	                } else {
+	                  var max = 0
+	                  for (ina : nr.incomingassets)
+	                    max = Math::max(max, levelOf(ina.assetlabel, o))
+	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                }
 	              }
 	            }
 	
 	            default : { /* no confidentiality effect */ }
+	          }
 	          }
 	        }
 	      }
 	
 	      
 	      //edge still unlabeled?  fall back to asset labels
+	      // But preserve Privacy label if it was set by any contract
+	      // hasPrivacyLabelContract was already set above (line 948)
+	      
+	      val hasPrivacyLabel = !outgoing.edgelabel.filter[l | l.objective == Objective.PRIVACY].empty
+	      
+	      println('''[DEBUG] After asset loop - hasPrivacyLabelContract=«hasPrivacyLabelContract», hasPrivacyLabel=«hasPrivacyLabel»''')
+	      println('''[DEBUG]   Current edge labels: «outgoing.edgelabel.map[objective.literal + '=' + level].join(', ')»''')
+	      
+	      // If ClassificationContract exists, Privacy label was already set above
+	      // and should NOT be overwritten by fallback logic
+	      
 	      if (outgoing.edgelabel.empty) {
+	        // Edge has no labels at all - set all from assets
+	        // But skip Privacy if it was set by any contract
+	        println('''[DEBUG] Edge is empty, setting labels from assets (skipping Privacy if contract exists)''')
 	        for (o : Objective.values) {
-	          var max = 0
-	          for (gs : outgoing.graphassets)
-	            max = Math::max(max, levelOf(gs.assetlabel, o))
-	          if (max > 0)
-	            upsertLabel_Edge(outgoing.edgelabel, o, max)
+	          if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
+	            // Privacy already set by contract above, skip
+	            println('''[DEBUG]   Skipping Privacy (set by contract)''')
+	          } else {
+	            var max = 0
+	            for (gs : outgoing.graphassets)
+	              max = Math::max(max, levelOf(gs.assetlabel, o))
+	            if (max > 0)
+	              upsertLabel_Edge(outgoing.edgelabel, o, max)
+	          }
+	        }
+	      } else {
+	        // Edge has some labels - add missing ones from assets
+	        // But NEVER overwrite Privacy if it was set by any contract
+	        println('''[DEBUG] Edge has labels, adding missing ones from assets''')
+	        for (o : Objective.values) {
+	          val hasLabel = !outgoing.edgelabel.filter[l | l.objective == o].empty
+	          if (!hasLabel) {
+	            // Label is missing - add it from assets
+	            if (o == Objective.PRIVACY && hasPrivacyLabelContract) {
+	              // Privacy was set by contract above, don't overwrite
+	              println('''[DEBUG]   Privacy missing but contract exists - should have been set above!''')
+	            } else {
+	              var max = 0
+	              for (gs : outgoing.graphassets)
+	                max = Math::max(max, levelOf(gs.assetlabel, o))
+	              if (max > 0)
+	                upsertLabel_Edge(outgoing.edgelabel, o, max)
+	            }
+	          }
 	        }
 	      }
 	
@@ -1055,11 +1193,70 @@ class eDFDToGraphTransformation {
     //newly added 
     def int lvl(Priority p) {
 	  switch p {
-	    case Priority::H : 3
-	    case Priority::M : 2
-	    case Priority::L : 1
+	    case Priority::C : 4  // Critical
+	    case Priority::H : 3  // High
+	    case Priority::M : 2  // Medium
+	    case Priority::L : 1  // Low
+	    case Priority::N : 0  // None
 	    default          : 0
 	  }
+	}
+	
+	// Helper to find ClassificationContract from NodeResponsibility via traces
+	def ClassificationContract findClassificationContract(NodeResponsibility nr) {
+		for (trace : edfd2graph.edfdGraphTraces) {
+			if (trace.graphElements.contains(nr)) {
+				for (edfdElement : trace.edfdElements) {
+					if (edfdElement instanceof ClassificationContract) {
+						return edfdElement as ClassificationContract
+					}
+				}
+			}
+		}
+		return null
+	}
+	
+	// Generic helper to find ContractBase from NodeResponsibility via traces
+	def ContractBase findContract(NodeResponsibility nr) {
+		for (trace : edfd2graph.edfdGraphTraces) {
+			if (trace.graphElements.contains(nr)) {
+				for (edfdElement : trace.edfdElements) {
+					if (edfdElement instanceof ContractBase) {
+						return edfdElement as ContractBase
+					}
+				}
+			}
+		}
+		return null
+	}
+	
+	// Generic helper to get Privacy label level from a contract
+	// Returns the privacy level (as int) if the contract sets one, null otherwise
+	def Integer getPrivacyLabelFromContract(ContractBase contract) {
+		if (contract === null) {
+			return null
+		}
+		
+		// ClassificationContract: uses PClass attribute
+		if (contract instanceof ClassificationContract) {
+			val pClass = (contract as ClassificationContract).getPClass()
+			return if (pClass !== null) lvl(pClass) else lvl(Priority.L) // Default to L
+		}
+		
+		// ClusteringContract: TODO - implement when ClusteringContract is created
+		// if (contract instanceof ClusteringContract) {
+		//   val pClass = (contract as ClusteringContract).getPClass()
+		//   return if (pClass !== null) lvl(pClass) else null
+		// }
+		
+		// Other contract types don't set Privacy labels
+		return null
+	}
+	
+	// Generic helper to check if a NodeResponsibility has a contract that sets Privacy labels
+	def boolean hasPrivacyLabelContract(NodeResponsibility nr) {
+		val contract = findContract(nr)
+		return getPrivacyLabelFromContract(contract) !== null
 	}
     
     //newly added
@@ -1083,9 +1280,10 @@ class eDFDToGraphTransformation {
 	def void upsertLabel_Edge(EList<EdgeLabel> list, Objective o, int level) {
 	  val l = list.findFirst[objective == o]
 	  
-	  
-	  if (level <= 0) {
-    	if (l !== null) list.remove(l)   // ggf. altes 0-Label löschen
+	  // Allow level 0 for Privacy labels (Priority::N = 0 is a valid privacy level)
+	  // Only remove labels if level < 0 (invalid)
+	  if (level < 0) {
+    	if (l !== null) list.remove(l)   // ggf. altes ungültiges Label löschen
     		return
   	  }
   	  
@@ -1117,7 +1315,17 @@ class eDFDToGraphTransformation {
     /* 3️⃣   originating operations (Encrypt, Joiner …)             */
     val ops = e.source.responsibility
                    .filter[r | r.outgoingassets.exists[e.graphassets.contains(it)]]
-                   .map[task.toString.replace("[","").replace("]","")]
+                   .map[
+                     val classificationContract = findClassificationContract(it)
+                     if (classificationContract !== null) {
+                       "Classification"
+                     } else if (it.task !== null && !it.task.empty) {
+                       it.task.toString.replace("[","").replace("]","")
+                     } else {
+                       ""
+                     }
+                   ]
+                   .filter[!it.empty]
                    .toSet
     sb.append("  via ").append(
         ops.empty ? "no-rule" : ops.join("+")

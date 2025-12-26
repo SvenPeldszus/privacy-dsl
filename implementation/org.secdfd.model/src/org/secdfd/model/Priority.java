@@ -19,26 +19,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum Priority implements Enumerator {
 	/**
-	 * The '<em><b>H</b></em>' literal object.
+	 * The '<em><b>N</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #H_VALUE
+	 * @see #N_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	H(0, "H", "H"),
-
-	/**
-	 * The '<em><b>M</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #M_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	M(1, "M", "M"),
-
-	/**
+	N(0, "N", "N"), /**
 	 * The '<em><b>L</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -46,29 +34,42 @@ public enum Priority implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	L(2, "L", "L");
-
-	/**
-	 * The '<em><b>H</b></em>' literal value.
+	L(1, "L", "L"), /**
+	 * The '<em><b>M</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #H
+	 * @see #M_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	M(2, "M", "M"), /**
+	 * The '<em><b>H</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #H_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	H(3, "H", "H"), /**
+	 * The '<em><b>C</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #C_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	C(4, "C", "C");
+
+	/**
+	 * The '<em><b>N</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #N
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int H_VALUE = 0;
-
-	/**
-	 * The '<em><b>M</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #M
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int M_VALUE = 1;
+	public static final int N_VALUE = 0;
 
 	/**
 	 * The '<em><b>L</b></em>' literal value.
@@ -79,7 +80,40 @@ public enum Priority implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int L_VALUE = 2;
+	public static final int L_VALUE = 1;
+
+	/**
+	 * The '<em><b>M</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #M
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int M_VALUE = 2;
+
+	/**
+	 * The '<em><b>H</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #H
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int H_VALUE = 3;
+
+	/**
+	 * The '<em><b>C</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #C
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int C_VALUE = 4;
 
 	/**
 	 * An array of all the '<em><b>Priority</b></em>' enumerators.
@@ -89,9 +123,11 @@ public enum Priority implements Enumerator {
 	 */
 	private static final Priority[] VALUES_ARRAY =
 		new Priority[] {
-			H,
-			M,
+			N,
 			L,
+			M,
+			H,
+			C,
 		};
 
 	/**
@@ -148,9 +184,11 @@ public enum Priority implements Enumerator {
 	 */
 	public static Priority get(int value) {
 		switch (value) {
-			case H_VALUE: return H;
-			case M_VALUE: return M;
+			case N_VALUE: return N;
 			case L_VALUE: return L;
+			case M_VALUE: return M;
+			case H_VALUE: return H;
+			case C_VALUE: return C;
 		}
 		return null;
 	}
