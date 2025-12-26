@@ -38,6 +38,7 @@ import org.secdfd.model.MLContract
 import org.secdfd.model.ClassificationContract
 import org.secdfd.model.ClusteringContract
 import org.secdfd.model.DecisionMakingContract
+import org.secdfd.model.RecommendationContract
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -953,6 +954,20 @@ class eDFDToGraphTransformation {
 	          println('''[DEBUG]   Edge labels after setting Privacy: «outgoing.edgelabel.map[objective.literal + '=' + level].join(', ')»''')
 	        }
 	        
+	        // Handle RecommendationContract: lbl_recommendation(p_1, ..., p_n, s) = L, if s = true; N, otherwise
+	        if (contract instanceof RecommendationContract && !privacyLabelContractFound) {
+	          privacyLabelContractFound = true
+	          privacyLabelContractName = "RecommendationContract"
+	          val s = (contract as RecommendationContract).isS()
+	          // lbl_recommendation(p_1, ..., p_n, s) = L, if s = true; N, otherwise
+	          privacyLabelLevel = if (s) 1 else 0 // L=1 if person-specific, N=0 otherwise
+	          upsertLabel_Edge(outgoing.edgelabel, Objective.PRIVACY, privacyLabelLevel)
+	          
+	          println('''[DEBUG] Label propagation of edge «outgoing.ID», «outgoing.number»''')
+	          println('''[DEBUG]   Found «privacyLabelContractName», setting Privacy=«privacyLabelLevel» (person-specific=«s»)''')
+	          println('''[DEBUG]   Edge labels after setting Privacy: «outgoing.edgelabel.map[objective.literal + '=' + level].join(', ')»''')
+	        }
+	        
 	        // Handle ClusteringContract: lbl_clustering(p_1, ..., p_n) = N, if p_1 ⊔ p_2 ⊔ ... ⊔ p_n = N; L, otherwise
 	        if (contract instanceof ClusteringContract && !privacyLabelContractFound) {
 	          privacyLabelContractFound = true
@@ -1293,6 +1308,13 @@ class eDFDToGraphTransformation {
 			return if (pAction !== null) lvl(pAction) else lvl(Priority.L) // Default to L
 		}
 		
+		// RecommendationContract: uses S (Boolean) attribute
+		// lbl_recommendation(p_1, ..., p_n, s) = L, if s = true; N, otherwise
+		if (contract instanceof RecommendationContract) {
+			val s = (contract as RecommendationContract).isS()
+			return if (s) 1 else 0 // L=1 if person-specific, N=0 otherwise
+		}
+		
 		// ClusteringContract: returns null because it needs input assets to calculate
 		// The actual calculation happens in the asset loop based on input assets
 		// This ensures it's not marked as "already handled" in the first loop
@@ -1377,6 +1399,8 @@ class eDFDToGraphTransformation {
                        "Classification"
                      } else if (contract instanceof DecisionMakingContract) {
                        "DecisionMaking"
+                     } else if (contract instanceof RecommendationContract) {
+                       "Recommendation"
                      } else if (contract instanceof ClusteringContract) {
                        "Clustering"
                      } else if (it.task !== null && !it.task.empty) {

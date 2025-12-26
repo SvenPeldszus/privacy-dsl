@@ -163,4 +163,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="PAction" eType="#//Priority"
         defaultValueLiteral="L"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecommendationContract" eSuperTypes="#//ContractBase">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="S" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+  </eClassifiers>
 </ecore:EPackage>

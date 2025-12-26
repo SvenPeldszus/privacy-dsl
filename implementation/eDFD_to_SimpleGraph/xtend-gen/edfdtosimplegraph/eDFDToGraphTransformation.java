@@ -61,6 +61,7 @@ import org.secdfd.model.MLContractType;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
 import org.secdfd.model.Priority;
+import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
 import org.secdfd.model.SecurityContractType;
 import org.secdfd.model.TrustZone;
@@ -950,24 +951,15 @@ public class eDFDToGraphTransformation {
                 _builder_5.append(_join_1);
                 InputOutput.<String>println(_builder_5.toString());
               }
-              if (((contract instanceof ClusteringContract) && (!privacyLabelContractFound))) {
+              if (((contract instanceof RecommendationContract) && (!privacyLabelContractFound))) {
                 privacyLabelContractFound = true;
-                privacyLabelContractName = "ClusteringContract";
-                final Function1<GraphAsset, Boolean> _function_3 = (GraphAsset ina) -> {
-                  boolean _xblockexpression = false;
-                  {
-                    final int inaPrivacyLevel = this.levelOf(ina.getAssetlabel(), Objective.PRIVACY);
-                    _xblockexpression = (inaPrivacyLevel != 0);
-                  }
-                  return Boolean.valueOf(_xblockexpression);
-                };
-                boolean _exists = IterableExtensions.<GraphAsset>exists(nr.getIncomingassets(), _function_3);
-                final boolean allPrivacyLabelsAreN = (!_exists);
+                privacyLabelContractName = "RecommendationContract";
+                final boolean s = ((RecommendationContract) contract).isS();
                 int _xifexpression = (int) 0;
-                if (allPrivacyLabelsAreN) {
-                  _xifexpression = 0;
-                } else {
+                if (s) {
                   _xifexpression = 1;
+                } else {
+                  _xifexpression = 0;
                 }
                 privacyLabelLevel = _xifexpression;
                 this.upsertLabel_Edge(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLabelLevel);
@@ -984,21 +976,71 @@ public class eDFDToGraphTransformation {
                 _builder_7.append(privacyLabelContractName);
                 _builder_7.append(", setting Privacy=");
                 _builder_7.append(privacyLabelLevel);
-                _builder_7.append(" (all inputs N=");
-                _builder_7.append(allPrivacyLabelsAreN);
+                _builder_7.append(" (person-specific=");
+                _builder_7.append(s);
                 _builder_7.append(")");
                 InputOutput.<String>println(_builder_7.toString());
                 StringConcatenation _builder_8 = new StringConcatenation();
                 _builder_8.append("[DEBUG]   Edge labels after setting Privacy: ");
-                final Function1<EdgeLabel, String> _function_4 = (EdgeLabel it_1) -> {
+                final Function1<EdgeLabel, String> _function_3 = (EdgeLabel it_1) -> {
                   String _literal = it_1.getObjective().getLiteral();
                   String _plus = (_literal + "=");
                   int _level = it_1.getLevel();
                   return (_plus + Integer.valueOf(_level));
                 };
-                String _join_2 = IterableExtensions.join(ListExtensions.<EdgeLabel, String>map(outgoing.getEdgelabel(), _function_4), ", ");
+                String _join_2 = IterableExtensions.join(ListExtensions.<EdgeLabel, String>map(outgoing.getEdgelabel(), _function_3), ", ");
                 _builder_8.append(_join_2);
                 InputOutput.<String>println(_builder_8.toString());
+              }
+              if (((contract instanceof ClusteringContract) && (!privacyLabelContractFound))) {
+                privacyLabelContractFound = true;
+                privacyLabelContractName = "ClusteringContract";
+                final Function1<GraphAsset, Boolean> _function_4 = (GraphAsset ina) -> {
+                  boolean _xblockexpression = false;
+                  {
+                    final int inaPrivacyLevel = this.levelOf(ina.getAssetlabel(), Objective.PRIVACY);
+                    _xblockexpression = (inaPrivacyLevel != 0);
+                  }
+                  return Boolean.valueOf(_xblockexpression);
+                };
+                boolean _exists = IterableExtensions.<GraphAsset>exists(nr.getIncomingassets(), _function_4);
+                final boolean allPrivacyLabelsAreN = (!_exists);
+                int _xifexpression_1 = (int) 0;
+                if (allPrivacyLabelsAreN) {
+                  _xifexpression_1 = 0;
+                } else {
+                  _xifexpression_1 = 1;
+                }
+                privacyLabelLevel = _xifexpression_1;
+                this.upsertLabel_Edge(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLabelLevel);
+                StringConcatenation _builder_9 = new StringConcatenation();
+                _builder_9.append("[DEBUG] Label propagation of edge ");
+                String _iD_3 = outgoing.getID();
+                _builder_9.append(_iD_3);
+                _builder_9.append(", ");
+                int _number_3 = outgoing.getNumber();
+                _builder_9.append(_number_3);
+                InputOutput.<String>println(_builder_9.toString());
+                StringConcatenation _builder_10 = new StringConcatenation();
+                _builder_10.append("[DEBUG]   Found ");
+                _builder_10.append(privacyLabelContractName);
+                _builder_10.append(", setting Privacy=");
+                _builder_10.append(privacyLabelLevel);
+                _builder_10.append(" (all inputs N=");
+                _builder_10.append(allPrivacyLabelsAreN);
+                _builder_10.append(")");
+                InputOutput.<String>println(_builder_10.toString());
+                StringConcatenation _builder_11 = new StringConcatenation();
+                _builder_11.append("[DEBUG]   Edge labels after setting Privacy: ");
+                final Function1<EdgeLabel, String> _function_5 = (EdgeLabel it_1) -> {
+                  String _literal = it_1.getObjective().getLiteral();
+                  String _plus = (_literal + "=");
+                  int _level = it_1.getLevel();
+                  return (_plus + Integer.valueOf(_level));
+                };
+                String _join_3 = IterableExtensions.join(ListExtensions.<EdgeLabel, String>map(outgoing.getEdgelabel(), _function_5), ", ");
+                _builder_11.append(_join_3);
+                InputOutput.<String>println(_builder_11.toString());
               }
             }
           }
@@ -1393,6 +1435,16 @@ public class eDFDToGraphTransformation {
       }
       return Integer.valueOf(_xifexpression_1);
     }
+    if ((contract instanceof RecommendationContract)) {
+      final boolean s = ((RecommendationContract) contract).isS();
+      int _xifexpression_2 = (int) 0;
+      if (s) {
+        _xifexpression_2 = 1;
+      } else {
+        _xifexpression_2 = 0;
+      }
+      return Integer.valueOf(_xifexpression_2);
+    }
     if ((contract instanceof ClusteringContract)) {
       return null;
     }
@@ -1498,14 +1550,20 @@ public class eDFDToGraphTransformation {
             _xifexpression_2 = "DecisionMaking";
           } else {
             String _xifexpression_3 = null;
-            if ((contract instanceof ClusteringContract)) {
-              _xifexpression_3 = "Clustering";
+            if ((contract instanceof RecommendationContract)) {
+              _xifexpression_3 = "Recommendation";
             } else {
               String _xifexpression_4 = null;
-              if (((it.getTask() != null) && (!it.getTask().isEmpty()))) {
-                _xifexpression_4 = it.getTask().toString().replace("[", "").replace("]", "");
+              if ((contract instanceof ClusteringContract)) {
+                _xifexpression_4 = "Clustering";
               } else {
-                _xifexpression_4 = "";
+                String _xifexpression_5 = null;
+                if (((it.getTask() != null) && (!it.getTask().isEmpty()))) {
+                  _xifexpression_5 = it.getTask().toString().replace("[", "").replace("]", "");
+                } else {
+                  _xifexpression_5 = "";
+                }
+                _xifexpression_4 = _xifexpression_5;
               }
               _xifexpression_3 = _xifexpression_4;
             }

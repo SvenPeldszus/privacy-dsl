@@ -162,6 +162,7 @@ public class ModelTables extends AbstractTables
 		public static final EcoreExecutorEnumeration _Objective = new EcoreExecutorEnumeration(ModelPackage.Literals.OBJECTIVE, PACKAGE, 0);
 		public static final EcoreExecutorEnumeration _Priority = new EcoreExecutorEnumeration(ModelPackage.Literals.PRIORITY, PACKAGE, 0);
 		public static final EcoreExecutorType _Process = new EcoreExecutorType(ModelPackage.Literals.PROCESS, PACKAGE, 0);
+		public static final EcoreExecutorType _RecommendationContract = new EcoreExecutorType(ModelPackage.Literals.RECOMMENDATION_CONTRACT, PACKAGE, 0);
 		public static final EcoreExecutorType _SecurityContract = new EcoreExecutorType(ModelPackage.Literals.SECURITY_CONTRACT, PACKAGE, 0);
 		public static final EcoreExecutorEnumeration _SecurityContractType = new EcoreExecutorEnumeration(ModelPackage.Literals.SECURITY_CONTRACT_TYPE, PACKAGE, 0);
 		public static final EcoreExecutorType _TrustZone = new EcoreExecutorType(ModelPackage.Literals.TRUST_ZONE, PACKAGE, 0);
@@ -189,6 +190,7 @@ public class ModelTables extends AbstractTables
 			_Objective,
 			_Priority,
 			_Process,
+			_RecommendationContract,
 			_SecurityContract,
 			_SecurityContractType,
 			_TrustZone,
@@ -335,6 +337,12 @@ public class ModelTables extends AbstractTables
 		private static final ExecutorFragment _Process__OclElement = new ExecutorFragment(Types._Process, OCLstdlibTables.Types._OclElement);
 		private static final ExecutorFragment _Process__Process = new ExecutorFragment(Types._Process, ModelTables.Types._Process);
 
+		private static final ExecutorFragment _RecommendationContract__ContractBase = new ExecutorFragment(Types._RecommendationContract, ModelTables.Types._ContractBase);
+		private static final ExecutorFragment _RecommendationContract__NamedEntity = new ExecutorFragment(Types._RecommendationContract, ModelTables.Types._NamedEntity);
+		private static final ExecutorFragment _RecommendationContract__OclAny = new ExecutorFragment(Types._RecommendationContract, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _RecommendationContract__OclElement = new ExecutorFragment(Types._RecommendationContract, OCLstdlibTables.Types._OclElement);
+		private static final ExecutorFragment _RecommendationContract__RecommendationContract = new ExecutorFragment(Types._RecommendationContract, ModelTables.Types._RecommendationContract);
+
 		private static final ExecutorFragment _SecurityContract__ContractBase = new ExecutorFragment(Types._SecurityContract, ModelTables.Types._ContractBase);
 		private static final ExecutorFragment _SecurityContract__NamedEntity = new ExecutorFragment(Types._SecurityContract, ModelTables.Types._NamedEntity);
 		private static final ExecutorFragment _SecurityContract__OclAny = new ExecutorFragment(Types._SecurityContract, OCLstdlibTables.Types._OclAny);
@@ -479,6 +487,8 @@ public class ModelTables extends AbstractTables
 		public static final ExecutorProperty _NamedEntity__number = new EcoreExecutorProperty(ModelPackage.Literals.NAMED_ENTITY__NUMBER, Types._NamedEntity, 1);
 
 		public static final ExecutorProperty _Process__responsibility = new EcoreExecutorProperty(ModelPackage.Literals.PROCESS__RESPONSIBILITY, Types._Process, 0);
+
+		public static final ExecutorProperty _RecommendationContract__S = new EcoreExecutorProperty(ModelPackage.Literals.RECOMMENDATION_CONTRACT__S, Types._RecommendationContract, 0);
 
 		public static final ExecutorProperty _SecurityContract__Task = new EcoreExecutorProperty(ModelPackage.Literals.SECURITY_CONTRACT__TASK, Types._SecurityContract, 0);
 
@@ -711,6 +721,16 @@ public class ModelTables extends AbstractTables
 			};
 		private static final int /*@NonNull*/ [] __Process = { 1,1,1,1,1 };
 
+		private static final ExecutorFragment /*@NonNull*/ [] _RecommendationContract =
+			{
+				Fragments._RecommendationContract__OclAny /* 0 */,
+				Fragments._RecommendationContract__OclElement /* 1 */,
+				Fragments._RecommendationContract__NamedEntity /* 2 */,
+				Fragments._RecommendationContract__ContractBase /* 3 */,
+				Fragments._RecommendationContract__RecommendationContract /* 4 */
+			};
+		private static final int /*@NonNull*/ [] __RecommendationContract = { 1,1,1,1,1 };
+
 		private static final ExecutorFragment /*@NonNull*/ [] _SecurityContract =
 			{
 				Fragments._SecurityContract__OclAny /* 0 */,
@@ -774,6 +794,7 @@ public class ModelTables extends AbstractTables
 			Types._Objective.initFragments(_Objective, __Objective);
 			Types._Priority.initFragments(_Priority, __Priority);
 			Types._Process.initFragments(_Process, __Process);
+			Types._RecommendationContract.initFragments(_RecommendationContract, __RecommendationContract);
 			Types._SecurityContract.initFragments(_SecurityContract, __SecurityContract);
 			Types._SecurityContractType.initFragments(_SecurityContractType, __SecurityContractType);
 			Types._TrustZone.initFragments(_TrustZone, __TrustZone);
@@ -1547,6 +1568,41 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
+		private static final ExecutorOperation /*@NonNull*/ [] _RecommendationContract__RecommendationContract = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _RecommendationContract__ContractBase = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _RecommendationContract__NamedEntity = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _RecommendationContract__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _RecommendationContract__OclElement = {
+			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
+			OCLstdlibTables.Operations._OclElement__1_oclBase /* oclBase(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclExtension /* oclExtension(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclExtensions /* oclExtensions() */,
+			OCLstdlibTables.Operations._OclElement__1_oclExtensions /* oclExtensions(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+
 		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContract__SecurityContract = {};
 		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContract__ContractBase = {};
 		private static final ExecutorOperation /*@NonNull*/ [] _SecurityContract__NamedEntity = {};
@@ -1810,6 +1866,12 @@ public class ModelTables extends AbstractTables
 			Fragments._Process__OclElement.initOperations(_Process__OclElement);
 			Fragments._Process__Process.initOperations(_Process__Process);
 
+			Fragments._RecommendationContract__ContractBase.initOperations(_RecommendationContract__ContractBase);
+			Fragments._RecommendationContract__NamedEntity.initOperations(_RecommendationContract__NamedEntity);
+			Fragments._RecommendationContract__OclAny.initOperations(_RecommendationContract__OclAny);
+			Fragments._RecommendationContract__OclElement.initOperations(_RecommendationContract__OclElement);
+			Fragments._RecommendationContract__RecommendationContract.initOperations(_RecommendationContract__RecommendationContract);
+
 			Fragments._SecurityContract__ContractBase.initOperations(_SecurityContract__ContractBase);
 			Fragments._SecurityContract__NamedEntity.initOperations(_SecurityContract__NamedEntity);
 			Fragments._SecurityContract__OclAny.initOperations(_SecurityContract__OclAny);
@@ -2041,6 +2103,17 @@ public class ModelTables extends AbstractTables
 			ModelTables.Properties._Process__responsibility
 		};
 
+		private static final ExecutorProperty /*@NonNull*/ [] _RecommendationContract = {
+			ModelTables.Properties._RecommendationContract__S,
+			ModelTables.Properties._ContractBase__incomeassets,
+			ModelTables.Properties._NamedEntity__name,
+			ModelTables.Properties._NamedEntity__number,
+			OCLstdlibTables.Properties._OclElement__oclContainer,
+			OCLstdlibTables.Properties._OclElement__oclContents,
+			ModelTables.Properties._ContractBase__outcomeassets,
+			ModelTables.Properties._ContractBase__process
+		};
+
 		private static final ExecutorProperty /*@NonNull*/ [] _SecurityContract = {
 			ModelTables.Properties._SecurityContract__Task,
 			ModelTables.Properties._ContractBase__incomeassets,
@@ -2104,6 +2177,7 @@ public class ModelTables extends AbstractTables
 			Fragments._Objective__Objective.initProperties(_Objective);
 			Fragments._Priority__Priority.initProperties(_Priority);
 			Fragments._Process__Process.initProperties(_Process);
+			Fragments._RecommendationContract__RecommendationContract.initProperties(_RecommendationContract);
 			Fragments._SecurityContract__SecurityContract.initProperties(_SecurityContract);
 			Fragments._SecurityContractType__SecurityContractType.initProperties(_SecurityContractType);
 			Fragments._TrustZone__TrustZone.initProperties(_TrustZone);

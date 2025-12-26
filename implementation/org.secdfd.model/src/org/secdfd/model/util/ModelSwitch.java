@@ -22,6 +22,7 @@ import org.secdfd.model.Flow;
 import org.secdfd.model.MLContract;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
+import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
@@ -213,6 +214,14 @@ public class ModelSwitch<T> extends Switch<T> {
 				T result = caseDecisionMakingContract(decisionMakingContract);
 				if (result == null) result = caseContractBase(decisionMakingContract);
 				if (result == null) result = caseNamedEntity(decisionMakingContract);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.RECOMMENDATION_CONTRACT: {
+				RecommendationContract recommendationContract = (RecommendationContract)theEObject;
+				T result = caseRecommendationContract(recommendationContract);
+				if (result == null) result = caseContractBase(recommendationContract);
+				if (result == null) result = caseNamedEntity(recommendationContract);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -487,6 +496,21 @@ public class ModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDecisionMakingContract(DecisionMakingContract object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Recommendation Contract</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Recommendation Contract</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRecommendationContract(RecommendationContract object) {
 		return null;
 	}
 

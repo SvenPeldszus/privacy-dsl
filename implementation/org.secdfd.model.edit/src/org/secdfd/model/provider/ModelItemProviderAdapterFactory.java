@@ -417,6 +417,29 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.secdfd.model.RecommendationContract} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RecommendationContractItemProvider recommendationContractItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.secdfd.model.RecommendationContract}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRecommendationContractAdapter() {
+		if (recommendationContractItemProvider == null) {
+			recommendationContractItemProvider = new RecommendationContractItemProvider(this);
+		}
+
+		return recommendationContractItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -536,6 +559,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 		if (classificationContractItemProvider != null) classificationContractItemProvider.dispose();
 		if (clusteringContractItemProvider != null) clusteringContractItemProvider.dispose();
 		if (decisionMakingContractItemProvider != null) decisionMakingContractItemProvider.dispose();
+		if (recommendationContractItemProvider != null) recommendationContractItemProvider.dispose();
 	}
 
 }

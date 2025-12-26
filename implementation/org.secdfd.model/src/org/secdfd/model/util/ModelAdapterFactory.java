@@ -15,6 +15,7 @@ import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.DecisionMakingContract;
+import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.EDFD;
@@ -155,6 +156,10 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseDecisionMakingContract(DecisionMakingContract object) {
 				return createDecisionMakingContractAdapter();
+			}
+			@Override
+			public Adapter caseRecommendationContract(RecommendationContract object) {
+				return createRecommendationContractAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -425,6 +430,20 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDecisionMakingContractAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.secdfd.model.RecommendationContract <em>Recommendation Contract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.secdfd.model.RecommendationContract
+	 * @generated
+	 */
+	public Adapter createRecommendationContractAdapter() {
 		return null;
 	}
 

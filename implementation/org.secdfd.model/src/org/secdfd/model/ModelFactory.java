@@ -157,6 +157,15 @@ public interface ModelFactory extends EFactory {
 	DecisionMakingContract createDecisionMakingContract();
 
 	/**
+	 * Returns a new object of class '<em>Recommendation Contract</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Recommendation Contract</em>'.
+	 * @generated
+	 */
+	RecommendationContract createRecommendationContract();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
