@@ -121,5 +121,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ClassificationContract/PClass"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//ClusteringContract"/>
+    <genClasses ecoreClass="model.ecore#//DecisionMakingContract">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//DecisionMakingContract/PAction"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

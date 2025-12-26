@@ -394,6 +394,29 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.secdfd.model.DecisionMakingContract} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DecisionMakingContractItemProvider decisionMakingContractItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.secdfd.model.DecisionMakingContract}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDecisionMakingContractAdapter() {
+		if (decisionMakingContractItemProvider == null) {
+			decisionMakingContractItemProvider = new DecisionMakingContractItemProvider(this);
+		}
+
+		return decisionMakingContractItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -512,6 +535,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 		if (mlContractItemProvider != null) mlContractItemProvider.dispose();
 		if (classificationContractItemProvider != null) classificationContractItemProvider.dispose();
 		if (clusteringContractItemProvider != null) clusteringContractItemProvider.dispose();
+		if (decisionMakingContractItemProvider != null) decisionMakingContractItemProvider.dispose();
 	}
 
 }

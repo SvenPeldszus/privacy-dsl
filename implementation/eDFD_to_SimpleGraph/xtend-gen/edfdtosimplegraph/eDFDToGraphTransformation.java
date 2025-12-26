@@ -53,6 +53,7 @@ import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
+import org.secdfd.model.DecisionMakingContract;
 import org.secdfd.model.Element;
 import org.secdfd.model.Flow;
 import org.secdfd.model.MLContract;
@@ -421,7 +422,13 @@ public class eDFDToGraphTransformation {
               if ((eDFDResponsibility instanceof ClusteringContract)) {
                 _xifexpression_5 = "[Clustering]";
               } else {
-                _xifexpression_5 = "";
+                String _xifexpression_6 = null;
+                if ((eDFDResponsibility instanceof DecisionMakingContract)) {
+                  _xifexpression_6 = "[DecisionMaking]";
+                } else {
+                  _xifexpression_6 = "";
+                }
+                _xifexpression_5 = _xifexpression_6;
               }
               _xifexpression_4 = _xifexpression_5;
             }
@@ -900,26 +907,18 @@ public class eDFDToGraphTransformation {
                 _builder_2.append(_join);
                 InputOutput.<String>println(_builder_2.toString());
               }
-              if (((contract instanceof ClusteringContract) && (!privacyLabelContractFound))) {
+              if (((contract instanceof DecisionMakingContract) && (!privacyLabelContractFound))) {
                 privacyLabelContractFound = true;
-                privacyLabelContractName = "ClusteringContract";
-                final Function1<GraphAsset, Boolean> _function_2 = (GraphAsset ina) -> {
-                  boolean _xblockexpression = false;
-                  {
-                    final int inaPrivacyLevel = this.levelOf(ina.getAssetlabel(), Objective.PRIVACY);
-                    _xblockexpression = (inaPrivacyLevel != 0);
-                  }
-                  return Boolean.valueOf(_xblockexpression);
-                };
-                boolean _exists = IterableExtensions.<GraphAsset>exists(nr.getIncomingassets(), _function_2);
-                final boolean allPrivacyLabelsAreN = (!_exists);
-                int _xifexpression = (int) 0;
-                if (allPrivacyLabelsAreN) {
-                  _xifexpression = 0;
+                privacyLabelContractName = "DecisionMakingContract";
+                Priority _elvis_1 = null;
+                Priority _pAction = ((DecisionMakingContract) contract).getPAction();
+                if (_pAction != null) {
+                  _elvis_1 = _pAction;
                 } else {
-                  _xifexpression = 1;
+                  _elvis_1 = Priority.L;
                 }
-                privacyLabelLevel = _xifexpression;
+                final Priority pAction = _elvis_1;
+                privacyLabelLevel = this.lvl(pAction);
                 this.upsertLabel_Edge(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLabelLevel);
                 StringConcatenation _builder_3 = new StringConcatenation();
                 _builder_3.append("[DEBUG] Label propagation of edge ");
@@ -934,21 +933,72 @@ public class eDFDToGraphTransformation {
                 _builder_4.append(privacyLabelContractName);
                 _builder_4.append(", setting Privacy=");
                 _builder_4.append(privacyLabelLevel);
-                _builder_4.append(" (all inputs N=");
-                _builder_4.append(allPrivacyLabelsAreN);
+                _builder_4.append(" (from pAction=");
+                String _name_1 = pAction.getName();
+                _builder_4.append(_name_1);
                 _builder_4.append(")");
                 InputOutput.<String>println(_builder_4.toString());
                 StringConcatenation _builder_5 = new StringConcatenation();
                 _builder_5.append("[DEBUG]   Edge labels after setting Privacy: ");
-                final Function1<EdgeLabel, String> _function_3 = (EdgeLabel it_1) -> {
+                final Function1<EdgeLabel, String> _function_2 = (EdgeLabel it_1) -> {
                   String _literal = it_1.getObjective().getLiteral();
                   String _plus = (_literal + "=");
                   int _level = it_1.getLevel();
                   return (_plus + Integer.valueOf(_level));
                 };
-                String _join_1 = IterableExtensions.join(ListExtensions.<EdgeLabel, String>map(outgoing.getEdgelabel(), _function_3), ", ");
+                String _join_1 = IterableExtensions.join(ListExtensions.<EdgeLabel, String>map(outgoing.getEdgelabel(), _function_2), ", ");
                 _builder_5.append(_join_1);
                 InputOutput.<String>println(_builder_5.toString());
+              }
+              if (((contract instanceof ClusteringContract) && (!privacyLabelContractFound))) {
+                privacyLabelContractFound = true;
+                privacyLabelContractName = "ClusteringContract";
+                final Function1<GraphAsset, Boolean> _function_3 = (GraphAsset ina) -> {
+                  boolean _xblockexpression = false;
+                  {
+                    final int inaPrivacyLevel = this.levelOf(ina.getAssetlabel(), Objective.PRIVACY);
+                    _xblockexpression = (inaPrivacyLevel != 0);
+                  }
+                  return Boolean.valueOf(_xblockexpression);
+                };
+                boolean _exists = IterableExtensions.<GraphAsset>exists(nr.getIncomingassets(), _function_3);
+                final boolean allPrivacyLabelsAreN = (!_exists);
+                int _xifexpression = (int) 0;
+                if (allPrivacyLabelsAreN) {
+                  _xifexpression = 0;
+                } else {
+                  _xifexpression = 1;
+                }
+                privacyLabelLevel = _xifexpression;
+                this.upsertLabel_Edge(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLabelLevel);
+                StringConcatenation _builder_6 = new StringConcatenation();
+                _builder_6.append("[DEBUG] Label propagation of edge ");
+                String _iD_2 = outgoing.getID();
+                _builder_6.append(_iD_2);
+                _builder_6.append(", ");
+                int _number_2 = outgoing.getNumber();
+                _builder_6.append(_number_2);
+                InputOutput.<String>println(_builder_6.toString());
+                StringConcatenation _builder_7 = new StringConcatenation();
+                _builder_7.append("[DEBUG]   Found ");
+                _builder_7.append(privacyLabelContractName);
+                _builder_7.append(", setting Privacy=");
+                _builder_7.append(privacyLabelLevel);
+                _builder_7.append(" (all inputs N=");
+                _builder_7.append(allPrivacyLabelsAreN);
+                _builder_7.append(")");
+                InputOutput.<String>println(_builder_7.toString());
+                StringConcatenation _builder_8 = new StringConcatenation();
+                _builder_8.append("[DEBUG]   Edge labels after setting Privacy: ");
+                final Function1<EdgeLabel, String> _function_4 = (EdgeLabel it_1) -> {
+                  String _literal = it_1.getObjective().getLiteral();
+                  String _plus = (_literal + "=");
+                  int _level = it_1.getLevel();
+                  return (_plus + Integer.valueOf(_level));
+                };
+                String _join_2 = IterableExtensions.join(ListExtensions.<EdgeLabel, String>map(outgoing.getEdgelabel(), _function_4), ", ");
+                _builder_8.append(_join_2);
+                InputOutput.<String>println(_builder_8.toString());
               }
             }
           }
@@ -1333,6 +1383,16 @@ public class eDFDToGraphTransformation {
       }
       return Integer.valueOf(_xifexpression);
     }
+    if ((contract instanceof DecisionMakingContract)) {
+      final Priority pAction = ((DecisionMakingContract) contract).getPAction();
+      int _xifexpression_1 = (int) 0;
+      if ((pAction != null)) {
+        _xifexpression_1 = this.lvl(pAction);
+      } else {
+        _xifexpression_1 = this.lvl(Priority.L);
+      }
+      return Integer.valueOf(_xifexpression_1);
+    }
     if ((contract instanceof ClusteringContract)) {
       return null;
     }
@@ -1434,14 +1494,20 @@ public class eDFDToGraphTransformation {
           _xifexpression_1 = "Classification";
         } else {
           String _xifexpression_2 = null;
-          if ((contract instanceof ClusteringContract)) {
-            _xifexpression_2 = "Clustering";
+          if ((contract instanceof DecisionMakingContract)) {
+            _xifexpression_2 = "DecisionMaking";
           } else {
             String _xifexpression_3 = null;
-            if (((it.getTask() != null) && (!it.getTask().isEmpty()))) {
-              _xifexpression_3 = it.getTask().toString().replace("[", "").replace("]", "");
+            if ((contract instanceof ClusteringContract)) {
+              _xifexpression_3 = "Clustering";
             } else {
-              _xifexpression_3 = "";
+              String _xifexpression_4 = null;
+              if (((it.getTask() != null) && (!it.getTask().isEmpty()))) {
+                _xifexpression_4 = it.getTask().toString().replace("[", "").replace("]", "");
+              } else {
+                _xifexpression_4 = "";
+              }
+              _xifexpression_3 = _xifexpression_4;
             }
             _xifexpression_2 = _xifexpression_3;
           }

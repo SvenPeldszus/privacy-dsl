@@ -14,6 +14,7 @@ import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
+import org.secdfd.model.DecisionMakingContract;
 import org.secdfd.model.EDFD;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
@@ -204,6 +205,14 @@ public class ModelSwitch<T> extends Switch<T> {
 				T result = caseClusteringContract(clusteringContract);
 				if (result == null) result = caseContractBase(clusteringContract);
 				if (result == null) result = caseNamedEntity(clusteringContract);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.DECISION_MAKING_CONTRACT: {
+				DecisionMakingContract decisionMakingContract = (DecisionMakingContract)theEObject;
+				T result = caseDecisionMakingContract(decisionMakingContract);
+				if (result == null) result = caseContractBase(decisionMakingContract);
+				if (result == null) result = caseNamedEntity(decisionMakingContract);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -463,6 +472,21 @@ public class ModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseClusteringContract(ClusteringContract object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Decision Making Contract</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Decision Making Contract</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDecisionMakingContract(DecisionMakingContract object) {
 		return null;
 	}
 

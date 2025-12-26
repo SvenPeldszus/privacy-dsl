@@ -150,6 +150,7 @@ public class ModelTables extends AbstractTables
 		public static final EcoreExecutorType _ClusteringContract = new EcoreExecutorType(ModelPackage.Literals.CLUSTERING_CONTRACT, PACKAGE, 0);
 		public static final EcoreExecutorType _ContractBase = new EcoreExecutorType(ModelPackage.Literals.CONTRACT_BASE, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final EcoreExecutorType _DataStore = new EcoreExecutorType(ModelPackage.Literals.DATA_STORE, PACKAGE, 0);
+		public static final EcoreExecutorType _DecisionMakingContract = new EcoreExecutorType(ModelPackage.Literals.DECISION_MAKING_CONTRACT, PACKAGE, 0);
 		public static final EcoreExecutorType _EDFD = new EcoreExecutorType(ModelPackage.Literals.EDFD, PACKAGE, 0);
 		public static final EcoreExecutorType _Element = new EcoreExecutorType(ModelPackage.Literals.ELEMENT, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final EcoreExecutorType _ExternalEntity = new EcoreExecutorType(ModelPackage.Literals.EXTERNAL_ENTITY, PACKAGE, 0);
@@ -176,6 +177,7 @@ public class ModelTables extends AbstractTables
 			_ClusteringContract,
 			_ContractBase,
 			_DataStore,
+			_DecisionMakingContract,
 			_EDFD,
 			_Element,
 			_ExternalEntity,
@@ -264,6 +266,12 @@ public class ModelTables extends AbstractTables
 		private static final ExecutorFragment _DataStore__NamedEntity = new ExecutorFragment(Types._DataStore, ModelTables.Types._NamedEntity);
 		private static final ExecutorFragment _DataStore__OclAny = new ExecutorFragment(Types._DataStore, OCLstdlibTables.Types._OclAny);
 		private static final ExecutorFragment _DataStore__OclElement = new ExecutorFragment(Types._DataStore, OCLstdlibTables.Types._OclElement);
+
+		private static final ExecutorFragment _DecisionMakingContract__ContractBase = new ExecutorFragment(Types._DecisionMakingContract, ModelTables.Types._ContractBase);
+		private static final ExecutorFragment _DecisionMakingContract__DecisionMakingContract = new ExecutorFragment(Types._DecisionMakingContract, ModelTables.Types._DecisionMakingContract);
+		private static final ExecutorFragment _DecisionMakingContract__NamedEntity = new ExecutorFragment(Types._DecisionMakingContract, ModelTables.Types._NamedEntity);
+		private static final ExecutorFragment _DecisionMakingContract__OclAny = new ExecutorFragment(Types._DecisionMakingContract, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _DecisionMakingContract__OclElement = new ExecutorFragment(Types._DecisionMakingContract, OCLstdlibTables.Types._OclElement);
 
 		private static final ExecutorFragment _EDFD__EDFD = new ExecutorFragment(Types._EDFD, ModelTables.Types._EDFD);
 		private static final ExecutorFragment _EDFD__NamedEntity = new ExecutorFragment(Types._EDFD, ModelTables.Types._NamedEntity);
@@ -440,6 +448,8 @@ public class ModelTables extends AbstractTables
 		public static final ExecutorProperty _ContractBase__outcomeassets = new EcoreExecutorProperty(ModelPackage.Literals.CONTRACT_BASE__OUTCOMEASSETS, Types._ContractBase, 1);
 		public static final ExecutorProperty _ContractBase__process = new EcoreExecutorProperty(ModelPackage.Literals.CONTRACT_BASE__PROCESS, Types._ContractBase, 2);
 
+		public static final ExecutorProperty _DecisionMakingContract__PAction = new EcoreExecutorProperty(ModelPackage.Literals.DECISION_MAKING_CONTRACT__PACTION, Types._DecisionMakingContract, 0);
+
 		public static final ExecutorProperty _EDFD__asset = new EcoreExecutorProperty(ModelPackage.Literals.EDFD__ASSET, Types._EDFD, 0);
 		public static final ExecutorProperty _EDFD__elements = new EcoreExecutorProperty(ModelPackage.Literals.EDFD__ELEMENTS, Types._EDFD, 1);
 		public static final ExecutorProperty _EDFD__trustzones = new EcoreExecutorProperty(ModelPackage.Literals.EDFD__TRUSTZONES, Types._EDFD, 2);
@@ -584,6 +594,16 @@ public class ModelTables extends AbstractTables
 				Fragments._DataStore__DataStore /* 4 */
 			};
 		private static final int /*@NonNull*/ [] __DataStore = { 1,1,1,1,1 };
+
+		private static final ExecutorFragment /*@NonNull*/ [] _DecisionMakingContract =
+			{
+				Fragments._DecisionMakingContract__OclAny /* 0 */,
+				Fragments._DecisionMakingContract__OclElement /* 1 */,
+				Fragments._DecisionMakingContract__NamedEntity /* 2 */,
+				Fragments._DecisionMakingContract__ContractBase /* 3 */,
+				Fragments._DecisionMakingContract__DecisionMakingContract /* 4 */
+			};
+		private static final int /*@NonNull*/ [] __DecisionMakingContract = { 1,1,1,1,1 };
 
 		private static final ExecutorFragment /*@NonNull*/ [] _EDFD =
 			{
@@ -742,6 +762,7 @@ public class ModelTables extends AbstractTables
 			Types._ClusteringContract.initFragments(_ClusteringContract, __ClusteringContract);
 			Types._ContractBase.initFragments(_ContractBase, __ContractBase);
 			Types._DataStore.initFragments(_DataStore, __DataStore);
+			Types._DecisionMakingContract.initFragments(_DecisionMakingContract, __DecisionMakingContract);
 			Types._EDFD.initFragments(_EDFD, __EDFD);
 			Types._Element.initFragments(_Element, __Element);
 			Types._ExternalEntity.initFragments(_ExternalEntity, __ExternalEntity);
@@ -1080,6 +1101,41 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
 		private static final ExecutorOperation /*@NonNull*/ [] _DataStore__OclElement = {
+			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
+			OCLstdlibTables.Operations._OclElement__1_oclBase /* oclBase(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclExtension /* oclExtension(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclExtensions /* oclExtensions() */,
+			OCLstdlibTables.Operations._OclElement__1_oclExtensions /* oclExtensions(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+
+		private static final ExecutorOperation /*@NonNull*/ [] _DecisionMakingContract__DecisionMakingContract = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _DecisionMakingContract__ContractBase = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _DecisionMakingContract__NamedEntity = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _DecisionMakingContract__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _DecisionMakingContract__OclElement = {
 			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
 			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
 			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
@@ -1686,6 +1742,12 @@ public class ModelTables extends AbstractTables
 			Fragments._DataStore__OclAny.initOperations(_DataStore__OclAny);
 			Fragments._DataStore__OclElement.initOperations(_DataStore__OclElement);
 
+			Fragments._DecisionMakingContract__ContractBase.initOperations(_DecisionMakingContract__ContractBase);
+			Fragments._DecisionMakingContract__DecisionMakingContract.initOperations(_DecisionMakingContract__DecisionMakingContract);
+			Fragments._DecisionMakingContract__NamedEntity.initOperations(_DecisionMakingContract__NamedEntity);
+			Fragments._DecisionMakingContract__OclAny.initOperations(_DecisionMakingContract__OclAny);
+			Fragments._DecisionMakingContract__OclElement.initOperations(_DecisionMakingContract__OclElement);
+
 			Fragments._EDFD__EDFD.initOperations(_EDFD__EDFD);
 			Fragments._EDFD__NamedEntity.initOperations(_EDFD__NamedEntity);
 			Fragments._EDFD__OclAny.initOperations(_EDFD__OclAny);
@@ -1867,6 +1929,17 @@ public class ModelTables extends AbstractTables
 			ModelTables.Properties._Element__outflows
 		};
 
+		private static final ExecutorProperty /*@NonNull*/ [] _DecisionMakingContract = {
+			ModelTables.Properties._DecisionMakingContract__PAction,
+			ModelTables.Properties._ContractBase__incomeassets,
+			ModelTables.Properties._NamedEntity__name,
+			ModelTables.Properties._NamedEntity__number,
+			OCLstdlibTables.Properties._OclElement__oclContainer,
+			OCLstdlibTables.Properties._OclElement__oclContents,
+			ModelTables.Properties._ContractBase__outcomeassets,
+			ModelTables.Properties._ContractBase__process
+		};
+
 		private static final ExecutorProperty /*@NonNull*/ [] _EDFD = {
 			ModelTables.Properties._EDFD__asset,
 			ModelTables.Properties._EDFD__elements,
@@ -2019,6 +2092,7 @@ public class ModelTables extends AbstractTables
 			Fragments._ClusteringContract__ClusteringContract.initProperties(_ClusteringContract);
 			Fragments._ContractBase__ContractBase.initProperties(_ContractBase);
 			Fragments._DataStore__DataStore.initProperties(_DataStore);
+			Fragments._DecisionMakingContract__DecisionMakingContract.initProperties(_DecisionMakingContract);
 			Fragments._EDFD__EDFD.initProperties(_EDFD);
 			Fragments._Element__Element.initProperties(_Element);
 			Fragments._ExternalEntity__ExternalEntity.initProperties(_ExternalEntity);

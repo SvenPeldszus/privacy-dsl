@@ -22,6 +22,7 @@ import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
+import org.secdfd.model.DecisionMakingContract;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
@@ -164,6 +165,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EClass clusteringContractEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass decisionMakingContractEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -801,6 +809,26 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getDecisionMakingContract() {
+		return decisionMakingContractEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDecisionMakingContract_PAction() {
+		return (EAttribute)decisionMakingContractEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getPriority() {
 		return priorityEEnum;
 	}
@@ -962,6 +990,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		clusteringContractEClass = createEClass(CLUSTERING_CONTRACT);
 
+		decisionMakingContractEClass = createEClass(DECISION_MAKING_CONTRACT);
+		createEAttribute(decisionMakingContractEClass, DECISION_MAKING_CONTRACT__PACTION);
+
 		// Create enums
 		priorityEEnum = createEEnum(PRIORITY);
 		channelEEnum = createEEnum(CHANNEL);
@@ -1014,6 +1045,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		mlContractEClass.getESuperTypes().add(this.getContractBase());
 		classificationContractEClass.getESuperTypes().add(this.getContractBase());
 		clusteringContractEClass.getESuperTypes().add(this.getContractBase());
+		decisionMakingContractEClass.getESuperTypes().add(this.getContractBase());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(assetEClass, Asset.class, "Asset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1091,6 +1123,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getClassificationContract_PClass(), this.getPriority(), "PClass", "L", 0, 1, ClassificationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(clusteringContractEClass, ClusteringContract.class, "ClusteringContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(decisionMakingContractEClass, DecisionMakingContract.class, "DecisionMakingContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDecisionMakingContract_PAction(), this.getPriority(), "PAction", "L", 0, 1, DecisionMakingContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(priorityEEnum, Priority.class, "Priority");

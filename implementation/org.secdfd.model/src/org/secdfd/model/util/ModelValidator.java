@@ -20,6 +20,7 @@ import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
+import org.secdfd.model.DecisionMakingContract;
 import org.secdfd.model.EDFD;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
@@ -150,6 +151,8 @@ public class ModelValidator extends EObjectValidator {
 				return validateClassificationContract((ClassificationContract)value, diagnostics, context);
 			case ModelPackage.CLUSTERING_CONTRACT:
 				return validateClusteringContract((ClusteringContract)value, diagnostics, context);
+			case ModelPackage.DECISION_MAKING_CONTRACT:
+				return validateDecisionMakingContract((DecisionMakingContract)value, diagnostics, context);
 			case ModelPackage.PRIORITY:
 				return validatePriority((Priority)value, diagnostics, context);
 			case ModelPackage.CHANNEL:
@@ -340,6 +343,15 @@ public class ModelValidator extends EObjectValidator {
 	 */
 	public boolean validateClusteringContract(ClusteringContract clusteringContract, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(clusteringContract, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDecisionMakingContract(DecisionMakingContract decisionMakingContract, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(decisionMakingContract, diagnostics, context);
 	}
 
 	/**

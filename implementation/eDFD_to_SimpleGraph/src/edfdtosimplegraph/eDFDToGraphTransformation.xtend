@@ -37,6 +37,7 @@ import org.secdfd.model.ContractBase
 import org.secdfd.model.MLContract
 import org.secdfd.model.ClassificationContract
 import org.secdfd.model.ClusteringContract
+import org.secdfd.model.DecisionMakingContract
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -331,6 +332,8 @@ class eDFDToGraphTransformation {
     		"[Classification]"
     	} else if (eDFDResponsibility instanceof ClusteringContract) {
     		"[Clustering]"
+    	} else if (eDFDResponsibility instanceof DecisionMakingContract) {
+    		"[DecisionMaking]"
     	} else {
     		''
     	}
@@ -936,6 +939,20 @@ class eDFDToGraphTransformation {
 	          println('''[DEBUG]   Edge labels after setting Privacy: «outgoing.edgelabel.map[objective.literal + '=' + level].join(', ')»''')
 	        }
 	        
+	        // Handle DecisionMakingContract: uses PAction attribute
+	        if (contract instanceof DecisionMakingContract && !privacyLabelContractFound) {
+	          privacyLabelContractFound = true
+	          privacyLabelContractName = "DecisionMakingContract"
+	          val pAction = (contract as DecisionMakingContract).getPAction() ?: Priority.L
+	          privacyLabelLevel = lvl(pAction)
+	          // lbl_decision(p_1, ..., p_n, p_action) = p_action for Privacy
+	          upsertLabel_Edge(outgoing.edgelabel, Objective.PRIVACY, privacyLabelLevel)
+	          
+	          println('''[DEBUG] Label propagation of edge «outgoing.ID», «outgoing.number»''')
+	          println('''[DEBUG]   Found «privacyLabelContractName», setting Privacy=«privacyLabelLevel» (from pAction=«pAction.getName()»)''')
+	          println('''[DEBUG]   Edge labels after setting Privacy: «outgoing.edgelabel.map[objective.literal + '=' + level].join(', ')»''')
+	        }
+	        
 	        // Handle ClusteringContract: lbl_clustering(p_1, ..., p_n) = N, if p_1 ⊔ p_2 ⊔ ... ⊔ p_n = N; L, otherwise
 	        if (contract instanceof ClusteringContract && !privacyLabelContractFound) {
 	          privacyLabelContractFound = true
@@ -1270,6 +1287,12 @@ class eDFDToGraphTransformation {
 			return if (pClass !== null) lvl(pClass) else lvl(Priority.L) // Default to L
 		}
 		
+		// DecisionMakingContract: uses PAction attribute
+		if (contract instanceof DecisionMakingContract) {
+			val pAction = (contract as DecisionMakingContract).getPAction()
+			return if (pAction !== null) lvl(pAction) else lvl(Priority.L) // Default to L
+		}
+		
 		// ClusteringContract: returns null because it needs input assets to calculate
 		// The actual calculation happens in the asset loop based on input assets
 		// This ensures it's not marked as "already handled" in the first loop
@@ -1352,6 +1375,8 @@ class eDFDToGraphTransformation {
                      val contract = findContract(it)
                      if (contract instanceof ClassificationContract) {
                        "Classification"
+                     } else if (contract instanceof DecisionMakingContract) {
+                       "DecisionMaking"
                      } else if (contract instanceof ClusteringContract) {
                        "Clustering"
                      } else if (it.task !== null && !it.task.empty) {

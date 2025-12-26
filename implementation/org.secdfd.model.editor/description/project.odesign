@@ -56,6 +56,14 @@
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
               </style>
             </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.oclIsKindOf(model::DecisionMakingContract)">
+              <style xsi:type="style:DotDescription" labelSize="12" showIcon="false" labelExpression="'DecisionMaking'" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              </style>
+            </conditionnalStyles>
           </borderedNodeMappings>
           <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="2" labelSize="12" sizeComputationExpression="10" labelPosition="node" resizeKind="NORTH_SOUTH">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -292,6 +300,20 @@
             </initialOperation>
             <askStringVariable name="contractName" prompt="Contract Name (optional)"/>
           </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createDecisionMakingContract" nodeMappings="//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Contract']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model::DecisionMakingContract" referenceName="responsibility">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:if var:contractName &lt;> null and not var:contractName.oclIsUndefined() then var:contractName else 'DecisionMaking' endif"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="PAction" valueExpression="aql:if var:pActionValue &lt;> null and not var:pActionValue.oclIsUndefined() then var:pActionValue else model::Priority::L endif"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <askStringVariable name="contractName" prompt="Contract Name (optional)"/>
+            <askChoiceVariable name="pActionValue" candidatesExpression="aql:model::Priority.eLiterals" candidateDisplayExpression="aql:candidate.name" prompt="What is the privacy level of the most privacy-critical decision action?" multiple="false"/>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="highlightAssetFlows" precondition="aql:true" elementsToSelect="var:selectedAsset" candidatesExpression="aql:self.asset" multiple="true">
             <element name="selectedAsset"/>
             <containerView name="containerView"/>
@@ -452,6 +474,15 @@
               </initialOperation>
             </widget>
           </ifs>
+          <ifs name="decisionmaking_pAction_if" predicateExpression="aql:self.oclIsKindOf(model::DecisionMakingContract) and eStructuralFeature.name = 'PAction'">
+            <widget xsi:type="properties:SelectDescription" name="decisionmaking_pAction_widget" labelExpression="What is the privacy level of the most privacy-critical decision action?" helpExpression="Evaluate all possible actions: N = non-personal | L = privacy-relevant | M = personal | H = unique identifiers | C = special category" valueExpression="aql:if self.oclAsType(model::DecisionMakingContract).getPAction() &lt;> null then self.oclAsType(model::DecisionMakingContract).getPAction() else model::Priority::L endif" candidatesExpression="aql:model::Priority.eLiterals" candidateDisplayExpression="aql:candidate.name">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.oclAsType(model::DecisionMakingContract)">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="PAction" valueExpression="aql:if newValue &lt;> null then newValue.instance else null endif"/>
+                </firstModelOperations>
+              </initialOperation>
+            </widget>
+          </ifs>
           <ifs name="sirius_default_rules_enum_many_generic_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and eStructuralFeature.name &lt;> 'Task' and eStructuralFeature.name &lt;> 'MLTask'">
             <widget xsi:type="properties:ListDescription" name="sirius_default_rules_enum_many_generic" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)" displayExpression="aql:value.toString()">
               <initialOperation>
@@ -459,7 +490,7 @@
               </initialOperation>
             </widget>
           </ifs>
-          <ifs name="sirius_default_rules_enum_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and not(eStructuralFeature.many) and not(self.oclIsKindOf(model::ClassificationContract) and eStructuralFeature.name = 'PClass')">
+          <ifs name="sirius_default_rules_enum_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and not(eStructuralFeature.many) and not(self.oclIsKindOf(model::ClassificationContract) and eStructuralFeature.name = 'PClass') and not(self.oclIsKindOf(model::DecisionMakingContract) and eStructuralFeature.name = 'PAction')">
             <widget xsi:type="properties:SelectDescription" name="sirius_default_rules_enum" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:if self.eGet(eStructuralFeature.name) &lt;> null then eStructuralFeature.eType.oclAsType(ecore::EEnum).getEEnumLiteralByLiteral(self.eGet(eStructuralFeature.name).toString()) else null endif" candidatesExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).eLiterals" candidateDisplayExpression="aql:candidate.name">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, if newValue &lt;> null then newValue.instance else null endif)"/>

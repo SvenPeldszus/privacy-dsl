@@ -159,4 +159,8 @@
         defaultValueLiteral="L"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClusteringContract" eSuperTypes="#//ContractBase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionMakingContract" eSuperTypes="#//ContractBase">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PAction" eType="#//Priority"
+        defaultValueLiteral="L"/>
+  </eClassifiers>
 </ecore:EPackage>
