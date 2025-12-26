@@ -23,6 +23,7 @@ import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.DecisionMakingContract;
+import org.secdfd.model.DimensionalityReductionContract;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
@@ -188,6 +189,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EClass predictionContractEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dimensionalityReductionContractEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -885,6 +893,26 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getDimensionalityReductionContract() {
+		return dimensionalityReductionContractEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDimensionalityReductionContract_K() {
+		return (EAttribute)dimensionalityReductionContractEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getPriority() {
 		return priorityEEnum;
 	}
@@ -1055,6 +1083,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		predictionContractEClass = createEClass(PREDICTION_CONTRACT);
 		createEAttribute(predictionContractEClass, PREDICTION_CONTRACT__S);
 
+		dimensionalityReductionContractEClass = createEClass(DIMENSIONALITY_REDUCTION_CONTRACT);
+		createEAttribute(dimensionalityReductionContractEClass, DIMENSIONALITY_REDUCTION_CONTRACT__K);
+
 		// Create enums
 		priorityEEnum = createEEnum(PRIORITY);
 		channelEEnum = createEEnum(CHANNEL);
@@ -1110,6 +1141,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		decisionMakingContractEClass.getESuperTypes().add(this.getContractBase());
 		recommendationContractEClass.getESuperTypes().add(this.getContractBase());
 		predictionContractEClass.getESuperTypes().add(this.getContractBase());
+		dimensionalityReductionContractEClass.getESuperTypes().add(this.getContractBase());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(assetEClass, Asset.class, "Asset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1196,6 +1228,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		initEClass(predictionContractEClass, PredictionContract.class, "PredictionContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPredictionContract_S(), ecorePackage.getEBoolean(), "S", "false", 0, 1, PredictionContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dimensionalityReductionContractEClass, DimensionalityReductionContract.class, "DimensionalityReductionContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDimensionalityReductionContract_K(), ecorePackage.getEInt(), "K", "0", 0, 1, DimensionalityReductionContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(priorityEEnum, Priority.class, "Priority");

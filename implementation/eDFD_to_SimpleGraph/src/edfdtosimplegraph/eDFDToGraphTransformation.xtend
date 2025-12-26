@@ -40,6 +40,7 @@ import org.secdfd.model.ClusteringContract
 import org.secdfd.model.DecisionMakingContract
 import org.secdfd.model.RecommendationContract
 import org.secdfd.model.PredictionContract
+import org.secdfd.model.DimensionalityReductionContract
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -340,6 +341,8 @@ class eDFDToGraphTransformation {
     		"[Recommendation]"
     	} else if (eDFDResponsibility instanceof PredictionContract) {
     		"[Prediction]"
+    	} else if (eDFDResponsibility instanceof DimensionalityReductionContract) {
+    		"[DimensionalityReduction]"
     	} else {
     		''
     	}
@@ -1004,9 +1007,9 @@ class eDFDToGraphTransformation {
 	        }
 			//go through responsibilities
 	        for (NodeResponsibility nrProcess : r) {
-	          // Check if this contract sets Privacy labels (ClassificationContract, ClusteringContract, or PredictionContract)
+	          // Check if this contract sets Privacy labels (ClassificationContract, ClusteringContract, PredictionContract, or DimensionalityReductionContract)
 	          val contractProcess = findContract(nrProcess)
-	          val hasPrivacyLabel = getPrivacyLabelFromContract(contractProcess) !== null || contractProcess instanceof ClusteringContract || contractProcess instanceof PredictionContract
+	          val hasPrivacyLabel = getPrivacyLabelFromContract(contractProcess) !== null || contractProcess instanceof ClusteringContract || contractProcess instanceof PredictionContract || contractProcess instanceof DimensionalityReductionContract
 	          
 	          if (hasPrivacyLabel) {
 	            // Handle PredictionContract: lbl_prediction(p_1, ..., p_n, s) = N, if p_max = N; p_max, if p_max ≥ L ∧ s = true; L, if p_max ≥ L ∧ s = false
@@ -1032,6 +1035,36 @@ class eDFDToGraphTransformation {
 	              
 	              println('''[DEBUG] Label propagation of edge «outgoing.ID», «outgoing.number»''')
 	              println('''[DEBUG]   Found PredictionContract, p_max=«pMax», s=«s», setting Privacy=«privacyLevel»''')
+	              
+	              // Set other Objectives: Standard-Logik (most restrictive aus Input-Labels)
+	              for (o : Objective.values) {
+	                if (o != Objective.PRIVACY) {
+	                  var max = 0
+	                  for (ina : nrProcess.incomingassets)
+	                    max = Math::max(max, levelOf(ina.assetlabel, o))
+	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                }
+	              }
+	            } else if (contractProcess instanceof DimensionalityReductionContract) {
+	              val k = (contractProcess as DimensionalityReductionContract).getK()
+	              // Calculate p_max = p_1 ⊔ p_2 ⊔ ... ⊔ p_n (most restrictive)
+	              var pMax = 0
+	              for (ina : nrProcess.incomingassets) {
+	                val inaPrivacyLevel = levelOf(ina.assetlabel, Objective.PRIVACY)
+	                pMax = Math::max(pMax, inaPrivacyLevel)
+	              }
+	              
+	              // lbl_DR(p_1, ..., p_n, k) = reduce^k(p_max)
+	              // reduce(C)=H, reduce(H)=M, reduce(M)=L, reduce(L)=N, reduce(N)=N
+	              var privacyLevel = pMax
+	              for (var i = 0; i < k; i++) {
+	                privacyLevel = reducePrivacyLevel(privacyLevel)
+	              }
+	              
+	              upsertLabel_Edge(outgoing.edgelabel, Objective.PRIVACY, privacyLevel)
+	              
+	              println('''[DEBUG] Label propagation of edge «outgoing.ID», «outgoing.number»''')
+	              println('''[DEBUG]   Found DimensionalityReductionContract, p_max=«pMax», k=«k», setting Privacy=«privacyLevel»''')
 	              
 	              // Set other Objectives: Standard-Logik (most restrictive aus Input-Labels)
 	              for (o : Objective.values) {
@@ -1286,6 +1319,18 @@ class eDFDToGraphTransformation {
 	  }
 	}
 	
+	// reduce(C)=H, reduce(H)=M, reduce(M)=L, reduce(L)=N, reduce(N)=N
+	def int reducePrivacyLevel(int level) {
+		switch (level) {
+			case 4: 3 // C -> H
+			case 3: 2 // H -> M
+			case 2: 1 // M -> L
+			case 1: 0 // L -> N
+			case 0: 0 // N -> N
+			default: level
+		}
+	}
+	
 	// Helper to find ClassificationContract from NodeResponsibility via traces
 	def ClassificationContract findClassificationContract(NodeResponsibility nr) {
 		for (trace : edfd2graph.edfdGraphTraces) {
@@ -1443,6 +1488,8 @@ class eDFDToGraphTransformation {
                        "Recommendation"
                      } else if (contract instanceof PredictionContract) {
                        "Prediction"
+                     } else if (contract instanceof DimensionalityReductionContract) {
+                       "DimensionalityReduction"
                      } else if (contract instanceof ClusteringContract) {
                        "Clustering"
                      } else if (it.task !== null && !it.task.empty) {

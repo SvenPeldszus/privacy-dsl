@@ -21,6 +21,7 @@ import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.DecisionMakingContract;
+import org.secdfd.model.DimensionalityReductionContract;
 import org.secdfd.model.EDFD;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
@@ -159,6 +160,8 @@ public class ModelValidator extends EObjectValidator {
 				return validateRecommendationContract((RecommendationContract)value, diagnostics, context);
 			case ModelPackage.PREDICTION_CONTRACT:
 				return validatePredictionContract((PredictionContract)value, diagnostics, context);
+			case ModelPackage.DIMENSIONALITY_REDUCTION_CONTRACT:
+				return validateDimensionalityReductionContract((DimensionalityReductionContract)value, diagnostics, context);
 			case ModelPackage.PRIORITY:
 				return validatePriority((Priority)value, diagnostics, context);
 			case ModelPackage.CHANNEL:
@@ -376,6 +379,15 @@ public class ModelValidator extends EObjectValidator {
 	 */
 	public boolean validatePredictionContract(PredictionContract predictionContract, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(predictionContract, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDimensionalityReductionContract(DimensionalityReductionContract dimensionalityReductionContract, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(dimensionalityReductionContract, diagnostics, context);
 	}
 
 	/**

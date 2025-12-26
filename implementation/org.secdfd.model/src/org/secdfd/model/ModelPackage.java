@@ -1673,6 +1673,88 @@ public interface ModelPackage extends EPackage {
 	int PREDICTION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.secdfd.model.impl.DimensionalityReductionContractImpl <em>Dimensionality Reduction Contract</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.secdfd.model.impl.DimensionalityReductionContractImpl
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getDimensionalityReductionContract()
+	 * @generated
+	 */
+	int DIMENSIONALITY_REDUCTION_CONTRACT = 20;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIMENSIONALITY_REDUCTION_CONTRACT__NAME = CONTRACT_BASE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIMENSIONALITY_REDUCTION_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
+
+	/**
+	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIMENSIONALITY_REDUCTION_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
+
+	/**
+	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIMENSIONALITY_REDUCTION_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
+
+	/**
+	 * The feature id for the '<em><b>Process</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIMENSIONALITY_REDUCTION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
+
+	/**
+	 * The feature id for the '<em><b>K</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIMENSIONALITY_REDUCTION_CONTRACT__K = CONTRACT_BASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Dimensionality Reduction Contract</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIMENSIONALITY_REDUCTION_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Dimensionality Reduction Contract</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIMENSIONALITY_REDUCTION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1680,7 +1762,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getPriority()
 	 * @generated
 	 */
-	int PRIORITY = 20;
+	int PRIORITY = 21;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Channel <em>Channel</em>}' enum.
@@ -1690,7 +1772,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getChannel()
 	 * @generated
 	 */
-	int CHANNEL = 21;
+	int CHANNEL = 22;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.SecurityContractType <em>Security Contract Type</em>}' enum.
@@ -1700,7 +1782,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getSecurityContractType()
 	 * @generated
 	 */
-	int SECURITY_CONTRACT_TYPE = 22;
+	int SECURITY_CONTRACT_TYPE = 23;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Objective <em>Objective</em>}' enum.
@@ -1710,7 +1792,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 23;
+	int OBJECTIVE = 24;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Layer <em>Layer</em>}' enum.
@@ -1720,7 +1802,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getLayer()
 	 * @generated
 	 */
-	int LAYER = 24;
+	int LAYER = 25;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.AssetType <em>Asset Type</em>}' enum.
@@ -1730,7 +1812,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getAssetType()
 	 * @generated
 	 */
-	int ASSET_TYPE = 25;
+	int ASSET_TYPE = 26;
 
 
 	/**
@@ -1741,7 +1823,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getMLContractType()
 	 * @generated
 	 */
-	int ML_CONTRACT_TYPE = 26;
+	int ML_CONTRACT_TYPE = 27;
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.Asset <em>Asset</em>}'.
@@ -2350,6 +2432,27 @@ public interface ModelPackage extends EPackage {
 	EAttribute getPredictionContract_S();
 
 	/**
+	 * Returns the meta object for class '{@link org.secdfd.model.DimensionalityReductionContract <em>Dimensionality Reduction Contract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Dimensionality Reduction Contract</em>'.
+	 * @see org.secdfd.model.DimensionalityReductionContract
+	 * @generated
+	 */
+	EClass getDimensionalityReductionContract();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.secdfd.model.DimensionalityReductionContract#getK <em>K</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>K</em>'.
+	 * @see org.secdfd.model.DimensionalityReductionContract#getK()
+	 * @see #getDimensionalityReductionContract()
+	 * @generated
+	 */
+	EAttribute getDimensionalityReductionContract_K();
+
+	/**
 	 * Returns the meta object for enum '{@link org.secdfd.model.Priority <em>Priority</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2937,6 +3040,24 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PREDICTION_CONTRACT__S = eINSTANCE.getPredictionContract_S();
+
+		/**
+		 * The meta object literal for the '{@link org.secdfd.model.impl.DimensionalityReductionContractImpl <em>Dimensionality Reduction Contract</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.secdfd.model.impl.DimensionalityReductionContractImpl
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getDimensionalityReductionContract()
+		 * @generated
+		 */
+		EClass DIMENSIONALITY_REDUCTION_CONTRACT = eINSTANCE.getDimensionalityReductionContract();
+
+		/**
+		 * The meta object literal for the '<em><b>K</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DIMENSIONALITY_REDUCTION_CONTRACT__K = eINSTANCE.getDimensionalityReductionContract_K();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.

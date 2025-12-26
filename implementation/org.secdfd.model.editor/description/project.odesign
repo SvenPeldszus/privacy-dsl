@@ -80,6 +80,14 @@
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
               </style>
             </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.oclIsKindOf(model::DimensionalityReductionContract)">
+              <style xsi:type="style:DotDescription" labelSize="12" showIcon="false" labelExpression="'DimensionalityReduction'" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_cyan']"/>
+              </style>
+            </conditionnalStyles>
           </borderedNodeMappings>
           <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="2" labelSize="12" sizeComputationExpression="10" labelPosition="node" resizeKind="NORTH_SOUTH">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -354,6 +362,18 @@
             </initialOperation>
             <askStringVariable name="contractName" prompt="Contract Name (optional)"/>
           </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createDimensionalityReductionContract" nodeMappings="//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Contract']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model::DimensionalityReductionContract" referenceName="responsibility">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:if var:contractName &lt;> null and not var:contractName.oclIsUndefined() then var:contractName else 'DimensionalityReduction' endif"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <askStringVariable name="contractName" prompt="Contract Name (optional)"/>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="highlightAssetFlows" precondition="aql:true" elementsToSelect="var:selectedAsset" candidatesExpression="aql:self.asset" multiple="true">
             <element name="selectedAsset"/>
             <containerView name="containerView"/>
@@ -537,6 +557,15 @@
               </initialOperation>
             </widget>
           </ifs>
+          <ifs name="dimensionalityreduction_k_if" predicateExpression="aql:self.oclIsKindOf(model::DimensionalityReductionContract) and eStructuralFeature.name = 'K'">
+            <widget xsi:type="properties:SelectDescription" name="dimensionalityreduction_k_widget" labelExpression="What is the reduction strength?" helpExpression="Select how many privacy levels your dimension reduction task reduces." valueExpression="aql:self.oclAsType(model::DimensionalityReductionContract).K" candidatesExpression="aql:Sequence{0, 1, 2, 3, 4}" candidateDisplayExpression="aql:if candidate = 0 then '0 - No reduction' else if candidate = 1 then '1 - Weak reduction' else if candidate = 2 then '2 - Moderate reduction' else if candidate = 3 then '3 - Strong reduction' else '4 - Very strong reduction' endif endif endif endif">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.oclAsType(model::DimensionalityReductionContract)">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="K" valueExpression="aql:newValue"/>
+                </firstModelOperations>
+              </initialOperation>
+            </widget>
+          </ifs>
           <ifs name="sirius_default_rules_enum_many_generic_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and eStructuralFeature.name &lt;> 'Task' and eStructuralFeature.name &lt;> 'MLTask'">
             <widget xsi:type="properties:ListDescription" name="sirius_default_rules_enum_many_generic" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)" displayExpression="aql:value.toString()">
               <initialOperation>
@@ -556,7 +585,7 @@
               </conditionalStyles>
             </widget>
           </ifs>
-          <ifs name="sirius_default_rules_mono_string_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and not(eStructuralFeature.eType.oclIsKindOf(ecore::EEnum)) and not(eStructuralFeature.many) and input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature)">
+          <ifs name="sirius_default_rules_mono_string_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and not(eStructuralFeature.eType.oclIsKindOf(ecore::EEnum)) and not(eStructuralFeature.many) and input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature) and not(self.oclIsKindOf(model::DimensionalityReductionContract) and eStructuralFeature.name = 'K')">
             <widget xsi:type="properties:TextDescription" name="sirius_default_rules_mono_string" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, newValue)"/>

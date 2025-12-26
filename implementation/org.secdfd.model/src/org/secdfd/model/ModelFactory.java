@@ -175,6 +175,15 @@ public interface ModelFactory extends EFactory {
 	PredictionContract createPredictionContract();
 
 	/**
+	 * Returns a new object of class '<em>Dimensionality Reduction Contract</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Dimensionality Reduction Contract</em>'.
+	 * @generated
+	 */
+	DimensionalityReductionContract createDimensionalityReductionContract();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

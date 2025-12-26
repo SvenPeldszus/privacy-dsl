@@ -20,6 +20,7 @@ import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.DecisionMakingContract;
+import org.secdfd.model.DimensionalityReductionContract;
 import org.secdfd.model.EDFD;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
@@ -98,6 +99,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.DECISION_MAKING_CONTRACT: return createDecisionMakingContract();
 			case ModelPackage.RECOMMENDATION_CONTRACT: return createRecommendationContract();
 			case ModelPackage.PREDICTION_CONTRACT: return createPredictionContract();
+			case ModelPackage.DIMENSIONALITY_REDUCTION_CONTRACT: return createDimensionalityReductionContract();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -342,6 +344,17 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public PredictionContract createPredictionContract() {
 		PredictionContractImpl predictionContract = new PredictionContractImpl();
 		return predictionContract;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public DimensionalityReductionContract createDimensionalityReductionContract() {
+		DimensionalityReductionContractImpl dimensionalityReductionContract = new DimensionalityReductionContractImpl();
+		return dimensionalityReductionContract;
 	}
 
 	/**

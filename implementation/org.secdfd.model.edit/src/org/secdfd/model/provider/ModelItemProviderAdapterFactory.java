@@ -463,6 +463,29 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.secdfd.model.DimensionalityReductionContract} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DimensionalityReductionContractItemProvider dimensionalityReductionContractItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.secdfd.model.DimensionalityReductionContract}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDimensionalityReductionContractAdapter() {
+		if (dimensionalityReductionContractItemProvider == null) {
+			dimensionalityReductionContractItemProvider = new DimensionalityReductionContractItemProvider(this);
+		}
+
+		return dimensionalityReductionContractItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -584,6 +607,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 		if (decisionMakingContractItemProvider != null) decisionMakingContractItemProvider.dispose();
 		if (recommendationContractItemProvider != null) recommendationContractItemProvider.dispose();
 		if (predictionContractItemProvider != null) predictionContractItemProvider.dispose();
+		if (dimensionalityReductionContractItemProvider != null) dimensionalityReductionContractItemProvider.dispose();
 	}
 
 }
