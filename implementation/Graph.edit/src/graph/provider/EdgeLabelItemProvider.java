@@ -13,6 +13,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 import org.secdfd.model.Objective;
+import org.secdfd.model.Priority;
 
 /**
  * This is the item provider adapter for a {@link graph.EdgeLabel} object.
@@ -61,15 +62,24 @@ public class EdgeLabelItemProvider extends SecurityLabelItemProvider {
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		Objective labelValue = ((EdgeLabel)object).getObjective();
+		EdgeLabel edgeLabel = (EdgeLabel)object;
+		Objective labelValue = edgeLabel.getObjective();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_EdgeLabel_type") :
-			getString("_UI_EdgeLabel_type") + " " + label;
+		
+		// Get the level and convert it to Priority
+		int level = edgeLabel.getLevel();
+		Priority priority = Priority.get(level);
+		String priorityStr = priority != null ? priority.toString() : String.valueOf(level);
+		
+		if (label == null || label.length() == 0) {
+			return getString("_UI_EdgeLabel_type") + " (" + priorityStr + ")";
+		} else {
+			return getString("_UI_EdgeLabel_type") + " " + label + " (" + priorityStr + ")";
+		}
 	}
 
 
