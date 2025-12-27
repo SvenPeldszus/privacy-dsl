@@ -53,7 +53,7 @@
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="aql:self.oclIsKindOf(model::DecisionMakingContract)">
@@ -85,7 +85,15 @@
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_cyan']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="aql:self.oclIsKindOf(model::DataGenerationContract)">
+              <style xsi:type="style:DotDescription" labelSize="12" showIcon="false" labelExpression="'DataGeneration'" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
@@ -102,11 +110,18 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
             </style>
+            <conditionnalStyles predicateExpression="[self.Priority = Priority::C/]">
+              <style xsi:type="style:LozengeNodeDescription" labelSize="12" labelExpression="feature:Objective" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              </style>
+            </conditionnalStyles>
             <conditionnalStyles predicateExpression="[self.Priority = Priority::H/]">
               <style xsi:type="style:LozengeNodeDescription" labelSize="12" labelExpression="aql:self.Objective.toString().first(2)" labelPosition="node" resizeKind="NSEW" widthComputationExpression="5" heightComputationExpression="3">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[self.Priority = Priority::M/]">
@@ -114,6 +129,20 @@
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="[self.Priority = Priority::L/]">
+              <style xsi:type="style:LozengeNodeDescription" labelSize="12" labelExpression="feature:Objective" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="[self.Priority = Priority::N/]">
+              <style xsi:type="style:LozengeNodeDescription" labelSize="12" labelExpression="feature:Objective" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
               </style>
             </conditionnalStyles>
           </borderedNodeMappings>
@@ -374,6 +403,20 @@
             </initialOperation>
             <askStringVariable name="contractName" prompt="Contract Name (optional)"/>
           </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createDataGenerationContract" nodeMappings="//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Contract']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model::DataGenerationContract" referenceName="responsibility">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:if var:contractName &lt;> null and not var:contractName.oclIsUndefined() then var:contractName else 'DataGeneration' endif"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="Direction" valueExpression="aql:if var:directionValue &lt;> null and not var:directionValue.oclIsUndefined() and var:directionValue.instance &lt;> null then var:directionValue.instance else model::DataGenerationDirection::PRESERVE endif"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <askStringVariable name="contractName" prompt="Contract Name (optional)"/>
+            <askChoiceVariable name="directionValue" candidatesExpression="aql:model::DataGenerationDirection.eLiterals" candidateDisplayExpression="aql:candidate.name" prompt="Does generation reduce, preserve, or elevate privacy?" multiple="false"/>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="highlightAssetFlows" precondition="aql:true" elementsToSelect="var:selectedAsset" candidatesExpression="aql:self.asset" multiple="true">
             <element name="selectedAsset"/>
             <containerView name="containerView"/>
@@ -566,6 +609,22 @@
               </initialOperation>
             </widget>
           </ifs>
+          <ifs name="datageneration_direction_if" predicateExpression="aql:self.oclIsKindOf(model::DataGenerationContract) and eStructuralFeature.name = 'Direction'">
+            <widget xsi:type="properties:SelectDescription" name="datageneration_direction_widget" labelExpression="Does data generation reduce, preserve, or elevate privacy?" helpExpression="Reduce = lower privacy level; Preserve = keep same level; Elevate = raise privacy level" valueExpression="aql:if self.eGet(eStructuralFeature.name) &lt;> null then eStructuralFeature.eType.oclAsType(ecore::EEnum).getEEnumLiteralByLiteral(self.eGet(eStructuralFeature.name).toString()) else null endif" candidatesExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).eLiterals" candidateDisplayExpression="aql:candidate.name">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, if newValue &lt;> null then newValue.instance else null endif)"/>
+              </initialOperation>
+            </widget>
+          </ifs>
+          <ifs name="datageneration_k_if" predicateExpression="aql:self.oclIsKindOf(model::DataGenerationContract) and eStructuralFeature.name = 'K'">
+            <widget xsi:type="properties:SelectDescription" name="datageneration_k_widget" labelExpression="By how many levels?" helpExpression="Select the number of privacy levels to change (only shown if not Preserve)" isEnabledExpression="aql:let direction = self.oclAsType(model::DataGenerationContract).Direction in direction &lt;> null and direction &lt;> model::DataGenerationDirection::PRESERVE" valueExpression="aql:self.oclAsType(model::DataGenerationContract).K" candidatesExpression="aql:Sequence{1, 2, 3, 4}" candidateDisplayExpression="aql:candidate.toString()">
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.oclAsType(model::DataGenerationContract)">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="K" valueExpression="aql:newValue"/>
+                </firstModelOperations>
+              </initialOperation>
+            </widget>
+          </ifs>
           <ifs name="sirius_default_rules_enum_many_generic_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.many and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and eStructuralFeature.name &lt;> 'Task' and eStructuralFeature.name &lt;> 'MLTask'">
             <widget xsi:type="properties:ListDescription" name="sirius_default_rules_enum_many_generic" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)" displayExpression="aql:value.toString()">
               <initialOperation>
@@ -573,7 +632,7 @@
               </initialOperation>
             </widget>
           </ifs>
-          <ifs name="sirius_default_rules_enum_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and not(eStructuralFeature.many) and not(self.oclIsKindOf(model::ClassificationContract) and eStructuralFeature.name = 'PClass') and not(self.oclIsKindOf(model::DecisionMakingContract) and eStructuralFeature.name = 'PAction')">
+          <ifs name="sirius_default_rules_enum_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and eStructuralFeature.eType.oclIsKindOf(ecore::EEnum) and not(eStructuralFeature.many) and not(self.oclIsKindOf(model::ClassificationContract) and eStructuralFeature.name = 'PClass') and not(self.oclIsKindOf(model::DecisionMakingContract) and eStructuralFeature.name = 'PAction') and not(self.oclIsKindOf(model::DataGenerationContract) and eStructuralFeature.name = 'Direction')">
             <widget xsi:type="properties:SelectDescription" name="sirius_default_rules_enum" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:if self.eGet(eStructuralFeature.name) &lt;> null then eStructuralFeature.eType.oclAsType(ecore::EEnum).getEEnumLiteralByLiteral(self.eGet(eStructuralFeature.name).toString()) else null endif" candidatesExpression="aql:eStructuralFeature.eType.oclAsType(ecore::EEnum).eLiterals" candidateDisplayExpression="aql:candidate.name">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, if newValue &lt;> null then newValue.instance else null endif)"/>
@@ -585,7 +644,7 @@
               </conditionalStyles>
             </widget>
           </ifs>
-          <ifs name="sirius_default_rules_mono_string_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and not(eStructuralFeature.eType.oclIsKindOf(ecore::EEnum)) and not(eStructuralFeature.many) and input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature) and not(self.oclIsKindOf(model::DimensionalityReductionContract) and eStructuralFeature.name = 'K')">
+          <ifs name="sirius_default_rules_mono_string_if" predicateExpression="aql:eStructuralFeature.oclIsKindOf(ecore::EAttribute) and not(eStructuralFeature.eType.oclIsKindOf(ecore::EEnum)) and not(eStructuralFeature.many) and input.emfEditServices(self).needsTextWidget(eStructuralFeature) and not input.emfEditServices(self).isMultiline(eStructuralFeature) and not(self.oclIsKindOf(model::DimensionalityReductionContract) and eStructuralFeature.name = 'K') and not(self.oclIsKindOf(model::DataGenerationContract) and eStructuralFeature.name = 'K')">
             <widget xsi:type="properties:TextDescription" name="sirius_default_rules_mono_string" labelExpression="aql:input.emfEditServices(self).getText(eStructuralFeature)+':'" helpExpression="aql:input.emfEditServices(self).getDescription(eStructuralFeature)" isEnabledExpression="aql:eStructuralFeature.changeable" valueExpression="aql:self.eGet(eStructuralFeature.name)">
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:input.emfEditServices(self).setValue(eStructuralFeature, newValue)"/>

@@ -184,6 +184,15 @@ public interface ModelFactory extends EFactory {
 	DimensionalityReductionContract createDimensionalityReductionContract();
 
 	/**
+	 * Returns a new object of class '<em>Data Generation Contract</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Data Generation Contract</em>'.
+	 * @generated
+	 */
+	DataGenerationContract createDataGenerationContract();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

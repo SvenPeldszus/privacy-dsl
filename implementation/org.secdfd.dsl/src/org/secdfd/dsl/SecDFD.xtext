@@ -57,7 +57,7 @@ Process returns Process:
 	']';
 
 ContractBase:
-	SecurityContract | MLContract | ClassificationContract | ClusteringContract | DecisionMakingContract | RecommendationContract | PredictionContract | DimensionalityReductionContract
+	SecurityContract | MLContract | ClassificationContract | ClusteringContract | DecisionMakingContract | RecommendationContract | PredictionContract | DimensionalityReductionContract | DataGenerationContract
 ;
 
 MLContract returns MLContract:
@@ -130,6 +130,15 @@ DimensionalityReductionContract returns DimensionalityReductionContract:
 	']'
 ;
 
+DataGenerationContract returns DataGenerationContract:
+	{DataGenerationContract}
+	'DataGeneration' // Keyword for serialization
+	(name=EString)?
+	'['
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('Direction' '=' Direction=DataGenerationDirection)? ('K' '=' K=EInt)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+	']'
+;
+
 ExternalEntity returns ExternalEntity:
 	{ExternalEntity}
 	'ExternalEntity'
@@ -197,6 +206,9 @@ enum Priority returns Priority:
 				
 enum Objective returns Objective:
 				Integrity = 'I' | Confidentiality = 'C' | Availability = 'Av' | Accountability = 'Ac' | Privacy = 'P';
+
+enum DataGenerationDirection returns DataGenerationDirection:
+				REDUCE = 'REDUCE' | PRESERVE = 'PRESERVE' | ELEVATE = 'ELEVATE';
 
 enum Layer returns Layer:
 				Transport = 'Transport' | Architectural = 'Architectural' | Application = 'Application';

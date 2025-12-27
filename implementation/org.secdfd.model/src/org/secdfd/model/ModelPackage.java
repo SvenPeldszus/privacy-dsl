@@ -1755,6 +1755,97 @@ public interface ModelPackage extends EPackage {
 	int DIMENSIONALITY_REDUCTION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.secdfd.model.impl.DataGenerationContractImpl <em>Data Generation Contract</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.secdfd.model.impl.DataGenerationContractImpl
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getDataGenerationContract()
+	 * @generated
+	 */
+	int DATA_GENERATION_CONTRACT = 21;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_GENERATION_CONTRACT__NAME = CONTRACT_BASE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_GENERATION_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
+
+	/**
+	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_GENERATION_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
+
+	/**
+	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_GENERATION_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
+
+	/**
+	 * The feature id for the '<em><b>Process</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_GENERATION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
+
+	/**
+	 * The feature id for the '<em><b>Direction</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_GENERATION_CONTRACT__DIRECTION = CONTRACT_BASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>K</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_GENERATION_CONTRACT__K = CONTRACT_BASE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Data Generation Contract</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_GENERATION_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Data Generation Contract</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_GENERATION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1762,7 +1853,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getPriority()
 	 * @generated
 	 */
-	int PRIORITY = 21;
+	int PRIORITY = 22;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Channel <em>Channel</em>}' enum.
@@ -1772,7 +1863,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getChannel()
 	 * @generated
 	 */
-	int CHANNEL = 22;
+	int CHANNEL = 23;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.SecurityContractType <em>Security Contract Type</em>}' enum.
@@ -1782,7 +1873,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getSecurityContractType()
 	 * @generated
 	 */
-	int SECURITY_CONTRACT_TYPE = 23;
+	int SECURITY_CONTRACT_TYPE = 24;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Objective <em>Objective</em>}' enum.
@@ -1792,7 +1883,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 24;
+	int OBJECTIVE = 25;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Layer <em>Layer</em>}' enum.
@@ -1802,7 +1893,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getLayer()
 	 * @generated
 	 */
-	int LAYER = 25;
+	int LAYER = 26;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.AssetType <em>Asset Type</em>}' enum.
@@ -1812,7 +1903,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getAssetType()
 	 * @generated
 	 */
-	int ASSET_TYPE = 26;
+	int ASSET_TYPE = 27;
 
 
 	/**
@@ -1823,7 +1914,17 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getMLContractType()
 	 * @generated
 	 */
-	int ML_CONTRACT_TYPE = 27;
+	int ML_CONTRACT_TYPE = 28;
+
+	/**
+	 * The meta object id for the '{@link org.secdfd.model.DataGenerationDirection <em>Data Generation Direction</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.secdfd.model.DataGenerationDirection
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getDataGenerationDirection()
+	 * @generated
+	 */
+	int DATA_GENERATION_DIRECTION = 29;
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.Asset <em>Asset</em>}'.
@@ -2453,6 +2554,38 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDimensionalityReductionContract_K();
 
 	/**
+	 * Returns the meta object for class '{@link org.secdfd.model.DataGenerationContract <em>Data Generation Contract</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Data Generation Contract</em>'.
+	 * @see org.secdfd.model.DataGenerationContract
+	 * @generated
+	 */
+	EClass getDataGenerationContract();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.secdfd.model.DataGenerationContract#getDirection <em>Direction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Direction</em>'.
+	 * @see org.secdfd.model.DataGenerationContract#getDirection()
+	 * @see #getDataGenerationContract()
+	 * @generated
+	 */
+	EAttribute getDataGenerationContract_Direction();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.secdfd.model.DataGenerationContract#getK <em>K</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>K</em>'.
+	 * @see org.secdfd.model.DataGenerationContract#getK()
+	 * @see #getDataGenerationContract()
+	 * @generated
+	 */
+	EAttribute getDataGenerationContract_K();
+
+	/**
 	 * Returns the meta object for enum '{@link org.secdfd.model.Priority <em>Priority</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2521,6 +2654,16 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getMLContractType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.secdfd.model.DataGenerationDirection <em>Data Generation Direction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Data Generation Direction</em>'.
+	 * @see org.secdfd.model.DataGenerationDirection
+	 * @generated
+	 */
+	EEnum getDataGenerationDirection();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3060,6 +3203,32 @@ public interface ModelPackage extends EPackage {
 		EAttribute DIMENSIONALITY_REDUCTION_CONTRACT__K = eINSTANCE.getDimensionalityReductionContract_K();
 
 		/**
+		 * The meta object literal for the '{@link org.secdfd.model.impl.DataGenerationContractImpl <em>Data Generation Contract</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.secdfd.model.impl.DataGenerationContractImpl
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getDataGenerationContract()
+		 * @generated
+		 */
+		EClass DATA_GENERATION_CONTRACT = eINSTANCE.getDataGenerationContract();
+
+		/**
+		 * The meta object literal for the '<em><b>Direction</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_GENERATION_CONTRACT__DIRECTION = eINSTANCE.getDataGenerationContract_Direction();
+
+		/**
+		 * The meta object literal for the '<em><b>K</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATA_GENERATION_CONTRACT__K = eINSTANCE.getDataGenerationContract_K();
+
+		/**
 		 * The meta object literal for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3128,6 +3297,16 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum ML_CONTRACT_TYPE = eINSTANCE.getMLContractType();
+
+		/**
+		 * The meta object literal for the '{@link org.secdfd.model.DataGenerationDirection <em>Data Generation Direction</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.secdfd.model.DataGenerationDirection
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getDataGenerationDirection()
+		 * @generated
+		 */
+		EEnum DATA_GENERATION_DIRECTION = eINSTANCE.getDataGenerationDirection();
 
 	}
 

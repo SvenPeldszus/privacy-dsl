@@ -53,6 +53,8 @@ import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
+import org.secdfd.model.DataGenerationContract;
+import org.secdfd.model.DataGenerationDirection;
 import org.secdfd.model.DecisionMakingContract;
 import org.secdfd.model.DimensionalityReductionContract;
 import org.secdfd.model.Element;
@@ -441,7 +443,13 @@ public class eDFDToGraphTransformation {
                       if ((eDFDResponsibility instanceof DimensionalityReductionContract)) {
                         _xifexpression_9 = "[DimensionalityReduction]";
                       } else {
-                        _xifexpression_9 = "";
+                        String _xifexpression_10 = null;
+                        if ((eDFDResponsibility instanceof DataGenerationContract)) {
+                          _xifexpression_10 = "[DataGeneration]";
+                        } else {
+                          _xifexpression_10 = "";
+                        }
+                        _xifexpression_9 = _xifexpression_10;
                       }
                       _xifexpression_8 = _xifexpression_9;
                     }
@@ -1079,7 +1087,7 @@ public class eDFDToGraphTransformation {
               for (final NodeResponsibility nrProcess : r) {
                 {
                   final ContractBase contractProcess = this.findContract(nrProcess);
-                  final boolean hasPrivacyLabel = ((((this.getPrivacyLabelFromContract(contractProcess) != null) || (contractProcess instanceof ClusteringContract)) || (contractProcess instanceof PredictionContract)) || (contractProcess instanceof DimensionalityReductionContract));
+                  final boolean hasPrivacyLabel = (((((this.getPrivacyLabelFromContract(contractProcess) != null) || (contractProcess instanceof ClusteringContract)) || (contractProcess instanceof PredictionContract)) || (contractProcess instanceof DimensionalityReductionContract)) || (contractProcess instanceof DataGenerationContract));
                   if (hasPrivacyLabel) {
                     if ((contractProcess instanceof PredictionContract)) {
                       final boolean s = ((PredictionContract) contractProcess).isS();
@@ -1178,16 +1186,76 @@ public class eDFDToGraphTransformation {
                           }
                         }
                       } else {
-                        Objective[] _values_2 = Objective.values();
-                        for (final Objective o_2 : _values_2) {
-                          boolean _notEquals_2 = (!Objects.equals(o_2, Objective.PRIVACY));
-                          if (_notEquals_2) {
-                            int max_2 = 0;
-                            EList<GraphAsset> _incomingassets_4 = nrProcess.getIncomingassets();
-                            for (final GraphAsset ina_4 : _incomingassets_4) {
-                              max_2 = Math.max(max_2, this.levelOf(ina_4.getAssetlabel(), o_2));
+                        if ((contractProcess instanceof DataGenerationContract)) {
+                          final DataGenerationDirection direction = ((DataGenerationContract) contractProcess).getDirection();
+                          final int k_1 = ((DataGenerationContract) contractProcess).getK();
+                          int pMax_2 = 0;
+                          EList<GraphAsset> _incomingassets_4 = nrProcess.getIncomingassets();
+                          for (final GraphAsset ina_4 : _incomingassets_4) {
+                            {
+                              final int inaPrivacyLevel = this.levelOf(ina_4.getAssetlabel(), Objective.PRIVACY);
+                              pMax_2 = Math.max(pMax_2, inaPrivacyLevel);
                             }
-                            this.upsertLabel_Edge(outgoing.getEdgelabel(), o_2, max_2);
+                          }
+                          int privacyLevel_2 = pMax_2;
+                          if ((direction != null)) {
+                            boolean _equals = Objects.equals(direction, DataGenerationDirection.REDUCE);
+                            if (_equals) {
+                              for (int i = 0; (i < k_1); i++) {
+                                privacyLevel_2 = this.reducePrivacyLevel(privacyLevel_2);
+                              }
+                            } else {
+                              boolean _equals_1 = Objects.equals(direction, DataGenerationDirection.ELEVATE);
+                              if (_equals_1) {
+                                for (int i = 0; (i < k_1); i++) {
+                                  privacyLevel_2 = this.elevatePrivacyLevel(privacyLevel_2);
+                                }
+                              }
+                            }
+                          }
+                          this.upsertLabel_Edge(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLevel_2);
+                          StringConcatenation _builder_4 = new StringConcatenation();
+                          _builder_4.append("[DEBUG] Label propagation of edge ");
+                          String _iD_2 = outgoing.getID();
+                          _builder_4.append(_iD_2);
+                          _builder_4.append(", ");
+                          int _number_2 = outgoing.getNumber();
+                          _builder_4.append(_number_2);
+                          InputOutput.<String>println(_builder_4.toString());
+                          StringConcatenation _builder_5 = new StringConcatenation();
+                          _builder_5.append("[DEBUG]   Found DataGenerationContract, p_max=");
+                          _builder_5.append(pMax_2);
+                          _builder_5.append(", direction=");
+                          _builder_5.append(direction);
+                          _builder_5.append(", k=");
+                          _builder_5.append(k_1);
+                          _builder_5.append(", setting Privacy=");
+                          _builder_5.append(privacyLevel_2);
+                          InputOutput.<String>println(_builder_5.toString());
+                          Objective[] _values_2 = Objective.values();
+                          for (final Objective o_2 : _values_2) {
+                            boolean _notEquals_2 = (!Objects.equals(o_2, Objective.PRIVACY));
+                            if (_notEquals_2) {
+                              int max_2 = 0;
+                              EList<GraphAsset> _incomingassets_5 = nrProcess.getIncomingassets();
+                              for (final GraphAsset ina_5 : _incomingassets_5) {
+                                max_2 = Math.max(max_2, this.levelOf(ina_5.getAssetlabel(), o_2));
+                              }
+                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_2, max_2);
+                            }
+                          }
+                        } else {
+                          Objective[] _values_3 = Objective.values();
+                          for (final Objective o_3 : _values_3) {
+                            boolean _notEquals_3 = (!Objects.equals(o_3, Objective.PRIVACY));
+                            if (_notEquals_3) {
+                              int max_3 = 0;
+                              EList<GraphAsset> _incomingassets_6 = nrProcess.getIncomingassets();
+                              for (final GraphAsset ina_6 : _incomingassets_6) {
+                                max_3 = Math.max(max_3, this.levelOf(ina_6.getAssetlabel(), o_3));
+                              }
+                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_3, max_3);
+                            }
                           }
                         }
                       }
@@ -1197,94 +1265,85 @@ public class eDFDToGraphTransformation {
                     if (_string != null) {
                       switch (_string) {
                         case "[EncryptOrHash]":
-                          Objective[] _values_3 = Objective.values();
-                          for (final Objective o_3 : _values_3) {
-                            if ((Objects.equals(o_3, Objective.PRIVACY) && hasPrivacyLabelContract)) {
-                            } else {
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_3, 0);
-                            }
-                          }
-                          break;
-                        case "[Decrypt]":
                           Objective[] _values_4 = Objective.values();
                           for (final Objective o_4 : _values_4) {
                             if ((Objects.equals(o_4, Objective.PRIVACY) && hasPrivacyLabelContract)) {
                             } else {
-                              int max_3 = 0;
-                              EList<GraphAsset> _incomingassets_5 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_5 : _incomingassets_5) {
-                                max_3 = Math.max(max_3, this.levelOf(ina_5.getAssetlabel(), o_4));
-                              }
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_4, max_3);
+                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_4, 0);
                             }
                           }
                           break;
-                        case "[Comparator]":
+                        case "[Decrypt]":
                           Objective[] _values_5 = Objective.values();
                           for (final Objective o_5 : _values_5) {
                             if ((Objects.equals(o_5, Objective.PRIVACY) && hasPrivacyLabelContract)) {
                             } else {
                               int max_4 = 0;
-                              EList<GraphAsset> _incomingassets_6 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_6 : _incomingassets_6) {
-                                max_4 = Math.max(max_4, this.levelOf(ina_6.getAssetlabel(), o_5));
+                              EList<GraphAsset> _incomingassets_7 = nrProcess.getIncomingassets();
+                              for (final GraphAsset ina_7 : _incomingassets_7) {
+                                max_4 = Math.max(max_4, this.levelOf(ina_7.getAssetlabel(), o_5));
                               }
                               this.upsertLabel_Edge(outgoing.getEdgelabel(), o_5, max_4);
                             }
                           }
                           break;
-                        case "[Joiner]":
+                        case "[Comparator]":
                           Objective[] _values_6 = Objective.values();
                           for (final Objective o_6 : _values_6) {
                             if ((Objects.equals(o_6, Objective.PRIVACY) && hasPrivacyLabelContract)) {
                             } else {
                               int max_5 = 0;
-                              EList<GraphAsset> _incomingassets_7 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_7 : _incomingassets_7) {
-                                max_5 = Math.max(max_5, this.levelOf(ina_7.getAssetlabel(), o_6));
+                              EList<GraphAsset> _incomingassets_8 = nrProcess.getIncomingassets();
+                              for (final GraphAsset ina_8 : _incomingassets_8) {
+                                max_5 = Math.max(max_5, this.levelOf(ina_8.getAssetlabel(), o_6));
                               }
                               this.upsertLabel_Edge(outgoing.getEdgelabel(), o_6, max_5);
                             }
                           }
                           break;
-                        case "[User]":
+                        case "[Joiner]":
                           Objective[] _values_7 = Objective.values();
                           for (final Objective o_7 : _values_7) {
                             if ((Objects.equals(o_7, Objective.PRIVACY) && hasPrivacyLabelContract)) {
                             } else {
                               int max_6 = 0;
-                              EList<GraphAsset> _incomingassets_8 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_8 : _incomingassets_8) {
-                                max_6 = Math.max(max_6, this.levelOf(ina_8.getAssetlabel(), o_7));
+                              EList<GraphAsset> _incomingassets_9 = nrProcess.getIncomingassets();
+                              for (final GraphAsset ina_9 : _incomingassets_9) {
+                                max_6 = Math.max(max_6, this.levelOf(ina_9.getAssetlabel(), o_7));
                               }
                               this.upsertLabel_Edge(outgoing.getEdgelabel(), o_7, max_6);
                             }
                           }
                           break;
-                        case "[Splitter]":
+                        case "[User]":
                           Objective[] _values_8 = Objective.values();
                           for (final Objective o_8 : _values_8) {
                             if ((Objects.equals(o_8, Objective.PRIVACY) && hasPrivacyLabelContract)) {
                             } else {
                               int max_7 = 0;
-                              EList<GraphAsset> _incomingassets_9 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_9 : _incomingassets_9) {
-                                max_7 = Math.max(max_7, this.levelOf(ina_9.getAssetlabel(), o_8));
+                              EList<GraphAsset> _incomingassets_10 = nrProcess.getIncomingassets();
+                              for (final GraphAsset ina_10 : _incomingassets_10) {
+                                max_7 = Math.max(max_7, this.levelOf(ina_10.getAssetlabel(), o_8));
                               }
                               this.upsertLabel_Edge(outgoing.getEdgelabel(), o_8, max_7);
                             }
                           }
                           break;
-                        case "[Copier]":
+                        case "[Splitter]":
                           Objective[] _values_9 = Objective.values();
                           for (final Objective o_9 : _values_9) {
                             if ((Objects.equals(o_9, Objective.PRIVACY) && hasPrivacyLabelContract)) {
                             } else {
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_9, this.levelOf(nrProcess.getIncomingassets().get(0).getAssetlabel(), o_9));
+                              int max_8 = 0;
+                              EList<GraphAsset> _incomingassets_11 = nrProcess.getIncomingassets();
+                              for (final GraphAsset ina_11 : _incomingassets_11) {
+                                max_8 = Math.max(max_8, this.levelOf(ina_11.getAssetlabel(), o_9));
+                              }
+                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_9, max_8);
                             }
                           }
                           break;
-                        case "[Forward]":
+                        case "[Copier]":
                           Objective[] _values_10 = Objective.values();
                           for (final Objective o_10 : _values_10) {
                             if ((Objects.equals(o_10, Objective.PRIVACY) && hasPrivacyLabelContract)) {
@@ -1293,17 +1352,26 @@ public class eDFDToGraphTransformation {
                             }
                           }
                           break;
-                        case "[Store]":
+                        case "[Forward]":
                           Objective[] _values_11 = Objective.values();
                           for (final Objective o_11 : _values_11) {
                             if ((Objects.equals(o_11, Objective.PRIVACY) && hasPrivacyLabelContract)) {
                             } else {
-                              int max_8 = 0;
-                              EList<GraphAsset> _incomingassets_10 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_10 : _incomingassets_10) {
-                                max_8 = Math.max(max_8, this.levelOf(ina_10.getAssetlabel(), o_11));
+                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_11, this.levelOf(nrProcess.getIncomingassets().get(0).getAssetlabel(), o_11));
+                            }
+                          }
+                          break;
+                        case "[Store]":
+                          Objective[] _values_12 = Objective.values();
+                          for (final Objective o_12 : _values_12) {
+                            if ((Objects.equals(o_12, Objective.PRIVACY) && hasPrivacyLabelContract)) {
+                            } else {
+                              int max_9 = 0;
+                              EList<GraphAsset> _incomingassets_12 = nrProcess.getIncomingassets();
+                              for (final GraphAsset ina_12 : _incomingassets_12) {
+                                max_9 = Math.max(max_9, this.levelOf(ina_12.getAssetlabel(), o_12));
                               }
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_11, max_8);
+                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_12, max_9);
                             }
                           }
                           break;
@@ -1507,6 +1575,48 @@ public class eDFDToGraphTransformation {
     return _switchResult;
   }
 
+  public int elevatePrivacyLevel(final int level) {
+    int _switchResult = (int) 0;
+    switch (level) {
+      case 0:
+        _switchResult = 1;
+        break;
+      case 1:
+        _switchResult = 2;
+        break;
+      case 2:
+        _switchResult = 3;
+        break;
+      case 3:
+        _switchResult = 4;
+        break;
+      case 4:
+        _switchResult = 4;
+        break;
+      default:
+        _switchResult = level;
+        break;
+    }
+    return _switchResult;
+  }
+
+  public int shiftPrivacyLevel(final int level, final int k) {
+    if ((k == 0)) {
+      return level;
+    }
+    int result = level;
+    if ((k > 0)) {
+      for (int i = 0; (i < k); i++) {
+        result = this.elevatePrivacyLevel(result);
+      }
+    } else {
+      for (int i = 0; (i < (-k)); i++) {
+        result = this.reducePrivacyLevel(result);
+      }
+    }
+    return result;
+  }
+
   public ClassificationContract findClassificationContract(final NodeResponsibility nr) {
     EList<EDFDGraphTrace> _edfdGraphTraces = this.edfd2graph.getEdfdGraphTraces();
     for (final EDFDGraphTrace trace : _edfdGraphTraces) {
@@ -1706,14 +1816,20 @@ public class eDFDToGraphTransformation {
                   _xifexpression_5 = "DimensionalityReduction";
                 } else {
                   String _xifexpression_6 = null;
-                  if ((contract instanceof ClusteringContract)) {
-                    _xifexpression_6 = "Clustering";
+                  if ((contract instanceof DataGenerationContract)) {
+                    _xifexpression_6 = "DataGeneration";
                   } else {
                     String _xifexpression_7 = null;
-                    if (((it.getTask() != null) && (!it.getTask().isEmpty()))) {
-                      _xifexpression_7 = it.getTask().toString().replace("[", "").replace("]", "");
+                    if ((contract instanceof ClusteringContract)) {
+                      _xifexpression_7 = "Clustering";
                     } else {
-                      _xifexpression_7 = "";
+                      String _xifexpression_8 = null;
+                      if (((it.getTask() != null) && (!it.getTask().isEmpty()))) {
+                        _xifexpression_8 = it.getTask().toString().replace("[", "").replace("]", "");
+                      } else {
+                        _xifexpression_8 = "";
+                      }
+                      _xifexpression_7 = _xifexpression_8;
                     }
                     _xifexpression_6 = _xifexpression_7;
                   }

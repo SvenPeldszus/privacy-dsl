@@ -18,6 +18,8 @@ import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.Channel;
 import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
+import org.secdfd.model.DataGenerationContract;
+import org.secdfd.model.DataGenerationDirection;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.DecisionMakingContract;
 import org.secdfd.model.DimensionalityReductionContract;
@@ -100,6 +102,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.RECOMMENDATION_CONTRACT: return createRecommendationContract();
 			case ModelPackage.PREDICTION_CONTRACT: return createPredictionContract();
 			case ModelPackage.DIMENSIONALITY_REDUCTION_CONTRACT: return createDimensionalityReductionContract();
+			case ModelPackage.DATA_GENERATION_CONTRACT: return createDataGenerationContract();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -127,6 +130,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 				return createAssetTypeFromString(eDataType, initialValue);
 			case ModelPackage.ML_CONTRACT_TYPE:
 				return createMLContractTypeFromString(eDataType, initialValue);
+			case ModelPackage.DATA_GENERATION_DIRECTION:
+				return createDataGenerationDirectionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -154,6 +159,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 				return convertAssetTypeToString(eDataType, instanceValue);
 			case ModelPackage.ML_CONTRACT_TYPE:
 				return convertMLContractTypeToString(eDataType, instanceValue);
+			case ModelPackage.DATA_GENERATION_DIRECTION:
+				return convertDataGenerationDirectionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -362,6 +369,17 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public DataGenerationContract createDataGenerationContract() {
+		DataGenerationContractImpl dataGenerationContract = new DataGenerationContractImpl();
+		return dataGenerationContract;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Priority createPriorityFromString(EDataType eDataType, String initialValue) {
 		Priority result = Priority.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -494,6 +512,26 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public String convertMLContractTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataGenerationDirection createDataGenerationDirectionFromString(EDataType eDataType, String initialValue) {
+		DataGenerationDirection result = DataGenerationDirection.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertDataGenerationDirectionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

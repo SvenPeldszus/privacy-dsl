@@ -13,6 +13,7 @@ import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
+import org.secdfd.model.DataGenerationContract;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.DecisionMakingContract;
 import org.secdfd.model.DimensionalityReductionContract;
@@ -240,6 +241,14 @@ public class ModelSwitch<T> extends Switch<T> {
 				T result = caseDimensionalityReductionContract(dimensionalityReductionContract);
 				if (result == null) result = caseContractBase(dimensionalityReductionContract);
 				if (result == null) result = caseNamedEntity(dimensionalityReductionContract);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ModelPackage.DATA_GENERATION_CONTRACT: {
+				DataGenerationContract dataGenerationContract = (DataGenerationContract)theEObject;
+				T result = caseDataGenerationContract(dataGenerationContract);
+				if (result == null) result = caseContractBase(dataGenerationContract);
+				if (result == null) result = caseNamedEntity(dataGenerationContract);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -559,6 +568,21 @@ public class ModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDimensionalityReductionContract(DimensionalityReductionContract object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Data Generation Contract</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Data Generation Contract</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDataGenerationContract(DataGenerationContract object) {
 		return null;
 	}
 

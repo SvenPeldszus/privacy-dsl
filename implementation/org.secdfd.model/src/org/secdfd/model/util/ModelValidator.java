@@ -19,6 +19,8 @@ import org.secdfd.model.Channel;
 import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
+import org.secdfd.model.DataGenerationContract;
+import org.secdfd.model.DataGenerationDirection;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.DecisionMakingContract;
 import org.secdfd.model.DimensionalityReductionContract;
@@ -162,6 +164,8 @@ public class ModelValidator extends EObjectValidator {
 				return validatePredictionContract((PredictionContract)value, diagnostics, context);
 			case ModelPackage.DIMENSIONALITY_REDUCTION_CONTRACT:
 				return validateDimensionalityReductionContract((DimensionalityReductionContract)value, diagnostics, context);
+			case ModelPackage.DATA_GENERATION_CONTRACT:
+				return validateDataGenerationContract((DataGenerationContract)value, diagnostics, context);
 			case ModelPackage.PRIORITY:
 				return validatePriority((Priority)value, diagnostics, context);
 			case ModelPackage.CHANNEL:
@@ -176,6 +180,8 @@ public class ModelValidator extends EObjectValidator {
 				return validateAssetType((AssetType)value, diagnostics, context);
 			case ModelPackage.ML_CONTRACT_TYPE:
 				return validateMLContractType((MLContractType)value, diagnostics, context);
+			case ModelPackage.DATA_GENERATION_DIRECTION:
+				return validateDataGenerationDirection((DataGenerationDirection)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -395,6 +401,15 @@ public class ModelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateDataGenerationContract(DataGenerationContract dataGenerationContract, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(dataGenerationContract, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validatePriority(Priority priority, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
@@ -450,6 +465,15 @@ public class ModelValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMLContractType(MLContractType mlContractType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDataGenerationDirection(DataGenerationDirection dataGenerationDirection, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

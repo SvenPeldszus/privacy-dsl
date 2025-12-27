@@ -21,6 +21,8 @@ import org.secdfd.model.Channel;
 import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
+import org.secdfd.model.DataGenerationContract;
+import org.secdfd.model.DataGenerationDirection;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.DecisionMakingContract;
 import org.secdfd.model.DimensionalityReductionContract;
@@ -202,6 +204,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass dataGenerationContractEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum priorityEEnum = null;
 
 	/**
@@ -245,6 +254,13 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EEnum mlContractTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum dataGenerationDirectionEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -913,6 +929,36 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
+	public EClass getDataGenerationContract() {
+		return dataGenerationContractEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDataGenerationContract_Direction() {
+		return (EAttribute)dataGenerationContractEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getDataGenerationContract_K() {
+		return (EAttribute)dataGenerationContractEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getPriority() {
 		return priorityEEnum;
 	}
@@ -975,6 +1021,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	@Override
 	public EEnum getMLContractType() {
 		return mlContractTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getDataGenerationDirection() {
+		return dataGenerationDirectionEEnum;
 	}
 
 	/**
@@ -1086,6 +1142,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		dimensionalityReductionContractEClass = createEClass(DIMENSIONALITY_REDUCTION_CONTRACT);
 		createEAttribute(dimensionalityReductionContractEClass, DIMENSIONALITY_REDUCTION_CONTRACT__K);
 
+		dataGenerationContractEClass = createEClass(DATA_GENERATION_CONTRACT);
+		createEAttribute(dataGenerationContractEClass, DATA_GENERATION_CONTRACT__DIRECTION);
+		createEAttribute(dataGenerationContractEClass, DATA_GENERATION_CONTRACT__K);
+
 		// Create enums
 		priorityEEnum = createEEnum(PRIORITY);
 		channelEEnum = createEEnum(CHANNEL);
@@ -1094,6 +1154,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		layerEEnum = createEEnum(LAYER);
 		assetTypeEEnum = createEEnum(ASSET_TYPE);
 		mlContractTypeEEnum = createEEnum(ML_CONTRACT_TYPE);
+		dataGenerationDirectionEEnum = createEEnum(DATA_GENERATION_DIRECTION);
 	}
 
 	/**
@@ -1142,6 +1203,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		recommendationContractEClass.getESuperTypes().add(this.getContractBase());
 		predictionContractEClass.getESuperTypes().add(this.getContractBase());
 		dimensionalityReductionContractEClass.getESuperTypes().add(this.getContractBase());
+		dataGenerationContractEClass.getESuperTypes().add(this.getContractBase());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(assetEClass, Asset.class, "Asset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1232,6 +1294,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEClass(dimensionalityReductionContractEClass, DimensionalityReductionContract.class, "DimensionalityReductionContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDimensionalityReductionContract_K(), ecorePackage.getEInt(), "K", "0", 0, 1, DimensionalityReductionContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(dataGenerationContractEClass, DataGenerationContract.class, "DataGenerationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataGenerationContract_Direction(), this.getDataGenerationDirection(), "Direction", "PRESERVE", 0, 1, DataGenerationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataGenerationContract_K(), ecorePackage.getEInt(), "K", "1", 0, 1, DataGenerationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(priorityEEnum, Priority.class, "Priority");
 		addEEnumLiteral(priorityEEnum, Priority.N);
@@ -1282,6 +1348,11 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEEnum(mlContractTypeEEnum, MLContractType.class, "MLContractType");
 		addEEnumLiteral(mlContractTypeEEnum, MLContractType.CLASSIFICATION);
 		addEEnumLiteral(mlContractTypeEEnum, MLContractType.CLUSTERING);
+
+		initEEnum(dataGenerationDirectionEEnum, DataGenerationDirection.class, "DataGenerationDirection");
+		addEEnumLiteral(dataGenerationDirectionEEnum, DataGenerationDirection.REDUCE);
+		addEEnumLiteral(dataGenerationDirectionEEnum, DataGenerationDirection.PRESERVE);
+		addEEnumLiteral(dataGenerationDirectionEEnum, DataGenerationDirection.ELEVATE);
 
 		// Create resource
 		createResource(eNS_URI);

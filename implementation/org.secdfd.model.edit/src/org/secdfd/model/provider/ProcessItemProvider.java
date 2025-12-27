@@ -174,6 +174,11 @@ public class ProcessItemProvider extends ElementItemProvider {
 			(createChildParameter
 				(ModelPackage.Literals.PROCESS__RESPONSIBILITY,
 				 ModelFactory.eINSTANCE.createDimensionalityReductionContract()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ModelPackage.Literals.PROCESS__RESPONSIBILITY,
+				 ModelFactory.eINSTANCE.createDataGenerationContract()));
 	}
 
 }

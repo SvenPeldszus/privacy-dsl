@@ -82,6 +82,7 @@ public class ModelTables extends AbstractTables
 	public static final /*@NonInvalid*/ DataTypeId DATAid_EInt = ModelTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EInt", 0);
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_AssetType = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("AssetType");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Channel = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Channel");
+	public static final /*@NonInvalid*/ EnumerationId ENUMid_DataGenerationDirection = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("DataGenerationDirection");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Layer = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Layer");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_MLContractType = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("MLContractType");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Objective = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Objective");
@@ -149,6 +150,8 @@ public class ModelTables extends AbstractTables
 		public static final EcoreExecutorType _ClassificationContract = new EcoreExecutorType(ModelPackage.Literals.CLASSIFICATION_CONTRACT, PACKAGE, 0);
 		public static final EcoreExecutorType _ClusteringContract = new EcoreExecutorType(ModelPackage.Literals.CLUSTERING_CONTRACT, PACKAGE, 0);
 		public static final EcoreExecutorType _ContractBase = new EcoreExecutorType(ModelPackage.Literals.CONTRACT_BASE, PACKAGE, 0 | ExecutorType.ABSTRACT);
+		public static final EcoreExecutorType _DataGenerationContract = new EcoreExecutorType(ModelPackage.Literals.DATA_GENERATION_CONTRACT, PACKAGE, 0);
+		public static final EcoreExecutorEnumeration _DataGenerationDirection = new EcoreExecutorEnumeration(ModelPackage.Literals.DATA_GENERATION_DIRECTION, PACKAGE, 0);
 		public static final EcoreExecutorType _DataStore = new EcoreExecutorType(ModelPackage.Literals.DATA_STORE, PACKAGE, 0);
 		public static final EcoreExecutorType _DecisionMakingContract = new EcoreExecutorType(ModelPackage.Literals.DECISION_MAKING_CONTRACT, PACKAGE, 0);
 		public static final EcoreExecutorType _DimensionalityReductionContract = new EcoreExecutorType(ModelPackage.Literals.DIMENSIONALITY_REDUCTION_CONTRACT, PACKAGE, 0);
@@ -179,6 +182,8 @@ public class ModelTables extends AbstractTables
 			_ClassificationContract,
 			_ClusteringContract,
 			_ContractBase,
+			_DataGenerationContract,
+			_DataGenerationDirection,
 			_DataStore,
 			_DecisionMakingContract,
 			_DimensionalityReductionContract,
@@ -266,6 +271,18 @@ public class ModelTables extends AbstractTables
 		private static final ExecutorFragment _ContractBase__NamedEntity = new ExecutorFragment(Types._ContractBase, ModelTables.Types._NamedEntity);
 		private static final ExecutorFragment _ContractBase__OclAny = new ExecutorFragment(Types._ContractBase, OCLstdlibTables.Types._OclAny);
 		private static final ExecutorFragment _ContractBase__OclElement = new ExecutorFragment(Types._ContractBase, OCLstdlibTables.Types._OclElement);
+
+		private static final ExecutorFragment _DataGenerationContract__ContractBase = new ExecutorFragment(Types._DataGenerationContract, ModelTables.Types._ContractBase);
+		private static final ExecutorFragment _DataGenerationContract__DataGenerationContract = new ExecutorFragment(Types._DataGenerationContract, ModelTables.Types._DataGenerationContract);
+		private static final ExecutorFragment _DataGenerationContract__NamedEntity = new ExecutorFragment(Types._DataGenerationContract, ModelTables.Types._NamedEntity);
+		private static final ExecutorFragment _DataGenerationContract__OclAny = new ExecutorFragment(Types._DataGenerationContract, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _DataGenerationContract__OclElement = new ExecutorFragment(Types._DataGenerationContract, OCLstdlibTables.Types._OclElement);
+
+		private static final ExecutorFragment _DataGenerationDirection__DataGenerationDirection = new ExecutorFragment(Types._DataGenerationDirection, ModelTables.Types._DataGenerationDirection);
+		private static final ExecutorFragment _DataGenerationDirection__OclAny = new ExecutorFragment(Types._DataGenerationDirection, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _DataGenerationDirection__OclElement = new ExecutorFragment(Types._DataGenerationDirection, OCLstdlibTables.Types._OclElement);
+		private static final ExecutorFragment _DataGenerationDirection__OclEnumeration = new ExecutorFragment(Types._DataGenerationDirection, OCLstdlibTables.Types._OclEnumeration);
+		private static final ExecutorFragment _DataGenerationDirection__OclType = new ExecutorFragment(Types._DataGenerationDirection, OCLstdlibTables.Types._OclType);
 
 		private static final ExecutorFragment _DataStore__DataStore = new ExecutorFragment(Types._DataStore, ModelTables.Types._DataStore);
 		private static final ExecutorFragment _DataStore__Element = new ExecutorFragment(Types._DataStore, ModelTables.Types._Element);
@@ -472,6 +489,9 @@ public class ModelTables extends AbstractTables
 		public static final ExecutorProperty _ContractBase__outcomeassets = new EcoreExecutorProperty(ModelPackage.Literals.CONTRACT_BASE__OUTCOMEASSETS, Types._ContractBase, 1);
 		public static final ExecutorProperty _ContractBase__process = new EcoreExecutorProperty(ModelPackage.Literals.CONTRACT_BASE__PROCESS, Types._ContractBase, 2);
 
+		public static final ExecutorProperty _DataGenerationContract__Direction = new EcoreExecutorProperty(ModelPackage.Literals.DATA_GENERATION_CONTRACT__DIRECTION, Types._DataGenerationContract, 0);
+		public static final ExecutorProperty _DataGenerationContract__K = new EcoreExecutorProperty(ModelPackage.Literals.DATA_GENERATION_CONTRACT__K, Types._DataGenerationContract, 1);
+
 		public static final ExecutorProperty _DecisionMakingContract__PAction = new EcoreExecutorProperty(ModelPackage.Literals.DECISION_MAKING_CONTRACT__PACTION, Types._DecisionMakingContract, 0);
 
 		public static final ExecutorProperty _DimensionalityReductionContract__K = new EcoreExecutorProperty(ModelPackage.Literals.DIMENSIONALITY_REDUCTION_CONTRACT__K, Types._DimensionalityReductionContract, 0);
@@ -614,6 +634,26 @@ public class ModelTables extends AbstractTables
 				Fragments._ContractBase__ContractBase /* 3 */
 			};
 		private static final int /*@NonNull*/ [] __ContractBase = { 1,1,1,1 };
+
+		private static final ExecutorFragment /*@NonNull*/ [] _DataGenerationContract =
+			{
+				Fragments._DataGenerationContract__OclAny /* 0 */,
+				Fragments._DataGenerationContract__OclElement /* 1 */,
+				Fragments._DataGenerationContract__NamedEntity /* 2 */,
+				Fragments._DataGenerationContract__ContractBase /* 3 */,
+				Fragments._DataGenerationContract__DataGenerationContract /* 4 */
+			};
+		private static final int /*@NonNull*/ [] __DataGenerationContract = { 1,1,1,1,1 };
+
+		private static final ExecutorFragment /*@NonNull*/ [] _DataGenerationDirection =
+			{
+				Fragments._DataGenerationDirection__OclAny /* 0 */,
+				Fragments._DataGenerationDirection__OclElement /* 1 */,
+				Fragments._DataGenerationDirection__OclType /* 2 */,
+				Fragments._DataGenerationDirection__OclEnumeration /* 3 */,
+				Fragments._DataGenerationDirection__DataGenerationDirection /* 4 */
+			};
+		private static final int /*@NonNull*/ [] __DataGenerationDirection = { 1,1,1,1,1 };
 
 		private static final ExecutorFragment /*@NonNull*/ [] _DataStore =
 			{
@@ -821,6 +861,8 @@ public class ModelTables extends AbstractTables
 			Types._ClassificationContract.initFragments(_ClassificationContract, __ClassificationContract);
 			Types._ClusteringContract.initFragments(_ClusteringContract, __ClusteringContract);
 			Types._ContractBase.initFragments(_ContractBase, __ContractBase);
+			Types._DataGenerationContract.initFragments(_DataGenerationContract, __DataGenerationContract);
+			Types._DataGenerationDirection.initFragments(_DataGenerationDirection, __DataGenerationDirection);
 			Types._DataStore.initFragments(_DataStore, __DataStore);
 			Types._DecisionMakingContract.initFragments(_DecisionMakingContract, __DecisionMakingContract);
 			Types._DimensionalityReductionContract.initFragments(_DimensionalityReductionContract, __DimensionalityReductionContract);
@@ -1141,6 +1183,80 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
 			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
 			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+
+		private static final ExecutorOperation /*@NonNull*/ [] _DataGenerationContract__DataGenerationContract = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _DataGenerationContract__ContractBase = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _DataGenerationContract__NamedEntity = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _DataGenerationContract__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _DataGenerationContract__OclElement = {
+			OCLstdlibTables.Operations._OclElement__allInstances /* allInstances(Integer[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
+			OCLstdlibTables.Operations._OclElement__1_oclBase /* oclBase(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclExtension /* oclExtension(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclExtensions /* oclExtensions() */,
+			OCLstdlibTables.Operations._OclElement__1_oclExtensions /* oclExtensions(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+
+		private static final ExecutorOperation /*@NonNull*/ [] _DataGenerationDirection__DataGenerationDirection = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _DataGenerationDirection__OclAny = {
+			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
+			OCLstdlibTables.Operations._OclAny__oclAsType /* oclAsType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInState /* oclIsInState(OclState[?]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsInvalid /* oclIsInvalid() */,
+			OCLstdlibTables.Operations._OclAny__oclIsKindOf /* oclIsKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsNew /* oclIsNew() */,
+			OCLstdlibTables.Operations._OclAny__oclIsTypeOf /* oclIsTypeOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclIsUndefined /* oclIsUndefined() */,
+			OCLstdlibTables.Operations._OclAny__0_oclLog /* oclLog() */,
+			OCLstdlibTables.Operations._OclAny__1_oclLog /* oclLog(String[1]) */,
+			OCLstdlibTables.Operations._OclAny__oclType /* oclType() */,
+			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
+			OCLstdlibTables.Operations._OclAny__toString /* toString() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _DataGenerationDirection__OclElement = {
+			OCLstdlibTables.Operations._OclEnumeration__allInstances /* allInstances(Integer[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
+			OCLstdlibTables.Operations._OclElement__1_oclBase /* oclBase(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclContainer /* oclContainer() */,
+			OCLstdlibTables.Operations._OclElement__oclContents /* oclContents() */,
+			OCLstdlibTables.Operations._OclElement__oclExtension /* oclExtension(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__0_oclExtensions /* oclExtensions() */,
+			OCLstdlibTables.Operations._OclElement__1_oclExtensions /* oclExtensions(OclStereotype[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclIsModelKindOf /* oclIsModelKindOf(OclType[1]) */,
+			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
+			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _DataGenerationDirection__OclEnumeration = {
+			OCLstdlibTables.Operations._OclEnumeration__allInstances /* allInstances(Integer[1]) */
+		};
+		private static final ExecutorOperation /*@NonNull*/ [] _DataGenerationDirection__OclType = {
+			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
 		};
 
 		private static final ExecutorOperation /*@NonNull*/ [] _DataStore__DataStore = {};
@@ -1904,6 +2020,18 @@ public class ModelTables extends AbstractTables
 			Fragments._ContractBase__OclAny.initOperations(_ContractBase__OclAny);
 			Fragments._ContractBase__OclElement.initOperations(_ContractBase__OclElement);
 
+			Fragments._DataGenerationContract__ContractBase.initOperations(_DataGenerationContract__ContractBase);
+			Fragments._DataGenerationContract__DataGenerationContract.initOperations(_DataGenerationContract__DataGenerationContract);
+			Fragments._DataGenerationContract__NamedEntity.initOperations(_DataGenerationContract__NamedEntity);
+			Fragments._DataGenerationContract__OclAny.initOperations(_DataGenerationContract__OclAny);
+			Fragments._DataGenerationContract__OclElement.initOperations(_DataGenerationContract__OclElement);
+
+			Fragments._DataGenerationDirection__DataGenerationDirection.initOperations(_DataGenerationDirection__DataGenerationDirection);
+			Fragments._DataGenerationDirection__OclAny.initOperations(_DataGenerationDirection__OclAny);
+			Fragments._DataGenerationDirection__OclElement.initOperations(_DataGenerationDirection__OclElement);
+			Fragments._DataGenerationDirection__OclEnumeration.initOperations(_DataGenerationDirection__OclEnumeration);
+			Fragments._DataGenerationDirection__OclType.initOperations(_DataGenerationDirection__OclType);
+
 			Fragments._DataStore__DataStore.initOperations(_DataStore__DataStore);
 			Fragments._DataStore__Element.initOperations(_DataStore__Element);
 			Fragments._DataStore__NamedEntity.initOperations(_DataStore__NamedEntity);
@@ -2101,6 +2229,23 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Properties._OclElement__oclContents,
 			ModelTables.Properties._ContractBase__outcomeassets,
 			ModelTables.Properties._ContractBase__process
+		};
+
+		private static final ExecutorProperty /*@NonNull*/ [] _DataGenerationContract = {
+			ModelTables.Properties._DataGenerationContract__Direction,
+			ModelTables.Properties._DataGenerationContract__K,
+			ModelTables.Properties._ContractBase__incomeassets,
+			ModelTables.Properties._NamedEntity__name,
+			ModelTables.Properties._NamedEntity__number,
+			OCLstdlibTables.Properties._OclElement__oclContainer,
+			OCLstdlibTables.Properties._OclElement__oclContents,
+			ModelTables.Properties._ContractBase__outcomeassets,
+			ModelTables.Properties._ContractBase__process
+		};
+
+		private static final ExecutorProperty /*@NonNull*/ [] _DataGenerationDirection = {
+			OCLstdlibTables.Properties._OclElement__oclContainer,
+			OCLstdlibTables.Properties._OclElement__oclContents
 		};
 
 		private static final ExecutorProperty /*@NonNull*/ [] _DataStore = {
@@ -2310,6 +2455,8 @@ public class ModelTables extends AbstractTables
 			Fragments._ClassificationContract__ClassificationContract.initProperties(_ClassificationContract);
 			Fragments._ClusteringContract__ClusteringContract.initProperties(_ClusteringContract);
 			Fragments._ContractBase__ContractBase.initProperties(_ContractBase);
+			Fragments._DataGenerationContract__DataGenerationContract.initProperties(_DataGenerationContract);
+			Fragments._DataGenerationDirection__DataGenerationDirection.initProperties(_DataGenerationDirection);
 			Fragments._DataStore__DataStore.initProperties(_DataStore);
 			Fragments._DecisionMakingContract__DecisionMakingContract.initProperties(_DecisionMakingContract);
 			Fragments._DimensionalityReductionContract__DimensionalityReductionContract.initProperties(_DimensionalityReductionContract);
@@ -2369,6 +2516,15 @@ public class ModelTables extends AbstractTables
 			_Channel__WiFi,
 			_Channel__VLAN,
 			_Channel__ETH
+		};
+
+		public static final EcoreExecutorEnumerationLiteral _DataGenerationDirection__REDUCE = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.DATA_GENERATION_DIRECTION.getEEnumLiteral("REDUCE"), Types._DataGenerationDirection, 0);
+		public static final EcoreExecutorEnumerationLiteral _DataGenerationDirection__PRESERVE = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.DATA_GENERATION_DIRECTION.getEEnumLiteral("PRESERVE"), Types._DataGenerationDirection, 1);
+		public static final EcoreExecutorEnumerationLiteral _DataGenerationDirection__ELEVATE = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.DATA_GENERATION_DIRECTION.getEEnumLiteral("ELEVATE"), Types._DataGenerationDirection, 2);
+		private static final EcoreExecutorEnumerationLiteral /*@NonNull*/ [] _DataGenerationDirection = {
+			_DataGenerationDirection__REDUCE,
+			_DataGenerationDirection__PRESERVE,
+			_DataGenerationDirection__ELEVATE
 		};
 
 		public static final EcoreExecutorEnumerationLiteral _Layer__Transport = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.LAYER.getEEnumLiteral("Transport"), Types._Layer, 0);
@@ -2448,6 +2604,7 @@ public class ModelTables extends AbstractTables
 		static {
 			Types._AssetType.initLiterals(_AssetType);
 			Types._Channel.initLiterals(_Channel);
+			Types._DataGenerationDirection.initLiterals(_DataGenerationDirection);
 			Types._Layer.initLiterals(_Layer);
 			Types._MLContractType.initLiterals(_MLContractType);
 			Types._Objective.initLiterals(_Objective);

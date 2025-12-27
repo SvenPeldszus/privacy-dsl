@@ -175,4 +175,15 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="K" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="0"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataGenerationDirection">
+    <eLiterals name="REDUCE" literal="REDUCE"/>
+    <eLiterals name="PRESERVE" value="1" literal="PRESERVE"/>
+    <eLiterals name="ELEVATE" value="2" literal="ELEVATE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataGenerationContract" eSuperTypes="#//ContractBase">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Direction" eType="#//DataGenerationDirection"
+        defaultValueLiteral="PRESERVE"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="K" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="1"/>
+  </eClassifiers>
 </ecore:EPackage>

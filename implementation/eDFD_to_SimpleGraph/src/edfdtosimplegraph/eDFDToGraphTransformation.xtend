@@ -41,6 +41,7 @@ import org.secdfd.model.DecisionMakingContract
 import org.secdfd.model.RecommendationContract
 import org.secdfd.model.PredictionContract
 import org.secdfd.model.DimensionalityReductionContract
+import org.secdfd.model.DataGenerationContract
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -343,6 +344,8 @@ class eDFDToGraphTransformation {
     		"[Prediction]"
     	} else if (eDFDResponsibility instanceof DimensionalityReductionContract) {
     		"[DimensionalityReduction]"
+    	} else if (eDFDResponsibility instanceof DataGenerationContract) {
+    		"[DataGeneration]"
     	} else {
     		''
     	}
@@ -1007,9 +1010,9 @@ class eDFDToGraphTransformation {
 	        }
 			//go through responsibilities
 	        for (NodeResponsibility nrProcess : r) {
-	          // Check if this contract sets Privacy labels (ClassificationContract, ClusteringContract, PredictionContract, or DimensionalityReductionContract)
+	          // Check if this contract sets Privacy labels (ClassificationContract, ClusteringContract, PredictionContract, DimensionalityReductionContract, or DataGenerationContract)
 	          val contractProcess = findContract(nrProcess)
-	          val hasPrivacyLabel = getPrivacyLabelFromContract(contractProcess) !== null || contractProcess instanceof ClusteringContract || contractProcess instanceof PredictionContract || contractProcess instanceof DimensionalityReductionContract
+	          val hasPrivacyLabel = getPrivacyLabelFromContract(contractProcess) !== null || contractProcess instanceof ClusteringContract || contractProcess instanceof PredictionContract || contractProcess instanceof DimensionalityReductionContract || contractProcess instanceof DataGenerationContract
 	          
 	          if (hasPrivacyLabel) {
 	            // Handle PredictionContract: lbl_prediction(p_1, ..., p_n, s) = N, if p_max = N; p_max, if p_max ≥ L ∧ s = true; L, if p_max ≥ L ∧ s = false
@@ -1065,6 +1068,48 @@ class eDFDToGraphTransformation {
 	              
 	              println('''[DEBUG] Label propagation of edge «outgoing.ID», «outgoing.number»''')
 	              println('''[DEBUG]   Found DimensionalityReductionContract, p_max=«pMax», k=«k», setting Privacy=«privacyLevel»''')
+	              
+	              // Set other Objectives: Standard-Logik (most restrictive aus Input-Labels)
+	              for (o : Objective.values) {
+	                if (o != Objective.PRIVACY) {
+	                  var max = 0
+	                  for (ina : nrProcess.incomingassets)
+	                    max = Math::max(max, levelOf(ina.assetlabel, o))
+	                  upsertLabel_Edge(outgoing.edgelabel, o, max)
+	                }
+	              }
+	            } else if (contractProcess instanceof DataGenerationContract) {
+	              val direction = (contractProcess as DataGenerationContract).getDirection()
+	              val k = (contractProcess as DataGenerationContract).getK()
+	              // Calculate p_max = p_1 ⊔ p_2 ⊔ ... ⊔ p_n (most restrictive)
+	              var pMax = 0
+	              for (ina : nrProcess.incomingassets) {
+	                val inaPrivacyLevel = levelOf(ina.assetlabel, Objective.PRIVACY)
+	                pMax = Math::max(pMax, inaPrivacyLevel)
+	              }
+	              
+	              // lbl_DG(p_1, ..., p_n, k) = shift^k(p_max)
+	              // Similar to DimensionalityReductionContract, but can also elevate
+	              var privacyLevel = pMax
+	              if (direction !== null) {
+	                if (direction == org.secdfd.model.DataGenerationDirection.REDUCE) {
+	                  // Reduce k times
+	                  for (var i = 0; i < k; i++) {
+	                    privacyLevel = reducePrivacyLevel(privacyLevel)
+	                  }
+	                } else if (direction == org.secdfd.model.DataGenerationDirection.ELEVATE) {
+	                  // Elevate k times
+	                  for (var i = 0; i < k; i++) {
+	                    privacyLevel = elevatePrivacyLevel(privacyLevel)
+	                  }
+	                }
+	                // If PRESERVE, privacyLevel stays pMax
+	              }
+	              
+	              upsertLabel_Edge(outgoing.edgelabel, Objective.PRIVACY, privacyLevel)
+	              
+	              println('''[DEBUG] Label propagation of edge «outgoing.ID», «outgoing.number»''')
+	              println('''[DEBUG]   Found DataGenerationContract, p_max=«pMax», direction=«direction», k=«k», setting Privacy=«privacyLevel»''')
 	              
 	              // Set other Objectives: Standard-Logik (most restrictive aus Input-Labels)
 	              for (o : Objective.values) {
@@ -1331,6 +1376,40 @@ class eDFDToGraphTransformation {
 		}
 	}
 	
+	// elevate(N)=L, elevate(L)=M, elevate(M)=H, elevate(H)=C, elevate(C)=C
+	def int elevatePrivacyLevel(int level) {
+		switch (level) {
+			case 0: 1 // N -> L
+			case 1: 2 // L -> M
+			case 2: 3 // M -> H
+			case 3: 4 // H -> C
+			case 4: 4 // C -> C
+			default: level
+		}
+	}
+	
+	// shift^k(ℓ) = elevate(shift^(k-1)(ℓ)) für k > 0
+	// shift^k(ℓ) = reduce(shift^(k+1)(ℓ)) für k < 0
+	// shift^0(ℓ) = ℓ
+	def int shiftPrivacyLevel(int level, int k) {
+		if (k == 0) {
+			return level
+		}
+		var result = level
+		if (k > 0) {
+			// Elevate k times
+			for (var i = 0; i < k; i++) {
+				result = elevatePrivacyLevel(result)
+			}
+		} else {
+			// Reduce |k| times
+			for (var i = 0; i < -k; i++) {
+				result = reducePrivacyLevel(result)
+			}
+		}
+		return result
+	}
+	
 	// Helper to find ClassificationContract from NodeResponsibility via traces
 	def ClassificationContract findClassificationContract(NodeResponsibility nr) {
 		for (trace : edfd2graph.edfdGraphTraces) {
@@ -1490,6 +1569,8 @@ class eDFDToGraphTransformation {
                        "Prediction"
                      } else if (contract instanceof DimensionalityReductionContract) {
                        "DimensionalityReduction"
+                     } else if (contract instanceof DataGenerationContract) {
+                       "DataGeneration"
                      } else if (contract instanceof ClusteringContract) {
                        "Clustering"
                      } else if (it.task !== null && !it.task.empty) {
