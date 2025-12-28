@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see graph.GraphPackage#getNode()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='UserSemanticConstraint'"
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ComparatorSemanticConstraint'"
  * @generated
  */
 public interface Node extends Identifiable {
@@ -158,10 +158,26 @@ public interface Node extends Identifiable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t\tself.responsibility-&gt;select(r | r.ID.matches(\'^.*Prediction.*$\'))\n\t\t\t\t-&gt;forAll(r |\n\t\t\t\t\t-- Prediction contract needs at least 1 incoming and 1 outgoing asset\n\t\t\t\t\tr.incomingassets-&gt;size() &gt; 0 and r.outgoingassets-&gt;size() &gt; 0\n\t\t\t\t)\n\t\t'"
+	 * @generated
+	 */
+	boolean PredictionSemanticConstraint(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t\tself.responsibility-&gt;select(r | r.ID.matches(\'^.*Copier.*$\'))\n\t\t\t\t-&gt;forAll(r | \n\t\t\t\t\t-- there has to be at least 1 incoming and 1 outgoing asset, and there has to be a responsibility on this node that stores the incoming assets locally\n\t\t\t\t\tr.outgoingassets-&gt;size() &gt; 0 and r.incomingassets-&gt;size() &gt; 0 and \n\t\t\t\t\t\tself.responsibility-&gt;select(r1 | r1.ID.matches(\'^.*Store.*$\'))\n\t\t\t\t\t\t\t-&gt;select(r2 | r2.incomingassets-&gt;select(asset | r.incomingassets-&gt;includes(asset))-&gt;size()&gt;0 or  \n\t\t\t\t\t\t\t\t\t\t  r2.outgoingassets-&gt;select(asset | r.incomingassets-&gt;includes(asset))-&gt;size()&gt;0\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t-&gt;size() &gt; 0\n\t\t\t\t)\n\t\t'"
 	 * @generated
 	 */
 	boolean CopierSemanticConstraint(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t\tself.responsibility-&gt;select(r | r.ID.matches(\'^.*Clustering.*$\'))\n\t\t\t\t-&gt;forAll(r |\n\t\t\t\t\t-- Clustering contract needs at least 1 incoming and 1 outgoing asset\n\t\t\t\t\tr.incomingassets-&gt;size() &gt; 0 and r.outgoingassets-&gt;size() &gt; 0\n\t\t\t\t)\n\t\t'"
+	 * @generated
+	 */
+	boolean ClusteringSemanticConstraint(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -174,10 +190,34 @@ public interface Node extends Identifiable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t\tself.responsibility-&gt;select(r | r.ID.matches(\'^.*DataGeneration.*$\'))\n\t\t\t\t-&gt;forAll(r |\n\t\t\t\t\t-- DataGeneration contract needs at least 1 incoming and 1 outgoing asset\n\t\t\t\t\tr.incomingassets-&gt;size() &gt; 0 and r.outgoingassets-&gt;size() &gt; 0\n\t\t\t\t)\n\t\t'"
+	 * @generated
+	 */
+	boolean DataGenerationSemanticConstraint(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t\tself.responsibility-&gt;select(r | r.ID.matches(\'^.*DimensionalityReduction.*$\'))\n\t\t\t\t-&gt;forAll(r |\n\t\t\t\t\t-- DimensionalityReduction contract needs at least 1 incoming and 1 outgoing asset\n\t\t\t\t\tr.incomingassets-&gt;size() &gt; 0 and r.outgoingassets-&gt;size() &gt; 0\n\t\t\t\t)\n\t\t'"
+	 * @generated
+	 */
+	boolean DimensionalityReductionSemanticConstraint(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t\tself.responsibility-&gt;select(r | r.ID.matches(\'^.*Business.*$\'))\n\t\t\t\t-&gt;forAll(r |\n\t\t\t\t\t--same as store\n\t\t\t\t\tr.incomingassets-&gt;size() &gt; 0 or r.outgoingassets-&gt;size() &gt; 0\n\t\t\t\t)\n\t\t'"
 	 * @generated
 	 */
 	boolean BusinessSemanticConstraint(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t\tself.responsibility-&gt;select(r | r.ID.matches(\'^.*Recommendation.*$\'))\n\t\t\t\t-&gt;forAll(r |\n\t\t\t\t\t-- Recommendation contract needs at least 1 incoming and 1 outgoing asset\n\t\t\t\t\tr.incomingassets-&gt;size() &gt; 0 and r.outgoingassets-&gt;size() &gt; 0\n\t\t\t\t)\n\t\t'"
+	 * @generated
+	 */
+	boolean RecommendationSemanticConstraint(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -238,6 +278,14 @@ public interface Node extends Identifiable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t\tself.responsibility-&gt;select(r | r.ID.matches(\'^.*DecisionMaking.*$\'))\n\t\t\t\t-&gt;forAll(r |\n\t\t\t\t\t-- DecisionMaking contract needs at least 1 incoming and 1 outgoing asset\n\t\t\t\t\tr.incomingassets-&gt;size() &gt; 0 and r.outgoingassets-&gt;size() &gt; 0\n\t\t\t\t)\n\t\t'"
+	 * @generated
+	 */
+	boolean DecisionMakingSemanticConstraint(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t\tself.responsibility-&gt;select(r | r.ID.matches(\'^.*Splitter.*$\'))\n\t\t\t\t-&gt;forAll(r | \n\t\t\t\t\t-- negated join operation\n\t\t\t\t\tr.outgoingassets-&gt;size() &gt;= 2 and r.incomingassets-&gt;size() &gt;= 1 and r.incomingassets-&gt;size() &lt; r.outgoingassets-&gt;size()\t\n\t\t\t\t)\n\t\t'"
 	 * @generated
 	 */
@@ -258,6 +306,14 @@ public interface Node extends Identifiable {
 	 * @generated
 	 */
 	boolean AuthenticatorSemanticConstraint(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t\tself.responsibility-&gt;select(r | r.ID.matches(\'^.*Classification.*$\'))\n\t\t\t\t-&gt;forAll(r |\n\t\t\t\t\t-- Classification contract needs at least 1 incoming and 1 outgoing asset\n\t\t\t\t\tr.incomingassets-&gt;size() &gt; 0 and r.outgoingassets-&gt;size() &gt; 0\n\t\t\t\t)\n\t\t'"
+	 * @generated
+	 */
+	boolean ClassificationSemanticConstraint(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 	/**
 	 * <!-- begin-user-doc -->

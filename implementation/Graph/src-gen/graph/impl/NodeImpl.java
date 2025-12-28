@@ -436,6 +436,140 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * @generated
 	 */
 	@Override
+	public boolean PredictionSemanticConstraint(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Node::PredictionSemanticConstraint";
+		try {
+			/**
+			 *
+			 * inv PredictionSemanticConstraint:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[?] = self.responsibility->select(r |
+			 *           r.ID.matches('^.*Prediction.*$'))
+			 *         ->forAll(r |
+			 *           r.incomingassets->size() > 0 and
+			 *           r.outgoingassets->size() > 0)
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, GraphPackage.Literals.NODE___PREDICTION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, GraphTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				/*@Caught*/ Object CAUGHT_result;
+				try {
+					final /*@NonInvalid*/ List<NodeResponsibility> responsibility = this.getResponsibility();
+					final /*@NonInvalid*/ OrderedSetValue BOXED_responsibility = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_NodeResponsibility, responsibility);
+					/*@Thrown*/ Accumulator accumulator = ValueUtil.createOrderedSetAccumulatorValue(GraphTables.ORD_CLSSid_NodeResponsibility);
+					Iterator<Object> ITERATOR_r = BOXED_responsibility.iterator();
+					/*@Thrown*/ OrderedSetValue select;
+					while (true) {
+						if (!ITERATOR_r.hasNext()) {
+							select = accumulator;
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r = (NodeResponsibility)ITERATOR_r.next();
+						/**
+						 * r.ID.matches('^.*Prediction.*$')
+						 */
+						final /*@NonInvalid*/ String ID = r.getID();
+						if (ID == null) {
+							throw new InvalidValueException("Null \'\'String\'\' rather than \'\'OclVoid\'\' value required");
+						}
+						final /*@Thrown*/ boolean matches = StringMatchesOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, ID, GraphTables.STR__94__a_Prediction_a_$).booleanValue();
+						//
+						if (matches == ValueUtil.TRUE_VALUE) {
+							accumulator.add(r);
+						}
+					}
+					/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+					Iterator<Object> ITERATOR_r_0 = select.iterator();
+					/*@Thrown*/ Boolean result;
+					while (true) {
+						if (!ITERATOR_r_0.hasNext()) {
+							if (accumulator_0 == null) {
+								result = null;
+							}
+							else if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								result = ValueUtil.TRUE_VALUE;
+							}
+							else {
+								throw (InvalidValueException)accumulator_0;
+							}
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r_0 = (NodeResponsibility)ITERATOR_r_0.next();
+						/**
+						 * r.incomingassets->size() > 0 and r.outgoingassets->size() > 0
+						 */
+						final /*@NonInvalid*/ List<GraphAsset> incomingassets = r_0.getIncomingassets();
+						final /*@NonInvalid*/ OrderedSetValue BOXED_incomingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, incomingassets);
+						final /*@NonInvalid*/ IntegerValue size = CollectionSizeOperation.INSTANCE.evaluate(BOXED_incomingassets);
+						final /*@NonInvalid*/ boolean gt = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size, GraphTables.INT_0).booleanValue();
+						final /*@NonInvalid*/ Boolean and;
+						if (!gt) {
+							and = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							final /*@NonInvalid*/ List<GraphAsset> outgoingassets = r_0.getOutgoingassets();
+							final /*@NonInvalid*/ OrderedSetValue BOXED_outgoingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, outgoingassets);
+							final /*@NonInvalid*/ IntegerValue size_0 = CollectionSizeOperation.INSTANCE.evaluate(BOXED_outgoingassets);
+							final /*@NonInvalid*/ boolean gt_0 = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size_0, GraphTables.INT_0).booleanValue();
+							if (!gt_0) {
+								and = ValueUtil.FALSE_VALUE;
+							}
+							else {
+								and = ValueUtil.TRUE_VALUE;
+							}
+						}
+						//
+						if (and == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+							result = ValueUtil.FALSE_VALUE;
+							break;														// Stop immediately
+						}
+						else if (and == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+							;															// Carry on
+						}
+						else if (and == null) {								// Abnormal null body evaluation result
+							if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								accumulator_0 = null;										// Cache a null failure
+							}
+						}
+						else {															// Impossible badly typed result
+							accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+						}
+					}
+					CAUGHT_result = result;
+				}
+				catch (Exception e) {
+					CAUGHT_result = ValueUtil.createInvalidValue(e);
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, CAUGHT_result, GraphTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean CopierSemanticConstraint(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
 		final String constraintName = "Node::CopierSemanticConstraint";
 		try {
@@ -736,6 +870,140 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * @generated
 	 */
 	@Override
+	public boolean ClusteringSemanticConstraint(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Node::ClusteringSemanticConstraint";
+		try {
+			/**
+			 *
+			 * inv ClusteringSemanticConstraint:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[?] = self.responsibility->select(r |
+			 *           r.ID.matches('^.*Clustering.*$'))
+			 *         ->forAll(r |
+			 *           r.incomingassets->size() > 0 and
+			 *           r.outgoingassets->size() > 0)
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, GraphPackage.Literals.NODE___CLUSTERING_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, GraphTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				/*@Caught*/ Object CAUGHT_result;
+				try {
+					final /*@NonInvalid*/ List<NodeResponsibility> responsibility = this.getResponsibility();
+					final /*@NonInvalid*/ OrderedSetValue BOXED_responsibility = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_NodeResponsibility, responsibility);
+					/*@Thrown*/ Accumulator accumulator = ValueUtil.createOrderedSetAccumulatorValue(GraphTables.ORD_CLSSid_NodeResponsibility);
+					Iterator<Object> ITERATOR_r = BOXED_responsibility.iterator();
+					/*@Thrown*/ OrderedSetValue select;
+					while (true) {
+						if (!ITERATOR_r.hasNext()) {
+							select = accumulator;
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r = (NodeResponsibility)ITERATOR_r.next();
+						/**
+						 * r.ID.matches('^.*Clustering.*$')
+						 */
+						final /*@NonInvalid*/ String ID = r.getID();
+						if (ID == null) {
+							throw new InvalidValueException("Null \'\'String\'\' rather than \'\'OclVoid\'\' value required");
+						}
+						final /*@Thrown*/ boolean matches = StringMatchesOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, ID, GraphTables.STR__94__a_Clustering_a_$).booleanValue();
+						//
+						if (matches == ValueUtil.TRUE_VALUE) {
+							accumulator.add(r);
+						}
+					}
+					/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+					Iterator<Object> ITERATOR_r_0 = select.iterator();
+					/*@Thrown*/ Boolean result;
+					while (true) {
+						if (!ITERATOR_r_0.hasNext()) {
+							if (accumulator_0 == null) {
+								result = null;
+							}
+							else if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								result = ValueUtil.TRUE_VALUE;
+							}
+							else {
+								throw (InvalidValueException)accumulator_0;
+							}
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r_0 = (NodeResponsibility)ITERATOR_r_0.next();
+						/**
+						 * r.incomingassets->size() > 0 and r.outgoingassets->size() > 0
+						 */
+						final /*@NonInvalid*/ List<GraphAsset> incomingassets = r_0.getIncomingassets();
+						final /*@NonInvalid*/ OrderedSetValue BOXED_incomingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, incomingassets);
+						final /*@NonInvalid*/ IntegerValue size = CollectionSizeOperation.INSTANCE.evaluate(BOXED_incomingassets);
+						final /*@NonInvalid*/ boolean gt = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size, GraphTables.INT_0).booleanValue();
+						final /*@NonInvalid*/ Boolean and;
+						if (!gt) {
+							and = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							final /*@NonInvalid*/ List<GraphAsset> outgoingassets = r_0.getOutgoingassets();
+							final /*@NonInvalid*/ OrderedSetValue BOXED_outgoingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, outgoingassets);
+							final /*@NonInvalid*/ IntegerValue size_0 = CollectionSizeOperation.INSTANCE.evaluate(BOXED_outgoingassets);
+							final /*@NonInvalid*/ boolean gt_0 = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size_0, GraphTables.INT_0).booleanValue();
+							if (!gt_0) {
+								and = ValueUtil.FALSE_VALUE;
+							}
+							else {
+								and = ValueUtil.TRUE_VALUE;
+							}
+						}
+						//
+						if (and == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+							result = ValueUtil.FALSE_VALUE;
+							break;														// Stop immediately
+						}
+						else if (and == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+							;															// Carry on
+						}
+						else if (and == null) {								// Abnormal null body evaluation result
+							if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								accumulator_0 = null;										// Cache a null failure
+							}
+						}
+						else {															// Impossible badly typed result
+							accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+						}
+					}
+					CAUGHT_result = result;
+				}
+				catch (Exception e) {
+					CAUGHT_result = ValueUtil.createInvalidValue(e);
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, CAUGHT_result, GraphTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean VerifierSemanticConstraint(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
 		final String constraintName = "Node::VerifierSemanticConstraint";
 		try {
@@ -818,6 +1086,274 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 						}
 						else if (gt) {				// Normal successful body evaluation result
 							;															// Carry on
+						}
+						else {															// Impossible badly typed result
+							accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+						}
+					}
+					CAUGHT_result = result;
+				}
+				catch (Exception e) {
+					CAUGHT_result = ValueUtil.createInvalidValue(e);
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, CAUGHT_result, GraphTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean DataGenerationSemanticConstraint(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Node::DataGenerationSemanticConstraint";
+		try {
+			/**
+			 *
+			 * inv DataGenerationSemanticConstraint:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[?] = self.responsibility->select(r |
+			 *           r.ID.matches('^.*DataGeneration.*$'))
+			 *         ->forAll(r |
+			 *           r.incomingassets->size() > 0 and
+			 *           r.outgoingassets->size() > 0)
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, GraphPackage.Literals.NODE___DATA_GENERATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, GraphTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				/*@Caught*/ Object CAUGHT_result;
+				try {
+					final /*@NonInvalid*/ List<NodeResponsibility> responsibility = this.getResponsibility();
+					final /*@NonInvalid*/ OrderedSetValue BOXED_responsibility = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_NodeResponsibility, responsibility);
+					/*@Thrown*/ Accumulator accumulator = ValueUtil.createOrderedSetAccumulatorValue(GraphTables.ORD_CLSSid_NodeResponsibility);
+					Iterator<Object> ITERATOR_r = BOXED_responsibility.iterator();
+					/*@Thrown*/ OrderedSetValue select;
+					while (true) {
+						if (!ITERATOR_r.hasNext()) {
+							select = accumulator;
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r = (NodeResponsibility)ITERATOR_r.next();
+						/**
+						 * r.ID.matches('^.*DataGeneration.*$')
+						 */
+						final /*@NonInvalid*/ String ID = r.getID();
+						if (ID == null) {
+							throw new InvalidValueException("Null \'\'String\'\' rather than \'\'OclVoid\'\' value required");
+						}
+						final /*@Thrown*/ boolean matches = StringMatchesOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, ID, GraphTables.STR__94__a_DataGeneration_a_$).booleanValue();
+						//
+						if (matches == ValueUtil.TRUE_VALUE) {
+							accumulator.add(r);
+						}
+					}
+					/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+					Iterator<Object> ITERATOR_r_0 = select.iterator();
+					/*@Thrown*/ Boolean result;
+					while (true) {
+						if (!ITERATOR_r_0.hasNext()) {
+							if (accumulator_0 == null) {
+								result = null;
+							}
+							else if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								result = ValueUtil.TRUE_VALUE;
+							}
+							else {
+								throw (InvalidValueException)accumulator_0;
+							}
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r_0 = (NodeResponsibility)ITERATOR_r_0.next();
+						/**
+						 * r.incomingassets->size() > 0 and r.outgoingassets->size() > 0
+						 */
+						final /*@NonInvalid*/ List<GraphAsset> incomingassets = r_0.getIncomingassets();
+						final /*@NonInvalid*/ OrderedSetValue BOXED_incomingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, incomingassets);
+						final /*@NonInvalid*/ IntegerValue size = CollectionSizeOperation.INSTANCE.evaluate(BOXED_incomingassets);
+						final /*@NonInvalid*/ boolean gt = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size, GraphTables.INT_0).booleanValue();
+						final /*@NonInvalid*/ Boolean and;
+						if (!gt) {
+							and = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							final /*@NonInvalid*/ List<GraphAsset> outgoingassets = r_0.getOutgoingassets();
+							final /*@NonInvalid*/ OrderedSetValue BOXED_outgoingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, outgoingassets);
+							final /*@NonInvalid*/ IntegerValue size_0 = CollectionSizeOperation.INSTANCE.evaluate(BOXED_outgoingassets);
+							final /*@NonInvalid*/ boolean gt_0 = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size_0, GraphTables.INT_0).booleanValue();
+							if (!gt_0) {
+								and = ValueUtil.FALSE_VALUE;
+							}
+							else {
+								and = ValueUtil.TRUE_VALUE;
+							}
+						}
+						//
+						if (and == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+							result = ValueUtil.FALSE_VALUE;
+							break;														// Stop immediately
+						}
+						else if (and == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+							;															// Carry on
+						}
+						else if (and == null) {								// Abnormal null body evaluation result
+							if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								accumulator_0 = null;										// Cache a null failure
+							}
+						}
+						else {															// Impossible badly typed result
+							accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+						}
+					}
+					CAUGHT_result = result;
+				}
+				catch (Exception e) {
+					CAUGHT_result = ValueUtil.createInvalidValue(e);
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, CAUGHT_result, GraphTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean DimensionalityReductionSemanticConstraint(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Node::DimensionalityReductionSemanticConstraint";
+		try {
+			/**
+			 *
+			 * inv DimensionalityReductionSemanticConstraint:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[?] = self.responsibility->select(r |
+			 *           r.ID.matches('^.*DimensionalityReduction.*$'))
+			 *         ->forAll(r |
+			 *           r.incomingassets->size() > 0 and
+			 *           r.outgoingassets->size() > 0)
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, GraphPackage.Literals.NODE___DIMENSIONALITY_REDUCTION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, GraphTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				/*@Caught*/ Object CAUGHT_result;
+				try {
+					final /*@NonInvalid*/ List<NodeResponsibility> responsibility = this.getResponsibility();
+					final /*@NonInvalid*/ OrderedSetValue BOXED_responsibility = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_NodeResponsibility, responsibility);
+					/*@Thrown*/ Accumulator accumulator = ValueUtil.createOrderedSetAccumulatorValue(GraphTables.ORD_CLSSid_NodeResponsibility);
+					Iterator<Object> ITERATOR_r = BOXED_responsibility.iterator();
+					/*@Thrown*/ OrderedSetValue select;
+					while (true) {
+						if (!ITERATOR_r.hasNext()) {
+							select = accumulator;
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r = (NodeResponsibility)ITERATOR_r.next();
+						/**
+						 * r.ID.matches('^.*DimensionalityReduction.*$')
+						 */
+						final /*@NonInvalid*/ String ID = r.getID();
+						if (ID == null) {
+							throw new InvalidValueException("Null \'\'String\'\' rather than \'\'OclVoid\'\' value required");
+						}
+						final /*@Thrown*/ boolean matches = StringMatchesOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, ID, GraphTables.STR__94__a_DimensionalityReduction_a_$).booleanValue();
+						//
+						if (matches == ValueUtil.TRUE_VALUE) {
+							accumulator.add(r);
+						}
+					}
+					/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+					Iterator<Object> ITERATOR_r_0 = select.iterator();
+					/*@Thrown*/ Boolean result;
+					while (true) {
+						if (!ITERATOR_r_0.hasNext()) {
+							if (accumulator_0 == null) {
+								result = null;
+							}
+							else if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								result = ValueUtil.TRUE_VALUE;
+							}
+							else {
+								throw (InvalidValueException)accumulator_0;
+							}
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r_0 = (NodeResponsibility)ITERATOR_r_0.next();
+						/**
+						 * r.incomingassets->size() > 0 and r.outgoingassets->size() > 0
+						 */
+						final /*@NonInvalid*/ List<GraphAsset> incomingassets = r_0.getIncomingassets();
+						final /*@NonInvalid*/ OrderedSetValue BOXED_incomingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, incomingassets);
+						final /*@NonInvalid*/ IntegerValue size = CollectionSizeOperation.INSTANCE.evaluate(BOXED_incomingassets);
+						final /*@NonInvalid*/ boolean gt = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size, GraphTables.INT_0).booleanValue();
+						final /*@NonInvalid*/ Boolean and;
+						if (!gt) {
+							and = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							final /*@NonInvalid*/ List<GraphAsset> outgoingassets = r_0.getOutgoingassets();
+							final /*@NonInvalid*/ OrderedSetValue BOXED_outgoingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, outgoingassets);
+							final /*@NonInvalid*/ IntegerValue size_0 = CollectionSizeOperation.INSTANCE.evaluate(BOXED_outgoingassets);
+							final /*@NonInvalid*/ boolean gt_0 = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size_0, GraphTables.INT_0).booleanValue();
+							if (!gt_0) {
+								and = ValueUtil.FALSE_VALUE;
+							}
+							else {
+								and = ValueUtil.TRUE_VALUE;
+							}
+						}
+						//
+						if (and == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+							result = ValueUtil.FALSE_VALUE;
+							break;														// Stop immediately
+						}
+						else if (and == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+							;															// Carry on
+						}
+						else if (and == null) {								// Abnormal null body evaluation result
+							if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								accumulator_0 = null;										// Cache a null failure
+							}
 						}
 						else {															// Impossible badly typed result
 							accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
@@ -949,6 +1485,140 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 							;															// Carry on
 						}
 						else if (or == null) {								// Abnormal null body evaluation result
+							if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								accumulator_0 = null;										// Cache a null failure
+							}
+						}
+						else {															// Impossible badly typed result
+							accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+						}
+					}
+					CAUGHT_result = result;
+				}
+				catch (Exception e) {
+					CAUGHT_result = ValueUtil.createInvalidValue(e);
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, CAUGHT_result, GraphTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean RecommendationSemanticConstraint(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Node::RecommendationSemanticConstraint";
+		try {
+			/**
+			 *
+			 * inv RecommendationSemanticConstraint:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[?] = self.responsibility->select(r |
+			 *           r.ID.matches('^.*Recommendation.*$'))
+			 *         ->forAll(r |
+			 *           r.incomingassets->size() > 0 and
+			 *           r.outgoingassets->size() > 0)
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, GraphPackage.Literals.NODE___RECOMMENDATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, GraphTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				/*@Caught*/ Object CAUGHT_result;
+				try {
+					final /*@NonInvalid*/ List<NodeResponsibility> responsibility = this.getResponsibility();
+					final /*@NonInvalid*/ OrderedSetValue BOXED_responsibility = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_NodeResponsibility, responsibility);
+					/*@Thrown*/ Accumulator accumulator = ValueUtil.createOrderedSetAccumulatorValue(GraphTables.ORD_CLSSid_NodeResponsibility);
+					Iterator<Object> ITERATOR_r = BOXED_responsibility.iterator();
+					/*@Thrown*/ OrderedSetValue select;
+					while (true) {
+						if (!ITERATOR_r.hasNext()) {
+							select = accumulator;
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r = (NodeResponsibility)ITERATOR_r.next();
+						/**
+						 * r.ID.matches('^.*Recommendation.*$')
+						 */
+						final /*@NonInvalid*/ String ID = r.getID();
+						if (ID == null) {
+							throw new InvalidValueException("Null \'\'String\'\' rather than \'\'OclVoid\'\' value required");
+						}
+						final /*@Thrown*/ boolean matches = StringMatchesOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, ID, GraphTables.STR__94__a_Recommendation_a_$).booleanValue();
+						//
+						if (matches == ValueUtil.TRUE_VALUE) {
+							accumulator.add(r);
+						}
+					}
+					/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+					Iterator<Object> ITERATOR_r_0 = select.iterator();
+					/*@Thrown*/ Boolean result;
+					while (true) {
+						if (!ITERATOR_r_0.hasNext()) {
+							if (accumulator_0 == null) {
+								result = null;
+							}
+							else if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								result = ValueUtil.TRUE_VALUE;
+							}
+							else {
+								throw (InvalidValueException)accumulator_0;
+							}
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r_0 = (NodeResponsibility)ITERATOR_r_0.next();
+						/**
+						 * r.incomingassets->size() > 0 and r.outgoingassets->size() > 0
+						 */
+						final /*@NonInvalid*/ List<GraphAsset> incomingassets = r_0.getIncomingassets();
+						final /*@NonInvalid*/ OrderedSetValue BOXED_incomingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, incomingassets);
+						final /*@NonInvalid*/ IntegerValue size = CollectionSizeOperation.INSTANCE.evaluate(BOXED_incomingassets);
+						final /*@NonInvalid*/ boolean gt = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size, GraphTables.INT_0).booleanValue();
+						final /*@NonInvalid*/ Boolean and;
+						if (!gt) {
+							and = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							final /*@NonInvalid*/ List<GraphAsset> outgoingassets = r_0.getOutgoingassets();
+							final /*@NonInvalid*/ OrderedSetValue BOXED_outgoingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, outgoingassets);
+							final /*@NonInvalid*/ IntegerValue size_0 = CollectionSizeOperation.INSTANCE.evaluate(BOXED_outgoingassets);
+							final /*@NonInvalid*/ boolean gt_0 = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size_0, GraphTables.INT_0).booleanValue();
+							if (!gt_0) {
+								and = ValueUtil.FALSE_VALUE;
+							}
+							else {
+								and = ValueUtil.TRUE_VALUE;
+							}
+						}
+						//
+						if (and == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+							result = ValueUtil.FALSE_VALUE;
+							break;														// Stop immediately
+						}
+						else if (and == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+							;															// Carry on
+						}
+						else if (and == null) {								// Abnormal null body evaluation result
 							if (accumulator_0 == ValueUtil.TRUE_VALUE) {
 								accumulator_0 = null;										// Cache a null failure
 							}
@@ -2077,6 +2747,140 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * @generated
 	 */
 	@Override
+	public boolean DecisionMakingSemanticConstraint(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Node::DecisionMakingSemanticConstraint";
+		try {
+			/**
+			 *
+			 * inv DecisionMakingSemanticConstraint:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[?] = self.responsibility->select(r |
+			 *           r.ID.matches('^.*DecisionMaking.*$'))
+			 *         ->forAll(r |
+			 *           r.incomingassets->size() > 0 and
+			 *           r.outgoingassets->size() > 0)
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, GraphPackage.Literals.NODE___DECISION_MAKING_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, GraphTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				/*@Caught*/ Object CAUGHT_result;
+				try {
+					final /*@NonInvalid*/ List<NodeResponsibility> responsibility = this.getResponsibility();
+					final /*@NonInvalid*/ OrderedSetValue BOXED_responsibility = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_NodeResponsibility, responsibility);
+					/*@Thrown*/ Accumulator accumulator = ValueUtil.createOrderedSetAccumulatorValue(GraphTables.ORD_CLSSid_NodeResponsibility);
+					Iterator<Object> ITERATOR_r = BOXED_responsibility.iterator();
+					/*@Thrown*/ OrderedSetValue select;
+					while (true) {
+						if (!ITERATOR_r.hasNext()) {
+							select = accumulator;
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r = (NodeResponsibility)ITERATOR_r.next();
+						/**
+						 * r.ID.matches('^.*DecisionMaking.*$')
+						 */
+						final /*@NonInvalid*/ String ID = r.getID();
+						if (ID == null) {
+							throw new InvalidValueException("Null \'\'String\'\' rather than \'\'OclVoid\'\' value required");
+						}
+						final /*@Thrown*/ boolean matches = StringMatchesOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, ID, GraphTables.STR__94__a_DecisionMaking_a_$).booleanValue();
+						//
+						if (matches == ValueUtil.TRUE_VALUE) {
+							accumulator.add(r);
+						}
+					}
+					/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+					Iterator<Object> ITERATOR_r_0 = select.iterator();
+					/*@Thrown*/ Boolean result;
+					while (true) {
+						if (!ITERATOR_r_0.hasNext()) {
+							if (accumulator_0 == null) {
+								result = null;
+							}
+							else if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								result = ValueUtil.TRUE_VALUE;
+							}
+							else {
+								throw (InvalidValueException)accumulator_0;
+							}
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r_0 = (NodeResponsibility)ITERATOR_r_0.next();
+						/**
+						 * r.incomingassets->size() > 0 and r.outgoingassets->size() > 0
+						 */
+						final /*@NonInvalid*/ List<GraphAsset> incomingassets = r_0.getIncomingassets();
+						final /*@NonInvalid*/ OrderedSetValue BOXED_incomingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, incomingassets);
+						final /*@NonInvalid*/ IntegerValue size = CollectionSizeOperation.INSTANCE.evaluate(BOXED_incomingassets);
+						final /*@NonInvalid*/ boolean gt = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size, GraphTables.INT_0).booleanValue();
+						final /*@NonInvalid*/ Boolean and;
+						if (!gt) {
+							and = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							final /*@NonInvalid*/ List<GraphAsset> outgoingassets = r_0.getOutgoingassets();
+							final /*@NonInvalid*/ OrderedSetValue BOXED_outgoingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, outgoingassets);
+							final /*@NonInvalid*/ IntegerValue size_0 = CollectionSizeOperation.INSTANCE.evaluate(BOXED_outgoingassets);
+							final /*@NonInvalid*/ boolean gt_0 = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size_0, GraphTables.INT_0).booleanValue();
+							if (!gt_0) {
+								and = ValueUtil.FALSE_VALUE;
+							}
+							else {
+								and = ValueUtil.TRUE_VALUE;
+							}
+						}
+						//
+						if (and == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+							result = ValueUtil.FALSE_VALUE;
+							break;														// Stop immediately
+						}
+						else if (and == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+							;															// Carry on
+						}
+						else if (and == null) {								// Abnormal null body evaluation result
+							if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								accumulator_0 = null;										// Cache a null failure
+							}
+						}
+						else {															// Impossible badly typed result
+							accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+						}
+					}
+					CAUGHT_result = result;
+				}
+				catch (Exception e) {
+					CAUGHT_result = ValueUtil.createInvalidValue(e);
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, CAUGHT_result, GraphTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean SplitterSemanticConstraint(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
 		final String constraintName = "Node::SplitterSemanticConstraint";
 		try {
@@ -2513,6 +3317,140 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * @generated
 	 */
 	@Override
+	public boolean ClassificationSemanticConstraint(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Node::ClassificationSemanticConstraint";
+		try {
+			/**
+			 *
+			 * inv ClassificationSemanticConstraint:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[?] = self.responsibility->select(r |
+			 *           r.ID.matches('^.*Classification.*$'))
+			 *         ->forAll(r |
+			 *           r.incomingassets->size() > 0 and
+			 *           r.outgoingassets->size() > 0)
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, GraphPackage.Literals.NODE___CLASSIFICATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, GraphTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				/*@Caught*/ Object CAUGHT_result;
+				try {
+					final /*@NonInvalid*/ List<NodeResponsibility> responsibility = this.getResponsibility();
+					final /*@NonInvalid*/ OrderedSetValue BOXED_responsibility = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_NodeResponsibility, responsibility);
+					/*@Thrown*/ Accumulator accumulator = ValueUtil.createOrderedSetAccumulatorValue(GraphTables.ORD_CLSSid_NodeResponsibility);
+					Iterator<Object> ITERATOR_r = BOXED_responsibility.iterator();
+					/*@Thrown*/ OrderedSetValue select;
+					while (true) {
+						if (!ITERATOR_r.hasNext()) {
+							select = accumulator;
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r = (NodeResponsibility)ITERATOR_r.next();
+						/**
+						 * r.ID.matches('^.*Classification.*$')
+						 */
+						final /*@NonInvalid*/ String ID = r.getID();
+						if (ID == null) {
+							throw new InvalidValueException("Null \'\'String\'\' rather than \'\'OclVoid\'\' value required");
+						}
+						final /*@Thrown*/ boolean matches = StringMatchesOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, ID, GraphTables.STR__94__a_Classification_a_$).booleanValue();
+						//
+						if (matches == ValueUtil.TRUE_VALUE) {
+							accumulator.add(r);
+						}
+					}
+					/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+					Iterator<Object> ITERATOR_r_0 = select.iterator();
+					/*@Thrown*/ Boolean result;
+					while (true) {
+						if (!ITERATOR_r_0.hasNext()) {
+							if (accumulator_0 == null) {
+								result = null;
+							}
+							else if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								result = ValueUtil.TRUE_VALUE;
+							}
+							else {
+								throw (InvalidValueException)accumulator_0;
+							}
+							break;
+						}
+						/*@NonInvalid*/ NodeResponsibility r_0 = (NodeResponsibility)ITERATOR_r_0.next();
+						/**
+						 * r.incomingassets->size() > 0 and r.outgoingassets->size() > 0
+						 */
+						final /*@NonInvalid*/ List<GraphAsset> incomingassets = r_0.getIncomingassets();
+						final /*@NonInvalid*/ OrderedSetValue BOXED_incomingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, incomingassets);
+						final /*@NonInvalid*/ IntegerValue size = CollectionSizeOperation.INSTANCE.evaluate(BOXED_incomingassets);
+						final /*@NonInvalid*/ boolean gt = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size, GraphTables.INT_0).booleanValue();
+						final /*@NonInvalid*/ Boolean and;
+						if (!gt) {
+							and = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							final /*@NonInvalid*/ List<GraphAsset> outgoingassets = r_0.getOutgoingassets();
+							final /*@NonInvalid*/ OrderedSetValue BOXED_outgoingassets = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_GraphAsset, outgoingassets);
+							final /*@NonInvalid*/ IntegerValue size_0 = CollectionSizeOperation.INSTANCE.evaluate(BOXED_outgoingassets);
+							final /*@NonInvalid*/ boolean gt_0 = OclComparableGreaterThanOperation.INSTANCE.evaluate(executor, size_0, GraphTables.INT_0).booleanValue();
+							if (!gt_0) {
+								and = ValueUtil.FALSE_VALUE;
+							}
+							else {
+								and = ValueUtil.TRUE_VALUE;
+							}
+						}
+						//
+						if (and == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+							result = ValueUtil.FALSE_VALUE;
+							break;														// Stop immediately
+						}
+						else if (and == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+							;															// Carry on
+						}
+						else if (and == null) {								// Abnormal null body evaluation result
+							if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+								accumulator_0 = null;										// Cache a null failure
+							}
+						}
+						else {															// Impossible badly typed result
+							accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+						}
+					}
+					CAUGHT_result = result;
+				}
+				catch (Exception e) {
+					CAUGHT_result = ValueUtil.createInvalidValue(e);
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, CAUGHT_result, GraphTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean UserSemanticConstraint(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
 		final String constraintName = "Node::UserSemanticConstraint";
 		try {
@@ -2782,34 +3720,48 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case GraphPackage.NODE___PREDICTION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return PredictionSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___STORE_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return StoreSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___DISCARDER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return DiscarderSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___USER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return UserSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 			case GraphPackage.NODE___COPIER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
 				return CopierSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___CLUSTERING_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return ClusteringSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___FORWARD_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return ForwardSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 			case GraphPackage.NODE___VERIFIER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
 				return VerifierSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___BUSINESS_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return BusinessSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___ENCRYPT_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return EncryptSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___DATA_GENERATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return DataGenerationSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___DIMENSIONALITY_REDUCTION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return DimensionalityReductionSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___SPLITTER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return SplitterSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 			case GraphPackage.NODE___JOINER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
 				return JoinerSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 			case GraphPackage.NODE___DECRYPT_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
 				return DecryptSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___STORE_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return StoreSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___COMPARATOR_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return ComparatorSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___DISCARDER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return DiscarderSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___ATTACKER_OBSERVATION_VIOLATION__DIAGNOSTICCHAIN_MAP:
-				return AttackerObservationViolation((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___SPLITTER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return SplitterSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___FORWARD_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return ForwardSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 			case GraphPackage.NODE___AUTHENTICATOR_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
 				return AuthenticatorSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___USER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return UserSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___CLASSIFICATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return ClassificationSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___ATTACKER_OBSERVATION_VIOLATION__DIAGNOSTICCHAIN_MAP:
+				return AttackerObservationViolation((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___DECISION_MAKING_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return DecisionMakingSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___ENCRYPT_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return EncryptSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___BUSINESS_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return BusinessSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___RECOMMENDATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return RecommendationSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___COMPARATOR_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return ComparatorSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

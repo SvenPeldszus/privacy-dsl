@@ -39,12 +39,28 @@ public class GraphValidator extends EObjectValidator {
 	public static final String DIAGNOSTIC_SOURCE = "graph";
 
 	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Prediction Semantic Constraint' of 'Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int NODE__PREDICTION_SEMANTIC_CONSTRAINT = 1;
+
+	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Copier Semantic Constraint' of 'Node'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__COPIER_SEMANTIC_CONSTRAINT = 1;
+	public static final int NODE__COPIER_SEMANTIC_CONSTRAINT = 5;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Clustering Semantic Constraint' of 'Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int NODE__CLUSTERING_SEMANTIC_CONSTRAINT = 6;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Verifier Semantic Constraint' of 'Node'.
@@ -52,7 +68,23 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__VERIFIER_SEMANTIC_CONSTRAINT = 2;
+	public static final int NODE__VERIFIER_SEMANTIC_CONSTRAINT = 8;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Data Generation Semantic Constraint' of 'Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int NODE__DATA_GENERATION_SEMANTIC_CONSTRAINT = 9;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Dimensionality Reduction Semantic Constraint' of 'Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int NODE__DIMENSIONALITY_REDUCTION_SEMANTIC_CONSTRAINT = 10;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Business Semantic Constraint' of 'Node'.
@@ -60,7 +92,15 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__BUSINESS_SEMANTIC_CONSTRAINT = 3;
+	public static final int NODE__BUSINESS_SEMANTIC_CONSTRAINT = 19;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Recommendation Semantic Constraint' of 'Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int NODE__RECOMMENDATION_SEMANTIC_CONSTRAINT = 20;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Encrypt Semantic Constraint' of 'Node'.
@@ -68,7 +108,7 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__ENCRYPT_SEMANTIC_CONSTRAINT = 4;
+	public static final int NODE__ENCRYPT_SEMANTIC_CONSTRAINT = 18;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Joiner Semantic Constraint' of 'Node'.
@@ -76,7 +116,7 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__JOINER_SEMANTIC_CONSTRAINT = 5;
+	public static final int NODE__JOINER_SEMANTIC_CONSTRAINT = 12;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Decrypt Semantic Constraint' of 'Node'.
@@ -84,7 +124,7 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__DECRYPT_SEMANTIC_CONSTRAINT = 6;
+	public static final int NODE__DECRYPT_SEMANTIC_CONSTRAINT = 13;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Store Semantic Constraint' of 'Node'.
@@ -92,7 +132,7 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__STORE_SEMANTIC_CONSTRAINT = 7;
+	public static final int NODE__STORE_SEMANTIC_CONSTRAINT = 2;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Comparator Semantic Constraint' of 'Node'.
@@ -100,7 +140,7 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__COMPARATOR_SEMANTIC_CONSTRAINT = 8;
+	public static final int NODE__COMPARATOR_SEMANTIC_CONSTRAINT = 21;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Discarder Semantic Constraint' of 'Node'.
@@ -108,7 +148,7 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__DISCARDER_SEMANTIC_CONSTRAINT = 9;
+	public static final int NODE__DISCARDER_SEMANTIC_CONSTRAINT = 3;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Attacker Observation Violation' of 'Node'.
@@ -116,7 +156,15 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__ATTACKER_OBSERVATION_VIOLATION = 10;
+	public static final int NODE__ATTACKER_OBSERVATION_VIOLATION = 16;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Decision Making Semantic Constraint' of 'Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int NODE__DECISION_MAKING_SEMANTIC_CONSTRAINT = 17;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Splitter Semantic Constraint' of 'Node'.
@@ -132,7 +180,7 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__FORWARD_SEMANTIC_CONSTRAINT = 12;
+	public static final int NODE__FORWARD_SEMANTIC_CONSTRAINT = 7;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Authenticator Semantic Constraint' of 'Node'.
@@ -140,7 +188,15 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__AUTHENTICATOR_SEMANTIC_CONSTRAINT = 13;
+	public static final int NODE__AUTHENTICATOR_SEMANTIC_CONSTRAINT = 14;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Classification Semantic Constraint' of 'Node'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int NODE__CLASSIFICATION_SEMANTIC_CONSTRAINT = 15;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'User Semantic Constraint' of 'Node'.
@@ -148,7 +204,7 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int NODE__USER_SEMANTIC_CONSTRAINT = 14;
+	public static final int NODE__USER_SEMANTIC_CONSTRAINT = 4;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
@@ -156,7 +212,7 @@ public class GraphValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 14;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 21;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -263,20 +319,27 @@ public class GraphValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(node, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(node, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_ComparatorSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_PredictionSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_StoreSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_DiscarderSemanticConstraint(node, diagnostics, context);
 		if (result || diagnostics != null) result &= validateNode_UserSemanticConstraint(node, diagnostics, context);
 		if (result || diagnostics != null) result &= validateNode_CopierSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_ClusteringSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_ForwardSemanticConstraint(node, diagnostics, context);
 		if (result || diagnostics != null) result &= validateNode_VerifierSemanticConstraint(node, diagnostics, context);
-		if (result || diagnostics != null) result &= validateNode_BusinessSemanticConstraint(node, diagnostics, context);
-		if (result || diagnostics != null) result &= validateNode_EncryptSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_DataGenerationSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_DimensionalityReductionSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_SplitterSemanticConstraint(node, diagnostics, context);
 		if (result || diagnostics != null) result &= validateNode_JoinerSemanticConstraint(node, diagnostics, context);
 		if (result || diagnostics != null) result &= validateNode_DecryptSemanticConstraint(node, diagnostics, context);
-		if (result || diagnostics != null) result &= validateNode_StoreSemanticConstraint(node, diagnostics, context);
-		if (result || diagnostics != null) result &= validateNode_ComparatorSemanticConstraint(node, diagnostics, context);
-		if (result || diagnostics != null) result &= validateNode_DiscarderSemanticConstraint(node, diagnostics, context);
-		if (result || diagnostics != null) result &= validateNode_AttackerObservationViolation(node, diagnostics, context);
-		if (result || diagnostics != null) result &= validateNode_SplitterSemanticConstraint(node, diagnostics, context);
-		if (result || diagnostics != null) result &= validateNode_ForwardSemanticConstraint(node, diagnostics, context);
 		if (result || diagnostics != null) result &= validateNode_AuthenticatorSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_ClassificationSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_AttackerObservationViolation(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_DecisionMakingSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_EncryptSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_BusinessSemanticConstraint(node, diagnostics, context);
+		if (result || diagnostics != null) result &= validateNode_RecommendationSemanticConstraint(node, diagnostics, context);
 		return result;
 	}
 
@@ -301,6 +364,16 @@ public class GraphValidator extends EObjectValidator {
 	}
 
 	/**
+	 * Validates the ClusteringSemanticConstraint constraint of '<em>Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNode_ClusteringSemanticConstraint(Node node, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return node.ClusteringSemanticConstraint(diagnostics, context);
+	}
+
+	/**
 	 * Validates the VerifierSemanticConstraint constraint of '<em>Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -311,6 +384,26 @@ public class GraphValidator extends EObjectValidator {
 	}
 
 	/**
+	 * Validates the DataGenerationSemanticConstraint constraint of '<em>Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNode_DataGenerationSemanticConstraint(Node node, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return node.DataGenerationSemanticConstraint(diagnostics, context);
+	}
+
+	/**
+	 * Validates the DimensionalityReductionSemanticConstraint constraint of '<em>Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNode_DimensionalityReductionSemanticConstraint(Node node, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return node.DimensionalityReductionSemanticConstraint(diagnostics, context);
+	}
+
+	/**
 	 * Validates the BusinessSemanticConstraint constraint of '<em>Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -318,6 +411,16 @@ public class GraphValidator extends EObjectValidator {
 	 */
 	public boolean validateNode_BusinessSemanticConstraint(Node node, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return node.BusinessSemanticConstraint(diagnostics, context);
+	}
+
+	/**
+	 * Validates the RecommendationSemanticConstraint constraint of '<em>Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNode_RecommendationSemanticConstraint(Node node, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return node.RecommendationSemanticConstraint(diagnostics, context);
 	}
 
 	/**
@@ -371,6 +474,16 @@ public class GraphValidator extends EObjectValidator {
 	}
 
 	/**
+	 * Validates the PredictionSemanticConstraint constraint of '<em>Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNode_PredictionSemanticConstraint(Node node, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return node.PredictionSemanticConstraint(diagnostics, context);
+	}
+
+	/**
 	 * Validates the DiscarderSemanticConstraint constraint of '<em>Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -388,6 +501,16 @@ public class GraphValidator extends EObjectValidator {
 	 */
 	public boolean validateNode_AttackerObservationViolation(Node node, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return node.AttackerObservationViolation(diagnostics, context);
+	}
+
+	/**
+	 * Validates the DecisionMakingSemanticConstraint constraint of '<em>Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNode_DecisionMakingSemanticConstraint(Node node, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return node.DecisionMakingSemanticConstraint(diagnostics, context);
 	}
 
 	/**
@@ -418,6 +541,16 @@ public class GraphValidator extends EObjectValidator {
 	 */
 	public boolean validateNode_AuthenticatorSemanticConstraint(Node node, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return node.AuthenticatorSemanticConstraint(diagnostics, context);
+	}
+
+	/**
+	 * Validates the ClassificationSemanticConstraint constraint of '<em>Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNode_ClassificationSemanticConstraint(Node node, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return node.ClassificationSemanticConstraint(diagnostics, context);
 	}
 
 	/**
