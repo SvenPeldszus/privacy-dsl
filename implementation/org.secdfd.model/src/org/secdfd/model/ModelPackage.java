@@ -1190,88 +1190,6 @@ public interface ModelPackage extends EPackage {
 	int SECURITY_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.secdfd.model.impl.MLContractImpl <em>ML Contract</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.impl.MLContractImpl
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getMLContract()
-	 * @generated
-	 */
-	int ML_CONTRACT = 14;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ML_CONTRACT__NAME = CONTRACT_BASE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ML_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
-
-	/**
-	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ML_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
-
-	/**
-	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ML_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
-
-	/**
-	 * The feature id for the '<em><b>Process</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ML_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
-
-	/**
-	 * The feature id for the '<em><b>ML Task</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ML_CONTRACT__ML_TASK = CONTRACT_BASE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>ML Contract</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ML_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>ML Contract</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ML_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.secdfd.model.impl.ClassificationContractImpl <em>Classification Contract</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1279,7 +1197,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getClassificationContract()
 	 * @generated
 	 */
-	int CLASSIFICATION_CONTRACT = 15;
+	int CLASSIFICATION_CONTRACT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1361,7 +1279,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getClusteringContract()
 	 * @generated
 	 */
-	int CLUSTERING_CONTRACT = 16;
+	int CLUSTERING_CONTRACT = 15;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1434,7 +1352,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getDecisionMakingContract()
 	 * @generated
 	 */
-	int DECISION_MAKING_CONTRACT = 17;
+	int DECISION_MAKING_CONTRACT = 16;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1516,7 +1434,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getRecommendationContract()
 	 * @generated
 	 */
-	int RECOMMENDATION_CONTRACT = 18;
+	int RECOMMENDATION_CONTRACT = 17;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1598,7 +1516,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getPredictionContract()
 	 * @generated
 	 */
-	int PREDICTION_CONTRACT = 19;
+	int PREDICTION_CONTRACT = 18;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1680,7 +1598,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getDimensionalityReductionContract()
 	 * @generated
 	 */
-	int DIMENSIONALITY_REDUCTION_CONTRACT = 20;
+	int DIMENSIONALITY_REDUCTION_CONTRACT = 19;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1762,7 +1680,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getDataGenerationContract()
 	 * @generated
 	 */
-	int DATA_GENERATION_CONTRACT = 21;
+	int DATA_GENERATION_CONTRACT = 20;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1853,7 +1771,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getPriority()
 	 * @generated
 	 */
-	int PRIORITY = 22;
+	int PRIORITY = 21;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Channel <em>Channel</em>}' enum.
@@ -1863,7 +1781,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getChannel()
 	 * @generated
 	 */
-	int CHANNEL = 23;
+	int CHANNEL = 22;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.SecurityContractType <em>Security Contract Type</em>}' enum.
@@ -1873,7 +1791,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getSecurityContractType()
 	 * @generated
 	 */
-	int SECURITY_CONTRACT_TYPE = 24;
+	int SECURITY_CONTRACT_TYPE = 23;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Objective <em>Objective</em>}' enum.
@@ -1883,7 +1801,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 25;
+	int OBJECTIVE = 24;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Layer <em>Layer</em>}' enum.
@@ -1893,7 +1811,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getLayer()
 	 * @generated
 	 */
-	int LAYER = 26;
+	int LAYER = 25;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.AssetType <em>Asset Type</em>}' enum.
@@ -1903,18 +1821,8 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getAssetType()
 	 * @generated
 	 */
-	int ASSET_TYPE = 27;
+	int ASSET_TYPE = 26;
 
-
-	/**
-	 * The meta object id for the '{@link org.secdfd.model.MLContractType <em>ML Contract Type</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.MLContractType
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getMLContractType()
-	 * @generated
-	 */
-	int ML_CONTRACT_TYPE = 28;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.DataGenerationDirection <em>Data Generation Direction</em>}' enum.
@@ -1924,7 +1832,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getDataGenerationDirection()
 	 * @generated
 	 */
-	int DATA_GENERATION_DIRECTION = 29;
+	int DATA_GENERATION_DIRECTION = 27;
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.Asset <em>Asset</em>}'.
@@ -2418,27 +2326,6 @@ public interface ModelPackage extends EPackage {
 	EAttribute getSecurityContract_Task();
 
 	/**
-	 * Returns the meta object for class '{@link org.secdfd.model.MLContract <em>ML Contract</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>ML Contract</em>'.
-	 * @see org.secdfd.model.MLContract
-	 * @generated
-	 */
-	EClass getMLContract();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link org.secdfd.model.MLContract#getMLTask <em>ML Task</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>ML Task</em>'.
-	 * @see org.secdfd.model.MLContract#getMLTask()
-	 * @see #getMLContract()
-	 * @generated
-	 */
-	EAttribute getMLContract_MLTask();
-
-	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.ClassificationContract <em>Classification Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2644,16 +2531,6 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getAssetType();
-
-	/**
-	 * Returns the meta object for enum '{@link org.secdfd.model.MLContractType <em>ML Contract Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>ML Contract Type</em>'.
-	 * @see org.secdfd.model.MLContractType
-	 * @generated
-	 */
-	EEnum getMLContractType();
 
 	/**
 	 * Returns the meta object for enum '{@link org.secdfd.model.DataGenerationDirection <em>Data Generation Direction</em>}'.
@@ -3085,24 +2962,6 @@ public interface ModelPackage extends EPackage {
 		EAttribute SECURITY_CONTRACT__TASK = eINSTANCE.getSecurityContract_Task();
 
 		/**
-		 * The meta object literal for the '{@link org.secdfd.model.impl.MLContractImpl <em>ML Contract</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.impl.MLContractImpl
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getMLContract()
-		 * @generated
-		 */
-		EClass ML_CONTRACT = eINSTANCE.getMLContract();
-
-		/**
-		 * The meta object literal for the '<em><b>ML Task</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ML_CONTRACT__ML_TASK = eINSTANCE.getMLContract_MLTask();
-
-		/**
 		 * The meta object literal for the '{@link org.secdfd.model.impl.ClassificationContractImpl <em>Classification Contract</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3287,16 +3146,6 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum ASSET_TYPE = eINSTANCE.getAssetType();
-
-		/**
-		 * The meta object literal for the '{@link org.secdfd.model.MLContractType <em>ML Contract Type</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.MLContractType
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getMLContractType()
-		 * @generated
-		 */
-		EEnum ML_CONTRACT_TYPE = eINSTANCE.getMLContractType();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.DataGenerationDirection <em>Data Generation Direction</em>}' enum.

@@ -30,8 +30,6 @@ import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
 import org.secdfd.model.Layer;
-import org.secdfd.model.MLContract;
-import org.secdfd.model.MLContractType;
 import org.secdfd.model.ModelFactory;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
@@ -155,13 +153,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass mlContractEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass classificationContractEClass = null;
 
 	/**
@@ -247,13 +238,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	private EEnum assetTypeEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum mlContractTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -799,26 +783,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getMLContract() {
-		return mlContractEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getMLContract_MLTask() {
-		return (EAttribute)mlContractEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getClassificationContract() {
 		return classificationContractEClass;
 	}
@@ -1019,16 +983,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EEnum getMLContractType() {
-		return mlContractTypeEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EEnum getDataGenerationDirection() {
 		return dataGenerationDirectionEEnum;
 	}
@@ -1122,9 +1076,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		securityContractEClass = createEClass(SECURITY_CONTRACT);
 		createEAttribute(securityContractEClass, SECURITY_CONTRACT__TASK);
 
-		mlContractEClass = createEClass(ML_CONTRACT);
-		createEAttribute(mlContractEClass, ML_CONTRACT__ML_TASK);
-
 		classificationContractEClass = createEClass(CLASSIFICATION_CONTRACT);
 		createEAttribute(classificationContractEClass, CLASSIFICATION_CONTRACT__PCLASS);
 
@@ -1153,7 +1104,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		objectiveEEnum = createEEnum(OBJECTIVE);
 		layerEEnum = createEEnum(LAYER);
 		assetTypeEEnum = createEEnum(ASSET_TYPE);
-		mlContractTypeEEnum = createEEnum(ML_CONTRACT_TYPE);
 		dataGenerationDirectionEEnum = createEEnum(DATA_GENERATION_DIRECTION);
 	}
 
@@ -1196,7 +1146,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		trustZoneEClass.getESuperTypes().add(this.getElement());
 		contractBaseEClass.getESuperTypes().add(this.getNamedEntity());
 		securityContractEClass.getESuperTypes().add(this.getContractBase());
-		mlContractEClass.getESuperTypes().add(this.getContractBase());
 		classificationContractEClass.getESuperTypes().add(this.getContractBase());
 		clusteringContractEClass.getESuperTypes().add(this.getContractBase());
 		decisionMakingContractEClass.getESuperTypes().add(this.getContractBase());
@@ -1274,9 +1223,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEClass(securityContractEClass, SecurityContract.class, "SecurityContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSecurityContract_Task(), this.getSecurityContractType(), "Task", null, 0, -1, SecurityContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(mlContractEClass, MLContract.class, "MLContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMLContract_MLTask(), this.getMLContractType(), "MLTask", null, 0, -1, MLContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(classificationContractEClass, ClassificationContract.class, "ClassificationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClassificationContract_PClass(), this.getPriority(), "PClass", "L", 0, 1, ClassificationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1344,10 +1290,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEEnumLiteral(assetTypeEEnum, AssetType.NUMBER);
 		addEEnumLiteral(assetTypeEEnum, AssetType.VECTOR);
 		addEEnumLiteral(assetTypeEEnum, AssetType.BOOLEAN);
-
-		initEEnum(mlContractTypeEEnum, MLContractType.class, "MLContractType");
-		addEEnumLiteral(mlContractTypeEEnum, MLContractType.CLASSIFICATION);
-		addEEnumLiteral(mlContractTypeEEnum, MLContractType.CLUSTERING);
 
 		initEEnum(dataGenerationDirectionEEnum, DataGenerationDirection.class, "DataGenerationDirection");
 		addEEnumLiteral(dataGenerationDirectionEEnum, DataGenerationDirection.REDUCE);

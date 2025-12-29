@@ -121,15 +121,6 @@ public interface ModelFactory extends EFactory {
 	SecurityContract createSecurityContract();
 
 	/**
-	 * Returns a new object of class '<em>ML Contract</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>ML Contract</em>'.
-	 * @generated
-	 */
-	MLContract createMLContract();
-
-	/**
 	 * Returns a new object of class '<em>Classification Contract</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

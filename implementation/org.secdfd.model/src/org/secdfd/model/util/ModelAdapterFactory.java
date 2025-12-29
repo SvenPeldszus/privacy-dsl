@@ -25,7 +25,6 @@ import org.secdfd.model.EDFD;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
-import org.secdfd.model.MLContract;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.SecurityContract;
@@ -143,10 +142,6 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseSecurityContract(SecurityContract object) {
 				return createSecurityContractAdapter();
-			}
-			@Override
-			public Adapter caseMLContract(MLContract object) {
-				return createMLContractAdapter();
 			}
 			@Override
 			public Adapter caseClassificationContract(ClassificationContract object) {
@@ -389,20 +384,6 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSecurityContractAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.secdfd.model.MLContract <em>ML Contract</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.secdfd.model.MLContract
-	 * @generated
-	 */
-	public Adapter createMLContractAdapter() {
 		return null;
 	}
 

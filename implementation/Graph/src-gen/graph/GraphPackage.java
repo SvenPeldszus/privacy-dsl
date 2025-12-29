@@ -677,22 +677,13 @@ public interface GraphPackage extends EPackage {
 	int NODE_RESPONSIBILITY__TASK = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Ml Task</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE_RESPONSIBILITY__ML_TASK = IDENTIFIABLE_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Outgoingassets</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_RESPONSIBILITY__OUTGOINGASSETS = IDENTIFIABLE_FEATURE_COUNT + 2;
+	int NODE_RESPONSIBILITY__OUTGOINGASSETS = IDENTIFIABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Incomingassets</b></em>' reference list.
@@ -701,7 +692,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_RESPONSIBILITY__INCOMINGASSETS = IDENTIFIABLE_FEATURE_COUNT + 3;
+	int NODE_RESPONSIBILITY__INCOMINGASSETS = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Node Responsibility</em>' class.
@@ -710,7 +701,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_RESPONSIBILITY_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 4;
+	int NODE_RESPONSIBILITY_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Find Most Restrictive Label</em>' operation.
@@ -1418,17 +1409,6 @@ public interface GraphPackage extends EPackage {
 	EAttribute getNodeResponsibility_Task();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link graph.NodeResponsibility#getMlTask <em>Ml Task</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Ml Task</em>'.
-	 * @see graph.NodeResponsibility#getMlTask()
-	 * @see #getNodeResponsibility()
-	 * @generated
-	 */
-	EAttribute getNodeResponsibility_MlTask();
-
-	/**
 	 * Returns the meta object for the reference list '{@link graph.NodeResponsibility#getOutgoingassets <em>Outgoingassets</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1961,14 +1941,6 @@ public interface GraphPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NODE_RESPONSIBILITY__TASK = eINSTANCE.getNodeResponsibility_Task();
-
-		/**
-		 * The meta object literal for the '<em><b>Ml Task</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute NODE_RESPONSIBILITY__ML_TASK = eINSTANCE.getNodeResponsibility_MlTask();
 
 		/**
 		 * The meta object literal for the '<em><b>Outgoingassets</b></em>' reference list feature.

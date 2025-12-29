@@ -5,8 +5,6 @@ package graph;
 import java.math.BigInteger;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.secdfd.model.MLContractType;
 import org.secdfd.model.SecurityContractType;
 
 /**
@@ -19,7 +17,6 @@ import org.secdfd.model.SecurityContractType;
  * </p>
  * <ul>
  *   <li>{@link graph.NodeResponsibility#getTask <em>Task</em>}</li>
- *   <li>{@link graph.NodeResponsibility#getMlTask <em>Ml Task</em>}</li>
  *   <li>{@link graph.NodeResponsibility#getOutgoingassets <em>Outgoingassets</em>}</li>
  *   <li>{@link graph.NodeResponsibility#getIncomingassets <em>Incomingassets</em>}</li>
  * </ul>
@@ -42,20 +39,6 @@ public interface NodeResponsibility extends Identifiable {
 	 * @generated
 	 */
 	EList<SecurityContractType> getTask();
-
-	/**
-	 * Returns the value of the '<em><b>Ml Task</b></em>' attribute list.
-	 * The list contents are of type {@link org.secdfd.model.MLContractType}.
-	 * The literals are from the enumeration {@link org.secdfd.model.MLContractType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ml Task</em>' attribute list.
-	 * @see org.secdfd.model.MLContractType
-	 * @see graph.GraphPackage#getNodeResponsibility_MlTask()
-	 * @model
-	 * @generated
-	 */
-	EList<MLContractType> getMlTask();
 
 	/**
 	 * Returns the value of the '<em><b>Outgoingassets</b></em>' reference list.

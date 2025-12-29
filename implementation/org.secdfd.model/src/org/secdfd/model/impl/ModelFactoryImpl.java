@@ -27,8 +27,6 @@ import org.secdfd.model.EDFD;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
 import org.secdfd.model.Layer;
-import org.secdfd.model.MLContract;
-import org.secdfd.model.MLContractType;
 import org.secdfd.model.ModelFactory;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.Objective;
@@ -95,7 +93,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.ATTACKER_PROFILE: return createAttackerProfile();
 			case ModelPackage.TRUST_ZONE: return createTrustZone();
 			case ModelPackage.SECURITY_CONTRACT: return createSecurityContract();
-			case ModelPackage.ML_CONTRACT: return createMLContract();
 			case ModelPackage.CLASSIFICATION_CONTRACT: return createClassificationContract();
 			case ModelPackage.CLUSTERING_CONTRACT: return createClusteringContract();
 			case ModelPackage.DECISION_MAKING_CONTRACT: return createDecisionMakingContract();
@@ -128,8 +125,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 				return createLayerFromString(eDataType, initialValue);
 			case ModelPackage.ASSET_TYPE:
 				return createAssetTypeFromString(eDataType, initialValue);
-			case ModelPackage.ML_CONTRACT_TYPE:
-				return createMLContractTypeFromString(eDataType, initialValue);
 			case ModelPackage.DATA_GENERATION_DIRECTION:
 				return createDataGenerationDirectionFromString(eDataType, initialValue);
 			default:
@@ -157,8 +152,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 				return convertLayerToString(eDataType, instanceValue);
 			case ModelPackage.ASSET_TYPE:
 				return convertAssetTypeToString(eDataType, instanceValue);
-			case ModelPackage.ML_CONTRACT_TYPE:
-				return convertMLContractTypeToString(eDataType, instanceValue);
 			case ModelPackage.DATA_GENERATION_DIRECTION:
 				return convertDataGenerationDirectionToString(eDataType, instanceValue);
 			default:
@@ -285,17 +278,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	public SecurityContract createSecurityContract() {
 		SecurityContractImpl securityContract = new SecurityContractImpl();
 		return securityContract;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public MLContract createMLContract() {
-		MLContractImpl mlContract = new MLContractImpl();
-		return mlContract;
 	}
 
 	/**
@@ -492,26 +474,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public String convertAssetTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public MLContractType createMLContractTypeFromString(EDataType eDataType, String initialValue) {
-		MLContractType result = MLContractType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertMLContractTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

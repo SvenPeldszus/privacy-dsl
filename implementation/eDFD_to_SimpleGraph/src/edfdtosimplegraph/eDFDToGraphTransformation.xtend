@@ -34,7 +34,6 @@ import org.eclipse.emf.common.util.EList
 import graph.GraphFactory
 import graph.SecurityLabel
 import org.secdfd.model.ContractBase
-import org.secdfd.model.MLContract
 import org.secdfd.model.ClassificationContract
 import org.secdfd.model.ClusteringContract
 import org.secdfd.model.DecisionMakingContract
@@ -289,11 +288,6 @@ class eDFDToGraphTransformation {
     		newArrayList()
     	}
     	
-    	val eDFDMLResponsibilityActions = if (eDFDResponsibility instanceof MLContract) {
-    		(eDFDResponsibility as MLContract).MLTask
-    	} else {
-    		newArrayList()
-    	}
     	
     	println('''Mapping eDFD Responsibility with Graph NodeResponsibility: «eDFDResponsibilityProcess.name»''')
     	
@@ -323,15 +317,9 @@ class eDFDToGraphTransformation {
     		if (eDFDResponsibility instanceof SecurityContract && !eDFDResponsibilityActions.empty) {
     			addTo(nodeResponsibility_Task, eDFDResponsibilityActions)
     		}
-    		//set mlTasks for MLContract
-    		if (eDFDResponsibility instanceof MLContract && !eDFDMLResponsibilityActions.empty) {
-    			addTo(nodeResponsibility_MlTask, eDFDMLResponsibilityActions)
-    		}
     	]
     	val actionsString = if (eDFDResponsibility instanceof SecurityContract) {
     		eDFDResponsibilityActions.toString
-    	} else if (eDFDResponsibility instanceof MLContract) {
-    		eDFDMLResponsibilityActions.toString
     	} else if (eDFDResponsibility instanceof ClassificationContract) {
     		"[Classification]"
     	} else if (eDFDResponsibility instanceof ClusteringContract) {
@@ -1133,7 +1121,7 @@ class eDFDToGraphTransformation {
 	              }
 	            }
 	          } else {
-	            // Standard SecurityContract/MLContract handling
+	            // Standard SecurityContract handling
 	            // IMPORTANT: Skip Privacy if ClassificationContract exists (already set above)
 	            switch nrProcess.task.toString {
 	            case "[EncryptOrHash]" : {
@@ -1388,56 +1376,6 @@ class eDFDToGraphTransformation {
 		}
 	}
 	
-	// shift^k(ℓ) = elevate(shift^(k-1)(ℓ)) für k > 0
-	// shift^k(ℓ) = reduce(shift^(k+1)(ℓ)) für k < 0
-	// shift^0(ℓ) = ℓ
-	def int shiftPrivacyLevel(int level, int k) {
-		if (k == 0) {
-			return level
-		}
-		var result = level
-		if (k > 0) {
-			// Elevate k times
-			for (var i = 0; i < k; i++) {
-				result = elevatePrivacyLevel(result)
-			}
-		} else {
-			// Reduce |k| times
-			for (var i = 0; i < -k; i++) {
-				result = reducePrivacyLevel(result)
-			}
-		}
-		return result
-	}
-	
-	// Helper to find ClassificationContract from NodeResponsibility via traces
-	def ClassificationContract findClassificationContract(NodeResponsibility nr) {
-		for (trace : edfd2graph.edfdGraphTraces) {
-			if (trace.graphElements.contains(nr)) {
-				for (edfdElement : trace.edfdElements) {
-					if (edfdElement instanceof ClassificationContract) {
-						return edfdElement as ClassificationContract
-					}
-				}
-			}
-		}
-		return null
-	}
-	
-	// Helper to find ClusteringContract from NodeResponsibility via traces
-	def ClusteringContract findClusteringContract(NodeResponsibility nr) {
-		for (trace : edfd2graph.edfdGraphTraces) {
-			if (trace.graphElements.contains(nr)) {
-				for (edfdElement : trace.edfdElements) {
-					if (edfdElement instanceof ClusteringContract) {
-						return edfdElement as ClusteringContract
-					}
-				}
-			}
-		}
-		return null
-	}
-	
 	// Generic helper to find ContractBase from NodeResponsibility via traces
 	def ContractBase findContract(NodeResponsibility nr) {
 		for (trace : edfd2graph.edfdGraphTraces) {
@@ -1490,17 +1428,6 @@ class eDFDToGraphTransformation {
 		return null
 	}
 	
-	// Helper to check if a contract is a ClusteringContract (needs special handling)
-	def boolean isClusteringContract(ContractBase contract) {
-		return contract instanceof ClusteringContract
-	}
-	
-	// Generic helper to check if a NodeResponsibility has a contract that sets Privacy labels
-	def boolean hasPrivacyLabelContract(NodeResponsibility nr) {
-		val contract = findContract(nr)
-		return getPrivacyLabelFromContract(contract) !== null
-	}
-    
     //newly added
 	def void upsertLabel_Asset(EList<AssetLabel> list, Objective o, int level) {
 	  val l = list.findFirst[objective == o]

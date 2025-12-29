@@ -146,14 +146,6 @@
     <eLiterals name="Vector" value="3" literal="Vector"/>
     <eLiterals name="Boolean" value="4" literal="Boolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="MLContractType">
-    <eLiterals name="Classification"/>
-    <eLiterals name="Clustering" value="3"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MLContract" eSuperTypes="#//ContractBase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="MLTask" upperBound="-1"
-        eType="#//MLContractType"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClassificationContract" eSuperTypes="#//ContractBase">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="PClass" eType="#//Priority"
         defaultValueLiteral="L"/>

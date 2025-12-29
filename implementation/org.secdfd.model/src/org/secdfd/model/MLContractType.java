@@ -36,7 +36,47 @@ public enum MLContractType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CLUSTERING(3, "Clustering", "Clustering");
+	CLUSTERING(1, "Clustering", "Clustering"), /**
+	 * The '<em><b>Decision Making</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DECISION_MAKING_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DECISION_MAKING(2, "DecisionMaking", "DecisionMaking"), /**
+	 * The '<em><b>Recommendation</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RECOMMENDATION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	RECOMMENDATION(3, "Recommendation", "Recommendation"), /**
+	 * The '<em><b>Prediction</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PREDICTION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PREDICTION(4, "Prediction", "Prediction"), /**
+	 * The '<em><b>Dimensionality Reduction</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DIMENSIONALITY_REDUCTION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DIMENSIONALITY_REDUCTION(5, "DimensionalityReduction", "DimensionalityReduction"), /**
+	 * The '<em><b>Data Generation</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DATA_GENERATION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DATA_GENERATION(6, "DataGeneration", "DataGeneration");
 
 	/**
 	 * The '<em><b>Classification</b></em>' literal value.
@@ -58,7 +98,62 @@ public enum MLContractType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CLUSTERING_VALUE = 3;
+	public static final int CLUSTERING_VALUE = 1;
+
+	/**
+	 * The '<em><b>Decision Making</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DECISION_MAKING
+	 * @model name="DecisionMaking"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DECISION_MAKING_VALUE = 2;
+
+	/**
+	 * The '<em><b>Recommendation</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RECOMMENDATION
+	 * @model name="Recommendation"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RECOMMENDATION_VALUE = 3;
+
+	/**
+	 * The '<em><b>Prediction</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PREDICTION
+	 * @model name="Prediction"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PREDICTION_VALUE = 4;
+
+	/**
+	 * The '<em><b>Dimensionality Reduction</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DIMENSIONALITY_REDUCTION
+	 * @model name="DimensionalityReduction"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DIMENSIONALITY_REDUCTION_VALUE = 5;
+
+	/**
+	 * The '<em><b>Data Generation</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DATA_GENERATION
+	 * @model name="DataGeneration"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DATA_GENERATION_VALUE = 6;
 
 	/**
 	 * An array of all the '<em><b>ML Contract Type</b></em>' enumerators.
@@ -70,6 +165,11 @@ public enum MLContractType implements Enumerator {
 		new MLContractType[] {
 			CLASSIFICATION,
 			CLUSTERING,
+			DECISION_MAKING,
+			RECOMMENDATION,
+			PREDICTION,
+			DIMENSIONALITY_REDUCTION,
+			DATA_GENERATION,
 		};
 
 	/**
@@ -128,6 +228,11 @@ public enum MLContractType implements Enumerator {
 		switch (value) {
 			case CLASSIFICATION_VALUE: return CLASSIFICATION;
 			case CLUSTERING_VALUE: return CLUSTERING;
+			case DECISION_MAKING_VALUE: return DECISION_MAKING;
+			case RECOMMENDATION_VALUE: return RECOMMENDATION;
+			case PREDICTION_VALUE: return PREDICTION;
+			case DIMENSIONALITY_REDUCTION_VALUE: return DIMENSIONALITY_REDUCTION;
+			case DATA_GENERATION_VALUE: return DATA_GENERATION;
 		}
 		return null;
 	}

@@ -324,28 +324,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 		return securityContractItemProvider;
 	}
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.secdfd.model.MLContract} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MLContractItemProvider mlContractItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.secdfd.model.MLContract}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createMLContractAdapter() {
-		if (mlContractItemProvider == null) {
-			mlContractItemProvider = new MLContractItemProvider(this);
-		}
-
-		return mlContractItemProvider;
-	}
+	
 
 	/**
 	 * This keeps track of the one adapter used for all {@link org.secdfd.model.ClassificationContract} instances.
@@ -624,7 +603,6 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 		if (attackerProfileItemProvider != null) attackerProfileItemProvider.dispose();
 		if (trustZoneItemProvider != null) trustZoneItemProvider.dispose();
 		if (securityContractItemProvider != null) securityContractItemProvider.dispose();
-		if (mlContractItemProvider != null) mlContractItemProvider.dispose();
 		if (classificationContractItemProvider != null) classificationContractItemProvider.dispose();
 		if (clusteringContractItemProvider != null) clusteringContractItemProvider.dispose();
 		if (decisionMakingContractItemProvider != null) decisionMakingContractItemProvider.dispose();

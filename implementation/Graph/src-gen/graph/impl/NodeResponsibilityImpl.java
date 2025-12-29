@@ -41,8 +41,6 @@ import org.eclipse.ocl.pivot.values.OrderedSetValue;
 import org.eclipse.ocl.pivot.values.SequenceValue;
 
 import org.eclipse.ocl.pivot.values.SequenceValue.Accumulator;
-
-import org.secdfd.model.MLContractType;
 import org.secdfd.model.SecurityContractType;
 
 /**
@@ -56,7 +54,6 @@ import org.secdfd.model.SecurityContractType;
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getID <em>ID</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getTask <em>Task</em>}</li>
- *   <li>{@link graph.impl.NodeResponsibilityImpl#getMlTask <em>Ml Task</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getOutgoingassets <em>Outgoingassets</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getIncomingassets <em>Incomingassets</em>}</li>
  * </ul>
@@ -113,16 +110,6 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 	 * @ordered
 	 */
 	protected EList<SecurityContractType> task;
-
-	/**
-	 * The cached value of the '{@link #getMlTask() <em>Ml Task</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMlTask()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<MLContractType> mlTask;
 
 	/**
 	 * The cached value of the '{@link #getOutgoingassets() <em>Outgoingassets</em>}' reference list.
@@ -220,19 +207,6 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 			task = new EDataTypeUniqueEList<SecurityContractType>(SecurityContractType.class, this, GraphPackage.NODE_RESPONSIBILITY__TASK);
 		}
 		return task;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<MLContractType> getMlTask() {
-		if (mlTask == null) {
-			mlTask = new EDataTypeUniqueEList<MLContractType>(MLContractType.class, this, GraphPackage.NODE_RESPONSIBILITY__ML_TASK);
-		}
-		return mlTask;
 	}
 
 	/**
@@ -385,8 +359,6 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 				return getNumber();
 			case GraphPackage.NODE_RESPONSIBILITY__TASK:
 				return getTask();
-			case GraphPackage.NODE_RESPONSIBILITY__ML_TASK:
-				return getMlTask();
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				return getOutgoingassets();
 			case GraphPackage.NODE_RESPONSIBILITY__INCOMINGASSETS:
@@ -413,10 +385,6 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 			case GraphPackage.NODE_RESPONSIBILITY__TASK:
 				getTask().clear();
 				getTask().addAll((Collection<? extends SecurityContractType>)newValue);
-				return;
-			case GraphPackage.NODE_RESPONSIBILITY__ML_TASK:
-				getMlTask().clear();
-				getMlTask().addAll((Collection<? extends MLContractType>)newValue);
 				return;
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				getOutgoingassets().clear();
@@ -447,9 +415,6 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 			case GraphPackage.NODE_RESPONSIBILITY__TASK:
 				getTask().clear();
 				return;
-			case GraphPackage.NODE_RESPONSIBILITY__ML_TASK:
-				getMlTask().clear();
-				return;
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				getOutgoingassets().clear();
 				return;
@@ -474,8 +439,6 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 				return number != NUMBER_EDEFAULT;
 			case GraphPackage.NODE_RESPONSIBILITY__TASK:
 				return task != null && !task.isEmpty();
-			case GraphPackage.NODE_RESPONSIBILITY__ML_TASK:
-				return mlTask != null && !mlTask.isEmpty();
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				return outgoingassets != null && !outgoingassets.isEmpty();
 			case GraphPackage.NODE_RESPONSIBILITY__INCOMINGASSETS:
@@ -516,8 +479,6 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 		result.append(number);
 		result.append(", task: ");
 		result.append(task);
-		result.append(", mlTask: ");
-		result.append(mlTask);
 		result.append(')');
 		return result.toString();
 	}

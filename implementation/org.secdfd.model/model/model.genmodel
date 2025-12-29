@@ -53,10 +53,6 @@
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//AssetType/Vector"/>
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//AssetType/Boolean"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//MLContractType">
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//MLContractType/Classification"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//MLContractType/Clustering"/>
-    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//DataGenerationDirection">
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//DataGenerationDirection/REDUCE"/>
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//DataGenerationDirection/PRESERVE"/>
@@ -118,9 +114,6 @@
     </genClasses>
     <genClasses ecoreClass="model.ecore#//SecurityContract">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SecurityContract/Task"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//MLContract">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//MLContract/MLTask"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//ClassificationContract">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ClassificationContract/PClass"/>

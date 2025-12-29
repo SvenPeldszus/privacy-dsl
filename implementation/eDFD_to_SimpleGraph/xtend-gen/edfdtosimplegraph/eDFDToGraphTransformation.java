@@ -59,8 +59,6 @@ import org.secdfd.model.DecisionMakingContract;
 import org.secdfd.model.DimensionalityReductionContract;
 import org.secdfd.model.Element;
 import org.secdfd.model.Flow;
-import org.secdfd.model.MLContract;
-import org.secdfd.model.MLContractType;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
 import org.secdfd.model.PredictionContract;
@@ -368,13 +366,6 @@ public class eDFDToGraphTransformation {
           _xifexpression = CollectionLiterals.<SecurityContractType>newArrayList();
         }
         final List<SecurityContractType> eDFDResponsibilityActions = _xifexpression;
-        List<MLContractType> _xifexpression_1 = null;
-        if ((eDFDResponsibility instanceof MLContract)) {
-          _xifexpression_1 = ((MLContract) eDFDResponsibility).getMLTask();
-        } else {
-          _xifexpression_1 = CollectionLiterals.<MLContractType>newArrayList();
-        }
-        final List<MLContractType> eDFDMLResponsibilityActions = _xifexpression_1;
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("Mapping eDFD Responsibility with Graph NodeResponsibility: ");
         String _name = eDFDResponsibilityProcess.getName();
@@ -403,69 +394,60 @@ public class eDFDToGraphTransformation {
             if (((eDFDResponsibility instanceof SecurityContract) && (!eDFDResponsibilityActions.isEmpty()))) {
               this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_Task(), eDFDResponsibilityActions);
             }
-            if (((eDFDResponsibility instanceof MLContract) && (!eDFDMLResponsibilityActions.isEmpty()))) {
-              this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_MlTask(), eDFDMLResponsibilityActions);
-            }
           } catch (Throwable _e) {
             throw Exceptions.sneakyThrow(_e);
           }
         };
         final Identifiable graphResponsibility = ObjectExtensions.<Identifiable>operator_doubleArrow(((Identifiable) _createChild), _function);
-        String _xifexpression_2 = null;
+        String _xifexpression_1 = null;
         if ((eDFDResponsibility instanceof SecurityContract)) {
-          _xifexpression_2 = eDFDResponsibilityActions.toString();
+          _xifexpression_1 = eDFDResponsibilityActions.toString();
         } else {
-          String _xifexpression_3 = null;
-          if ((eDFDResponsibility instanceof MLContract)) {
-            _xifexpression_3 = eDFDMLResponsibilityActions.toString();
+          String _xifexpression_2 = null;
+          if ((eDFDResponsibility instanceof ClassificationContract)) {
+            _xifexpression_2 = "[Classification]";
           } else {
-            String _xifexpression_4 = null;
-            if ((eDFDResponsibility instanceof ClassificationContract)) {
-              _xifexpression_4 = "[Classification]";
+            String _xifexpression_3 = null;
+            if ((eDFDResponsibility instanceof ClusteringContract)) {
+              _xifexpression_3 = "[Clustering]";
             } else {
-              String _xifexpression_5 = null;
-              if ((eDFDResponsibility instanceof ClusteringContract)) {
-                _xifexpression_5 = "[Clustering]";
+              String _xifexpression_4 = null;
+              if ((eDFDResponsibility instanceof DecisionMakingContract)) {
+                _xifexpression_4 = "[DecisionMaking]";
               } else {
-                String _xifexpression_6 = null;
-                if ((eDFDResponsibility instanceof DecisionMakingContract)) {
-                  _xifexpression_6 = "[DecisionMaking]";
+                String _xifexpression_5 = null;
+                if ((eDFDResponsibility instanceof RecommendationContract)) {
+                  _xifexpression_5 = "[Recommendation]";
                 } else {
-                  String _xifexpression_7 = null;
-                  if ((eDFDResponsibility instanceof RecommendationContract)) {
-                    _xifexpression_7 = "[Recommendation]";
+                  String _xifexpression_6 = null;
+                  if ((eDFDResponsibility instanceof PredictionContract)) {
+                    _xifexpression_6 = "[Prediction]";
                   } else {
-                    String _xifexpression_8 = null;
-                    if ((eDFDResponsibility instanceof PredictionContract)) {
-                      _xifexpression_8 = "[Prediction]";
+                    String _xifexpression_7 = null;
+                    if ((eDFDResponsibility instanceof DimensionalityReductionContract)) {
+                      _xifexpression_7 = "[DimensionalityReduction]";
                     } else {
-                      String _xifexpression_9 = null;
-                      if ((eDFDResponsibility instanceof DimensionalityReductionContract)) {
-                        _xifexpression_9 = "[DimensionalityReduction]";
+                      String _xifexpression_8 = null;
+                      if ((eDFDResponsibility instanceof DataGenerationContract)) {
+                        _xifexpression_8 = "[DataGeneration]";
                       } else {
-                        String _xifexpression_10 = null;
-                        if ((eDFDResponsibility instanceof DataGenerationContract)) {
-                          _xifexpression_10 = "[DataGeneration]";
-                        } else {
-                          _xifexpression_10 = "";
-                        }
-                        _xifexpression_9 = _xifexpression_10;
+                        _xifexpression_8 = "";
                       }
-                      _xifexpression_8 = _xifexpression_9;
+                      _xifexpression_7 = _xifexpression_8;
                     }
-                    _xifexpression_7 = _xifexpression_8;
+                    _xifexpression_6 = _xifexpression_7;
                   }
-                  _xifexpression_6 = _xifexpression_7;
+                  _xifexpression_5 = _xifexpression_6;
                 }
-                _xifexpression_5 = _xifexpression_6;
+                _xifexpression_4 = _xifexpression_5;
               }
-              _xifexpression_4 = _xifexpression_5;
+              _xifexpression_3 = _xifexpression_4;
             }
-            _xifexpression_3 = _xifexpression_4;
+            _xifexpression_2 = _xifexpression_3;
           }
-          _xifexpression_2 = _xifexpression_3;
+          _xifexpression_1 = _xifexpression_2;
         }
-        final String actionsString = _xifexpression_2;
+        final String actionsString = _xifexpression_1;
         graphResponsibility.setID(eDFDResponsibilityProcess.getName().concat(actionsString).concat(eDFDResponsibility.getIncomeassets().toString()));
         EObject _createChild_1 = this.manipulation.createChild(this.edfd2graph, this.trPackage.getEDFDToGraph_EdfdGraphTraces(), this.trPackage.getEDFDGraphTrace());
         final Procedure1<EObject> _function_1 = (EObject it_1) -> {
@@ -1600,55 +1582,6 @@ public class eDFDToGraphTransformation {
     return _switchResult;
   }
 
-  public int shiftPrivacyLevel(final int level, final int k) {
-    if ((k == 0)) {
-      return level;
-    }
-    int result = level;
-    if ((k > 0)) {
-      for (int i = 0; (i < k); i++) {
-        result = this.elevatePrivacyLevel(result);
-      }
-    } else {
-      for (int i = 0; (i < (-k)); i++) {
-        result = this.reducePrivacyLevel(result);
-      }
-    }
-    return result;
-  }
-
-  public ClassificationContract findClassificationContract(final NodeResponsibility nr) {
-    EList<EDFDGraphTrace> _edfdGraphTraces = this.edfd2graph.getEdfdGraphTraces();
-    for (final EDFDGraphTrace trace : _edfdGraphTraces) {
-      boolean _contains = trace.getGraphElements().contains(nr);
-      if (_contains) {
-        EList<NamedEntity> _edfdElements = trace.getEdfdElements();
-        for (final NamedEntity edfdElement : _edfdElements) {
-          if ((edfdElement instanceof ClassificationContract)) {
-            return ((ClassificationContract) edfdElement);
-          }
-        }
-      }
-    }
-    return null;
-  }
-
-  public ClusteringContract findClusteringContract(final NodeResponsibility nr) {
-    EList<EDFDGraphTrace> _edfdGraphTraces = this.edfd2graph.getEdfdGraphTraces();
-    for (final EDFDGraphTrace trace : _edfdGraphTraces) {
-      boolean _contains = trace.getGraphElements().contains(nr);
-      if (_contains) {
-        EList<NamedEntity> _edfdElements = trace.getEdfdElements();
-        for (final NamedEntity edfdElement : _edfdElements) {
-          if ((edfdElement instanceof ClusteringContract)) {
-            return ((ClusteringContract) edfdElement);
-          }
-        }
-      }
-    }
-    return null;
-  }
-
   public ContractBase findContract(final NodeResponsibility nr) {
     EList<EDFDGraphTrace> _edfdGraphTraces = this.edfd2graph.getEdfdGraphTraces();
     for (final EDFDGraphTrace trace : _edfdGraphTraces) {
@@ -1703,16 +1636,6 @@ public class eDFDToGraphTransformation {
       return null;
     }
     return null;
-  }
-
-  public boolean isClusteringContract(final ContractBase contract) {
-    return (contract instanceof ClusteringContract);
-  }
-
-  public boolean hasPrivacyLabelContract(final NodeResponsibility nr) {
-    final ContractBase contract = this.findContract(nr);
-    Integer _privacyLabelFromContract = this.getPrivacyLabelFromContract(contract);
-    return (_privacyLabelFromContract != null);
   }
 
   public void upsertLabel_Asset(final EList<AssetLabel> list, final Objective o, final int level) {

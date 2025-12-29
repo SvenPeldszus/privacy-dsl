@@ -57,15 +57,7 @@ Process returns Process:
 	']';
 
 ContractBase:
-	SecurityContract | MLContract | ClassificationContract | ClusteringContract | DecisionMakingContract | RecommendationContract | PredictionContract | DimensionalityReductionContract | DataGenerationContract
-;
-
-MLContract returns MLContract:
-	{MLContract}
-	(name=EString)?
-	'['
-		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* MLTask+=MLContractType '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
-	']'
+	SecurityContract | ClassificationContract | ClusteringContract | DecisionMakingContract | RecommendationContract | PredictionContract | DimensionalityReductionContract | DataGenerationContract
 ;
 
 SecurityContract returns SecurityContract:
@@ -222,5 +214,3 @@ enum Channel returns Channel:
 enum AssetType returns AssetType:
 				String = 'String' | Object = 'Object' | Number = 'Number' | Vector = 'Vector' | Boolean = 'Boolean';
 
-enum MLContractType returns MLContractType:
-				Classification = 'Classification' | Clustering = 'Clustering';
