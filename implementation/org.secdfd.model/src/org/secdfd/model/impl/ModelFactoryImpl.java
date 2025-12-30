@@ -18,6 +18,7 @@ import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.Channel;
 import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
+import org.secdfd.model.ContractType;
 import org.secdfd.model.DataGenerationContract;
 import org.secdfd.model.DataGenerationDirection;
 import org.secdfd.model.DataStore;
@@ -34,7 +35,6 @@ import org.secdfd.model.PredictionContract;
 import org.secdfd.model.Priority;
 import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
-import org.secdfd.model.SecurityContractType;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 
@@ -117,8 +117,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 				return createPriorityFromString(eDataType, initialValue);
 			case ModelPackage.CHANNEL:
 				return createChannelFromString(eDataType, initialValue);
-			case ModelPackage.SECURITY_CONTRACT_TYPE:
-				return createSecurityContractTypeFromString(eDataType, initialValue);
+			case ModelPackage.CONTRACT_TYPE:
+				return createContractTypeFromString(eDataType, initialValue);
 			case ModelPackage.OBJECTIVE:
 				return createObjectiveFromString(eDataType, initialValue);
 			case ModelPackage.LAYER:
@@ -144,8 +144,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 				return convertPriorityToString(eDataType, instanceValue);
 			case ModelPackage.CHANNEL:
 				return convertChannelToString(eDataType, instanceValue);
-			case ModelPackage.SECURITY_CONTRACT_TYPE:
-				return convertSecurityContractTypeToString(eDataType, instanceValue);
+			case ModelPackage.CONTRACT_TYPE:
+				return convertContractTypeToString(eDataType, instanceValue);
 			case ModelPackage.OBJECTIVE:
 				return convertObjectiveToString(eDataType, instanceValue);
 			case ModelPackage.LAYER:
@@ -402,8 +402,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SecurityContractType createSecurityContractTypeFromString(EDataType eDataType, String initialValue) {
-		SecurityContractType result = SecurityContractType.get(initialValue);
+	public ContractType createContractTypeFromString(EDataType eDataType, String initialValue) {
+		ContractType result = ContractType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -413,7 +413,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertSecurityContractTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertContractTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -53,6 +53,7 @@ import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
+import org.secdfd.model.ContractType;
 import org.secdfd.model.DataGenerationContract;
 import org.secdfd.model.DataGenerationDirection;
 import org.secdfd.model.DecisionMakingContract;
@@ -65,7 +66,6 @@ import org.secdfd.model.PredictionContract;
 import org.secdfd.model.Priority;
 import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
-import org.secdfd.model.SecurityContractType;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 import traceability.EDFDGraphTrace;
@@ -333,7 +333,7 @@ public class eDFDToGraphTransformation {
         EObject _createChild = this.manipulation.createChild(subgraph, this.graphPackage.getSubgraphs_Assets(), this.graphPackage.getGraphAsset());
         final GraphAsset gA = ((GraphAsset) _createChild);
         for (final Value v : eDFDAssetValues) {
-          this.upsertLabel_Asset(gA.getAssetlabel(), v.getObjective(), this.lvl(v.getPriority()));
+          this.setOrUpdateAssetLabel(gA.getAssetlabel(), v.getObjective(), this.lvl(v.getPriority()));
         }
         gA.setID(eDFDAsset.getName());
         EObject _createChild_1 = this.manipulation.createChild(this.edfd2graph, this.trPackage.getEDFDToGraph_EdfdGraphTraces(), this.trPackage.getEDFDGraphTrace());
@@ -359,13 +359,38 @@ public class eDFDToGraphTransformation {
         final NamedEntity eDFDResponsibilityProcess = ((NamedEntity) _process);
         final EList<Asset> eDFDIncomingAssets = eDFDResponsibility.getIncomeassets();
         final EList<Asset> eDFDOutgoingAssets = eDFDResponsibility.getOutcomeassets();
-        List<SecurityContractType> _xifexpression = null;
+        final ArrayList<ContractType> eDFDResponsibilityActions = CollectionLiterals.<ContractType>newArrayList();
         if ((eDFDResponsibility instanceof SecurityContract)) {
-          _xifexpression = ((SecurityContract) eDFDResponsibility).getTask();
+          eDFDResponsibilityActions.addAll(((SecurityContract)eDFDResponsibility).getTask());
         } else {
-          _xifexpression = CollectionLiterals.<SecurityContractType>newArrayList();
+          if ((eDFDResponsibility instanceof ClassificationContract)) {
+            eDFDResponsibilityActions.add(ContractType.CLASSIFICATION);
+          } else {
+            if ((eDFDResponsibility instanceof ClusteringContract)) {
+              eDFDResponsibilityActions.add(ContractType.CLUSTERING);
+            } else {
+              if ((eDFDResponsibility instanceof DecisionMakingContract)) {
+                eDFDResponsibilityActions.add(ContractType.DECISION_MAKING);
+              } else {
+                if ((eDFDResponsibility instanceof RecommendationContract)) {
+                  eDFDResponsibilityActions.add(ContractType.RECOMMENDATION);
+                } else {
+                  if ((eDFDResponsibility instanceof PredictionContract)) {
+                    eDFDResponsibilityActions.add(ContractType.PREDICTION);
+                  } else {
+                    if ((eDFDResponsibility instanceof DimensionalityReductionContract)) {
+                      eDFDResponsibilityActions.add(ContractType.DIMENSIONALITY_REDUCTION);
+                    } else {
+                      if ((eDFDResponsibility instanceof DataGenerationContract)) {
+                        eDFDResponsibilityActions.add(ContractType.DATA_GENERATION);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
-        final List<SecurityContractType> eDFDResponsibilityActions = _xifexpression;
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("Mapping eDFD Responsibility with Graph NodeResponsibility: ");
         String _name = eDFDResponsibilityProcess.getName();
@@ -391,7 +416,9 @@ public class eDFDToGraphTransformation {
           try {
             this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_Incomingassets(), incomingassets_of_process);
             this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_Outgoingassets(), outgoingassets_of_process);
-            if (((eDFDResponsibility instanceof SecurityContract) && (!eDFDResponsibilityActions.isEmpty()))) {
+            boolean _isEmpty = eDFDResponsibilityActions.isEmpty();
+            boolean _not = (!_isEmpty);
+            if (_not) {
               this.manipulation.addTo(it_1, this.graphPackage.getNodeResponsibility_Task(), eDFDResponsibilityActions);
             }
           } catch (Throwable _e) {
@@ -399,55 +426,7 @@ public class eDFDToGraphTransformation {
           }
         };
         final Identifiable graphResponsibility = ObjectExtensions.<Identifiable>operator_doubleArrow(((Identifiable) _createChild), _function);
-        String _xifexpression_1 = null;
-        if ((eDFDResponsibility instanceof SecurityContract)) {
-          _xifexpression_1 = eDFDResponsibilityActions.toString();
-        } else {
-          String _xifexpression_2 = null;
-          if ((eDFDResponsibility instanceof ClassificationContract)) {
-            _xifexpression_2 = "[Classification]";
-          } else {
-            String _xifexpression_3 = null;
-            if ((eDFDResponsibility instanceof ClusteringContract)) {
-              _xifexpression_3 = "[Clustering]";
-            } else {
-              String _xifexpression_4 = null;
-              if ((eDFDResponsibility instanceof DecisionMakingContract)) {
-                _xifexpression_4 = "[DecisionMaking]";
-              } else {
-                String _xifexpression_5 = null;
-                if ((eDFDResponsibility instanceof RecommendationContract)) {
-                  _xifexpression_5 = "[Recommendation]";
-                } else {
-                  String _xifexpression_6 = null;
-                  if ((eDFDResponsibility instanceof PredictionContract)) {
-                    _xifexpression_6 = "[Prediction]";
-                  } else {
-                    String _xifexpression_7 = null;
-                    if ((eDFDResponsibility instanceof DimensionalityReductionContract)) {
-                      _xifexpression_7 = "[DimensionalityReduction]";
-                    } else {
-                      String _xifexpression_8 = null;
-                      if ((eDFDResponsibility instanceof DataGenerationContract)) {
-                        _xifexpression_8 = "[DataGeneration]";
-                      } else {
-                        _xifexpression_8 = "";
-                      }
-                      _xifexpression_7 = _xifexpression_8;
-                    }
-                    _xifexpression_6 = _xifexpression_7;
-                  }
-                  _xifexpression_5 = _xifexpression_6;
-                }
-                _xifexpression_4 = _xifexpression_5;
-              }
-              _xifexpression_3 = _xifexpression_4;
-            }
-            _xifexpression_2 = _xifexpression_3;
-          }
-          _xifexpression_1 = _xifexpression_2;
-        }
-        final String actionsString = _xifexpression_1;
+        final String actionsString = eDFDResponsibilityActions.toString();
         graphResponsibility.setID(eDFDResponsibilityProcess.getName().concat(actionsString).concat(eDFDResponsibility.getIncomeassets().toString()));
         EObject _createChild_1 = this.manipulation.createChild(this.edfd2graph, this.trPackage.getEDFDToGraph_EdfdGraphTraces(), this.trPackage.getEDFDGraphTrace());
         final Procedure1<EObject> _function_1 = (EObject it_1) -> {
@@ -599,36 +578,6 @@ public class eDFDToGraphTransformation {
       subgraph.getAssets().addAll(graph_assets);
     })).build();
 
-  /**
-   * val initLabels = createRule.precondition(edfdtosimplegraph.EEandDSElement.Matcher.querySpecification).action[
-   * print('''Inferring labels for: «it.el.name»''')
-   * 
-   * //find subgraph in target model
-   * val subgraph = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, null).filter(Subgraphs).head
-   * // get the node of EE or DS
-   * var locate_correct_graph_node = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, it.el as NamedEntity).filter(Node).head
-   * for (Node n : subgraph.nodes){
-   * if (n.name == locate_correct_graph_node.name){
-   * locate_correct_graph_node = n
-   * }
-   * }
-   * 
-   * // set the nodes of the outgoing flows only
-   * for (Edge e : locate_correct_graph_node.outedges){
-   * // for each set label according to the most restrictive asset on the flow
-   * e.visited = true
-   * var setlabel = -1 // not set
-   * for (GraphAsset gs: e.graphassets){
-   * if (gs.label > setlabel)
-   * setlabel = gs.label
-   * }
-   * e.edgeLabel = setlabel
-   * print(''' to «e.edgeLabel»''')
-   * println()
-   * }
-   * 
-   * ].build
-   */
   private final BatchTransformationRule<EEandDSElement.Match, EEandDSElement.Matcher> initLabels = this._batchTransformationRuleFactory.<EEandDSElement.Match, EEandDSElement.Matcher>createRule().precondition(EEandDSElement.Matcher.querySpecification()).action(((Consumer<EEandDSElement.Match>) (EEandDSElement.Match it) -> {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Inferring labels for ");
@@ -665,7 +614,7 @@ public class eDFDToGraphTransformation {
             } else {
               _elvis = Integer.valueOf(0);
             }
-            this.upsertLabel_Edge(_edgelabel, o, (_elvis).intValue());
+            this.setOrUpdateEdgeLabel(_edgelabel, o, (_elvis).intValue());
           }
         }
         StringConcatenation _builder_1 = new StringConcatenation();
@@ -682,174 +631,6 @@ public class eDFDToGraphTransformation {
     }
   })).build();
 
-  /**
-   * val propagateLabelsInOrder = createRule.precondition(edfdtosimplegraph.EDFD.Matcher.querySpecification).action[
-   * val all_elements = it.edfd.elements
-   * 
-   * //print(all_elements)
-   * val all_flows = newArrayList()
-   * for (Element e : all_elements){
-   * all_flows.addAll(e.outflows)
-   * }
-   * Collections.sort(all_flows) [ a, b |
-   * a.number - b.number
-   * ]
-   * for (Element f : all_flows){
-   * var outgoing = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, f as NamedEntity).filter(Edge).head
-   * var node = outgoing.source
-   * outgoing.visited = true
-   * for (GraphAsset ga : outgoing.graphassets){
-   * //for each asset, collect what kind of responsibility they are part of in the node
-   * var r = newArrayList()
-   * for (NodeResponsibility noder : node.responsibility){
-   * if (noder.outgoingassets.contains(ga)) r.add(noder)
-   * }
-   * //go through responsibilities
-   * for (NodeResponsibility nr : r){
-   * switch(nr.task.toString){
-   * case "[EncryptOrHash]":{
-   * //set low output
-   * outgoing.edgeLabel = 0
-   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
-   * print(''' is «outgoing.edgeLabel»''')
-   * print(''' for ecrypting asset:«ga.ID»''')
-   * println()
-   * }
-   * case "[Decrypt]": {
-   * var most_restrictive = -1
-   * for (GraphAsset i : nr.incomingassets){
-   * if	(i.label > most_restrictive) most_restrictive = i.label
-   * }
-   * 
-   * 
-   * //set high output if the most sensitive asset being decrypted was high before
-   * if (most_restrictive ==	1){
-   * outgoing.edgeLabel = 1
-   * }else{
-   * //if sth low is decrypted it remains low
-   * outgoing.edgeLabel = 0
-   * }
-   * 
-   * outgoing.edgeLabel = 1
-   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
-   * print(''' is «outgoing.edgeLabel»''')
-   * print(''' for decrypting asset:«ga.ID»''')
-   * println()
-   * }
-   * //Comparator, Joiner, User => the same propagation
-   * case "[Comparator]":{
-   * //join labels (most restrictive input to node responsibility)
-   * var most_restrictive = -1
-   * for (GraphAsset i : nr.incomingassets){
-   * if	(i.label > most_restrictive) most_restrictive = i.label
-   * }
-   * outgoing.edgeLabel = most_restrictive
-   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
-   * print(''' is «outgoing.edgeLabel»''')
-   * print(''' for comparing asset:«ga.ID»''')
-   * println()
-   * }
-   * case "[Joiner]":{
-   * //join labels (most restrictive input to node responsibility
-   * var most_restrictive = -1
-   * for (GraphAsset i : nr.incomingassets){
-   * if	(i.label > most_restrictive) most_restrictive = i.label
-   * }
-   * outgoing.edgeLabel = most_restrictive
-   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
-   * print(''' is «outgoing.edgeLabel»''')
-   * print(''' for joining asset:«ga.ID»''')
-   * println()
-   * }
-   * //splitter should be included (substring), to remain conservative
-   * case "[Splitter]":{
-   * //join labels (most restrictive input to node responsibility
-   * var most_restrictive = -1
-   * for (GraphAsset i : nr.incomingassets){
-   * if	(i.label > most_restrictive) most_restrictive = i.label
-   * }
-   * outgoing.edgeLabel = most_restrictive
-   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
-   * print(''' is «outgoing.edgeLabel»''')
-   * print(''' for spliting asset:«ga.ID»''')
-   * println()
-   * }
-   * case "[User]":{
-   * //join labels (most restrictive input to node responsibility)
-   * var most_restrictive = -1
-   * for (GraphAsset i : nr.incomingassets){
-   * if	(i.label > most_restrictive) most_restrictive = i.label
-   * }
-   * outgoing.edgeLabel = most_restrictive
-   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
-   * print(''' is «outgoing.edgeLabel»''')
-   * print(''' for using asset:«ga.ID»''')
-   * println()
-   * }
-   * //Copier and Forward => the same
-   * case "[Copier]":{
-   * //copy labels (add semantic constraint - all assets in one copy responsibility must have the same label)
-   * outgoing.edgeLabel = nr.incomingassets.get(0).label
-   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
-   * print(''' is «outgoing.edgeLabel»''')
-   * print(''' for copying asset:«ga.ID»''')
-   * println()
-   * }
-   * case "[Forward]":{
-   * //copy labels (add semantic constraint - all assets in one forward responsibility must have the same label)
-   * outgoing.edgeLabel = nr.incomingassets.get(0).label
-   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
-   * print(''' is «outgoing.edgeLabel»''')
-   * print(''' for forwarding asset:«ga.ID»''')
-   * println()
-   * }
-   * case "[Store]":{
-   * //most restrictive stored asset
-   * var most_restrictive = -1
-   * for (GraphAsset i : nr.incomingassets){
-   * if	(i.label > most_restrictive) most_restrictive = i.label
-   * }
-   * outgoing.edgeLabel = most_restrictive
-   * print('''Label propagation of edge «outgoing.ID», «outgoing.number»''')
-   * print(''' is «outgoing.edgeLabel»''')
-   * print(''' for using asset:«ga.ID»''')
-   * println()
-   * }
-   * //case "[Discarder]":
-   * //case "[Verifier]":
-   * //case "[Authenticator]":
-   * //case "[Authoriser]":
-   * default :{
-   * print(nr.operation.toString)
-   * print("Does not effect confidentiality label propagation.")
-   * println()
-   * }
-   * }
-   * }
-   * 
-   * //if the flow has no connected responsibility, inferr the label from the most restrictive asset
-   * if (outgoing.edgeLabel == -1){
-   * var most_restrictive = -1
-   * for (GraphAsset i : outgoing.graphassets){
-   * if	(i.label > most_restrictive) most_restrictive = i.label
-   * }
-   * outgoing.edgeLabel = most_restrictive
-   * print('''Label inferred for edge «outgoing.ID»''')
-   * print(''' to «outgoing.edgeLabel»''')
-   * print(''' since no label propagation rules apply to this edge.''')
-   * println()
-   * }
-   * 
-   * print(f.number)
-   * print(''': ''')
-   * print(outgoing.edgeLabel)
-   * println()
-   * }
-   * }
-   * 
-   * 
-   * ].build
-   */
   private final BatchTransformationRule<EDFD.Match, EDFD.Matcher> propagateLabelsInOrder = this._batchTransformationRuleFactory.<EDFD.Match, EDFD.Matcher>createRule().precondition(EDFD.Matcher.querySpecification()).action(
     ((Consumer<EDFD.Match>) (EDFD.Match it) -> {
       final EList<Element> all_elements = it.getEdfd().getElements();
@@ -868,579 +649,303 @@ public class eDFDToGraphTransformation {
           final Edge outgoing = IterableExtensions.<Edge>head(Iterables.<Edge>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, ((NamedEntity) f)), Edge.class));
           final Node node = outgoing.getSource();
           outgoing.setVisited(true);
-          boolean privacyLabelContractFound = false;
-          int privacyLabelLevel = 0;
-          String privacyLabelContractName = "";
           EList<NodeResponsibility> _responsibility = node.getResponsibility();
           for (final NodeResponsibility nr : _responsibility) {
             {
               final ContractBase contract = this.findContract(nr);
-              if (((contract instanceof ClassificationContract) && (!privacyLabelContractFound))) {
-                privacyLabelContractFound = true;
-                privacyLabelContractName = "ClassificationContract";
-                Priority _elvis = null;
-                Priority _pClass = ((ClassificationContract) contract).getPClass();
-                if (_pClass != null) {
-                  _elvis = _pClass;
-                } else {
-                  _elvis = Priority.L;
-                }
-                final Priority pClass = _elvis;
-                privacyLabelLevel = this.lvl(pClass);
-                this.upsertLabel_Edge(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLabelLevel);
-                StringConcatenation _builder = new StringConcatenation();
-                _builder.append("[DEBUG] Label propagation of edge ");
-                String _iD = outgoing.getID();
-                _builder.append(_iD);
-                _builder.append(", ");
-                int _number = outgoing.getNumber();
-                _builder.append(_number);
-                InputOutput.<String>println(_builder.toString());
-                StringConcatenation _builder_1 = new StringConcatenation();
-                _builder_1.append("[DEBUG]   Found ");
-                _builder_1.append(privacyLabelContractName);
-                _builder_1.append(", setting Privacy=");
-                _builder_1.append(privacyLabelLevel);
-                _builder_1.append(" (from pClass=");
-                String _name = pClass.getName();
-                _builder_1.append(_name);
-                _builder_1.append(")");
-                InputOutput.<String>println(_builder_1.toString());
-                StringConcatenation _builder_2 = new StringConcatenation();
-                _builder_2.append("[DEBUG]   Edge labels after setting Privacy: ");
-                final Function1<EdgeLabel, String> _function_1 = (EdgeLabel it_1) -> {
-                  String _literal = it_1.getObjective().getLiteral();
-                  String _plus = (_literal + "=");
-                  int _level = it_1.getLevel();
-                  return (_plus + Integer.valueOf(_level));
-                };
-                String _join = IterableExtensions.join(ListExtensions.<EdgeLabel, String>map(outgoing.getEdgelabel(), _function_1), ", ");
-                _builder_2.append(_join);
-                InputOutput.<String>println(_builder_2.toString());
+              int pMax = 0;
+              EList<GraphAsset> _incomingassets = nr.getIncomingassets();
+              for (final GraphAsset ina : _incomingassets) {
+                pMax = Math.max(pMax, this.levelOf(ina.getAssetlabel(), Objective.PRIVACY));
               }
-              if (((contract instanceof DecisionMakingContract) && (!privacyLabelContractFound))) {
-                privacyLabelContractFound = true;
-                privacyLabelContractName = "DecisionMakingContract";
-                Priority _elvis_1 = null;
-                Priority _pAction = ((DecisionMakingContract) contract).getPAction();
-                if (_pAction != null) {
-                  _elvis_1 = _pAction;
-                } else {
-                  _elvis_1 = Priority.L;
-                }
-                final Priority pAction = _elvis_1;
-                privacyLabelLevel = this.lvl(pAction);
-                this.upsertLabel_Edge(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLabelLevel);
-                StringConcatenation _builder_3 = new StringConcatenation();
-                _builder_3.append("[DEBUG] Label propagation of edge ");
-                String _iD_1 = outgoing.getID();
-                _builder_3.append(_iD_1);
-                _builder_3.append(", ");
-                int _number_1 = outgoing.getNumber();
-                _builder_3.append(_number_1);
-                InputOutput.<String>println(_builder_3.toString());
-                StringConcatenation _builder_4 = new StringConcatenation();
-                _builder_4.append("[DEBUG]   Found ");
-                _builder_4.append(privacyLabelContractName);
-                _builder_4.append(", setting Privacy=");
-                _builder_4.append(privacyLabelLevel);
-                _builder_4.append(" (from pAction=");
-                String _name_1 = pAction.getName();
-                _builder_4.append(_name_1);
-                _builder_4.append(")");
-                InputOutput.<String>println(_builder_4.toString());
-                StringConcatenation _builder_5 = new StringConcatenation();
-                _builder_5.append("[DEBUG]   Edge labels after setting Privacy: ");
-                final Function1<EdgeLabel, String> _function_2 = (EdgeLabel it_1) -> {
-                  String _literal = it_1.getObjective().getLiteral();
-                  String _plus = (_literal + "=");
-                  int _level = it_1.getLevel();
-                  return (_plus + Integer.valueOf(_level));
-                };
-                String _join_1 = IterableExtensions.join(ListExtensions.<EdgeLabel, String>map(outgoing.getEdgelabel(), _function_2), ", ");
-                _builder_5.append(_join_1);
-                InputOutput.<String>println(_builder_5.toString());
-              }
-              if (((contract instanceof RecommendationContract) && (!privacyLabelContractFound))) {
-                privacyLabelContractFound = true;
-                privacyLabelContractName = "RecommendationContract";
-                final boolean s = ((RecommendationContract) contract).isS();
-                int _xifexpression = (int) 0;
-                if (s) {
-                  _xifexpression = 1;
-                } else {
-                  _xifexpression = 0;
-                }
-                privacyLabelLevel = _xifexpression;
-                this.upsertLabel_Edge(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLabelLevel);
-                StringConcatenation _builder_6 = new StringConcatenation();
-                _builder_6.append("[DEBUG] Label propagation of edge ");
-                String _iD_2 = outgoing.getID();
-                _builder_6.append(_iD_2);
-                _builder_6.append(", ");
-                int _number_2 = outgoing.getNumber();
-                _builder_6.append(_number_2);
-                InputOutput.<String>println(_builder_6.toString());
-                StringConcatenation _builder_7 = new StringConcatenation();
-                _builder_7.append("[DEBUG]   Found ");
-                _builder_7.append(privacyLabelContractName);
-                _builder_7.append(", setting Privacy=");
-                _builder_7.append(privacyLabelLevel);
-                _builder_7.append(" (person-specific=");
-                _builder_7.append(s);
-                _builder_7.append(")");
-                InputOutput.<String>println(_builder_7.toString());
-                StringConcatenation _builder_8 = new StringConcatenation();
-                _builder_8.append("[DEBUG]   Edge labels after setting Privacy: ");
-                final Function1<EdgeLabel, String> _function_3 = (EdgeLabel it_1) -> {
-                  String _literal = it_1.getObjective().getLiteral();
-                  String _plus = (_literal + "=");
-                  int _level = it_1.getLevel();
-                  return (_plus + Integer.valueOf(_level));
-                };
-                String _join_2 = IterableExtensions.join(ListExtensions.<EdgeLabel, String>map(outgoing.getEdgelabel(), _function_3), ", ");
-                _builder_8.append(_join_2);
-                InputOutput.<String>println(_builder_8.toString());
-              }
-              if (((contract instanceof ClusteringContract) && (!privacyLabelContractFound))) {
-                privacyLabelContractFound = true;
-                privacyLabelContractName = "ClusteringContract";
-                final Function1<GraphAsset, Boolean> _function_4 = (GraphAsset ina) -> {
-                  boolean _xblockexpression = false;
-                  {
-                    final int inaPrivacyLevel = this.levelOf(ina.getAssetlabel(), Objective.PRIVACY);
-                    _xblockexpression = (inaPrivacyLevel != 0);
-                  }
-                  return Boolean.valueOf(_xblockexpression);
-                };
-                boolean _exists = IterableExtensions.<GraphAsset>exists(nr.getIncomingassets(), _function_4);
-                final boolean allPrivacyLabelsAreN = (!_exists);
-                int _xifexpression_1 = (int) 0;
-                if (allPrivacyLabelsAreN) {
-                  _xifexpression_1 = 0;
-                } else {
-                  _xifexpression_1 = 1;
-                }
-                privacyLabelLevel = _xifexpression_1;
-                this.upsertLabel_Edge(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLabelLevel);
-                StringConcatenation _builder_9 = new StringConcatenation();
-                _builder_9.append("[DEBUG] Label propagation of edge ");
-                String _iD_3 = outgoing.getID();
-                _builder_9.append(_iD_3);
-                _builder_9.append(", ");
-                int _number_3 = outgoing.getNumber();
-                _builder_9.append(_number_3);
-                InputOutput.<String>println(_builder_9.toString());
-                StringConcatenation _builder_10 = new StringConcatenation();
-                _builder_10.append("[DEBUG]   Found ");
-                _builder_10.append(privacyLabelContractName);
-                _builder_10.append(", setting Privacy=");
-                _builder_10.append(privacyLabelLevel);
-                _builder_10.append(" (all inputs N=");
-                _builder_10.append(allPrivacyLabelsAreN);
-                _builder_10.append(")");
-                InputOutput.<String>println(_builder_10.toString());
-                StringConcatenation _builder_11 = new StringConcatenation();
-                _builder_11.append("[DEBUG]   Edge labels after setting Privacy: ");
-                final Function1<EdgeLabel, String> _function_5 = (EdgeLabel it_1) -> {
-                  String _literal = it_1.getObjective().getLiteral();
-                  String _plus = (_literal + "=");
-                  int _level = it_1.getLevel();
-                  return (_plus + Integer.valueOf(_level));
-                };
-                String _join_3 = IterableExtensions.join(ListExtensions.<EdgeLabel, String>map(outgoing.getEdgelabel(), _function_5), ", ");
-                _builder_11.append(_join_3);
-                InputOutput.<String>println(_builder_11.toString());
-              }
-            }
-          }
-          final boolean hasPrivacyLabelContract = privacyLabelContractFound;
-          EList<GraphAsset> _graphassets = outgoing.getGraphassets();
-          for (final GraphAsset ga : _graphassets) {
-            {
-              final ArrayList<NodeResponsibility> r = CollectionLiterals.<NodeResponsibility>newArrayList();
-              EList<NodeResponsibility> _responsibility_1 = node.getResponsibility();
-              for (final NodeResponsibility nrCollect : _responsibility_1) {
-                boolean _contains = nrCollect.getOutgoingassets().contains(ga);
-                if (_contains) {
-                  r.add(nrCollect);
-                }
-              }
-              for (final NodeResponsibility nrProcess : r) {
-                {
-                  final ContractBase contractProcess = this.findContract(nrProcess);
-                  final boolean hasPrivacyLabel = (((((this.getPrivacyLabelFromContract(contractProcess) != null) || (contractProcess instanceof ClusteringContract)) || (contractProcess instanceof PredictionContract)) || (contractProcess instanceof DimensionalityReductionContract)) || (contractProcess instanceof DataGenerationContract));
-                  if (hasPrivacyLabel) {
-                    if ((contractProcess instanceof PredictionContract)) {
-                      final boolean s = ((PredictionContract) contractProcess).isS();
-                      int pMax = 0;
-                      EList<GraphAsset> _incomingassets = nrProcess.getIncomingassets();
-                      for (final GraphAsset ina : _incomingassets) {
-                        {
-                          final int inaPrivacyLevel = this.levelOf(ina.getAssetlabel(), Objective.PRIVACY);
-                          pMax = Math.max(pMax, inaPrivacyLevel);
-                        }
-                      }
-                      int _xifexpression = (int) 0;
-                      if ((pMax == 0)) {
-                        _xifexpression = 0;
+              final Function1<EdgeLabel, Boolean> _function_1 = (EdgeLabel l) -> {
+                Objective _objective = l.getObjective();
+                return Boolean.valueOf(Objects.equals(_objective, Objective.PRIVACY));
+              };
+              boolean _exists = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_1);
+              boolean _not = (!_exists);
+              if (_not) {
+                String _string = nr.getTask().toString();
+                if (_string != null) {
+                  switch (_string) {
+                    case "[Classification]":
+                      final ClassificationContract contractClass = ((ClassificationContract) contract);
+                      Priority _xifexpression = null;
+                      if (((contractClass != null) && (contractClass.getPClass() != null))) {
+                        _xifexpression = contractClass.getPClass();
                       } else {
-                        int _xifexpression_1 = (int) 0;
-                        if (s) {
-                          _xifexpression_1 = pMax;
-                        } else {
-                          _xifexpression_1 = 1;
-                        }
-                        _xifexpression = _xifexpression_1;
+                        _xifexpression = Priority.L;
                       }
-                      final int privacyLevel = _xifexpression;
-                      this.upsertLabel_Edge(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLevel);
-                      StringConcatenation _builder = new StringConcatenation();
-                      _builder.append("[DEBUG] Label propagation of edge ");
-                      String _iD = outgoing.getID();
-                      _builder.append(_iD);
-                      _builder.append(", ");
-                      int _number = outgoing.getNumber();
-                      _builder.append(_number);
-                      InputOutput.<String>println(_builder.toString());
-                      StringConcatenation _builder_1 = new StringConcatenation();
-                      _builder_1.append("[DEBUG]   Found PredictionContract, p_max=");
-                      _builder_1.append(pMax);
-                      _builder_1.append(", s=");
-                      _builder_1.append(s);
-                      _builder_1.append(", setting Privacy=");
-                      _builder_1.append(privacyLevel);
-                      InputOutput.<String>println(_builder_1.toString());
+                      final Priority pClass = _xifexpression;
+                      this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), Objective.PRIVACY, this.lvl(pClass));
+                      break;
+                    case "[DecisionMaking]":
+                      final DecisionMakingContract contractDM = ((DecisionMakingContract) contract);
+                      Priority _xifexpression_1 = null;
+                      if (((contractDM != null) && (contractDM.getPAction() != null))) {
+                        _xifexpression_1 = contractDM.getPAction();
+                      } else {
+                        _xifexpression_1 = Priority.L;
+                      }
+                      final Priority pAction = _xifexpression_1;
+                      this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), Objective.PRIVACY, this.lvl(pAction));
+                      break;
+                    case "[Recommendation]":
+                      final RecommendationContract contractRec = ((RecommendationContract) contract);
+                      boolean _xifexpression_2 = false;
+                      if ((contractRec != null)) {
+                        _xifexpression_2 = contractRec.isS();
+                      } else {
+                        _xifexpression_2 = false;
+                      }
+                      final boolean s = _xifexpression_2;
+                      EList<EdgeLabel> _edgelabel = outgoing.getEdgelabel();
+                      int _xifexpression_3 = (int) 0;
+                      if (s) {
+                        _xifexpression_3 = 1;
+                      } else {
+                        _xifexpression_3 = 0;
+                      }
+                      this.setOrUpdateEdgeLabel(_edgelabel, Objective.PRIVACY, _xifexpression_3);
+                      break;
+                    case "[Clustering]":
+                      final Function1<GraphAsset, Boolean> _function_2 = (GraphAsset ina_1) -> {
+                        int _levelOf = this.levelOf(ina_1.getAssetlabel(), Objective.PRIVACY);
+                        return Boolean.valueOf((_levelOf != 0));
+                      };
+                      boolean _exists_1 = IterableExtensions.<GraphAsset>exists(nr.getIncomingassets(), _function_2);
+                      final boolean allPrivacyLabelsAreN = (!_exists_1);
+                      EList<EdgeLabel> _edgelabel_1 = outgoing.getEdgelabel();
+                      int _xifexpression_4 = (int) 0;
+                      if (allPrivacyLabelsAreN) {
+                        _xifexpression_4 = 0;
+                      } else {
+                        _xifexpression_4 = 1;
+                      }
+                      this.setOrUpdateEdgeLabel(_edgelabel_1, Objective.PRIVACY, _xifexpression_4);
+                      break;
+                    case "[Prediction]":
+                      final PredictionContract contractPred = ((PredictionContract) contract);
+                      boolean _xifexpression_5 = false;
+                      if ((contractPred != null)) {
+                        _xifexpression_5 = contractPred.isS();
+                      } else {
+                        _xifexpression_5 = false;
+                      }
+                      final boolean s_1 = _xifexpression_5;
+                      int _xifexpression_6 = (int) 0;
+                      if ((pMax == 0)) {
+                        _xifexpression_6 = 0;
+                      } else {
+                        int _xifexpression_7 = (int) 0;
+                        if (s_1) {
+                          _xifexpression_7 = pMax;
+                        } else {
+                          _xifexpression_7 = 1;
+                        }
+                        _xifexpression_6 = _xifexpression_7;
+                      }
+                      final int privacyLevel = _xifexpression_6;
+                      this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLevel);
+                      break;
+                    case "[DimensionalityReduction]":
+                      final DimensionalityReductionContract contractDR = ((DimensionalityReductionContract) contract);
+                      int _xifexpression_8 = (int) 0;
+                      if ((contractDR != null)) {
+                        _xifexpression_8 = contractDR.getK();
+                      } else {
+                        _xifexpression_8 = 0;
+                      }
+                      final int k = _xifexpression_8;
+                      int privacyLevel_1 = pMax;
+                      for (int i = 0; (i < k); i++) {
+                        privacyLevel_1 = this.reducePrivacyLevel(privacyLevel_1);
+                      }
+                      this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLevel_1);
+                      break;
+                    case "[DataGeneration]":
+                      final DataGenerationContract contractDG = ((DataGenerationContract) contract);
+                      DataGenerationDirection _xifexpression_9 = null;
+                      if ((contractDG != null)) {
+                        _xifexpression_9 = contractDG.getDirection();
+                      } else {
+                        _xifexpression_9 = null;
+                      }
+                      final DataGenerationDirection direction = _xifexpression_9;
+                      int _xifexpression_10 = (int) 0;
+                      if ((contractDG != null)) {
+                        _xifexpression_10 = contractDG.getK();
+                      } else {
+                        _xifexpression_10 = 1;
+                      }
+                      final int k_1 = _xifexpression_10;
+                      int privacyLevel_2 = pMax;
+                      if ((direction != null)) {
+                        String _string_1 = direction.toString();
+                        boolean _equals = Objects.equals(_string_1, "REDUCE");
+                        if (_equals) {
+                          for (int i = 0; (i < k_1); i++) {
+                            privacyLevel_2 = this.reducePrivacyLevel(privacyLevel_2);
+                          }
+                        } else {
+                          String _string_2 = direction.toString();
+                          boolean _equals_1 = Objects.equals(_string_2, "ELEVATE");
+                          if (_equals_1) {
+                            for (int i = 0; (i < k_1); i++) {
+                              privacyLevel_2 = this.elevatePrivacyLevel(privacyLevel_2);
+                            }
+                          }
+                        }
+                      }
+                      this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLevel_2);
+                      break;
+                    case "[EncryptOrHash]":
                       Objective[] _values = Objective.values();
                       for (final Objective o : _values) {
-                        boolean _notEquals = (!Objects.equals(o, Objective.PRIVACY));
-                        if (_notEquals) {
+                        final Function1<EdgeLabel, Boolean> _function_3 = (EdgeLabel l) -> {
+                          Objective _objective = l.getObjective();
+                          return Boolean.valueOf(Objects.equals(_objective, o));
+                        };
+                        boolean _exists_2 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_3);
+                        boolean _not_1 = (!_exists_2);
+                        if (_not_1) {
+                          this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), o, 0);
+                        }
+                      }
+                      break;
+                    case "[Decrypt]":
+                      Objective[] _values_1 = Objective.values();
+                      for (final Objective o_1 : _values_1) {
+                        final Function1<EdgeLabel, Boolean> _function_4 = (EdgeLabel l) -> {
+                          Objective _objective = l.getObjective();
+                          return Boolean.valueOf(Objects.equals(_objective, o_1));
+                        };
+                        boolean _exists_3 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_4);
+                        boolean _not_2 = (!_exists_3);
+                        if (_not_2) {
                           int max = 0;
-                          EList<GraphAsset> _incomingassets_1 = nrProcess.getIncomingassets();
+                          EList<GraphAsset> _incomingassets_1 = nr.getIncomingassets();
                           for (final GraphAsset ina_1 : _incomingassets_1) {
-                            max = Math.max(max, this.levelOf(ina_1.getAssetlabel(), o));
+                            max = Math.max(max, this.levelOf(ina_1.getAssetlabel(), o_1));
                           }
-                          this.upsertLabel_Edge(outgoing.getEdgelabel(), o, max);
+                          this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), o_1, max);
                         }
                       }
-                    } else {
-                      if ((contractProcess instanceof DimensionalityReductionContract)) {
-                        final int k = ((DimensionalityReductionContract) contractProcess).getK();
-                        int pMax_1 = 0;
-                        EList<GraphAsset> _incomingassets_2 = nrProcess.getIncomingassets();
-                        for (final GraphAsset ina_2 : _incomingassets_2) {
-                          {
-                            final int inaPrivacyLevel = this.levelOf(ina_2.getAssetlabel(), Objective.PRIVACY);
-                            pMax_1 = Math.max(pMax_1, inaPrivacyLevel);
+                      break;
+                    case "[Copier]":
+                      boolean _isEmpty = nr.getIncomingassets().isEmpty();
+                      boolean _not_3 = (!_isEmpty);
+                      if (_not_3) {
+                        Objective[] _values_2 = Objective.values();
+                        for (final Objective o_2 : _values_2) {
+                          final Function1<EdgeLabel, Boolean> _function_5 = (EdgeLabel l) -> {
+                            Objective _objective = l.getObjective();
+                            return Boolean.valueOf(Objects.equals(_objective, o_2));
+                          };
+                          boolean _exists_4 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_5);
+                          boolean _not_4 = (!_exists_4);
+                          if (_not_4) {
+                            this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), o_2, this.levelOf(nr.getIncomingassets().get(0).getAssetlabel(), o_2));
                           }
                         }
-                        int privacyLevel_1 = pMax_1;
-                        for (int i = 0; (i < k); i++) {
-                          privacyLevel_1 = this.reducePrivacyLevel(privacyLevel_1);
-                        }
-                        this.upsertLabel_Edge(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLevel_1);
-                        StringConcatenation _builder_2 = new StringConcatenation();
-                        _builder_2.append("[DEBUG] Label propagation of edge ");
-                        String _iD_1 = outgoing.getID();
-                        _builder_2.append(_iD_1);
-                        _builder_2.append(", ");
-                        int _number_1 = outgoing.getNumber();
-                        _builder_2.append(_number_1);
-                        InputOutput.<String>println(_builder_2.toString());
-                        StringConcatenation _builder_3 = new StringConcatenation();
-                        _builder_3.append("[DEBUG]   Found DimensionalityReductionContract, p_max=");
-                        _builder_3.append(pMax_1);
-                        _builder_3.append(", k=");
-                        _builder_3.append(k);
-                        _builder_3.append(", setting Privacy=");
-                        _builder_3.append(privacyLevel_1);
-                        InputOutput.<String>println(_builder_3.toString());
-                        Objective[] _values_1 = Objective.values();
-                        for (final Objective o_1 : _values_1) {
-                          boolean _notEquals_1 = (!Objects.equals(o_1, Objective.PRIVACY));
-                          if (_notEquals_1) {
-                            int max_1 = 0;
-                            EList<GraphAsset> _incomingassets_3 = nrProcess.getIncomingassets();
-                            for (final GraphAsset ina_3 : _incomingassets_3) {
-                              max_1 = Math.max(max_1, this.levelOf(ina_3.getAssetlabel(), o_1));
-                            }
-                            this.upsertLabel_Edge(outgoing.getEdgelabel(), o_1, max_1);
+                      }
+                      break;
+                    case "[Forward]":
+                      boolean _isEmpty_1 = nr.getIncomingassets().isEmpty();
+                      boolean _not_5 = (!_isEmpty_1);
+                      if (_not_5) {
+                        Objective[] _values_3 = Objective.values();
+                        for (final Objective o_3 : _values_3) {
+                          final Function1<EdgeLabel, Boolean> _function_6 = (EdgeLabel l) -> {
+                            Objective _objective = l.getObjective();
+                            return Boolean.valueOf(Objects.equals(_objective, o_3));
+                          };
+                          boolean _exists_5 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_6);
+                          boolean _not_6 = (!_exists_5);
+                          if (_not_6) {
+                            this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), o_3, this.levelOf(nr.getIncomingassets().get(0).getAssetlabel(), o_3));
                           }
                         }
-                      } else {
-                        if ((contractProcess instanceof DataGenerationContract)) {
-                          final DataGenerationDirection direction = ((DataGenerationContract) contractProcess).getDirection();
-                          final int k_1 = ((DataGenerationContract) contractProcess).getK();
-                          int pMax_2 = 0;
-                          EList<GraphAsset> _incomingassets_4 = nrProcess.getIncomingassets();
-                          for (final GraphAsset ina_4 : _incomingassets_4) {
-                            {
-                              final int inaPrivacyLevel = this.levelOf(ina_4.getAssetlabel(), Objective.PRIVACY);
-                              pMax_2 = Math.max(pMax_2, inaPrivacyLevel);
-                            }
+                      }
+                      break;
+                    default:
+                      Objective[] _values_4 = Objective.values();
+                      for (final Objective o_4 : _values_4) {
+                        final Function1<EdgeLabel, Boolean> _function_7 = (EdgeLabel l) -> {
+                          Objective _objective = l.getObjective();
+                          return Boolean.valueOf(Objects.equals(_objective, o_4));
+                        };
+                        boolean _exists_6 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_7);
+                        boolean _not_7 = (!_exists_6);
+                        if (_not_7) {
+                          int max_1 = 0;
+                          EList<GraphAsset> _incomingassets_2 = nr.getIncomingassets();
+                          for (final GraphAsset ina_2 : _incomingassets_2) {
+                            max_1 = Math.max(max_1, this.levelOf(ina_2.getAssetlabel(), o_4));
                           }
-                          int privacyLevel_2 = pMax_2;
-                          if ((direction != null)) {
-                            boolean _equals = Objects.equals(direction, DataGenerationDirection.REDUCE);
-                            if (_equals) {
-                              for (int i = 0; (i < k_1); i++) {
-                                privacyLevel_2 = this.reducePrivacyLevel(privacyLevel_2);
-                              }
-                            } else {
-                              boolean _equals_1 = Objects.equals(direction, DataGenerationDirection.ELEVATE);
-                              if (_equals_1) {
-                                for (int i = 0; (i < k_1); i++) {
-                                  privacyLevel_2 = this.elevatePrivacyLevel(privacyLevel_2);
-                                }
-                              }
-                            }
-                          }
-                          this.upsertLabel_Edge(outgoing.getEdgelabel(), Objective.PRIVACY, privacyLevel_2);
-                          StringConcatenation _builder_4 = new StringConcatenation();
-                          _builder_4.append("[DEBUG] Label propagation of edge ");
-                          String _iD_2 = outgoing.getID();
-                          _builder_4.append(_iD_2);
-                          _builder_4.append(", ");
-                          int _number_2 = outgoing.getNumber();
-                          _builder_4.append(_number_2);
-                          InputOutput.<String>println(_builder_4.toString());
-                          StringConcatenation _builder_5 = new StringConcatenation();
-                          _builder_5.append("[DEBUG]   Found DataGenerationContract, p_max=");
-                          _builder_5.append(pMax_2);
-                          _builder_5.append(", direction=");
-                          _builder_5.append(direction);
-                          _builder_5.append(", k=");
-                          _builder_5.append(k_1);
-                          _builder_5.append(", setting Privacy=");
-                          _builder_5.append(privacyLevel_2);
-                          InputOutput.<String>println(_builder_5.toString());
-                          Objective[] _values_2 = Objective.values();
-                          for (final Objective o_2 : _values_2) {
-                            boolean _notEquals_2 = (!Objects.equals(o_2, Objective.PRIVACY));
-                            if (_notEquals_2) {
-                              int max_2 = 0;
-                              EList<GraphAsset> _incomingassets_5 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_5 : _incomingassets_5) {
-                                max_2 = Math.max(max_2, this.levelOf(ina_5.getAssetlabel(), o_2));
-                              }
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_2, max_2);
-                            }
-                          }
-                        } else {
-                          Objective[] _values_3 = Objective.values();
-                          for (final Objective o_3 : _values_3) {
-                            boolean _notEquals_3 = (!Objects.equals(o_3, Objective.PRIVACY));
-                            if (_notEquals_3) {
-                              int max_3 = 0;
-                              EList<GraphAsset> _incomingassets_6 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_6 : _incomingassets_6) {
-                                max_3 = Math.max(max_3, this.levelOf(ina_6.getAssetlabel(), o_3));
-                              }
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_3, max_3);
-                            }
+                          if ((max_1 > 0)) {
+                            this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), o_4, max_1);
                           }
                         }
+                      }
+                      break;
+                  }
+                } else {
+                  Objective[] _values_4 = Objective.values();
+                  for (final Objective o_4 : _values_4) {
+                    final Function1<EdgeLabel, Boolean> _function_7 = (EdgeLabel l) -> {
+                      Objective _objective = l.getObjective();
+                      return Boolean.valueOf(Objects.equals(_objective, o_4));
+                    };
+                    boolean _exists_6 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_7);
+                    boolean _not_7 = (!_exists_6);
+                    if (_not_7) {
+                      int max_1 = 0;
+                      EList<GraphAsset> _incomingassets_2 = nr.getIncomingassets();
+                      for (final GraphAsset ina_2 : _incomingassets_2) {
+                        max_1 = Math.max(max_1, this.levelOf(ina_2.getAssetlabel(), o_4));
+                      }
+                      if ((max_1 > 0)) {
+                        this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), o_4, max_1);
                       }
                     }
-                  } else {
-                    String _string = nrProcess.getTask().toString();
-                    if (_string != null) {
-                      switch (_string) {
-                        case "[EncryptOrHash]":
-                          Objective[] _values_4 = Objective.values();
-                          for (final Objective o_4 : _values_4) {
-                            if ((Objects.equals(o_4, Objective.PRIVACY) && hasPrivacyLabelContract)) {
-                            } else {
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_4, 0);
-                            }
-                          }
-                          break;
-                        case "[Decrypt]":
-                          Objective[] _values_5 = Objective.values();
-                          for (final Objective o_5 : _values_5) {
-                            if ((Objects.equals(o_5, Objective.PRIVACY) && hasPrivacyLabelContract)) {
-                            } else {
-                              int max_4 = 0;
-                              EList<GraphAsset> _incomingassets_7 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_7 : _incomingassets_7) {
-                                max_4 = Math.max(max_4, this.levelOf(ina_7.getAssetlabel(), o_5));
-                              }
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_5, max_4);
-                            }
-                          }
-                          break;
-                        case "[Comparator]":
-                          Objective[] _values_6 = Objective.values();
-                          for (final Objective o_6 : _values_6) {
-                            if ((Objects.equals(o_6, Objective.PRIVACY) && hasPrivacyLabelContract)) {
-                            } else {
-                              int max_5 = 0;
-                              EList<GraphAsset> _incomingassets_8 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_8 : _incomingassets_8) {
-                                max_5 = Math.max(max_5, this.levelOf(ina_8.getAssetlabel(), o_6));
-                              }
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_6, max_5);
-                            }
-                          }
-                          break;
-                        case "[Joiner]":
-                          Objective[] _values_7 = Objective.values();
-                          for (final Objective o_7 : _values_7) {
-                            if ((Objects.equals(o_7, Objective.PRIVACY) && hasPrivacyLabelContract)) {
-                            } else {
-                              int max_6 = 0;
-                              EList<GraphAsset> _incomingassets_9 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_9 : _incomingassets_9) {
-                                max_6 = Math.max(max_6, this.levelOf(ina_9.getAssetlabel(), o_7));
-                              }
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_7, max_6);
-                            }
-                          }
-                          break;
-                        case "[User]":
-                          Objective[] _values_8 = Objective.values();
-                          for (final Objective o_8 : _values_8) {
-                            if ((Objects.equals(o_8, Objective.PRIVACY) && hasPrivacyLabelContract)) {
-                            } else {
-                              int max_7 = 0;
-                              EList<GraphAsset> _incomingassets_10 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_10 : _incomingassets_10) {
-                                max_7 = Math.max(max_7, this.levelOf(ina_10.getAssetlabel(), o_8));
-                              }
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_8, max_7);
-                            }
-                          }
-                          break;
-                        case "[Splitter]":
-                          Objective[] _values_9 = Objective.values();
-                          for (final Objective o_9 : _values_9) {
-                            if ((Objects.equals(o_9, Objective.PRIVACY) && hasPrivacyLabelContract)) {
-                            } else {
-                              int max_8 = 0;
-                              EList<GraphAsset> _incomingassets_11 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_11 : _incomingassets_11) {
-                                max_8 = Math.max(max_8, this.levelOf(ina_11.getAssetlabel(), o_9));
-                              }
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_9, max_8);
-                            }
-                          }
-                          break;
-                        case "[Copier]":
-                          Objective[] _values_10 = Objective.values();
-                          for (final Objective o_10 : _values_10) {
-                            if ((Objects.equals(o_10, Objective.PRIVACY) && hasPrivacyLabelContract)) {
-                            } else {
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_10, this.levelOf(nrProcess.getIncomingassets().get(0).getAssetlabel(), o_10));
-                            }
-                          }
-                          break;
-                        case "[Forward]":
-                          Objective[] _values_11 = Objective.values();
-                          for (final Objective o_11 : _values_11) {
-                            if ((Objects.equals(o_11, Objective.PRIVACY) && hasPrivacyLabelContract)) {
-                            } else {
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_11, this.levelOf(nrProcess.getIncomingassets().get(0).getAssetlabel(), o_11));
-                            }
-                          }
-                          break;
-                        case "[Store]":
-                          Objective[] _values_12 = Objective.values();
-                          for (final Objective o_12 : _values_12) {
-                            if ((Objects.equals(o_12, Objective.PRIVACY) && hasPrivacyLabelContract)) {
-                            } else {
-                              int max_9 = 0;
-                              EList<GraphAsset> _incomingassets_12 = nrProcess.getIncomingassets();
-                              for (final GraphAsset ina_12 : _incomingassets_12) {
-                                max_9 = Math.max(max_9, this.levelOf(ina_12.getAssetlabel(), o_12));
-                              }
-                              this.upsertLabel_Edge(outgoing.getEdgelabel(), o_12, max_9);
-                            }
-                          }
-                          break;
-                        default:
-                          break;
-                      }
-                    } else {
-                    }
+                  }
+                }
+              }
+              Objective[] _values_5 = Objective.values();
+              for (final Objective o_5 : _values_5) {
+                if (((!Objects.equals(o_5, Objective.PRIVACY)) && (!IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), ((Function1<EdgeLabel, Boolean>) (EdgeLabel l) -> {
+                  Objective _objective = l.getObjective();
+                  return Boolean.valueOf(Objects.equals(_objective, o_5));
+                }))))) {
+                  int max_2 = 0;
+                  EList<GraphAsset> _incomingassets_3 = nr.getIncomingassets();
+                  for (final GraphAsset ina_3 : _incomingassets_3) {
+                    max_2 = Math.max(max_2, this.levelOf(ina_3.getAssetlabel(), o_5));
+                  }
+                  if ((max_2 > 0)) {
+                    this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), o_5, max_2);
                   }
                 }
               }
             }
           }
-          final Function1<EdgeLabel, Boolean> _function_1 = (EdgeLabel l) -> {
-            Objective _objective = l.getObjective();
-            return Boolean.valueOf(Objects.equals(_objective, Objective.PRIVACY));
-          };
-          boolean _isEmpty = IterableExtensions.isEmpty(IterableExtensions.<EdgeLabel>filter(outgoing.getEdgelabel(), _function_1));
-          final boolean hasPrivacyLabel = (!_isEmpty);
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("[DEBUG] After asset loop - hasPrivacyLabelContract=");
-          _builder.append(hasPrivacyLabelContract);
-          _builder.append(", hasPrivacyLabel=");
-          _builder.append(hasPrivacyLabel);
-          InputOutput.<String>println(_builder.toString());
-          StringConcatenation _builder_1 = new StringConcatenation();
-          _builder_1.append("[DEBUG]   Current edge labels: ");
-          final Function1<EdgeLabel, String> _function_2 = (EdgeLabel it_1) -> {
-            String _literal = it_1.getObjective().getLiteral();
-            String _plus = (_literal + "=");
-            int _level = it_1.getLevel();
-            return (_plus + Integer.valueOf(_level));
-          };
-          String _join = IterableExtensions.join(ListExtensions.<EdgeLabel, String>map(outgoing.getEdgelabel(), _function_2), ", ");
-          _builder_1.append(_join);
-          InputOutput.<String>println(_builder_1.toString());
-          boolean _isEmpty_1 = outgoing.getEdgelabel().isEmpty();
-          if (_isEmpty_1) {
-            StringConcatenation _builder_2 = new StringConcatenation();
-            _builder_2.append("[DEBUG] Edge is empty, setting labels from assets (skipping Privacy if contract exists)");
-            InputOutput.<String>println(_builder_2.toString());
-            Objective[] _values = Objective.values();
-            for (final Objective o : _values) {
-              if ((Objects.equals(o, Objective.PRIVACY) && hasPrivacyLabelContract)) {
-                StringConcatenation _builder_3 = new StringConcatenation();
-                _builder_3.append("[DEBUG]   Skipping Privacy (set by contract)");
-                InputOutput.<String>println(_builder_3.toString());
-              } else {
-                int max = 0;
-                EList<GraphAsset> _graphassets_1 = outgoing.getGraphassets();
-                for (final GraphAsset gs : _graphassets_1) {
-                  max = Math.max(max, this.levelOf(gs.getAssetlabel(), o));
-                }
-                if ((max > 0)) {
-                  this.upsertLabel_Edge(outgoing.getEdgelabel(), o, max);
-                }
+          Objective[] _values = Objective.values();
+          for (final Objective o : _values) {
+            final Function1<EdgeLabel, Boolean> _function_1 = (EdgeLabel l) -> {
+              Objective _objective = l.getObjective();
+              return Boolean.valueOf(Objects.equals(_objective, o));
+            };
+            boolean _exists = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_1);
+            boolean _not = (!_exists);
+            if (_not) {
+              int max = 0;
+              EList<GraphAsset> _graphassets = outgoing.getGraphassets();
+              for (final GraphAsset ga : _graphassets) {
+                max = Math.max(max, this.levelOf(ga.getAssetlabel(), o));
               }
-            }
-          } else {
-            StringConcatenation _builder_4 = new StringConcatenation();
-            _builder_4.append("[DEBUG] Edge has labels, adding missing ones from assets");
-            InputOutput.<String>println(_builder_4.toString());
-            Objective[] _values_1 = Objective.values();
-            for (final Objective o_1 : _values_1) {
-              {
-                final Function1<EdgeLabel, Boolean> _function_3 = (EdgeLabel l) -> {
-                  Objective _objective = l.getObjective();
-                  return Boolean.valueOf(Objects.equals(_objective, o_1));
-                };
-                boolean _isEmpty_2 = IterableExtensions.isEmpty(IterableExtensions.<EdgeLabel>filter(outgoing.getEdgelabel(), _function_3));
-                final boolean hasLabel = (!_isEmpty_2);
-                if ((!hasLabel)) {
-                  if ((Objects.equals(o_1, Objective.PRIVACY) && hasPrivacyLabelContract)) {
-                    StringConcatenation _builder_5 = new StringConcatenation();
-                    _builder_5.append("[DEBUG]   Privacy missing but contract exists - should have been set above!");
-                    InputOutput.<String>println(_builder_5.toString());
-                  } else {
-                    int max_1 = 0;
-                    EList<GraphAsset> _graphassets_2 = outgoing.getGraphassets();
-                    for (final GraphAsset gs_1 : _graphassets_2) {
-                      max_1 = Math.max(max_1, this.levelOf(gs_1.getAssetlabel(), o_1));
-                    }
-                    if ((max_1 > 0)) {
-                      this.upsertLabel_Edge(outgoing.getEdgelabel(), o_1, max_1);
-                    }
-                  }
-                }
+              if ((max > 0)) {
+                this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), o, max);
               }
             }
           }
@@ -1481,9 +986,6 @@ public class eDFDToGraphTransformation {
     return;
   }
 
-  /**
-   * Return the label-level for OBJ or 0 if the label is missing
-   */
   public int levelOf(final EList<? extends SecurityLabel> list, final Objective obj) {
     int _xblockexpression = (int) 0;
     {
@@ -1598,47 +1100,7 @@ public class eDFDToGraphTransformation {
     return null;
   }
 
-  public Integer getPrivacyLabelFromContract(final ContractBase contract) {
-    if ((contract == null)) {
-      return null;
-    }
-    if ((contract instanceof ClassificationContract)) {
-      final Priority pClass = ((ClassificationContract) contract).getPClass();
-      int _xifexpression = (int) 0;
-      if ((pClass != null)) {
-        _xifexpression = this.lvl(pClass);
-      } else {
-        _xifexpression = this.lvl(Priority.L);
-      }
-      return Integer.valueOf(_xifexpression);
-    }
-    if ((contract instanceof DecisionMakingContract)) {
-      final Priority pAction = ((DecisionMakingContract) contract).getPAction();
-      int _xifexpression_1 = (int) 0;
-      if ((pAction != null)) {
-        _xifexpression_1 = this.lvl(pAction);
-      } else {
-        _xifexpression_1 = this.lvl(Priority.L);
-      }
-      return Integer.valueOf(_xifexpression_1);
-    }
-    if ((contract instanceof RecommendationContract)) {
-      final boolean s = ((RecommendationContract) contract).isS();
-      int _xifexpression_2 = (int) 0;
-      if (s) {
-        _xifexpression_2 = 1;
-      } else {
-        _xifexpression_2 = 0;
-      }
-      return Integer.valueOf(_xifexpression_2);
-    }
-    if ((contract instanceof ClusteringContract)) {
-      return null;
-    }
-    return null;
-  }
-
-  public void upsertLabel_Asset(final EList<AssetLabel> list, final Objective o, final int level) {
+  public void setOrUpdateAssetLabel(final EList<AssetLabel> list, final Objective o, final int level) {
     final Function1<AssetLabel, Boolean> _function = (AssetLabel it) -> {
       Objective _objective = it.getObjective();
       return Boolean.valueOf(Objects.equals(_objective, o));
@@ -1660,7 +1122,7 @@ public class eDFDToGraphTransformation {
     }
   }
 
-  public void upsertLabel_Edge(final EList<EdgeLabel> list, final Objective o, final int level) {
+  public void setOrUpdateEdgeLabel(final EList<EdgeLabel> list, final Objective o, final int level) {
     final Function1<EdgeLabel, Boolean> _function = (EdgeLabel it) -> {
       Objective _objective = it.getObjective();
       return Boolean.valueOf(Objects.equals(_objective, o));

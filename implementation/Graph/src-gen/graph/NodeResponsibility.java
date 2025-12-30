@@ -5,7 +5,7 @@ package graph;
 import java.math.BigInteger;
 
 import org.eclipse.emf.common.util.EList;
-import org.secdfd.model.SecurityContractType;
+import org.secdfd.model.ContractType;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,17 +28,17 @@ import org.secdfd.model.SecurityContractType;
 public interface NodeResponsibility extends Identifiable {
 	/**
 	 * Returns the value of the '<em><b>Task</b></em>' attribute list.
-	 * The list contents are of type {@link org.secdfd.model.SecurityContractType}.
-	 * The literals are from the enumeration {@link org.secdfd.model.SecurityContractType}.
+	 * The list contents are of type {@link org.secdfd.model.ContractType}.
+	 * The literals are from the enumeration {@link org.secdfd.model.ContractType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Task</em>' attribute list.
-	 * @see org.secdfd.model.SecurityContractType
+	 * @see org.secdfd.model.ContractType
 	 * @see graph.GraphPackage#getNodeResponsibility_Task()
-	 * @model default="Store"
+	 * @model
 	 * @generated
 	 */
-	EList<SecurityContractType> getTask();
+	EList<ContractType> getTask();
 
 	/**
 	 * Returns the value of the '<em><b>Outgoingassets</b></em>' reference list.

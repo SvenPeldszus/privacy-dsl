@@ -64,6 +64,7 @@ public class ContractBaseItemProvider
 			addNumberPropertyDescriptor(object);
 			addIncomeassetsPropertyDescriptor(object);
 			addOutcomeassetsPropertyDescriptor(object);
+			addTaskPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -157,6 +158,28 @@ public class ContractBaseItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Task feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTaskPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ContractBase_Task_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ContractBase_Task_feature", "_UI_ContractBase_type"),
+				 ModelPackage.Literals.CONTRACT_BASE__TASK,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -185,6 +208,7 @@ public class ContractBaseItemProvider
 		switch (notification.getFeatureID(ContractBase.class)) {
 			case ModelPackage.CONTRACT_BASE__NAME:
 			case ModelPackage.CONTRACT_BASE__NUMBER:
+			case ModelPackage.CONTRACT_BASE__TASK:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

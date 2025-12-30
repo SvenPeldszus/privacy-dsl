@@ -305,7 +305,7 @@
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
-            <askChoiceVariable name="respAction" multiple="false" candidatesExpression="aql:ecore::SecurityContractType.eLiterals" prompt="Task"/>
+            <askChoiceVariable name="respAction" multiple="false" candidatesExpression="aql:ecore::ContractType.eLiterals" prompt="Task"/>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="createClassificationContract" nodeMappings="//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Contract']">
             <variable name="container"/>

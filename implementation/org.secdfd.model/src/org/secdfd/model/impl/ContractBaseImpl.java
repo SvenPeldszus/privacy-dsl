@@ -15,11 +15,13 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.secdfd.model.Asset;
 import org.secdfd.model.ContractBase;
+import org.secdfd.model.ContractType;
 import org.secdfd.model.ModelPackage;
 
 /**
@@ -35,6 +37,7 @@ import org.secdfd.model.ModelPackage;
  *   <li>{@link org.secdfd.model.impl.ContractBaseImpl#getIncomeassets <em>Incomeassets</em>}</li>
  *   <li>{@link org.secdfd.model.impl.ContractBaseImpl#getOutcomeassets <em>Outcomeassets</em>}</li>
  *   <li>{@link org.secdfd.model.impl.ContractBaseImpl#getProcess <em>Process</em>}</li>
+ *   <li>{@link org.secdfd.model.impl.ContractBaseImpl#getTask <em>Task</em>}</li>
  * </ul>
  *
  * @generated
@@ -99,6 +102,16 @@ public abstract class ContractBaseImpl extends MinimalEObjectImpl.Container impl
 	 * @ordered
 	 */
 	protected EList<Asset> outcomeassets;
+
+	/**
+	 * The cached value of the '{@link #getTask() <em>Task</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTask()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ContractType> task;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -240,6 +253,19 @@ public abstract class ContractBaseImpl extends MinimalEObjectImpl.Container impl
 	 * @generated
 	 */
 	@Override
+	public EList<ContractType> getTask() {
+		if (task == null) {
+			task = new EDataTypeUniqueEList<ContractType>(ContractType.class, this, ModelPackage.CONTRACT_BASE__TASK);
+		}
+		return task;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ModelPackage.CONTRACT_BASE__PROCESS:
@@ -296,6 +322,8 @@ public abstract class ContractBaseImpl extends MinimalEObjectImpl.Container impl
 				return getOutcomeassets();
 			case ModelPackage.CONTRACT_BASE__PROCESS:
 				return getProcess();
+			case ModelPackage.CONTRACT_BASE__TASK:
+				return getTask();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -326,6 +354,10 @@ public abstract class ContractBaseImpl extends MinimalEObjectImpl.Container impl
 			case ModelPackage.CONTRACT_BASE__PROCESS:
 				setProcess((org.secdfd.model.Process)newValue);
 				return;
+			case ModelPackage.CONTRACT_BASE__TASK:
+				getTask().clear();
+				getTask().addAll((Collection<? extends ContractType>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -353,6 +385,9 @@ public abstract class ContractBaseImpl extends MinimalEObjectImpl.Container impl
 			case ModelPackage.CONTRACT_BASE__PROCESS:
 				setProcess((org.secdfd.model.Process)null);
 				return;
+			case ModelPackage.CONTRACT_BASE__TASK:
+				getTask().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -375,6 +410,8 @@ public abstract class ContractBaseImpl extends MinimalEObjectImpl.Container impl
 				return outcomeassets != null && !outcomeassets.isEmpty();
 			case ModelPackage.CONTRACT_BASE__PROCESS:
 				return getProcess() != null;
+			case ModelPackage.CONTRACT_BASE__TASK:
+				return task != null && !task.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -393,6 +430,8 @@ public abstract class ContractBaseImpl extends MinimalEObjectImpl.Container impl
 		result.append(name);
 		result.append(", number: ");
 		result.append(number);
+		result.append(", Task: ");
+		result.append(task);
 		result.append(')');
 		return result.toString();
 	}

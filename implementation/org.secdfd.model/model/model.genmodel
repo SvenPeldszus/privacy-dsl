@@ -19,20 +19,27 @@
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//Channel/VLAN"/>
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//Channel/ETH"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//SecurityContractType">
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/Store"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/Comparator"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/Discarder"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/Joiner"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/Copier"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/Splitter"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/Forward"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/EncryptOrHash"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/Decrypt"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/Authenticator"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/Authoriser"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/Verifier"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//SecurityContractType/User"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//ContractType">
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Store"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Comparator"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Discarder"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Joiner"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Copier"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Splitter"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Forward"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/EncryptOrHash"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Decrypt"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Authenticator"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Authoriser"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Verifier"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/User"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Classification"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Clustering"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/DecisionMaking"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Recommendation"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Prediction"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/DimensionalityReduction"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/DataGeneration"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//Objective">
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//Objective/Integrity"/>
@@ -111,10 +118,9 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ContractBase/incomeassets"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ContractBase/outcomeassets"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference model.ecore#//ContractBase/process"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ContractBase/Task"/>
     </genClasses>
-    <genClasses ecoreClass="model.ecore#//SecurityContract">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//SecurityContract/Task"/>
-    </genClasses>
+    <genClasses ecoreClass="model.ecore#//SecurityContract"/>
     <genClasses ecoreClass="model.ecore#//ClassificationContract">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ClassificationContract/PClass"/>
     </genClasses>

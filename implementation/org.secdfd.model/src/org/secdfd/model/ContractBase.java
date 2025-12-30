@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.secdfd.model.ContractBase#getIncomeassets <em>Incomeassets</em>}</li>
  *   <li>{@link org.secdfd.model.ContractBase#getOutcomeassets <em>Outcomeassets</em>}</li>
  *   <li>{@link org.secdfd.model.ContractBase#getProcess <em>Process</em>}</li>
+ *   <li>{@link org.secdfd.model.ContractBase#getTask <em>Task</em>}</li>
  * </ul>
  *
  * @see org.secdfd.model.ModelPackage#getContractBase()
@@ -70,5 +71,19 @@ public interface ContractBase extends NamedEntity {
 	 * @generated
 	 */
 	void setProcess(org.secdfd.model.Process value);
+
+	/**
+	 * Returns the value of the '<em><b>Task</b></em>' attribute list.
+	 * The list contents are of type {@link org.secdfd.model.ContractType}.
+	 * The literals are from the enumeration {@link org.secdfd.model.ContractType}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Task</em>' attribute list.
+	 * @see org.secdfd.model.ContractType
+	 * @see org.secdfd.model.ModelPackage#getContractBase_Task()
+	 * @model
+	 * @generated
+	 */
+	EList<ContractType> getTask();
 
 } // ContractBase

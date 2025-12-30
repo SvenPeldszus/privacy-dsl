@@ -1090,13 +1090,22 @@ public interface ModelPackage extends EPackage {
 	int CONTRACT_BASE__PROCESS = NAMED_ENTITY_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Task</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTRACT_BASE__TASK = NAMED_ENTITY_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Contract Base</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTRACT_BASE_FEATURE_COUNT = NAMED_ENTITY_FEATURE_COUNT + 3;
+	int CONTRACT_BASE_FEATURE_COUNT = NAMED_ENTITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Contract Base</em>' class.
@@ -1169,7 +1178,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECURITY_CONTRACT__TASK = CONTRACT_BASE_FEATURE_COUNT + 0;
+	int SECURITY_CONTRACT__TASK = CONTRACT_BASE__TASK;
 
 	/**
 	 * The number of structural features of the '<em>Security Contract</em>' class.
@@ -1178,7 +1187,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECURITY_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
+	int SECURITY_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Security Contract</em>' class.
@@ -1243,6 +1252,15 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int CLASSIFICATION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
+
+	/**
+	 * The feature id for the '<em><b>Task</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_CONTRACT__TASK = CONTRACT_BASE__TASK;
 
 	/**
 	 * The feature id for the '<em><b>PClass</b></em>' attribute.
@@ -1327,6 +1345,15 @@ public interface ModelPackage extends EPackage {
 	int CLUSTERING_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
 
 	/**
+	 * The feature id for the '<em><b>Task</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTERING_CONTRACT__TASK = CONTRACT_BASE__TASK;
+
+	/**
 	 * The number of structural features of the '<em>Clustering Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1398,6 +1425,15 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int DECISION_MAKING_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
+
+	/**
+	 * The feature id for the '<em><b>Task</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION_MAKING_CONTRACT__TASK = CONTRACT_BASE__TASK;
 
 	/**
 	 * The feature id for the '<em><b>PAction</b></em>' attribute.
@@ -1482,6 +1518,15 @@ public interface ModelPackage extends EPackage {
 	int RECOMMENDATION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
 
 	/**
+	 * The feature id for the '<em><b>Task</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECOMMENDATION_CONTRACT__TASK = CONTRACT_BASE__TASK;
+
+	/**
 	 * The feature id for the '<em><b>S</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1562,6 +1607,15 @@ public interface ModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int PREDICTION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
+
+	/**
+	 * The feature id for the '<em><b>Task</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDICTION_CONTRACT__TASK = CONTRACT_BASE__TASK;
 
 	/**
 	 * The feature id for the '<em><b>S</b></em>' attribute.
@@ -1646,6 +1700,15 @@ public interface ModelPackage extends EPackage {
 	int DIMENSIONALITY_REDUCTION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
 
 	/**
+	 * The feature id for the '<em><b>Task</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIMENSIONALITY_REDUCTION_CONTRACT__TASK = CONTRACT_BASE__TASK;
+
+	/**
 	 * The feature id for the '<em><b>K</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1728,6 +1791,15 @@ public interface ModelPackage extends EPackage {
 	int DATA_GENERATION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
 
 	/**
+	 * The feature id for the '<em><b>Task</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_GENERATION_CONTRACT__TASK = CONTRACT_BASE__TASK;
+
+	/**
 	 * The feature id for the '<em><b>Direction</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1784,14 +1856,14 @@ public interface ModelPackage extends EPackage {
 	int CHANNEL = 22;
 
 	/**
-	 * The meta object id for the '{@link org.secdfd.model.SecurityContractType <em>Security Contract Type</em>}' enum.
+	 * The meta object id for the '{@link org.secdfd.model.ContractType <em>Contract Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.SecurityContractType
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getSecurityContractType()
+	 * @see org.secdfd.model.ContractType
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getContractType()
 	 * @generated
 	 */
-	int SECURITY_CONTRACT_TYPE = 23;
+	int CONTRACT_TYPE = 23;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Objective <em>Objective</em>}' enum.
@@ -2305,6 +2377,17 @@ public interface ModelPackage extends EPackage {
 	EReference getContractBase_Process();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link org.secdfd.model.ContractBase#getTask <em>Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Task</em>'.
+	 * @see org.secdfd.model.ContractBase#getTask()
+	 * @see #getContractBase()
+	 * @generated
+	 */
+	EAttribute getContractBase_Task();
+
+	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.SecurityContract <em>Security Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2313,17 +2396,6 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSecurityContract();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link org.secdfd.model.SecurityContract#getTask <em>Task</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Task</em>'.
-	 * @see org.secdfd.model.SecurityContract#getTask()
-	 * @see #getSecurityContract()
-	 * @generated
-	 */
-	EAttribute getSecurityContract_Task();
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.ClassificationContract <em>Classification Contract</em>}'.
@@ -2493,14 +2565,14 @@ public interface ModelPackage extends EPackage {
 	EEnum getChannel();
 
 	/**
-	 * Returns the meta object for enum '{@link org.secdfd.model.SecurityContractType <em>Security Contract Type</em>}'.
+	 * Returns the meta object for enum '{@link org.secdfd.model.ContractType <em>Contract Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Security Contract Type</em>'.
-	 * @see org.secdfd.model.SecurityContractType
+	 * @return the meta object for enum '<em>Contract Type</em>'.
+	 * @see org.secdfd.model.ContractType
 	 * @generated
 	 */
-	EEnum getSecurityContractType();
+	EEnum getContractType();
 
 	/**
 	 * Returns the meta object for enum '{@link org.secdfd.model.Objective <em>Objective</em>}'.
@@ -2944,6 +3016,14 @@ public interface ModelPackage extends EPackage {
 		EReference CONTRACT_BASE__PROCESS = eINSTANCE.getContractBase_Process();
 
 		/**
+		 * The meta object literal for the '<em><b>Task</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTRACT_BASE__TASK = eINSTANCE.getContractBase_Task();
+
+		/**
 		 * The meta object literal for the '{@link org.secdfd.model.impl.SecurityContractImpl <em>Security Contract</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2952,14 +3032,6 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SECURITY_CONTRACT = eINSTANCE.getSecurityContract();
-
-		/**
-		 * The meta object literal for the '<em><b>Task</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SECURITY_CONTRACT__TASK = eINSTANCE.getSecurityContract_Task();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.impl.ClassificationContractImpl <em>Classification Contract</em>}' class.
@@ -3108,14 +3180,14 @@ public interface ModelPackage extends EPackage {
 		EEnum CHANNEL = eINSTANCE.getChannel();
 
 		/**
-		 * The meta object literal for the '{@link org.secdfd.model.SecurityContractType <em>Security Contract Type</em>}' enum.
+		 * The meta object literal for the '{@link org.secdfd.model.ContractType <em>Contract Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.SecurityContractType
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getSecurityContractType()
+		 * @see org.secdfd.model.ContractType
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getContractType()
 		 * @generated
 		 */
-		EEnum SECURITY_CONTRACT_TYPE = eINSTANCE.getSecurityContractType();
+		EEnum CONTRACT_TYPE = eINSTANCE.getContractType();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.Objective <em>Objective</em>}' enum.

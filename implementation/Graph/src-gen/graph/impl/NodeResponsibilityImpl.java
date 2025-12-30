@@ -41,7 +41,7 @@ import org.eclipse.ocl.pivot.values.OrderedSetValue;
 import org.eclipse.ocl.pivot.values.SequenceValue;
 
 import org.eclipse.ocl.pivot.values.SequenceValue.Accumulator;
-import org.secdfd.model.SecurityContractType;
+import org.secdfd.model.ContractType;
 
 /**
  * <!-- begin-user-doc -->
@@ -109,7 +109,7 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<SecurityContractType> task;
+	protected EList<ContractType> task;
 
 	/**
 	 * The cached value of the '{@link #getOutgoingassets() <em>Outgoingassets</em>}' reference list.
@@ -202,9 +202,9 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	@Override
-	public EList<SecurityContractType> getTask() {
+	public EList<ContractType> getTask() {
 		if (task == null) {
-			task = new EDataTypeUniqueEList<SecurityContractType>(SecurityContractType.class, this, GraphPackage.NODE_RESPONSIBILITY__TASK);
+			task = new EDataTypeUniqueEList<ContractType>(ContractType.class, this, GraphPackage.NODE_RESPONSIBILITY__TASK);
 		}
 		return task;
 	}
@@ -384,7 +384,7 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 				return;
 			case GraphPackage.NODE_RESPONSIBILITY__TASK:
 				getTask().clear();
-				getTask().addAll((Collection<? extends SecurityContractType>)newValue);
+				getTask().addAll((Collection<? extends ContractType>)newValue);
 				return;
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				getOutgoingassets().clear();

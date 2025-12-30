@@ -92,8 +92,8 @@ pattern Responsibilities(r: ContractBase){
 	ContractBase(r);
 }
 
-pattern ResponsibilityTypes(rt : SecurityContractType){
-	SecurityContractType(rt);
+pattern ResponsibilityTypes(rt : ContractType){
+	ContractType(rt);
 }
 
 pattern sourceOfFlow(f : Flow, source : Element){
@@ -137,8 +137,8 @@ pattern publicAsset(a: Asset){
 
 pattern comparatorProcesses(p : Process){
 	Process.responsibility(p, r);
-	SecurityContract.Task(r, pr);
-	pr == SecurityContractType::Comparator;
+	ContractBase.Task(r, pr);
+	pr == ContractType::Comparator;
 }
 
 //pattern graph2endtoend(graph : Graph)

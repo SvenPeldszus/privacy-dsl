@@ -53,8 +53,7 @@ public class ClusteringContractItemProvider extends ContractBaseItemProvider {
 	 */
 	@Override
 	public Object getImage(Object object) {
-		// Use ClassificationContract icon as fallback until ClusteringContract icon is created
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ClassificationContract"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ClusteringContract"));
 	}
 
 	/**

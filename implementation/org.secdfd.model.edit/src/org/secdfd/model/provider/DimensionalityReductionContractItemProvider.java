@@ -80,8 +80,7 @@ public class DimensionalityReductionContractItemProvider extends ContractBaseIte
 	 */
 	@Override
 	public Object getImage(Object object) {
-		// Use ClassificationContract icon as fallback until DimensionalityReductionContract icon is created
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ClassificationContract"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/DimensionalityReductionContract"));
 	}
 
 	/**

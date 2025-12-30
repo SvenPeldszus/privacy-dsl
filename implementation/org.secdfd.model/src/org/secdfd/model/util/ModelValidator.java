@@ -19,6 +19,7 @@ import org.secdfd.model.Channel;
 import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
+import org.secdfd.model.ContractType;
 import org.secdfd.model.DataGenerationContract;
 import org.secdfd.model.DataGenerationDirection;
 import org.secdfd.model.DataStore;
@@ -36,7 +37,6 @@ import org.secdfd.model.PredictionContract;
 import org.secdfd.model.Priority;
 import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
-import org.secdfd.model.SecurityContractType;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 
@@ -166,8 +166,8 @@ public class ModelValidator extends EObjectValidator {
 				return validatePriority((Priority)value, diagnostics, context);
 			case ModelPackage.CHANNEL:
 				return validateChannel((Channel)value, diagnostics, context);
-			case ModelPackage.SECURITY_CONTRACT_TYPE:
-				return validateSecurityContractType((SecurityContractType)value, diagnostics, context);
+			case ModelPackage.CONTRACT_TYPE:
+				return validateContractType((ContractType)value, diagnostics, context);
 			case ModelPackage.OBJECTIVE:
 				return validateObjective((Objective)value, diagnostics, context);
 			case ModelPackage.LAYER:
@@ -413,7 +413,7 @@ public class ModelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateSecurityContractType(SecurityContractType securityContractType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateContractType(ContractType contractType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

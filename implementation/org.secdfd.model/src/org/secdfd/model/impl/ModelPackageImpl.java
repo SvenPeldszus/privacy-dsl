@@ -21,6 +21,7 @@ import org.secdfd.model.Channel;
 import org.secdfd.model.ClassificationContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
+import org.secdfd.model.ContractType;
 import org.secdfd.model.DataGenerationContract;
 import org.secdfd.model.DataGenerationDirection;
 import org.secdfd.model.DataStore;
@@ -38,7 +39,6 @@ import org.secdfd.model.PredictionContract;
 import org.secdfd.model.Priority;
 import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
-import org.secdfd.model.SecurityContractType;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 import org.secdfd.model.util.ModelValidator;
@@ -216,7 +216,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum securityContractTypeEEnum = null;
+	private EEnum contractTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -763,8 +763,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getSecurityContract() {
-		return securityContractEClass;
+	public EAttribute getContractBase_Task() {
+		return (EAttribute)contractBaseEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -773,8 +773,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getSecurityContract_Task() {
-		return (EAttribute)securityContractEClass.getEStructuralFeatures().get(0);
+	public EClass getSecurityContract() {
+		return securityContractEClass;
 	}
 
 	/**
@@ -943,8 +943,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EEnum getSecurityContractType() {
-		return securityContractTypeEEnum;
+	public EEnum getContractType() {
+		return contractTypeEEnum;
 	}
 
 	/**
@@ -1072,9 +1072,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEReference(contractBaseEClass, CONTRACT_BASE__INCOMEASSETS);
 		createEReference(contractBaseEClass, CONTRACT_BASE__OUTCOMEASSETS);
 		createEReference(contractBaseEClass, CONTRACT_BASE__PROCESS);
+		createEAttribute(contractBaseEClass, CONTRACT_BASE__TASK);
 
 		securityContractEClass = createEClass(SECURITY_CONTRACT);
-		createEAttribute(securityContractEClass, SECURITY_CONTRACT__TASK);
 
 		classificationContractEClass = createEClass(CLASSIFICATION_CONTRACT);
 		createEAttribute(classificationContractEClass, CLASSIFICATION_CONTRACT__PCLASS);
@@ -1100,7 +1100,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		// Create enums
 		priorityEEnum = createEEnum(PRIORITY);
 		channelEEnum = createEEnum(CHANNEL);
-		securityContractTypeEEnum = createEEnum(SECURITY_CONTRACT_TYPE);
+		contractTypeEEnum = createEEnum(CONTRACT_TYPE);
 		objectiveEEnum = createEEnum(OBJECTIVE);
 		layerEEnum = createEEnum(LAYER);
 		assetTypeEEnum = createEEnum(ASSET_TYPE);
@@ -1219,9 +1219,9 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getContractBase_Incomeassets(), this.getAsset(), null, "incomeassets", null, 0, -1, ContractBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getContractBase_Outcomeassets(), this.getAsset(), null, "outcomeassets", null, 0, -1, ContractBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getContractBase_Process(), this.getProcess(), this.getProcess_Responsibility(), "process", null, 0, 1, ContractBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContractBase_Task(), this.getContractType(), "Task", null, 0, -1, ContractBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(securityContractEClass, SecurityContract.class, "SecurityContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSecurityContract_Task(), this.getSecurityContractType(), "Task", null, 0, -1, SecurityContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(classificationContractEClass, ClassificationContract.class, "ClassificationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClassificationContract_PClass(), this.getPriority(), "PClass", "L", 0, 1, ClassificationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1257,20 +1257,27 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEEnumLiteral(channelEEnum, Channel.VLAN);
 		addEEnumLiteral(channelEEnum, Channel.ETH);
 
-		initEEnum(securityContractTypeEEnum, SecurityContractType.class, "SecurityContractType");
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.STORE);
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.COMPARATOR);
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.DISCARDER);
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.JOINER);
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.COPIER);
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.SPLITTER);
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.FORWARD);
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.ENCRYPT_OR_HASH);
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.DECRYPT);
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.AUTHENTICATOR);
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.AUTHORISER);
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.VERIFIER);
-		addEEnumLiteral(securityContractTypeEEnum, SecurityContractType.USER);
+		initEEnum(contractTypeEEnum, ContractType.class, "ContractType");
+		addEEnumLiteral(contractTypeEEnum, ContractType.STORE);
+		addEEnumLiteral(contractTypeEEnum, ContractType.COMPARATOR);
+		addEEnumLiteral(contractTypeEEnum, ContractType.DISCARDER);
+		addEEnumLiteral(contractTypeEEnum, ContractType.JOINER);
+		addEEnumLiteral(contractTypeEEnum, ContractType.COPIER);
+		addEEnumLiteral(contractTypeEEnum, ContractType.SPLITTER);
+		addEEnumLiteral(contractTypeEEnum, ContractType.FORWARD);
+		addEEnumLiteral(contractTypeEEnum, ContractType.ENCRYPT_OR_HASH);
+		addEEnumLiteral(contractTypeEEnum, ContractType.DECRYPT);
+		addEEnumLiteral(contractTypeEEnum, ContractType.AUTHENTICATOR);
+		addEEnumLiteral(contractTypeEEnum, ContractType.AUTHORISER);
+		addEEnumLiteral(contractTypeEEnum, ContractType.VERIFIER);
+		addEEnumLiteral(contractTypeEEnum, ContractType.USER);
+		addEEnumLiteral(contractTypeEEnum, ContractType.CLASSIFICATION);
+		addEEnumLiteral(contractTypeEEnum, ContractType.CLUSTERING);
+		addEEnumLiteral(contractTypeEEnum, ContractType.DECISION_MAKING);
+		addEEnumLiteral(contractTypeEEnum, ContractType.RECOMMENDATION);
+		addEEnumLiteral(contractTypeEEnum, ContractType.PREDICTION);
+		addEEnumLiteral(contractTypeEEnum, ContractType.DIMENSIONALITY_REDUCTION);
+		addEEnumLiteral(contractTypeEEnum, ContractType.DATA_GENERATION);
 
 		initEEnum(objectiveEEnum, Objective.class, "Objective");
 		addEEnumLiteral(objectiveEEnum, Objective.INTEGRITY);

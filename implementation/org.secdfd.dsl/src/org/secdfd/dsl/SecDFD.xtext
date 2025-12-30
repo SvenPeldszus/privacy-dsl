@@ -64,7 +64,7 @@ SecurityContract returns SecurityContract:
 	{SecurityContract}
 	(name=EString)?
 	'['
-		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* Task+=SecurityContractType '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* Task+=ContractType '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
 	']'
 ;
 
@@ -205,8 +205,8 @@ enum DataGenerationDirection returns DataGenerationDirection:
 enum Layer returns Layer:
 				Transport = 'Transport' | Architectural = 'Architectural' | Application = 'Application';
 
-enum SecurityContractType returns SecurityContractType:
-				Store = 'Store' | Comparator = 'Comparator' | Discarder = 'Discarder' | Joiner = 'Joiner' | Copier = 'Copier' | Splitter = 'Splitter' | Forward = 'Forward' | EncryptOrHash = 'EncryptOrHash' | Decrypt = 'Decrypt' | Authenticator = 'Authenticator' | Authoriser = 'Authoriser' | Verifier = 'Verifier' | User = 'User';
+enum ContractType returns ContractType:
+				Store = 'Store' | Comparator = 'Comparator' | Discarder = 'Discarder' | Joiner = 'Joiner' | Copier = 'Copier' | Splitter = 'Splitter' | Forward = 'Forward' | EncryptOrHash = 'EncryptOrHash' | Decrypt = 'Decrypt' | Authenticator = 'Authenticator' | Authoriser = 'Authoriser' | Verifier = 'Verifier' | User = 'User' | Classification = 'Classification' | Clustering = 'Clustering' | DecisionMaking = 'DecisionMaking' | Recommendation = 'Recommendation' | Prediction = 'Prediction' | DimensionalityReduction = 'DimensionalityReduction' | DataGeneration = 'DataGeneration';
 
 enum Channel returns Channel:
 				VLAN = 'VLAN' | ETH = 'ETH' | WiFi = 'WiFi';

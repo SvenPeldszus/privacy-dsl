@@ -46,7 +46,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//Element" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="SecurityContractType">
+  <eClassifiers xsi:type="ecore:EEnum" name="ContractType">
     <eLiterals name="Store" value="1"/>
     <eLiterals name="Comparator" value="2"/>
     <eLiterals name="Discarder" value="3"/>
@@ -60,6 +60,13 @@
     <eLiterals name="Authoriser" value="11"/>
     <eLiterals name="Verifier" value="12"/>
     <eLiterals name="User" value="13"/>
+    <eLiterals name="Classification" value="14"/>
+    <eLiterals name="Clustering" value="15"/>
+    <eLiterals name="DecisionMaking" value="16"/>
+    <eLiterals name="Recommendation" value="17"/>
+    <eLiterals name="Prediction" value="18"/>
+    <eLiterals name="DimensionalityReduction" value="19"/>
+    <eLiterals name="DataGeneration" value="20"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DataStore" eSuperTypes="#//Element"/>
   <eClassifiers xsi:type="ecore:EClass" name="Flow" eSuperTypes="#//Element">
@@ -135,10 +142,9 @@
         eType="#//Asset"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="process" eType="#//Process"
         eOpposite="#//Process/responsibility"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Task" upperBound="-1" eType="#//ContractType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SecurityContract" eSuperTypes="#//ContractBase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Task" upperBound="-1" eType="#//SecurityContractType"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SecurityContract" eSuperTypes="#//ContractBase"/>
   <eClassifiers xsi:type="ecore:EEnum" name="AssetType">
     <eLiterals name="String" literal="String"/>
     <eLiterals name="Object" value="1" literal="Object"/>
