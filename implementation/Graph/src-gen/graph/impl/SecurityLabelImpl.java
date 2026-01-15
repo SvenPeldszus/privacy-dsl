@@ -12,8 +12,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.secdfd.model.Objective;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Security Label</b></em>'.
@@ -37,7 +35,7 @@ public abstract class SecurityLabelImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Objective OBJECTIVE_EDEFAULT = Objective.INTEGRITY;
+	protected static final String OBJECTIVE_EDEFAULT = "Integrity";
 
 	/**
 	 * The cached value of the '{@link #getObjective() <em>Objective</em>}' attribute.
@@ -47,7 +45,7 @@ public abstract class SecurityLabelImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 * @ordered
 	 */
-	protected Objective objective = OBJECTIVE_EDEFAULT;
+	protected String objective = OBJECTIVE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getLevel() <em>Level</em>}' attribute.
@@ -94,7 +92,7 @@ public abstract class SecurityLabelImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public Objective getObjective() {
+	public String getObjective() {
 		return objective;
 	}
 
@@ -104,9 +102,9 @@ public abstract class SecurityLabelImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public void setObjective(Objective newObjective) {
-		Objective oldObjective = objective;
-		objective = newObjective == null ? OBJECTIVE_EDEFAULT : newObjective;
+	public void setObjective(String newObjective) {
+		String oldObjective = objective;
+		objective = newObjective;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.SECURITY_LABEL__OBJECTIVE, oldObjective, objective));
 	}
@@ -159,7 +157,7 @@ public abstract class SecurityLabelImpl extends MinimalEObjectImpl.Container imp
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case GraphPackage.SECURITY_LABEL__OBJECTIVE:
-				setObjective((Objective)newValue);
+				setObjective((String)newValue);
 				return;
 			case GraphPackage.SECURITY_LABEL__LEVEL:
 				setLevel((Integer)newValue);
@@ -195,7 +193,7 @@ public abstract class SecurityLabelImpl extends MinimalEObjectImpl.Container imp
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case GraphPackage.SECURITY_LABEL__OBJECTIVE:
-				return objective != OBJECTIVE_EDEFAULT;
+				return OBJECTIVE_EDEFAULT == null ? objective != null : !OBJECTIVE_EDEFAULT.equals(objective);
 			case GraphPackage.SECURITY_LABEL__LEVEL:
 				return level != LEVEL_EDEFAULT;
 		}

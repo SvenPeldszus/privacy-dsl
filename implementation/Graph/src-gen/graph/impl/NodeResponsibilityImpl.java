@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
@@ -41,7 +40,6 @@ import org.eclipse.ocl.pivot.values.OrderedSetValue;
 import org.eclipse.ocl.pivot.values.SequenceValue;
 
 import org.eclipse.ocl.pivot.values.SequenceValue.Accumulator;
-import org.secdfd.model.ContractType;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,7 +51,7 @@ import org.secdfd.model.ContractType;
  * <ul>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getID <em>ID</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getNumber <em>Number</em>}</li>
- *   <li>{@link graph.impl.NodeResponsibilityImpl#getTask <em>Task</em>}</li>
+ *   <li>{@link graph.impl.NodeResponsibilityImpl#getContractTypes <em>Contract Types</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getOutgoingassets <em>Outgoingassets</em>}</li>
  *   <li>{@link graph.impl.NodeResponsibilityImpl#getIncomingassets <em>Incomingassets</em>}</li>
  * </ul>
@@ -102,14 +100,14 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 	protected int number = NUMBER_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTask() <em>Task</em>}' attribute list.
+	 * The cached value of the '{@link #getContractTypes() <em>Contract Types</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTask()
+	 * @see #getContractTypes()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ContractType> task;
+	protected EList<String> contractTypes;
 
 	/**
 	 * The cached value of the '{@link #getOutgoingassets() <em>Outgoingassets</em>}' reference list.
@@ -202,11 +200,11 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	@Override
-	public EList<ContractType> getTask() {
-		if (task == null) {
-			task = new EDataTypeUniqueEList<ContractType>(ContractType.class, this, GraphPackage.NODE_RESPONSIBILITY__TASK);
+	public EList<String> getContractTypes() {
+		if (contractTypes == null) {
+			contractTypes = new EDataTypeUniqueEList<String>(String.class, this, GraphPackage.NODE_RESPONSIBILITY__CONTRACT_TYPES);
 		}
-		return task;
+		return contractTypes;
 	}
 
 	/**
@@ -357,8 +355,8 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 				return getID();
 			case GraphPackage.NODE_RESPONSIBILITY__NUMBER:
 				return getNumber();
-			case GraphPackage.NODE_RESPONSIBILITY__TASK:
-				return getTask();
+			case GraphPackage.NODE_RESPONSIBILITY__CONTRACT_TYPES:
+				return getContractTypes();
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				return getOutgoingassets();
 			case GraphPackage.NODE_RESPONSIBILITY__INCOMINGASSETS:
@@ -382,9 +380,9 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 			case GraphPackage.NODE_RESPONSIBILITY__NUMBER:
 				setNumber((Integer)newValue);
 				return;
-			case GraphPackage.NODE_RESPONSIBILITY__TASK:
-				getTask().clear();
-				getTask().addAll((Collection<? extends ContractType>)newValue);
+			case GraphPackage.NODE_RESPONSIBILITY__CONTRACT_TYPES:
+				getContractTypes().clear();
+				getContractTypes().addAll((Collection<? extends String>)newValue);
 				return;
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				getOutgoingassets().clear();
@@ -412,8 +410,8 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 			case GraphPackage.NODE_RESPONSIBILITY__NUMBER:
 				setNumber(NUMBER_EDEFAULT);
 				return;
-			case GraphPackage.NODE_RESPONSIBILITY__TASK:
-				getTask().clear();
+			case GraphPackage.NODE_RESPONSIBILITY__CONTRACT_TYPES:
+				getContractTypes().clear();
 				return;
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				getOutgoingassets().clear();
@@ -437,8 +435,8 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 			case GraphPackage.NODE_RESPONSIBILITY__NUMBER:
 				return number != NUMBER_EDEFAULT;
-			case GraphPackage.NODE_RESPONSIBILITY__TASK:
-				return task != null && !task.isEmpty();
+			case GraphPackage.NODE_RESPONSIBILITY__CONTRACT_TYPES:
+				return contractTypes != null && !contractTypes.isEmpty();
 			case GraphPackage.NODE_RESPONSIBILITY__OUTGOINGASSETS:
 				return outgoingassets != null && !outgoingassets.isEmpty();
 			case GraphPackage.NODE_RESPONSIBILITY__INCOMINGASSETS:
@@ -477,8 +475,8 @@ public class NodeResponsibilityImpl extends MinimalEObjectImpl.Container impleme
 		result.append(id);
 		result.append(", number: ");
 		result.append(number);
-		result.append(", task: ");
-		result.append(task);
+		result.append(", contractTypes: ");
+		result.append(contractTypes);
 		result.append(')');
 		return result.toString();
 	}

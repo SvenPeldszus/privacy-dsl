@@ -28,7 +28,7 @@ public interface DimensionalityReductionContract extends ContractBase {
 	 * @return the value of the '<em>K</em>' attribute.
 	 * @see #setK(int)
 	 * @see org.secdfd.model.ModelPackage#getDimensionalityReductionContract_K()
-	 * @model default="0"
+	 * @model default="0" required="true"
 	 * @generated
 	 */
 	int getK();

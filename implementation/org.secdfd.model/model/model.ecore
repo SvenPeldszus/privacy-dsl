@@ -7,17 +7,17 @@
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
     <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
   </eAnnotations>
-  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
-    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
-    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
-  </eAnnotations>
-  <eClassifiers xsi:type="ecore:EEnum" name="Priority">
+  <eClassifiers xsi:type="ecore:EEnum" name="Level">
     <eLiterals name="N"/>
     <eLiterals name="L" value="1"/>
     <eLiterals name="M" value="2"/>
     <eLiterals name="H" value="3"/>
     <eLiterals name="C" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TrustFactor">
+    <eLiterals name="WEAK"/>
+    <eLiterals name="MEDIUM" value="1"/>
+    <eLiterals name="STRONG" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Asset" eSuperTypes="#//NamedEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
@@ -30,7 +30,7 @@
         defaultValueLiteral="String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Process" eSuperTypes="#//Element">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="responsibility" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contract" upperBound="-1"
         eType="#//ContractBase" containment="true" eOpposite="#//ContractBase/process"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Channel">
@@ -108,14 +108,8 @@
     <eLiterals name="Application" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="constraint_1"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="constraint_1" value="Tuple {&#xA;&#x9;message : String = 'Privacy as objective can only have a high or low priority.',&#xA;&#x9;status : Boolean = &#xA;&#x9;&#x9;&#x9;self.Objective = Objective::Privacy implies (self.Priority = Priority::H or self.Priority = Priority::L)&#xA;}.status"/>
-    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Objective" eType="#//Objective"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Priority" eType="#//Priority"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Level" eType="#//Level"
         defaultValueLiteral="H"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Assumption">
@@ -134,6 +128,7 @@
         eType="#//TrustZone" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attackerprofile" upperBound="-1"
         eType="#//AttackerProfile" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TrustFactor" eType="#//TrustFactor"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContractBase" abstract="true" eSuperTypes="#//NamedEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomeassets" upperBound="-1"
@@ -141,7 +136,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outcomeassets" upperBound="-1"
         eType="#//Asset"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="process" eType="#//Process"
-        eOpposite="#//Process/responsibility"/>
+        eOpposite="#//Process/contract"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Task" upperBound="-1" eType="#//ContractType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SecurityContract" eSuperTypes="#//ContractBase"/>
@@ -153,24 +148,24 @@
     <eLiterals name="Boolean" value="4" literal="Boolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClassificationContract" eSuperTypes="#//ContractBase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PClass" eType="#//Priority"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PClass" eType="#//Level"
         defaultValueLiteral="L"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClusteringContract" eSuperTypes="#//ContractBase"/>
   <eClassifiers xsi:type="ecore:EClass" name="DecisionMakingContract" eSuperTypes="#//ContractBase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PAction" eType="#//Priority"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="PAction" eType="#//Level"
         defaultValueLiteral="L"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RecommendationContract" eSuperTypes="#//ContractBase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="S" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="S" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PredictionContract" eSuperTypes="#//ContractBase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="S" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="S" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DimensionalityReductionContract" eSuperTypes="#//ContractBase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="K" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="K" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="DataGenerationDirection">
@@ -181,7 +176,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="DataGenerationContract" eSuperTypes="#//ContractBase">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Direction" eType="#//DataGenerationDirection"
         defaultValueLiteral="PRESERVE"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="K" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="K" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="1"/>
   </eClassifiers>
 </ecore:EPackage>

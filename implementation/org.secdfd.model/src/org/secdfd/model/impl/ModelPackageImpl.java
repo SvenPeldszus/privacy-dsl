@@ -5,12 +5,8 @@ package org.secdfd.model.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EGenericType;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.secdfd.model.Asset;
@@ -31,17 +27,17 @@ import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
 import org.secdfd.model.Layer;
+import org.secdfd.model.Level;
 import org.secdfd.model.ModelFactory;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
 import org.secdfd.model.PredictionContract;
-import org.secdfd.model.Priority;
 import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
+import org.secdfd.model.TrustFactor;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
-import org.secdfd.model.util.ModelValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -202,7 +198,14 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum priorityEEnum = null;
+	private EEnum levelEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum trustFactorEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -299,16 +302,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		// Initialize created meta-data
 		theModelPackage.initializePackageContents();
 
-		// Register package validator
-		EValidator.Registry.INSTANCE.put
-			(theModelPackage,
-			 new EValidator.Descriptor() {
-				 @Override
-				 public EValidator getEValidator() {
-					 return ModelValidator.INSTANCE;
-				 }
-			 });
-
 		// Mark meta-data to indicate it can't be changed
 		theModelPackage.freeze();
 
@@ -383,7 +376,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getProcess_Responsibility() {
+	public EReference getProcess_Contract() {
 		return (EReference)processEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -613,18 +606,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getValue_Priority() {
+	public EAttribute getValue_Level() {
 		return (EAttribute)valueEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getValue__Constraint_1__DiagnosticChain_Map() {
-		return valueEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -715,6 +698,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	@Override
 	public EReference getTrustZone_Attackerprofile() {
 		return (EReference)trustZoneEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTrustZone_TrustFactor() {
+		return (EAttribute)trustZoneEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -923,8 +916,18 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EEnum getPriority() {
-		return priorityEEnum;
+	public EEnum getLevel() {
+		return levelEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getTrustFactor() {
+		return trustFactorEEnum;
 	}
 
 	/**
@@ -1023,7 +1026,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(assetEClass, ASSET__TYPE);
 
 		processEClass = createEClass(PROCESS);
-		createEReference(processEClass, PROCESS__RESPONSIBILITY);
+		createEReference(processEClass, PROCESS__CONTRACT);
 
 		edfdEClass = createEClass(EDFD);
 		createEReference(edfdEClass, EDFD__ASSET);
@@ -1053,8 +1056,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		valueEClass = createEClass(VALUE);
 		createEAttribute(valueEClass, VALUE__OBJECTIVE);
-		createEAttribute(valueEClass, VALUE__PRIORITY);
-		createEOperation(valueEClass, VALUE___CONSTRAINT_1__DIAGNOSTICCHAIN_MAP);
+		createEAttribute(valueEClass, VALUE__LEVEL);
 
 		assumptionEClass = createEClass(ASSUMPTION);
 		createEAttribute(assumptionEClass, ASSUMPTION__OBJECTIVE);
@@ -1067,6 +1069,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEReference(trustZoneEClass, TRUST_ZONE__ELEMENTS);
 		createEReference(trustZoneEClass, TRUST_ZONE__SUBZONES);
 		createEReference(trustZoneEClass, TRUST_ZONE__ATTACKERPROFILE);
+		createEAttribute(trustZoneEClass, TRUST_ZONE__TRUST_FACTOR);
 
 		contractBaseEClass = createEClass(CONTRACT_BASE);
 		createEReference(contractBaseEClass, CONTRACT_BASE__INCOMEASSETS);
@@ -1098,7 +1101,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createEAttribute(dataGenerationContractEClass, DATA_GENERATION_CONTRACT__K);
 
 		// Create enums
-		priorityEEnum = createEEnum(PRIORITY);
+		levelEEnum = createEEnum(LEVEL);
+		trustFactorEEnum = createEEnum(TRUST_FACTOR);
 		channelEEnum = createEEnum(CHANNEL);
 		contractTypeEEnum = createEEnum(CONTRACT_TYPE);
 		objectiveEEnum = createEEnum(OBJECTIVE);
@@ -1162,7 +1166,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEAttribute(getAsset_Type(), this.getAssetType(), "Type", "String", 0, 1, Asset.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(processEClass, org.secdfd.model.Process.class, "Process", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProcess_Responsibility(), this.getContractBase(), this.getContractBase_Process(), "responsibility", null, 0, -1, org.secdfd.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getProcess_Contract(), this.getContractBase(), this.getContractBase_Process(), "contract", null, 0, -1, org.secdfd.model.Process.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(edfdEClass, org.secdfd.model.EDFD.class, "EDFD", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEDFD_Asset(), this.getAsset(), null, "asset", null, 0, -1, org.secdfd.model.EDFD.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1192,16 +1196,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getValue_Objective(), this.getObjective(), "Objective", null, 0, 1, Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getValue_Priority(), this.getPriority(), "Priority", "H", 0, 1, Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		EOperation op = initEOperation(getValue__Constraint_1__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "constraint_1", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
-		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
-		EGenericType g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		g2 = createEGenericType(ecorePackage.getEJavaObject());
-		g1.getETypeArguments().add(g2);
-		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEAttribute(getValue_Level(), this.getLevel(), "Level", "H", 0, 1, Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assumptionEClass, Assumption.class, "Assumption", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAssumption_Objective(), this.getObjective(), "Objective", null, 0, -1, Assumption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1214,43 +1209,49 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEReference(getTrustZone_Elements(), this.getElement(), null, "elements", null, 0, -1, TrustZone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrustZone_Subzones(), this.getTrustZone(), null, "subzones", null, 0, -1, TrustZone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrustZone_Attackerprofile(), this.getAttackerProfile(), null, "attackerprofile", null, 0, -1, TrustZone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrustZone_TrustFactor(), this.getTrustFactor(), "TrustFactor", null, 0, 1, TrustZone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(contractBaseEClass, ContractBase.class, "ContractBase", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContractBase_Incomeassets(), this.getAsset(), null, "incomeassets", null, 0, -1, ContractBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getContractBase_Outcomeassets(), this.getAsset(), null, "outcomeassets", null, 0, -1, ContractBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContractBase_Process(), this.getProcess(), this.getProcess_Responsibility(), "process", null, 0, 1, ContractBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContractBase_Process(), this.getProcess(), this.getProcess_Contract(), "process", null, 0, 1, ContractBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContractBase_Task(), this.getContractType(), "Task", null, 0, -1, ContractBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(securityContractEClass, SecurityContract.class, "SecurityContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(classificationContractEClass, ClassificationContract.class, "ClassificationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getClassificationContract_PClass(), this.getPriority(), "PClass", "L", 0, 1, ClassificationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassificationContract_PClass(), this.getLevel(), "PClass", "L", 0, 1, ClassificationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(clusteringContractEClass, ClusteringContract.class, "ClusteringContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(decisionMakingContractEClass, DecisionMakingContract.class, "DecisionMakingContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDecisionMakingContract_PAction(), this.getPriority(), "PAction", "L", 0, 1, DecisionMakingContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDecisionMakingContract_PAction(), this.getLevel(), "PAction", "L", 0, 1, DecisionMakingContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(recommendationContractEClass, RecommendationContract.class, "RecommendationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRecommendationContract_S(), ecorePackage.getEBoolean(), "S", "false", 0, 1, RecommendationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRecommendationContract_S(), ecorePackage.getEBoolean(), "S", "false", 1, 1, RecommendationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(predictionContractEClass, PredictionContract.class, "PredictionContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPredictionContract_S(), ecorePackage.getEBoolean(), "S", "false", 0, 1, PredictionContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPredictionContract_S(), ecorePackage.getEBoolean(), "S", "false", 1, 1, PredictionContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dimensionalityReductionContractEClass, DimensionalityReductionContract.class, "DimensionalityReductionContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDimensionalityReductionContract_K(), ecorePackage.getEInt(), "K", "0", 0, 1, DimensionalityReductionContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDimensionalityReductionContract_K(), ecorePackage.getEInt(), "K", "0", 1, 1, DimensionalityReductionContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dataGenerationContractEClass, DataGenerationContract.class, "DataGenerationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDataGenerationContract_Direction(), this.getDataGenerationDirection(), "Direction", "PRESERVE", 0, 1, DataGenerationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataGenerationContract_K(), ecorePackage.getEInt(), "K", "1", 0, 1, DataGenerationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataGenerationContract_K(), ecorePackage.getEInt(), "K", "1", 1, 1, DataGenerationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(priorityEEnum, Priority.class, "Priority");
-		addEEnumLiteral(priorityEEnum, Priority.N);
-		addEEnumLiteral(priorityEEnum, Priority.L);
-		addEEnumLiteral(priorityEEnum, Priority.M);
-		addEEnumLiteral(priorityEEnum, Priority.H);
-		addEEnumLiteral(priorityEEnum, Priority.C);
+		initEEnum(levelEEnum, Level.class, "Level");
+		addEEnumLiteral(levelEEnum, Level.N);
+		addEEnumLiteral(levelEEnum, Level.L);
+		addEEnumLiteral(levelEEnum, Level.M);
+		addEEnumLiteral(levelEEnum, Level.H);
+		addEEnumLiteral(levelEEnum, Level.C);
+
+		initEEnum(trustFactorEEnum, TrustFactor.class, "TrustFactor");
+		addEEnumLiteral(trustFactorEEnum, TrustFactor.WEAK);
+		addEEnumLiteral(trustFactorEEnum, TrustFactor.MEDIUM);
+		addEEnumLiteral(trustFactorEEnum, TrustFactor.STRONG);
 
 		initEEnum(channelEEnum, Channel.class, "Channel");
 		addEEnumLiteral(channelEEnum, Channel.WI_FI);
@@ -1307,46 +1308,23 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
-		// http://www.eclipse.org/emf/2002/Ecore
-		createEcoreAnnotations();
-		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
-		createPivotAnnotations();
+		// http://www.eclipse.org/OCL/Import
+		createImportAnnotations();
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";
+	protected void createImportAnnotations() {
+		String source = "http://www.eclipse.org/OCL/Import";
 		addAnnotation
 		  (this,
 		   source,
 		   new String[] {
-		   });
-		addAnnotation
-		  (valueEClass,
-		   source,
-		   new String[] {
-			   "constraints", "constraint_1"
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createPivotAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
-		addAnnotation
-		  (getValue__Constraint_1__DiagnosticChain_Map(),
-		   source,
-		   new String[] {
-			   "body", "Tuple {\n\tmessage : String = \'Privacy as objective can only have a high or low priority.\',\n\tstatus : Boolean = \n\t\t\tself.Objective = Objective::Privacy implies (self.Priority = Priority::H or self.Priority = Priority::L)\n}.status"
+			   "ecore", "http://www.eclipse.org/emf/2002/Ecore"
 		   });
 	}
 

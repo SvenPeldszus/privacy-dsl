@@ -28,13 +28,14 @@ import org.secdfd.model.EDFD;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
 import org.secdfd.model.Layer;
+import org.secdfd.model.Level;
 import org.secdfd.model.ModelFactory;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.Objective;
 import org.secdfd.model.PredictionContract;
-import org.secdfd.model.Priority;
 import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
+import org.secdfd.model.TrustFactor;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 
@@ -113,8 +114,10 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case ModelPackage.PRIORITY:
-				return createPriorityFromString(eDataType, initialValue);
+			case ModelPackage.LEVEL:
+				return createLevelFromString(eDataType, initialValue);
+			case ModelPackage.TRUST_FACTOR:
+				return createTrustFactorFromString(eDataType, initialValue);
 			case ModelPackage.CHANNEL:
 				return createChannelFromString(eDataType, initialValue);
 			case ModelPackage.CONTRACT_TYPE:
@@ -140,8 +143,10 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case ModelPackage.PRIORITY:
-				return convertPriorityToString(eDataType, instanceValue);
+			case ModelPackage.LEVEL:
+				return convertLevelToString(eDataType, instanceValue);
+			case ModelPackage.TRUST_FACTOR:
+				return convertTrustFactorToString(eDataType, instanceValue);
 			case ModelPackage.CHANNEL:
 				return convertChannelToString(eDataType, instanceValue);
 			case ModelPackage.CONTRACT_TYPE:
@@ -362,8 +367,8 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Priority createPriorityFromString(EDataType eDataType, String initialValue) {
-		Priority result = Priority.get(initialValue);
+	public Level createLevelFromString(EDataType eDataType, String initialValue) {
+		Level result = Level.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -373,7 +378,27 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPriorityToString(EDataType eDataType, Object instanceValue) {
+	public String convertLevelToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TrustFactor createTrustFactorFromString(EDataType eDataType, String initialValue) {
+		TrustFactor result = TrustFactor.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertTrustFactorToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

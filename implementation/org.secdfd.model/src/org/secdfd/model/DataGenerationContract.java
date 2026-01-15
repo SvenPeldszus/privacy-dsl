@@ -55,7 +55,7 @@ public interface DataGenerationContract extends ContractBase {
 	 * @return the value of the '<em>K</em>' attribute.
 	 * @see #setK(int)
 	 * @see org.secdfd.model.ModelPackage#getDataGenerationContract_K()
-	 * @model default="1"
+	 * @model default="1" required="true"
 	 * @generated
 	 */
 	int getK();

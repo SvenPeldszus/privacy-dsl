@@ -19,7 +19,6 @@ import org.eclipse.ocl.pivot.TemplateParameters;
 import org.eclipse.ocl.pivot.ids.ClassId;
 import org.eclipse.ocl.pivot.ids.CollectionTypeId;
 import org.eclipse.ocl.pivot.ids.DataTypeId;
-import org.eclipse.ocl.pivot.ids.EnumerationId;
 import org.eclipse.ocl.pivot.ids.IdManager;
 import org.eclipse.ocl.pivot.ids.NsURIPackageId;
 import org.eclipse.ocl.pivot.ids.TypeId;
@@ -38,7 +37,6 @@ import org.eclipse.ocl.pivot.utilities.AbstractTables;
 import org.eclipse.ocl.pivot.utilities.TypeUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
 import org.eclipse.ocl.pivot.values.IntegerValue;
-import org.secdfd.model.ModelPackage;
 
 /**
  * GraphTables provides the dispatch tables for the graph for use by the OCL dispatcher.
@@ -67,7 +65,6 @@ public class GraphTables extends AbstractTables
 	 */
 	public static final /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore = IdManager.getNsURIPackageId("http://www.eclipse.org/emf/2002/Ecore", null, EcorePackage.eINSTANCE);
 	public static final /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_www_example_org_s_graph = IdManager.getNsURIPackageId("http://www.example.org/graph", null, GraphPackage.eINSTANCE);
-	public static final /*@NonInvalid*/ NsURIPackageId PACKid_http_c_s_s_www_secdfd_org_s_secdfd = IdManager.getNsURIPackageId("http://www.secdfd.org/secdfd", null, ModelPackage.eINSTANCE);
 	public static final /*@NonInvalid*/ ClassId CLSSid_AssetLabel = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("AssetLabel", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Edge = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("Edge", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_EdgeLabel = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("EdgeLabel", 0);
@@ -77,11 +74,14 @@ public class GraphTables extends AbstractTables
 	public static final /*@NonInvalid*/ ClassId CLSSid_NodeResponsibility = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("NodeResponsibility", 0);
 	public static final /*@NonInvalid*/ ClassId CLSSid_Subgraphs = GraphTables.PACKid_http_c_s_s_www_example_org_s_graph.getClassId("Subgraphs", 0);
 	public static final /*@NonInvalid*/ DataTypeId DATAid_EInt = GraphTables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EInt", 0);
-	public static final /*@NonInvalid*/ EnumerationId ENUMid_ContractType = GraphTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("ContractType");
-	public static final /*@NonInvalid*/ EnumerationId ENUMid_Objective = GraphTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Objective");
 	public static final /*@NonInvalid*/ IntegerValue INT_0 = ValueUtil.integerValueOf("0");
 	public static final /*@NonInvalid*/ IntegerValue INT_1 = ValueUtil.integerValueOf("1");
 	public static final /*@NonInvalid*/ IntegerValue INT_2 = ValueUtil.integerValueOf("2");
+	public static final /*@NonInvalid*/ CollectionTypeId ORD_PRIMid_String = TypeId.ORDERED_SET.getSpecializedId(TypeId.STRING, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
+	public static final /*@NonInvalid*/ String STR_ = "";
+	public static final /*@NonInvalid*/ String STR_MEDIUM = "MEDIUM";
+	public static final /*@NonInvalid*/ String STR_STRONG = "STRONG";
+	public static final /*@NonInvalid*/ String STR_WEAK = "WEAK";
 	public static final /*@NonInvalid*/ String STR__94__a_Authenticator_a_$ = "^.*Authenticator.*$";
 	public static final /*@NonInvalid*/ String STR__94__a_Business_a_$ = "^.*Business.*$";
 	public static final /*@NonInvalid*/ String STR__94__a_Classification_a_$ = "^.*Classification.*$";
@@ -114,7 +114,6 @@ public class GraphTables extends AbstractTables
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_NodeResponsibility = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_NodeResponsibility, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Node_0 = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_Node, true, ValueUtil.ONE_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Subgraphs = TypeId.ORDERED_SET.getSpecializedId(GraphTables.CLSSid_Subgraphs, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
-	public static final /*@NonInvalid*/ CollectionTypeId ORD_ENUMid_ContractType = TypeId.ORDERED_SET.getSpecializedId(GraphTables.ENUMid_ContractType, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId SEQ_CLSSid_AssetLabel = TypeId.SEQUENCE.getSpecializedId(GraphTables.CLSSid_AssetLabel, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId SEQ_DATAid_EInt = TypeId.SEQUENCE.getSpecializedId(GraphTables.DATAid_EInt, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 
@@ -346,16 +345,17 @@ public class GraphTables extends AbstractTables
 		public static final ExecutorProperty _Node__name = new EcoreExecutorProperty(GraphPackage.Literals.NODE__NAME, Types._Node, 3);
 		public static final ExecutorProperty _Node__outedges = new EcoreExecutorProperty(GraphPackage.Literals.NODE__OUTEDGES, Types._Node, 4);
 		public static final ExecutorProperty _Node__responsibility = new EcoreExecutorProperty(GraphPackage.Literals.NODE__RESPONSIBILITY, Types._Node, 5);
-		public static final ExecutorProperty _Node__visited = new EcoreExecutorProperty(GraphPackage.Literals.NODE__VISITED, Types._Node, 6);
-		public static final ExecutorProperty _Node__Edge__source = new ExecutorPropertyWithImplementation("Edge", Types._Node, 7, new EcoreLibraryOppositeProperty(GraphPackage.Literals.EDGE__SOURCE));
-		public static final ExecutorProperty _Node__Edge__target = new ExecutorPropertyWithImplementation("Edge", Types._Node, 8, new EcoreLibraryOppositeProperty(GraphPackage.Literals.EDGE__TARGET));
-		public static final ExecutorProperty _Node__GraphAsset__source = new ExecutorPropertyWithImplementation("GraphAsset", Types._Node, 9, new EcoreLibraryOppositeProperty(GraphPackage.Literals.GRAPH_ASSET__SOURCE));
-		public static final ExecutorProperty _Node__GraphAsset__targets = new ExecutorPropertyWithImplementation("GraphAsset", Types._Node, 10, new EcoreLibraryOppositeProperty(GraphPackage.Literals.GRAPH_ASSET__TARGETS));
-		public static final ExecutorProperty _Node__Subgraphs__nodes = new ExecutorPropertyWithImplementation("Subgraphs", Types._Node, 11, new EcoreLibraryOppositeProperty(GraphPackage.Literals.SUBGRAPHS__NODES));
+		public static final ExecutorProperty _Node__trustFactor = new EcoreExecutorProperty(GraphPackage.Literals.NODE__TRUST_FACTOR, Types._Node, 6);
+		public static final ExecutorProperty _Node__visited = new EcoreExecutorProperty(GraphPackage.Literals.NODE__VISITED, Types._Node, 7);
+		public static final ExecutorProperty _Node__Edge__source = new ExecutorPropertyWithImplementation("Edge", Types._Node, 8, new EcoreLibraryOppositeProperty(GraphPackage.Literals.EDGE__SOURCE));
+		public static final ExecutorProperty _Node__Edge__target = new ExecutorPropertyWithImplementation("Edge", Types._Node, 9, new EcoreLibraryOppositeProperty(GraphPackage.Literals.EDGE__TARGET));
+		public static final ExecutorProperty _Node__GraphAsset__source = new ExecutorPropertyWithImplementation("GraphAsset", Types._Node, 10, new EcoreLibraryOppositeProperty(GraphPackage.Literals.GRAPH_ASSET__SOURCE));
+		public static final ExecutorProperty _Node__GraphAsset__targets = new ExecutorPropertyWithImplementation("GraphAsset", Types._Node, 11, new EcoreLibraryOppositeProperty(GraphPackage.Literals.GRAPH_ASSET__TARGETS));
+		public static final ExecutorProperty _Node__Subgraphs__nodes = new ExecutorPropertyWithImplementation("Subgraphs", Types._Node, 12, new EcoreLibraryOppositeProperty(GraphPackage.Literals.SUBGRAPHS__NODES));
 
-		public static final ExecutorProperty _NodeResponsibility__incomingassets = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__INCOMINGASSETS, Types._NodeResponsibility, 0);
-		public static final ExecutorProperty _NodeResponsibility__outgoingassets = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__OUTGOINGASSETS, Types._NodeResponsibility, 1);
-		public static final ExecutorProperty _NodeResponsibility__task = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__TASK, Types._NodeResponsibility, 2);
+		public static final ExecutorProperty _NodeResponsibility__contractTypes = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__CONTRACT_TYPES, Types._NodeResponsibility, 0);
+		public static final ExecutorProperty _NodeResponsibility__incomingassets = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__INCOMINGASSETS, Types._NodeResponsibility, 1);
+		public static final ExecutorProperty _NodeResponsibility__outgoingassets = new EcoreExecutorProperty(GraphPackage.Literals.NODE_RESPONSIBILITY__OUTGOINGASSETS, Types._NodeResponsibility, 2);
 		public static final ExecutorProperty _NodeResponsibility__Node__responsibility = new ExecutorPropertyWithImplementation("Node", Types._NodeResponsibility, 3, new EcoreLibraryOppositeProperty(GraphPackage.Literals.NODE__RESPONSIBILITY));
 
 		public static final ExecutorProperty _SecurityLabel__level = new EcoreExecutorProperty(GraphPackage.Literals.SECURITY_LABEL__LEVEL, Types._SecurityLabel, 0);
@@ -973,17 +973,18 @@ public class GraphTables extends AbstractTables
 			OCLstdlibTables.Properties._OclElement__oclContents,
 			GraphTables.Properties._Node__outedges,
 			GraphTables.Properties._Node__responsibility,
+			GraphTables.Properties._Node__trustFactor,
 			GraphTables.Properties._Node__visited
 		};
 
 		private static final ExecutorProperty /*@NonNull*/ [] _NodeResponsibility = {
 			GraphTables.Properties._Identifiable__ID,
+			GraphTables.Properties._NodeResponsibility__contractTypes,
 			GraphTables.Properties._NodeResponsibility__incomingassets,
 			GraphTables.Properties._Identifiable__number,
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents,
-			GraphTables.Properties._NodeResponsibility__outgoingassets,
-			GraphTables.Properties._NodeResponsibility__task
+			GraphTables.Properties._NodeResponsibility__outgoingassets
 		};
 
 		private static final ExecutorProperty /*@NonNull*/ [] _SecurityLabel = {

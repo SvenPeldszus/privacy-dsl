@@ -149,9 +149,9 @@ public class eSTRIDEMap {
 						if (elementAssetsList.get(j).getAssets().get(k).getValue().get(l).getObjective().getName()
 								.equals(keyList_mappedTable.get(m))) { // Compare Assets objective with mappedTable
 
-							if (elementAssetsList.get(j).getAssets().get(k).getValue().get(l).getPriority().getName()
+							if (elementAssetsList.get(j).getAssets().get(k).getValue().get(l).getLevel().getName()
 									.equals("H")
-									|| elementAssetsList.get(j).getAssets().get(k).getValue().get(l).getPriority()
+									|| elementAssetsList.get(j).getAssets().get(k).getValue().get(l).getLevel()
 											.getName().equals("M")) {
 
 								
@@ -187,9 +187,9 @@ public class eSTRIDEMap {
 						if (flowAssetsList.get(j).getAssets().get(k).getValue().get(l).getObjective().getName()
 								.equals(keyList_mappedTable.get(m))) { // Compare Assets objective with mappedTable
 
-							if (flowAssetsList.get(j).getAssets().get(k).getValue().get(l).getPriority().getName()
+							if (flowAssetsList.get(j).getAssets().get(k).getValue().get(l).getLevel().getName()
 									.equals("H")
-									|| flowAssetsList.get(j).getAssets().get(k).getValue().get(l).getPriority()
+									|| flowAssetsList.get(j).getAssets().get(k).getValue().get(l).getLevel()
 											.getName().equals("M")) {
 								
 								if (StrideMap.get(flowAssetsList.get(j).getName()).contains(mappedTable().get(flowAssetsList.get(j).getAssets().get(k).getValue().get(l).getObjective().getName()))) {

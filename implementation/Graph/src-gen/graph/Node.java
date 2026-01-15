@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link graph.Node#isVisited <em>Visited</em>}</li>
  *   <li>{@link graph.Node#getInedges <em>Inedges</em>}</li>
  *   <li>{@link graph.Node#isAttacker <em>Attacker</em>}</li>
+ *   <li>{@link graph.Node#getTrustFactor <em>Trust Factor</em>}</li>
  * </ul>
  *
  * @see graph.GraphPackage#getNode()
@@ -156,6 +157,44 @@ public interface Node extends Identifiable {
 	void setAttacker(boolean value);
 
 	/**
+	 * Returns the value of the '<em><b>Trust Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Trust Factor</em>' attribute.
+	 * @see #setTrustFactor(String)
+	 * @see graph.GraphPackage#getNode_TrustFactor()
+	 * @model
+	 * @generated
+	 */
+	String getTrustFactor();
+
+	/**
+	 * Sets the value of the '{@link graph.Node#getTrustFactor <em>Trust Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Trust Factor</em>' attribute.
+	 * @see #getTrustFactor()
+	 * @generated
+	 */
+	void setTrustFactor(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t-- Strong trust factor: Attacker can observe up to M \n\t\tif self.Attacker = true and self.trustFactor = \'STRONG\' then\n\t\t     self.outedges-&gt;forAll( e |\n\t\t       e.edgelabel-&gt;forAll(l | l.level &lt;= 2)\n\t\t     )\n\t\t   and\n\t\t     self.inedges -&gt;forAll( e |\n\t\t       e.edgelabel-&gt;forAll(l | l.level &lt;= 2)\n\t\t     )\n\t\t else\n\t\t     true\n\t\t endif\n\t\t\t'"
+	 * @generated
+	 */
+	boolean PrivacyPolicyViolationStrong(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t-- Weak trust factor: Attacker can observe only N\n\t\tif self.Attacker = true and self.trustFactor = \'WEAK\' then\n\t\t     self.outedges-&gt;forAll( e |\n\t\t       e.edgelabel-&gt;forAll(l | l.level &lt; 1)\n\t\t     )\n\t\t   and\n\t\t     self.inedges -&gt;forAll( e |\n\t\t       e.edgelabel-&gt;forAll(l | l.level &lt; 1)\n\t\t     )\n\t\t else\n\t\t     true\n\t\t endif\n\t\t\t'"
+	 * @generated
+	 */
+	boolean PrivacyPolicyViolationWeak(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t\tself.responsibility-&gt;select(r | r.ID.matches(\'^.*Prediction.*$\'))\n\t\t\t\t-&gt;forAll(r |\n\t\t\t\t\t-- Prediction contract needs at least 1 incoming and 1 outgoing asset\n\t\t\t\t\tr.incomingassets-&gt;size() &gt; 0 and r.outgoingassets-&gt;size() &gt; 0\n\t\t\t\t)\n\t\t'"
@@ -270,7 +309,7 @@ public interface Node extends Identifiable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t-- if a node is malicious then there is a violation if any of the outgoing or incoming edges are private!\n\t\t--newly added\n\t\tif self.Attacker = true then\n\t\t     self.outedges-&gt;forAll( e |\n\t\t       e.edgelabel-&gt;forAll(l | l.level &lt;= 1)\n\t\t     )\n\t\t   and\n\t\t     self.inedges -&gt;forAll( e |\n\t\t       e.edgelabel-&gt;forAll(l | l.level &lt;= 1)\n\t\t     )\n\t\t else\n\t\t     true\n\t\t endif\n\t\t\t'"
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t-- if a node is malicious then there is a violation if any of the outgoing or incoming edges are private!\n\t\tif self.Attacker = true and (self.trustFactor.oclIsUndefined() or self.trustFactor = null or self.trustFactor = \'\') then\n\t\t     self.outedges-&gt;forAll( e |\n\t\t       e.edgelabel-&gt;forAll(l | l.level &lt;= 1)\n\t\t     )\n\t\t   and\n\t\t     self.inedges -&gt;forAll( e |\n\t\t       e.edgelabel-&gt;forAll(l | l.level &lt;= 1)\n\t\t     )\n\t\t else\n\t\t     true\n\t\t endif\n\t\t\t'"
 	 * @generated
 	 */
 	boolean AttackerObservationViolation(DiagnosticChain diagnostics, Map<Object, Object> context);
@@ -322,5 +361,13 @@ public interface Node extends Identifiable {
 	 * @generated
 	 */
 	boolean UserSemanticConstraint(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t\t-- Medium trust factor: attacker can observe up to L \n\t\tif self.Attacker = true and self.trustFactor = \'MEDIUM\' then\n\t\t     self.outedges-&gt;forAll( e |\n\t\t       e.edgelabel-&gt;forAll(l | l.level &lt;= 1)\n\t\t     )\n\t\t   and\n\t\t     self.inedges -&gt;forAll( e |\n\t\t       e.edgelabel-&gt;forAll(l | l.level &lt;= 1)\n\t\t     )\n\t\t else\n\t\t     true\n\t\t endif\n\t\t\t'"
+	 * @generated
+	 */
+	boolean PrivacyPolicyViolationMedium(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Node

@@ -48,8 +48,8 @@ import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
  *         <code><pre>
  *         //naming: Asset from source model = Asset from target model
  *         pattern highPriorityAsset(a : Asset){
- *         	Asset.value.Priority(a, p);
- *         	p == Priority::H;
+ *         	Asset.value.Level(a, p);
+ *         	p == Level::H;
  *         }
  *         pattern confidentialAsset(a: Asset){
  *         	Asset.value.Objective(a, o);
@@ -60,7 +60,7 @@ import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
  *         }
  *         
  *         pattern comparatorProcesses(p : Process){
- *         	Process.responsibility(p, r);
+ *         	Process.contract(p, r);
  *         	ContractBase.Task(r, pr);
  *         	pr == ContractType::Comparator;
  *         }
@@ -258,8 +258,8 @@ public final class ComparatorProcesses extends BaseGeneratedEMFQuerySpecificatio
    * <code><pre>
    * //naming: Asset from source model = Asset from target model
    * pattern highPriorityAsset(a : Asset){
-   * 	Asset.value.Priority(a, p);
-   * 	p == Priority::H;
+   * 	Asset.value.Level(a, p);
+   * 	p == Level::H;
    * }
    * pattern confidentialAsset(a: Asset){
    * 	Asset.value.Objective(a, o);
@@ -270,7 +270,7 @@ public final class ComparatorProcesses extends BaseGeneratedEMFQuerySpecificatio
    * }
    * 
    * pattern comparatorProcesses(p : Process){
-   * 	Process.responsibility(p, r);
+   * 	Process.contract(p, r);
    * 	ContractBase.Task(r, pr);
    * 	pr == ContractType::Comparator;
    * }
@@ -604,10 +604,10 @@ public final class ComparatorProcesses extends BaseGeneratedEMFQuerySpecificatio
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_p, parameter_p)
           ));
-          // 	Process.responsibility(p, r)
+          // 	Process.contract(p, r)
           new TypeConstraint(body, Tuples.flatTupleOf(var_p), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Process")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_p, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Process", "responsibility")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_p, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Process", "contract")));
           new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "ContractBase")));
           new Equality(body, var__virtual_0_, var_r);
           // 	ContractBase.Task(r, pr)

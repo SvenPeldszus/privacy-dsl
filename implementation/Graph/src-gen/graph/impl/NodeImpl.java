@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.ocl.pivot.evaluation.Executor;
-
 import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
 
@@ -52,7 +51,6 @@ import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
 import org.eclipse.ocl.pivot.library.string.StringMatchesOperation;
 
 import org.eclipse.ocl.pivot.messages.PivotMessages;
-
 import org.eclipse.ocl.pivot.utilities.PivotUtil;
 import org.eclipse.ocl.pivot.utilities.ValueUtil;
 
@@ -79,6 +77,7 @@ import org.eclipse.ocl.pivot.values.OrderedSetValue.Accumulator;
  *   <li>{@link graph.impl.NodeImpl#isVisited <em>Visited</em>}</li>
  *   <li>{@link graph.impl.NodeImpl#getInedges <em>Inedges</em>}</li>
  *   <li>{@link graph.impl.NodeImpl#isAttacker <em>Attacker</em>}</li>
+ *   <li>{@link graph.impl.NodeImpl#getTrustFactor <em>Trust Factor</em>}</li>
  * </ul>
  *
  * @generated
@@ -233,6 +232,26 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * @ordered
 	 */
 	protected boolean attacker = ATTACKER_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTrustFactor() <em>Trust Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTrustFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TRUST_FACTOR_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTrustFactor() <em>Trust Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTrustFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected String trustFactor = TRUST_FACTOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -428,6 +447,557 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 		attacker = newAttacker;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.NODE__ATTACKER, oldAttacker, attacker));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getTrustFactor() {
+		return trustFactor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTrustFactor(String newTrustFactor) {
+		String oldTrustFactor = trustFactor;
+		trustFactor = newTrustFactor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GraphPackage.NODE__TRUST_FACTOR, oldTrustFactor, trustFactor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean PrivacyPolicyViolationStrong(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Node::PrivacyPolicyViolationStrong";
+		try {
+			/**
+			 *
+			 * inv PrivacyPolicyViolationStrong:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[?] = if self.Attacker = true and self.trustFactor = 'STRONG'
+			 *         then
+			 *           self.outedges->forAll(e |
+			 *             e.edgelabel->forAll(l | l.level <= 2)) and
+			 *           self.inedges->forAll(e |
+			 *             e.edgelabel->forAll(l | l.level <= 2))
+			 *         else true
+			 *         endif
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, GraphPackage.Literals.NODE___PRIVACY_POLICY_VIOLATION_STRONG__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, GraphTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				/*@Caught*/ Object CAUGHT_result;
+				try {
+					final /*@NonInvalid*/ boolean Attacker = this.isAttacker();
+					final /*@NonInvalid*/ Boolean and;
+					if (!Attacker) {
+						and = ValueUtil.FALSE_VALUE;
+					}
+					else {
+						final /*@NonInvalid*/ String trustFactor = this.getTrustFactor();
+						final /*@NonInvalid*/ boolean eq = GraphTables.STR_STRONG.equals(trustFactor);
+						if (!eq) {
+							and = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							and = ValueUtil.TRUE_VALUE;
+						}
+					}
+					if (and == null) {
+						throw new InvalidValueException("Null if condition");
+					}
+					/*@Thrown*/ Boolean result;
+					if (and) {
+						/*@Caught*/ Object CAUGHT_forAll;
+						try {
+							final /*@NonInvalid*/ List<Edge> outedges = this.getOutedges();
+							final /*@NonInvalid*/ OrderedSetValue BOXED_outedges = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_Edge, outedges);
+							/*@Thrown*/ Object accumulator = ValueUtil.TRUE_VALUE;
+							Iterator<Object> ITERATOR_e_0 = BOXED_outedges.iterator();
+							/*@Thrown*/ Boolean forAll;
+							while (true) {
+								if (!ITERATOR_e_0.hasNext()) {
+									if (accumulator == null) {
+										forAll = null;
+									}
+									else if (accumulator == ValueUtil.TRUE_VALUE) {
+										forAll = ValueUtil.TRUE_VALUE;
+									}
+									else {
+										throw (InvalidValueException)accumulator;
+									}
+									break;
+								}
+								/*@NonInvalid*/ Edge e_0 = (Edge)ITERATOR_e_0.next();
+								/**
+								 * e.edgelabel->forAll(l | l.level <= 2)
+								 */
+								final /*@NonInvalid*/ List<EdgeLabel> edgelabel = e_0.getEdgelabel();
+								final /*@NonInvalid*/ OrderedSetValue BOXED_edgelabel = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_EdgeLabel, edgelabel);
+								/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+								Iterator<Object> ITERATOR_l = BOXED_edgelabel.iterator();
+								/*@NonInvalid*/ Boolean forAll_0;
+								while (true) {
+									if (!ITERATOR_l.hasNext()) {
+										if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+											forAll_0 = ValueUtil.TRUE_VALUE;
+										}
+										else {
+											throw (InvalidValueException)accumulator_0;
+										}
+										break;
+									}
+									/*@NonInvalid*/ EdgeLabel l = (EdgeLabel)ITERATOR_l.next();
+									/**
+									 * l.level <= 2
+									 */
+									final /*@NonInvalid*/ int level = l.getLevel();
+									final /*@NonInvalid*/ IntegerValue BOXED_level = ValueUtil.integerValueOf(level);
+									final /*@NonInvalid*/ boolean le_0 = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, BOXED_level, GraphTables.INT_2).booleanValue();
+									//
+									if (!le_0) {					// Normal unsuccessful body evaluation result
+										forAll_0 = ValueUtil.FALSE_VALUE;
+										break;														// Stop immediately
+									}
+									else if (le_0) {				// Normal successful body evaluation result
+										;															// Carry on
+									}
+									else {															// Impossible badly typed result
+										accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+									}
+								}
+								//
+								if (forAll_0 == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+									forAll = ValueUtil.FALSE_VALUE;
+									break;														// Stop immediately
+								}
+								else if (forAll_0 == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+									;															// Carry on
+								}
+								else if (forAll_0 == null) {								// Abnormal null body evaluation result
+									if (accumulator == ValueUtil.TRUE_VALUE) {
+										accumulator = null;										// Cache a null failure
+									}
+								}
+								else {															// Impossible badly typed result
+									accumulator = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+								}
+							}
+							CAUGHT_forAll = forAll;
+						}
+						catch (Exception e) {
+							CAUGHT_forAll = ValueUtil.createInvalidValue(e);
+						}
+						final /*@Thrown*/ Boolean and_0;
+						if (CAUGHT_forAll == ValueUtil.FALSE_VALUE) {
+							and_0 = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							/*@Caught*/ Object CAUGHT_forAll_1;
+							try {
+								final /*@NonInvalid*/ List<Edge> inedges = this.getInedges();
+								final /*@NonInvalid*/ OrderedSetValue BOXED_inedges = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_Edge, inedges);
+								/*@Thrown*/ Object accumulator_1 = ValueUtil.TRUE_VALUE;
+								Iterator<Object> ITERATOR_e_1 = BOXED_inedges.iterator();
+								/*@Thrown*/ Boolean forAll_1;
+								while (true) {
+									if (!ITERATOR_e_1.hasNext()) {
+										if (accumulator_1 == null) {
+											forAll_1 = null;
+										}
+										else if (accumulator_1 == ValueUtil.TRUE_VALUE) {
+											forAll_1 = ValueUtil.TRUE_VALUE;
+										}
+										else {
+											throw (InvalidValueException)accumulator_1;
+										}
+										break;
+									}
+									/*@NonInvalid*/ Edge e_1 = (Edge)ITERATOR_e_1.next();
+									/**
+									 * e.edgelabel->forAll(l | l.level <= 2)
+									 */
+									final /*@NonInvalid*/ List<EdgeLabel> edgelabel_0 = e_1.getEdgelabel();
+									final /*@NonInvalid*/ OrderedSetValue BOXED_edgelabel_0 = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_EdgeLabel, edgelabel_0);
+									/*@Thrown*/ Object accumulator_2 = ValueUtil.TRUE_VALUE;
+									Iterator<Object> ITERATOR_l_0 = BOXED_edgelabel_0.iterator();
+									/*@NonInvalid*/ Boolean forAll_2;
+									while (true) {
+										if (!ITERATOR_l_0.hasNext()) {
+											if (accumulator_2 == ValueUtil.TRUE_VALUE) {
+												forAll_2 = ValueUtil.TRUE_VALUE;
+											}
+											else {
+												throw (InvalidValueException)accumulator_2;
+											}
+											break;
+										}
+										/*@NonInvalid*/ EdgeLabel l_0 = (EdgeLabel)ITERATOR_l_0.next();
+										/**
+										 * l.level <= 2
+										 */
+										final /*@NonInvalid*/ int level_0 = l_0.getLevel();
+										final /*@NonInvalid*/ IntegerValue BOXED_level_0 = ValueUtil.integerValueOf(level_0);
+										final /*@NonInvalid*/ boolean le_1 = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, BOXED_level_0, GraphTables.INT_2).booleanValue();
+										//
+										if (!le_1) {					// Normal unsuccessful body evaluation result
+											forAll_2 = ValueUtil.FALSE_VALUE;
+											break;														// Stop immediately
+										}
+										else if (le_1) {				// Normal successful body evaluation result
+											;															// Carry on
+										}
+										else {															// Impossible badly typed result
+											accumulator_2 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+										}
+									}
+									//
+									if (forAll_2 == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+										forAll_1 = ValueUtil.FALSE_VALUE;
+										break;														// Stop immediately
+									}
+									else if (forAll_2 == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+										;															// Carry on
+									}
+									else if (forAll_2 == null) {								// Abnormal null body evaluation result
+										if (accumulator_1 == ValueUtil.TRUE_VALUE) {
+											accumulator_1 = null;										// Cache a null failure
+										}
+									}
+									else {															// Impossible badly typed result
+										accumulator_1 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+									}
+								}
+								CAUGHT_forAll_1 = forAll_1;
+							}
+							catch (Exception e) {
+								CAUGHT_forAll_1 = ValueUtil.createInvalidValue(e);
+							}
+							if (CAUGHT_forAll_1 == ValueUtil.FALSE_VALUE) {
+								and_0 = ValueUtil.FALSE_VALUE;
+							}
+							else {
+								if (CAUGHT_forAll instanceof InvalidValueException) {
+									throw (InvalidValueException)CAUGHT_forAll;
+								}
+								if (CAUGHT_forAll_1 instanceof InvalidValueException) {
+									throw (InvalidValueException)CAUGHT_forAll_1;
+								}
+								if ((CAUGHT_forAll == null) || (CAUGHT_forAll_1 == null)) {
+									and_0 = null;
+								}
+								else {
+									and_0 = ValueUtil.TRUE_VALUE;
+								}
+							}
+						}
+						result = and_0;
+					}
+					else {
+						result = ValueUtil.TRUE_VALUE;
+					}
+					CAUGHT_result = result;
+				}
+				catch (Exception e) {
+					CAUGHT_result = ValueUtil.createInvalidValue(e);
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, CAUGHT_result, GraphTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean PrivacyPolicyViolationWeak(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Node::PrivacyPolicyViolationWeak";
+		try {
+			/**
+			 *
+			 * inv PrivacyPolicyViolationWeak:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[?] = if self.Attacker = true and self.trustFactor = 'WEAK'
+			 *         then
+			 *           self.outedges->forAll(e |
+			 *             e.edgelabel->forAll(l | l.level < 1)) and
+			 *           self.inedges->forAll(e |
+			 *             e.edgelabel->forAll(l | l.level < 1))
+			 *         else true
+			 *         endif
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, GraphPackage.Literals.NODE___PRIVACY_POLICY_VIOLATION_WEAK__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, GraphTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				/*@Caught*/ Object CAUGHT_result;
+				try {
+					final /*@NonInvalid*/ boolean Attacker = this.isAttacker();
+					final /*@NonInvalid*/ Boolean and;
+					if (!Attacker) {
+						and = ValueUtil.FALSE_VALUE;
+					}
+					else {
+						final /*@NonInvalid*/ String trustFactor = this.getTrustFactor();
+						final /*@NonInvalid*/ boolean eq = GraphTables.STR_WEAK.equals(trustFactor);
+						if (!eq) {
+							and = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							and = ValueUtil.TRUE_VALUE;
+						}
+					}
+					if (and == null) {
+						throw new InvalidValueException("Null if condition");
+					}
+					/*@Thrown*/ Boolean result;
+					if (and) {
+						/*@Caught*/ Object CAUGHT_forAll;
+						try {
+							final /*@NonInvalid*/ List<Edge> outedges = this.getOutedges();
+							final /*@NonInvalid*/ OrderedSetValue BOXED_outedges = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_Edge, outedges);
+							/*@Thrown*/ Object accumulator = ValueUtil.TRUE_VALUE;
+							Iterator<Object> ITERATOR_e_0 = BOXED_outedges.iterator();
+							/*@Thrown*/ Boolean forAll;
+							while (true) {
+								if (!ITERATOR_e_0.hasNext()) {
+									if (accumulator == null) {
+										forAll = null;
+									}
+									else if (accumulator == ValueUtil.TRUE_VALUE) {
+										forAll = ValueUtil.TRUE_VALUE;
+									}
+									else {
+										throw (InvalidValueException)accumulator;
+									}
+									break;
+								}
+								/*@NonInvalid*/ Edge e_0 = (Edge)ITERATOR_e_0.next();
+								/**
+								 * e.edgelabel->forAll(l | l.level < 1)
+								 */
+								final /*@NonInvalid*/ List<EdgeLabel> edgelabel = e_0.getEdgelabel();
+								final /*@NonInvalid*/ OrderedSetValue BOXED_edgelabel = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_EdgeLabel, edgelabel);
+								/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+								Iterator<Object> ITERATOR_l = BOXED_edgelabel.iterator();
+								/*@NonInvalid*/ Boolean forAll_0;
+								while (true) {
+									if (!ITERATOR_l.hasNext()) {
+										if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+											forAll_0 = ValueUtil.TRUE_VALUE;
+										}
+										else {
+											throw (InvalidValueException)accumulator_0;
+										}
+										break;
+									}
+									/*@NonInvalid*/ EdgeLabel l = (EdgeLabel)ITERATOR_l.next();
+									/**
+									 * l.level < 1
+									 */
+									final /*@NonInvalid*/ int level = l.getLevel();
+									final /*@NonInvalid*/ IntegerValue BOXED_level = ValueUtil.integerValueOf(level);
+									final /*@NonInvalid*/ boolean lt = OclComparableLessThanOperation.INSTANCE.evaluate(executor, BOXED_level, GraphTables.INT_1).booleanValue();
+									//
+									if (!lt) {					// Normal unsuccessful body evaluation result
+										forAll_0 = ValueUtil.FALSE_VALUE;
+										break;														// Stop immediately
+									}
+									else if (lt) {				// Normal successful body evaluation result
+										;															// Carry on
+									}
+									else {															// Impossible badly typed result
+										accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+									}
+								}
+								//
+								if (forAll_0 == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+									forAll = ValueUtil.FALSE_VALUE;
+									break;														// Stop immediately
+								}
+								else if (forAll_0 == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+									;															// Carry on
+								}
+								else if (forAll_0 == null) {								// Abnormal null body evaluation result
+									if (accumulator == ValueUtil.TRUE_VALUE) {
+										accumulator = null;										// Cache a null failure
+									}
+								}
+								else {															// Impossible badly typed result
+									accumulator = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+								}
+							}
+							CAUGHT_forAll = forAll;
+						}
+						catch (Exception e) {
+							CAUGHT_forAll = ValueUtil.createInvalidValue(e);
+						}
+						final /*@Thrown*/ Boolean and_0;
+						if (CAUGHT_forAll == ValueUtil.FALSE_VALUE) {
+							and_0 = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							/*@Caught*/ Object CAUGHT_forAll_1;
+							try {
+								final /*@NonInvalid*/ List<Edge> inedges = this.getInedges();
+								final /*@NonInvalid*/ OrderedSetValue BOXED_inedges = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_Edge, inedges);
+								/*@Thrown*/ Object accumulator_1 = ValueUtil.TRUE_VALUE;
+								Iterator<Object> ITERATOR_e_1 = BOXED_inedges.iterator();
+								/*@Thrown*/ Boolean forAll_1;
+								while (true) {
+									if (!ITERATOR_e_1.hasNext()) {
+										if (accumulator_1 == null) {
+											forAll_1 = null;
+										}
+										else if (accumulator_1 == ValueUtil.TRUE_VALUE) {
+											forAll_1 = ValueUtil.TRUE_VALUE;
+										}
+										else {
+											throw (InvalidValueException)accumulator_1;
+										}
+										break;
+									}
+									/*@NonInvalid*/ Edge e_1 = (Edge)ITERATOR_e_1.next();
+									/**
+									 * e.edgelabel->forAll(l | l.level < 1)
+									 */
+									final /*@NonInvalid*/ List<EdgeLabel> edgelabel_0 = e_1.getEdgelabel();
+									final /*@NonInvalid*/ OrderedSetValue BOXED_edgelabel_0 = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_EdgeLabel, edgelabel_0);
+									/*@Thrown*/ Object accumulator_2 = ValueUtil.TRUE_VALUE;
+									Iterator<Object> ITERATOR_l_0 = BOXED_edgelabel_0.iterator();
+									/*@NonInvalid*/ Boolean forAll_2;
+									while (true) {
+										if (!ITERATOR_l_0.hasNext()) {
+											if (accumulator_2 == ValueUtil.TRUE_VALUE) {
+												forAll_2 = ValueUtil.TRUE_VALUE;
+											}
+											else {
+												throw (InvalidValueException)accumulator_2;
+											}
+											break;
+										}
+										/*@NonInvalid*/ EdgeLabel l_0 = (EdgeLabel)ITERATOR_l_0.next();
+										/**
+										 * l.level < 1
+										 */
+										final /*@NonInvalid*/ int level_0 = l_0.getLevel();
+										final /*@NonInvalid*/ IntegerValue BOXED_level_0 = ValueUtil.integerValueOf(level_0);
+										final /*@NonInvalid*/ boolean lt_0 = OclComparableLessThanOperation.INSTANCE.evaluate(executor, BOXED_level_0, GraphTables.INT_1).booleanValue();
+										//
+										if (!lt_0) {					// Normal unsuccessful body evaluation result
+											forAll_2 = ValueUtil.FALSE_VALUE;
+											break;														// Stop immediately
+										}
+										else if (lt_0) {				// Normal successful body evaluation result
+											;															// Carry on
+										}
+										else {															// Impossible badly typed result
+											accumulator_2 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+										}
+									}
+									//
+									if (forAll_2 == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+										forAll_1 = ValueUtil.FALSE_VALUE;
+										break;														// Stop immediately
+									}
+									else if (forAll_2 == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+										;															// Carry on
+									}
+									else if (forAll_2 == null) {								// Abnormal null body evaluation result
+										if (accumulator_1 == ValueUtil.TRUE_VALUE) {
+											accumulator_1 = null;										// Cache a null failure
+										}
+									}
+									else {															// Impossible badly typed result
+										accumulator_1 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+									}
+								}
+								CAUGHT_forAll_1 = forAll_1;
+							}
+							catch (Exception e) {
+								CAUGHT_forAll_1 = ValueUtil.createInvalidValue(e);
+							}
+							if (CAUGHT_forAll_1 == ValueUtil.FALSE_VALUE) {
+								and_0 = ValueUtil.FALSE_VALUE;
+							}
+							else {
+								if (CAUGHT_forAll instanceof InvalidValueException) {
+									throw (InvalidValueException)CAUGHT_forAll;
+								}
+								if (CAUGHT_forAll_1 instanceof InvalidValueException) {
+									throw (InvalidValueException)CAUGHT_forAll_1;
+								}
+								if ((CAUGHT_forAll == null) || (CAUGHT_forAll_1 == null)) {
+									and_0 = null;
+								}
+								else {
+									and_0 = ValueUtil.TRUE_VALUE;
+								}
+							}
+						}
+						result = and_0;
+					}
+					else {
+						result = ValueUtil.TRUE_VALUE;
+					}
+					CAUGHT_result = result;
+				}
+				catch (Exception e) {
+					CAUGHT_result = ValueUtil.createInvalidValue(e);
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, CAUGHT_result, GraphTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
 	}
 
 	/**
@@ -2512,7 +3082,10 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 			 *     then true
 			 *     else
 			 *       let
-			 *         result : Boolean[?] = if self.Attacker = true
+			 *         result : Boolean[?] = if self.Attacker = true and
+			 *           (
+			 *             self.trustFactor.oclIsUndefined() or self.trustFactor = null or self.trustFactor = ''
+			 *           )
 			 *         then
 			 *           self.outedges->forAll(e |
 			 *             e.edgelabel->forAll(l | l.level <= 1)) and
@@ -2536,8 +3109,71 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 				/*@Caught*/ Object CAUGHT_result;
 				try {
 					final /*@NonInvalid*/ boolean Attacker = this.isAttacker();
+					final /*@Thrown*/ Boolean and;
+					if (!Attacker) {
+						and = ValueUtil.FALSE_VALUE;
+					}
+					else {
+						/*@Caught*/ Object CAUGHT_or_0;
+						try {
+							final /*@NonInvalid*/ String trustFactor_1 = this.getTrustFactor();
+							final /*@NonInvalid*/ boolean oclIsUndefined = trustFactor_1 == null;
+							final /*@NonInvalid*/ Boolean or;
+							if (oclIsUndefined) {
+								or = ValueUtil.TRUE_VALUE;
+							}
+							else {
+								final /*@NonInvalid*/ boolean eq = trustFactor_1 == null;
+								if (eq) {
+									or = ValueUtil.TRUE_VALUE;
+								}
+								else {
+									or = ValueUtil.FALSE_VALUE;
+								}
+							}
+							final /*@Thrown*/ Boolean or_0;
+							if (or == ValueUtil.TRUE_VALUE) {
+								or_0 = ValueUtil.TRUE_VALUE;
+							}
+							else {
+								final /*@NonInvalid*/ boolean eq_0 = GraphTables.STR_.equals(trustFactor_1);
+								if (eq_0) {
+									or_0 = ValueUtil.TRUE_VALUE;
+								}
+								else {
+									if (or == null) {
+										or_0 = null;
+									}
+									else {
+										or_0 = ValueUtil.FALSE_VALUE;
+									}
+								}
+							}
+							CAUGHT_or_0 = or_0;
+						}
+						catch (Exception e) {
+							CAUGHT_or_0 = ValueUtil.createInvalidValue(e);
+						}
+						if (CAUGHT_or_0 == ValueUtil.FALSE_VALUE) {
+							and = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							if (CAUGHT_or_0 instanceof InvalidValueException) {
+								throw (InvalidValueException)CAUGHT_or_0;
+							}
+							if (CAUGHT_or_0 == null) {
+								and = null;
+							}
+							else {
+								and = ValueUtil.TRUE_VALUE;
+							}
+						}
+					}
+					if (and == null) {
+						throw new InvalidValueException("Null if condition");
+					}
 					/*@Thrown*/ Boolean result;
-					if (Attacker) {
+					if (and) {
 						/*@Caught*/ Object CAUGHT_forAll;
 						try {
 							final /*@NonInvalid*/ List<Edge> outedges = this.getOutedges();
@@ -2618,9 +3254,9 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 						catch (Exception e) {
 							CAUGHT_forAll = ValueUtil.createInvalidValue(e);
 						}
-						final /*@Thrown*/ Boolean and;
+						final /*@Thrown*/ Boolean and_0;
 						if (CAUGHT_forAll == ValueUtil.FALSE_VALUE) {
-							and = ValueUtil.FALSE_VALUE;
+							and_0 = ValueUtil.FALSE_VALUE;
 						}
 						else {
 							/*@Caught*/ Object CAUGHT_forAll_1;
@@ -2704,7 +3340,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 								CAUGHT_forAll_1 = ValueUtil.createInvalidValue(e);
 							}
 							if (CAUGHT_forAll_1 == ValueUtil.FALSE_VALUE) {
-								and = ValueUtil.FALSE_VALUE;
+								and_0 = ValueUtil.FALSE_VALUE;
 							}
 							else {
 								if (CAUGHT_forAll instanceof InvalidValueException) {
@@ -2714,14 +3350,14 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 									throw (InvalidValueException)CAUGHT_forAll_1;
 								}
 								if ((CAUGHT_forAll == null) || (CAUGHT_forAll_1 == null)) {
-									and = null;
+									and_0 = null;
 								}
 								else {
-									and = ValueUtil.TRUE_VALUE;
+									and_0 = ValueUtil.TRUE_VALUE;
 								}
 							}
 						}
-						result = and;
+						result = and_0;
 					}
 					else {
 						result = ValueUtil.TRUE_VALUE;
@@ -3559,6 +4195,270 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	 * @generated
 	 */
 	@Override
+	public boolean PrivacyPolicyViolationMedium(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "Node::PrivacyPolicyViolationMedium";
+		try {
+			/**
+			 *
+			 * inv PrivacyPolicyViolationMedium:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[?] = if self.Attacker = true and self.trustFactor = 'MEDIUM'
+			 *         then
+			 *           self.outedges->forAll(e |
+			 *             e.edgelabel->forAll(l | l.level <= 1)) and
+			 *           self.inedges->forAll(e |
+			 *             e.edgelabel->forAll(l | l.level <= 1))
+			 *         else true
+			 *         endif
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor, GraphPackage.Literals.NODE___PRIVACY_POLICY_VIOLATION_MEDIUM__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, severity_0, GraphTables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			}
+			else {
+				/*@Caught*/ Object CAUGHT_result;
+				try {
+					final /*@NonInvalid*/ boolean Attacker = this.isAttacker();
+					final /*@NonInvalid*/ Boolean and;
+					if (!Attacker) {
+						and = ValueUtil.FALSE_VALUE;
+					}
+					else {
+						final /*@NonInvalid*/ String trustFactor = this.getTrustFactor();
+						final /*@NonInvalid*/ boolean eq = GraphTables.STR_MEDIUM.equals(trustFactor);
+						if (!eq) {
+							and = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							and = ValueUtil.TRUE_VALUE;
+						}
+					}
+					if (and == null) {
+						throw new InvalidValueException("Null if condition");
+					}
+					/*@Thrown*/ Boolean result;
+					if (and) {
+						/*@Caught*/ Object CAUGHT_forAll;
+						try {
+							final /*@NonInvalid*/ List<Edge> outedges = this.getOutedges();
+							final /*@NonInvalid*/ OrderedSetValue BOXED_outedges = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_Edge, outedges);
+							/*@Thrown*/ Object accumulator = ValueUtil.TRUE_VALUE;
+							Iterator<Object> ITERATOR_e_0 = BOXED_outedges.iterator();
+							/*@Thrown*/ Boolean forAll;
+							while (true) {
+								if (!ITERATOR_e_0.hasNext()) {
+									if (accumulator == null) {
+										forAll = null;
+									}
+									else if (accumulator == ValueUtil.TRUE_VALUE) {
+										forAll = ValueUtil.TRUE_VALUE;
+									}
+									else {
+										throw (InvalidValueException)accumulator;
+									}
+									break;
+								}
+								/*@NonInvalid*/ Edge e_0 = (Edge)ITERATOR_e_0.next();
+								/**
+								 * e.edgelabel->forAll(l | l.level <= 1)
+								 */
+								final /*@NonInvalid*/ List<EdgeLabel> edgelabel = e_0.getEdgelabel();
+								final /*@NonInvalid*/ OrderedSetValue BOXED_edgelabel = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_EdgeLabel, edgelabel);
+								/*@Thrown*/ Object accumulator_0 = ValueUtil.TRUE_VALUE;
+								Iterator<Object> ITERATOR_l = BOXED_edgelabel.iterator();
+								/*@NonInvalid*/ Boolean forAll_0;
+								while (true) {
+									if (!ITERATOR_l.hasNext()) {
+										if (accumulator_0 == ValueUtil.TRUE_VALUE) {
+											forAll_0 = ValueUtil.TRUE_VALUE;
+										}
+										else {
+											throw (InvalidValueException)accumulator_0;
+										}
+										break;
+									}
+									/*@NonInvalid*/ EdgeLabel l = (EdgeLabel)ITERATOR_l.next();
+									/**
+									 * l.level <= 1
+									 */
+									final /*@NonInvalid*/ int level = l.getLevel();
+									final /*@NonInvalid*/ IntegerValue BOXED_level = ValueUtil.integerValueOf(level);
+									final /*@NonInvalid*/ boolean le_0 = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, BOXED_level, GraphTables.INT_1).booleanValue();
+									//
+									if (!le_0) {					// Normal unsuccessful body evaluation result
+										forAll_0 = ValueUtil.FALSE_VALUE;
+										break;														// Stop immediately
+									}
+									else if (le_0) {				// Normal successful body evaluation result
+										;															// Carry on
+									}
+									else {															// Impossible badly typed result
+										accumulator_0 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+									}
+								}
+								//
+								if (forAll_0 == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+									forAll = ValueUtil.FALSE_VALUE;
+									break;														// Stop immediately
+								}
+								else if (forAll_0 == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+									;															// Carry on
+								}
+								else if (forAll_0 == null) {								// Abnormal null body evaluation result
+									if (accumulator == ValueUtil.TRUE_VALUE) {
+										accumulator = null;										// Cache a null failure
+									}
+								}
+								else {															// Impossible badly typed result
+									accumulator = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+								}
+							}
+							CAUGHT_forAll = forAll;
+						}
+						catch (Exception e) {
+							CAUGHT_forAll = ValueUtil.createInvalidValue(e);
+						}
+						final /*@Thrown*/ Boolean and_0;
+						if (CAUGHT_forAll == ValueUtil.FALSE_VALUE) {
+							and_0 = ValueUtil.FALSE_VALUE;
+						}
+						else {
+							/*@Caught*/ Object CAUGHT_forAll_1;
+							try {
+								final /*@NonInvalid*/ List<Edge> inedges = this.getInedges();
+								final /*@NonInvalid*/ OrderedSetValue BOXED_inedges = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_Edge, inedges);
+								/*@Thrown*/ Object accumulator_1 = ValueUtil.TRUE_VALUE;
+								Iterator<Object> ITERATOR_e_1 = BOXED_inedges.iterator();
+								/*@Thrown*/ Boolean forAll_1;
+								while (true) {
+									if (!ITERATOR_e_1.hasNext()) {
+										if (accumulator_1 == null) {
+											forAll_1 = null;
+										}
+										else if (accumulator_1 == ValueUtil.TRUE_VALUE) {
+											forAll_1 = ValueUtil.TRUE_VALUE;
+										}
+										else {
+											throw (InvalidValueException)accumulator_1;
+										}
+										break;
+									}
+									/*@NonInvalid*/ Edge e_1 = (Edge)ITERATOR_e_1.next();
+									/**
+									 * e.edgelabel->forAll(l | l.level <= 1)
+									 */
+									final /*@NonInvalid*/ List<EdgeLabel> edgelabel_0 = e_1.getEdgelabel();
+									final /*@NonInvalid*/ OrderedSetValue BOXED_edgelabel_0 = idResolver.createOrderedSetOfAll(GraphTables.ORD_CLSSid_EdgeLabel, edgelabel_0);
+									/*@Thrown*/ Object accumulator_2 = ValueUtil.TRUE_VALUE;
+									Iterator<Object> ITERATOR_l_0 = BOXED_edgelabel_0.iterator();
+									/*@NonInvalid*/ Boolean forAll_2;
+									while (true) {
+										if (!ITERATOR_l_0.hasNext()) {
+											if (accumulator_2 == ValueUtil.TRUE_VALUE) {
+												forAll_2 = ValueUtil.TRUE_VALUE;
+											}
+											else {
+												throw (InvalidValueException)accumulator_2;
+											}
+											break;
+										}
+										/*@NonInvalid*/ EdgeLabel l_0 = (EdgeLabel)ITERATOR_l_0.next();
+										/**
+										 * l.level <= 1
+										 */
+										final /*@NonInvalid*/ int level_0 = l_0.getLevel();
+										final /*@NonInvalid*/ IntegerValue BOXED_level_0 = ValueUtil.integerValueOf(level_0);
+										final /*@NonInvalid*/ boolean le_1 = OclComparableLessThanEqualOperation.INSTANCE.evaluate(executor, BOXED_level_0, GraphTables.INT_1).booleanValue();
+										//
+										if (!le_1) {					// Normal unsuccessful body evaluation result
+											forAll_2 = ValueUtil.FALSE_VALUE;
+											break;														// Stop immediately
+										}
+										else if (le_1) {				// Normal successful body evaluation result
+											;															// Carry on
+										}
+										else {															// Impossible badly typed result
+											accumulator_2 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+										}
+									}
+									//
+									if (forAll_2 == ValueUtil.FALSE_VALUE) {					// Normal unsuccessful body evaluation result
+										forAll_1 = ValueUtil.FALSE_VALUE;
+										break;														// Stop immediately
+									}
+									else if (forAll_2 == ValueUtil.TRUE_VALUE) {				// Normal successful body evaluation result
+										;															// Carry on
+									}
+									else if (forAll_2 == null) {								// Abnormal null body evaluation result
+										if (accumulator_1 == ValueUtil.TRUE_VALUE) {
+											accumulator_1 = null;										// Cache a null failure
+										}
+									}
+									else {															// Impossible badly typed result
+										accumulator_1 = new InvalidValueException(PivotMessages.NonBooleanBody, "forAll");
+									}
+								}
+								CAUGHT_forAll_1 = forAll_1;
+							}
+							catch (Exception e) {
+								CAUGHT_forAll_1 = ValueUtil.createInvalidValue(e);
+							}
+							if (CAUGHT_forAll_1 == ValueUtil.FALSE_VALUE) {
+								and_0 = ValueUtil.FALSE_VALUE;
+							}
+							else {
+								if (CAUGHT_forAll instanceof InvalidValueException) {
+									throw (InvalidValueException)CAUGHT_forAll;
+								}
+								if (CAUGHT_forAll_1 instanceof InvalidValueException) {
+									throw (InvalidValueException)CAUGHT_forAll_1;
+								}
+								if ((CAUGHT_forAll == null) || (CAUGHT_forAll_1 == null)) {
+									and_0 = null;
+								}
+								else {
+									and_0 = ValueUtil.TRUE_VALUE;
+								}
+							}
+						}
+						result = and_0;
+					}
+					else {
+						result = ValueUtil.TRUE_VALUE;
+					}
+					CAUGHT_result = result;
+				}
+				catch (Exception e) {
+					CAUGHT_result = ValueUtil.createInvalidValue(e);
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object)null, diagnostics, context, (Object)null, severity_0, CAUGHT_result, GraphTables.INT_0).booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		}
+		catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case GraphPackage.NODE__OUTEDGES:
@@ -3595,6 +4495,8 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 				return getInedges();
 			case GraphPackage.NODE__ATTACKER:
 				return isAttacker();
+			case GraphPackage.NODE__TRUST_FACTOR:
+				return getTrustFactor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -3638,6 +4540,9 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 			case GraphPackage.NODE__ATTACKER:
 				setAttacker((Boolean)newValue);
 				return;
+			case GraphPackage.NODE__TRUST_FACTOR:
+				setTrustFactor((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -3677,6 +4582,9 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 			case GraphPackage.NODE__ATTACKER:
 				setAttacker(ATTACKER_EDEFAULT);
 				return;
+			case GraphPackage.NODE__TRUST_FACTOR:
+				setTrustFactor(TRUST_FACTOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -3707,6 +4615,8 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 				return inedges != null && !inedges.isEmpty();
 			case GraphPackage.NODE__ATTACKER:
 				return attacker != ATTACKER_EDEFAULT;
+			case GraphPackage.NODE__TRUST_FACTOR:
+				return TRUST_FACTOR_EDEFAULT == null ? trustFactor != null : !TRUST_FACTOR_EDEFAULT.equals(trustFactor);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -3720,46 +4630,52 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 	@SuppressWarnings("unchecked")
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case GraphPackage.NODE___PREDICTION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return PredictionSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___STORE_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return StoreSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___DISCARDER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return DiscarderSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___USER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return UserSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___COPIER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return CopierSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___CLUSTERING_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return ClusteringSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___FORWARD_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return ForwardSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___VERIFIER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return VerifierSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___DATA_GENERATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return DataGenerationSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___DIMENSIONALITY_REDUCTION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return DimensionalityReductionSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___SPLITTER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return SplitterSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___JOINER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return JoinerSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___DECRYPT_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return DecryptSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___AUTHENTICATOR_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return AuthenticatorSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___PRIVACY_POLICY_VIOLATION_STRONG__DIAGNOSTICCHAIN_MAP:
+				return PrivacyPolicyViolationStrong((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___PRIVACY_POLICY_VIOLATION_WEAK__DIAGNOSTICCHAIN_MAP:
+				return PrivacyPolicyViolationWeak((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 			case GraphPackage.NODE___CLASSIFICATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
 				return ClassificationSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___ATTACKER_OBSERVATION_VIOLATION__DIAGNOSTICCHAIN_MAP:
-				return AttackerObservationViolation((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___DECISION_MAKING_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return DecisionMakingSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___JOINER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return JoinerSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___DISCARDER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return DiscarderSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___AUTHENTICATOR_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return AuthenticatorSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___FORWARD_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return ForwardSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___USER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return UserSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___PRIVACY_POLICY_VIOLATION_MEDIUM__DIAGNOSTICCHAIN_MAP:
+				return PrivacyPolicyViolationMedium((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 			case GraphPackage.NODE___ENCRYPT_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
 				return EncryptSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
-			case GraphPackage.NODE___BUSINESS_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
-				return BusinessSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___VERIFIER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return VerifierSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___ATTACKER_OBSERVATION_VIOLATION__DIAGNOSTICCHAIN_MAP:
+				return AttackerObservationViolation((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___CLUSTERING_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return ClusteringSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___COPIER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return CopierSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___DIMENSIONALITY_REDUCTION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return DimensionalityReductionSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 			case GraphPackage.NODE___RECOMMENDATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
 				return RecommendationSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___SPLITTER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return SplitterSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___BUSINESS_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return BusinessSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___DECRYPT_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return DecryptSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___DECISION_MAKING_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return DecisionMakingSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___PREDICTION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return PredictionSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___DATA_GENERATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return DataGenerationSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
+			case GraphPackage.NODE___STORE_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
+				return StoreSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 			case GraphPackage.NODE___COMPARATOR_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP:
 				return ComparatorSemanticConstraint((DiagnosticChain)arguments.get(0), (Map<Object, Object>)arguments.get(1));
 		}
@@ -3788,6 +4704,8 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node {
 		result.append(visited);
 		result.append(", Attacker: ");
 		result.append(attacker);
+		result.append(", trustFactor: ");
+		result.append(trustFactor);
 		result.append(')');
 		return result.toString();
 	}

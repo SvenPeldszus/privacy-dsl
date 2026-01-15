@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.secdfd.model.DecisionMakingContract;
+import org.secdfd.model.Level;
 import org.secdfd.model.ModelPackage;
-import org.secdfd.model.Priority;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ public class DecisionMakingContractImpl extends ContractBaseImpl implements Deci
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Priority PACTION_EDEFAULT = Priority.L;
+	protected static final Level PACTION_EDEFAULT = Level.L;
 
 	/**
 	 * The cached value of the '{@link #getPAction() <em>PAction</em>}' attribute.
@@ -44,7 +44,7 @@ public class DecisionMakingContractImpl extends ContractBaseImpl implements Deci
 	 * @generated
 	 * @ordered
 	 */
-	protected Priority pAction = PACTION_EDEFAULT;
+	protected Level pAction = PACTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,7 +71,7 @@ public class DecisionMakingContractImpl extends ContractBaseImpl implements Deci
 	 * @generated
 	 */
 	@Override
-	public Priority getPAction() {
+	public Level getPAction() {
 		return pAction;
 	}
 
@@ -81,8 +81,8 @@ public class DecisionMakingContractImpl extends ContractBaseImpl implements Deci
 	 * @generated
 	 */
 	@Override
-	public void setPAction(Priority newPAction) {
-		Priority oldPAction = pAction;
+	public void setPAction(Level newPAction) {
+		Level oldPAction = pAction;
 		pAction = newPAction == null ? PACTION_EDEFAULT : newPAction;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.DECISION_MAKING_CONTRACT__PACTION, oldPAction, pAction));
@@ -111,7 +111,7 @@ public class DecisionMakingContractImpl extends ContractBaseImpl implements Deci
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ModelPackage.DECISION_MAKING_CONTRACT__PACTION:
-				setPAction((Priority)newValue);
+				setPAction((Level)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

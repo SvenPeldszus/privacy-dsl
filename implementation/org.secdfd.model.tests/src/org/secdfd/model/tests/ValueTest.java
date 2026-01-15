@@ -13,12 +13,6 @@ import org.secdfd.model.Value;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Value</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following operations are tested:
- * <ul>
- *   <li>{@link org.secdfd.model.Value#constraint_1(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Constraint 1</em>}</li>
- * </ul>
- * </p>
  * @generated
  */
 public class ValueTest extends TestCase {
@@ -94,19 +88,6 @@ public class ValueTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
-	}
-
-	/**
-	 * Tests the '{@link org.secdfd.model.Value#constraint_1(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Constraint 1</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.Value#constraint_1(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	public void testConstraint_1__DiagnosticChain_Map() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
 	}
 
 } //ValueTest

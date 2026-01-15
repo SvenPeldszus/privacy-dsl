@@ -116,19 +116,19 @@ public class NodeResponsibilityItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Task feature.
+	 * This adds a property descriptor for the ContractTypes feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected void addTaskPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_NodeResponsibility_task_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NodeResponsibility_task_feature", "_UI_NodeResponsibility_type"),
-				 GraphPackage.Literals.NODE_RESPONSIBILITY__TASK,
+				 getString("_UI_NodeResponsibility_contractTypes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_NodeResponsibility_contractTypes_feature", "_UI_NodeResponsibility_type"),
+				 GraphPackage.Literals.NODE_RESPONSIBILITY__CONTRACT_TYPES,
 				 true,
 				 false,
 				 false,
@@ -221,7 +221,7 @@ public class NodeResponsibilityItemProvider
 		switch (notification.getFeatureID(NodeResponsibility.class)) {
 			case GraphPackage.NODE_RESPONSIBILITY__ID:
 			case GraphPackage.NODE_RESPONSIBILITY__NUMBER:
-			case GraphPackage.NODE_RESPONSIBILITY__TASK:
+			case GraphPackage.NODE_RESPONSIBILITY__CONTRACT_TYPES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

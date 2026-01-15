@@ -106,8 +106,8 @@ pattern targetOfFlow(f : Flow, target : Element){
 
 /* generic relations between an Asset and the information in its Value list */
 
-pattern assetWithPriority(a : Asset, pr : Priority) {
-    Asset.value.Priority(a, pr);
+pattern assetWithPriority(a : Asset, pr : Level) {
+    Asset.value.Level(a, pr);
 }
 
 pattern assetWithObjective(a : Asset, obj : Objective) {
@@ -124,8 +124,8 @@ pattern assetWithoutObjective(a : Asset) {
 
 //naming: Asset from source model = Asset from target model
 /*pattern highPriorityAsset(a : Asset){
-	Asset.value.Priority(a, p);
-	p == Priority::H;
+	Asset.value.Level(a, p);
+	p == Level::H;
 }
 pattern confidentialAsset(a: Asset){
 	Asset.value.Objective(a, o);
@@ -136,7 +136,7 @@ pattern publicAsset(a: Asset){
 }*/
 
 pattern comparatorProcesses(p : Process){
-	Process.responsibility(p, r);
+	Process.contract(p, r);
 	ContractBase.Task(r, pr);
 	pr == ContractType::Comparator;
 }

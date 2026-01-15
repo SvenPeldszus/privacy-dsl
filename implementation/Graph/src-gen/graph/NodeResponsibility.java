@@ -5,7 +5,6 @@ package graph;
 import java.math.BigInteger;
 
 import org.eclipse.emf.common.util.EList;
-import org.secdfd.model.ContractType;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,7 +15,7 @@ import org.secdfd.model.ContractType;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link graph.NodeResponsibility#getTask <em>Task</em>}</li>
+ *   <li>{@link graph.NodeResponsibility#getContractTypes <em>Contract Types</em>}</li>
  *   <li>{@link graph.NodeResponsibility#getOutgoingassets <em>Outgoingassets</em>}</li>
  *   <li>{@link graph.NodeResponsibility#getIncomingassets <em>Incomingassets</em>}</li>
  * </ul>
@@ -27,18 +26,16 @@ import org.secdfd.model.ContractType;
  */
 public interface NodeResponsibility extends Identifiable {
 	/**
-	 * Returns the value of the '<em><b>Task</b></em>' attribute list.
-	 * The list contents are of type {@link org.secdfd.model.ContractType}.
-	 * The literals are from the enumeration {@link org.secdfd.model.ContractType}.
+	 * Returns the value of the '<em><b>Contract Types</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Task</em>' attribute list.
-	 * @see org.secdfd.model.ContractType
-	 * @see graph.GraphPackage#getNodeResponsibility_Task()
+	 * @return the value of the '<em>Contract Types</em>' attribute list.
+	 * @see graph.GraphPackage#getNodeResponsibility_ContractTypes()
 	 * @model
 	 * @generated
 	 */
-	EList<ContractType> getTask();
+	EList<String> getContractTypes();
 
 	/**
 	 * Returns the value of the '<em><b>Outgoingassets</b></em>' reference list.

@@ -62,7 +62,7 @@ public class ValueItemProvider
 			super.getPropertyDescriptors(object);
 
 			addObjectivePropertyDescriptor(object);
-			addPriorityPropertyDescriptor(object);
+			addLevelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -90,19 +90,19 @@ public class ValueItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Priority feature.
+	 * This adds a property descriptor for the Level feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPriorityPropertyDescriptor(Object object) {
+	protected void addLevelPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Value_Priority_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Value_Priority_feature", "_UI_Value_type"),
-				 ModelPackage.Literals.VALUE__PRIORITY,
+				 getString("_UI_Value_Level_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Value_Level_feature", "_UI_Value_type"),
+				 ModelPackage.Literals.VALUE__LEVEL,
 				 true,
 				 false,
 				 false,
@@ -151,7 +151,7 @@ public class ValueItemProvider
 
 		switch (notification.getFeatureID(Value.class)) {
 			case ModelPackage.VALUE__OBJECTIVE:
-			case ModelPackage.VALUE__PRIORITY:
+			case ModelPackage.VALUE__LEVEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

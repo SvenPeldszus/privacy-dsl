@@ -1,0 +1,27 @@
+EDFD GitHub[
+assets:
+	Asset "Image Code Snippet"
+	type: String
+	values: [ N P] source: "D2: DB" targets: "P1: GitHub Author Identification",
+Asset "Author class label"
+	type: String
+	values: [ N P] source: "P1: GitHub Author Identification" targets: "E1: Applicant"
+elements:
+	DataStore "D2: DB"[
+	assets: "Image Code Snippet" 
+	outgoing flows: "F1: Image"
+		[num: 1 assets: "Image Code Snippet" source: "D2: DB" targets: "P1: GitHub Author Identification"]],
+Process "P1: GitHub Author Identification"[
+	contracts: 
+	
+	
+	Classification [    "Image Code Snippet" PClass = L :: "Author class label" ]
+	assets: "Image Code Snippet","Author class label"
+	incoming flows: "D2: DB.F1: Image" outgoing flows: "F2: Image class label"
+		[num: 2 assets: "Author class label" 
+			source: "P1: GitHub Author Identification" targets: "E1: Applicant"
+		]],
+ExternalEntity "E1: Applicant"[
+	assets: "Author class label"
+	incoming flows: "P1: GitHub Author Identification.F2: Image class label"]
+attack zones: Attacker [ trust factor: WEAK elements: "P1: GitHub Author Identification" ] ]

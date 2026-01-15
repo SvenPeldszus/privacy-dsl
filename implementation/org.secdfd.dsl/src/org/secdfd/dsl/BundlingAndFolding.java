@@ -40,14 +40,14 @@ public class BundlingAndFolding {
 							for (Value value : flow.getAssets().get(0).getValue()) { // Add only if the asset priority
 																						// is low or medium
 //								System.out.println("1st value: " + value);
-//								System.out.println("1st priority: " + value.getPriority());
+//								System.out.println("1st priority: " + value.getLevel());
 
-								if (value.getPriority().getName().equals("H")) {
+								if (value.getLevel().getName().equals("H")) {
 									toBundle = false;
 								}
 							}
 							for (Value value : matchFlow.getAssets().get(0).getValue()) {
-								if (value.getPriority().getName().equals("H")) {
+								if (value.getLevel().getName().equals("H")) {
 									toBundle = false;
 								}
 							}
@@ -90,7 +90,7 @@ public class BundlingAndFolding {
 							if (!outflow.getAssets().isEmpty()) {
 								for (Asset as : outflow.getAssets()) {
 									for (Value v : as.getValue()) {
-										if (v.getPriority().getName().equals("H")) {
+										if (v.getLevel().getName().equals("H")) {
 //									System.out.println("NO Folding possible : " + p.getName());
 											isCritical = true;
 										}
@@ -138,7 +138,7 @@ public class BundlingAndFolding {
 								if (!inflows.getAssets().isEmpty()) {
 									for (Asset as : inflows.getAssets()) {
 										for (Value v : as.getValue()) {
-											if (v.getPriority().getName().equals("H")) {
+											if (v.getLevel().getName().equals("H")) {
 //										System.out.println("NO Folding possible : " + p.getName());
 												isCritical = true;
 											}

@@ -10,7 +10,9 @@ import org.secdfd.model.NamedEntity
 import org.secdfd.model.SecurityContract
 import org.secdfd.model.Value
 import org.secdfd.model.Objective //new
-import org.secdfd.model.Priority //new
+import org.secdfd.model.Level //new
+import org.secdfd.model.TrustFactor
+import org.secdfd.model.TrustZone
 import graph.Edge
 import graph.GraphAsset
 import graph.GraphPackage
@@ -127,6 +129,7 @@ class eDFDToGraphTransformation {
     
     val eDFDNodeAttackerZoneRule = createRule.precondition(Boundaries.Matcher.querySpecification).action[
     	val eDFDBoundary = it.tb
+    	val eDFDBoundaryTrustFactor = eDFDBoundary.trustFactor
     	
 		//find subgraph in target model
     	val subgraph = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, it.edfd as NamedEntity).filter(Subgraphs).head
@@ -143,6 +146,11 @@ class eDFDToGraphTransformation {
     		
     		//set that it can be malicious
     		correct_graph_node.attacker = true
+    		
+    		//set trust factor from TrustZone if specified - convert enum to string
+    		if (eDFDBoundaryTrustFactor !== null) {
+    			correct_graph_node.trustFactor = eDFDBoundaryTrustFactor.literal
+    		}
     	}
     	
     ].build
@@ -248,7 +256,9 @@ class eDFDToGraphTransformation {
 
 		/* overwrite with the priorities coming from the eDFD model */
 		for (Value v : eDFDAssetValues) {
-		  setOrUpdateAssetLabel(gA.assetlabel, v.objective, lvl(v.priority))          
+		  if (v.objective !== null) {
+		    setOrUpdateAssetLabel(gA.assetlabel, v.objective.literal, lvl(v.level))
+		  }
 		}
     	gA.ID = eDFDAsset.name
 
@@ -266,27 +276,28 @@ class eDFDToGraphTransformation {
     	val eDFDIncomingAssets = eDFDResponsibility.incomeassets
     	val eDFDOutgoingAssets = eDFDResponsibility.outcomeassets
     	
-    	// Get tasks from ContractBase.task (for SecurityContract) or set automatically for ML-Contracts
+    	// Get contract types from ContractBase.task (for SecurityContract) or set automatically for ML-Contracts
+    	// Convert ContractType enum values to strings
     	val eDFDResponsibilityActions = newArrayList()
     	
-    	// For SecurityContract: use existing task values
+    	// For SecurityContract: use existing task values and convert to strings
     	if (eDFDResponsibility instanceof SecurityContract) {
-    		eDFDResponsibilityActions.addAll(eDFDResponsibility.task)
+    		eDFDResponsibilityActions.addAll(eDFDResponsibility.task.map[t | t.literal])
     	} else if (eDFDResponsibility instanceof ClassificationContract) {
-    		// Automatically set ContractType::Classification
-    		eDFDResponsibilityActions.add(ContractType.CLASSIFICATION)
+    		// Automatically set ContractType::Classification as string
+    		eDFDResponsibilityActions.add(ContractType.CLASSIFICATION.literal)
     	} else if (eDFDResponsibility instanceof ClusteringContract) {
-    		eDFDResponsibilityActions.add(ContractType.CLUSTERING)
+    		eDFDResponsibilityActions.add(ContractType.CLUSTERING.literal)
     	} else if (eDFDResponsibility instanceof DecisionMakingContract) {
-    		eDFDResponsibilityActions.add(ContractType.DECISION_MAKING)
+    		eDFDResponsibilityActions.add(ContractType.DECISION_MAKING.literal)
     	} else if (eDFDResponsibility instanceof RecommendationContract) {
-    		eDFDResponsibilityActions.add(ContractType.RECOMMENDATION)
+    		eDFDResponsibilityActions.add(ContractType.RECOMMENDATION.literal)
     	} else if (eDFDResponsibility instanceof PredictionContract) {
-    		eDFDResponsibilityActions.add(ContractType.PREDICTION)
+    		eDFDResponsibilityActions.add(ContractType.PREDICTION.literal)
     	} else if (eDFDResponsibility instanceof DimensionalityReductionContract) {
-    		eDFDResponsibilityActions.add(ContractType.DIMENSIONALITY_REDUCTION)
+    		eDFDResponsibilityActions.add(ContractType.DIMENSIONALITY_REDUCTION.literal)
     	} else if (eDFDResponsibility instanceof DataGenerationContract) {
-    		eDFDResponsibilityActions.add(ContractType.DATA_GENERATION)
+    		eDFDResponsibilityActions.add(ContractType.DATA_GENERATION.literal)
     	}
     	
     	
@@ -309,14 +320,15 @@ class eDFDToGraphTransformation {
    		}
 
     	//create new child of that node (node contains responsibilities)
-    	val graphResponsibility = node_of_process.createChild(node_Responsibility, nodeResponsibility) as Identifiable => [
+    	val graphResponsibility = node_of_process.createChild(node_Responsibility, nodeResponsibility) as NodeResponsibility => [
     		//set incoming assets
     		addTo(nodeResponsibility_Incomingassets, incomingassets_of_process)
     		//set outgoing assets
 			addTo(nodeResponsibility_Outgoingassets, outgoingassets_of_process)
-    		//set task for all contract types
+    		//set contract types as strings
     		if (!eDFDResponsibilityActions.empty) {
-    			addTo(nodeResponsibility_Task, eDFDResponsibilityActions)
+    			it.contractTypes.clear()
+    			it.contractTypes.addAll(eDFDResponsibilityActions)
     		}
     	]
     	// actionsString can be derived directly from eDFDResponsibilityActions
@@ -335,7 +347,7 @@ class eDFDToGraphTransformation {
     	val eDFDProcess = it.p
     	val eDFDProcessOutgoingFlows = eDFDProcess.outflows
     	val eDFDProcessName = eDFDProcess.name
-    	val eDFDProcessResponsibilities = eDFDProcess.responsibility
+    	val eDFDProcessResponsibilities = eDFDProcess.contract
     	    	
     	println('''Mapping Process properties with Graph Node: «eDFDProcessName»''')
     	
@@ -481,11 +493,14 @@ class eDFDToGraphTransformation {
 	    for (Edge e : gn.outedges) {
 	      e.visited = true
 	      for (o : Objective.values) {
-	        val max = e.graphassets.map [ levelOf(assetlabel, o) ].max
-	        setOrUpdateEdgeLabel(e.edgelabel, o, max ?: 0)
+	        val oStr = o.literal
+	        val max = e.graphassets.map [ levelOf(assetlabel, oStr) ].max
+	          if (max !== null && max >= 0) {  // Only set label if max exists and is >= 0
+	          setOrUpdateEdgeLabel(e.edgelabel, oStr, max)
+	        }
 	      }
 	      println('''  → edge «e.ID» labelled
-	                   ${e.edgelabel.map[objective.literal + '=' + level].join(', ')}''')
+	                   ${e.edgelabel.map[objective + '=' + level].join(', ')}''')
 	    }
 	    
 	  ].build
@@ -512,38 +527,51 @@ class eDFDToGraphTransformation {
 	        val contract = findContract(nr)
 	        
 	        // Berechne p_max für alle Contracts, die Input-Assets benötigen
-	        var pMax = 0
+	        var pMax = -1  // Initialize with -1 (no label)
 	        for (ina : nr.incomingassets) {
-	          pMax = Math::max(pMax, levelOf(ina.assetlabel, Objective.PRIVACY))
+	          val level = levelOf(ina.assetlabel, "Privacy")
+	          if (level >= 0) {  // Only consider actual labels (level >= 0)
+	            pMax = Math::max(pMax, level)
+	          }
+	        }
+	        // If no labels found, default to N (0)
+	        if (pMax == -1) {
+	          pMax = 0
 	        }
 	        
         // Setze Privacy-Label basierend auf Contract-Typ (nur wenn noch nicht gesetzt)
-        if (!outgoing.edgelabel.exists[l | l.objective == Objective.PRIVACY]) {
-          switch nr.task.toString {
+        if (!outgoing.edgelabel.exists[l | l.objective == "Privacy"]) {
+          val contractTypeStr = if (nr.contractTypes !== null && !nr.contractTypes.empty) 
+            "[" + nr.contractTypes.join(",") + "]" else ""
+          switch contractTypeStr {
             case "[Classification]": {
               val contractClass = contract as ClassificationContract
-              val pClass = if (contractClass !== null && contractClass.getPClass() !== null) contractClass.getPClass() else Priority.L
-              setOrUpdateEdgeLabel(outgoing.edgelabel, Objective.PRIVACY, lvl(pClass))
+              val pClass = if (contractClass !== null && contractClass.getPClass() !== null) contractClass.getPClass() else Level.L
+              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", lvl(pClass))
             }
             case "[DecisionMaking]": {
               val contractDM = contract as DecisionMakingContract
-              val pAction = if (contractDM !== null && contractDM.getPAction() !== null) contractDM.getPAction() else Priority.L
-              setOrUpdateEdgeLabel(outgoing.edgelabel, Objective.PRIVACY, lvl(pAction))
+              val pAction = if (contractDM !== null && contractDM.getPAction() !== null) contractDM.getPAction() else Level.L
+              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", lvl(pAction))
             }
             case "[Recommendation]": {
               val contractRec = contract as RecommendationContract
               val s = if (contractRec !== null) contractRec.isS() else false
-              setOrUpdateEdgeLabel(outgoing.edgelabel, Objective.PRIVACY, if (s) 1 else 0)
+              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", if (s) 1 else 0)  // L=1 if s=true, N=0 if s=false
             }
             case "[Clustering]": {
-              val allPrivacyLabelsAreN = !nr.incomingassets.exists[ina | levelOf(ina.assetlabel, Objective.PRIVACY) != 0]
-              setOrUpdateEdgeLabel(outgoing.edgelabel, Objective.PRIVACY, if (allPrivacyLabelsAreN) 0 else 1)
+              // Check if all incoming assets have privacy labels and all are N (level 0)
+              val allHaveLabels = !nr.incomingassets.empty && nr.incomingassets.forall[ina | levelOf(ina.assetlabel, "Privacy") >= 0]
+              val allPrivacyLabelsAreN = allHaveLabels && !nr.incomingassets.exists[ina | levelOf(ina.assetlabel, "Privacy") != 0]
+              // If no labels exist or all are N, set to N (0), otherwise L (1)
+              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", if (allPrivacyLabelsAreN) 0 else 1)
             }
             case "[Prediction]": {
               val contractPred = contract as PredictionContract
               val s = if (contractPred !== null) contractPred.isS() else false
-              val privacyLevel = if (pMax == 0) 0 else if (s) pMax else 1
-              setOrUpdateEdgeLabel(outgoing.edgelabel, Objective.PRIVACY, privacyLevel)
+              // pMax is already >= 0 (defaulted to 0 if no labels found)
+              val privacyLevel = if (pMax == 0) 0 else if (s) pMax else 1  // N=0 if pMax is N, pMax if s=true, L=1 otherwise
+              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", privacyLevel)
             }
             case "[DimensionalityReduction]": {
               val contractDR = contract as DimensionalityReductionContract
@@ -552,7 +580,7 @@ class eDFDToGraphTransformation {
               for (var i = 0; i < k; i++) {
                 privacyLevel = reducePrivacyLevel(privacyLevel)
               }
-              setOrUpdateEdgeLabel(outgoing.edgelabel, Objective.PRIVACY, privacyLevel)
+              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", privacyLevel)
             }
             case "[DataGeneration]": {
               val contractDG = contract as DataGenerationContract
@@ -570,54 +598,111 @@ class eDFDToGraphTransformation {
                   }
                 }
               }
-              setOrUpdateEdgeLabel(outgoing.edgelabel, Objective.PRIVACY, privacyLevel)
+              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", privacyLevel)
             }
             case "[EncryptOrHash]": {
               for (o : Objective.values) {
-                if (!outgoing.edgelabel.exists[l | l.objective == o]) {
-                  setOrUpdateEdgeLabel(outgoing.edgelabel, o, 0)
+                val oStr = o.literal
+                if (!outgoing.edgelabel.exists[l | l.objective == oStr]) {
+                  setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, 0)
                 }
               }
             }
             case "[Decrypt]": {
-              for (o : Objective.values) {
-                if (!outgoing.edgelabel.exists[l | l.objective == o]) {
-                  var max = 0
-                  for (ina : nr.incomingassets) {
-                    max = Math::max(max, levelOf(ina.assetlabel, o))
+              // Decrypt propagates labels asset-by-asset: each encrypted incoming asset's labels 
+              if (!nr.incomingassets.empty) {
+                for (var i = 0; i < nr.incomingassets.size; i++) {
+                  val incomingAsset = nr.incomingassets.get(i)
+                  val outgoingAssetIndex = if (i < nr.outgoingassets.size) i else nr.outgoingassets.size - 1
+                  val correspondingOutgoingAsset = if (outgoingAssetIndex >= 0) nr.outgoingassets.get(outgoingAssetIndex) else null
+                  if (correspondingOutgoingAsset !== null && outgoing.graphassets.contains(correspondingOutgoingAsset)) {
+                    for (o : Objective.values) {
+                      val oStr = o.literal
+                      if (!outgoing.edgelabel.exists[l | l.objective == oStr]) {
+                        val level = levelOf(incomingAsset.assetlabel, oStr)
+                        if (level >= 0) {  // Only set label if it exists (level >= 0)
+                          setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, level)
+                        }
+                      }
+                    }
                   }
-                  setOrUpdateEdgeLabel(outgoing.edgelabel, o, max)
                 }
               }
             }
             case "[Copier]": {
+              // Copier propagates labels asset-by-asset: each incoming asset's labels 
               if (!nr.incomingassets.empty) {
-                for (o : Objective.values) {
-                  if (!outgoing.edgelabel.exists[l | l.objective == o]) {
-                    setOrUpdateEdgeLabel(outgoing.edgelabel, o, levelOf(nr.incomingassets.get(0).assetlabel, o))
+                for (var i = 0; i < nr.incomingassets.size; i++) {
+                  val incomingAsset = nr.incomingassets.get(i)
+                  val outgoingAssetIndex = if (i < nr.outgoingassets.size) i else nr.outgoingassets.size - 1
+                  val correspondingOutgoingAsset = if (outgoingAssetIndex >= 0) nr.outgoingassets.get(outgoingAssetIndex) else null
+                  if (correspondingOutgoingAsset !== null && outgoing.graphassets.contains(correspondingOutgoingAsset)) {
+                    for (o : Objective.values) {
+                      val oStr = o.literal
+                      if (!outgoing.edgelabel.exists[l | l.objective == oStr]) {
+                        val level = levelOf(incomingAsset.assetlabel, oStr)
+                        if (level >= 0) {  // Only set label if it exists (level >= 0)
+                          setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, level)
+                        }
+                      }
+                    }
                   }
                 }
               }
             }
             case "[Forward]": {
+              // Forward propagates labels asset-by-asset: each incoming asset's labels 
               if (!nr.incomingassets.empty) {
-	              for (o : Objective.values) {
-                  if (!outgoing.edgelabel.exists[l | l.objective == o]) {
-                    setOrUpdateEdgeLabel(outgoing.edgelabel, o, levelOf(nr.incomingassets.get(0).assetlabel, o))
+                for (var i = 0; i < nr.incomingassets.size; i++) {
+                  val incomingAsset = nr.incomingassets.get(i)
+                  val outgoingAssetIndex = if (i < nr.outgoingassets.size) i else nr.outgoingassets.size - 1
+                  val correspondingOutgoingAsset = if (outgoingAssetIndex >= 0) nr.outgoingassets.get(outgoingAssetIndex) else null
+                  if (correspondingOutgoingAsset !== null && outgoing.graphassets.contains(correspondingOutgoingAsset)) {
+                    for (o : Objective.values) {
+                      val oStr = o.literal
+                      if (!outgoing.edgelabel.exists[l | l.objective == oStr]) {
+                        val level = levelOf(incomingAsset.assetlabel, oStr)
+                        if (level >= 0) {  // Only set label if it exists (level >= 0)
+                          setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, level)
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            case "[Splitter]": {
+              // Splitter propagates labels asset-by-asset: splits incoming asset(s) into multiple outgoing assets
+              if (!nr.incomingassets.empty) {
+                val matchingOutgoingAsset = nr.outgoingassets.findFirst[outAsset | outgoing.graphassets.contains(outAsset)]
+                if (matchingOutgoingAsset !== null) {
+                  val outgoingAssetIndex = nr.outgoingassets.indexOf(matchingOutgoingAsset)
+                  val incomingAssetIndex = if (outgoingAssetIndex < nr.incomingassets.size) outgoingAssetIndex else nr.incomingassets.size - 1
+                  val incomingAsset = nr.incomingassets.get(incomingAssetIndex)
+                  
+                  for (o : Objective.values) {
+                    val oStr = o.literal
+                    if (!outgoing.edgelabel.exists[l | l.objective == oStr]) {
+                      val level = levelOf(incomingAsset.assetlabel, oStr)
+                      if (level >= 0) {  // Only set label if it exists (level >= 0)
+                        setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, level)
+                      }
+                    }
                   }
                 }
               }
             }
             default: {
-              // Comparator, Joiner, User, Splitter, Store: most restrictive
+              // Comparator, Joiner, User, Store: most restrictive (combine multiple assets)
 	              for (o : Objective.values) {
-                if (!outgoing.edgelabel.exists[l | l.objective == o]) {
+                val oStr = o.literal
+                if (!outgoing.edgelabel.exists[l | l.objective == oStr]) {
 	                var max = 0
                   for (ina : nr.incomingassets) {
-	                  max = Math::max(max, levelOf(ina.assetlabel, o))
+	                  max = Math::max(max, levelOf(ina.assetlabel, oStr))
                   }
-                  if (max > 0) {
-                    setOrUpdateEdgeLabel(outgoing.edgelabel, o, max)
+                  if (max >= 0) {
+                    setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, max)
                   }
                 }
               }
@@ -627,13 +712,14 @@ class eDFDToGraphTransformation {
 	        
 	        // Setze andere Objectives (most restrictive aus Input-Assets) für alle Contracts
 	              for (o : Objective.values) {
-	          if (o != Objective.PRIVACY && !outgoing.edgelabel.exists[l | l.objective == o]) {
+	          val oStr = o.literal
+	          if (oStr != "Privacy" && !outgoing.edgelabel.exists[l | l.objective == oStr]) {
 	                var max = 0
 	            for (ina : nr.incomingassets) {
-	                  max = Math::max(max, levelOf(ina.assetlabel, o))
+	                  max = Math::max(max, levelOf(ina.assetlabel, oStr))
 	              }
 	            if (max > 0) {
-	              setOrUpdateEdgeLabel(outgoing.edgelabel, o, max)
+	              setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, max)
 	            }
 	          }
 	        }
@@ -642,13 +728,14 @@ class eDFDToGraphTransformation {
 	      
 	      // Falls Edge noch keine Labels hat, setze von Assets
 	        for (o : Objective.values) {
-	        if (!outgoing.edgelabel.exists[l | l.objective == o]) {
+	        val oStr = o.literal
+	        if (!outgoing.edgelabel.exists[l | l.objective == oStr]) {
 	          var max = 0
 	          for (ga : outgoing.graphassets) {
-	            max = Math::max(max, levelOf(ga.assetlabel, o))
+	            max = Math::max(max, levelOf(ga.assetlabel, oStr))
 	          }
 	          if (max > 0) {
-	            setOrUpdateEdgeLabel(outgoing.edgelabel, o, max)
+	            setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, max)
 	          }
 	        }
 	      }
@@ -703,20 +790,20 @@ class eDFDToGraphTransformation {
         return
     }
     
-    //newly added
-	def int levelOf(EList<? extends SecurityLabel> list, Objective obj) {
-	  val l = list.findFirst[objective == obj]
-	  l === null ? 0 : l.level
+    //newly added - updated to work with string objective values
+	def int levelOf(EList<? extends SecurityLabel> list, String objStr) {
+	  val l = list.findFirst[objective == objStr]
+	  l === null ? -1 : l.level  // Return -1 if no label found (-1 means no label exists, valid levels are 0-4)
 	}
 	
     //newly added 
-    def int lvl(Priority p) {
+    def int lvl(Level p) {
 	  switch p {
-	    case Priority::C : 4  // Critical
-	    case Priority::H : 3  // High
-	    case Priority::M : 2  // Medium
-	    case Priority::L : 1  // Low
-	    case Priority::N : 0  // None
+	    case Level::C : 4  // Critical
+	    case Level::H : 3  // High
+	    case Level::M : 2  // Medium
+	    case Level::L : 1  // Low
+	    case Level::N : 0  // None
 	    default          : 0
 	  }
 	}
@@ -760,17 +847,18 @@ class eDFDToGraphTransformation {
 	}
 	
     // Set or update a security label for an asset (creates new label if it doesn't exist, updates level if it does)
-	def void setOrUpdateAssetLabel(EList<AssetLabel> list, Objective o, int level) {
-	  val l = list.findFirst[objective == o]
+	// Updated to work with string objective values
+	def void setOrUpdateAssetLabel(EList<AssetLabel> list, String objStr, int level) {
+	  val l = list.findFirst[objective == objStr]
 	  
-	  if (level <= 0) {
-    	if (l !== null) list.remove(l)   // Remove label if level is 0 or negative
+	  if (level < 0) {  // Level must be at least 0 (N=0 is the minimum valid level, -1 means no label)
+    	if (l !== null) list.remove(l)   // Remove label if level is invalid (< 0)
     		return
   	  }
   
 	  if (l === null) {
 	    val n = GraphFactory.eINSTANCE.createAssetLabel
-	    n.objective = o
+	    n.objective = objStr
 	    n.level     = level
 	    list += n
 	  } else {
@@ -779,19 +867,20 @@ class eDFDToGraphTransformation {
 	}
 	
 	// Set or update a security label for an edge (creates new label if it doesn't exist, updates level if it does)
-	def void setOrUpdateEdgeLabel(EList<EdgeLabel> list, Objective o, int level) {
-	  val l = list.findFirst[objective == o]
+	// Updated to work with string objective values
+	def void setOrUpdateEdgeLabel(EList<EdgeLabel> list, String objStr, int level) {
+	  val l = list.findFirst[objective == objStr]
 	  
-	  // Allow level 0 for Privacy labels (Priority::N = 0 is a valid privacy level)
+	  // Level must be at least 0 (N=0 is the minimum valid privacy level, -1 means no label)
 	  // Only remove labels if level < 0 (invalid)
 	  if (level < 0) {
-    	if (l !== null) list.remove(l)   // Remove invalid label
+    	if (l !== null) list.remove(l) 
     		return
   	  }
   	  
 	  if (l === null) {
 	    val n = GraphFactory.eINSTANCE.createEdgeLabel
-	    n.objective = o
+	    n.objective = objStr
 	    n.level     = level
 	    list += n
 	  } else {
@@ -807,9 +896,9 @@ class eDFDToGraphTransformation {
     sb.append(String.format("%03d  %-20s", e.number, e.ID))
 
     /* 2️   labels */
-    val lbls = e.edgelabel.filter[level > 0]
-                          .sortBy[objective.literal]
-                          .map[o | o.objective.literal + "=" + o.level]
+    val lbls = e.edgelabel.filter[level >= 0]
+                          .sortBy[objective]
+                          .map[o | o.objective + "=" + o.level]
     sb.append("  ").append(
         lbls.empty ? "[no-label]" : lbls.join(", ")
     )
@@ -833,8 +922,8 @@ class eDFDToGraphTransformation {
                        "DataGeneration"
                      } else if (contract instanceof ClusteringContract) {
                        "Clustering"
-                     } else if (it.task !== null && !it.task.empty) {
-                       it.task.toString.replace("[","").replace("]","")
+                     } else if (it.contractTypes !== null && !it.contractTypes.empty) {
+                       it.contractTypes.join("+")
                      } else {
                        ""
                      }

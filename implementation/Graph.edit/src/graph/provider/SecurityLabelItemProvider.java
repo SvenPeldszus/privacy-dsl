@@ -120,7 +120,7 @@ public class SecurityLabelItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Objective labelValue = ((SecurityLabel)object).getObjective();
+		String labelValue = ((SecurityLabel)object).getObjective();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_SecurityLabel_type") :

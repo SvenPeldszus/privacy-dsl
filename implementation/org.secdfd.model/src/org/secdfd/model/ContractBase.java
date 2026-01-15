@@ -50,14 +50,14 @@ public interface ContractBase extends NamedEntity {
 
 	/**
 	 * Returns the value of the '<em><b>Process</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.secdfd.model.Process#getResponsibility <em>Responsibility</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.secdfd.model.Process#getContract <em>Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Process</em>' container reference.
 	 * @see #setProcess(org.secdfd.model.Process)
 	 * @see org.secdfd.model.ModelPackage#getContractBase_Process()
-	 * @see org.secdfd.model.Process#getResponsibility
-	 * @model opposite="responsibility" transient="false"
+	 * @see org.secdfd.model.Process#getContract
+	 * @model opposite="contract" transient="false"
 	 * @generated
 	 */
 	org.secdfd.model.Process getProcess();

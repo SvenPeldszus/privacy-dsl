@@ -13,6 +13,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 import org.secdfd.model.Objective;
+import org.secdfd.model.Level;
 
 /**
  * This is the item provider adapter for a {@link graph.AssetLabel} object.
@@ -65,11 +66,29 @@ public class AssetLabelItemProvider extends SecurityLabelItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		Objective labelValue = ((AssetLabel)object).getObjective();
+		AssetLabel assetLabel = (AssetLabel)object;
+		String labelValue = assetLabel.getObjective();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_AssetLabel_type") :
-			getString("_UI_AssetLabel_type") + " " + label;
+		
+		// Get the level and convert it to Level enum
+		// Note: Graph model uses level 0-4 (N=0, L=1, M=2, H=3, C=4)
+		// Level enum also uses 0-4 (N=0, L=1, M=2, H=3, C=4), so direct mapping
+		int level = assetLabel.getLevel();
+		
+		// Don't display labels with invalid level (< 0)
+		if (level < 0) {
+			return getString("_UI_AssetLabel_type") + " (invalid)";
+		}
+		
+		// Direct mapping from graph level (0-4) to Level enum (0-4)
+		Level levelEnum = Level.get(level);
+		String levelStr = levelEnum != null ? levelEnum.toString() : String.valueOf(level);
+		
+		if (label == null || label.length() == 0) {
+			return getString("_UI_AssetLabel_type") + " (" + levelStr + ")";
+		} else {
+			return getString("_UI_AssetLabel_type") + " " + label + " (" + levelStr + ")";
+		}
 	}
 
 

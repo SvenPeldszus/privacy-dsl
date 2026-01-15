@@ -5,7 +5,6 @@ package org.secdfd.model;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -23,7 +22,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see org.secdfd.model.ModelFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore"
+ *        annotation="http://www.eclipse.org/OCL/Import ecore='http://www.eclipse.org/emf/2002/Ecore'"
  * @generated
  */
 public interface ModelPackage extends EPackage {
@@ -352,13 +351,13 @@ public interface ModelPackage extends EPackage {
 	int PROCESS__ATTACKER = ELEMENT__ATTACKER;
 
 	/**
-	 * The feature id for the '<em><b>Responsibility</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Contract</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROCESS__RESPONSIBILITY = ELEMENT_FEATURE_COUNT + 0;
+	int PROCESS__CONTRACT = ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Process</em>' class.
@@ -780,13 +779,13 @@ public interface ModelPackage extends EPackage {
 	int VALUE__OBJECTIVE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Priority</b></em>' attribute.
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE__PRIORITY = 1;
+	int VALUE__LEVEL = 1;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -798,22 +797,13 @@ public interface ModelPackage extends EPackage {
 	int VALUE_FEATURE_COUNT = 2;
 
 	/**
-	 * The operation id for the '<em>Constraint 1</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE___CONSTRAINT_1__DIAGNOSTICCHAIN_MAP = 0;
-
-	/**
 	 * The number of operations of the '<em>Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_OPERATION_COUNT = 1;
+	int VALUE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.impl.AssumptionImpl <em>Assumption</em>}' class.
@@ -1017,13 +1007,22 @@ public interface ModelPackage extends EPackage {
 	int TRUST_ZONE__ATTACKERPROFILE = ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Trust Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUST_ZONE__TRUST_FACTOR = ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Trust Zone</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRUST_ZONE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 3;
+	int TRUST_ZONE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Trust Zone</em>' class.
@@ -1836,14 +1835,24 @@ public interface ModelPackage extends EPackage {
 	int DATA_GENERATION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.
+	 * The meta object id for the '{@link org.secdfd.model.Level <em>Level</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.Priority
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getPriority()
+	 * @see org.secdfd.model.Level
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getLevel()
 	 * @generated
 	 */
-	int PRIORITY = 21;
+	int LEVEL = 21;
+
+	/**
+	 * The meta object id for the '{@link org.secdfd.model.TrustFactor <em>Trust Factor</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.secdfd.model.TrustFactor
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getTrustFactor()
+	 * @generated
+	 */
+	int TRUST_FACTOR = 22;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Channel <em>Channel</em>}' enum.
@@ -1853,7 +1862,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getChannel()
 	 * @generated
 	 */
-	int CHANNEL = 22;
+	int CHANNEL = 23;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.ContractType <em>Contract Type</em>}' enum.
@@ -1863,7 +1872,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getContractType()
 	 * @generated
 	 */
-	int CONTRACT_TYPE = 23;
+	int CONTRACT_TYPE = 24;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Objective <em>Objective</em>}' enum.
@@ -1873,7 +1882,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 24;
+	int OBJECTIVE = 25;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Layer <em>Layer</em>}' enum.
@@ -1883,7 +1892,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getLayer()
 	 * @generated
 	 */
-	int LAYER = 25;
+	int LAYER = 26;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.AssetType <em>Asset Type</em>}' enum.
@@ -1893,7 +1902,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getAssetType()
 	 * @generated
 	 */
-	int ASSET_TYPE = 26;
+	int ASSET_TYPE = 27;
 
 
 	/**
@@ -1904,7 +1913,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getDataGenerationDirection()
 	 * @generated
 	 */
-	int DATA_GENERATION_DIRECTION = 27;
+	int DATA_GENERATION_DIRECTION = 28;
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.Asset <em>Asset</em>}'.
@@ -1971,15 +1980,15 @@ public interface ModelPackage extends EPackage {
 	EClass getProcess();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.secdfd.model.Process#getResponsibility <em>Responsibility</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.secdfd.model.Process#getContract <em>Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Responsibility</em>'.
-	 * @see org.secdfd.model.Process#getResponsibility()
+	 * @return the meta object for the containment reference list '<em>Contract</em>'.
+	 * @see org.secdfd.model.Process#getContract()
 	 * @see #getProcess()
 	 * @generated
 	 */
-	EReference getProcess_Responsibility();
+	EReference getProcess_Contract();
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.EDFD <em>EDFD</em>}'.
@@ -2217,25 +2226,15 @@ public interface ModelPackage extends EPackage {
 	EAttribute getValue_Objective();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.secdfd.model.Value#getPriority <em>Priority</em>}'.
+	 * Returns the meta object for the attribute '{@link org.secdfd.model.Value#getLevel <em>Level</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Priority</em>'.
-	 * @see org.secdfd.model.Value#getPriority()
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see org.secdfd.model.Value#getLevel()
 	 * @see #getValue()
 	 * @generated
 	 */
-	EAttribute getValue_Priority();
-
-	/**
-	 * Returns the meta object for the '{@link org.secdfd.model.Value#constraint_1(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Constraint 1</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Constraint 1</em>' operation.
-	 * @see org.secdfd.model.Value#constraint_1(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
-	 * @generated
-	 */
-	EOperation getValue__Constraint_1__DiagnosticChain_Map();
+	EAttribute getValue_Level();
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.Assumption <em>Assumption</em>}'.
@@ -2332,6 +2331,17 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTrustZone_Attackerprofile();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.secdfd.model.TrustZone#getTrustFactor <em>Trust Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Trust Factor</em>'.
+	 * @see org.secdfd.model.TrustZone#getTrustFactor()
+	 * @see #getTrustZone()
+	 * @generated
+	 */
+	EAttribute getTrustZone_TrustFactor();
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.ContractBase <em>Contract Base</em>}'.
@@ -2545,14 +2555,24 @@ public interface ModelPackage extends EPackage {
 	EAttribute getDataGenerationContract_K();
 
 	/**
-	 * Returns the meta object for enum '{@link org.secdfd.model.Priority <em>Priority</em>}'.
+	 * Returns the meta object for enum '{@link org.secdfd.model.Level <em>Level</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Priority</em>'.
-	 * @see org.secdfd.model.Priority
+	 * @return the meta object for enum '<em>Level</em>'.
+	 * @see org.secdfd.model.Level
 	 * @generated
 	 */
-	EEnum getPriority();
+	EEnum getLevel();
+
+	/**
+	 * Returns the meta object for enum '{@link org.secdfd.model.TrustFactor <em>Trust Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Trust Factor</em>'.
+	 * @see org.secdfd.model.TrustFactor
+	 * @generated
+	 */
+	EEnum getTrustFactor();
 
 	/**
 	 * Returns the meta object for enum '{@link org.secdfd.model.Channel <em>Channel</em>}'.
@@ -2690,12 +2710,12 @@ public interface ModelPackage extends EPackage {
 		EClass PROCESS = eINSTANCE.getProcess();
 
 		/**
-		 * The meta object literal for the '<em><b>Responsibility</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Contract</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PROCESS__RESPONSIBILITY = eINSTANCE.getProcess_Responsibility();
+		EReference PROCESS__CONTRACT = eINSTANCE.getProcess_Contract();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.impl.EDFDImpl <em>EDFD</em>}' class.
@@ -2888,20 +2908,12 @@ public interface ModelPackage extends EPackage {
 		EAttribute VALUE__OBJECTIVE = eINSTANCE.getValue_Objective();
 
 		/**
-		 * The meta object literal for the '<em><b>Priority</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VALUE__PRIORITY = eINSTANCE.getValue_Priority();
-
-		/**
-		 * The meta object literal for the '<em><b>Constraint 1</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation VALUE___CONSTRAINT_1__DIAGNOSTICCHAIN_MAP = eINSTANCE.getValue__Constraint_1__DiagnosticChain_Map();
+		EAttribute VALUE__LEVEL = eINSTANCE.getValue_Level();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.impl.AssumptionImpl <em>Assumption</em>}' class.
@@ -2980,6 +2992,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRUST_ZONE__ATTACKERPROFILE = eINSTANCE.getTrustZone_Attackerprofile();
+
+		/**
+		 * The meta object literal for the '<em><b>Trust Factor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRUST_ZONE__TRUST_FACTOR = eINSTANCE.getTrustZone_TrustFactor();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.impl.ContractBaseImpl <em>Contract Base</em>}' class.
@@ -3160,14 +3180,24 @@ public interface ModelPackage extends EPackage {
 		EAttribute DATA_GENERATION_CONTRACT__K = eINSTANCE.getDataGenerationContract_K();
 
 		/**
-		 * The meta object literal for the '{@link org.secdfd.model.Priority <em>Priority</em>}' enum.
+		 * The meta object literal for the '{@link org.secdfd.model.Level <em>Level</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.Priority
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getPriority()
+		 * @see org.secdfd.model.Level
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getLevel()
 		 * @generated
 		 */
-		EEnum PRIORITY = eINSTANCE.getPriority();
+		EEnum LEVEL = eINSTANCE.getLevel();
+
+		/**
+		 * The meta object literal for the '{@link org.secdfd.model.TrustFactor <em>Trust Factor</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.secdfd.model.TrustFactor
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getTrustFactor()
+		 * @generated
+		 */
+		EEnum TRUST_FACTOR = eINSTANCE.getTrustFactor();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.Channel <em>Channel</em>}' enum.

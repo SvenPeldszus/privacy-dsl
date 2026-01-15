@@ -34,7 +34,7 @@ import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
 import org.secdfd.model.PredictionContract;
-import org.secdfd.model.Priority;
+import org.secdfd.model.Level;
 import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
 import org.secdfd.model.TrustZone;
@@ -162,8 +162,8 @@ public class ModelValidator extends EObjectValidator {
 				return validateDimensionalityReductionContract((DimensionalityReductionContract)value, diagnostics, context);
 			case ModelPackage.DATA_GENERATION_CONTRACT:
 				return validateDataGenerationContract((DataGenerationContract)value, diagnostics, context);
-			case ModelPackage.PRIORITY:
-				return validatePriority((Priority)value, diagnostics, context);
+			case ModelPackage.LEVEL:
+				return validateLevel((Level)value, diagnostics, context);
 			case ModelPackage.CHANNEL:
 				return validateChannel((Channel)value, diagnostics, context);
 			case ModelPackage.CONTRACT_TYPE:
@@ -268,19 +268,9 @@ public class ModelValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_UniqueID(value, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(value, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(value, diagnostics, context);
-		if (result || diagnostics != null) result &= validateValue_constraint_1(value, diagnostics, context);
 		return result;
 	}
 
-	/**
-	 * Validates the constraint_1 constraint of '<em>Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateValue_constraint_1(Value value, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return value.constraint_1(diagnostics, context);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -395,7 +385,7 @@ public class ModelValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePriority(Priority priority, DiagnosticChain diagnostics, Map<Object, Object> context) {
+	public boolean validateLevel(Level level, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

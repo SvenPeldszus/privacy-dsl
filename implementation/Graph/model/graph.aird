@@ -7,6 +7,8 @@
     <semanticResources>platform:/resource/org.secdfd.model/model/model.ecore</semanticResources>
     <semanticResources>platform:/resource/org.secdfd.model/model/model.genmodel</semanticResources>
     <semanticResources>graph.genmodel</semanticResources>
+    <semanticResources>platform:/resource/org.eclipse.ocl.pivot/model-gen/oclstdlib.ecore</semanticResources>
+    <semanticResources>platform:/resource/org.eclipse.ocl.pivot/model/oclstdlib.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_9iARwDwFEeieDL2RQUd1DQ">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xP3w8FxJEfCs-bI3lPZn_A" name="graph class diagram" repPath="#_xPzfgFxJEfCs-bI3lPZn_A" changeId="1752013651112">

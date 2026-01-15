@@ -28,7 +28,7 @@ public interface RecommendationContract extends ContractBase {
 	 * @return the value of the '<em>S</em>' attribute.
 	 * @see #setS(boolean)
 	 * @see org.secdfd.model.ModelPackage#getRecommendationContract_S()
-	 * @model default="false"
+	 * @model default="false" required="true"
 	 * @generated
 	 */
 	boolean isS();

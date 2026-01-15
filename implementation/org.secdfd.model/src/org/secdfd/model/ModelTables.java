@@ -86,7 +86,7 @@ public class ModelTables extends AbstractTables
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_DataGenerationDirection = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("DataGenerationDirection");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Layer = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Layer");
 	public static final /*@NonInvalid*/ EnumerationId ENUMid_Objective = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Objective");
-	public static final /*@NonInvalid*/ EnumerationId ENUMid_Priority = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Priority");
+	public static final /*@NonInvalid*/ EnumerationId ENUMid_Level = ModelTables.PACKid_http_c_s_s_www_secdfd_org_s_secdfd.getEnumerationId("Level");
 	public static final /*@NonInvalid*/ IntegerValue INT_0 = ValueUtil.integerValueOf("0");
 	public static final /*@NonInvalid*/ TuplePartId PARTid_ = IdManager.getTuplePartId(0, "message", TypeId.STRING);
 	public static final /*@NonInvalid*/ TuplePartId PARTid__0 = IdManager.getTuplePartId(1, "status", TypeId.BOOLEAN);
@@ -96,8 +96,8 @@ public class ModelTables extends AbstractTables
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Element = TypeId.BAG.getSpecializedId(ModelTables.CLSSid_Element, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Flow = TypeId.BAG.getSpecializedId(ModelTables.CLSSid_Flow, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_TrustZone = TypeId.BAG.getSpecializedId(ModelTables.CLSSid_TrustZone, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
-	public static final /*@NonInvalid*/ EnumerationLiteralId ELITid_H = ModelTables.ENUMid_Priority.getEnumerationLiteralId("H");
-	public static final /*@NonInvalid*/ EnumerationLiteralId ELITid_L = ModelTables.ENUMid_Priority.getEnumerationLiteralId("L");
+	public static final /*@NonInvalid*/ EnumerationLiteralId ELITid_H = ModelTables.ENUMid_Level.getEnumerationLiteralId("H");
+	public static final /*@NonInvalid*/ EnumerationLiteralId ELITid_L = ModelTables.ENUMid_Level.getEnumerationLiteralId("L");
 	public static final /*@NonInvalid*/ EnumerationLiteralId ELITid_Privacy = ModelTables.ENUMid_Objective.getEnumerationLiteralId("Privacy");
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Asset = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_Asset, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Assumption = TypeId.ORDERED_SET.getSpecializedId(ModelTables.CLSSid_Assumption, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
@@ -162,7 +162,7 @@ public class ModelTables extends AbstractTables
 		public static final EcoreExecutorType _NamedEntity = new EcoreExecutorType(ModelPackage.Literals.NAMED_ENTITY, PACKAGE, 0 | ExecutorType.ABSTRACT);
 		public static final EcoreExecutorEnumeration _Objective = new EcoreExecutorEnumeration(ModelPackage.Literals.OBJECTIVE, PACKAGE, 0);
 		public static final EcoreExecutorType _PredictionContract = new EcoreExecutorType(ModelPackage.Literals.PREDICTION_CONTRACT, PACKAGE, 0);
-		public static final EcoreExecutorEnumeration _Priority = new EcoreExecutorEnumeration(ModelPackage.Literals.PRIORITY, PACKAGE, 0);
+		public static final EcoreExecutorEnumeration _Level = new EcoreExecutorEnumeration(ModelPackage.Literals.LEVEL, PACKAGE, 0);
 		public static final EcoreExecutorType _Process = new EcoreExecutorType(ModelPackage.Literals.PROCESS, PACKAGE, 0);
 		public static final EcoreExecutorType _RecommendationContract = new EcoreExecutorType(ModelPackage.Literals.RECOMMENDATION_CONTRACT, PACKAGE, 0);
 		public static final EcoreExecutorType _SecurityContract = new EcoreExecutorType(ModelPackage.Literals.SECURITY_CONTRACT, PACKAGE, 0);
@@ -192,7 +192,7 @@ public class ModelTables extends AbstractTables
 			_NamedEntity,
 			_Objective,
 			_PredictionContract,
-			_Priority,
+			_Level,
 			_Process,
 			_RecommendationContract,
 			_SecurityContract,
@@ -346,11 +346,11 @@ public class ModelTables extends AbstractTables
 		private static final ExecutorFragment _PredictionContract__OclElement = new ExecutorFragment(Types._PredictionContract, OCLstdlibTables.Types._OclElement);
 		private static final ExecutorFragment _PredictionContract__PredictionContract = new ExecutorFragment(Types._PredictionContract, ModelTables.Types._PredictionContract);
 
-		private static final ExecutorFragment _Priority__OclAny = new ExecutorFragment(Types._Priority, OCLstdlibTables.Types._OclAny);
-		private static final ExecutorFragment _Priority__OclElement = new ExecutorFragment(Types._Priority, OCLstdlibTables.Types._OclElement);
-		private static final ExecutorFragment _Priority__OclEnumeration = new ExecutorFragment(Types._Priority, OCLstdlibTables.Types._OclEnumeration);
-		private static final ExecutorFragment _Priority__OclType = new ExecutorFragment(Types._Priority, OCLstdlibTables.Types._OclType);
-		private static final ExecutorFragment _Priority__Priority = new ExecutorFragment(Types._Priority, ModelTables.Types._Priority);
+		private static final ExecutorFragment _Level__OclAny = new ExecutorFragment(Types._Level, OCLstdlibTables.Types._OclAny);
+		private static final ExecutorFragment _Level__OclElement = new ExecutorFragment(Types._Level, OCLstdlibTables.Types._OclElement);
+		private static final ExecutorFragment _Level__OclEnumeration = new ExecutorFragment(Types._Level, OCLstdlibTables.Types._OclEnumeration);
+		private static final ExecutorFragment _Level__OclType = new ExecutorFragment(Types._Level, OCLstdlibTables.Types._OclType);
+		private static final ExecutorFragment _Level__Level = new ExecutorFragment(Types._Level, ModelTables.Types._Level);
 
 		private static final ExecutorFragment _Process__Element = new ExecutorFragment(Types._Process, ModelTables.Types._Element);
 		private static final ExecutorFragment _Process__NamedEntity = new ExecutorFragment(Types._Process, ModelTables.Types._NamedEntity);
@@ -507,7 +507,7 @@ public class ModelTables extends AbstractTables
 
 		public static final ExecutorProperty _PredictionContract__S = new EcoreExecutorProperty(ModelPackage.Literals.PREDICTION_CONTRACT__S, Types._PredictionContract, 0);
 
-		public static final ExecutorProperty _Process__responsibility = new EcoreExecutorProperty(ModelPackage.Literals.PROCESS__RESPONSIBILITY, Types._Process, 0);
+		public static final ExecutorProperty _Process__contract = new EcoreExecutorProperty(ModelPackage.Literals.PROCESS__CONTRACT, Types._Process, 0);
 
 		public static final ExecutorProperty _RecommendationContract__S = new EcoreExecutorProperty(ModelPackage.Literals.RECOMMENDATION_CONTRACT__S, Types._RecommendationContract, 0);
 
@@ -518,7 +518,7 @@ public class ModelTables extends AbstractTables
 		public static final ExecutorProperty _TrustZone__TrustZone__subzones = new ExecutorPropertyWithImplementation("TrustZone", Types._TrustZone, 4, new EcoreLibraryOppositeProperty(ModelPackage.Literals.TRUST_ZONE__SUBZONES));
 
 		public static final ExecutorProperty _Value__Objective = new EcoreExecutorProperty(ModelPackage.Literals.VALUE__OBJECTIVE, Types._Value, 0);
-		public static final ExecutorProperty _Value__Priority = new EcoreExecutorProperty(ModelPackage.Literals.VALUE__PRIORITY, Types._Value, 1);
+		public static final ExecutorProperty _Value__Level = new EcoreExecutorProperty(ModelPackage.Literals.VALUE__LEVEL, Types._Value, 1);
 		public static final ExecutorProperty _Value__Asset__value = new ExecutorPropertyWithImplementation("Asset", Types._Value, 2, new EcoreLibraryOppositeProperty(ModelPackage.Literals.ASSET__VALUE));
 		static {
 			Init.initEnd();
@@ -750,15 +750,15 @@ public class ModelTables extends AbstractTables
 			};
 		private static final int /*@NonNull*/ [] __PredictionContract = { 1,1,1,1,1 };
 
-		private static final ExecutorFragment /*@NonNull*/ [] _Priority =
+		private static final ExecutorFragment /*@NonNull*/ [] _Level =
 			{
-				Fragments._Priority__OclAny /* 0 */,
-				Fragments._Priority__OclElement /* 1 */,
-				Fragments._Priority__OclType /* 2 */,
-				Fragments._Priority__OclEnumeration /* 3 */,
-				Fragments._Priority__Priority /* 4 */
+				Fragments._Level__OclAny /* 0 */,
+				Fragments._Level__OclElement /* 1 */,
+				Fragments._Level__OclType /* 2 */,
+				Fragments._Level__OclEnumeration /* 3 */,
+				Fragments._Level__Level /* 4 */
 			};
-		private static final int /*@NonNull*/ [] __Priority = { 1,1,1,1,1 };
+		private static final int /*@NonNull*/ [] __Level = { 1,1,1,1,1 };
 
 		private static final ExecutorFragment /*@NonNull*/ [] _Process =
 			{
@@ -834,7 +834,7 @@ public class ModelTables extends AbstractTables
 			Types._NamedEntity.initFragments(_NamedEntity, __NamedEntity);
 			Types._Objective.initFragments(_Objective, __Objective);
 			Types._PredictionContract.initFragments(_PredictionContract, __PredictionContract);
-			Types._Priority.initFragments(_Priority, __Priority);
+			Types._Level.initFragments(_Level, __Level);
 			Types._Process.initFragments(_Process, __Process);
 			Types._RecommendationContract.initFragments(_RecommendationContract, __RecommendationContract);
 			Types._SecurityContract.initFragments(_SecurityContract, __SecurityContract);
@@ -1644,8 +1644,8 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final ExecutorOperation /*@NonNull*/ [] _Priority__Priority = {};
-		private static final ExecutorOperation /*@NonNull*/ [] _Priority__OclAny = {
+		private static final ExecutorOperation /*@NonNull*/ [] _Level__Level = {};
+		private static final ExecutorOperation /*@NonNull*/ [] _Level__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny__oclAsSet /* oclAsSet() */,
@@ -1662,7 +1662,7 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclAny__oclTypes /* oclTypes() */,
 			OCLstdlibTables.Operations._OclAny__toString /* toString() */
 		};
-		private static final ExecutorOperation /*@NonNull*/ [] _Priority__OclElement = {
+		private static final ExecutorOperation /*@NonNull*/ [] _Level__OclElement = {
 			OCLstdlibTables.Operations._OclEnumeration__allInstances /* allInstances(Integer[1]) */,
 			OCLstdlibTables.Operations._OclElement__oclAsModelType /* oclAsModelType(TT)(TT[1]) */,
 			OCLstdlibTables.Operations._OclElement__0_oclBase /* oclBase() */,
@@ -1676,10 +1676,10 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Operations._OclElement__oclModelType /* oclModelType() */,
 			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
-		private static final ExecutorOperation /*@NonNull*/ [] _Priority__OclEnumeration = {
+		private static final ExecutorOperation /*@NonNull*/ [] _Level__OclEnumeration = {
 			OCLstdlibTables.Operations._OclEnumeration__allInstances /* allInstances(Integer[1]) */
 		};
-		private static final ExecutorOperation /*@NonNull*/ [] _Priority__OclType = {
+		private static final ExecutorOperation /*@NonNull*/ [] _Level__OclType = {
 			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
 		};
 
@@ -1983,11 +1983,11 @@ public class ModelTables extends AbstractTables
 			Fragments._PredictionContract__OclElement.initOperations(_PredictionContract__OclElement);
 			Fragments._PredictionContract__PredictionContract.initOperations(_PredictionContract__PredictionContract);
 
-			Fragments._Priority__OclAny.initOperations(_Priority__OclAny);
-			Fragments._Priority__OclElement.initOperations(_Priority__OclElement);
-			Fragments._Priority__OclEnumeration.initOperations(_Priority__OclEnumeration);
-			Fragments._Priority__OclType.initOperations(_Priority__OclType);
-			Fragments._Priority__Priority.initOperations(_Priority__Priority);
+			Fragments._Level__OclAny.initOperations(_Level__OclAny);
+			Fragments._Level__OclElement.initOperations(_Level__OclElement);
+			Fragments._Level__OclEnumeration.initOperations(_Level__OclEnumeration);
+			Fragments._Level__OclType.initOperations(_Level__OclType);
+			Fragments._Level__Level.initOperations(_Level__Level);
 
 			Fragments._Process__Element.initOperations(_Process__Element);
 			Fragments._Process__NamedEntity.initOperations(_Process__NamedEntity);
@@ -2243,7 +2243,7 @@ public class ModelTables extends AbstractTables
 			ModelTables.Properties._ContractBase__process
 		};
 
-		private static final ExecutorProperty /*@NonNull*/ [] _Priority = {
+		private static final ExecutorProperty /*@NonNull*/ [] _Level = {
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents
 		};
@@ -2258,7 +2258,7 @@ public class ModelTables extends AbstractTables
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents,
 			ModelTables.Properties._Element__outflows,
-			ModelTables.Properties._Process__responsibility
+			ModelTables.Properties._Process__contract
 		};
 
 		private static final ExecutorProperty /*@NonNull*/ [] _RecommendationContract = {
@@ -2301,7 +2301,7 @@ public class ModelTables extends AbstractTables
 
 		private static final ExecutorProperty /*@NonNull*/ [] _Value = {
 			ModelTables.Properties._Value__Objective,
-			ModelTables.Properties._Value__Priority,
+			ModelTables.Properties._Value__Level,
 			OCLstdlibTables.Properties._OclElement__oclContainer,
 			OCLstdlibTables.Properties._OclElement__oclContents
 		};
@@ -2332,7 +2332,7 @@ public class ModelTables extends AbstractTables
 			Fragments._NamedEntity__NamedEntity.initProperties(_NamedEntity);
 			Fragments._Objective__Objective.initProperties(_Objective);
 			Fragments._PredictionContract__PredictionContract.initProperties(_PredictionContract);
-			Fragments._Priority__Priority.initProperties(_Priority);
+			Fragments._Level__Level.initProperties(_Level);
 			Fragments._Process__Process.initProperties(_Process);
 			Fragments._RecommendationContract__RecommendationContract.initProperties(_RecommendationContract);
 			Fragments._SecurityContract__SecurityContract.initProperties(_SecurityContract);
@@ -2453,17 +2453,17 @@ public class ModelTables extends AbstractTables
 			_Objective__Privacy
 		};
 
-		public static final EcoreExecutorEnumerationLiteral _Priority__N = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.PRIORITY.getEEnumLiteral("N"), Types._Priority, 0);
-		public static final EcoreExecutorEnumerationLiteral _Priority__L = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.PRIORITY.getEEnumLiteral("L"), Types._Priority, 1);
-		public static final EcoreExecutorEnumerationLiteral _Priority__M = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.PRIORITY.getEEnumLiteral("M"), Types._Priority, 2);
-		public static final EcoreExecutorEnumerationLiteral _Priority__H = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.PRIORITY.getEEnumLiteral("H"), Types._Priority, 3);
-		public static final EcoreExecutorEnumerationLiteral _Priority__C = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.PRIORITY.getEEnumLiteral("C"), Types._Priority, 4);
-		private static final EcoreExecutorEnumerationLiteral /*@NonNull*/ [] _Priority = {
-			_Priority__N,
-			_Priority__L,
-			_Priority__M,
-			_Priority__H,
-			_Priority__C
+		public static final EcoreExecutorEnumerationLiteral _Level__N = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.LEVEL.getEEnumLiteral("N"), Types._Level, 0);
+		public static final EcoreExecutorEnumerationLiteral _Level__L = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.LEVEL.getEEnumLiteral("L"), Types._Level, 1);
+		public static final EcoreExecutorEnumerationLiteral _Level__M = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.LEVEL.getEEnumLiteral("M"), Types._Level, 2);
+		public static final EcoreExecutorEnumerationLiteral _Level__H = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.LEVEL.getEEnumLiteral("H"), Types._Level, 3);
+		public static final EcoreExecutorEnumerationLiteral _Level__C = new EcoreExecutorEnumerationLiteral(ModelPackage.Literals.LEVEL.getEEnumLiteral("C"), Types._Level, 4);
+		private static final EcoreExecutorEnumerationLiteral /*@NonNull*/ [] _Level = {
+			_Level__N,
+			_Level__L,
+			_Level__M,
+			_Level__H,
+			_Level__C
 		};
 
 		/**
@@ -2476,7 +2476,7 @@ public class ModelTables extends AbstractTables
 			Types._DataGenerationDirection.initLiterals(_DataGenerationDirection);
 			Types._Layer.initLiterals(_Layer);
 			Types._Objective.initLiterals(_Objective);
-			Types._Priority.initLiterals(_Priority);
+			Types._Level.initLiterals(_Level);
 
 			Init.initEnd();
 		}

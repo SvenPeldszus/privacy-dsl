@@ -4,6 +4,7 @@ package org.secdfd.model.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -11,6 +12,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -18,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.Element;
 import org.secdfd.model.ModelPackage;
+import org.secdfd.model.TrustFactor;
 import org.secdfd.model.TrustZone;
 
 /**
@@ -31,6 +34,7 @@ import org.secdfd.model.TrustZone;
  *   <li>{@link org.secdfd.model.impl.TrustZoneImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.secdfd.model.impl.TrustZoneImpl#getSubzones <em>Subzones</em>}</li>
  *   <li>{@link org.secdfd.model.impl.TrustZoneImpl#getAttackerprofile <em>Attackerprofile</em>}</li>
+ *   <li>{@link org.secdfd.model.impl.TrustZoneImpl#getTrustFactor <em>Trust Factor</em>}</li>
  * </ul>
  *
  * @generated
@@ -65,6 +69,26 @@ public class TrustZoneImpl extends ElementImpl implements TrustZone {
 	 * @ordered
 	 */
 	protected EList<AttackerProfile> attackerprofile;
+
+	/**
+	 * The default value of the '{@link #getTrustFactor() <em>Trust Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTrustFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final TrustFactor TRUST_FACTOR_EDEFAULT = TrustFactor.WEAK;
+
+	/**
+	 * The cached value of the '{@link #getTrustFactor() <em>Trust Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTrustFactor()
+	 * @generated
+	 * @ordered
+	 */
+	protected TrustFactor trustFactor = TRUST_FACTOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -130,6 +154,29 @@ public class TrustZoneImpl extends ElementImpl implements TrustZone {
 	 * @generated
 	 */
 	@Override
+	public TrustFactor getTrustFactor() {
+		return trustFactor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTrustFactor(TrustFactor newTrustFactor) {
+		TrustFactor oldTrustFactor = trustFactor;
+		trustFactor = newTrustFactor == null ? TRUST_FACTOR_EDEFAULT : newTrustFactor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.TRUST_ZONE__TRUST_FACTOR, oldTrustFactor, trustFactor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ModelPackage.TRUST_ZONE__SUBZONES:
@@ -154,6 +201,8 @@ public class TrustZoneImpl extends ElementImpl implements TrustZone {
 				return getSubzones();
 			case ModelPackage.TRUST_ZONE__ATTACKERPROFILE:
 				return getAttackerprofile();
+			case ModelPackage.TRUST_ZONE__TRUST_FACTOR:
+				return getTrustFactor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -179,6 +228,9 @@ public class TrustZoneImpl extends ElementImpl implements TrustZone {
 				getAttackerprofile().clear();
 				getAttackerprofile().addAll((Collection<? extends AttackerProfile>)newValue);
 				return;
+			case ModelPackage.TRUST_ZONE__TRUST_FACTOR:
+				setTrustFactor((TrustFactor)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -200,6 +252,9 @@ public class TrustZoneImpl extends ElementImpl implements TrustZone {
 			case ModelPackage.TRUST_ZONE__ATTACKERPROFILE:
 				getAttackerprofile().clear();
 				return;
+			case ModelPackage.TRUST_ZONE__TRUST_FACTOR:
+				setTrustFactor(TRUST_FACTOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -218,8 +273,26 @@ public class TrustZoneImpl extends ElementImpl implements TrustZone {
 				return subzones != null && !subzones.isEmpty();
 			case ModelPackage.TRUST_ZONE__ATTACKERPROFILE:
 				return attackerprofile != null && !attackerprofile.isEmpty();
+			case ModelPackage.TRUST_ZONE__TRUST_FACTOR:
+				return trustFactor != TRUST_FACTOR_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (TrustFactor: ");
+		result.append(trustFactor);
+		result.append(')');
+		return result.toString();
 	}
 
 } //TrustZoneImpl

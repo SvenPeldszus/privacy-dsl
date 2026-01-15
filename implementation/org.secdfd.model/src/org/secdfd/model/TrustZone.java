@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.secdfd.model.TrustZone#getElements <em>Elements</em>}</li>
  *   <li>{@link org.secdfd.model.TrustZone#getSubzones <em>Subzones</em>}</li>
  *   <li>{@link org.secdfd.model.TrustZone#getAttackerprofile <em>Attackerprofile</em>}</li>
+ *   <li>{@link org.secdfd.model.TrustZone#getTrustFactor <em>Trust Factor</em>}</li>
  * </ul>
  *
  * @see org.secdfd.model.ModelPackage#getTrustZone()
@@ -58,5 +59,30 @@ public interface TrustZone extends Element {
 	 * @generated
 	 */
 	EList<AttackerProfile> getAttackerprofile();
+
+	/**
+	 * Returns the value of the '<em><b>Trust Factor</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.secdfd.model.TrustFactor}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Trust Factor</em>' attribute.
+	 * @see org.secdfd.model.TrustFactor
+	 * @see #setTrustFactor(TrustFactor)
+	 * @see org.secdfd.model.ModelPackage#getTrustZone_TrustFactor()
+	 * @model
+	 * @generated
+	 */
+	TrustFactor getTrustFactor();
+
+	/**
+	 * Sets the value of the '{@link org.secdfd.model.TrustZone#getTrustFactor <em>Trust Factor</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Trust Factor</em>' attribute.
+	 * @see org.secdfd.model.TrustFactor
+	 * @see #getTrustFactor()
+	 * @generated
+	 */
+	void setTrustFactor(TrustFactor value);
 
 } // TrustZone

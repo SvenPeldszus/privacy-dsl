@@ -23,27 +23,27 @@ public interface DecisionMakingContract extends ContractBase {
 	/**
 	 * Returns the value of the '<em><b>PAction</b></em>' attribute.
 	 * The default value is <code>"L"</code>.
-	 * The literals are from the enumeration {@link org.secdfd.model.Priority}.
+	 * The literals are from the enumeration {@link org.secdfd.model.Level}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>PAction</em>' attribute.
-	 * @see org.secdfd.model.Priority
-	 * @see #setPAction(Priority)
+	 * @see org.secdfd.model.Level
+	 * @see #setPAction(Level)
 	 * @see org.secdfd.model.ModelPackage#getDecisionMakingContract_PAction()
 	 * @model default="L"
 	 * @generated
 	 */
-	Priority getPAction();
+	Level getPAction();
 
 	/**
 	 * Sets the value of the '{@link org.secdfd.model.DecisionMakingContract#getPAction <em>PAction</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>PAction</em>' attribute.
-	 * @see org.secdfd.model.Priority
+	 * @see org.secdfd.model.Level
 	 * @see #getPAction()
 	 * @generated
 	 */
-	void setPAction(Priority value);
+	void setPAction(Level value);
 
 } // DecisionMakingContract

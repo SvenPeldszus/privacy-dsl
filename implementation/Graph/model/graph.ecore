@@ -39,10 +39,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//Identifiable">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="AttackerObservationViolation EncryptSemanticConstraint DecryptSemanticConstraint StoreSemanticConstraint BusinessSemanticConstraint ComparatorSemanticConstraint JoinerSemanticConstraint DiscarderSemanticConstraint CopierSemanticConstraint ForwardSemanticConstraint SplitterSemanticConstraint UserSemanticConstraint VerifierSemanticConstraint AuthenticatorSemanticConstraint ClassificationSemanticConstraint ClusteringSemanticConstraint DecisionMakingSemanticConstraint RecommendationSemanticConstraint PredictionSemanticConstraint DimensionalityReductionSemanticConstraint DataGenerationSemanticConstraint"/>
+      <details key="constraints" value="AttackerObservationViolation PrivacyPolicyViolationWeak PrivacyPolicyViolationMedium PrivacyPolicyViolationStrong EncryptSemanticConstraint DecryptSemanticConstraint StoreSemanticConstraint BusinessSemanticConstraint ComparatorSemanticConstraint JoinerSemanticConstraint DiscarderSemanticConstraint CopierSemanticConstraint ForwardSemanticConstraint SplitterSemanticConstraint UserSemanticConstraint VerifierSemanticConstraint AuthenticatorSemanticConstraint ClassificationSemanticConstraint ClusteringSemanticConstraint DecisionMakingSemanticConstraint RecommendationSemanticConstraint PredictionSemanticConstraint DimensionalityReductionSemanticConstraint DataGenerationSemanticConstraint"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
-      <details key="AttackerObservationViolation" value="&#xA;&#x9;&#x9;-- if a node is malicious then there is a violation if any of the outgoing or incoming edges are private!&#xA;&#x9;&#x9;--newly added&#xA;&#x9;&#x9;if self.Attacker = true then&#xA;&#x9;&#x9;     self.outedges->forAll( e |&#xA;&#x9;&#x9;       e.edgelabel->forAll(l | l.level &lt;= 1)&#xA;&#x9;&#x9;     )&#xA;&#x9;&#x9;   and&#xA;&#x9;&#x9;     self.inedges ->forAll( e |&#xA;&#x9;&#x9;       e.edgelabel->forAll(l | l.level &lt;= 1)&#xA;&#x9;&#x9;     )&#xA;&#x9;&#x9; else&#xA;&#x9;&#x9;     true&#xA;&#x9;&#x9; endif&#xA;&#x9;&#x9;&#x9;"/>
+      <details key="AttackerObservationViolation" value="&#xA;&#x9;&#x9;-- if a node is malicious then there is a violation if any of the outgoing or incoming edges are private!&#xA;&#x9;&#x9;if self.Attacker = true and (self.trustFactor.oclIsUndefined() or self.trustFactor = null or self.trustFactor = '') then&#xA;&#x9;&#x9;     self.outedges->forAll( e |&#xA;&#x9;&#x9;       e.edgelabel->forAll(l | l.level &lt;= 1)&#xA;&#x9;&#x9;     )&#xA;&#x9;&#x9;   and&#xA;&#x9;&#x9;     self.inedges ->forAll( e |&#xA;&#x9;&#x9;       e.edgelabel->forAll(l | l.level &lt;= 1)&#xA;&#x9;&#x9;     )&#xA;&#x9;&#x9; else&#xA;&#x9;&#x9;     true&#xA;&#x9;&#x9; endif&#xA;&#x9;&#x9;&#x9;"/>
+      <details key="PrivacyPolicyViolationWeak" value="&#xA;&#x9;&#x9;-- Weak trust factor: Attacker can observe only N&#xA;&#x9;&#x9;if self.Attacker = true and self.trustFactor = 'WEAK' then&#xA;&#x9;&#x9;     self.outedges->forAll( e |&#xA;&#x9;&#x9;       e.edgelabel->forAll(l | l.level &lt; 1)&#xA;&#x9;&#x9;     )&#xA;&#x9;&#x9;   and&#xA;&#x9;&#x9;     self.inedges ->forAll( e |&#xA;&#x9;&#x9;       e.edgelabel->forAll(l | l.level &lt; 1)&#xA;&#x9;&#x9;     )&#xA;&#x9;&#x9; else&#xA;&#x9;&#x9;     true&#xA;&#x9;&#x9; endif&#xA;&#x9;&#x9;&#x9;"/>
+      <details key="PrivacyPolicyViolationMedium" value="&#xA;&#x9;&#x9;-- Medium trust factor: attacker can observe up to L &#xA;&#x9;&#x9;if self.Attacker = true and self.trustFactor = 'MEDIUM' then&#xA;&#x9;&#x9;     self.outedges->forAll( e |&#xA;&#x9;&#x9;       e.edgelabel->forAll(l | l.level &lt;= 1)&#xA;&#x9;&#x9;     )&#xA;&#x9;&#x9;   and&#xA;&#x9;&#x9;     self.inedges ->forAll( e |&#xA;&#x9;&#x9;       e.edgelabel->forAll(l | l.level &lt;= 1)&#xA;&#x9;&#x9;     )&#xA;&#x9;&#x9; else&#xA;&#x9;&#x9;     true&#xA;&#x9;&#x9; endif&#xA;&#x9;&#x9;&#x9;"/>
+      <details key="PrivacyPolicyViolationStrong" value="&#xA;&#x9;&#x9;-- Strong trust factor: Attacker can observe up to M &#xA;&#x9;&#x9;if self.Attacker = true and self.trustFactor = 'STRONG' then&#xA;&#x9;&#x9;     self.outedges->forAll( e |&#xA;&#x9;&#x9;       e.edgelabel->forAll(l | l.level &lt;= 2)&#xA;&#x9;&#x9;     )&#xA;&#x9;&#x9;   and&#xA;&#x9;&#x9;     self.inedges ->forAll( e |&#xA;&#x9;&#x9;       e.edgelabel->forAll(l | l.level &lt;= 2)&#xA;&#x9;&#x9;     )&#xA;&#x9;&#x9; else&#xA;&#x9;&#x9;     true&#xA;&#x9;&#x9; endif&#xA;&#x9;&#x9;&#x9;"/>
       <details key="EncryptSemanticConstraint" value="&#xA;&#x9;&#x9;&#x9;self.responsibility->select(r | r.ID.matches('^.*EncryptOrHash.*$'))&#xA;&#x9;&#x9;&#x9;&#x9;->forAll(r |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;--there has to be something incoming and something outgoing&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;r.incomingassets->size() > 0 and r.outgoingassets->size() > 0&#xA;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;"/>
       <details key="DecryptSemanticConstraint" value="&#xA;&#x9;&#x9;&#x9;self.responsibility->select(r | r.ID.matches('^.*Descrypt.*$'))&#xA;&#x9;&#x9;&#x9;&#x9;->forAll(r |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;--same as encrypt&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;r.incomingassets->size() > 0 and r.outgoingassets->size() > 0&#xA;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;"/>
       <details key="StoreSemanticConstraint" value="&#xA;&#x9;&#x9;&#x9;self.responsibility->select(r | r.ID.matches('^.*Store.*$'))&#xA;&#x9;&#x9;&#x9;&#x9;->forAll(r |&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;--there has to either be sth on the input or output&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;r.incomingassets->size() > 0 or r.outgoingassets->size() > 0&#xA;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;"/>
@@ -77,6 +80,7 @@
         eType="#//Edge"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Attacker" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trustFactor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Subgraphs" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
@@ -95,7 +99,8 @@
         <details key="body" value="self.incomingassets.assetlabel.level->min()"/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="task" upperBound="-1" eType="ecore:EEnum ../../org.secdfd.model/model/model.ecore#//ContractType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contractTypes" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingassets" upperBound="-1"
         eType="#//GraphAsset"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingassets" upperBound="-1"
@@ -107,7 +112,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SecurityLabel" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="objective" lowerBound="1"
-        eType="ecore:EEnum ../../org.secdfd.model/model/model.ecore#//Objective" defaultValueLiteral="Integrity"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="Integrity"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssetLabel" eSuperTypes="#//SecurityLabel"/>

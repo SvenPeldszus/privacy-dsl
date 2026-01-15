@@ -61,7 +61,7 @@ public class ProcessItemProvider extends ElementItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ModelPackage.Literals.PROCESS__RESPONSIBILITY);
+			childrenFeatures.add(ModelPackage.Literals.PROCESS__CONTRACT);
 		}
 		return childrenFeatures;
 	}
@@ -117,7 +117,7 @@ public class ProcessItemProvider extends ElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(org.secdfd.model.Process.class)) {
-			case ModelPackage.PROCESS__RESPONSIBILITY:
+			case ModelPackage.PROCESS__CONTRACT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -137,42 +137,42 @@ public class ProcessItemProvider extends ElementItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ModelPackage.Literals.PROCESS__RESPONSIBILITY,
+				(ModelPackage.Literals.PROCESS__CONTRACT,
 				 ModelFactory.eINSTANCE.createSecurityContract()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ModelPackage.Literals.PROCESS__RESPONSIBILITY,
+				(ModelPackage.Literals.PROCESS__CONTRACT,
 				 ModelFactory.eINSTANCE.createClassificationContract()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ModelPackage.Literals.PROCESS__RESPONSIBILITY,
+				(ModelPackage.Literals.PROCESS__CONTRACT,
 				 ModelFactory.eINSTANCE.createClusteringContract()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ModelPackage.Literals.PROCESS__RESPONSIBILITY,
+				(ModelPackage.Literals.PROCESS__CONTRACT,
 				 ModelFactory.eINSTANCE.createDecisionMakingContract()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ModelPackage.Literals.PROCESS__RESPONSIBILITY,
+				(ModelPackage.Literals.PROCESS__CONTRACT,
 				 ModelFactory.eINSTANCE.createRecommendationContract()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ModelPackage.Literals.PROCESS__RESPONSIBILITY,
+				(ModelPackage.Literals.PROCESS__CONTRACT,
 				 ModelFactory.eINSTANCE.createPredictionContract()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ModelPackage.Literals.PROCESS__RESPONSIBILITY,
+				(ModelPackage.Literals.PROCESS__CONTRACT,
 				 ModelFactory.eINSTANCE.createDimensionalityReductionContract()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ModelPackage.Literals.PROCESS__RESPONSIBILITY,
+				(ModelPackage.Literals.PROCESS__CONTRACT,
 				 ModelFactory.eINSTANCE.createDataGenerationContract()));
 	}
 

@@ -20,6 +20,7 @@ TrustZone:
 	'['
 		//a flow is contained by the boundary if it is an outgoing (or incoming) flow from an element inside the boundary
 		('attacker' 'profiles:' attackerprofile+=AttackerProfile ( "," attackerprofile+=AttackerProfile)* )?
+		('trust' 'factor:' TrustFactor=TrustFactor)?
 		('elements:' elements+=[Element|EString] ( "," elements+=[Element|EString])*  )?
 		('subzones:' subzones+=TrustZone ( "," subzones+=TrustZone)* )?
 	']'
@@ -48,7 +49,7 @@ Process returns Process:
 	'Process'
 	name=EString
 	'['
-		('responsibilities:' responsibility+=ContractBase ( "," responsibility+=ContractBase)* )?
+		('contracts:' contract+=ContractBase ( "," contract+=ContractBase)* )?
 		('assets:' assets+=[Asset|EString] ( "," assets+=[Asset|EString])* )?
 		('assumption:' assumption+=Assumption ( "," assumption+=Assumption)*)?
 		('incoming' 'flows:' inflows+=[Flow|EString] ( "," inflows+=[Flow|EString])*)?
@@ -73,7 +74,7 @@ ClassificationContract returns ClassificationContract:
 	'Classification' // Keyword for serialization
 	(name=EString)?
 	'['
-		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('PClass' '=' PClass=Priority)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('PClass' '=' PClass=Level)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
 	']'
 ;
 
@@ -91,7 +92,7 @@ DecisionMakingContract returns DecisionMakingContract:
 	'DecisionMaking' // Keyword for serialization
 	(name=EString)?
 	'['
-		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('PAction' '=' PAction=Priority)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('PAction' '=' PAction=Level)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
 	']'
 ;
 
@@ -170,7 +171,7 @@ DataStore returns DataStore:
 Value returns Value:
 	{Value}
 	'['
-		(Priority=Priority)?
+		(Level=Level)?
 		(Objective=Objective)?
 	']';
 
@@ -193,8 +194,11 @@ EBoolean returns ecore::EBoolean:
 EInt returns ecore::EInt:
 	'-'? INT;
 
-enum Priority returns Priority:
+enum Level returns Level:
 				N = 'N' | L = 'L' | M = 'M' | H = 'H' | C = 'C';
+
+enum TrustFactor returns TrustFactor:
+				WEAK = 'WEAK' | MEDIUM = 'MEDIUM' | STRONG = 'STRONG';
 				
 enum Objective returns Objective:
 				Integrity = 'I' | Confidentiality = 'C' | Availability = 'Av' | Accountability = 'Ac' | Privacy = 'P';

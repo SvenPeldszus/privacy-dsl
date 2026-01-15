@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.secdfd.model.Process#getResponsibility <em>Responsibility</em>}</li>
+ *   <li>{@link org.secdfd.model.Process#getContract <em>Contract</em>}</li>
  * </ul>
  *
  * @see org.secdfd.model.ModelPackage#getProcess()
@@ -22,17 +22,17 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Process extends Element {
 	/**
-	 * Returns the value of the '<em><b>Responsibility</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Contract</b></em>' containment reference list.
 	 * The list contents are of type {@link org.secdfd.model.ContractBase}.
 	 * It is bidirectional and its opposite is '{@link org.secdfd.model.ContractBase#getProcess <em>Process</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Responsibility</em>' containment reference list.
-	 * @see org.secdfd.model.ModelPackage#getProcess_Responsibility()
+	 * @return the value of the '<em>Contract</em>' containment reference list.
+	 * @see org.secdfd.model.ModelPackage#getProcess_Contract()
 	 * @see org.secdfd.model.ContractBase#getProcess
 	 * @model opposite="process" containment="true"
 	 * @generated
 	 */
-	EList<ContractBase> getResponsibility();
+	EList<ContractBase> getContract();
 
 } // Process

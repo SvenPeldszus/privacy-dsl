@@ -7,12 +7,17 @@
   <foreignModel>model.ecore</foreignModel>
   <genPackages prefix="Model" basePackage="org.secdfd" disposableProviderFactory="true"
       ecorePackage="model.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//Priority">
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Priority/N"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Priority/L"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Priority/M"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Priority/H"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Priority/C"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//Level">
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Level/N"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Level/L"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Level/M"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Level/H"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//Level/C"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//TrustFactor">
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//TrustFactor/WEAK"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//TrustFactor/MEDIUM"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//TrustFactor/STRONG"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//Channel">
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//Channel/WiFi"/>
@@ -72,7 +77,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Asset/Type"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//Process">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Process/responsibility"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Process/contract"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//EDFD">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//EDFD/asset"/>
@@ -100,7 +105,7 @@
     </genClasses>
     <genClasses ecoreClass="model.ecore#//Value">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Value/Objective"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Value/Priority"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Value/Level"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//Assumption">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Assumption/Objective"/>
@@ -113,6 +118,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//TrustZone/elements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//TrustZone/subzones"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//TrustZone/attackerprofile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//TrustZone/TrustFactor"/>
     </genClasses>
     <genClasses image="false" ecoreClass="model.ecore#//ContractBase">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ContractBase/incomeassets"/>

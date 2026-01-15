@@ -13,7 +13,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 import org.secdfd.model.Objective;
-import org.secdfd.model.Priority;
+import org.secdfd.model.Level;
 
 /**
  * This is the item provider adapter for a {@link graph.EdgeLabel} object.
@@ -67,18 +67,27 @@ public class EdgeLabelItemProvider extends SecurityLabelItemProvider {
 	@Override
 	public String getText(Object object) {
 		EdgeLabel edgeLabel = (EdgeLabel)object;
-		Objective labelValue = edgeLabel.getObjective();
+		String labelValue = edgeLabel.getObjective();
 		String label = labelValue == null ? null : labelValue.toString();
 		
-		// Get the level and convert it to Priority
+		// Get the level and convert it to Level enum
+		// Note: Graph model uses level 0-4 (N=0, L=1, M=2, H=3, C=4)
+		// Level enum also uses 0-4 (N=0, L=1, M=2, H=3, C=4), so direct mapping
 		int level = edgeLabel.getLevel();
-		Priority priority = Priority.get(level);
-		String priorityStr = priority != null ? priority.toString() : String.valueOf(level);
+		
+		// Don't display labels with invalid level (< 0)
+		if (level < 0) {
+			return getString("_UI_EdgeLabel_type") + " (invalid)";
+		}
+		
+		// Direct mapping from graph level (0-4) to Level enum (0-4)
+		Level levelEnum = Level.get(level);
+		String levelStr = levelEnum != null ? levelEnum.toString() : String.valueOf(level);
 		
 		if (label == null || label.length() == 0) {
-			return getString("_UI_EdgeLabel_type") + " (" + priorityStr + ")";
+			return getString("_UI_EdgeLabel_type") + " (" + levelStr + ")";
 		} else {
-			return getString("_UI_EdgeLabel_type") + " " + label + " (" + priorityStr + ")";
+			return getString("_UI_EdgeLabel_type") + " " + label + " (" + levelStr + ")";
 		}
 	}
 

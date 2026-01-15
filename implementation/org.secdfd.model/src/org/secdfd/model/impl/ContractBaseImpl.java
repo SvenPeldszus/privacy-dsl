@@ -239,7 +239,7 @@ public abstract class ContractBaseImpl extends MinimalEObjectImpl.Container impl
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newProcess != null)
-				msgs = ((InternalEObject)newProcess).eInverseAdd(this, ModelPackage.PROCESS__RESPONSIBILITY, org.secdfd.model.Process.class, msgs);
+				msgs = ((InternalEObject)newProcess).eInverseAdd(this, ModelPackage.PROCESS__CONTRACT, org.secdfd.model.Process.class, msgs);
 			msgs = basicSetProcess(newProcess, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -299,7 +299,7 @@ public abstract class ContractBaseImpl extends MinimalEObjectImpl.Container impl
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case ModelPackage.CONTRACT_BASE__PROCESS:
-				return eInternalContainer().eInverseRemove(this, ModelPackage.PROCESS__RESPONSIBILITY, org.secdfd.model.Process.class, msgs);
+				return eInternalContainer().eInverseRemove(this, ModelPackage.PROCESS__CONTRACT, org.secdfd.model.Process.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}

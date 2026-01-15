@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.secdfd.model.ClassificationContract;
+import org.secdfd.model.Level;
 import org.secdfd.model.ModelPackage;
-import org.secdfd.model.Priority;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ public class ClassificationContractImpl extends ContractBaseImpl implements Clas
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Priority PCLASS_EDEFAULT = Priority.L;
+	protected static final Level PCLASS_EDEFAULT = Level.L;
 
 	/**
 	 * The cached value of the '{@link #getPClass() <em>PClass</em>}' attribute.
@@ -44,7 +44,7 @@ public class ClassificationContractImpl extends ContractBaseImpl implements Clas
 	 * @generated
 	 * @ordered
 	 */
-	protected Priority pClass = PCLASS_EDEFAULT;
+	protected Level pClass = PCLASS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,7 +71,7 @@ public class ClassificationContractImpl extends ContractBaseImpl implements Clas
 	 * @generated
 	 */
 	@Override
-	public Priority getPClass() {
+	public Level getPClass() {
 		return pClass;
 	}
 
@@ -81,8 +81,8 @@ public class ClassificationContractImpl extends ContractBaseImpl implements Clas
 	 * @generated
 	 */
 	@Override
-	public void setPClass(Priority newPClass) {
-		Priority oldPClass = pClass;
+	public void setPClass(Level newPClass) {
+		Level oldPClass = pClass;
 		pClass = newPClass == null ? PCLASS_EDEFAULT : newPClass;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CLASSIFICATION_CONTRACT__PCLASS, oldPClass, pClass));
@@ -111,7 +111,7 @@ public class ClassificationContractImpl extends ContractBaseImpl implements Clas
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ModelPackage.CLASSIFICATION_CONTRACT__PCLASS:
-				setPClass((Priority)newValue);
+				setPClass((Level)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

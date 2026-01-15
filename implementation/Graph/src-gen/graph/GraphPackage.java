@@ -369,31 +369,58 @@ public interface GraphPackage extends EPackage {
 	int NODE__ATTACKER = IDENTIFIABLE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Trust Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__TRUST_FACTOR = IDENTIFIABLE_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 7;
+	int NODE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 8;
 
 	/**
-	 * The operation id for the '<em>Prediction Semantic Constraint</em>' operation.
+	 * The operation id for the '<em>Privacy Policy Violation Strong</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE___PREDICTION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 0;
+	int NODE___PRIVACY_POLICY_VIOLATION_STRONG__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Store Semantic Constraint</em>' operation.
+	 * The operation id for the '<em>Privacy Policy Violation Weak</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE___STORE_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 1;
+	int NODE___PRIVACY_POLICY_VIOLATION_WEAK__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Classification Semantic Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___CLASSIFICATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Joiner Semantic Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___JOINER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Discarder Semantic Constraint</em>' operation.
@@ -402,34 +429,16 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE___DISCARDER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 2;
+	int NODE___DISCARDER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 4;
 
 	/**
-	 * The operation id for the '<em>User Semantic Constraint</em>' operation.
+	 * The operation id for the '<em>Authenticator Semantic Constraint</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE___USER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 3;
-
-	/**
-	 * The operation id for the '<em>Copier Semantic Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE___COPIER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 4;
-
-	/**
-	 * The operation id for the '<em>Clustering Semantic Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE___CLUSTERING_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 5;
+	int NODE___AUTHENTICATOR_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Forward Semantic Constraint</em>' operation.
@@ -441,94 +450,22 @@ public interface GraphPackage extends EPackage {
 	int NODE___FORWARD_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 6;
 
 	/**
-	 * The operation id for the '<em>Verifier Semantic Constraint</em>' operation.
+	 * The operation id for the '<em>User Semantic Constraint</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE___VERIFIER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 7;
+	int NODE___USER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 7;
 
 	/**
-	 * The operation id for the '<em>Data Generation Semantic Constraint</em>' operation.
+	 * The operation id for the '<em>Privacy Policy Violation Medium</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE___DATA_GENERATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 8;
-
-	/**
-	 * The operation id for the '<em>Dimensionality Reduction Semantic Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE___DIMENSIONALITY_REDUCTION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 9;
-
-	/**
-	 * The operation id for the '<em>Splitter Semantic Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE___SPLITTER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 10;
-
-	/**
-	 * The operation id for the '<em>Joiner Semantic Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE___JOINER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 11;
-
-	/**
-	 * The operation id for the '<em>Decrypt Semantic Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE___DECRYPT_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 12;
-
-	/**
-	 * The operation id for the '<em>Authenticator Semantic Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE___AUTHENTICATOR_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 13;
-
-	/**
-	 * The operation id for the '<em>Classification Semantic Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE___CLASSIFICATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 14;
-
-	/**
-	 * The operation id for the '<em>Attacker Observation Violation</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE___ATTACKER_OBSERVATION_VIOLATION__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 15;
-
-	/**
-	 * The operation id for the '<em>Decision Making Semantic Constraint</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE___DECISION_MAKING_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 16;
+	int NODE___PRIVACY_POLICY_VIOLATION_MEDIUM__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>Encrypt Semantic Constraint</em>' operation.
@@ -537,16 +474,52 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE___ENCRYPT_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 17;
+	int NODE___ENCRYPT_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 9;
 
 	/**
-	 * The operation id for the '<em>Business Semantic Constraint</em>' operation.
+	 * The operation id for the '<em>Verifier Semantic Constraint</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE___BUSINESS_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 18;
+	int NODE___VERIFIER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 10;
+
+	/**
+	 * The operation id for the '<em>Attacker Observation Violation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___ATTACKER_OBSERVATION_VIOLATION__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 11;
+
+	/**
+	 * The operation id for the '<em>Clustering Semantic Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___CLUSTERING_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 12;
+
+	/**
+	 * The operation id for the '<em>Copier Semantic Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___COPIER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 13;
+
+	/**
+	 * The operation id for the '<em>Dimensionality Reduction Semantic Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___DIMENSIONALITY_REDUCTION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 14;
 
 	/**
 	 * The operation id for the '<em>Recommendation Semantic Constraint</em>' operation.
@@ -555,7 +528,70 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE___RECOMMENDATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 19;
+	int NODE___RECOMMENDATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 15;
+
+	/**
+	 * The operation id for the '<em>Splitter Semantic Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___SPLITTER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 16;
+
+	/**
+	 * The operation id for the '<em>Business Semantic Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___BUSINESS_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 17;
+
+	/**
+	 * The operation id for the '<em>Decrypt Semantic Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___DECRYPT_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 18;
+
+	/**
+	 * The operation id for the '<em>Decision Making Semantic Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___DECISION_MAKING_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 19;
+
+	/**
+	 * The operation id for the '<em>Prediction Semantic Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___PREDICTION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 20;
+
+	/**
+	 * The operation id for the '<em>Data Generation Semantic Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___DATA_GENERATION_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 21;
+
+	/**
+	 * The operation id for the '<em>Store Semantic Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE___STORE_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 22;
 
 	/**
 	 * The operation id for the '<em>Comparator Semantic Constraint</em>' operation.
@@ -564,7 +600,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE___COMPARATOR_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 20;
+	int NODE___COMPARATOR_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = IDENTIFIABLE_OPERATION_COUNT + 23;
 
 	/**
 	 * The number of operations of the '<em>Node</em>' class.
@@ -573,7 +609,7 @@ public interface GraphPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_OPERATION_COUNT = IDENTIFIABLE_OPERATION_COUNT + 21;
+	int NODE_OPERATION_COUNT = IDENTIFIABLE_OPERATION_COUNT + 24;
 
 	/**
 	 * The meta object id for the '{@link graph.impl.SubgraphsImpl <em>Subgraphs</em>}' class.
@@ -668,13 +704,13 @@ public interface GraphPackage extends EPackage {
 	int NODE_RESPONSIBILITY__NUMBER = IDENTIFIABLE__NUMBER;
 
 	/**
-	 * The feature id for the '<em><b>Task</b></em>' attribute list.
+	 * The feature id for the '<em><b>Contract Types</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_RESPONSIBILITY__TASK = IDENTIFIABLE_FEATURE_COUNT + 0;
+	int NODE_RESPONSIBILITY__CONTRACT_TYPES = IDENTIFIABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Outgoingassets</b></em>' reference list.
@@ -1146,6 +1182,37 @@ public interface GraphPackage extends EPackage {
 	EAttribute getNode_Attacker();
 
 	/**
+	 * Returns the meta object for the attribute '{@link graph.Node#getTrustFactor <em>Trust Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Trust Factor</em>'.
+	 * @see graph.Node#getTrustFactor()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_TrustFactor();
+
+	/**
+	 * Returns the meta object for the '{@link graph.Node#PrivacyPolicyViolationStrong(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Privacy Policy Violation Strong</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Privacy Policy Violation Strong</em>' operation.
+	 * @see graph.Node#PrivacyPolicyViolationStrong(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getNode__PrivacyPolicyViolationStrong__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link graph.Node#PrivacyPolicyViolationWeak(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Privacy Policy Violation Weak</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Privacy Policy Violation Weak</em>' operation.
+	 * @see graph.Node#PrivacyPolicyViolationWeak(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getNode__PrivacyPolicyViolationWeak__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for the '{@link graph.Node#PredictionSemanticConstraint(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Prediction Semantic Constraint</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1356,6 +1423,16 @@ public interface GraphPackage extends EPackage {
 	EOperation getNode__UserSemanticConstraint__DiagnosticChain_Map();
 
 	/**
+	 * Returns the meta object for the '{@link graph.Node#PrivacyPolicyViolationMedium(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Privacy Policy Violation Medium</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Privacy Policy Violation Medium</em>' operation.
+	 * @see graph.Node#PrivacyPolicyViolationMedium(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getNode__PrivacyPolicyViolationMedium__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link graph.Subgraphs <em>Subgraphs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1398,15 +1475,15 @@ public interface GraphPackage extends EPackage {
 	EClass getNodeResponsibility();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link graph.NodeResponsibility#getTask <em>Task</em>}'.
+	 * Returns the meta object for the attribute list '{@link graph.NodeResponsibility#getContractTypes <em>Contract Types</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Task</em>'.
-	 * @see graph.NodeResponsibility#getTask()
+	 * @return the meta object for the attribute list '<em>Contract Types</em>'.
+	 * @see graph.NodeResponsibility#getContractTypes()
 	 * @see #getNodeResponsibility()
 	 * @generated
 	 */
-	EAttribute getNodeResponsibility_Task();
+	EAttribute getNodeResponsibility_ContractTypes();
 
 	/**
 	 * Returns the meta object for the reference list '{@link graph.NodeResponsibility#getOutgoingassets <em>Outgoingassets</em>}'.
@@ -1731,6 +1808,30 @@ public interface GraphPackage extends EPackage {
 		EAttribute NODE__ATTACKER = eINSTANCE.getNode_Attacker();
 
 		/**
+		 * The meta object literal for the '<em><b>Trust Factor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__TRUST_FACTOR = eINSTANCE.getNode_TrustFactor();
+
+		/**
+		 * The meta object literal for the '<em><b>Privacy Policy Violation Strong</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE___PRIVACY_POLICY_VIOLATION_STRONG__DIAGNOSTICCHAIN_MAP = eINSTANCE.getNode__PrivacyPolicyViolationStrong__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Privacy Policy Violation Weak</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE___PRIVACY_POLICY_VIOLATION_WEAK__DIAGNOSTICCHAIN_MAP = eINSTANCE.getNode__PrivacyPolicyViolationWeak__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '<em><b>Prediction Semantic Constraint</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1899,6 +2000,14 @@ public interface GraphPackage extends EPackage {
 		EOperation NODE___USER_SEMANTIC_CONSTRAINT__DIAGNOSTICCHAIN_MAP = eINSTANCE.getNode__UserSemanticConstraint__DiagnosticChain_Map();
 
 		/**
+		 * The meta object literal for the '<em><b>Privacy Policy Violation Medium</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation NODE___PRIVACY_POLICY_VIOLATION_MEDIUM__DIAGNOSTICCHAIN_MAP = eINSTANCE.getNode__PrivacyPolicyViolationMedium__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link graph.impl.SubgraphsImpl <em>Subgraphs</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1935,12 +2044,12 @@ public interface GraphPackage extends EPackage {
 		EClass NODE_RESPONSIBILITY = eINSTANCE.getNodeResponsibility();
 
 		/**
-		 * The meta object literal for the '<em><b>Task</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Contract Types</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NODE_RESPONSIBILITY__TASK = eINSTANCE.getNodeResponsibility_Task();
+		EAttribute NODE_RESPONSIBILITY__CONTRACT_TYPES = eINSTANCE.getNodeResponsibility_ContractTypes();
 
 		/**
 		 * The meta object literal for the '<em><b>Outgoingassets</b></em>' reference list feature.

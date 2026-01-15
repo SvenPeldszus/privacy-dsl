@@ -40,7 +40,7 @@ import org.eclipse.viatra.query.runtime.matchers.tuple.Tuple;
 import org.eclipse.viatra.query.runtime.matchers.tuple.Tuples;
 import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
 import org.secdfd.model.Asset;
-import org.secdfd.model.Priority;
+import org.secdfd.model.Level;
 
 /**
  * A pattern-specific query specification that can instantiate Matcher in a type-safe way.
@@ -49,8 +49,8 @@ import org.secdfd.model.Priority;
  *         <code><pre>
  *         generic relations between an Asset and the information in its Value list 
  *         
- *         pattern assetWithPriority(a : Asset, pr : Priority) {
- *             Asset.value.Priority(a, pr);
+ *         pattern assetWithPriority(a : Asset, pr : Level) {
+ *             Asset.value.Level(a, pr);
  *         }
  * </pre></code>
  * 
@@ -77,11 +77,11 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
   public static abstract class Match extends BasePatternMatch {
     private Asset fA;
 
-    private Priority fPr;
+    private Level fPr;
 
     private static List<String> parameterNames = makeImmutableList("a", "pr");
 
-    private Match(final Asset pA, final Priority pPr) {
+    private Match(final Asset pA, final Level pPr) {
       this.fA = pA;
       this.fPr = pPr;
     }
@@ -108,7 +108,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
       return this.fA;
     }
 
-    public Priority getPr() {
+    public Level getPr() {
       return this.fPr;
     }
 
@@ -120,7 +120,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
           return true;
       }
       if ("pr".equals(parameterName) ) {
-          this.fPr = (Priority) newValue;
+          this.fPr = (Level) newValue;
           return true;
       }
       return false;
@@ -131,7 +131,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
       this.fA = pA;
     }
 
-    public void setPr(final Priority pPr) {
+    public void setPr(final Level pPr) {
       if (!isMutable()) throw new java.lang.UnsupportedOperationException();
       this.fPr = pPr;
     }
@@ -214,7 +214,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the new, mutable (partial) match object.
      * 
      */
-    public static AssetWithPriority.Match newMutableMatch(final Asset pA, final Priority pPr) {
+    public static AssetWithPriority.Match newMutableMatch(final Asset pA, final Level pPr) {
       return new Mutable(pA, pPr);
     }
 
@@ -227,12 +227,12 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the (partial) match object.
      * 
      */
-    public static AssetWithPriority.Match newMatch(final Asset pA, final Priority pPr) {
+    public static AssetWithPriority.Match newMatch(final Asset pA, final Level pPr) {
       return new Immutable(pA, pPr);
     }
 
     private static final class Mutable extends AssetWithPriority.Match {
-      Mutable(final Asset pA, final Priority pPr) {
+      Mutable(final Asset pA, final Level pPr) {
         super(pA, pPr);
       }
 
@@ -243,7 +243,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
     }
 
     private static final class Immutable extends AssetWithPriority.Match {
-      Immutable(final Asset pA, final Priority pPr) {
+      Immutable(final Asset pA, final Level pPr) {
         super(pA, pPr);
       }
 
@@ -267,8 +267,8 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
    * <code><pre>
    * generic relations between an Asset and the information in its Value list 
    * 
-   * pattern assetWithPriority(a : Asset, pr : Priority) {
-   *     Asset.value.Priority(a, pr);
+   * pattern assetWithPriority(a : Asset, pr : Level) {
+   *     Asset.value.Level(a, pr);
    * }
    * </pre></code>
    * 
@@ -330,7 +330,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return matches represented as a Match object.
      * 
      */
-    public Collection<AssetWithPriority.Match> getAllMatches(final Asset pA, final Priority pPr) {
+    public Collection<AssetWithPriority.Match> getAllMatches(final Asset pA, final Level pPr) {
       return rawStreamAllMatches(new Object[]{pA, pPr}).collect(Collectors.toSet());
     }
 
@@ -345,7 +345,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return a stream of matches represented as a Match object.
      * 
      */
-    public Stream<AssetWithPriority.Match> streamAllMatches(final Asset pA, final Priority pPr) {
+    public Stream<AssetWithPriority.Match> streamAllMatches(final Asset pA, final Level pPr) {
       return rawStreamAllMatches(new Object[]{pA, pPr});
     }
 
@@ -357,7 +357,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return a match represented as a Match object, or null if no match is found.
      * 
      */
-    public Optional<AssetWithPriority.Match> getOneArbitraryMatch(final Asset pA, final Priority pPr) {
+    public Optional<AssetWithPriority.Match> getOneArbitraryMatch(final Asset pA, final Level pPr) {
       return rawGetOneArbitraryMatch(new Object[]{pA, pPr});
     }
 
@@ -369,7 +369,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return true if the input is a valid (partial) match of the pattern.
      * 
      */
-    public boolean hasMatch(final Asset pA, final Priority pPr) {
+    public boolean hasMatch(final Asset pA, final Level pPr) {
       return rawHasMatch(new Object[]{pA, pPr});
     }
 
@@ -380,7 +380,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the number of pattern matches found.
      * 
      */
-    public int countMatches(final Asset pA, final Priority pPr) {
+    public int countMatches(final Asset pA, final Level pPr) {
       return rawCountMatches(new Object[]{pA, pPr});
     }
 
@@ -391,7 +391,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @param processor the action that will process each pattern match.
      * 
      */
-    public void forEachMatch(final Asset pA, final Priority pPr, final Consumer<? super AssetWithPriority.Match> processor) {
+    public void forEachMatch(final Asset pA, final Level pPr, final Consumer<? super AssetWithPriority.Match> processor) {
       rawForEachMatch(new Object[]{pA, pPr}, processor);
     }
 
@@ -404,7 +404,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return true if the pattern has at least one match with the given parameter values, false if the processor was not invoked
      * 
      */
-    public boolean forOneArbitraryMatch(final Asset pA, final Priority pPr, final Consumer<? super AssetWithPriority.Match> processor) {
+    public boolean forOneArbitraryMatch(final Asset pA, final Level pPr, final Consumer<? super AssetWithPriority.Match> processor) {
       return rawForOneArbitraryMatch(new Object[]{pA, pPr}, processor);
     }
 
@@ -417,7 +417,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the (partial) match object.
      * 
      */
-    public AssetWithPriority.Match newMatch(final Asset pA, final Priority pPr) {
+    public AssetWithPriority.Match newMatch(final Asset pA, final Level pPr) {
       return AssetWithPriority.Match.newMatch(pA, pPr);
     }
 
@@ -472,7 +472,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the Stream of all values or empty set if there are no matches
      * 
      */
-    public Stream<Asset> streamAllValuesOfa(final Priority pPr) {
+    public Stream<Asset> streamAllValuesOfa(final Level pPr) {
       return rawStreamAllValuesOfa(new Object[]{null, pPr});
     }
 
@@ -490,7 +490,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the Set of all values or empty set if there are no matches
      * 
      */
-    public Set<Asset> getAllValuesOfa(final Priority pPr) {
+    public Set<Asset> getAllValuesOfa(final Level pPr) {
       return rawStreamAllValuesOfa(new Object[]{null, pPr}).collect(Collectors.toSet());
     }
 
@@ -499,8 +499,8 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the Set of all values or empty set if there are no matches
      * 
      */
-    protected Stream<Priority> rawStreamAllValuesOfpr(final Object[] parameters) {
-      return rawStreamAllValues(POSITION_PR, parameters).map(Priority.class::cast);
+    protected Stream<Level> rawStreamAllValuesOfpr(final Object[] parameters) {
+      return rawStreamAllValues(POSITION_PR, parameters).map(Level.class::cast);
     }
 
     /**
@@ -508,7 +508,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the Set of all values or empty set if there are no matches
      * 
      */
-    public Set<Priority> getAllValuesOfpr() {
+    public Set<Level> getAllValuesOfpr() {
       return rawStreamAllValuesOfpr(emptyArray()).collect(Collectors.toSet());
     }
 
@@ -517,7 +517,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the Set of all values or empty set if there are no matches
      * 
      */
-    public Stream<Priority> streamAllValuesOfpr() {
+    public Stream<Level> streamAllValuesOfpr() {
       return rawStreamAllValuesOfpr(emptyArray());
     }
 
@@ -531,7 +531,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the Stream of all values or empty set if there are no matches
      * 
      */
-    public Stream<Priority> streamAllValuesOfpr(final AssetWithPriority.Match partialMatch) {
+    public Stream<Level> streamAllValuesOfpr(final AssetWithPriority.Match partialMatch) {
       return rawStreamAllValuesOfpr(partialMatch.toArray());
     }
 
@@ -545,7 +545,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the Stream of all values or empty set if there are no matches
      * 
      */
-    public Stream<Priority> streamAllValuesOfpr(final Asset pA) {
+    public Stream<Level> streamAllValuesOfpr(final Asset pA) {
       return rawStreamAllValuesOfpr(new Object[]{pA, null});
     }
 
@@ -554,7 +554,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the Set of all values or empty set if there are no matches
      * 
      */
-    public Set<Priority> getAllValuesOfpr(final AssetWithPriority.Match partialMatch) {
+    public Set<Level> getAllValuesOfpr(final AssetWithPriority.Match partialMatch) {
       return rawStreamAllValuesOfpr(partialMatch.toArray()).collect(Collectors.toSet());
     }
 
@@ -563,14 +563,14 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @return the Set of all values or empty set if there are no matches
      * 
      */
-    public Set<Priority> getAllValuesOfpr(final Asset pA) {
+    public Set<Level> getAllValuesOfpr(final Asset pA) {
       return rawStreamAllValuesOfpr(new Object[]{pA, null}).collect(Collectors.toSet());
     }
 
     @Override
     protected AssetWithPriority.Match tupleToMatch(final Tuple t) {
       try {
-          return AssetWithPriority.Match.newMatch((Asset) t.get(POSITION_A), (Priority) t.get(POSITION_PR));
+          return AssetWithPriority.Match.newMatch((Asset) t.get(POSITION_A), (Level) t.get(POSITION_PR));
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in tuple not properly typed!",e);
           return null;
@@ -580,7 +580,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
     @Override
     protected AssetWithPriority.Match arrayToMatch(final Object[] match) {
       try {
-          return AssetWithPriority.Match.newMatch((Asset) match[POSITION_A], (Priority) match[POSITION_PR]);
+          return AssetWithPriority.Match.newMatch((Asset) match[POSITION_A], (Level) match[POSITION_PR]);
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in array not properly typed!",e);
           return null;
@@ -590,7 +590,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
     @Override
     protected AssetWithPriority.Match arrayToMatchMutable(final Object[] match) {
       try {
-          return AssetWithPriority.Match.newMutableMatch((Asset) match[POSITION_A], (Priority) match[POSITION_PR]);
+          return AssetWithPriority.Match.newMutableMatch((Asset) match[POSITION_A], (Level) match[POSITION_PR]);
       } catch(ClassCastException e) {
           LOGGER.error("Element(s) in array not properly typed!",e);
           return null;
@@ -620,7 +620,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
      * @param pPr the value of pattern parameter pr in the currently processed match
      * 
      */
-    public abstract void accept(final Asset pA, final Priority pPr);
+    public abstract void accept(final Asset pA, final Level pPr);
 
     @Override
     public void accept(final AssetWithPriority.Match match) {
@@ -662,7 +662,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
 
   @Override
   public AssetWithPriority.Match newMatch(final Object... parameters) {
-    return AssetWithPriority.Match.newMatch((Asset) parameters[0], (Priority) parameters[1]);
+    return AssetWithPriority.Match.newMatch((Asset) parameters[0], (Level) parameters[1]);
   }
 
   /**
@@ -696,7 +696,7 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
 
     private final PParameter parameter_a = new PParameter("a", "org.secdfd.model.Asset", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.secdfd.org/secdfd", "Asset")), PParameterDirection.INOUT);
 
-    private final PParameter parameter_pr = new PParameter("pr", "org.secdfd.model.Priority", new EDataTypeInSlotsKey((EDataType)getClassifierLiteralSafe("http://www.secdfd.org/secdfd", "Priority")), PParameterDirection.INOUT);
+    private final PParameter parameter_pr = new PParameter("pr", "org.secdfd.model.Level", new EDataTypeInSlotsKey((EDataType)getClassifierLiteralSafe("http://www.secdfd.org/secdfd", "Level")), PParameterDirection.INOUT);
 
     private final List<PParameter> parameters = Arrays.asList(parameter_a, parameter_pr);
 
@@ -728,19 +728,19 @@ public final class AssetWithPriority extends BaseGeneratedEMFQuerySpecification<
           PVariable var_a = body.getOrCreateVariableByName("a");
           PVariable var_pr = body.getOrCreateVariableByName("pr");
           new TypeConstraint(body, Tuples.flatTupleOf(var_a), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Asset")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_pr), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "Priority")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_pr), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "Level")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_a, parameter_a),
              new ExportedParameter(body, var_pr, parameter_pr)
           ));
-          //     Asset.value.Priority(a, pr)
+          //     Asset.value.Level(a, pr)
           new TypeConstraint(body, Tuples.flatTupleOf(var_a), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Asset")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
           new TypeConstraint(body, Tuples.flatTupleOf(var_a, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Asset", "value")));
           new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.secdfd.org/secdfd", "Value")));
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Value", "Priority")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "Priority")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.secdfd.org/secdfd", "Value", "Level")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.secdfd.org/secdfd", "Level")));
           new Equality(body, var__virtual_1_, var_pr);
           bodies.add(body);
       }

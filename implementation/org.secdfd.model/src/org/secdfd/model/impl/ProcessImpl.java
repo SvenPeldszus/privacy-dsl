@@ -25,22 +25,21 @@ import org.secdfd.model.ModelPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.secdfd.model.impl.ProcessImpl#getResponsibility <em>Responsibility</em>}</li>
+ *   <li>{@link org.secdfd.model.impl.ProcessImpl#getContract <em>Contract</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ProcessImpl extends ElementImpl implements org.secdfd.model.Process {
 	/**
-	 * The cached value of the '{@link #getResponsibility() <em>Responsibility</em>}' containment reference list.
+	 * The cached value of the '{@link #getContract() <em>Contract</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResponsibility()
+	 * @see #getContract()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ContractBase> responsibility;
-
+	protected EList<ContractBase> contract;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66,11 +65,11 @@ public class ProcessImpl extends ElementImpl implements org.secdfd.model.Process
 	 * @generated
 	 */
 	@Override
-	public EList<ContractBase> getResponsibility() {
-		if (responsibility == null) {
-			responsibility = new EObjectContainmentWithInverseEList<ContractBase>(ContractBase.class, this, ModelPackage.PROCESS__RESPONSIBILITY, ModelPackage.CONTRACT_BASE__PROCESS);
+	public EList<ContractBase> getContract() {
+		if (contract == null) {
+			contract = new EObjectContainmentWithInverseEList<ContractBase>(ContractBase.class, this, ModelPackage.PROCESS__CONTRACT, ModelPackage.CONTRACT_BASE__PROCESS);
 		}
-		return responsibility;
+		return contract;
 	}
 
 	/**
@@ -82,8 +81,8 @@ public class ProcessImpl extends ElementImpl implements org.secdfd.model.Process
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ModelPackage.PROCESS__RESPONSIBILITY:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getResponsibility()).basicAdd(otherEnd, msgs);
+			case ModelPackage.PROCESS__CONTRACT:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getContract()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -96,8 +95,8 @@ public class ProcessImpl extends ElementImpl implements org.secdfd.model.Process
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ModelPackage.PROCESS__RESPONSIBILITY:
-				return ((InternalEList<?>)getResponsibility()).basicRemove(otherEnd, msgs);
+			case ModelPackage.PROCESS__CONTRACT:
+				return ((InternalEList<?>)getContract()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -110,8 +109,8 @@ public class ProcessImpl extends ElementImpl implements org.secdfd.model.Process
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ModelPackage.PROCESS__RESPONSIBILITY:
-				return getResponsibility();
+			case ModelPackage.PROCESS__CONTRACT:
+				return getContract();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -125,9 +124,9 @@ public class ProcessImpl extends ElementImpl implements org.secdfd.model.Process
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ModelPackage.PROCESS__RESPONSIBILITY:
-				getResponsibility().clear();
-				getResponsibility().addAll((Collection<? extends ContractBase>)newValue);
+			case ModelPackage.PROCESS__CONTRACT:
+				getContract().clear();
+				getContract().addAll((Collection<? extends ContractBase>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -141,8 +140,8 @@ public class ProcessImpl extends ElementImpl implements org.secdfd.model.Process
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ModelPackage.PROCESS__RESPONSIBILITY:
-				getResponsibility().clear();
+			case ModelPackage.PROCESS__CONTRACT:
+				getContract().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -156,8 +155,8 @@ public class ProcessImpl extends ElementImpl implements org.secdfd.model.Process
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ModelPackage.PROCESS__RESPONSIBILITY:
-				return responsibility != null && !responsibility.isEmpty();
+			case ModelPackage.PROCESS__CONTRACT:
+				return contract != null && !contract.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

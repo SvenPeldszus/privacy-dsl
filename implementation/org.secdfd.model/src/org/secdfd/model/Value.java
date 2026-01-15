@@ -2,8 +2,6 @@
  */
 package org.secdfd.model;
 
-import java.util.Map;
-import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,11 +14,11 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.secdfd.model.Value#getObjective <em>Objective</em>}</li>
- *   <li>{@link org.secdfd.model.Value#getPriority <em>Priority</em>}</li>
+ *   <li>{@link org.secdfd.model.Value#getLevel <em>Level</em>}</li>
  * </ul>
  *
  * @see org.secdfd.model.ModelPackage#getValue()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='constraint_1'"
+ * @model
  * @generated
  */
 public interface Value extends EObject {
@@ -50,37 +48,29 @@ public interface Value extends EObject {
 	void setObjective(Objective value);
 
 	/**
-	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
+	 * Returns the value of the '<em><b>Level</b></em>' attribute.
 	 * The default value is <code>"H"</code>.
-	 * The literals are from the enumeration {@link org.secdfd.model.Priority}.
+	 * The literals are from the enumeration {@link org.secdfd.model.Level}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Priority</em>' attribute.
-	 * @see org.secdfd.model.Priority
-	 * @see #setPriority(Priority)
-	 * @see org.secdfd.model.ModelPackage#getValue_Priority()
+	 * @return the value of the '<em>Level</em>' attribute.
+	 * @see org.secdfd.model.Level
+	 * @see #setLevel(Level)
+	 * @see org.secdfd.model.ModelPackage#getValue_Level()
 	 * @model default="H"
 	 * @generated
 	 */
-	Priority getPriority();
+	Level getLevel();
 
 	/**
-	 * Sets the value of the '{@link org.secdfd.model.Value#getPriority <em>Priority</em>}' attribute.
+	 * Sets the value of the '{@link org.secdfd.model.Value#getLevel <em>Level</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Priority</em>' attribute.
-	 * @see org.secdfd.model.Priority
-	 * @see #getPriority()
+	 * @param value the new value of the '<em>Level</em>' attribute.
+	 * @see org.secdfd.model.Level
+	 * @see #getLevel()
 	 * @generated
 	 */
-	void setPriority(Priority value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='Tuple {\n\tmessage : String = \'Privacy as objective can only have a high or low priority.\',\n\tstatus : Boolean = \n\t\t\tself.Objective = Objective::Privacy implies (self.Priority = Priority::H or self.Priority = Priority::L)\n}.status'"
-	 * @generated
-	 */
-	boolean constraint_1(DiagnosticChain diagnostics, Map<Object, Object> context);
+	void setLevel(Level value);
 
 } // Value
