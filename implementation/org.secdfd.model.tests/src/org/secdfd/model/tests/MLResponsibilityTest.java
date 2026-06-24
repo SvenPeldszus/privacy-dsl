@@ -5,7 +5,6 @@ package org.secdfd.model.tests;
 import junit.textui.TestRunner;
 
 import org.secdfd.model.MLContract;
-import org.secdfd.model.ModelFactory;
 
 /**
  * <!-- begin-user-doc -->

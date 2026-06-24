@@ -13,6 +13,6 @@ Require-Bundle: org.eclipse.viatra.transformation.runtime.emf,
  org.eclipse.xtext.xbase.lib,
  Traceability;bundle-version="0.1.0",
  Graph;bundle-version="0.1.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Import-Package: org.apache.log4j
 Automatic-Module-Name: eDFD_to_SimpleGraph

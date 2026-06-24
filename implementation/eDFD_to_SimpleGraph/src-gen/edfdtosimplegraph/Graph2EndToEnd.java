@@ -14,7 +14,6 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.annotation.Generated;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.viatra.query.runtime.api.IPatternMatch;
@@ -63,7 +62,6 @@ import traceability.GraphEndToEndTrace;
  * 
  */
 @SuppressWarnings("all")
-@Generated("org.eclipse.xtext.xbase.compiler.JvmModelGenerator")
 public final class Graph2EndToEnd extends BaseGeneratedEMFQuerySpecification<Graph2EndToEnd.Matcher> {
   /**
    * Pattern-specific match representation of the edfdtosimplegraph.Graph2EndToEnd pattern,

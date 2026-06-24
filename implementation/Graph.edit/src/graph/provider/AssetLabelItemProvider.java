@@ -12,7 +12,6 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import org.secdfd.model.Objective;
 import org.secdfd.model.Level;
 
 /**

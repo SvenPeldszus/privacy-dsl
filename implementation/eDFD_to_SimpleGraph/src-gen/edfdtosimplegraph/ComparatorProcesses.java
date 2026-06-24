@@ -13,7 +13,6 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.annotation.Generated;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -71,7 +70,6 @@ import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
  * 
  */
 @SuppressWarnings("all")
-@Generated("org.eclipse.xtext.xbase.compiler.JvmModelGenerator")
 public final class ComparatorProcesses extends BaseGeneratedEMFQuerySpecification<ComparatorProcesses.Matcher> {
   /**
    * Pattern-specific match representation of the edfdtosimplegraph.comparatorProcesses pattern,

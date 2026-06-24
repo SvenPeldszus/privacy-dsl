@@ -13,7 +13,6 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.annotation.Generated;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -57,7 +56,6 @@ import org.secdfd.model.Objective;
  * 
  */
 @SuppressWarnings("all")
-@Generated("org.eclipse.xtext.xbase.compiler.JvmModelGenerator")
 public final class AssetWithObjective extends BaseGeneratedEMFQuerySpecification<AssetWithObjective.Matcher> {
   /**
    * Pattern-specific match representation of the edfdtosimplegraph.assetWithObjective pattern,

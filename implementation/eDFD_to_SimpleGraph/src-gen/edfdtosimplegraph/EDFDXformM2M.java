@@ -3,7 +3,6 @@
  */
 package edfdtosimplegraph;
 
-import javax.annotation.Generated;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
 
@@ -48,7 +47,6 @@ import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
  * 
  */
 @SuppressWarnings("all")
-@Generated("org.eclipse.xtext.xbase.compiler.JvmModelGenerator")
 public final class EDFDXformM2M extends BaseGeneratedPatternGroup {
   /**
    * Access the pattern group.

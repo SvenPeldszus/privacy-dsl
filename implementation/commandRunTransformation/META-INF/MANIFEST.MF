@@ -10,4 +10,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.commands,
  eDFD_to_SimpleGraph;bundle-version="0.0.1"
 Automatic-Module-Name: commandRunTransformation
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-21

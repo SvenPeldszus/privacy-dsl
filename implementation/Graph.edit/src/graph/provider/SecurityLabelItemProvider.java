@@ -25,8 +25,6 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.secdfd.model.Objective;
-
 /**
  * This is the item provider adapter for a {@link graph.SecurityLabel} object.
  * <!-- begin-user-doc -->

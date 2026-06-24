@@ -51,7 +51,7 @@ Workflow {
 				generateDeprecationValidation = true
 			}
 			junitSupport = {
-				junitVersion = "5"
+				junitVersion = "6"
 				generateXtendStub = false
 			}
 		}
