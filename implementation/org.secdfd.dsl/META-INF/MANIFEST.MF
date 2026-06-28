@@ -12,16 +12,15 @@ Require-Bundle: org.secdfd.model,
  org.eclipse.equinox.common;bundle-version="3.16.0",
  org.eclipse.xtext.xbase.lib;bundle-version="2.37.0",
  org.eclipse.xtend.lib;bundle-version="2.37.0",
- org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
- org.gravity.typegraph.basic
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
-Export-Package: org.secdfd.dsl,
- org.secdfd.dsl.formatting2,
+Export-Package: org.secdfd.dsl.formatting2,
  org.secdfd.dsl.generator,
- org.secdfd.dsl.scoping,
- org.secdfd.dsl.validation,
  org.secdfd.dsl.parser.antlr,
+ org.secdfd.dsl.scoping,
  org.secdfd.dsl.parser.antlr.internal,
+ org.secdfd.dsl,
+ org.secdfd.dsl.validation,
  org.secdfd.dsl.services,
  org.secdfd.dsl.serializer
 Import-Package: org.apache.log4j
