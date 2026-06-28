@@ -97,4 +97,3 @@ public class ClusteringContractItemProvider extends ContractBaseItemProvider {
 	}
 
 }
-

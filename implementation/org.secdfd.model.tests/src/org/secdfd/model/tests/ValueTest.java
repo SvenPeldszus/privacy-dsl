@@ -17,10 +17,6 @@ import org.secdfd.model.Value;
  */
 public class ValueTest extends TestCase {
 
-	public void test() {
-		//TODO: Implement test here
-	}
-
 	/**
 	 * The fixture for this Value test case.
 	 * <!-- begin-user-doc -->

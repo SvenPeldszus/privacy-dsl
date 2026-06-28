@@ -143,7 +143,7 @@ public class ProcessItemProvider extends ElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(ModelPackage.Literals.PROCESS__CONTRACT,
-				 ModelFactory.eINSTANCE.createClassificationContract()));
+				 ModelFactory.eINSTANCE.createClassificationFixedContract()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -153,27 +153,12 @@ public class ProcessItemProvider extends ElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(ModelPackage.Literals.PROCESS__CONTRACT,
-				 ModelFactory.eINSTANCE.createDecisionMakingContract()));
+				 ModelFactory.eINSTANCE.createClassificationVariableContract()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(ModelPackage.Literals.PROCESS__CONTRACT,
-				 ModelFactory.eINSTANCE.createRecommendationContract()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ModelPackage.Literals.PROCESS__CONTRACT,
-				 ModelFactory.eINSTANCE.createPredictionContract()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ModelPackage.Literals.PROCESS__CONTRACT,
-				 ModelFactory.eINSTANCE.createDimensionalityReductionContract()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ModelPackage.Literals.PROCESS__CONTRACT,
-				 ModelFactory.eINSTANCE.createDataGenerationContract()));
+				 ModelFactory.eINSTANCE.createTransformationContract()));
 	}
 
 }

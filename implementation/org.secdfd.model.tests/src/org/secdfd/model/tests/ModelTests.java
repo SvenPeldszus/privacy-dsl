@@ -15,10 +15,6 @@ import junit.textui.TestRunner;
  */
 public class ModelTests extends TestSuite {
 
-	public void test() {
-		//TODO: Implement test here
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

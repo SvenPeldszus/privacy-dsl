@@ -3,6 +3,7 @@
 package org.secdfd.model.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.SecurityContract;
 

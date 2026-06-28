@@ -1198,14 +1198,14 @@ public interface ModelPackage extends EPackage {
 	int SECURITY_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.secdfd.model.impl.ClassificationContractImpl <em>Classification Contract</em>}' class.
+	 * The meta object id for the '{@link org.secdfd.model.impl.ClassificationFixedContractImpl <em>Classification Fixed Contract</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.impl.ClassificationContractImpl
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getClassificationContract()
+	 * @see org.secdfd.model.impl.ClassificationFixedContractImpl
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getClassificationFixedContract()
 	 * @generated
 	 */
-	int CLASSIFICATION_CONTRACT = 14;
+	int CLASSIFICATION_FIXED_CONTRACT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1214,7 +1214,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSIFICATION_CONTRACT__NAME = CONTRACT_BASE__NAME;
+	int CLASSIFICATION_FIXED_CONTRACT__NAME = CONTRACT_BASE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Number</b></em>' attribute.
@@ -1223,7 +1223,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSIFICATION_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
+	int CLASSIFICATION_FIXED_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
@@ -1232,7 +1232,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSIFICATION_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
+	int CLASSIFICATION_FIXED_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
 
 	/**
 	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
@@ -1241,7 +1241,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSIFICATION_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
+	int CLASSIFICATION_FIXED_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
 
 	/**
 	 * The feature id for the '<em><b>Process</b></em>' container reference.
@@ -1250,7 +1250,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSIFICATION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
+	int CLASSIFICATION_FIXED_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
 
 	/**
 	 * The feature id for the '<em><b>Task</b></em>' attribute list.
@@ -1259,34 +1259,34 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSIFICATION_CONTRACT__TASK = CONTRACT_BASE__TASK;
+	int CLASSIFICATION_FIXED_CONTRACT__TASK = CONTRACT_BASE__TASK;
 
 	/**
-	 * The feature id for the '<em><b>PClass</b></em>' attribute.
+	 * The feature id for the '<em><b>PModel</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSIFICATION_CONTRACT__PCLASS = CONTRACT_BASE_FEATURE_COUNT + 0;
+	int CLASSIFICATION_FIXED_CONTRACT__PMODEL = CONTRACT_BASE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Classification Contract</em>' class.
+	 * The number of structural features of the '<em>Classification Fixed Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSIFICATION_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
+	int CLASSIFICATION_FIXED_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Classification Contract</em>' class.
+	 * The number of operations of the '<em>Classification Fixed Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSIFICATION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
+	int CLASSIFICATION_FIXED_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.impl.ClusteringContractImpl <em>Clustering Contract</em>}' class.
@@ -1371,14 +1371,14 @@ public interface ModelPackage extends EPackage {
 	int CLUSTERING_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.secdfd.model.impl.DecisionMakingContractImpl <em>Decision Making Contract</em>}' class.
+	 * The meta object id for the '{@link org.secdfd.model.impl.ClassificationVariableContractImpl <em>Classification Variable Contract</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.impl.DecisionMakingContractImpl
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getDecisionMakingContract()
+	 * @see org.secdfd.model.impl.ClassificationVariableContractImpl
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getClassificationVariableContract()
 	 * @generated
 	 */
-	int DECISION_MAKING_CONTRACT = 16;
+	int CLASSIFICATION_VARIABLE_CONTRACT = 16;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1387,7 +1387,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_MAKING_CONTRACT__NAME = CONTRACT_BASE__NAME;
+	int CLASSIFICATION_VARIABLE_CONTRACT__NAME = CONTRACT_BASE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Number</b></em>' attribute.
@@ -1396,7 +1396,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_MAKING_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
+	int CLASSIFICATION_VARIABLE_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
@@ -1405,7 +1405,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_MAKING_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
+	int CLASSIFICATION_VARIABLE_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
 
 	/**
 	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
@@ -1414,7 +1414,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_MAKING_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
+	int CLASSIFICATION_VARIABLE_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
 
 	/**
 	 * The feature id for the '<em><b>Process</b></em>' container reference.
@@ -1423,7 +1423,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_MAKING_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
+	int CLASSIFICATION_VARIABLE_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
 
 	/**
 	 * The feature id for the '<em><b>Task</b></em>' attribute list.
@@ -1432,44 +1432,35 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_MAKING_CONTRACT__TASK = CONTRACT_BASE__TASK;
+	int CLASSIFICATION_VARIABLE_CONTRACT__TASK = CONTRACT_BASE__TASK;
 
 	/**
-	 * The feature id for the '<em><b>PAction</b></em>' attribute.
+	 * The number of structural features of the '<em>Classification Variable Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_MAKING_CONTRACT__PACTION = CONTRACT_BASE_FEATURE_COUNT + 0;
+	int CLASSIFICATION_VARIABLE_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Decision Making Contract</em>' class.
+	 * The number of operations of the '<em>Classification Variable Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_MAKING_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
+	int CLASSIFICATION_VARIABLE_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Decision Making Contract</em>' class.
+	 * The meta object id for the '{@link org.secdfd.model.impl.TransformationContractImpl <em>Transformation Contract</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DECISION_MAKING_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.secdfd.model.impl.RecommendationContractImpl <em>Recommendation Contract</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.impl.RecommendationContractImpl
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getRecommendationContract()
+	 * @see org.secdfd.model.impl.TransformationContractImpl
+	 * @see org.secdfd.model.impl.ModelPackageImpl#getTransformationContract()
 	 * @generated
 	 */
-	int RECOMMENDATION_CONTRACT = 17;
+	int TRANSFORMATION_CONTRACT = 17;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1478,7 +1469,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECOMMENDATION_CONTRACT__NAME = CONTRACT_BASE__NAME;
+	int TRANSFORMATION_CONTRACT__NAME = CONTRACT_BASE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Number</b></em>' attribute.
@@ -1487,7 +1478,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECOMMENDATION_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
+	int TRANSFORMATION_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
@@ -1496,7 +1487,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECOMMENDATION_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
+	int TRANSFORMATION_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
 
 	/**
 	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
@@ -1505,7 +1496,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECOMMENDATION_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
+	int TRANSFORMATION_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
 
 	/**
 	 * The feature id for the '<em><b>Process</b></em>' container reference.
@@ -1514,7 +1505,7 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECOMMENDATION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
+	int TRANSFORMATION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
 
 	/**
 	 * The feature id for the '<em><b>Task</b></em>' attribute list.
@@ -1523,316 +1514,25 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECOMMENDATION_CONTRACT__TASK = CONTRACT_BASE__TASK;
+	int TRANSFORMATION_CONTRACT__TASK = CONTRACT_BASE__TASK;
 
 	/**
-	 * The feature id for the '<em><b>S</b></em>' attribute.
+	 * The number of structural features of the '<em>Transformation Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECOMMENDATION_CONTRACT__S = CONTRACT_BASE_FEATURE_COUNT + 0;
+	int TRANSFORMATION_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Recommendation Contract</em>' class.
+	 * The number of operations of the '<em>Transformation Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECOMMENDATION_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Recommendation Contract</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RECOMMENDATION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.secdfd.model.impl.PredictionContractImpl <em>Prediction Contract</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.impl.PredictionContractImpl
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getPredictionContract()
-	 * @generated
-	 */
-	int PREDICTION_CONTRACT = 18;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREDICTION_CONTRACT__NAME = CONTRACT_BASE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREDICTION_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
-
-	/**
-	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREDICTION_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
-
-	/**
-	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREDICTION_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
-
-	/**
-	 * The feature id for the '<em><b>Process</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREDICTION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
-
-	/**
-	 * The feature id for the '<em><b>Task</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREDICTION_CONTRACT__TASK = CONTRACT_BASE__TASK;
-
-	/**
-	 * The feature id for the '<em><b>S</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREDICTION_CONTRACT__S = CONTRACT_BASE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Prediction Contract</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREDICTION_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Prediction Contract</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PREDICTION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.secdfd.model.impl.DimensionalityReductionContractImpl <em>Dimensionality Reduction Contract</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.impl.DimensionalityReductionContractImpl
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getDimensionalityReductionContract()
-	 * @generated
-	 */
-	int DIMENSIONALITY_REDUCTION_CONTRACT = 19;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIMENSIONALITY_REDUCTION_CONTRACT__NAME = CONTRACT_BASE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIMENSIONALITY_REDUCTION_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
-
-	/**
-	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIMENSIONALITY_REDUCTION_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
-
-	/**
-	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIMENSIONALITY_REDUCTION_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
-
-	/**
-	 * The feature id for the '<em><b>Process</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIMENSIONALITY_REDUCTION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
-
-	/**
-	 * The feature id for the '<em><b>Task</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIMENSIONALITY_REDUCTION_CONTRACT__TASK = CONTRACT_BASE__TASK;
-
-	/**
-	 * The feature id for the '<em><b>K</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIMENSIONALITY_REDUCTION_CONTRACT__K = CONTRACT_BASE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Dimensionality Reduction Contract</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIMENSIONALITY_REDUCTION_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Dimensionality Reduction Contract</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIMENSIONALITY_REDUCTION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.secdfd.model.impl.DataGenerationContractImpl <em>Data Generation Contract</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.impl.DataGenerationContractImpl
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getDataGenerationContract()
-	 * @generated
-	 */
-	int DATA_GENERATION_CONTRACT = 20;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_GENERATION_CONTRACT__NAME = CONTRACT_BASE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_GENERATION_CONTRACT__NUMBER = CONTRACT_BASE__NUMBER;
-
-	/**
-	 * The feature id for the '<em><b>Incomeassets</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_GENERATION_CONTRACT__INCOMEASSETS = CONTRACT_BASE__INCOMEASSETS;
-
-	/**
-	 * The feature id for the '<em><b>Outcomeassets</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_GENERATION_CONTRACT__OUTCOMEASSETS = CONTRACT_BASE__OUTCOMEASSETS;
-
-	/**
-	 * The feature id for the '<em><b>Process</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_GENERATION_CONTRACT__PROCESS = CONTRACT_BASE__PROCESS;
-
-	/**
-	 * The feature id for the '<em><b>Task</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_GENERATION_CONTRACT__TASK = CONTRACT_BASE__TASK;
-
-	/**
-	 * The feature id for the '<em><b>Direction</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_GENERATION_CONTRACT__DIRECTION = CONTRACT_BASE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>K</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_GENERATION_CONTRACT__K = CONTRACT_BASE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Data Generation Contract</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_GENERATION_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Data Generation Contract</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_GENERATION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
+	int TRANSFORMATION_CONTRACT_OPERATION_COUNT = CONTRACT_BASE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Level <em>Level</em>}' enum.
@@ -1842,7 +1542,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getLevel()
 	 * @generated
 	 */
-	int LEVEL = 21;
+	int LEVEL = 18;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.TrustFactor <em>Trust Factor</em>}' enum.
@@ -1852,7 +1552,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getTrustFactor()
 	 * @generated
 	 */
-	int TRUST_FACTOR = 22;
+	int TRUST_FACTOR = 19;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Channel <em>Channel</em>}' enum.
@@ -1862,7 +1562,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getChannel()
 	 * @generated
 	 */
-	int CHANNEL = 23;
+	int CHANNEL = 20;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.ContractType <em>Contract Type</em>}' enum.
@@ -1872,7 +1572,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getContractType()
 	 * @generated
 	 */
-	int CONTRACT_TYPE = 24;
+	int CONTRACT_TYPE = 21;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Objective <em>Objective</em>}' enum.
@@ -1882,7 +1582,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getObjective()
 	 * @generated
 	 */
-	int OBJECTIVE = 25;
+	int OBJECTIVE = 22;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.Layer <em>Layer</em>}' enum.
@@ -1892,7 +1592,7 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getLayer()
 	 * @generated
 	 */
-	int LAYER = 26;
+	int LAYER = 23;
 
 	/**
 	 * The meta object id for the '{@link org.secdfd.model.AssetType <em>Asset Type</em>}' enum.
@@ -1902,18 +1602,8 @@ public interface ModelPackage extends EPackage {
 	 * @see org.secdfd.model.impl.ModelPackageImpl#getAssetType()
 	 * @generated
 	 */
-	int ASSET_TYPE = 27;
+	int ASSET_TYPE = 24;
 
-
-	/**
-	 * The meta object id for the '{@link org.secdfd.model.DataGenerationDirection <em>Data Generation Direction</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.secdfd.model.DataGenerationDirection
-	 * @see org.secdfd.model.impl.ModelPackageImpl#getDataGenerationDirection()
-	 * @generated
-	 */
-	int DATA_GENERATION_DIRECTION = 28;
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.Asset <em>Asset</em>}'.
@@ -2408,25 +2098,25 @@ public interface ModelPackage extends EPackage {
 	EClass getSecurityContract();
 
 	/**
-	 * Returns the meta object for class '{@link org.secdfd.model.ClassificationContract <em>Classification Contract</em>}'.
+	 * Returns the meta object for class '{@link org.secdfd.model.ClassificationFixedContract <em>Classification Fixed Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Classification Contract</em>'.
-	 * @see org.secdfd.model.ClassificationContract
+	 * @return the meta object for class '<em>Classification Fixed Contract</em>'.
+	 * @see org.secdfd.model.ClassificationFixedContract
 	 * @generated
 	 */
-	EClass getClassificationContract();
+	EClass getClassificationFixedContract();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.secdfd.model.ClassificationContract#getPClass <em>PClass</em>}'.
+	 * Returns the meta object for the attribute '{@link org.secdfd.model.ClassificationFixedContract#getPModel <em>PModel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>PClass</em>'.
-	 * @see org.secdfd.model.ClassificationContract#getPClass()
-	 * @see #getClassificationContract()
+	 * @return the meta object for the attribute '<em>PModel</em>'.
+	 * @see org.secdfd.model.ClassificationFixedContract#getPModel()
+	 * @see #getClassificationFixedContract()
 	 * @generated
 	 */
-	EAttribute getClassificationContract_PClass();
+	EAttribute getClassificationFixedContract_PModel();
 
 	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.ClusteringContract <em>Clustering Contract</em>}'.
@@ -2439,120 +2129,24 @@ public interface ModelPackage extends EPackage {
 	EClass getClusteringContract();
 
 	/**
-	 * Returns the meta object for class '{@link org.secdfd.model.DecisionMakingContract <em>Decision Making Contract</em>}'.
+	 * Returns the meta object for class '{@link org.secdfd.model.ClassificationVariableContract <em>Classification Variable Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Decision Making Contract</em>'.
-	 * @see org.secdfd.model.DecisionMakingContract
+	 * @return the meta object for class '<em>Classification Variable Contract</em>'.
+	 * @see org.secdfd.model.ClassificationVariableContract
 	 * @generated
 	 */
-	EClass getDecisionMakingContract();
+	EClass getClassificationVariableContract();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.secdfd.model.DecisionMakingContract#getPAction <em>PAction</em>}'.
+	 * Returns the meta object for class '{@link org.secdfd.model.TransformationContract <em>Transformation Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>PAction</em>'.
-	 * @see org.secdfd.model.DecisionMakingContract#getPAction()
-	 * @see #getDecisionMakingContract()
+	 * @return the meta object for class '<em>Transformation Contract</em>'.
+	 * @see org.secdfd.model.TransformationContract
 	 * @generated
 	 */
-	EAttribute getDecisionMakingContract_PAction();
-
-	/**
-	 * Returns the meta object for class '{@link org.secdfd.model.RecommendationContract <em>Recommendation Contract</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Recommendation Contract</em>'.
-	 * @see org.secdfd.model.RecommendationContract
-	 * @generated
-	 */
-	EClass getRecommendationContract();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.secdfd.model.RecommendationContract#isS <em>S</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>S</em>'.
-	 * @see org.secdfd.model.RecommendationContract#isS()
-	 * @see #getRecommendationContract()
-	 * @generated
-	 */
-	EAttribute getRecommendationContract_S();
-
-	/**
-	 * Returns the meta object for class '{@link org.secdfd.model.PredictionContract <em>Prediction Contract</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Prediction Contract</em>'.
-	 * @see org.secdfd.model.PredictionContract
-	 * @generated
-	 */
-	EClass getPredictionContract();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.secdfd.model.PredictionContract#isS <em>S</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>S</em>'.
-	 * @see org.secdfd.model.PredictionContract#isS()
-	 * @see #getPredictionContract()
-	 * @generated
-	 */
-	EAttribute getPredictionContract_S();
-
-	/**
-	 * Returns the meta object for class '{@link org.secdfd.model.DimensionalityReductionContract <em>Dimensionality Reduction Contract</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Dimensionality Reduction Contract</em>'.
-	 * @see org.secdfd.model.DimensionalityReductionContract
-	 * @generated
-	 */
-	EClass getDimensionalityReductionContract();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.secdfd.model.DimensionalityReductionContract#getK <em>K</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>K</em>'.
-	 * @see org.secdfd.model.DimensionalityReductionContract#getK()
-	 * @see #getDimensionalityReductionContract()
-	 * @generated
-	 */
-	EAttribute getDimensionalityReductionContract_K();
-
-	/**
-	 * Returns the meta object for class '{@link org.secdfd.model.DataGenerationContract <em>Data Generation Contract</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Data Generation Contract</em>'.
-	 * @see org.secdfd.model.DataGenerationContract
-	 * @generated
-	 */
-	EClass getDataGenerationContract();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.secdfd.model.DataGenerationContract#getDirection <em>Direction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Direction</em>'.
-	 * @see org.secdfd.model.DataGenerationContract#getDirection()
-	 * @see #getDataGenerationContract()
-	 * @generated
-	 */
-	EAttribute getDataGenerationContract_Direction();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.secdfd.model.DataGenerationContract#getK <em>K</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>K</em>'.
-	 * @see org.secdfd.model.DataGenerationContract#getK()
-	 * @see #getDataGenerationContract()
-	 * @generated
-	 */
-	EAttribute getDataGenerationContract_K();
+	EClass getTransformationContract();
 
 	/**
 	 * Returns the meta object for enum '{@link org.secdfd.model.Level <em>Level</em>}'.
@@ -2623,16 +2217,6 @@ public interface ModelPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getAssetType();
-
-	/**
-	 * Returns the meta object for enum '{@link org.secdfd.model.DataGenerationDirection <em>Data Generation Direction</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Data Generation Direction</em>'.
-	 * @see org.secdfd.model.DataGenerationDirection
-	 * @generated
-	 */
-	EEnum getDataGenerationDirection();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3054,22 +2638,22 @@ public interface ModelPackage extends EPackage {
 		EClass SECURITY_CONTRACT = eINSTANCE.getSecurityContract();
 
 		/**
-		 * The meta object literal for the '{@link org.secdfd.model.impl.ClassificationContractImpl <em>Classification Contract</em>}' class.
+		 * The meta object literal for the '{@link org.secdfd.model.impl.ClassificationFixedContractImpl <em>Classification Fixed Contract</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.impl.ClassificationContractImpl
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getClassificationContract()
+		 * @see org.secdfd.model.impl.ClassificationFixedContractImpl
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getClassificationFixedContract()
 		 * @generated
 		 */
-		EClass CLASSIFICATION_CONTRACT = eINSTANCE.getClassificationContract();
+		EClass CLASSIFICATION_FIXED_CONTRACT = eINSTANCE.getClassificationFixedContract();
 
 		/**
-		 * The meta object literal for the '<em><b>PClass</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>PModel</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CLASSIFICATION_CONTRACT__PCLASS = eINSTANCE.getClassificationContract_PClass();
+		EAttribute CLASSIFICATION_FIXED_CONTRACT__PMODEL = eINSTANCE.getClassificationFixedContract_PModel();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.impl.ClusteringContractImpl <em>Clustering Contract</em>}' class.
@@ -3082,102 +2666,24 @@ public interface ModelPackage extends EPackage {
 		EClass CLUSTERING_CONTRACT = eINSTANCE.getClusteringContract();
 
 		/**
-		 * The meta object literal for the '{@link org.secdfd.model.impl.DecisionMakingContractImpl <em>Decision Making Contract</em>}' class.
+		 * The meta object literal for the '{@link org.secdfd.model.impl.ClassificationVariableContractImpl <em>Classification Variable Contract</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.impl.DecisionMakingContractImpl
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getDecisionMakingContract()
+		 * @see org.secdfd.model.impl.ClassificationVariableContractImpl
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getClassificationVariableContract()
 		 * @generated
 		 */
-		EClass DECISION_MAKING_CONTRACT = eINSTANCE.getDecisionMakingContract();
+		EClass CLASSIFICATION_VARIABLE_CONTRACT = eINSTANCE.getClassificationVariableContract();
 
 		/**
-		 * The meta object literal for the '<em><b>PAction</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.secdfd.model.impl.TransformationContractImpl <em>Transformation Contract</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.secdfd.model.impl.TransformationContractImpl
+		 * @see org.secdfd.model.impl.ModelPackageImpl#getTransformationContract()
 		 * @generated
 		 */
-		EAttribute DECISION_MAKING_CONTRACT__PACTION = eINSTANCE.getDecisionMakingContract_PAction();
-
-		/**
-		 * The meta object literal for the '{@link org.secdfd.model.impl.RecommendationContractImpl <em>Recommendation Contract</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.impl.RecommendationContractImpl
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getRecommendationContract()
-		 * @generated
-		 */
-		EClass RECOMMENDATION_CONTRACT = eINSTANCE.getRecommendationContract();
-
-		/**
-		 * The meta object literal for the '<em><b>S</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RECOMMENDATION_CONTRACT__S = eINSTANCE.getRecommendationContract_S();
-
-		/**
-		 * The meta object literal for the '{@link org.secdfd.model.impl.PredictionContractImpl <em>Prediction Contract</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.impl.PredictionContractImpl
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getPredictionContract()
-		 * @generated
-		 */
-		EClass PREDICTION_CONTRACT = eINSTANCE.getPredictionContract();
-
-		/**
-		 * The meta object literal for the '<em><b>S</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PREDICTION_CONTRACT__S = eINSTANCE.getPredictionContract_S();
-
-		/**
-		 * The meta object literal for the '{@link org.secdfd.model.impl.DimensionalityReductionContractImpl <em>Dimensionality Reduction Contract</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.impl.DimensionalityReductionContractImpl
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getDimensionalityReductionContract()
-		 * @generated
-		 */
-		EClass DIMENSIONALITY_REDUCTION_CONTRACT = eINSTANCE.getDimensionalityReductionContract();
-
-		/**
-		 * The meta object literal for the '<em><b>K</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DIMENSIONALITY_REDUCTION_CONTRACT__K = eINSTANCE.getDimensionalityReductionContract_K();
-
-		/**
-		 * The meta object literal for the '{@link org.secdfd.model.impl.DataGenerationContractImpl <em>Data Generation Contract</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.impl.DataGenerationContractImpl
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getDataGenerationContract()
-		 * @generated
-		 */
-		EClass DATA_GENERATION_CONTRACT = eINSTANCE.getDataGenerationContract();
-
-		/**
-		 * The meta object literal for the '<em><b>Direction</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DATA_GENERATION_CONTRACT__DIRECTION = eINSTANCE.getDataGenerationContract_Direction();
-
-		/**
-		 * The meta object literal for the '<em><b>K</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DATA_GENERATION_CONTRACT__K = eINSTANCE.getDataGenerationContract_K();
+		EClass TRANSFORMATION_CONTRACT = eINSTANCE.getTransformationContract();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.Level <em>Level</em>}' enum.
@@ -3248,16 +2754,6 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum ASSET_TYPE = eINSTANCE.getAssetType();
-
-		/**
-		 * The meta object literal for the '{@link org.secdfd.model.DataGenerationDirection <em>Data Generation Direction</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.secdfd.model.DataGenerationDirection
-		 * @see org.secdfd.model.impl.ModelPackageImpl#getDataGenerationDirection()
-		 * @generated
-		 */
-		EEnum DATA_GENERATION_DIRECTION = eINSTANCE.getDataGenerationDirection();
 
 	}
 

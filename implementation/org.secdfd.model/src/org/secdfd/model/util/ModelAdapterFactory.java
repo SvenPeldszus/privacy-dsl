@@ -12,13 +12,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.secdfd.model.Asset;
 import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
-import org.secdfd.model.ClassificationContract;
+import org.secdfd.model.ClassificationFixedContract;
+import org.secdfd.model.ClassificationVariableContract;
 import org.secdfd.model.ClusteringContract;
-import org.secdfd.model.DecisionMakingContract;
-import org.secdfd.model.RecommendationContract;
-import org.secdfd.model.PredictionContract;
-import org.secdfd.model.DimensionalityReductionContract;
-import org.secdfd.model.DataGenerationContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.DataStore;
 import org.secdfd.model.EDFD;
@@ -28,6 +24,7 @@ import org.secdfd.model.Flow;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.SecurityContract;
+import org.secdfd.model.TransformationContract;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 
@@ -144,32 +141,20 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 				return createSecurityContractAdapter();
 			}
 			@Override
-			public Adapter caseClassificationContract(ClassificationContract object) {
-				return createClassificationContractAdapter();
+			public Adapter caseClassificationFixedContract(ClassificationFixedContract object) {
+				return createClassificationFixedContractAdapter();
 			}
 			@Override
 			public Adapter caseClusteringContract(ClusteringContract object) {
 				return createClusteringContractAdapter();
 			}
 			@Override
-			public Adapter caseDecisionMakingContract(DecisionMakingContract object) {
-				return createDecisionMakingContractAdapter();
+			public Adapter caseClassificationVariableContract(ClassificationVariableContract object) {
+				return createClassificationVariableContractAdapter();
 			}
 			@Override
-			public Adapter caseRecommendationContract(RecommendationContract object) {
-				return createRecommendationContractAdapter();
-			}
-			@Override
-			public Adapter casePredictionContract(PredictionContract object) {
-				return createPredictionContractAdapter();
-			}
-			@Override
-			public Adapter caseDimensionalityReductionContract(DimensionalityReductionContract object) {
-				return createDimensionalityReductionContractAdapter();
-			}
-			@Override
-			public Adapter caseDataGenerationContract(DataGenerationContract object) {
-				return createDataGenerationContractAdapter();
+			public Adapter caseTransformationContract(TransformationContract object) {
+				return createTransformationContractAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -388,16 +373,16 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.secdfd.model.ClassificationContract <em>Classification Contract</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.secdfd.model.ClassificationFixedContract <em>Classification Fixed Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.secdfd.model.ClassificationContract
+	 * @see org.secdfd.model.ClassificationFixedContract
 	 * @generated
 	 */
-	public Adapter createClassificationContractAdapter() {
+	public Adapter createClassificationFixedContractAdapter() {
 		return null;
 	}
 
@@ -416,72 +401,30 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.secdfd.model.DecisionMakingContract <em>Decision Making Contract</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.secdfd.model.ClassificationVariableContract <em>Classification Variable Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.secdfd.model.DecisionMakingContract
+	 * @see org.secdfd.model.ClassificationVariableContract
 	 * @generated
 	 */
-	public Adapter createDecisionMakingContractAdapter() {
+	public Adapter createClassificationVariableContractAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.secdfd.model.RecommendationContract <em>Recommendation Contract</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.secdfd.model.TransformationContract <em>Transformation Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.secdfd.model.RecommendationContract
+	 * @see org.secdfd.model.TransformationContract
 	 * @generated
 	 */
-	public Adapter createRecommendationContractAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.secdfd.model.PredictionContract <em>Prediction Contract</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.secdfd.model.PredictionContract
-	 * @generated
-	 */
-	public Adapter createPredictionContractAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.secdfd.model.DimensionalityReductionContract <em>Dimensionality Reduction Contract</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.secdfd.model.DimensionalityReductionContract
-	 * @generated
-	 */
-	public Adapter createDimensionalityReductionContractAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.secdfd.model.DataGenerationContract <em>Data Generation Contract</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.secdfd.model.DataGenerationContract
-	 * @generated
-	 */
-	public Adapter createDataGenerationContractAdapter() {
+	public Adapter createTransformationContractAdapter() {
 		return null;
 	}
 

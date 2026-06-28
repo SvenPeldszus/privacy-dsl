@@ -15,10 +15,6 @@ import org.secdfd.model.ModelFactory;
  */
 public class DataStoreTest extends ElementTest {
 
-	public void test() {
-		//TODO: Implement test here
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

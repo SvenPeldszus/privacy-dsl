@@ -616,7 +616,7 @@ public final class ComparatorProcesses extends BaseGeneratedEMFQuerySpecificatio
           new Equality(body, var__virtual_1_, var_pr);
           // 	pr == ContractType::Comparator
           PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
-          new ConstantValue(body, var__virtual_2_, getEnumLiteral("http://www.secdfd.org/secdfd", "ContractType", "Comparator").getInstance());
+          new ConstantValue(body, var__virtual_2_, org.secdfd.model.ContractType.get("Comparator"));
           new Equality(body, var_pr, var__virtual_2_);
           bodies.add(body);
       }

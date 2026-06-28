@@ -38,13 +38,10 @@
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Authoriser"/>
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Verifier"/>
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/User"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Classification"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/ClassificationFixed"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/ClassificationVariable"/>
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Clustering"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/DecisionMaking"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Recommendation"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Prediction"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/DimensionalityReduction"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/DataGeneration"/>
+      <genEnumLiterals ecoreEnumLiteral="model.ecore#//ContractType/Transformation"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//Objective">
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//Objective/Integrity"/>
@@ -64,11 +61,6 @@
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//AssetType/Number"/>
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//AssetType/Vector"/>
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//AssetType/Boolean"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//DataGenerationDirection">
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//DataGenerationDirection/REDUCE"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//DataGenerationDirection/PRESERVE"/>
-      <genEnumLiterals ecoreEnumLiteral="model.ecore#//DataGenerationDirection/ELEVATE"/>
     </genEnums>
     <genClasses ecoreClass="model.ecore#//Asset">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//Asset/value"/>
@@ -127,25 +119,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ContractBase/Task"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//SecurityContract"/>
-    <genClasses ecoreClass="model.ecore#//ClassificationContract">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ClassificationContract/PClass"/>
+    <genClasses ecoreClass="model.ecore#//ClassificationFixedContract">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ClassificationFixedContract/PModel"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//ClusteringContract"/>
-    <genClasses ecoreClass="model.ecore#//DecisionMakingContract">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//DecisionMakingContract/PAction"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//RecommendationContract">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//RecommendationContract/S"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//PredictionContract">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//PredictionContract/S"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//DimensionalityReductionContract">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//DimensionalityReductionContract/K"/>
-    </genClasses>
-    <genClasses ecoreClass="model.ecore#//DataGenerationContract">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//DataGenerationContract/Direction"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//DataGenerationContract/K"/>
-    </genClasses>
+    <genClasses ecoreClass="model.ecore#//ClassificationVariableContract"/>
+    <genClasses ecoreClass="model.ecore#//TransformationContract"/>
   </genPackages>
 </genmodel:GenModel>

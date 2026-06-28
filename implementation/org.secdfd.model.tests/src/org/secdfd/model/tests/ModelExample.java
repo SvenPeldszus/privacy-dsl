@@ -30,11 +30,6 @@ import org.secdfd.model.ModelPackage;
  * @generated
  */
 public class ModelExample {
-	
-	public void test() {
-		//TODO: Implement test here
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * Load all the argument file paths or URIs as instances of the model.

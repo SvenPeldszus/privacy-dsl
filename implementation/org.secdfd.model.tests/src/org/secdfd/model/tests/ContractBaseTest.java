@@ -3,6 +3,7 @@
 package org.secdfd.model.tests;
 
 import junit.framework.TestCase;
+
 import org.secdfd.model.ContractBase;
 
 /**
@@ -52,4 +53,3 @@ public abstract class ContractBaseTest extends TestCase {
 	}
 
 } //ContractBaseTest
-

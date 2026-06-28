@@ -2,6 +2,7 @@
  */
 package org.secdfd.model;
 
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Security Contract</b></em>'.
@@ -13,5 +14,4 @@ package org.secdfd.model;
  * @generated
  */
 public interface SecurityContract extends ContractBase {
-
 } // SecurityContract

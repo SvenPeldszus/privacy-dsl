@@ -15,10 +15,6 @@ import org.secdfd.model.TrustZone;
  */
 public class TrustZoneTest extends ElementTest {
 
-	public void test() {
-		//TODO: Implement test here
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

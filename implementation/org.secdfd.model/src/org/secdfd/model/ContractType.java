@@ -149,14 +149,24 @@ public enum ContractType implements Enumerator {
 	USER(13, "User", "User"),
 
 	/**
-	 * The '<em><b>Classification</b></em>' literal object.
+	 * The '<em><b>Classification Fixed</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CLASSIFICATION_VALUE
+	 * @see #CLASSIFICATION_FIXED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CLASSIFICATION(14, "Classification", "Classification"),
+	CLASSIFICATION_FIXED(14, "ClassificationFixed", "ClassificationFixed"),
+
+	/**
+	 * The '<em><b>Classification Variable</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CLASSIFICATION_VARIABLE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	CLASSIFICATION_VARIABLE(15, "ClassificationVariable", "ClassificationVariable"),
 
 	/**
 	 * The '<em><b>Clustering</b></em>' literal object.
@@ -166,57 +176,17 @@ public enum ContractType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CLUSTERING(15, "Clustering", "Clustering"),
+	CLUSTERING(16, "Clustering", "Clustering"),
 
 	/**
-	 * The '<em><b>Decision Making</b></em>' literal object.
+	 * The '<em><b>Transformation</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #DECISION_MAKING_VALUE
+	 * @see #TRANSFORMATION_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	DECISION_MAKING(16, "DecisionMaking", "DecisionMaking"),
-
-	/**
-	 * The '<em><b>Recommendation</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #RECOMMENDATION_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	RECOMMENDATION(17, "Recommendation", "Recommendation"),
-
-	/**
-	 * The '<em><b>Prediction</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #PREDICTION_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	PREDICTION(18, "Prediction", "Prediction"),
-
-	/**
-	 * The '<em><b>Dimensionality Reduction</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DIMENSIONALITY_REDUCTION_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	DIMENSIONALITY_REDUCTION(19, "DimensionalityReduction", "DimensionalityReduction"),
-
-	/**
-	 * The '<em><b>Data Generation</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DATA_GENERATION_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	DATA_GENERATION(20, "DataGeneration", "DataGeneration");
+	TRANSFORMATION(17, "Transformation", "Transformation");
 
 	/**
 	 * The '<em><b>Store</b></em>' literal value.
@@ -362,15 +332,26 @@ public enum ContractType implements Enumerator {
 	public static final int USER_VALUE = 13;
 
 	/**
-	 * The '<em><b>Classification</b></em>' literal value.
+	 * The '<em><b>Classification Fixed</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #CLASSIFICATION
-	 * @model name="Classification"
+	 * @see #CLASSIFICATION_FIXED
+	 * @model name="ClassificationFixed"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CLASSIFICATION_VALUE = 14;
+	public static final int CLASSIFICATION_FIXED_VALUE = 14;
+
+	/**
+	 * The '<em><b>Classification Variable</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CLASSIFICATION_VARIABLE
+	 * @model name="ClassificationVariable"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CLASSIFICATION_VARIABLE_VALUE = 15;
 
 	/**
 	 * The '<em><b>Clustering</b></em>' literal value.
@@ -381,62 +362,18 @@ public enum ContractType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CLUSTERING_VALUE = 15;
+	public static final int CLUSTERING_VALUE = 16;
 
 	/**
-	 * The '<em><b>Decision Making</b></em>' literal value.
+	 * The '<em><b>Transformation</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #DECISION_MAKING
-	 * @model name="DecisionMaking"
+	 * @see #TRANSFORMATION
+	 * @model name="Transformation"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DECISION_MAKING_VALUE = 16;
-
-	/**
-	 * The '<em><b>Recommendation</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #RECOMMENDATION
-	 * @model name="Recommendation"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RECOMMENDATION_VALUE = 17;
-
-	/**
-	 * The '<em><b>Prediction</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #PREDICTION
-	 * @model name="Prediction"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int PREDICTION_VALUE = 18;
-
-	/**
-	 * The '<em><b>Dimensionality Reduction</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DIMENSIONALITY_REDUCTION
-	 * @model name="DimensionalityReduction"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int DIMENSIONALITY_REDUCTION_VALUE = 19;
-
-	/**
-	 * The '<em><b>Data Generation</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DATA_GENERATION
-	 * @model name="DataGeneration"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int DATA_GENERATION_VALUE = 20;
+	public static final int TRANSFORMATION_VALUE = 17;
 
 	/**
 	 * An array of all the '<em><b>Contract Type</b></em>' enumerators.
@@ -459,13 +396,10 @@ public enum ContractType implements Enumerator {
 			AUTHORISER,
 			VERIFIER,
 			USER,
-			CLASSIFICATION,
+			CLASSIFICATION_FIXED,
+			CLASSIFICATION_VARIABLE,
 			CLUSTERING,
-			DECISION_MAKING,
-			RECOMMENDATION,
-			PREDICTION,
-			DIMENSIONALITY_REDUCTION,
-			DATA_GENERATION,
+			TRANSFORMATION,
 		};
 
 	/**
@@ -535,13 +469,10 @@ public enum ContractType implements Enumerator {
 			case AUTHORISER_VALUE: return AUTHORISER;
 			case VERIFIER_VALUE: return VERIFIER;
 			case USER_VALUE: return USER;
-			case CLASSIFICATION_VALUE: return CLASSIFICATION;
+			case CLASSIFICATION_FIXED_VALUE: return CLASSIFICATION_FIXED;
+			case CLASSIFICATION_VARIABLE_VALUE: return CLASSIFICATION_VARIABLE;
 			case CLUSTERING_VALUE: return CLUSTERING;
-			case DECISION_MAKING_VALUE: return DECISION_MAKING;
-			case RECOMMENDATION_VALUE: return RECOMMENDATION;
-			case PREDICTION_VALUE: return PREDICTION;
-			case DIMENSIONALITY_REDUCTION_VALUE: return DIMENSIONALITY_REDUCTION;
-			case DATA_GENERATION_VALUE: return DATA_GENERATION;
+			case TRANSFORMATION_VALUE: return TRANSFORMATION;
 		}
 		return null;
 	}

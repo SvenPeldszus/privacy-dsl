@@ -37,13 +37,10 @@ import graph.GraphFactory
 import graph.SecurityLabel
 import org.secdfd.model.ContractBase
 import org.secdfd.model.ContractType
-import org.secdfd.model.ClassificationContract
+import org.secdfd.model.ClassificationFixedContract
 import org.secdfd.model.ClusteringContract
-import org.secdfd.model.DecisionMakingContract
-import org.secdfd.model.RecommendationContract
-import org.secdfd.model.PredictionContract
-import org.secdfd.model.DimensionalityReductionContract
-import org.secdfd.model.DataGenerationContract
+import org.secdfd.model.ClassificationVariableContract
+import org.secdfd.model.TransformationContract
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -283,21 +280,15 @@ class eDFDToGraphTransformation {
     	// For SecurityContract: use existing task values and convert to strings
     	if (eDFDResponsibility instanceof SecurityContract) {
     		eDFDResponsibilityActions.addAll(eDFDResponsibility.task.map[t | t.literal])
-    	} else if (eDFDResponsibility instanceof ClassificationContract) {
+    	} else if (eDFDResponsibility instanceof ClassificationFixedContract) {
     		// Automatically set ContractType::Classification as string
-    		eDFDResponsibilityActions.add(ContractType.CLASSIFICATION.literal)
+    		eDFDResponsibilityActions.add(ContractType.CLASSIFICATION_FIXED.literal)
     	} else if (eDFDResponsibility instanceof ClusteringContract) {
     		eDFDResponsibilityActions.add(ContractType.CLUSTERING.literal)
-    	} else if (eDFDResponsibility instanceof DecisionMakingContract) {
-    		eDFDResponsibilityActions.add(ContractType.DECISION_MAKING.literal)
-    	} else if (eDFDResponsibility instanceof RecommendationContract) {
-    		eDFDResponsibilityActions.add(ContractType.RECOMMENDATION.literal)
-    	} else if (eDFDResponsibility instanceof PredictionContract) {
-    		eDFDResponsibilityActions.add(ContractType.PREDICTION.literal)
-    	} else if (eDFDResponsibility instanceof DimensionalityReductionContract) {
-    		eDFDResponsibilityActions.add(ContractType.DIMENSIONALITY_REDUCTION.literal)
-    	} else if (eDFDResponsibility instanceof DataGenerationContract) {
-    		eDFDResponsibilityActions.add(ContractType.DATA_GENERATION.literal)
+    	} else if (eDFDResponsibility instanceof ClassificationVariableContract) {
+    		eDFDResponsibilityActions.add(ContractType.CLASSIFICATION_VARIABLE.literal)
+    	} else if (eDFDResponsibility instanceof TransformationContract) {
+    		eDFDResponsibilityActions.add(ContractType.TRANSFORMATION.literal)
     	}
     	
     	
@@ -544,20 +535,15 @@ class eDFDToGraphTransformation {
           val contractTypeStr = if (nr.contractTypes !== null && !nr.contractTypes.empty) 
             "[" + nr.contractTypes.join(",") + "]" else ""
           switch contractTypeStr {
-            case "[Classification]": {
-              val contractClass = contract as ClassificationContract
-              val pClass = if (contractClass !== null && contractClass.getPClass() !== null) contractClass.getPClass() else Level.L
-              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", lvl(pClass))
+            case "[ClassificationFixed]": {
+              val contractClass = contract as ClassificationFixedContract
+              val pModel = if (contractClass !== null && contractClass.getPModel() !== null) contractClass.getPModel() else Level.L
+              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", lvl(pModel))
             }
-            case "[DecisionMaking]": {
-              val contractDM = contract as DecisionMakingContract
-              val pAction = if (contractDM !== null && contractDM.getPAction() !== null) contractDM.getPAction() else Level.L
-              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", lvl(pAction))
-            }
-            case "[Recommendation]": {
-              val contractRec = contract as RecommendationContract
-              val s = if (contractRec !== null) contractRec.isS() else false
-              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", if (s) 1 else 0)  // L=1 if s=true, N=0 if s=false
+            case "[ClassificationVariable]": {
+              val contractCV = contract as ClassificationVariableContract
+              val pOut = pMax //TODO: find a solution to distinguish between the two parts of the input and take the privacy label from the output option catalog (ys)
+              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", pOut)
             }
             case "[Clustering]": {
               // Check if all incoming assets have privacy labels and all are N (level 0)
@@ -566,38 +552,9 @@ class eDFDToGraphTransformation {
               // If no labels exist or all are N, set to N (0), otherwise L (1)
               setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", if (allPrivacyLabelsAreN) 0 else 1)
             }
-            case "[Prediction]": {
-              val contractPred = contract as PredictionContract
-              val s = if (contractPred !== null) contractPred.isS() else false
+            case "[Transformation]": {
               // pMax is already >= 0 (defaulted to 0 if no labels found)
-              val privacyLevel = if (pMax == 0) 0 else if (s) pMax else 1  // N=0 if pMax is N, pMax if s=true, L=1 otherwise
-              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", privacyLevel)
-            }
-            case "[DimensionalityReduction]": {
-              val contractDR = contract as DimensionalityReductionContract
-              val k = if (contractDR !== null) contractDR.getK() else 0
-              var privacyLevel = pMax
-              for (var i = 0; i < k; i++) {
-                privacyLevel = reducePrivacyLevel(privacyLevel)
-              }
-              setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", privacyLevel)
-            }
-            case "[DataGeneration]": {
-              val contractDG = contract as DataGenerationContract
-              val direction = if (contractDG !== null) contractDG.getDirection() else null
-              val k = if (contractDG !== null) contractDG.getK() else 1
-              var privacyLevel = pMax
-              if (direction !== null) {
-                if (direction.toString() == "REDUCE") {
-                  for (var i = 0; i < k; i++) {
-                    privacyLevel = reducePrivacyLevel(privacyLevel)
-                  }
-                } else if (direction.toString() == "ELEVATE") {
-                  for (var i = 0; i < k; i++) {
-                    privacyLevel = elevatePrivacyLevel(privacyLevel)
-                  }
-                }
-              }
+              val privacyLevel = pMax  // Transformation contract copies the highest privacy label (ys)
               setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", privacyLevel)
             }
             case "[EncryptOrHash]": {
@@ -908,18 +865,12 @@ class eDFDToGraphTransformation {
                    .filter[r | r.outgoingassets.exists[e.graphassets.contains(it)]]
                    .map[
                      val contract = findContract(it)
-                     if (contract instanceof ClassificationContract) {
-                       "Classification"
-                     } else if (contract instanceof DecisionMakingContract) {
-                       "DecisionMaking"
-                     } else                      if (contract instanceof RecommendationContract) {
-                       "Recommendation"
-                     } else if (contract instanceof PredictionContract) {
-                       "Prediction"
-                     } else if (contract instanceof DimensionalityReductionContract) {
-                       "DimensionalityReduction"
-                     } else if (contract instanceof DataGenerationContract) {
-                       "DataGeneration"
+                     if (contract instanceof ClassificationFixedContract) {
+                       "ClassificationFixed"
+                     } else if (contract instanceof ClassificationVariableContract) {
+                       "ClassificationVariable"
+                     } else if (contract instanceof TransformationContract) {
+                       "Transformation"
                      } else if (contract instanceof ClusteringContract) {
                        "Clustering"
                      } else if (it.contractTypes !== null && !it.contractTypes.empty) {

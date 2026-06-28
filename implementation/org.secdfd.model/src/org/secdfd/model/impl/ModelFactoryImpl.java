@@ -16,14 +16,11 @@ import org.secdfd.model.AssetType;
 import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.Channel;
-import org.secdfd.model.ClassificationContract;
+import org.secdfd.model.ClassificationFixedContract;
+import org.secdfd.model.ClassificationVariableContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractType;
-import org.secdfd.model.DataGenerationContract;
-import org.secdfd.model.DataGenerationDirection;
 import org.secdfd.model.DataStore;
-import org.secdfd.model.DecisionMakingContract;
-import org.secdfd.model.DimensionalityReductionContract;
 import org.secdfd.model.EDFD;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
@@ -32,9 +29,8 @@ import org.secdfd.model.Level;
 import org.secdfd.model.ModelFactory;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.Objective;
-import org.secdfd.model.PredictionContract;
-import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
+import org.secdfd.model.TransformationContract;
 import org.secdfd.model.TrustFactor;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
@@ -94,13 +90,10 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 			case ModelPackage.ATTACKER_PROFILE: return createAttackerProfile();
 			case ModelPackage.TRUST_ZONE: return createTrustZone();
 			case ModelPackage.SECURITY_CONTRACT: return createSecurityContract();
-			case ModelPackage.CLASSIFICATION_CONTRACT: return createClassificationContract();
+			case ModelPackage.CLASSIFICATION_FIXED_CONTRACT: return createClassificationFixedContract();
 			case ModelPackage.CLUSTERING_CONTRACT: return createClusteringContract();
-			case ModelPackage.DECISION_MAKING_CONTRACT: return createDecisionMakingContract();
-			case ModelPackage.RECOMMENDATION_CONTRACT: return createRecommendationContract();
-			case ModelPackage.PREDICTION_CONTRACT: return createPredictionContract();
-			case ModelPackage.DIMENSIONALITY_REDUCTION_CONTRACT: return createDimensionalityReductionContract();
-			case ModelPackage.DATA_GENERATION_CONTRACT: return createDataGenerationContract();
+			case ModelPackage.CLASSIFICATION_VARIABLE_CONTRACT: return createClassificationVariableContract();
+			case ModelPackage.TRANSFORMATION_CONTRACT: return createTransformationContract();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -128,8 +121,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 				return createLayerFromString(eDataType, initialValue);
 			case ModelPackage.ASSET_TYPE:
 				return createAssetTypeFromString(eDataType, initialValue);
-			case ModelPackage.DATA_GENERATION_DIRECTION:
-				return createDataGenerationDirectionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -157,8 +148,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 				return convertLayerToString(eDataType, instanceValue);
 			case ModelPackage.ASSET_TYPE:
 				return convertAssetTypeToString(eDataType, instanceValue);
-			case ModelPackage.DATA_GENERATION_DIRECTION:
-				return convertDataGenerationDirectionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -291,9 +280,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	@Override
-	public ClassificationContract createClassificationContract() {
-		ClassificationContractImpl classificationContract = new ClassificationContractImpl();
-		return classificationContract;
+	public ClassificationFixedContract createClassificationFixedContract() {
+		ClassificationFixedContractImpl classificationFixedContract = new ClassificationFixedContractImpl();
+		return classificationFixedContract;
 	}
 
 	/**
@@ -313,9 +302,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	@Override
-	public DecisionMakingContract createDecisionMakingContract() {
-		DecisionMakingContractImpl decisionMakingContract = new DecisionMakingContractImpl();
-		return decisionMakingContract;
+	public ClassificationVariableContract createClassificationVariableContract() {
+		ClassificationVariableContractImpl classificationVariableContract = new ClassificationVariableContractImpl();
+		return classificationVariableContract;
 	}
 
 	/**
@@ -324,42 +313,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	@Override
-	public RecommendationContract createRecommendationContract() {
-		RecommendationContractImpl recommendationContract = new RecommendationContractImpl();
-		return recommendationContract;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public PredictionContract createPredictionContract() {
-		PredictionContractImpl predictionContract = new PredictionContractImpl();
-		return predictionContract;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public DimensionalityReductionContract createDimensionalityReductionContract() {
-		DimensionalityReductionContractImpl dimensionalityReductionContract = new DimensionalityReductionContractImpl();
-		return dimensionalityReductionContract;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public DataGenerationContract createDataGenerationContract() {
-		DataGenerationContractImpl dataGenerationContract = new DataGenerationContractImpl();
-		return dataGenerationContract;
+	public TransformationContract createTransformationContract() {
+		TransformationContractImpl transformationContract = new TransformationContractImpl();
+		return transformationContract;
 	}
 
 	/**
@@ -499,26 +455,6 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory {
 	 * @generated
 	 */
 	public String convertAssetTypeToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DataGenerationDirection createDataGenerationDirectionFromString(EDataType eDataType, String initialValue) {
-		DataGenerationDirection result = DataGenerationDirection.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertDataGenerationDirectionToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

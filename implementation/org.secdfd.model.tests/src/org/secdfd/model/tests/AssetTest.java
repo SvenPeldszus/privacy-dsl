@@ -16,10 +16,6 @@ import org.secdfd.model.ModelFactory;
  * @generated
  */
 public class AssetTest extends TestCase {
-	
-	public void test() {
-		//TODO: Implement test here
-	}
 
 	/**
 	 * The fixture for this Asset test case.

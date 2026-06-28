@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.secdfd.model.ModelFactory;
@@ -48,6 +49,7 @@ public class TrustZoneItemProvider extends ElementItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addElementsPropertyDescriptor(object);
+			addTrustFactorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -70,6 +72,28 @@ public class TrustZoneItemProvider extends ElementItemProvider {
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Trust Factor feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTrustFactorPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TrustZone_TrustFactor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TrustZone_TrustFactor_feature", "_UI_TrustZone_type"),
+				 ModelPackage.Literals.TRUST_ZONE__TRUST_FACTOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -143,6 +167,9 @@ public class TrustZoneItemProvider extends ElementItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TrustZone.class)) {
+			case ModelPackage.TRUST_ZONE__TRUST_FACTOR:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case ModelPackage.TRUST_ZONE__SUBZONES:
 			case ModelPackage.TRUST_ZONE__ATTACKERPROFILE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

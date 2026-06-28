@@ -50,22 +50,18 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.secdfd.model.Asset;
 import org.secdfd.model.AttackerProfile;
-import org.secdfd.model.ClassificationContract;
+import org.secdfd.model.ClassificationFixedContract;
+import org.secdfd.model.ClassificationVariableContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.ContractType;
-import org.secdfd.model.DataGenerationContract;
-import org.secdfd.model.DataGenerationDirection;
-import org.secdfd.model.DecisionMakingContract;
-import org.secdfd.model.DimensionalityReductionContract;
 import org.secdfd.model.Element;
 import org.secdfd.model.Flow;
 import org.secdfd.model.Level;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
-import org.secdfd.model.PredictionContract;
-import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
+import org.secdfd.model.TransformationContract;
 import org.secdfd.model.TrustFactor;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
@@ -375,29 +371,17 @@ public class eDFDToGraphTransformation {
           };
           eDFDResponsibilityActions.addAll(ListExtensions.<ContractType, String>map(((SecurityContract)eDFDResponsibility).getTask(), _function));
         } else {
-          if ((eDFDResponsibility instanceof ClassificationContract)) {
-            eDFDResponsibilityActions.add(ContractType.CLASSIFICATION.getLiteral());
+          if ((eDFDResponsibility instanceof ClassificationFixedContract)) {
+            eDFDResponsibilityActions.add(ContractType.CLASSIFICATION_FIXED.getLiteral());
           } else {
             if ((eDFDResponsibility instanceof ClusteringContract)) {
               eDFDResponsibilityActions.add(ContractType.CLUSTERING.getLiteral());
             } else {
-              if ((eDFDResponsibility instanceof DecisionMakingContract)) {
-                eDFDResponsibilityActions.add(ContractType.DECISION_MAKING.getLiteral());
+              if ((eDFDResponsibility instanceof ClassificationVariableContract)) {
+                eDFDResponsibilityActions.add(ContractType.CLASSIFICATION_VARIABLE.getLiteral());
               } else {
-                if ((eDFDResponsibility instanceof RecommendationContract)) {
-                  eDFDResponsibilityActions.add(ContractType.RECOMMENDATION.getLiteral());
-                } else {
-                  if ((eDFDResponsibility instanceof PredictionContract)) {
-                    eDFDResponsibilityActions.add(ContractType.PREDICTION.getLiteral());
-                  } else {
-                    if ((eDFDResponsibility instanceof DimensionalityReductionContract)) {
-                      eDFDResponsibilityActions.add(ContractType.DIMENSIONALITY_REDUCTION.getLiteral());
-                    } else {
-                      if ((eDFDResponsibility instanceof DataGenerationContract)) {
-                        eDFDResponsibilityActions.add(ContractType.DATA_GENERATION.getLiteral());
-                      }
-                    }
-                  }
+                if ((eDFDResponsibility instanceof TransformationContract)) {
+                  eDFDResponsibilityActions.add(ContractType.TRANSFORMATION.getLiteral());
                 }
               }
             }
@@ -693,45 +677,21 @@ public class eDFDToGraphTransformation {
                 final String contractTypeStr = _xifexpression;
                 if (contractTypeStr != null) {
                   switch (contractTypeStr) {
-                    case "[Classification]":
-                      final ClassificationContract contractClass = ((ClassificationContract) contract);
+                    case "[ClassificationFixed]":
+                      final ClassificationFixedContract contractClass = ((ClassificationFixedContract) contract);
                       Level _xifexpression_1 = null;
-                      if (((contractClass != null) && (contractClass.getPClass() != null))) {
-                        _xifexpression_1 = contractClass.getPClass();
+                      if (((contractClass != null) && (contractClass.getPModel() != null))) {
+                        _xifexpression_1 = contractClass.getPModel();
                       } else {
                         _xifexpression_1 = Level.L;
                       }
-                      final Level pClass = _xifexpression_1;
-                      this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", this.lvl(pClass));
+                      final Level pModel = _xifexpression_1;
+                      this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", this.lvl(pModel));
                       break;
-                    case "[DecisionMaking]":
-                      final DecisionMakingContract contractDM = ((DecisionMakingContract) contract);
-                      Level _xifexpression_2 = null;
-                      if (((contractDM != null) && (contractDM.getPAction() != null))) {
-                        _xifexpression_2 = contractDM.getPAction();
-                      } else {
-                        _xifexpression_2 = Level.L;
-                      }
-                      final Level pAction = _xifexpression_2;
-                      this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", this.lvl(pAction));
-                      break;
-                    case "[Recommendation]":
-                      final RecommendationContract contractRec = ((RecommendationContract) contract);
-                      boolean _xifexpression_3 = false;
-                      if ((contractRec != null)) {
-                        _xifexpression_3 = contractRec.isS();
-                      } else {
-                        _xifexpression_3 = false;
-                      }
-                      final boolean s = _xifexpression_3;
-                      EList<EdgeLabel> _edgelabel = outgoing.getEdgelabel();
-                      int _xifexpression_4 = (int) 0;
-                      if (s) {
-                        _xifexpression_4 = 1;
-                      } else {
-                        _xifexpression_4 = 0;
-                      }
-                      this.setOrUpdateEdgeLabel(_edgelabel, "Privacy", _xifexpression_4);
+                    case "[ClassificationVariable]":
+                      final ClassificationVariableContract contractCV = ((ClassificationVariableContract) contract);
+                      final int pOut = pMax;
+                      this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", pOut);
                       break;
                     case "[Clustering]":
                       final boolean allHaveLabels = ((!nr.getIncomingassets().isEmpty()) && IterableExtensions.<GraphAsset>forall(nr.getIncomingassets(), ((Function1<GraphAsset, Boolean>) (GraphAsset ina_1) -> {
@@ -742,89 +702,18 @@ public class eDFDToGraphTransformation {
                         int _levelOf = this.levelOf(ina_1.getAssetlabel(), "Privacy");
                         return Boolean.valueOf((_levelOf != 0));
                       }))));
-                      EList<EdgeLabel> _edgelabel_1 = outgoing.getEdgelabel();
-                      int _xifexpression_5 = (int) 0;
+                      EList<EdgeLabel> _edgelabel = outgoing.getEdgelabel();
+                      int _xifexpression_2 = (int) 0;
                       if (allPrivacyLabelsAreN) {
-                        _xifexpression_5 = 0;
+                        _xifexpression_2 = 0;
                       } else {
-                        _xifexpression_5 = 1;
+                        _xifexpression_2 = 1;
                       }
-                      this.setOrUpdateEdgeLabel(_edgelabel_1, "Privacy", _xifexpression_5);
+                      this.setOrUpdateEdgeLabel(_edgelabel, "Privacy", _xifexpression_2);
                       break;
-                    case "[Prediction]":
-                      final PredictionContract contractPred = ((PredictionContract) contract);
-                      boolean _xifexpression_6 = false;
-                      if ((contractPred != null)) {
-                        _xifexpression_6 = contractPred.isS();
-                      } else {
-                        _xifexpression_6 = false;
-                      }
-                      final boolean s_1 = _xifexpression_6;
-                      int _xifexpression_7 = (int) 0;
-                      if ((pMax == 0)) {
-                        _xifexpression_7 = 0;
-                      } else {
-                        int _xifexpression_8 = (int) 0;
-                        if (s_1) {
-                          _xifexpression_8 = pMax;
-                        } else {
-                          _xifexpression_8 = 1;
-                        }
-                        _xifexpression_7 = _xifexpression_8;
-                      }
-                      final int privacyLevel = _xifexpression_7;
+                    case "[Transformation]":
+                      final int privacyLevel = pMax;
                       this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", privacyLevel);
-                      break;
-                    case "[DimensionalityReduction]":
-                      final DimensionalityReductionContract contractDR = ((DimensionalityReductionContract) contract);
-                      int _xifexpression_9 = (int) 0;
-                      if ((contractDR != null)) {
-                        _xifexpression_9 = contractDR.getK();
-                      } else {
-                        _xifexpression_9 = 0;
-                      }
-                      final int k = _xifexpression_9;
-                      int privacyLevel_1 = pMax;
-                      for (int i = 0; (i < k); i++) {
-                        privacyLevel_1 = this.reducePrivacyLevel(privacyLevel_1);
-                      }
-                      this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", privacyLevel_1);
-                      break;
-                    case "[DataGeneration]":
-                      final DataGenerationContract contractDG = ((DataGenerationContract) contract);
-                      DataGenerationDirection _xifexpression_10 = null;
-                      if ((contractDG != null)) {
-                        _xifexpression_10 = contractDG.getDirection();
-                      } else {
-                        _xifexpression_10 = null;
-                      }
-                      final DataGenerationDirection direction = _xifexpression_10;
-                      int _xifexpression_11 = (int) 0;
-                      if ((contractDG != null)) {
-                        _xifexpression_11 = contractDG.getK();
-                      } else {
-                        _xifexpression_11 = 1;
-                      }
-                      final int k_1 = _xifexpression_11;
-                      int privacyLevel_2 = pMax;
-                      if ((direction != null)) {
-                        String _string = direction.toString();
-                        boolean _equals = Objects.equals(_string, "REDUCE");
-                        if (_equals) {
-                          for (int i = 0; (i < k_1); i++) {
-                            privacyLevel_2 = this.reducePrivacyLevel(privacyLevel_2);
-                          }
-                        } else {
-                          String _string_1 = direction.toString();
-                          boolean _equals_1 = Objects.equals(_string_1, "ELEVATE");
-                          if (_equals_1) {
-                            for (int i = 0; (i < k_1); i++) {
-                              privacyLevel_2 = this.elevatePrivacyLevel(privacyLevel_2);
-                            }
-                          }
-                        }
-                      }
-                      this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", privacyLevel_2);
                       break;
                     case "[EncryptOrHash]":
                       Objective[] _values = Objective.values();
@@ -850,23 +739,23 @@ public class eDFDToGraphTransformation {
                         for (int i = 0; (i < nr.getIncomingassets().size()); i++) {
                           {
                             final GraphAsset incomingAsset = nr.getIncomingassets().get(i);
-                            int _xifexpression_12 = (int) 0;
+                            int _xifexpression_3 = (int) 0;
                             int _size = nr.getOutgoingassets().size();
                             boolean _lessThan = (i < _size);
                             if (_lessThan) {
-                              _xifexpression_12 = i;
+                              _xifexpression_3 = i;
                             } else {
                               int _size_1 = nr.getOutgoingassets().size();
-                              _xifexpression_12 = (_size_1 - 1);
+                              _xifexpression_3 = (_size_1 - 1);
                             }
-                            final int outgoingAssetIndex = _xifexpression_12;
-                            GraphAsset _xifexpression_13 = null;
+                            final int outgoingAssetIndex = _xifexpression_3;
+                            GraphAsset _xifexpression_4 = null;
                             if ((outgoingAssetIndex >= 0)) {
-                              _xifexpression_13 = nr.getOutgoingassets().get(outgoingAssetIndex);
+                              _xifexpression_4 = nr.getOutgoingassets().get(outgoingAssetIndex);
                             } else {
-                              _xifexpression_13 = null;
+                              _xifexpression_4 = null;
                             }
-                            final GraphAsset correspondingOutgoingAsset = _xifexpression_13;
+                            final GraphAsset correspondingOutgoingAsset = _xifexpression_4;
                             if (((correspondingOutgoingAsset != null) && outgoing.getGraphassets().contains(correspondingOutgoingAsset))) {
                               Objective[] _values_1 = Objective.values();
                               for (final Objective o_1 : _values_1) {
@@ -898,23 +787,23 @@ public class eDFDToGraphTransformation {
                         for (int i = 0; (i < nr.getIncomingassets().size()); i++) {
                           {
                             final GraphAsset incomingAsset = nr.getIncomingassets().get(i);
-                            int _xifexpression_12 = (int) 0;
+                            int _xifexpression_3 = (int) 0;
                             int _size = nr.getOutgoingassets().size();
                             boolean _lessThan = (i < _size);
                             if (_lessThan) {
-                              _xifexpression_12 = i;
+                              _xifexpression_3 = i;
                             } else {
                               int _size_1 = nr.getOutgoingassets().size();
-                              _xifexpression_12 = (_size_1 - 1);
+                              _xifexpression_3 = (_size_1 - 1);
                             }
-                            final int outgoingAssetIndex = _xifexpression_12;
-                            GraphAsset _xifexpression_13 = null;
+                            final int outgoingAssetIndex = _xifexpression_3;
+                            GraphAsset _xifexpression_4 = null;
                             if ((outgoingAssetIndex >= 0)) {
-                              _xifexpression_13 = nr.getOutgoingassets().get(outgoingAssetIndex);
+                              _xifexpression_4 = nr.getOutgoingassets().get(outgoingAssetIndex);
                             } else {
-                              _xifexpression_13 = null;
+                              _xifexpression_4 = null;
                             }
-                            final GraphAsset correspondingOutgoingAsset = _xifexpression_13;
+                            final GraphAsset correspondingOutgoingAsset = _xifexpression_4;
                             if (((correspondingOutgoingAsset != null) && outgoing.getGraphassets().contains(correspondingOutgoingAsset))) {
                               Objective[] _values_1 = Objective.values();
                               for (final Objective o_1 : _values_1) {
@@ -946,23 +835,23 @@ public class eDFDToGraphTransformation {
                         for (int i = 0; (i < nr.getIncomingassets().size()); i++) {
                           {
                             final GraphAsset incomingAsset = nr.getIncomingassets().get(i);
-                            int _xifexpression_12 = (int) 0;
+                            int _xifexpression_3 = (int) 0;
                             int _size = nr.getOutgoingassets().size();
                             boolean _lessThan = (i < _size);
                             if (_lessThan) {
-                              _xifexpression_12 = i;
+                              _xifexpression_3 = i;
                             } else {
                               int _size_1 = nr.getOutgoingassets().size();
-                              _xifexpression_12 = (_size_1 - 1);
+                              _xifexpression_3 = (_size_1 - 1);
                             }
-                            final int outgoingAssetIndex = _xifexpression_12;
-                            GraphAsset _xifexpression_13 = null;
+                            final int outgoingAssetIndex = _xifexpression_3;
+                            GraphAsset _xifexpression_4 = null;
                             if ((outgoingAssetIndex >= 0)) {
-                              _xifexpression_13 = nr.getOutgoingassets().get(outgoingAssetIndex);
+                              _xifexpression_4 = nr.getOutgoingassets().get(outgoingAssetIndex);
                             } else {
-                              _xifexpression_13 = null;
+                              _xifexpression_4 = null;
                             }
-                            final GraphAsset correspondingOutgoingAsset = _xifexpression_13;
+                            final GraphAsset correspondingOutgoingAsset = _xifexpression_4;
                             if (((correspondingOutgoingAsset != null) && outgoing.getGraphassets().contains(correspondingOutgoingAsset))) {
                               Objective[] _values_1 = Objective.values();
                               for (final Objective o_1 : _values_1) {
@@ -997,16 +886,16 @@ public class eDFDToGraphTransformation {
                         final GraphAsset matchingOutgoingAsset = IterableExtensions.<GraphAsset>findFirst(nr.getOutgoingassets(), _function_2);
                         if ((matchingOutgoingAsset != null)) {
                           final int outgoingAssetIndex = nr.getOutgoingassets().indexOf(matchingOutgoingAsset);
-                          int _xifexpression_12 = (int) 0;
+                          int _xifexpression_3 = (int) 0;
                           int _size = nr.getIncomingassets().size();
                           boolean _lessThan = (outgoingAssetIndex < _size);
                           if (_lessThan) {
-                            _xifexpression_12 = outgoingAssetIndex;
+                            _xifexpression_3 = outgoingAssetIndex;
                           } else {
                             int _size_1 = nr.getIncomingassets().size();
-                            _xifexpression_12 = (_size_1 - 1);
+                            _xifexpression_3 = (_size_1 - 1);
                           }
-                          final int incomingAssetIndex = _xifexpression_12;
+                          final int incomingAssetIndex = _xifexpression_3;
                           final GraphAsset incomingAsset = nr.getIncomingassets().get(incomingAssetIndex);
                           Objective[] _values_1 = Objective.values();
                           for (final Objective o_1 : _values_1) {
@@ -1354,44 +1243,26 @@ public class eDFDToGraphTransformation {
       {
         final ContractBase contract = this.findContract(it);
         String _xifexpression_1 = null;
-        if ((contract instanceof ClassificationContract)) {
-          _xifexpression_1 = "Classification";
+        if ((contract instanceof ClassificationFixedContract)) {
+          _xifexpression_1 = "ClassificationFixed";
         } else {
           String _xifexpression_2 = null;
-          if ((contract instanceof DecisionMakingContract)) {
-            _xifexpression_2 = "DecisionMaking";
+          if ((contract instanceof ClassificationVariableContract)) {
+            _xifexpression_2 = "ClassificationVariable";
           } else {
             String _xifexpression_3 = null;
-            if ((contract instanceof RecommendationContract)) {
-              _xifexpression_3 = "Recommendation";
+            if ((contract instanceof TransformationContract)) {
+              _xifexpression_3 = "Transformation";
             } else {
               String _xifexpression_4 = null;
-              if ((contract instanceof PredictionContract)) {
-                _xifexpression_4 = "Prediction";
+              if ((contract instanceof ClusteringContract)) {
+                _xifexpression_4 = "Clustering";
               } else {
                 String _xifexpression_5 = null;
-                if ((contract instanceof DimensionalityReductionContract)) {
-                  _xifexpression_5 = "DimensionalityReduction";
+                if (((it.getContractTypes() != null) && (!it.getContractTypes().isEmpty()))) {
+                  _xifexpression_5 = IterableExtensions.join(it.getContractTypes(), "+");
                 } else {
-                  String _xifexpression_6 = null;
-                  if ((contract instanceof DataGenerationContract)) {
-                    _xifexpression_6 = "DataGeneration";
-                  } else {
-                    String _xifexpression_7 = null;
-                    if ((contract instanceof ClusteringContract)) {
-                      _xifexpression_7 = "Clustering";
-                    } else {
-                      String _xifexpression_8 = null;
-                      if (((it.getContractTypes() != null) && (!it.getContractTypes().isEmpty()))) {
-                        _xifexpression_8 = IterableExtensions.join(it.getContractTypes(), "+");
-                      } else {
-                        _xifexpression_8 = "";
-                      }
-                      _xifexpression_7 = _xifexpression_8;
-                    }
-                    _xifexpression_6 = _xifexpression_7;
-                  }
-                  _xifexpression_5 = _xifexpression_6;
+                  _xifexpression_5 = "";
                 }
                 _xifexpression_4 = _xifexpression_5;
               }

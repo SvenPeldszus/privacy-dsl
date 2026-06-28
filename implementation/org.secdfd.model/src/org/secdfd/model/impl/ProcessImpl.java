@@ -40,6 +40,7 @@ public class ProcessImpl extends ElementImpl implements org.secdfd.model.Process
 	 * @ordered
 	 */
 	protected EList<ContractBase> contract;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

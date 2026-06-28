@@ -56,7 +56,9 @@ public enum Objective implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ACCOUNTABILITY(3, "Accountability", "Accountability"), /**
+	ACCOUNTABILITY(3, "Accountability", "Accountability"),
+
+	/**
 	 * The '<em><b>Privacy</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

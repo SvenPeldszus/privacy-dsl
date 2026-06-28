@@ -324,29 +324,27 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 		return securityContractItemProvider;
 	}
 
-	
-
 	/**
-	 * This keeps track of the one adapter used for all {@link org.secdfd.model.ClassificationContract} instances.
+	 * This keeps track of the one adapter used for all {@link org.secdfd.model.ClassificationFixedContract} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ClassificationContractItemProvider classificationContractItemProvider;
+	protected ClassificationFixedContractItemProvider classificationFixedContractItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.secdfd.model.ClassificationContract}.
+	 * This creates an adapter for a {@link org.secdfd.model.ClassificationFixedContract}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createClassificationContractAdapter() {
-		if (classificationContractItemProvider == null) {
-			classificationContractItemProvider = new ClassificationContractItemProvider(this);
+	public Adapter createClassificationFixedContractAdapter() {
+		if (classificationFixedContractItemProvider == null) {
+			classificationFixedContractItemProvider = new ClassificationFixedContractItemProvider(this);
 		}
 
-		return classificationContractItemProvider;
+		return classificationFixedContractItemProvider;
 	}
 
 	/**
@@ -373,118 +371,49 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.secdfd.model.DecisionMakingContract} instances.
+	 * This keeps track of the one adapter used for all {@link org.secdfd.model.ClassificationVariableContract} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DecisionMakingContractItemProvider decisionMakingContractItemProvider;
+	protected ClassificationVariableContractItemProvider classificationVariableContractItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.secdfd.model.DecisionMakingContract}.
+	 * This creates an adapter for a {@link org.secdfd.model.ClassificationVariableContract}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDecisionMakingContractAdapter() {
-		if (decisionMakingContractItemProvider == null) {
-			decisionMakingContractItemProvider = new DecisionMakingContractItemProvider(this);
+	public Adapter createClassificationVariableContractAdapter() {
+		if (classificationVariableContractItemProvider == null) {
+			classificationVariableContractItemProvider = new ClassificationVariableContractItemProvider(this);
 		}
 
-		return decisionMakingContractItemProvider;
+		return classificationVariableContractItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.secdfd.model.RecommendationContract} instances.
+	 * This keeps track of the one adapter used for all {@link org.secdfd.model.TransformationContract} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RecommendationContractItemProvider recommendationContractItemProvider;
+	protected TransformationContractItemProvider transformationContractItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.secdfd.model.RecommendationContract}.
+	 * This creates an adapter for a {@link org.secdfd.model.TransformationContract}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createRecommendationContractAdapter() {
-		if (recommendationContractItemProvider == null) {
-			recommendationContractItemProvider = new RecommendationContractItemProvider(this);
+	public Adapter createTransformationContractAdapter() {
+		if (transformationContractItemProvider == null) {
+			transformationContractItemProvider = new TransformationContractItemProvider(this);
 		}
 
-		return recommendationContractItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.secdfd.model.PredictionContract} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PredictionContractItemProvider predictionContractItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.secdfd.model.PredictionContract}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPredictionContractAdapter() {
-		if (predictionContractItemProvider == null) {
-			predictionContractItemProvider = new PredictionContractItemProvider(this);
-		}
-
-		return predictionContractItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.secdfd.model.DimensionalityReductionContract} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DimensionalityReductionContractItemProvider dimensionalityReductionContractItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.secdfd.model.DimensionalityReductionContract}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDimensionalityReductionContractAdapter() {
-		if (dimensionalityReductionContractItemProvider == null) {
-			dimensionalityReductionContractItemProvider = new DimensionalityReductionContractItemProvider(this);
-		}
-
-		return dimensionalityReductionContractItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.secdfd.model.DataGenerationContract} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DataGenerationContractItemProvider dataGenerationContractItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.secdfd.model.DataGenerationContract}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDataGenerationContractAdapter() {
-		if (dataGenerationContractItemProvider == null) {
-			dataGenerationContractItemProvider = new DataGenerationContractItemProvider(this);
-		}
-
-		return dataGenerationContractItemProvider;
+		return transformationContractItemProvider;
 	}
 
 	/**
@@ -603,13 +532,10 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
 		if (attackerProfileItemProvider != null) attackerProfileItemProvider.dispose();
 		if (trustZoneItemProvider != null) trustZoneItemProvider.dispose();
 		if (securityContractItemProvider != null) securityContractItemProvider.dispose();
-		if (classificationContractItemProvider != null) classificationContractItemProvider.dispose();
+		if (classificationFixedContractItemProvider != null) classificationFixedContractItemProvider.dispose();
 		if (clusteringContractItemProvider != null) clusteringContractItemProvider.dispose();
-		if (decisionMakingContractItemProvider != null) decisionMakingContractItemProvider.dispose();
-		if (recommendationContractItemProvider != null) recommendationContractItemProvider.dispose();
-		if (predictionContractItemProvider != null) predictionContractItemProvider.dispose();
-		if (dimensionalityReductionContractItemProvider != null) dimensionalityReductionContractItemProvider.dispose();
-		if (dataGenerationContractItemProvider != null) dataGenerationContractItemProvider.dispose();
+		if (classificationVariableContractItemProvider != null) classificationVariableContractItemProvider.dispose();
+		if (transformationContractItemProvider != null) transformationContractItemProvider.dispose();
 	}
 
 }

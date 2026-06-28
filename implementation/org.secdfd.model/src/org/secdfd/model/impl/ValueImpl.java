@@ -3,10 +3,12 @@
 package org.secdfd.model.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.secdfd.model.Level;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.Objective;

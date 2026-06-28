@@ -121,13 +121,13 @@ public interface ModelFactory extends EFactory {
 	SecurityContract createSecurityContract();
 
 	/**
-	 * Returns a new object of class '<em>Classification Contract</em>'.
+	 * Returns a new object of class '<em>Classification Fixed Contract</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Classification Contract</em>'.
+	 * @return a new object of class '<em>Classification Fixed Contract</em>'.
 	 * @generated
 	 */
-	ClassificationContract createClassificationContract();
+	ClassificationFixedContract createClassificationFixedContract();
 
 	/**
 	 * Returns a new object of class '<em>Clustering Contract</em>'.
@@ -139,49 +139,22 @@ public interface ModelFactory extends EFactory {
 	ClusteringContract createClusteringContract();
 
 	/**
-	 * Returns a new object of class '<em>Decision Making Contract</em>'.
+	 * Returns a new object of class '<em>Classification Variable Contract</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Decision Making Contract</em>'.
+	 * @return a new object of class '<em>Classification Variable Contract</em>'.
 	 * @generated
 	 */
-	DecisionMakingContract createDecisionMakingContract();
+	ClassificationVariableContract createClassificationVariableContract();
 
 	/**
-	 * Returns a new object of class '<em>Recommendation Contract</em>'.
+	 * Returns a new object of class '<em>Transformation Contract</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Recommendation Contract</em>'.
+	 * @return a new object of class '<em>Transformation Contract</em>'.
 	 * @generated
 	 */
-	RecommendationContract createRecommendationContract();
-
-	/**
-	 * Returns a new object of class '<em>Prediction Contract</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Prediction Contract</em>'.
-	 * @generated
-	 */
-	PredictionContract createPredictionContract();
-
-	/**
-	 * Returns a new object of class '<em>Dimensionality Reduction Contract</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Dimensionality Reduction Contract</em>'.
-	 * @generated
-	 */
-	DimensionalityReductionContract createDimensionalityReductionContract();
-
-	/**
-	 * Returns a new object of class '<em>Data Generation Contract</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Generation Contract</em>'.
-	 * @generated
-	 */
-	DataGenerationContract createDataGenerationContract();
+	TransformationContract createTransformationContract();
 
 	/**
 	 * Returns the package supported by this factory.

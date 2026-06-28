@@ -58,7 +58,7 @@ Process returns Process:
 	']';
 
 ContractBase:
-	SecurityContract | ClassificationContract | ClusteringContract | DecisionMakingContract | RecommendationContract | PredictionContract | DimensionalityReductionContract | DataGenerationContract
+	SecurityContract | ClassificationFixedContract | ClusteringContract | ClassificationVariableContract | TransformationContract
 ;
 
 SecurityContract returns SecurityContract:
@@ -69,12 +69,12 @@ SecurityContract returns SecurityContract:
 	']'
 ;
 
-ClassificationContract returns ClassificationContract:
-	{ClassificationContract}
-	'Classification' // Keyword for serialization
+ClassificationFixedContract returns ClassificationFixedContract:
+	{ClassificationFixedContract}
+	'ClassificationFixed' // Keyword for serialization
 	(name=EString)?
 	'['
-		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('PClass' '=' PClass=Level)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('PClass' '=' PModel=Level)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
 	']'
 ;
 
@@ -87,48 +87,21 @@ ClusteringContract returns ClusteringContract:
 	']'
 ;
 
-DecisionMakingContract returns DecisionMakingContract:
-	{DecisionMakingContract}
-	'DecisionMaking' // Keyword for serialization
+ClassificationVariableContract returns ClassificationVariableContract:
+	{ClassificationVariableContract}
+	'ClassificationVariable' // Keyword for serialization
 	(name=EString)?
 	'['
-		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('PAction' '=' PAction=Level)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
 	']'
 ;
 
-RecommendationContract returns RecommendationContract:
-	{RecommendationContract}
-	'Recommendation' // Keyword for serialization
+TransformationContract returns TransformationContract:
+	{TransformationContract}
+	'Transformation' // Keyword for serialization
 	(name=EString)?
 	'['
-		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('S' '=' S=EBoolean)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
-	']'
-;
-
-PredictionContract returns PredictionContract:
-	{PredictionContract}
-	'Prediction' // Keyword for serialization
-	(name=EString)?
-	'['
-		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('S' '=' S=EBoolean)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
-	']'
-;
-
-DimensionalityReductionContract returns DimensionalityReductionContract:
-	{DimensionalityReductionContract}
-	'DimensionalityReduction' // Keyword for serialization
-	(name=EString)?
-	'['
-		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('K' '=' K=EInt)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
-	']'
-;
-
-DataGenerationContract returns DataGenerationContract:
-	{DataGenerationContract}
-	'DataGeneration' // Keyword for serialization
-	(name=EString)?
-	'['
-		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('Direction' '=' Direction=DataGenerationDirection)? ('K' '=' K=EInt)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
 	']'
 ;
 
@@ -203,14 +176,11 @@ enum TrustFactor returns TrustFactor:
 enum Objective returns Objective:
 				Integrity = 'I' | Confidentiality = 'C' | Availability = 'Av' | Accountability = 'Ac' | Privacy = 'P';
 
-enum DataGenerationDirection returns DataGenerationDirection:
-				REDUCE = 'REDUCE' | PRESERVE = 'PRESERVE' | ELEVATE = 'ELEVATE';
-
 enum Layer returns Layer:
 				Transport = 'Transport' | Architectural = 'Architectural' | Application = 'Application';
 
 enum ContractType returns ContractType:
-				Store = 'Store' | Comparator = 'Comparator' | Discarder = 'Discarder' | Joiner = 'Joiner' | Copier = 'Copier' | Splitter = 'Splitter' | Forward = 'Forward' | EncryptOrHash = 'EncryptOrHash' | Decrypt = 'Decrypt' | Authenticator = 'Authenticator' | Authoriser = 'Authoriser' | Verifier = 'Verifier' | User = 'User' | Classification = 'Classification' | Clustering = 'Clustering' | DecisionMaking = 'DecisionMaking' | Recommendation = 'Recommendation' | Prediction = 'Prediction' | DimensionalityReduction = 'DimensionalityReduction' | DataGeneration = 'DataGeneration';
+				Store = 'Store' | Comparator = 'Comparator' | Discarder = 'Discarder' | Joiner = 'Joiner' | Copier = 'Copier' | Splitter = 'Splitter' | Forward = 'Forward' | EncryptOrHash = 'EncryptOrHash' | Decrypt = 'Decrypt' | Authenticator = 'Authenticator' | Authoriser = 'Authoriser' | Verifier = 'Verifier' | User = 'User' | ClassificationFixed = 'ClassificationFixed' | Clustering = 'Clustering' | ClassificationVariable = 'ClassificationVariable' | Transformation = 'Transformation';
 
 enum Channel returns Channel:
 				VLAN = 'VLAN' | ETH = 'ETH' | WiFi = 'WiFi';

@@ -14,10 +14,6 @@ import org.secdfd.model.ModelFactory;
  */
 public class ProcessTest extends ElementTest {
 
-	public void test() {
-		//TODO: Implement test here
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

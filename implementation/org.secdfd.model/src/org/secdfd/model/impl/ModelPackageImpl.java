@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.secdfd.model.Asset;
@@ -14,15 +15,12 @@ import org.secdfd.model.AssetType;
 import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
 import org.secdfd.model.Channel;
-import org.secdfd.model.ClassificationContract;
+import org.secdfd.model.ClassificationFixedContract;
+import org.secdfd.model.ClassificationVariableContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
 import org.secdfd.model.ContractType;
-import org.secdfd.model.DataGenerationContract;
-import org.secdfd.model.DataGenerationDirection;
 import org.secdfd.model.DataStore;
-import org.secdfd.model.DecisionMakingContract;
-import org.secdfd.model.DimensionalityReductionContract;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
@@ -32,9 +30,8 @@ import org.secdfd.model.ModelFactory;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
 import org.secdfd.model.Objective;
-import org.secdfd.model.PredictionContract;
-import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
+import org.secdfd.model.TransformationContract;
 import org.secdfd.model.TrustFactor;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
@@ -149,7 +146,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass classificationContractEClass = null;
+	private EClass classificationFixedContractEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,35 +160,14 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass decisionMakingContractEClass = null;
+	private EClass classificationVariableContractEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass recommendationContractEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass predictionContractEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass dimensionalityReductionContractEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass dataGenerationContractEClass = null;
+	private EClass transformationContractEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,13 +219,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	private EEnum assetTypeEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum dataGenerationDirectionEEnum = null;
-
-	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -267,7 +236,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	private ModelPackageImpl() {
 		super(eNS_URI, ModelFactory.eINSTANCE);
 	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -776,8 +744,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getClassificationContract() {
-		return classificationContractEClass;
+	public EClass getClassificationFixedContract() {
+		return classificationFixedContractEClass;
 	}
 
 	/**
@@ -786,8 +754,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getClassificationContract_PClass() {
-		return (EAttribute)classificationContractEClass.getEStructuralFeatures().get(0);
+	public EAttribute getClassificationFixedContract_PModel() {
+		return (EAttribute)classificationFixedContractEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -806,8 +774,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getDecisionMakingContract() {
-		return decisionMakingContractEClass;
+	public EClass getClassificationVariableContract() {
+		return classificationVariableContractEClass;
 	}
 
 	/**
@@ -816,98 +784,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getDecisionMakingContract_PAction() {
-		return (EAttribute)decisionMakingContractEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getRecommendationContract() {
-		return recommendationContractEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getRecommendationContract_S() {
-		return (EAttribute)recommendationContractEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getPredictionContract() {
-		return predictionContractEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getPredictionContract_S() {
-		return (EAttribute)predictionContractEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getDimensionalityReductionContract() {
-		return dimensionalityReductionContractEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDimensionalityReductionContract_K() {
-		return (EAttribute)dimensionalityReductionContractEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getDataGenerationContract() {
-		return dataGenerationContractEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDataGenerationContract_Direction() {
-		return (EAttribute)dataGenerationContractEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getDataGenerationContract_K() {
-		return (EAttribute)dataGenerationContractEClass.getEStructuralFeatures().get(1);
+	public EClass getTransformationContract() {
+		return transformationContractEClass;
 	}
 
 	/**
@@ -978,16 +856,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	@Override
 	public EEnum getAssetType() {
 		return assetTypeEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EEnum getDataGenerationDirection() {
-		return dataGenerationDirectionEEnum;
 	}
 
 	/**
@@ -1079,26 +947,14 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		securityContractEClass = createEClass(SECURITY_CONTRACT);
 
-		classificationContractEClass = createEClass(CLASSIFICATION_CONTRACT);
-		createEAttribute(classificationContractEClass, CLASSIFICATION_CONTRACT__PCLASS);
+		classificationFixedContractEClass = createEClass(CLASSIFICATION_FIXED_CONTRACT);
+		createEAttribute(classificationFixedContractEClass, CLASSIFICATION_FIXED_CONTRACT__PMODEL);
 
 		clusteringContractEClass = createEClass(CLUSTERING_CONTRACT);
 
-		decisionMakingContractEClass = createEClass(DECISION_MAKING_CONTRACT);
-		createEAttribute(decisionMakingContractEClass, DECISION_MAKING_CONTRACT__PACTION);
+		classificationVariableContractEClass = createEClass(CLASSIFICATION_VARIABLE_CONTRACT);
 
-		recommendationContractEClass = createEClass(RECOMMENDATION_CONTRACT);
-		createEAttribute(recommendationContractEClass, RECOMMENDATION_CONTRACT__S);
-
-		predictionContractEClass = createEClass(PREDICTION_CONTRACT);
-		createEAttribute(predictionContractEClass, PREDICTION_CONTRACT__S);
-
-		dimensionalityReductionContractEClass = createEClass(DIMENSIONALITY_REDUCTION_CONTRACT);
-		createEAttribute(dimensionalityReductionContractEClass, DIMENSIONALITY_REDUCTION_CONTRACT__K);
-
-		dataGenerationContractEClass = createEClass(DATA_GENERATION_CONTRACT);
-		createEAttribute(dataGenerationContractEClass, DATA_GENERATION_CONTRACT__DIRECTION);
-		createEAttribute(dataGenerationContractEClass, DATA_GENERATION_CONTRACT__K);
+		transformationContractEClass = createEClass(TRANSFORMATION_CONTRACT);
 
 		// Create enums
 		levelEEnum = createEEnum(LEVEL);
@@ -1108,7 +964,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		objectiveEEnum = createEEnum(OBJECTIVE);
 		layerEEnum = createEEnum(LAYER);
 		assetTypeEEnum = createEEnum(ASSET_TYPE);
-		dataGenerationDirectionEEnum = createEEnum(DATA_GENERATION_DIRECTION);
 	}
 
 	/**
@@ -1150,13 +1005,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		trustZoneEClass.getESuperTypes().add(this.getElement());
 		contractBaseEClass.getESuperTypes().add(this.getNamedEntity());
 		securityContractEClass.getESuperTypes().add(this.getContractBase());
-		classificationContractEClass.getESuperTypes().add(this.getContractBase());
+		classificationFixedContractEClass.getESuperTypes().add(this.getContractBase());
 		clusteringContractEClass.getESuperTypes().add(this.getContractBase());
-		decisionMakingContractEClass.getESuperTypes().add(this.getContractBase());
-		recommendationContractEClass.getESuperTypes().add(this.getContractBase());
-		predictionContractEClass.getESuperTypes().add(this.getContractBase());
-		dimensionalityReductionContractEClass.getESuperTypes().add(this.getContractBase());
-		dataGenerationContractEClass.getESuperTypes().add(this.getContractBase());
+		classificationVariableContractEClass.getESuperTypes().add(this.getContractBase());
+		transformationContractEClass.getESuperTypes().add(this.getContractBase());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(assetEClass, Asset.class, "Asset", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1219,26 +1071,14 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 
 		initEClass(securityContractEClass, SecurityContract.class, "SecurityContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(classificationContractEClass, ClassificationContract.class, "ClassificationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getClassificationContract_PClass(), this.getLevel(), "PClass", "L", 0, 1, ClassificationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(classificationFixedContractEClass, ClassificationFixedContract.class, "ClassificationFixedContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getClassificationFixedContract_PModel(), this.getLevel(), "PModel", "L", 0, 1, ClassificationFixedContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(clusteringContractEClass, ClusteringContract.class, "ClusteringContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(decisionMakingContractEClass, DecisionMakingContract.class, "DecisionMakingContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDecisionMakingContract_PAction(), this.getLevel(), "PAction", "L", 0, 1, DecisionMakingContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(classificationVariableContractEClass, ClassificationVariableContract.class, "ClassificationVariableContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(recommendationContractEClass, RecommendationContract.class, "RecommendationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRecommendationContract_S(), ecorePackage.getEBoolean(), "S", "false", 1, 1, RecommendationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(predictionContractEClass, PredictionContract.class, "PredictionContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPredictionContract_S(), ecorePackage.getEBoolean(), "S", "false", 1, 1, PredictionContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(dimensionalityReductionContractEClass, DimensionalityReductionContract.class, "DimensionalityReductionContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDimensionalityReductionContract_K(), ecorePackage.getEInt(), "K", "0", 1, 1, DimensionalityReductionContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(dataGenerationContractEClass, DataGenerationContract.class, "DataGenerationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDataGenerationContract_Direction(), this.getDataGenerationDirection(), "Direction", "PRESERVE", 0, 1, DataGenerationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDataGenerationContract_K(), ecorePackage.getEInt(), "K", "1", 1, 1, DataGenerationContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(transformationContractEClass, TransformationContract.class, "TransformationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize enums and add enum literals
 		initEEnum(levelEEnum, Level.class, "Level");
@@ -1272,13 +1112,10 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEEnumLiteral(contractTypeEEnum, ContractType.AUTHORISER);
 		addEEnumLiteral(contractTypeEEnum, ContractType.VERIFIER);
 		addEEnumLiteral(contractTypeEEnum, ContractType.USER);
-		addEEnumLiteral(contractTypeEEnum, ContractType.CLASSIFICATION);
+		addEEnumLiteral(contractTypeEEnum, ContractType.CLASSIFICATION_FIXED);
+		addEEnumLiteral(contractTypeEEnum, ContractType.CLASSIFICATION_VARIABLE);
 		addEEnumLiteral(contractTypeEEnum, ContractType.CLUSTERING);
-		addEEnumLiteral(contractTypeEEnum, ContractType.DECISION_MAKING);
-		addEEnumLiteral(contractTypeEEnum, ContractType.RECOMMENDATION);
-		addEEnumLiteral(contractTypeEEnum, ContractType.PREDICTION);
-		addEEnumLiteral(contractTypeEEnum, ContractType.DIMENSIONALITY_REDUCTION);
-		addEEnumLiteral(contractTypeEEnum, ContractType.DATA_GENERATION);
+		addEEnumLiteral(contractTypeEEnum, ContractType.TRANSFORMATION);
 
 		initEEnum(objectiveEEnum, Objective.class, "Objective");
 		addEEnumLiteral(objectiveEEnum, Objective.INTEGRITY);
@@ -1298,11 +1135,6 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		addEEnumLiteral(assetTypeEEnum, AssetType.NUMBER);
 		addEEnumLiteral(assetTypeEEnum, AssetType.VECTOR);
 		addEEnumLiteral(assetTypeEEnum, AssetType.BOOLEAN);
-
-		initEEnum(dataGenerationDirectionEEnum, DataGenerationDirection.class, "DataGenerationDirection");
-		addEEnumLiteral(dataGenerationDirectionEEnum, DataGenerationDirection.REDUCE);
-		addEEnumLiteral(dataGenerationDirectionEEnum, DataGenerationDirection.PRESERVE);
-		addEEnumLiteral(dataGenerationDirectionEEnum, DataGenerationDirection.ELEVATE);
 
 		// Create resource
 		createResource(eNS_URI);

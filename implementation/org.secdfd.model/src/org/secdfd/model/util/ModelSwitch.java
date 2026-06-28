@@ -10,22 +10,19 @@ import org.eclipse.emf.ecore.util.Switch;
 import org.secdfd.model.Asset;
 import org.secdfd.model.Assumption;
 import org.secdfd.model.AttackerProfile;
-import org.secdfd.model.ClassificationContract;
+import org.secdfd.model.ClassificationFixedContract;
+import org.secdfd.model.ClassificationVariableContract;
 import org.secdfd.model.ClusteringContract;
 import org.secdfd.model.ContractBase;
-import org.secdfd.model.DataGenerationContract;
 import org.secdfd.model.DataStore;
-import org.secdfd.model.DecisionMakingContract;
-import org.secdfd.model.DimensionalityReductionContract;
 import org.secdfd.model.EDFD;
 import org.secdfd.model.Element;
 import org.secdfd.model.ExternalEntity;
 import org.secdfd.model.Flow;
 import org.secdfd.model.ModelPackage;
 import org.secdfd.model.NamedEntity;
-import org.secdfd.model.PredictionContract;
-import org.secdfd.model.RecommendationContract;
 import org.secdfd.model.SecurityContract;
+import org.secdfd.model.TransformationContract;
 import org.secdfd.model.TrustZone;
 import org.secdfd.model.Value;
 
@@ -187,11 +184,11 @@ public class ModelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ModelPackage.CLASSIFICATION_CONTRACT: {
-				ClassificationContract classificationContract = (ClassificationContract)theEObject;
-				T result = caseClassificationContract(classificationContract);
-				if (result == null) result = caseContractBase(classificationContract);
-				if (result == null) result = caseNamedEntity(classificationContract);
+			case ModelPackage.CLASSIFICATION_FIXED_CONTRACT: {
+				ClassificationFixedContract classificationFixedContract = (ClassificationFixedContract)theEObject;
+				T result = caseClassificationFixedContract(classificationFixedContract);
+				if (result == null) result = caseContractBase(classificationFixedContract);
+				if (result == null) result = caseNamedEntity(classificationFixedContract);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -203,43 +200,19 @@ public class ModelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ModelPackage.DECISION_MAKING_CONTRACT: {
-				DecisionMakingContract decisionMakingContract = (DecisionMakingContract)theEObject;
-				T result = caseDecisionMakingContract(decisionMakingContract);
-				if (result == null) result = caseContractBase(decisionMakingContract);
-				if (result == null) result = caseNamedEntity(decisionMakingContract);
+			case ModelPackage.CLASSIFICATION_VARIABLE_CONTRACT: {
+				ClassificationVariableContract classificationVariableContract = (ClassificationVariableContract)theEObject;
+				T result = caseClassificationVariableContract(classificationVariableContract);
+				if (result == null) result = caseContractBase(classificationVariableContract);
+				if (result == null) result = caseNamedEntity(classificationVariableContract);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ModelPackage.RECOMMENDATION_CONTRACT: {
-				RecommendationContract recommendationContract = (RecommendationContract)theEObject;
-				T result = caseRecommendationContract(recommendationContract);
-				if (result == null) result = caseContractBase(recommendationContract);
-				if (result == null) result = caseNamedEntity(recommendationContract);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ModelPackage.PREDICTION_CONTRACT: {
-				PredictionContract predictionContract = (PredictionContract)theEObject;
-				T result = casePredictionContract(predictionContract);
-				if (result == null) result = caseContractBase(predictionContract);
-				if (result == null) result = caseNamedEntity(predictionContract);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ModelPackage.DIMENSIONALITY_REDUCTION_CONTRACT: {
-				DimensionalityReductionContract dimensionalityReductionContract = (DimensionalityReductionContract)theEObject;
-				T result = caseDimensionalityReductionContract(dimensionalityReductionContract);
-				if (result == null) result = caseContractBase(dimensionalityReductionContract);
-				if (result == null) result = caseNamedEntity(dimensionalityReductionContract);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ModelPackage.DATA_GENERATION_CONTRACT: {
-				DataGenerationContract dataGenerationContract = (DataGenerationContract)theEObject;
-				T result = caseDataGenerationContract(dataGenerationContract);
-				if (result == null) result = caseContractBase(dataGenerationContract);
-				if (result == null) result = caseNamedEntity(dataGenerationContract);
+			case ModelPackage.TRANSFORMATION_CONTRACT: {
+				TransformationContract transformationContract = (TransformationContract)theEObject;
+				T result = caseTransformationContract(transformationContract);
+				if (result == null) result = caseContractBase(transformationContract);
+				if (result == null) result = caseNamedEntity(transformationContract);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -458,17 +431,17 @@ public class ModelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Classification Contract</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Classification Fixed Contract</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Classification Contract</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Classification Fixed Contract</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseClassificationContract(ClassificationContract object) {
+	public T caseClassificationFixedContract(ClassificationFixedContract object) {
 		return null;
 	}
 
@@ -488,77 +461,32 @@ public class ModelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Decision Making Contract</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Classification Variable Contract</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Decision Making Contract</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Classification Variable Contract</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDecisionMakingContract(DecisionMakingContract object) {
+	public T caseClassificationVariableContract(ClassificationVariableContract object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Recommendation Contract</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Transformation Contract</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Recommendation Contract</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Transformation Contract</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRecommendationContract(RecommendationContract object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Prediction Contract</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Prediction Contract</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePredictionContract(PredictionContract object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Dimensionality Reduction Contract</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Dimensionality Reduction Contract</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDimensionalityReductionContract(DimensionalityReductionContract object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Generation Contract</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Generation Contract</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDataGenerationContract(DataGenerationContract object) {
+	public T caseTransformationContract(TransformationContract object) {
 		return null;
 	}
 
