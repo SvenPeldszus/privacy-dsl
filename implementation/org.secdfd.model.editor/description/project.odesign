@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="project" version="12.0.0.2017041100">
   <ownedViewpoints name="eDFD">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="extendedDFD" initialisation="true" domainClass="model::EDFD" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="extendedDFD" initialisation="true" showOnStartup="true" domainClass="model::EDFD" enablePopupBars="true">
       <metamodel href="../../org.secdfd.model/model/model.ecore#/"/>
       <defaultLayer name="eDFDiagram">
         <nodeMappings name="Assumption" domainClass="model::Assumption">
