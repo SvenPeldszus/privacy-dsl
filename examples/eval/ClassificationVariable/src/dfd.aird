@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.secdfd="http://www.secdfd.org/secdfd" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
+  <viewpoint:DAnalysis uid="_RWHsgHMcEfGq2dMI855Z-w" selectedViews="_Rwq6gHMcEfGq2dMI855Z-w" version="15.4.1.202403191723">
+    <semanticResources>dfd.secdfd</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_Rwq6gHMcEfGq2dMI855Z-w">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RwvL8HMcEfGq2dMI855Z-w" name="extendedDFD" repPath="#_RwsvsHMcEfGq2dMI855Z-w" changeId="1782670334119">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
+        <target xmi:type="org.secdfd:EDFD" href="dfd.secdfd#Shop"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_RwsvsHMcEfGq2dMI855Z-w">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_RwxBIHMcEfGq2dMI855Z-w" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_RwxBIXMcEfGq2dMI855Z-w" type="Sirius" element="_RwsvsHMcEfGq2dMI855Z-w" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_RwxBInMcEfGq2dMI855Z-w"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_RwyPQHMcEfGq2dMI855Z-w" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_Rwy2UHMcEfGq2dMI855Z-w"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_RwsvsXMcEfGq2dMI855Z-w"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer"/>
+    <target xmi:type="org.secdfd:EDFD" href="dfd.secdfd#Shop"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>
