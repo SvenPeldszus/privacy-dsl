@@ -533,7 +533,8 @@ class eDFDToGraphTransformation {
 							val contractClass = contract as ClassificationFixedContract
 							val pModel = if(contractClass !== null && contractClass.getPModel() !== null) contractClass.
 									getPModel() else Level.L
-							setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", lvl(pModel))
+							val pOut=if(lvl(pModel)==0 && pMax>=2)1 else lvl(pModel) //Set output label to L if pModel = N, but maximum input level >=M
+							setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", pOut)
 						}
 						case "[ClassificationVariable]": {
 							val contractCV = contract as ClassificationVariableContract

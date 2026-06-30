@@ -681,12 +681,19 @@ public class eDFDToGraphTransformation {
                       _xifexpression_1 = Level.L;
                     }
                     final Level pModel = _xifexpression_1;
-                    this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", this.lvl(pModel));
+                    int _xifexpression_2 = (int) 0;
+                    if (((this.lvl(pModel) == 0) && (pMax >= 2))) {
+                      _xifexpression_2 = 1;
+                    } else {
+                      _xifexpression_2 = this.lvl(pModel);
+                    }
+                    final int pOut = _xifexpression_2;
+                    this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", pOut);
                     break;
                   case "[ClassificationVariable]":
                     final ClassificationVariableContract contractCV = ((ClassificationVariableContract) contract);
-                    final int pOut = this.getMaxLevel(contractCV.getCatalog());
-                    this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", pOut);
+                    final int pOut_1 = this.getMaxLevel(contractCV.getCatalog());
+                    this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", pOut_1);
                     break;
                   case "[Clustering]":
                     final boolean allHaveLabels = ((!nr.getIncomingassets().isEmpty()) && IterableExtensions.<GraphAsset>forall(nr.getIncomingassets(), ((Function1<GraphAsset, Boolean>) (GraphAsset ina) -> {
@@ -698,13 +705,13 @@ public class eDFDToGraphTransformation {
                       return Boolean.valueOf((_levelOf != 0));
                     }))));
                     EList<EdgeLabel> _edgelabel = outgoing.getEdgelabel();
-                    int _xifexpression_2 = (int) 0;
+                    int _xifexpression_3 = (int) 0;
                     if (allPrivacyLabelsAreN) {
-                      _xifexpression_2 = 0;
+                      _xifexpression_3 = 0;
                     } else {
-                      _xifexpression_2 = 1;
+                      _xifexpression_3 = 1;
                     }
-                    this.setOrUpdateEdgeLabel(_edgelabel, "Privacy", _xifexpression_2);
+                    this.setOrUpdateEdgeLabel(_edgelabel, "Privacy", _xifexpression_3);
                     break;
                   case "[Transformation]":
                     final int privacyLevel = pMax;
@@ -734,23 +741,23 @@ public class eDFDToGraphTransformation {
                       for (int i = 0; (i < nr.getIncomingassets().size()); i++) {
                         {
                           final GraphAsset incomingAsset = nr.getIncomingassets().get(i);
-                          int _xifexpression_3 = (int) 0;
+                          int _xifexpression_4 = (int) 0;
                           int _size = nr.getOutgoingassets().size();
                           boolean _lessThan = (i < _size);
                           if (_lessThan) {
-                            _xifexpression_3 = i;
+                            _xifexpression_4 = i;
                           } else {
                             int _size_1 = nr.getOutgoingassets().size();
-                            _xifexpression_3 = (_size_1 - 1);
+                            _xifexpression_4 = (_size_1 - 1);
                           }
-                          final int outgoingAssetIndex = _xifexpression_3;
-                          GraphAsset _xifexpression_4 = null;
+                          final int outgoingAssetIndex = _xifexpression_4;
+                          GraphAsset _xifexpression_5 = null;
                           if ((outgoingAssetIndex >= 0)) {
-                            _xifexpression_4 = nr.getOutgoingassets().get(outgoingAssetIndex);
+                            _xifexpression_5 = nr.getOutgoingassets().get(outgoingAssetIndex);
                           } else {
-                            _xifexpression_4 = null;
+                            _xifexpression_5 = null;
                           }
-                          final GraphAsset correspondingOutgoingAsset = _xifexpression_4;
+                          final GraphAsset correspondingOutgoingAsset = _xifexpression_5;
                           if (((correspondingOutgoingAsset != null) && 
                             outgoing.getGraphassets().contains(correspondingOutgoingAsset))) {
                             Objective[] _values_1 = Objective.values();
@@ -783,23 +790,23 @@ public class eDFDToGraphTransformation {
                       for (int i = 0; (i < nr.getIncomingassets().size()); i++) {
                         {
                           final GraphAsset incomingAsset = nr.getIncomingassets().get(i);
-                          int _xifexpression_3 = (int) 0;
+                          int _xifexpression_4 = (int) 0;
                           int _size = nr.getOutgoingassets().size();
                           boolean _lessThan = (i < _size);
                           if (_lessThan) {
-                            _xifexpression_3 = i;
+                            _xifexpression_4 = i;
                           } else {
                             int _size_1 = nr.getOutgoingassets().size();
-                            _xifexpression_3 = (_size_1 - 1);
+                            _xifexpression_4 = (_size_1 - 1);
                           }
-                          final int outgoingAssetIndex = _xifexpression_3;
-                          GraphAsset _xifexpression_4 = null;
+                          final int outgoingAssetIndex = _xifexpression_4;
+                          GraphAsset _xifexpression_5 = null;
                           if ((outgoingAssetIndex >= 0)) {
-                            _xifexpression_4 = nr.getOutgoingassets().get(outgoingAssetIndex);
+                            _xifexpression_5 = nr.getOutgoingassets().get(outgoingAssetIndex);
                           } else {
-                            _xifexpression_4 = null;
+                            _xifexpression_5 = null;
                           }
-                          final GraphAsset correspondingOutgoingAsset = _xifexpression_4;
+                          final GraphAsset correspondingOutgoingAsset = _xifexpression_5;
                           if (((correspondingOutgoingAsset != null) && 
                             outgoing.getGraphassets().contains(correspondingOutgoingAsset))) {
                             Objective[] _values_1 = Objective.values();
@@ -832,23 +839,23 @@ public class eDFDToGraphTransformation {
                       for (int i = 0; (i < nr.getIncomingassets().size()); i++) {
                         {
                           final GraphAsset incomingAsset = nr.getIncomingassets().get(i);
-                          int _xifexpression_3 = (int) 0;
+                          int _xifexpression_4 = (int) 0;
                           int _size = nr.getOutgoingassets().size();
                           boolean _lessThan = (i < _size);
                           if (_lessThan) {
-                            _xifexpression_3 = i;
+                            _xifexpression_4 = i;
                           } else {
                             int _size_1 = nr.getOutgoingassets().size();
-                            _xifexpression_3 = (_size_1 - 1);
+                            _xifexpression_4 = (_size_1 - 1);
                           }
-                          final int outgoingAssetIndex = _xifexpression_3;
-                          GraphAsset _xifexpression_4 = null;
+                          final int outgoingAssetIndex = _xifexpression_4;
+                          GraphAsset _xifexpression_5 = null;
                           if ((outgoingAssetIndex >= 0)) {
-                            _xifexpression_4 = nr.getOutgoingassets().get(outgoingAssetIndex);
+                            _xifexpression_5 = nr.getOutgoingassets().get(outgoingAssetIndex);
                           } else {
-                            _xifexpression_4 = null;
+                            _xifexpression_5 = null;
                           }
-                          final GraphAsset correspondingOutgoingAsset = _xifexpression_4;
+                          final GraphAsset correspondingOutgoingAsset = _xifexpression_5;
                           if (((correspondingOutgoingAsset != null) && 
                             outgoing.getGraphassets().contains(correspondingOutgoingAsset))) {
                             Objective[] _values_1 = Objective.values();
@@ -884,16 +891,16 @@ public class eDFDToGraphTransformation {
                       final GraphAsset matchingOutgoingAsset = IterableExtensions.<GraphAsset>findFirst(nr.getOutgoingassets(), _function_2);
                       if ((matchingOutgoingAsset != null)) {
                         final int outgoingAssetIndex = nr.getOutgoingassets().indexOf(matchingOutgoingAsset);
-                        int _xifexpression_3 = (int) 0;
+                        int _xifexpression_4 = (int) 0;
                         int _size = nr.getIncomingassets().size();
                         boolean _lessThan = (outgoingAssetIndex < _size);
                         if (_lessThan) {
-                          _xifexpression_3 = outgoingAssetIndex;
+                          _xifexpression_4 = outgoingAssetIndex;
                         } else {
                           int _size_1 = nr.getIncomingassets().size();
-                          _xifexpression_3 = (_size_1 - 1);
+                          _xifexpression_4 = (_size_1 - 1);
                         }
-                        final int incomingAssetIndex = _xifexpression_3;
+                        final int incomingAssetIndex = _xifexpression_4;
                         final GraphAsset incomingAsset = nr.getIncomingassets().get(incomingAssetIndex);
                         Objective[] _values_1 = Objective.values();
                         for (final Objective o_1 : _values_1) {
