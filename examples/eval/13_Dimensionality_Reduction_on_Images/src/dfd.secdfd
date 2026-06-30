@@ -1,0 +1,10 @@
+EDFD Bank[
+    assets:
+         Asset  
+            Image type: String values: [ M P ] source: input_data_store targets: Classifier ,
+
+         Asset 
+            CompressedImage type: String source: Classifier targets: output_data_store elements:
+        
+        Process 
+            Classifier [ contracts: Transformation [ Image :: CompressedImage ] incoming flows: "input_data_store.F1" outgoing flows: F2 [ assets: CompressedImage source: Classifier targets: output_data_store ] ] , DataStore input_data_store [ outgoing flows: F1 [ assets: Image source: input_data_store targets: Classifier ] ] , DataStore output_data_store [ incoming flows: "Classifier.F2" ] ]

@@ -1,0 +1,10 @@
+EDFD Bank[
+    assets:
+         Asset  
+            Text type: String values: [ N P ] source: input_data_store targets: Classifier ,
+
+         Asset 
+            PersonalAttributes type: String source: Classifier targets: output_data_store elements:
+        
+        Process 
+            Classifier [ contracts: ClassificationFixed [ Text PModel = H :: PersonalAttributes ] incoming flows: "input_data_store.F1" outgoing flows: F2 [ assets: PersonalAttributes source: Classifier targets: output_data_store ] ] , DataStore input_data_store [ outgoing flows: F1 [ assets: Text source: input_data_store targets: Classifier ] ] , DataStore output_data_store [ incoming flows: "Classifier.F2" ] ]

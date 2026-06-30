@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.secdfd="http://www.secdfd.org/secdfd" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_HGvHYHMcEfGq2dMI855Z-w" selectedViews="_HkCHYHMcEfGq2dMI855Z-w" version="15.4.3.202406261640">
+    <semanticResources>dfd.secdfd</semanticResources>
+    <semanticResources>dfd.graph</semanticResources>
+    <semanticResources>dfd.traceability</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_HkCHYHMcEfGq2dMI855Z-w">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_HkpLYHMcEfGq2dMI855Z-w" name="extendedDFD" repPath="#_HkR_AHMcEfGq2dMI855Z-w" changeId="1782858385577">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
+        <target xmi:type="org.secdfd:EDFD" href="dfd.secdfd#Bank"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_HkR_AHMcEfGq2dMI855Z-w">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_Hl69wHMcEfGq2dMI855Z-w" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_Hl7k0HMcEfGq2dMI855Z-w" type="Sirius" element="_HkR_AHMcEfGq2dMI855Z-w" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_qVELAHOYEfGo64uO7yvtYg" type="2001" element="_qU82QHOYEfGo64uO7yvtYg">
+          <children xmi:type="notation:Node" xmi:id="_qVV30HOYEfGo64uO7yvtYg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_qVV30XOYEfGo64uO7yvtYg" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qVaJQHOYEfGo64uO7yvtYg" type="3016" element="_qU-rcHOYEfGo64uO7yvtYg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qVaJQXOYEfGo64uO7yvtYg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qVaJQnOYEfGo64uO7yvtYg"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qwFysHRfEfGL-aLHxE8iTw" type="3001" element="_qv_sEHRfEfGL-aLHxE8iTw">
+            <children xmi:type="notation:Node" xmi:id="_qwFys3RfEfGL-aLHxE8iTw" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_qwFytHRfEfGL-aLHxE8iTw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_LrTIt3TSEfGxL9OhgNXppA" type="3002" element="_LrQFZnTSEfGxL9OhgNXppA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_LrTIuHTSEfGxL9OhgNXppA" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrTIuXTSEfGxL9OhgNXppA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qwFysXRfEfGL-aLHxE8iTw" fontName="Segoe UI" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qwFysnRfEfGL-aLHxE8iTw" x="4" y="100" width="96" height="56"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qVELAXOYEfGo64uO7yvtYg" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qVELAnOYEfGo64uO7yvtYg" x="924" y="180" width="100" height="108"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_Ugh0wHOlEfGo64uO7yvtYg" type="2001" element="_Ugf_kHOlEfGo64uO7yvtYg">
+          <children xmi:type="notation:Node" xmi:id="_Ugib0HOlEfGo64uO7yvtYg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Ugib0XOlEfGo64uO7yvtYg" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_UgjC4HOlEfGo64uO7yvtYg" type="3005" element="_Ugf_kXOlEfGo64uO7yvtYg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_UgjC4XOlEfGo64uO7yvtYg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UgjC4nOlEfGo64uO7yvtYg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_Ugh0wXOlEfGo64uO7yvtYg" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ugh0wnOlEfGo64uO7yvtYg" x="432" y="227" width="156" height="73"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_62YVUHOlEfGo64uO7yvtYg" type="2001" element="_62VSAHOlEfGo64uO7yvtYg">
+          <children xmi:type="notation:Node" xmi:id="_62YVU3OlEfGo64uO7yvtYg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_62YVVHOlEfGo64uO7yvtYg" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_62YVVXOlEfGo64uO7yvtYg" type="3005" element="_62VSAXOlEfGo64uO7yvtYg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_62YVVnOlEfGo64uO7yvtYg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_62YVV3OlEfGo64uO7yvtYg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_62YVUXOlEfGo64uO7yvtYg" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_62YVUnOlEfGo64uO7yvtYg" x="1212" y="228" width="156" height="73"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_LrShoHTSEfGxL9OhgNXppA" type="2001" element="_LrQscHTSEfGxL9OhgNXppA">
+          <children xmi:type="notation:Node" xmi:id="_LrTIsHTSEfGxL9OhgNXppA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_LrTIsXTSEfGxL9OhgNXppA" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LrTIunTSEfGxL9OhgNXppA" type="3001" element="_LrQsdnTSEfGxL9OhgNXppA">
+            <children xmi:type="notation:Node" xmi:id="_LrTvwHTSEfGxL9OhgNXppA" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_LrTvwXTSEfGxL9OhgNXppA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_LrTvxXTSEfGxL9OhgNXppA" type="3017" element="_LrQsd3TSEfGxL9OhgNXppA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_LrTvxnTSEfGxL9OhgNXppA" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrTvx3TSEfGxL9OhgNXppA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_LrTIu3TSEfGxL9OhgNXppA" fontName="Segoe UI" fontHeight="12"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrTIvHTSEfGxL9OhgNXppA" x="-84" width="92" height="36"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LrTvwnTSEfGxL9OhgNXppA" type="3017" element="_LrQscXTSEfGxL9OhgNXppA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_LrTvw3TSEfGxL9OhgNXppA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrTvxHTSEfGxL9OhgNXppA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_LrShoXTSEfGxL9OhgNXppA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrShonTSEfGxL9OhgNXppA" x="648" y="145" width="108" height="36"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_LrTIsnTSEfGxL9OhgNXppA" type="2001" element="_LrQsc3TSEfGxL9OhgNXppA">
+          <children xmi:type="notation:Node" xmi:id="_LrTItXTSEfGxL9OhgNXppA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_LrTItnTSEfGxL9OhgNXppA" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LrTvyHTSEfGxL9OhgNXppA" type="3017" element="_LrQsdHTSEfGxL9OhgNXppA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_LrTvyXTSEfGxL9OhgNXppA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrTvynTSEfGxL9OhgNXppA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_LrTIs3TSEfGxL9OhgNXppA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrTItHTSEfGxL9OhgNXppA" x="1212" y="132" width="108" height="36"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_Hl7k0XMcEfGq2dMI855Z-w"/>
+        <edges xmi:type="notation:Edge" xmi:id="_adOcsHOlEfGo64uO7yvtYg" type="4001" element="_adIWEHOlEfGo64uO7yvtYg" source="_Ugh0wHOlEfGo64uO7yvtYg" target="_qVELAHOYEfGo64uO7yvtYg">
+          <children xmi:type="notation:Node" xmi:id="_adPDwHOlEfGo64uO7yvtYg" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_adPDwXOlEfGo64uO7yvtYg" x="51" y="-18"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_adPDwnOlEfGo64uO7yvtYg" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_adPDw3OlEfGo64uO7yvtYg" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_adPDxHOlEfGo64uO7yvtYg" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_adPDxXOlEfGo64uO7yvtYg" x="1" y="8"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_adOcsXOlEfGo64uO7yvtYg"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_adOcsnOlEfGo64uO7yvtYg" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_adOcs3OlEfGo64uO7yvtYg" points="[-6, -6, -392, 0]$[336, -6, -50, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_adPq0HOlEfGo64uO7yvtYg" id="(1.0,0.19088016967126192)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_-Zq14HOlEfGo64uO7yvtYg" type="4001" element="_-ZnLg3OlEfGo64uO7yvtYg" source="_qVELAHOYEfGo64uO7yvtYg" target="_62YVUHOlEfGo64uO7yvtYg">
+          <children xmi:type="notation:Node" xmi:id="_-Zrc8HOlEfGo64uO7yvtYg" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-Zrc8XOlEfGo64uO7yvtYg" x="-11" y="-13"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_-Zrc8nOlEfGo64uO7yvtYg" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-Zrc83OlEfGo64uO7yvtYg" x="-3" y="4"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_-Zrc9HOlEfGo64uO7yvtYg" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-Zrc9XOlEfGo64uO7yvtYg" x="4" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_-Zq14XOlEfGo64uO7yvtYg"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_-Zq14nOlEfGo64uO7yvtYg" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-Zq143OlEfGo64uO7yvtYg" points="[50, 4, -266, -26]$[238, 22, -78, -8]"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_LrUW0HTSEfGxL9OhgNXppA" type="4001" element="_LrRTjHTSEfGxL9OhgNXppA" source="_LrShoHTSEfGxL9OhgNXppA" target="_Ugh0wHOlEfGo64uO7yvtYg">
+          <children xmi:type="notation:Node" xmi:id="_LrUW1HTSEfGxL9OhgNXppA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrUW1XTSEfGxL9OhgNXppA" x="-4" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LrUW1nTSEfGxL9OhgNXppA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrUW13TSEfGxL9OhgNXppA" x="6" y="-9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LrUW2HTSEfGxL9OhgNXppA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrUW2XTSEfGxL9OhgNXppA" x="5" y="-8"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_LrUW0XTSEfGxL9OhgNXppA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_LrUW0nTSEfGxL9OhgNXppA" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_LrUW03TSEfGxL9OhgNXppA" points="[-54, 2, 462, -23]$[-579, -3, -63, -28]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LrU94HTSEfGxL9OhgNXppA" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LrU94XTSEfGxL9OhgNXppA" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_LrU94nTSEfGxL9OhgNXppA" type="4001" element="_LrR6knTSEfGxL9OhgNXppA" source="_LrTIsnTSEfGxL9OhgNXppA" target="_qVELAHOYEfGo64uO7yvtYg">
+          <children xmi:type="notation:Node" xmi:id="_LrU95nTSEfGxL9OhgNXppA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrU953TSEfGxL9OhgNXppA" x="-2" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LrU96HTSEfGxL9OhgNXppA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrU96XTSEfGxL9OhgNXppA" x="2" y="-8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_LrU96nTSEfGxL9OhgNXppA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LrU963TSEfGxL9OhgNXppA" x="3" y="-10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_LrU943TSEfGxL9OhgNXppA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_LrU95HTSEfGxL9OhgNXppA" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_LrU95XTSEfGxL9OhgNXppA" points="[-54, 1, 844, -17]$[-948, 6, -50, -12]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LrU97HTSEfGxL9OhgNXppA" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LrU97XTSEfGxL9OhgNXppA" id="(0.5,0.5)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_HmT_UHMcEfGq2dMI855Z-w" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_HmUmYHMcEfGq2dMI855Z-w"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qU82QHOYEfGo64uO7yvtYg" name="Clustering" outgoingEdges="_-ZnLg3OlEfGo64uO7yvtYg" incomingEdges="_adIWEHOlEfGo64uO7yvtYg _LrR6knTSEfGxL9OhgNXppA" width="10" height="10" resizeKind="NORTH_SOUTH">
+      <target xmi:type="org.secdfd:Process" href="dfd.secdfd#Clustering"/>
+      <semanticElements xmi:type="org.secdfd:Process" href="dfd.secdfd#Clustering"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_qv_sEHRfEfGL-aLHxE8iTw" name="'Clustering'" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:ClusteringContract" href="dfd.secdfd#//@elements.0/@contract.0"/>
+        <semanticElements xmi:type="org.secdfd:ClusteringContract" href="dfd.secdfd#//@elements.0/@contract.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_LrQFZnTSEfGxL9OhgNXppA" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="138,226,52">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Contract']/@conditionnalStyles.1/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Contract']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:Ellipse" uid="_qU-rcHOYEfGo64uO7yvtYg" labelSize="12" borderSize="2" borderSizeComputationExpression="2" labelPosition="node" color="255,255,255">
+        <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_Ugf_kHOlEfGo64uO7yvtYg" name="input_data_store" outgoingEdges="_adIWEHOlEfGo64uO7yvtYg" incomingEdges="_LrRTjHTSEfGxL9OhgNXppA" width="-1" height="-1" resizeKind="NSEW">
+      <target xmi:type="org.secdfd:DataStore" href="dfd.secdfd#input_data_store"/>
+      <semanticElements xmi:type="org.secdfd:DataStore" href="dfd.secdfd#input_data_store"/>
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_Ugf_kXOlEfGo64uO7yvtYg" labelSize="12" labelPosition="node" workspacePath="/org.secdfd.model.editor/220px-Data-flow-diagram-notation.svg.png">
+        <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='DataStore']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='DataStore']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_62VSAHOlEfGo64uO7yvtYg" name="output_data_store" incomingEdges="_-ZnLg3OlEfGo64uO7yvtYg" width="-1" height="-1" resizeKind="NSEW">
+      <target xmi:type="org.secdfd:DataStore" href="dfd.secdfd#output_data_store"/>
+      <semanticElements xmi:type="org.secdfd:DataStore" href="dfd.secdfd#output_data_store"/>
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_62VSAXOlEfGo64uO7yvtYg" labelSize="12" labelPosition="node" workspacePath="/org.secdfd.model.editor/220px-Data-flow-diagram-notation.svg.png">
+        <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='DataStore']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='DataStore']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_adIWEHOlEfGo64uO7yvtYg" name="[MedicalData]" sourceNode="_Ugf_kHOlEfGo64uO7yvtYg" targetNode="_qU82QHOYEfGo64uO7yvtYg">
+      <target xmi:type="org.secdfd:Flow" href="dfd.secdfd#F1"/>
+      <semanticElements xmi:type="org.secdfd:Flow" href="dfd.secdfd#F1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_adIWEXOlEfGo64uO7yvtYg" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']/@style"/>
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_adIWEnOlEfGo64uO7yvtYg" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_adIWE3OlEfGo64uO7yvtYg" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-ZnLg3OlEfGo64uO7yvtYg" name="[ClusterAssignmentVector]" sourceNode="_qU82QHOYEfGo64uO7yvtYg" targetNode="_62VSAHOlEfGo64uO7yvtYg">
+      <target xmi:type="org.secdfd:Flow" href="dfd.secdfd#F2"/>
+      <semanticElements xmi:type="org.secdfd:Flow" href="dfd.secdfd#F2"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-ZnLhHOlEfGo64uO7yvtYg" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']/@style"/>
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_-ZnLhXOlEfGo64uO7yvtYg" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-ZnLhnOlEfGo64uO7yvtYg" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_LrQscHTSEfGxL9OhgNXppA" name="MedicalData" outgoingEdges="_LrRTjHTSEfGxL9OhgNXppA" width="10" height="3" resizeKind="NSEW">
+      <target xmi:type="org.secdfd:Asset" href="dfd.secdfd#MedicalData"/>
+      <semanticElements xmi:type="org.secdfd:Asset" href="dfd.secdfd#MedicalData"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_LrQsdnTSEfGxL9OhgNXppA" name="Privacy" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Value" href="dfd.secdfd#//@asset.0/@value.0"/>
+        <semanticElements xmi:type="org.secdfd:Value" href="dfd.secdfd#//@asset.0/@value.0"/>
+        <ownedStyle xmi:type="diagram:Lozenge" uid="_LrQsd3TSEfGxL9OhgNXppA" labelSize="12" labelPosition="node" color="239,41,41">
+          <description xmi:type="style:LozengeNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']/@borderedNodeMappings[name='Value']/@conditionnalStyles.0/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']/@borderedNodeMappings[name='Value']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:Lozenge" uid="_LrQscXTSEfGxL9OhgNXppA" labelSize="12" labelPosition="node" width="10" height="3">
+        <description xmi:type="style:LozengeNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_LrQsc3TSEfGxL9OhgNXppA" name="ClusterAssignmentVector" outgoingEdges="_LrR6knTSEfGxL9OhgNXppA" width="10" height="3" resizeKind="NSEW">
+      <target xmi:type="org.secdfd:Asset" href="dfd.secdfd#ClusterAssignmentVector"/>
+      <semanticElements xmi:type="org.secdfd:Asset" href="dfd.secdfd#ClusterAssignmentVector"/>
+      <ownedStyle xmi:type="diagram:Lozenge" uid="_LrQsdHTSEfGxL9OhgNXppA" labelSize="12" labelPosition="node" width="10" height="3">
+        <description xmi:type="style:LozengeNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_LrRTjHTSEfGxL9OhgNXppA" sourceNode="_LrQscHTSEfGxL9OhgNXppA" targetNode="_Ugf_kHOlEfGo64uO7yvtYg">
+      <target xmi:type="org.secdfd:Asset" href="dfd.secdfd#MedicalData"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_LrRTjXTSEfGxL9OhgNXppA" lineStyle="dash" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='AssetToSource']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_LrRTjnTSEfGxL9OhgNXppA" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='AssetToSource']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_LrR6knTSEfGxL9OhgNXppA" sourceNode="_LrQsc3TSEfGxL9OhgNXppA" targetNode="_qU82QHOYEfGo64uO7yvtYg">
+      <target xmi:type="org.secdfd:Asset" href="dfd.secdfd#ClusterAssignmentVector"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_LrR6k3TSEfGxL9OhgNXppA" lineStyle="dash" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='AssetToSource']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_LrR6lHTSEfGxL9OhgNXppA" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='AssetToSource']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_HkeMQHMcEfGq2dMI855Z-w"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer"/>
+    <target xmi:type="org.secdfd:EDFD" href="dfd.secdfd#Bank"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

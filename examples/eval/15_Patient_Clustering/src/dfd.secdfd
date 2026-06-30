@@ -1,0 +1,10 @@
+EDFD Bank[
+    assets:
+         Asset  
+            MedicalData type: String values: [ C P ] source: input_data_store targets: ^Clustering ,
+
+         Asset 
+            ClusterAssignmentVector type: String source: ^Clustering targets: output_data_store elements:
+        
+        Process 
+            ^Clustering [ contracts: Clustering [ MedicalData :: ClusterAssignmentVector ] incoming flows: "input_data_store.F1" outgoing flows: F2 [ assets: ClusterAssignmentVector source: ^Clustering targets: output_data_store ] ] , DataStore input_data_store [ outgoing flows: F1 [ assets: MedicalData source: input_data_store targets: ^Clustering ] ] , DataStore output_data_store [ incoming flows: "Clustering.F2" ] ]

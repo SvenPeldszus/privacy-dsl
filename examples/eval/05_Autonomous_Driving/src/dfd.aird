@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.secdfd="http://www.secdfd.org/secdfd" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
+  <viewpoint:DAnalysis uid="_HGvHYHMcEfGq2dMI855Z-w" selectedViews="_HkCHYHMcEfGq2dMI855Z-w" version="15.4.3.202406261640">
+    <semanticResources>dfd.secdfd</semanticResources>
+    <semanticResources>dfd.graph</semanticResources>
+    <semanticResources>dfd.traceability</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_HkCHYHMcEfGq2dMI855Z-w">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_f1DbUXTJEfG-zJ0QFP5CoA" name="extendedDFD" repPath="#_f1C0QHTJEfG-zJ0QFP5CoA" changeId="1782854419978">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
+        <target xmi:type="org.secdfd:EDFD" href="dfd.secdfd#Car"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_f1C0QHTJEfG-zJ0QFP5CoA" synchronized="false">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_f1EpcHTJEfG-zJ0QFP5CoA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_f1EpcXTJEfG-zJ0QFP5CoA" type="Sirius" element="_f1C0QHTJEfG-zJ0QFP5CoA" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_f1EpcnTJEfG-zJ0QFP5CoA"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_f1Epc3TJEfG-zJ0QFP5CoA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_f1FQgHTJEfG-zJ0QFP5CoA"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_f1DbUHTJEfG-zJ0QFP5CoA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer"/>
+    <target xmi:type="org.secdfd:EDFD" href="dfd.secdfd#Car"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>
