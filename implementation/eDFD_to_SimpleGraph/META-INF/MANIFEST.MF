@@ -3,8 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: eDFD_to_SimpleGraph
 Bundle-SymbolicName: eDFD_to_SimpleGraph;singleton:=true
 Bundle-Version: 0.0.1.qualifier
-Export-Package: edfdtosimplegraph,
- edfdtosimplegraph.util
+Export-Package: edfdtosimplegraph
 Require-Bundle: org.eclipse.viatra.transformation.runtime.emf,
  org.secdfd.model;visibility:=reexport,
  org.eclipse.viatra.transformation.evm,

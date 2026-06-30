@@ -1,25 +1,18 @@
 package edfdtosimplegraph
 
-import edfdtosimplegraph.EDFD
-import org.secdfd.model.Asset
-import org.secdfd.model.AttackerProfile
-import org.secdfd.model.Element
-import org.secdfd.model.Flow
-import org.secdfd.model.NamedEntity
-import org.secdfd.model.SecurityContract
-import org.secdfd.model.Value
-import org.secdfd.model.Objective //new
-import org.secdfd.model.Level //new
-import org.secdfd.model.TrustFactor
-import org.secdfd.model.TrustZone
+import graph.AssetLabel
 import graph.Edge
+import graph.EdgeLabel
 import graph.GraphAsset
+import graph.GraphFactory
 import graph.GraphPackage
 import graph.Identifiable
 import graph.Node
 import graph.NodeResponsibility
-import graph.AssetLabel //new
-import graph.EdgeLabel //new
+import graph.SecurityLabel
+import graph.Subgraphs
+import java.util.Collections
+import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.runtime.emf.modelmanipulation.IModelManipulations
@@ -27,19 +20,23 @@ import org.eclipse.viatra.transformation.runtime.emf.modelmanipulation.SimpleMod
 import org.eclipse.viatra.transformation.runtime.emf.rules.batch.BatchTransformationRuleFactory
 import org.eclipse.viatra.transformation.runtime.emf.transformation.batch.BatchTransformation
 import org.eclipse.viatra.transformation.runtime.emf.transformation.batch.BatchTransformationStatements
-import traceability.EDFDToGraph
-import traceability.TraceabilityPackage
-import graph.Subgraphs
-import java.util.Collections
-import org.eclipse.emf.common.util.EList
-import graph.GraphFactory
-import graph.SecurityLabel
+import org.secdfd.model.Asset
+import org.secdfd.model.AttackerProfile
+import org.secdfd.model.ClassificationFixedContract
+import org.secdfd.model.ClassificationVariableContract
+import org.secdfd.model.ClusteringContract
 import org.secdfd.model.ContractBase
 import org.secdfd.model.ContractType
-import org.secdfd.model.ClassificationFixedContract
-import org.secdfd.model.ClusteringContract
-import org.secdfd.model.ClassificationVariableContract
+import org.secdfd.model.Element
+import org.secdfd.model.Flow
+import org.secdfd.model.Level
+import org.secdfd.model.NamedEntity
+import org.secdfd.model.Objective
+import org.secdfd.model.SecurityContract
 import org.secdfd.model.TransformationContract
+import org.secdfd.model.Value
+import traceability.EDFDToGraph
+import traceability.TraceabilityPackage
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -714,7 +711,7 @@ class eDFDToGraphTransformation {
 		}
 	].build
 
-	public def execute() {
+	def execute() {
 
 		println('''Executing transformation on entire eDFD: «edfd2graph.edfds.name»''')
 		edfd2graph.graphs.subgraphs.clear
