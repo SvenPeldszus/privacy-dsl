@@ -15,30 +15,22 @@ import traceability.EDFDToGraph;
 
 public class TransformHandler extends AbstractHandler implements IHandler {
 
-	ViatraQueryEngine engine;
-	eDFDToGraphTransformation transformation;
-	
 	@Override
-    public Object execute(ExecutionEvent event) throws ExecutionException {
-        IStructuredSelection selection =
-            (IStructuredSelection) HandlerUtil.getCurrentSelection(event);
+	public Object execute(ExecutionEvent event) throws ExecutionException {
+		IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelection(event);
 
-        EDFDToGraph tracemodel =
-            (EDFDToGraph) selection.getFirstElement();
+		EDFDToGraph tracemodel = (EDFDToGraph) selection.getFirstElement();
 
-        if (engine == null){
-            try {
-                engine = ViatraQueryEngine.on(
-                            new EMFScope(
-                                tracemodel.eResource().getResourceSet()));
-                transformation = new eDFDToGraphTransformation(tracemodel, engine) {};
-                
-            } catch (ViatraQueryException e) {
-                throw new ExecutionException(e.getMessage(), e);
-            }
-        }
-        transformation.execute();
+		try {
+			var engine = ViatraQueryEngine.on(new EMFScope(tracemodel.eResource().getResourceSet()));
+			var transformation = new eDFDToGraphTransformation(tracemodel, engine) {
+			};
 
-        return null;
-    }
+			transformation.execute();
+		} catch (ViatraQueryException e) {
+			throw new ExecutionException(e.getMessage(), e);
+		}
+
+		return null;
+	}
 }

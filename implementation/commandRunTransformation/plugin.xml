@@ -4,12 +4,7 @@
     <command
         defaultHandler="commandruntransformation.handlers.TransformHandler"
         id="commandruntransformation.handlers.command"
-        name="Transform">
-    </command>
-    <command
-        defaultHandler="commandruntransformation.handlers.TransformEndToEndHandler"
-        id="commandrunendtoendtransformation.handlers.command"
-        name="TransformEndToEnd">
+        name="PrivacyDFD - Propagate Labels">
     </command>
 </extension>
 <extension point="org.eclipse.ui.menus">
