@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:org.secdfd="http://www.secdfd.org/secdfd" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_HGvHYHMcEfGq2dMI855Z-w" selectedViews="_HkCHYHMcEfGq2dMI855Z-w" version="15.4.3.202406261640">
+  <viewpoint:DAnalysis uid="_HGvHYHMcEfGq2dMI855Z-w" selectedViews="_HkCHYHMcEfGq2dMI855Z-w" version="15.4.1.202403191723">
     <semanticResources>dfd.secdfd</semanticResources>
+    <semanticResources>dfd.graph</semanticResources>
+    <semanticResources>dfd.traceability</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_HkCHYHMcEfGq2dMI855Z-w">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_HkpLYHMcEfGq2dMI855Z-w" name="extendedDFD" repPath="#_HkR_AHMcEfGq2dMI855Z-w" changeId="1782816511720">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
         <target xmi:type="org.secdfd:EDFD" href="dfd.secdfd#Bank"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_o184EHSdEfGbdLuTxGxWig" name="extendedDFD" repPath="#_o17C4HSdEfGbdLuTxGxWig" changeId="1782835610234">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
+        <target xmi:type="org.secdfd:EDFD" href="dfd.secdfd#Animal_Classification"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
@@ -254,5 +260,253 @@
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_HkeMQHMcEfGq2dMI855Z-w"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer"/>
     <target xmi:type="org.secdfd:EDFD" href="dfd.secdfd#Bank"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_o17C4HSdEfGbdLuTxGxWig">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_o1_UUHSdEfGbdLuTxGxWig" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_o1_UUXSdEfGbdLuTxGxWig" type="Sirius" element="_o17C4HSdEfGbdLuTxGxWig" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_qE-P8HSdEfGbdLuTxGxWig" type="2001" element="_qEjZMHSdEfGbdLuTxGxWig">
+          <children xmi:type="notation:Node" xmi:id="_qE-3AHSdEfGbdLuTxGxWig" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_qE-3AXSdEfGbdLuTxGxWig" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFBTQnSdEfGbdLuTxGxWig" type="3005" element="_qEkAQHSdEfGbdLuTxGxWig">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qFBTQ3SdEfGbdLuTxGxWig" fontName="Ubuntu Sans"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFBTRHSdEfGbdLuTxGxWig"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qE-P8XSdEfGbdLuTxGxWig" fontName="Ubuntu Sans" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qE-P8nSdEfGbdLuTxGxWig" x="216" y="204" width="96" height="48"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qE_eEHSdEfGbdLuTxGxWig" type="2001" element="_qElOYHSdEfGbdLuTxGxWig">
+          <children xmi:type="notation:Node" xmi:id="_qE_eE3SdEfGbdLuTxGxWig" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_qE_eFHSdEfGbdLuTxGxWig" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFBTRXSdEfGbdLuTxGxWig" type="3005" element="_qElOYXSdEfGbdLuTxGxWig">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qFBTRnSdEfGbdLuTxGxWig" fontName="Ubuntu Sans"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFBTR3SdEfGbdLuTxGxWig"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qE_eEXSdEfGbdLuTxGxWig" fontName="Ubuntu Sans" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qE_eEnSdEfGbdLuTxGxWig" x="816" y="216" width="96" height="48"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qFAFIHSdEfGbdLuTxGxWig" type="2001" element="_qEl1cHSdEfGbdLuTxGxWig">
+          <children xmi:type="notation:Node" xmi:id="_qFAFI3SdEfGbdLuTxGxWig" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_qFAFJHSdEfGbdLuTxGxWig" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFB6UHSdEfGbdLuTxGxWig" type="3001" element="_qEl1c3SdEfGbdLuTxGxWig">
+            <children xmi:type="notation:Node" xmi:id="_qFB6U3SdEfGbdLuTxGxWig" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_qFB6VHSdEfGbdLuTxGxWig" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_qFChYHSdEfGbdLuTxGxWig" type="3002" element="_qEwNgHSdEfGbdLuTxGxWig">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qFChYXSdEfGbdLuTxGxWig" fontName="Ubuntu Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFChYnSdEfGbdLuTxGxWig"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qFB6UXSdEfGbdLuTxGxWig" fontName="Ubuntu Sans" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFB6UnSdEfGbdLuTxGxWig" x="-65" y="100" width="231" height="36"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFB6VXSdEfGbdLuTxGxWig" type="3016" element="_qEl1cXSdEfGbdLuTxGxWig">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qFB6VnSdEfGbdLuTxGxWig" fontName="Ubuntu Sans"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFB6V3SdEfGbdLuTxGxWig"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qFAFIXSdEfGbdLuTxGxWig" fontName="Ubuntu Sans" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFAFInSdEfGbdLuTxGxWig" x="468" y="204" width="100" height="108"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qFAsMHSdEfGbdLuTxGxWig" type="2001" element="_qEw0kXSdEfGbdLuTxGxWig">
+          <children xmi:type="notation:Node" xmi:id="_qFAsM3SdEfGbdLuTxGxWig" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_qFAsNHSdEfGbdLuTxGxWig" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFChY3SdEfGbdLuTxGxWig" type="3001" element="_qEyCsnSdEfGbdLuTxGxWig">
+            <children xmi:type="notation:Node" xmi:id="_qFChZnSdEfGbdLuTxGxWig" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_qFChZ3SdEfGbdLuTxGxWig" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_qFDIc3SdEfGbdLuTxGxWig" type="3017" element="_qEyCs3SdEfGbdLuTxGxWig">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qFDIdHSdEfGbdLuTxGxWig" fontName="Ubuntu Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFDIdXSdEfGbdLuTxGxWig"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qFChZHSdEfGbdLuTxGxWig" fontName="Ubuntu Sans" fontHeight="12"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFChZXSdEfGbdLuTxGxWig" x="-22" width="30" height="36"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFDIcHSdEfGbdLuTxGxWig" type="3017" element="_qExboHSdEfGbdLuTxGxWig">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qFDIcXSdEfGbdLuTxGxWig" fontName="Ubuntu Sans"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFDIcnSdEfGbdLuTxGxWig"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qFAsMXSdEfGbdLuTxGxWig" fontName="Ubuntu Sans" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFAsMnSdEfGbdLuTxGxWig" x="156" y="120" width="108" height="36"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qFAsNXSdEfGbdLuTxGxWig" type="2001" element="_qExbonSdEfGbdLuTxGxWig">
+          <children xmi:type="notation:Node" xmi:id="_qFBTQHSdEfGbdLuTxGxWig" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_qFBTQXSdEfGbdLuTxGxWig" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFDIdnSdEfGbdLuTxGxWig" type="3017" element="_qEyCsHSdEfGbdLuTxGxWig">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qFDId3SdEfGbdLuTxGxWig" fontName="Ubuntu Sans"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFDIeHSdEfGbdLuTxGxWig"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qFAsNnSdEfGbdLuTxGxWig" fontName="Ubuntu Sans" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFAsN3SdEfGbdLuTxGxWig" x="588" y="155" width="108" height="36"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_o1_UUnSdEfGbdLuTxGxWig"/>
+        <edges xmi:type="notation:Edge" xmi:id="_qFDIeXSdEfGbdLuTxGxWig" type="4001" element="_qEypwHSdEfGbdLuTxGxWig" source="_qFAFIHSdEfGbdLuTxGxWig" target="_qE_eEHSdEfGbdLuTxGxWig">
+          <children xmi:type="notation:Node" xmi:id="_qFDIfXSdEfGbdLuTxGxWig" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFDIfnSdEfGbdLuTxGxWig" x="-5" y="6"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFDIf3SdEfGbdLuTxGxWig" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFDIgHSdEfGbdLuTxGxWig" x="6" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFDIgXSdEfGbdLuTxGxWig" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFDIgnSdEfGbdLuTxGxWig" x="-3" y="-8"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qFDIenSdEfGbdLuTxGxWig"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qFDIe3SdEfGbdLuTxGxWig" fontName="Ubuntu Sans" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qFDIfHSdEfGbdLuTxGxWig" points="[50, -3, -296, 15]$[298, -16, -48, 2]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qFDvgHSdEfGbdLuTxGxWig" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qFDvgXSdEfGbdLuTxGxWig" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_qFDvgnSdEfGbdLuTxGxWig" type="4001" element="_qE3iQHSdEfGbdLuTxGxWig" source="_qE-P8HSdEfGbdLuTxGxWig" target="_qFAFIHSdEfGbdLuTxGxWig">
+          <children xmi:type="notation:Node" xmi:id="_qFDvhnSdEfGbdLuTxGxWig" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFDvh3SdEfGbdLuTxGxWig" x="1" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFDviHSdEfGbdLuTxGxWig" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFDviXSdEfGbdLuTxGxWig" x="-3" y="9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFDvinSdEfGbdLuTxGxWig" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFDvi3SdEfGbdLuTxGxWig" x="-2" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qFDvg3SdEfGbdLuTxGxWig"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qFDvhHSdEfGbdLuTxGxWig" fontName="Ubuntu Sans" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qFDvhXSdEfGbdLuTxGxWig" points="[48, 5, -206, -25]$[204, 24, -50, -6]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qFEWkHSdEfGbdLuTxGxWig" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qFEWkXSdEfGbdLuTxGxWig" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_qFEWknSdEfGbdLuTxGxWig" type="4001" element="_qE4JU3SdEfGbdLuTxGxWig" source="_qFAsMHSdEfGbdLuTxGxWig" target="_qE-P8HSdEfGbdLuTxGxWig">
+          <children xmi:type="notation:Node" xmi:id="_qFEWlnSdEfGbdLuTxGxWig" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFEWl3SdEfGbdLuTxGxWig" x="7" y="6"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFEWmHSdEfGbdLuTxGxWig" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFEWmXSdEfGbdLuTxGxWig" x="-8" y="-7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFEWmnSdEfGbdLuTxGxWig" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFEWm3SdEfGbdLuTxGxWig" x="-8" y="-7"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qFEWk3SdEfGbdLuTxGxWig"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qFEWlHSdEfGbdLuTxGxWig" fontName="Ubuntu Sans" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qFEWlXSdEfGbdLuTxGxWig" points="[10, 18, -44, -72]$[39, 66, -15, -24]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qFEWnHSdEfGbdLuTxGxWig" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qFEWnXSdEfGbdLuTxGxWig" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_qFE9oHSdEfGbdLuTxGxWig" type="4001" element="_qE4wZHSdEfGbdLuTxGxWig" source="_qFAsNXSdEfGbdLuTxGxWig" target="_qFAFIHSdEfGbdLuTxGxWig">
+          <children xmi:type="notation:Node" xmi:id="_qFE9pHSdEfGbdLuTxGxWig" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFE9pXSdEfGbdLuTxGxWig" x="6" y="-5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFE9pnSdEfGbdLuTxGxWig" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFE9p3SdEfGbdLuTxGxWig" x="-7" y="7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qFE9qHSdEfGbdLuTxGxWig" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qFE9qXSdEfGbdLuTxGxWig" x="-6" y="7"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qFE9oXSdEfGbdLuTxGxWig"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qFE9onSdEfGbdLuTxGxWig" fontName="Ubuntu Sans" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qFE9o3SdEfGbdLuTxGxWig" points="[-27, 18, 97, -67]$[-74, 50, 50, -35]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qFE9qnSdEfGbdLuTxGxWig" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qFE9q3SdEfGbdLuTxGxWig" id="(0.5,0.5)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_o2AicHSdEfGbdLuTxGxWig" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_o2BJgHSdEfGbdLuTxGxWig"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qEjZMHSdEfGbdLuTxGxWig" name="input_data_store" outgoingEdges="_qE3iQHSdEfGbdLuTxGxWig" incomingEdges="_qE4JU3SdEfGbdLuTxGxWig" width="-1" height="-1" resizeKind="NSEW">
+      <target xmi:type="org.secdfd:DataStore" href="dfd.secdfd#input_data_store"/>
+      <semanticElements xmi:type="org.secdfd:DataStore" href="dfd.secdfd#input_data_store"/>
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_qEkAQHSdEfGbdLuTxGxWig" labelSize="12" labelPosition="node" workspacePath="/org.secdfd.model.editor/220px-Data-flow-diagram-notation.svg.png">
+        <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='DataStore']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='DataStore']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qElOYHSdEfGbdLuTxGxWig" name="output_data_store" incomingEdges="_qEypwHSdEfGbdLuTxGxWig" width="-1" height="-1" resizeKind="NSEW">
+      <target xmi:type="org.secdfd:DataStore" href="dfd.secdfd#output_data_store"/>
+      <semanticElements xmi:type="org.secdfd:DataStore" href="dfd.secdfd#output_data_store"/>
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_qElOYXSdEfGbdLuTxGxWig" labelSize="12" labelPosition="node" workspacePath="/org.secdfd.model.editor/220px-Data-flow-diagram-notation.svg.png">
+        <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='DataStore']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='DataStore']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qEl1cHSdEfGbdLuTxGxWig" name="Classifier" outgoingEdges="_qEypwHSdEfGbdLuTxGxWig" incomingEdges="_qE3iQHSdEfGbdLuTxGxWig _qE4wZHSdEfGbdLuTxGxWig" width="10" height="10" resizeKind="NORTH_SOUTH">
+      <target xmi:type="org.secdfd:Process" href="dfd.secdfd#Classifier"/>
+      <semanticElements xmi:type="org.secdfd:Process" href="dfd.secdfd#Classifier"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_qEl1c3SdEfGbdLuTxGxWig" name="'ClassificationFixed'" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:ClassificationFixedContract" href="dfd.secdfd#//@elements.0/@contract.0"/>
+        <semanticElements xmi:type="org.secdfd:ClassificationFixedContract" href="dfd.secdfd#//@elements.0/@contract.0"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_qEwNgHSdEfGbdLuTxGxWig" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="194,239,255">
+          <labelFormat>bold</labelFormat>
+          <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Contract']/@conditionnalStyles.0/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Contract']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:Ellipse" uid="_qEl1cXSdEfGbdLuTxGxWig" labelSize="12" borderSize="2" borderSizeComputationExpression="2" labelPosition="node" color="255,255,255">
+        <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qEw0kXSdEfGbdLuTxGxWig" name="Image" outgoingEdges="_qE4JU3SdEfGbdLuTxGxWig" width="10" height="3" resizeKind="NSEW">
+      <target xmi:type="org.secdfd:Asset" href="dfd.secdfd#Image"/>
+      <semanticElements xmi:type="org.secdfd:Asset" href="dfd.secdfd#Image"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_qEyCsnSdEfGbdLuTxGxWig" name="Privacy" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="org.secdfd:Value" href="dfd.secdfd#//@asset.0/@value.0"/>
+        <semanticElements xmi:type="org.secdfd:Value" href="dfd.secdfd#//@asset.0/@value.0"/>
+        <ownedStyle xmi:type="diagram:Lozenge" uid="_qEyCs3SdEfGbdLuTxGxWig" labelSize="12" labelPosition="node" color="239,41,41">
+          <description xmi:type="style:LozengeNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']/@borderedNodeMappings[name='Value']/@conditionnalStyles.0/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']/@borderedNodeMappings[name='Value']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:Lozenge" uid="_qExboHSdEfGbdLuTxGxWig" labelSize="12" labelPosition="node" width="10" height="3">
+        <description xmi:type="style:LozengeNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qExbonSdEfGbdLuTxGxWig" name="Animal Class Label" outgoingEdges="_qE4wZHSdEfGbdLuTxGxWig" width="10" height="3" resizeKind="NSEW">
+      <target xmi:type="org.secdfd:Asset" href="dfd.secdfd#Animal Class Label"/>
+      <semanticElements xmi:type="org.secdfd:Asset" href="dfd.secdfd#Animal Class Label"/>
+      <ownedStyle xmi:type="diagram:Lozenge" uid="_qEyCsHSdEfGbdLuTxGxWig" labelSize="12" labelPosition="node" width="10" height="3">
+        <description xmi:type="style:LozengeNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qEypwHSdEfGbdLuTxGxWig" name="[Animal Class Label]" sourceNode="_qEl1cHSdEfGbdLuTxGxWig" targetNode="_qElOYHSdEfGbdLuTxGxWig">
+      <target xmi:type="org.secdfd:Flow" href="dfd.secdfd#F2"/>
+      <semanticElements xmi:type="org.secdfd:Flow" href="dfd.secdfd#F2"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qE1tEHSdEfGbdLuTxGxWig" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']/@style"/>
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_qE1tEXSdEfGbdLuTxGxWig" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qE1tEnSdEfGbdLuTxGxWig" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qE3iQHSdEfGbdLuTxGxWig" name="[Image]" sourceNode="_qEjZMHSdEfGbdLuTxGxWig" targetNode="_qEl1cHSdEfGbdLuTxGxWig">
+      <target xmi:type="org.secdfd:Flow" href="dfd.secdfd#F1"/>
+      <semanticElements xmi:type="org.secdfd:Flow" href="dfd.secdfd#F1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qE3iQXSdEfGbdLuTxGxWig" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']/@style"/>
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_qE3iQnSdEfGbdLuTxGxWig" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qE3iQ3SdEfGbdLuTxGxWig" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qE4JU3SdEfGbdLuTxGxWig" sourceNode="_qEw0kXSdEfGbdLuTxGxWig" targetNode="_qEjZMHSdEfGbdLuTxGxWig">
+      <target xmi:type="org.secdfd:Asset" href="dfd.secdfd#Image"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qE4wYHSdEfGbdLuTxGxWig" lineStyle="dash" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='AssetToSource']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qE4wYXSdEfGbdLuTxGxWig" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='AssetToSource']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qE4wZHSdEfGbdLuTxGxWig" sourceNode="_qExbonSdEfGbdLuTxGxWig" targetNode="_qEl1cHSdEfGbdLuTxGxWig">
+      <target xmi:type="org.secdfd:Asset" href="dfd.secdfd#Animal Class Label"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qE4wZXSdEfGbdLuTxGxWig" lineStyle="dash" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='AssetToSource']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qE4wZnSdEfGbdLuTxGxWig" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='AssetToSource']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_o17p8HSdEfGbdLuTxGxWig"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer"/>
+    <target xmi:type="org.secdfd:EDFD" href="dfd.secdfd#Animal_Classification"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>
