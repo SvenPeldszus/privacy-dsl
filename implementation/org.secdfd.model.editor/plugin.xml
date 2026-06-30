@@ -6,7 +6,7 @@
 
 <plugin>
    <extension point="org.eclipse.sirius.componentization">
-    <component class="org.secdfd.model.presentation.SecdfdEditorPlugin$Implementation"
+    <component class="org.secdfd.model.presentation.ModelEditorPlugin$Implementation"
                id="org.secdfd.model.editor"
 	       name="project">
     </component>
