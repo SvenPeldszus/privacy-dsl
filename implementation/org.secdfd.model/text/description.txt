@@ -73,6 +73,7 @@ Package model <http://www.secdfd.org/secdfd>
   Class ClusteringContract -> ContractBase
 
   Class ClassificationVariableContract -> ContractBase
+    Reference catalog : Asset<<0..*>>
 
   Class TransformationContract -> ContractBase
 

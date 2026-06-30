@@ -784,6 +784,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 	 * @generated
 	 */
 	@Override
+	public EReference getClassificationVariableContract_Catalog() {
+		return (EReference)classificationVariableContractEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getTransformationContract() {
 		return transformationContractEClass;
 	}
@@ -953,6 +963,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		clusteringContractEClass = createEClass(CLUSTERING_CONTRACT);
 
 		classificationVariableContractEClass = createEClass(CLASSIFICATION_VARIABLE_CONTRACT);
+		createEReference(classificationVariableContractEClass, CLASSIFICATION_VARIABLE_CONTRACT__CATALOG);
 
 		transformationContractEClass = createEClass(TRANSFORMATION_CONTRACT);
 
@@ -1077,6 +1088,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage {
 		initEClass(clusteringContractEClass, ClusteringContract.class, "ClusteringContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(classificationVariableContractEClass, ClassificationVariableContract.class, "ClassificationVariableContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getClassificationVariableContract_Catalog(), this.getAsset(), null, "catalog", null, 0, -1, ClassificationVariableContract.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transformationContractEClass, TransformationContract.class, "TransformationContract", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

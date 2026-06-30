@@ -123,7 +123,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ClassificationFixedContract/PModel"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//ClusteringContract"/>
-    <genClasses ecoreClass="model.ecore#//ClassificationVariableContract"/>
+    <genClasses ecoreClass="model.ecore#//ClassificationVariableContract">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ClassificationVariableContract/catalog"/>
+    </genClasses>
     <genClasses ecoreClass="model.ecore#//TransformationContract"/>
   </genPackages>
 </genmodel:GenModel>

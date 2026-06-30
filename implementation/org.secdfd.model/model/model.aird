@@ -4,6 +4,7 @@
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
     <semanticResources>model.ecore</semanticResources>
     <semanticResources>model.genmodel</semanticResources>
+    <semanticResources>../target/maven-archiver/pom.properties</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_JqZ7cBygEeiENt7fkAVtug">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Jr6XUBygEeiENt7fkAVtug" name="org.secdfd.model" repPath="#_Jr6-YBygEeiENt7fkAVtug" changeId="1782543729944">

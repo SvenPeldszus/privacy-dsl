@@ -1435,13 +1435,22 @@ public interface ModelPackage extends EPackage {
 	int CLASSIFICATION_VARIABLE_CONTRACT__TASK = CONTRACT_BASE__TASK;
 
 	/**
+	 * The feature id for the '<em><b>Catalog</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFICATION_VARIABLE_CONTRACT__CATALOG = CONTRACT_BASE_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Classification Variable Contract</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASSIFICATION_VARIABLE_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 0;
+	int CLASSIFICATION_VARIABLE_CONTRACT_FEATURE_COUNT = CONTRACT_BASE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Classification Variable Contract</em>' class.
@@ -2139,6 +2148,17 @@ public interface ModelPackage extends EPackage {
 	EClass getClassificationVariableContract();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.secdfd.model.ClassificationVariableContract#getCatalog <em>Catalog</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Catalog</em>'.
+	 * @see org.secdfd.model.ClassificationVariableContract#getCatalog()
+	 * @see #getClassificationVariableContract()
+	 * @generated
+	 */
+	EReference getClassificationVariableContract_Catalog();
+
+	/**
 	 * Returns the meta object for class '{@link org.secdfd.model.TransformationContract <em>Transformation Contract</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2674,6 +2694,14 @@ public interface ModelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CLASSIFICATION_VARIABLE_CONTRACT = eINSTANCE.getClassificationVariableContract();
+
+		/**
+		 * The meta object literal for the '<em><b>Catalog</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CLASSIFICATION_VARIABLE_CONTRACT__CATALOG = eINSTANCE.getClassificationVariableContract_Catalog();
 
 		/**
 		 * The meta object literal for the '{@link org.secdfd.model.impl.TransformationContractImpl <em>Transformation Contract</em>}' class.

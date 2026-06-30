@@ -4,6 +4,9 @@
  */
 package org.secdfd.model.validation;
 
+import org.eclipse.emf.common.util.EList;
+import org.secdfd.model.Asset;
+
 
 /**
  * A sample validator interface for {@link org.secdfd.model.ClassificationVariableContract}.
@@ -13,5 +16,7 @@ package org.secdfd.model.validation;
  */
 public interface ClassificationVariableContractValidator {
 	boolean validate();
+
+	boolean validateCatalog(EList<Asset> value);
 
 }

@@ -149,6 +149,9 @@
         defaultValueLiteral="L"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClusteringContract" eSuperTypes="#//ContractBase"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ClassificationVariableContract" eSuperTypes="#//ContractBase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassificationVariableContract" eSuperTypes="#//ContractBase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="catalog" upperBound="-1"
+        eType="#//Asset"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TransformationContract" eSuperTypes="#//ContractBase"/>
 </ecore:EPackage>

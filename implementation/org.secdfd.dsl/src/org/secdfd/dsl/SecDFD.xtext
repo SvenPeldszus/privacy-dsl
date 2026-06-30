@@ -74,7 +74,7 @@ ClassificationFixedContract returns ClassificationFixedContract:
 	'ClassificationFixed' // Keyword for serialization
 	(name=EString)?
 	'['
-		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('PClass' '=' PModel=Level)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ('PModel' '=' PModel=Level)? '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
 	']'
 ;
 
@@ -92,7 +92,7 @@ ClassificationVariableContract returns ClassificationVariableContract:
 	'ClassificationVariable' // Keyword for serialization
 	(name=EString)?
 	'['
-		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
+		((incomeassets+=[Asset|EString])? ( "," incomeassets+=[Asset|EString])* ";" (catalog += [Asset|EString]) ("," catalog += [Asset|EString]) * '::' (outcomeassets+=[Asset|EString])? ( "," outcomeassets+=[Asset|EString])* )?
 	']'
 ;
 
