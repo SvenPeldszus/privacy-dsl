@@ -159,12 +159,8 @@
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_HmT_UHMcEfGq2dMI855Z-w" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_HmUmYHMcEfGq2dMI855Z-w"/>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qU82QHOYEfGo64uO7yvtYg" name="Classifier" outgoingEdges="_-ZnLg3OlEfGo64uO7yvtYg" incomingEdges="_adIWEHOlEfGo64uO7yvtYg _HUs3QHOmEfGo64uO7yvtYg" width="10" height="10" resizeKind="NORTH_SOUTH">
-      <target xmi:type="org.secdfd:Process" href="dfd.secdfd#Classifier"/>
-      <semanticElements xmi:type="org.secdfd:Process" href="dfd.secdfd#Classifier"/>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qU82QHOYEfGo64uO7yvtYg" target="Classifier" name="Classifier" semanticElements="Classifier" outgoingEdges="_-ZnLg3OlEfGo64uO7yvtYg" incomingEdges="_adIWEHOlEfGo64uO7yvtYg _HUs3QHOmEfGo64uO7yvtYg" width="10" height="10" resizeKind="NORTH_SOUTH">
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_qv_sEHRfEfGL-aLHxE8iTw" name="'ClassificationFixed'" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="org.secdfd:ClassificationFixedContract" href="dfd.secdfd#//@elements.0/@contract.0"/>
-        <semanticElements xmi:type="org.secdfd:ClassificationFixedContract" href="dfd.secdfd#//@elements.0/@contract.0"/>
         <ownedStyle xmi:type="diagram:Dot" uid="_qwATIHRfEfGL-aLHxE8iTw" labelSize="12" showIcon="false" labelPosition="node" backgroundColor="194,239,255">
           <labelFormat>bold</labelFormat>
           <description xmi:type="style:DotDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']/@borderedNodeMappings[name='Contract']/@conditionnalStyles.0/@style"/>
@@ -176,25 +172,19 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Process']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_Ugf_kHOlEfGo64uO7yvtYg" name="input_data_store" outgoingEdges="_adIWEHOlEfGo64uO7yvtYg" incomingEdges="_4HDBRnOlEfGo64uO7yvtYg" width="-1" height="-1" resizeKind="NSEW">
-      <target xmi:type="org.secdfd:DataStore" href="dfd.secdfd#input_data_store"/>
-      <semanticElements xmi:type="org.secdfd:DataStore" href="dfd.secdfd#input_data_store"/>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_Ugf_kHOlEfGo64uO7yvtYg" target="input_data_store" name="input_data_store" semanticElements="input_data_store" outgoingEdges="_adIWEHOlEfGo64uO7yvtYg" incomingEdges="_4HDBRnOlEfGo64uO7yvtYg" width="-1" height="-1" resizeKind="NSEW">
       <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_Ugf_kXOlEfGo64uO7yvtYg" labelSize="12" labelPosition="node" workspacePath="/org.secdfd.model.editor/220px-Data-flow-diagram-notation.svg.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='DataStore']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='DataStore']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_62VSAHOlEfGo64uO7yvtYg" name="output_data_store" incomingEdges="_-ZnLg3OlEfGo64uO7yvtYg" width="-1" height="-1" resizeKind="NSEW">
-      <target xmi:type="org.secdfd:DataStore" href="dfd.secdfd#output_data_store"/>
-      <semanticElements xmi:type="org.secdfd:DataStore" href="dfd.secdfd#output_data_store"/>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_62VSAHOlEfGo64uO7yvtYg" target="output_data_store" name="output_data_store" semanticElements="output_data_store" incomingEdges="_-ZnLg3OlEfGo64uO7yvtYg" width="-1" height="-1" resizeKind="NSEW">
       <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_62VSAXOlEfGo64uO7yvtYg" labelSize="12" labelPosition="node" workspacePath="/org.secdfd.model.editor/220px-Data-flow-diagram-notation.svg.png">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='DataStore']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='DataStore']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_adIWEHOlEfGo64uO7yvtYg" name="[Text]" sourceNode="_Ugf_kHOlEfGo64uO7yvtYg" targetNode="_qU82QHOYEfGo64uO7yvtYg">
-      <target xmi:type="org.secdfd:Flow" href="dfd.secdfd#F1"/>
-      <semanticElements xmi:type="org.secdfd:Flow" href="dfd.secdfd#F1"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_adIWEHOlEfGo64uO7yvtYg" target="F1" name="[Text]" semanticElements="F1" sourceNode="_Ugf_kHOlEfGo64uO7yvtYg" targetNode="_qU82QHOYEfGo64uO7yvtYg">
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_adIWEXOlEfGo64uO7yvtYg" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_adIWEnOlEfGo64uO7yvtYg" labelSize="12"/>
@@ -218,9 +208,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_AmRQUHOmEfGo64uO7yvtYg" name="Prediction" outgoingEdges="_HUs3QHOmEfGo64uO7yvtYg" width="10" height="3" resizeKind="NSEW">
-      <target xmi:type="org.secdfd:Asset" href="dfd.secdfd#Prediction"/>
-      <semanticElements xmi:type="org.secdfd:Asset" href="dfd.secdfd#Prediction"/>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_AmRQUHOmEfGo64uO7yvtYg" target="Prediction" name="Prediction" semanticElements="Prediction" outgoingEdges="_HUs3QHOmEfGo64uO7yvtYg" width="10" height="3" resizeKind="NSEW">
       <ownedStyle xmi:type="diagram:Lozenge" uid="_AmRQUXOmEfGo64uO7yvtYg" labelSize="12" labelPosition="node" width="10" height="3">
         <description xmi:type="style:LozengeNodeDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@nodeMappings[name='Asset']/@style"/>
       </ownedStyle>
@@ -234,9 +222,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='AssetToSource']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-ZnLg3OlEfGo64uO7yvtYg" name="[Prediction]" sourceNode="_qU82QHOYEfGo64uO7yvtYg" targetNode="_62VSAHOlEfGo64uO7yvtYg">
-      <target xmi:type="org.secdfd:Flow" href="dfd.secdfd#F2"/>
-      <semanticElements xmi:type="org.secdfd:Flow" href="dfd.secdfd#F2"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-ZnLg3OlEfGo64uO7yvtYg" target="F2" name="[Prediction]" semanticElements="F2" sourceNode="_qU82QHOYEfGo64uO7yvtYg" targetNode="_62VSAHOlEfGo64uO7yvtYg">
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-ZnLhHOlEfGo64uO7yvtYg" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_-ZnLhXOlEfGo64uO7yvtYg" labelSize="12"/>
@@ -244,8 +230,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='Flow']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_HUs3QHOmEfGo64uO7yvtYg" sourceNode="_AmRQUHOmEfGo64uO7yvtYg" targetNode="_qU82QHOYEfGo64uO7yvtYg">
-      <target xmi:type="org.secdfd:Asset" href="dfd.secdfd#Prediction"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_HUs3QHOmEfGo64uO7yvtYg" target="Prediction" sourceNode="_AmRQUHOmEfGo64uO7yvtYg" targetNode="_qU82QHOYEfGo64uO7yvtYg">
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_HUs3QXOmEfGo64uO7yvtYg" lineStyle="dash" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.secdfd.model.editor/description/project.odesign#//@ownedViewpoints[name='eDFD']/@ownedRepresentations[name='extendedDFD']/@defaultLayer/@edgeMappings[name='AssetToSource']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_HUs3QnOmEfGo64uO7yvtYg" labelSize="12"/>

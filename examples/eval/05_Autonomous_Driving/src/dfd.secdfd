@@ -1,4 +1,4 @@
-EDFD Car [
+EDFD Autonomous_Driving [
     assets:
          Asset "Camera images" 
          	type: String 

@@ -538,7 +538,8 @@ class eDFDToGraphTransformation {
 						}
 						case "[ClassificationVariable]": {
 							val contractCV = contract as ClassificationVariableContract
-							val pOut = getMaxLevel(contractCV.catalog) // TODO: find a solution to distinguish between the two parts of the input and take the privacy label from the output option catalog (ys)
+							val pCat = getMaxLevel(contractCV.getCatalog()) // Use the maximum privacy label from the item catalog
+							val pOut = if(pCat==0 && pMax>=2)1 else pCat //Set output label to L if pCat = N, but maximum input level >=M
 							setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", pOut)
 						}
 						case "[Clustering]": {
@@ -763,7 +764,7 @@ class eDFDToGraphTransformation {
 	}
 	
 	def int levelOfValue(EList<Value> list, String objStr) {
-		val l = list.findFirst[objective == objStr]
+		val l = list.findFirst[objective.getName() == objStr]
 		l === null ? -1 : lvl(l.level) // Return -1 if no label found (-1 means no label exists, valid levels are 0-4)
 	}
 

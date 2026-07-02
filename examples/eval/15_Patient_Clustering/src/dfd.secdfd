@@ -1,4 +1,4 @@
-EDFD Bank[
+EDFD Patient_Clustering[
     assets:
          Asset  
             MedicalData type: String values: [ C P ] source: input_data_store targets: ^Clustering ,

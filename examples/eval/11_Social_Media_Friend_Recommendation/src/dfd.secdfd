@@ -1,10 +1,13 @@
-EDFD Bank[
+EDFD Social_Media_Friend_Recommendation[
     assets:
          Asset  
-            Text type: String values: [ L P ] source: input_data_store targets: Classifier ,
+            UserProfile type: String values: [ M P ] source: input_data_store targets: Classifier ,
 
          Asset 
-            Prediction type: String source: Classifier targets: output_data_store elements:
+            SuggestedFriends type: String source: Classifier targets: output_data_store ,
+            
+         Asset
+         	PossibleFriends type: String values: [ H P ] source: input_data_store targets: Classifier elements:
         
         Process 
-            Classifier [ contracts: ClassificationFixed [ Text PModel = H :: Prediction ] incoming flows: "input_data_store.F1" outgoing flows: F2 [ assets: Prediction source: Classifier targets: output_data_store ] ] , DataStore input_data_store [ outgoing flows: F1 [ assets: Text source: input_data_store targets: Classifier ] ] , DataStore output_data_store [ incoming flows: "Classifier.F2" ] ]
+            Classifier [ contracts: ClassificationVariable [ UserProfile ; PossibleFriends :: SuggestedFriends ] incoming flows: "input_data_store.F1" outgoing flows: F2 [ assets: SuggestedFriends source: Classifier targets: output_data_store ] ] , DataStore input_data_store [ outgoing flows: F1 [ assets: UserProfile source: input_data_store targets: Classifier ] ] , DataStore output_data_store [ incoming flows: "Classifier.F2" ] ]

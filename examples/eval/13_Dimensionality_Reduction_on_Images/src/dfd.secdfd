@@ -1,4 +1,4 @@
-EDFD Bank[
+EDFD Image_Dimensionality_Reduction[
     assets:
          Asset  
             Image type: String values: [ M P ] source: input_data_store targets: Classifier ,

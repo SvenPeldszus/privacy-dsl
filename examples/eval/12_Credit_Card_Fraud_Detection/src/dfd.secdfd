@@ -1,4 +1,4 @@
-EDFD Bank[
+EDFD Credit_Card_Fraud_Detection[
     assets:
          Asset  
             CreditCardTransactions type: String values: [ M P ] source: input_data_store targets: Classifier ,

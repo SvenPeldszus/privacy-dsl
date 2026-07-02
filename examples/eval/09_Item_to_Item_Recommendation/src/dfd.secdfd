@@ -1,4 +1,4 @@
-EDFD Bank[
+EDFD Item_To_Item_Recommendation[
     assets:
          Asset  
             ShoppingCart type: String values: [ L P ] source: input_data_store targets: Classifier ,

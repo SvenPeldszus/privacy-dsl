@@ -1,7 +1,7 @@
-EDFD Bank[
+EDFD RegionalClustering[
     assets:
          Asset  
-            SocioEconomicData type: String values: [ L P ] source: input_data_store targets: ^Clustering ,
+            SocioEconomicData type: String values: [ N P ] source: input_data_store targets: ^Clustering ,
 
          Asset 
             ClusterAssignmentVector type: String source: ^Clustering targets: output_data_store elements:

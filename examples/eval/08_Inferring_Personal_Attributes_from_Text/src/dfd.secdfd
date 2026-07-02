@@ -1,4 +1,4 @@
-EDFD Bank[
+EDFD Inferring_Attributes_From_Text[
     assets:
          Asset  
             Text type: String values: [ N P ] source: input_data_store targets: Classifier ,
