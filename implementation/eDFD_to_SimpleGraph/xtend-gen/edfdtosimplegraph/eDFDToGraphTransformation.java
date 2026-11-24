@@ -22,8 +22,8 @@ import graph.NodeResponsibility;
 import graph.SecurityLabel;
 import graph.Subgraphs;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -632,400 +632,329 @@ public class eDFDToGraphTransformation {
     }
   })).build();
 
-  private final BatchTransformationRule<EDFD.Match, EDFD.Matcher> propagateLabelsInOrder = this._batchTransformationRuleFactory.<EDFD.Match, EDFD.Matcher>createRule().precondition(EDFD.Matcher.querySpecification()).action(((Consumer<EDFD.Match>) (EDFD.Match it) -> {
-    final EList<Element> all_elements = it.getEdfd().getElements();
-    final ArrayList<Flow> allFlows = CollectionLiterals.<Flow>newArrayList();
-    for (final Element e : all_elements) {
-      allFlows.addAll(e.getOutflows());
-    }
-    final Comparator<Flow> _function = (Flow a, Flow b) -> {
-      int _number = a.getNumber();
-      int _number_1 = b.getNumber();
-      return (_number - _number_1);
-    };
-    Collections.<Flow>sort(allFlows, _function);
-    for (final Element f : allFlows) {
+  public String getAllEdgeLabels(final List<Flow> flows) {
+    final Function1<Flow, String> _function = (Flow f) -> {
+      String _xblockexpression = null;
       {
-        final Edge outgoing = IterableExtensions.<Edge>head(Iterables.<Edge>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, ((NamedEntity) f)), Edge.class));
-        final Node node = outgoing.getSource();
-        outgoing.setVisited(true);
-        EList<NodeResponsibility> _responsibility = node.getResponsibility();
-        for (final NodeResponsibility nr : _responsibility) {
+        final Edge edge = IterableExtensions.<Edge>head(Iterables.<Edge>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, ((NamedEntity) f)), Edge.class));
+        String _iD = edge.getID();
+        String _plus = (_iD + ":");
+        final Function1<EdgeLabel, String> _function_1 = (EdgeLabel it) -> {
+          return it.getObjective();
+        };
+        final Function1<EdgeLabel, String> _function_2 = (EdgeLabel it) -> {
+          String _objective = it.getObjective();
+          String _plus_1 = (_objective + "=");
+          int _level = it.getLevel();
+          return (_plus_1 + Integer.valueOf(_level));
+        };
+        String _join = IterableExtensions.join(ListExtensions.<EdgeLabel, String>map(IterableExtensions.<EdgeLabel, String>sortBy(edge.getEdgelabel(), _function_1), _function_2), ",");
+        _xblockexpression = (_plus + _join);
+      }
+      return _xblockexpression;
+    };
+    return IterableExtensions.join(ListExtensions.<Flow, String>map(flows, _function), "|");
+  }
+
+  /**
+   * Sets, updates, or removes a security label.
+   * 
+   * @return true if the label collection was modified, false otherwise.
+   */
+  public boolean setOrUpdateAssetLabelIfChanged(final EList<AssetLabel> list, final String objStr, final int level) {
+    final Function1<AssetLabel, Boolean> _function = (AssetLabel it) -> {
+      String _objective = it.getObjective();
+      return Boolean.valueOf(Objects.equals(_objective, objStr));
+    };
+    final AssetLabel l = IterableExtensions.<AssetLabel>findFirst(list, _function);
+    if ((level < 0)) {
+      if ((l != null)) {
+        list.remove(l);
+        return true;
+      }
+      return false;
+    }
+    if ((l == null)) {
+      final AssetLabel newLabel = GraphFactory.eINSTANCE.createAssetLabel();
+      newLabel.setObjective(objStr);
+      newLabel.setLevel(level);
+      list.add(newLabel);
+      return true;
+    }
+    int _level = l.getLevel();
+    boolean _notEquals = (_level != level);
+    if (_notEquals) {
+      l.setLevel(level);
+      return true;
+    }
+    return false;
+  }
+
+  public boolean applyForward(final NodeResponsibility nr) {
+    int _size = nr.getIncomingassets().size();
+    int _size_1 = nr.getOutgoingassets().size();
+    boolean _notEquals = (_size != _size_1);
+    if (_notEquals) {
+      throw new IllegalArgumentException("Forward contract must have same number of outgoing and incoming assets");
+    }
+    boolean changed = false;
+    for (int i = 0; (i < nr.getIncomingassets().size()); i++) {
+      {
+        final GraphAsset incomingAsset = nr.getIncomingassets().get(i);
+        final GraphAsset outgoingAsset = nr.getOutgoingassets().get(i);
+        Objective[] _values = Objective.values();
+        for (final Objective o : _values) {
           {
-            final ContractBase contract = this.findContract(nr);
-            int pMax = this.getMax(nr.getIncomingassets());
-            final Function1<EdgeLabel, Boolean> _function_1 = (EdgeLabel l) -> {
-              String _objective = l.getObjective();
-              return Boolean.valueOf(Objects.equals(_objective, "Privacy"));
-            };
-            boolean _exists = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_1);
-            boolean _not = (!_exists);
-            if (_not) {
-              String _xifexpression = null;
-              if (((nr.getContractTypes() != null) && (!nr.getContractTypes().isEmpty()))) {
-                String _join = IterableExtensions.join(nr.getContractTypes(), ",");
-                String _plus = ("[" + _join);
-                _xifexpression = (_plus + "]");
-              } else {
-                _xifexpression = "";
-              }
-              final String contractTypeStr = _xifexpression;
-              if (contractTypeStr != null) {
-                switch (contractTypeStr) {
-                  case "[ClassificationFixed]":
-                    final ClassificationFixedContract contractClass = ((ClassificationFixedContract) contract);
-                    Level _xifexpression_1 = null;
-                    if (((contractClass != null) && (contractClass.getPModel() != null))) {
-                      _xifexpression_1 = contractClass.getPModel();
-                    } else {
-                      _xifexpression_1 = Level.L;
-                    }
-                    final Level pModel = _xifexpression_1;
-                    int _xifexpression_2 = (int) 0;
-                    if (((this.lvl(pModel) == 0) && (pMax >= 2))) {
-                      _xifexpression_2 = 1;
-                    } else {
-                      _xifexpression_2 = this.lvl(pModel);
-                    }
-                    final int pOut = _xifexpression_2;
-                    this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", pOut);
-                    break;
-                  case "[ClassificationVariable]":
-                    final ClassificationVariableContract contractCV = ((ClassificationVariableContract) contract);
-                    final int pCat = this.getMaxLevel(contractCV.getCatalog());
-                    int _xifexpression_3 = (int) 0;
-                    if (((pCat == 0) && (pMax >= 2))) {
-                      _xifexpression_3 = 1;
-                    } else {
-                      _xifexpression_3 = pCat;
-                    }
-                    final int pOut_1 = _xifexpression_3;
-                    this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", pOut_1);
-                    break;
-                  case "[Clustering]":
-                    final boolean allHaveLabels = ((!nr.getIncomingassets().isEmpty()) && IterableExtensions.<GraphAsset>forall(nr.getIncomingassets(), ((Function1<GraphAsset, Boolean>) (GraphAsset ina) -> {
-                      int _levelOf = this.levelOf(ina.getAssetlabel(), "Privacy");
-                      return Boolean.valueOf((_levelOf >= 0));
-                    })));
-                    final boolean allPrivacyLabelsAreN = (allHaveLabels && (!IterableExtensions.<GraphAsset>exists(nr.getIncomingassets(), ((Function1<GraphAsset, Boolean>) (GraphAsset ina) -> {
-                      int _levelOf = this.levelOf(ina.getAssetlabel(), "Privacy");
-                      return Boolean.valueOf((_levelOf != 0));
-                    }))));
-                    EList<EdgeLabel> _edgelabel = outgoing.getEdgelabel();
-                    int _xifexpression_4 = (int) 0;
-                    if (allPrivacyLabelsAreN) {
-                      _xifexpression_4 = 0;
-                    } else {
-                      _xifexpression_4 = 1;
-                    }
-                    this.setOrUpdateEdgeLabel(_edgelabel, "Privacy", _xifexpression_4);
-                    break;
-                  case "[Transformation]":
-                    final int privacyLevel = pMax;
-                    this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), "Privacy", privacyLevel);
-                    break;
-                  case "[EncryptOrHash]":
-                    Objective[] _values = Objective.values();
-                    for (final Objective o : _values) {
-                      {
-                        final String oStr = o.getLiteral();
-                        final Function1<EdgeLabel, Boolean> _function_2 = (EdgeLabel l) -> {
-                          String _objective = l.getObjective();
-                          return Boolean.valueOf(Objects.equals(_objective, oStr));
-                        };
-                        boolean _exists_1 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_2);
-                        boolean _not_1 = (!_exists_1);
-                        if (_not_1) {
-                          this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), oStr, 0);
-                        }
-                      }
-                    }
-                    break;
-                  case "[Decrypt]":
-                    boolean _isEmpty = nr.getIncomingassets().isEmpty();
-                    boolean _not_1 = (!_isEmpty);
-                    if (_not_1) {
-                      for (int i = 0; (i < nr.getIncomingassets().size()); i++) {
-                        {
-                          final GraphAsset incomingAsset = nr.getIncomingassets().get(i);
-                          int _xifexpression_5 = (int) 0;
-                          int _size = nr.getOutgoingassets().size();
-                          boolean _lessThan = (i < _size);
-                          if (_lessThan) {
-                            _xifexpression_5 = i;
-                          } else {
-                            int _size_1 = nr.getOutgoingassets().size();
-                            _xifexpression_5 = (_size_1 - 1);
-                          }
-                          final int outgoingAssetIndex = _xifexpression_5;
-                          GraphAsset _xifexpression_6 = null;
-                          if ((outgoingAssetIndex >= 0)) {
-                            _xifexpression_6 = nr.getOutgoingassets().get(outgoingAssetIndex);
-                          } else {
-                            _xifexpression_6 = null;
-                          }
-                          final GraphAsset correspondingOutgoingAsset = _xifexpression_6;
-                          if (((correspondingOutgoingAsset != null) && 
-                            outgoing.getGraphassets().contains(correspondingOutgoingAsset))) {
-                            Objective[] _values_1 = Objective.values();
-                            for (final Objective o_1 : _values_1) {
-                              {
-                                final String oStr = o_1.getLiteral();
-                                final Function1<EdgeLabel, Boolean> _function_2 = (EdgeLabel l) -> {
-                                  String _objective = l.getObjective();
-                                  return Boolean.valueOf(Objects.equals(_objective, oStr));
-                                };
-                                boolean _exists_1 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_2);
-                                boolean _not_2 = (!_exists_1);
-                                if (_not_2) {
-                                  final int level = this.levelOf(incomingAsset.getAssetlabel(), oStr);
-                                  if ((level >= 0)) {
-                                    this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), oStr, level);
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                    break;
-                  case "[Copier]":
-                    boolean _isEmpty_1 = nr.getIncomingassets().isEmpty();
-                    boolean _not_2 = (!_isEmpty_1);
-                    if (_not_2) {
-                      for (int i = 0; (i < nr.getIncomingassets().size()); i++) {
-                        {
-                          final GraphAsset incomingAsset = nr.getIncomingassets().get(i);
-                          int _xifexpression_5 = (int) 0;
-                          int _size = nr.getOutgoingassets().size();
-                          boolean _lessThan = (i < _size);
-                          if (_lessThan) {
-                            _xifexpression_5 = i;
-                          } else {
-                            int _size_1 = nr.getOutgoingassets().size();
-                            _xifexpression_5 = (_size_1 - 1);
-                          }
-                          final int outgoingAssetIndex = _xifexpression_5;
-                          GraphAsset _xifexpression_6 = null;
-                          if ((outgoingAssetIndex >= 0)) {
-                            _xifexpression_6 = nr.getOutgoingassets().get(outgoingAssetIndex);
-                          } else {
-                            _xifexpression_6 = null;
-                          }
-                          final GraphAsset correspondingOutgoingAsset = _xifexpression_6;
-                          if (((correspondingOutgoingAsset != null) && 
-                            outgoing.getGraphassets().contains(correspondingOutgoingAsset))) {
-                            Objective[] _values_1 = Objective.values();
-                            for (final Objective o_1 : _values_1) {
-                              {
-                                final String oStr = o_1.getLiteral();
-                                final Function1<EdgeLabel, Boolean> _function_2 = (EdgeLabel l) -> {
-                                  String _objective = l.getObjective();
-                                  return Boolean.valueOf(Objects.equals(_objective, oStr));
-                                };
-                                boolean _exists_1 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_2);
-                                boolean _not_3 = (!_exists_1);
-                                if (_not_3) {
-                                  final int level = this.levelOf(incomingAsset.getAssetlabel(), oStr);
-                                  if ((level >= 0)) {
-                                    this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), oStr, level);
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                    break;
-                  case "[Forward]":
-                    boolean _isEmpty_2 = nr.getIncomingassets().isEmpty();
-                    boolean _not_3 = (!_isEmpty_2);
-                    if (_not_3) {
-                      for (int i = 0; (i < nr.getIncomingassets().size()); i++) {
-                        {
-                          final GraphAsset incomingAsset = nr.getIncomingassets().get(i);
-                          int _xifexpression_5 = (int) 0;
-                          int _size = nr.getOutgoingassets().size();
-                          boolean _lessThan = (i < _size);
-                          if (_lessThan) {
-                            _xifexpression_5 = i;
-                          } else {
-                            int _size_1 = nr.getOutgoingassets().size();
-                            _xifexpression_5 = (_size_1 - 1);
-                          }
-                          final int outgoingAssetIndex = _xifexpression_5;
-                          GraphAsset _xifexpression_6 = null;
-                          if ((outgoingAssetIndex >= 0)) {
-                            _xifexpression_6 = nr.getOutgoingassets().get(outgoingAssetIndex);
-                          } else {
-                            _xifexpression_6 = null;
-                          }
-                          final GraphAsset correspondingOutgoingAsset = _xifexpression_6;
-                          if (((correspondingOutgoingAsset != null) && 
-                            outgoing.getGraphassets().contains(correspondingOutgoingAsset))) {
-                            Objective[] _values_1 = Objective.values();
-                            for (final Objective o_1 : _values_1) {
-                              {
-                                final String oStr = o_1.getLiteral();
-                                final Function1<EdgeLabel, Boolean> _function_2 = (EdgeLabel l) -> {
-                                  String _objective = l.getObjective();
-                                  return Boolean.valueOf(Objects.equals(_objective, oStr));
-                                };
-                                boolean _exists_1 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_2);
-                                boolean _not_4 = (!_exists_1);
-                                if (_not_4) {
-                                  final int level = this.levelOf(incomingAsset.getAssetlabel(), oStr);
-                                  if ((level >= 0)) {
-                                    this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), oStr, level);
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                    break;
-                  case "[Splitter]":
-                    boolean _isEmpty_3 = nr.getIncomingassets().isEmpty();
-                    boolean _not_4 = (!_isEmpty_3);
-                    if (_not_4) {
-                      final Function1<GraphAsset, Boolean> _function_2 = (GraphAsset outAsset) -> {
-                        return Boolean.valueOf(outgoing.getGraphassets().contains(outAsset));
-                      };
-                      final GraphAsset matchingOutgoingAsset = IterableExtensions.<GraphAsset>findFirst(nr.getOutgoingassets(), _function_2);
-                      if ((matchingOutgoingAsset != null)) {
-                        final int outgoingAssetIndex = nr.getOutgoingassets().indexOf(matchingOutgoingAsset);
-                        int _xifexpression_5 = (int) 0;
-                        int _size = nr.getIncomingassets().size();
-                        boolean _lessThan = (outgoingAssetIndex < _size);
-                        if (_lessThan) {
-                          _xifexpression_5 = outgoingAssetIndex;
-                        } else {
-                          int _size_1 = nr.getIncomingassets().size();
-                          _xifexpression_5 = (_size_1 - 1);
-                        }
-                        final int incomingAssetIndex = _xifexpression_5;
-                        final GraphAsset incomingAsset = nr.getIncomingassets().get(incomingAssetIndex);
-                        Objective[] _values_1 = Objective.values();
-                        for (final Objective o_1 : _values_1) {
-                          {
-                            final String oStr = o_1.getLiteral();
-                            final Function1<EdgeLabel, Boolean> _function_3 = (EdgeLabel l) -> {
-                              String _objective = l.getObjective();
-                              return Boolean.valueOf(Objects.equals(_objective, oStr));
-                            };
-                            boolean _exists_1 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_3);
-                            boolean _not_5 = (!_exists_1);
-                            if (_not_5) {
-                              final int level = this.levelOf(incomingAsset.getAssetlabel(), oStr);
-                              if ((level >= 0)) {
-                                this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), oStr, level);
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                    break;
-                  default:
-                    Objective[] _values_2 = Objective.values();
-                    for (final Objective o_2 : _values_2) {
-                      {
-                        final String oStr = o_2.getLiteral();
-                        final Function1<EdgeLabel, Boolean> _function_3 = (EdgeLabel l) -> {
-                          String _objective = l.getObjective();
-                          return Boolean.valueOf(Objects.equals(_objective, oStr));
-                        };
-                        boolean _exists_1 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_3);
-                        boolean _not_5 = (!_exists_1);
-                        if (_not_5) {
-                          int max = 0;
-                          EList<GraphAsset> _incomingassets = nr.getIncomingassets();
-                          for (final GraphAsset ina : _incomingassets) {
-                            max = Math.max(max, this.levelOf(ina.getAssetlabel(), oStr));
-                          }
-                          if ((max >= 0)) {
-                            this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), oStr, max);
-                          }
-                        }
-                      }
-                    }
-                    break;
-                }
-              } else {
-                Objective[] _values_2 = Objective.values();
-                for (final Objective o_2 : _values_2) {
-                  {
-                    final String oStr = o_2.getLiteral();
-                    final Function1<EdgeLabel, Boolean> _function_3 = (EdgeLabel l) -> {
-                      String _objective = l.getObjective();
-                      return Boolean.valueOf(Objects.equals(_objective, oStr));
-                    };
-                    boolean _exists_1 = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_3);
-                    boolean _not_5 = (!_exists_1);
-                    if (_not_5) {
-                      int max = 0;
-                      EList<GraphAsset> _incomingassets = nr.getIncomingassets();
-                      for (final GraphAsset ina : _incomingassets) {
-                        max = Math.max(max, this.levelOf(ina.getAssetlabel(), oStr));
-                      }
-                      if ((max >= 0)) {
-                        this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), oStr, max);
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            Objective[] _values_3 = Objective.values();
-            for (final Objective o_3 : _values_3) {
-              {
-                final String oStr = o_3.getLiteral();
-                if (((!Objects.equals(oStr, "Privacy")) && (!IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), ((Function1<EdgeLabel, Boolean>) (EdgeLabel l) -> {
-                  String _objective = l.getObjective();
-                  return Boolean.valueOf(Objects.equals(_objective, oStr));
-                }))))) {
-                  int max = 0;
-                  EList<GraphAsset> _incomingassets = nr.getIncomingassets();
-                  for (final GraphAsset ina : _incomingassets) {
-                    max = Math.max(max, this.levelOf(ina.getAssetlabel(), oStr));
-                  }
-                  if ((max > 0)) {
-                    this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), oStr, max);
-                  }
-                }
-              }
+            final String objective = o.getLiteral();
+            final int level = this.levelOf(incomingAsset.getAssetlabel(), objective);
+            if ((level >= 0)) {
+              changed = (this.setOrUpdateAssetLabelIfChanged(outgoingAsset.getAssetlabel(), objective, level) || changed);
             }
           }
         }
+      }
+    }
+    return changed;
+  }
+
+  public boolean applyJoin(final NodeResponsibility nr) {
+    int _size = nr.getOutgoingassets().size();
+    boolean _greaterThan = (_size > 1);
+    if (_greaterThan) {
+      throw new IllegalArgumentException("Join contract cannot have multiple outgoing assets");
+    }
+    final GraphAsset outgoingAsset = IterableExtensions.<GraphAsset>head(nr.getOutgoingassets());
+    boolean changed = false;
+    Objective[] _values = Objective.values();
+    for (final Objective o : _values) {
+      {
+        String objective = o.getLiteral();
+        int pMax = this.getMax(nr.getIncomingassets(), objective);
+        if ((pMax >= 0)) {
+          changed = (this.setOrUpdateAssetLabelIfChanged(outgoingAsset.getAssetlabel(), objective, pMax) || changed);
+        }
+      }
+    }
+    return changed;
+  }
+
+  public boolean applyDecrypt(final NodeResponsibility nr) {
+    return this.applyForward(nr);
+  }
+
+  public boolean applyEncrypt(final NodeResponsibility nr) {
+    boolean changed = false;
+    for (int i = 0; (i < nr.getOutgoingassets().size()); i++) {
+      {
+        final GraphAsset outgoingAsset = nr.getOutgoingassets().get(i);
         Objective[] _values = Objective.values();
         for (final Objective o : _values) {
           {
             final String oStr = o.getLiteral();
-            final Function1<EdgeLabel, Boolean> _function_1 = (EdgeLabel l) -> {
-              String _objective = l.getObjective();
-              return Boolean.valueOf(Objects.equals(_objective, oStr));
-            };
-            boolean _exists = IterableExtensions.<EdgeLabel>exists(outgoing.getEdgelabel(), _function_1);
-            boolean _not = (!_exists);
-            if (_not) {
-              int max = 0;
-              EList<GraphAsset> _graphassets = outgoing.getGraphassets();
-              for (final GraphAsset ga : _graphassets) {
-                max = Math.max(max, this.levelOf(ga.getAssetlabel(), oStr));
-              }
-              if ((max > 0)) {
-                this.setOrUpdateEdgeLabel(outgoing.getEdgelabel(), oStr, max);
-              }
-            }
+            changed = this.setOrUpdateAssetLabelIfChanged(outgoingAsset.getAssetlabel(), oStr, 0);
           }
         }
-        this.logEdge(outgoing);
       }
     }
+    return changed;
+  }
+
+  public boolean applyClassificationFixed(final NodeResponsibility nr) {
+    int _size = nr.getOutgoingassets().size();
+    boolean _greaterThan = (_size > 1);
+    if (_greaterThan) {
+      throw new IllegalArgumentException("ClassificationFixed contract cannot have multiple outgoing assets");
+    }
+    final GraphAsset outgoingAsset = IterableExtensions.<GraphAsset>head(nr.getOutgoingassets());
+    final ContractBase contract = this.findContract(nr);
+    final ClassificationFixedContract contractClass = ((ClassificationFixedContract) contract);
+    String objective = "Privacy";
+    int pMax = this.getMax(nr.getIncomingassets(), objective);
+    Level _xifexpression = null;
+    if (((contractClass != null) && (contractClass.getPModel() != null))) {
+      _xifexpression = contractClass.getPModel();
+    } else {
+      _xifexpression = Level.L;
+    }
+    final Level pModel = _xifexpression;
+    int _xifexpression_1 = (int) 0;
+    if (((this.lvl(pModel) == 0) && (pMax >= 2))) {
+      _xifexpression_1 = 1;
+    } else {
+      _xifexpression_1 = this.lvl(pModel);
+    }
+    final int pOut = _xifexpression_1;
+    final boolean changed = this.setOrUpdateAssetLabelIfChanged(outgoingAsset.getAssetlabel(), objective, pOut);
+    return changed;
+  }
+
+  public boolean applyClassificationVariable(final NodeResponsibility nr) {
+    int _size = nr.getOutgoingassets().size();
+    boolean _greaterThan = (_size > 1);
+    if (_greaterThan) {
+      throw new IllegalArgumentException("ClassificationVariable contract cannot have multiple outgoing assets");
+    }
+    final GraphAsset outgoingAsset = IterableExtensions.<GraphAsset>head(nr.getOutgoingassets());
+    final ContractBase contract = this.findContract(nr);
+    final ClassificationVariableContract contractClass = ((ClassificationVariableContract) contract);
+    final int pCat = this.getMaxLevel(contractClass.getCatalog());
+    String objective = "Privacy";
+    int pMax = this.getMax(nr.getIncomingassets(), objective);
+    int _xifexpression = (int) 0;
+    if (((pCat == 0) && (pMax >= 2))) {
+      _xifexpression = 1;
+    } else {
+      _xifexpression = pCat;
+    }
+    final int pOut = _xifexpression;
+    final boolean changed = this.setOrUpdateAssetLabelIfChanged(outgoingAsset.getAssetlabel(), objective, pOut);
+    return changed;
+  }
+
+  public boolean applyTransformation(final NodeResponsibility nr) {
+    return this.applyJoin(nr);
+  }
+
+  public boolean applyClustering(final NodeResponsibility nr) {
+    int _size = nr.getOutgoingassets().size();
+    boolean _greaterThan = (_size > 1);
+    if (_greaterThan) {
+      throw new IllegalArgumentException("Clustering contract cannot have multiple outgoing assets");
+    }
+    final GraphAsset outgoingAsset = IterableExtensions.<GraphAsset>head(nr.getOutgoingassets());
+    final String objective = "Privacy";
+    int pMax = this.getMax(nr.getIncomingassets(), objective);
+    int _xifexpression = (int) 0;
+    if ((pMax >= 2)) {
+      _xifexpression = 1;
+    } else {
+      _xifexpression = 0;
+    }
+    final int pOut = _xifexpression;
+    final boolean changed = this.setOrUpdateAssetLabelIfChanged(outgoingAsset.getAssetlabel(), objective, pOut);
+    return changed;
+  }
+
+  public List<GraphAsset> processNode(final Node node) {
+    final LinkedHashSet<GraphAsset> changedAssets = CollectionLiterals.<GraphAsset>newLinkedHashSet();
+    EList<NodeResponsibility> _responsibility = node.getResponsibility();
+    for (final NodeResponsibility nr : _responsibility) {
+      {
+        boolean changed = false;
+        String _head = IterableExtensions.<String>head(nr.getContractTypes());
+        if (_head != null) {
+          switch (_head) {
+            case "Forward":
+              changed = this.applyForward(nr);
+              break;
+            case "Copier":
+              changed = this.applyForward(nr);
+              break;
+            case "Joiner":
+              changed = this.applyJoin(nr);
+              break;
+            case "EncryptOrHash":
+              changed = this.applyEncrypt(nr);
+              break;
+            case "Decrypt":
+              changed = this.applyDecrypt(nr);
+              break;
+            case "ClassificationFixed":
+              changed = this.applyClassificationFixed(nr);
+              break;
+            case "ClassificationVariable":
+              changed = this.applyClassificationVariable(nr);
+              break;
+            case "Transformation":
+              changed = this.applyTransformation(nr);
+              break;
+            case "Clustering":
+              changed = this.applyClustering(nr);
+              break;
+            default:
+              StringConcatenation _builder = new StringConcatenation();
+              _builder.append("Unidentified contract type: ");
+              String _head_1 = IterableExtensions.<String>head(nr.getContractTypes());
+              _builder.append(_head_1);
+              InputOutput.<String>println(_builder.toString());
+              break;
+          }
+        } else {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("Unidentified contract type: ");
+          String _head_1 = IterableExtensions.<String>head(nr.getContractTypes());
+          _builder.append(_head_1);
+          InputOutput.<String>println(_builder.toString());
+        }
+        if (changed) {
+          changedAssets.addAll(nr.getOutgoingassets());
+        }
+      }
+    }
+    return IterableExtensions.<GraphAsset>toList(changedAssets);
+  }
+
+  public void assignEdgeLabels(final Iterable<Edge> edges) {
+    for (final Edge edge : edges) {
+      Objective[] _values = Objective.values();
+      for (final Objective o : _values) {
+        {
+          final String objective = o.getLiteral();
+          final int maxLevel = this.getMax(edge.getGraphassets(), objective);
+          if ((maxLevel >= 0)) {
+            this.setOrUpdateEdgeLabel(edge.getEdgelabel(), objective, maxLevel);
+          }
+          String _name = o.getName();
+          boolean _equals = Objects.equals(_name, "Privacy");
+          if (_equals) {
+            this.logEdge(edge);
+          }
+        }
+      }
+    }
+  }
+
+  private final BatchTransformationRule<EDFD.Match, EDFD.Matcher> propagateLabelsInOrder = this._batchTransformationRuleFactory.<EDFD.Match, EDFD.Matcher>createRule().precondition(EDFD.Matcher.querySpecification()).action(((Consumer<EDFD.Match>) (EDFD.Match it) -> {
+    final Subgraphs sub = IterableExtensions.<Subgraphs>head(Iterables.<Subgraphs>filter(this.edfdxformm2m.getEdfd2simplegraph(this.engine).getAllValuesOfgraphElements(null, null, null), Subgraphs.class));
+    final LinkedHashSet<Node> worklist = CollectionLiterals.<Node>newLinkedHashSet();
+    final Function1<Node, Boolean> _function = (Node it_1) -> {
+      boolean _isEmpty = it_1.getResponsibility().isEmpty();
+      return Boolean.valueOf((!_isEmpty));
+    };
+    Iterables.<Node>addAll(worklist, IterableExtensions.<Node>filter(sub.getNodes(), _function));
+    InputOutput.<String>println("Propagating asset labels");
+    while ((!worklist.isEmpty())) {
+      {
+        final Node node = IterableExtensions.<Node>head(worklist);
+        worklist.remove(node);
+        final List<GraphAsset> changedAssets = this.processNode(node);
+        final LinkedHashSet<Node> changedNodes = CollectionLiterals.<Node>newLinkedHashSet();
+        EList<Node> _nodes = sub.getNodes();
+        for (final Node candidate : _nodes) {
+          final Function1<NodeResponsibility, Boolean> _function_1 = (NodeResponsibility nr) -> {
+            final Function1<GraphAsset, Boolean> _function_2 = (GraphAsset asset) -> {
+              return Boolean.valueOf(changedAssets.contains(asset));
+            };
+            return Boolean.valueOf(IterableExtensions.<GraphAsset>exists(nr.getIncomingassets(), _function_2));
+          };
+          boolean _exists = IterableExtensions.<NodeResponsibility>exists(candidate.getResponsibility(), _function_1);
+          if (_exists) {
+            changedNodes.add(candidate);
+          }
+        }
+        worklist.addAll(changedNodes);
+      }
+    }
+    final HashSet<Edge> edges = CollectionLiterals.<Edge>newHashSet();
+    EList<Node> _nodes = sub.getNodes();
+    for (final Node n : _nodes) {
+      EList<Edge> _outedges = n.getOutedges();
+      for (final Edge e : _outedges) {
+        edges.add(e);
+      }
+    }
+    InputOutput.<String>println("Assigning edge labels");
+    this.assignEdgeLabels(IterableExtensions.<Edge>toList(edges));
   })).build();
 
   public void execute() {
@@ -1193,18 +1122,15 @@ public class eDFDToGraphTransformation {
     return null;
   }
 
-  public int getMax(final EList<GraphAsset> assets) {
+  public int getMax(final EList<GraphAsset> assets, final String objective) {
     int pMax = (-1);
     for (final GraphAsset ina : assets) {
       {
-        final int level = this.levelOf(ina.getAssetlabel(), "Privacy");
+        final int level = this.levelOf(ina.getAssetlabel(), objective);
         if ((level >= 0)) {
           pMax = Math.max(pMax, level);
         }
       }
-    }
-    if ((pMax == (-1))) {
-      pMax = 0;
     }
     return pMax;
   }

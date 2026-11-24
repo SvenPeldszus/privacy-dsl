@@ -37,6 +37,7 @@ import org.secdfd.model.TransformationContract
 import org.secdfd.model.Value
 import traceability.EDFDToGraph
 import traceability.TraceabilityPackage
+import java.util.List
 
 class eDFDToGraphTransformation {
 	/** VIATRA Query Pattern group **/
@@ -496,221 +497,277 @@ class eDFDToGraphTransformation {
 		}
 
 	].build
+	
+	def String getAllEdgeLabels(List<Flow> flows) {
+	    flows.map [ f |
+	        val edge = engine.edfd2simplegraph
+	            .getAllValuesOfgraphElements(null, null, f as NamedEntity)
+	            .filter(Edge).head
+	
+	        edge.ID + ":" +
+	        edge.edgelabel
+	            .sortBy[objective]
+	            .map[objective + "=" + level]
+	            .join(",")
+	    ].join("|")
+	}
 
-	// updated
-	val propagateLabelsInOrder = createRule.precondition(edfdtosimplegraph.EDFD.Matcher.querySpecification).action [
+	/**
+	 * Sets, updates, or removes a security label.
+	 *
+	 * @return true if the label collection was modified, false otherwise.
+	 */
+	def boolean setOrUpdateAssetLabelIfChanged(EList<AssetLabel> list, String objStr, int level) {
+	    val l = list.findFirst[objective == objStr]
+	
+	    // -1 means that no label should exist
+	    if (level < 0) {
+	        if (l !== null) {
+	            list.remove(l)
+	            return true
+	        }
+	        return false
+	    }
+	    
+	    // Create a label if it does not exist
+	    if (l === null) {
+	        val newLabel = GraphFactory.eINSTANCE.createAssetLabel
+	        newLabel.objective = objStr
+	        newLabel.level = level
+	        list.add(newLabel)
+	        return true
+	    }
+		
+	    // Update only if the level actually changed
+	    if (l.level != level) {
+	        l.level = level
+	        return true
+	    }
+	
+	    // No modification was necessary
+	    return false
+	}
+	
+	def boolean applyForward(NodeResponsibility nr) {
+		//Apply Forward contract (copy input privacy label to output assets)
+		
+		// Forward contract requires same number of incoming and outgoing assets
+		if (nr.incomingassets.size != nr.outgoingassets.size) {
+	            throw new IllegalArgumentException("Forward contract must have same number of outgoing and incoming assets")
+	        }
+	
+	    var changed = false
+	    //Iterate over all incoming and outgoing assets
+	    for (var i = 0; i < nr.incomingassets.size; i++) {
+			
+	        val incomingAsset = nr.incomingassets.get(i)
+	        // Find the corresponding outgoing asset
+	        val outgoingAsset = nr.outgoingassets.get(i)
+	        
+            for (o : Objective.values) {
+                val objective = o.literal
+                val level = levelOf(incomingAsset.assetlabel, objective)
+                // Calculate and update the output label, update changed boolean if neccessary
+                if (level>=0){
+                	changed = setOrUpdateAssetLabelIfChanged(outgoingAsset.assetlabel,objective,level) || changed
+                }
+	        }
+	    }
+	    return changed
+	}
+	
+	def boolean applyJoin(NodeResponsibility nr){
+		// Apply Join contract: propagates most restrictive label from all corresponding incoming assets to one corresponding outgoing asset
 
-		val all_elements = it.edfd.elements
-		val allFlows = newArrayList
-		for (Element e : all_elements) {
-			allFlows.addAll(e.outflows)
-		}
-
-		Collections.sort(allFlows)[a, b|a.number - b.number]
-
-		for (Element f : allFlows) {
-
-			val outgoing = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, f as NamedEntity).
-				filter(Edge).head
-			val node = outgoing.source
-			outgoing.visited = true
-
-			// Einfache Logik: Eine Schleife über alle Responsibilities
-			for (NodeResponsibility nr : node.responsibility) {
-				val contract = findContract(nr)
-
-				// Berechne p_max für alle Contracts, die Input-Assets benötigen
-				var pMax = getMax(nr.incomingassets)
-
-				// Setze Privacy-Label basierend auf Contract-Typ (nur wenn noch nicht gesetzt)
-				if (!outgoing.edgelabel.exists[l|l.objective == "Privacy"]) {
-					val contractTypeStr = if (nr.contractTypes !== null && !nr.contractTypes.empty)
-							"[" + nr.contractTypes.join(",") + "]"
-						else
-							""
-					switch contractTypeStr {
-						case "[ClassificationFixed]": {
-							val contractClass = contract as ClassificationFixedContract
-							val pModel = if(contractClass !== null && contractClass.getPModel() !== null) contractClass.
-									getPModel() else Level.L
-							val pOut=if(lvl(pModel)==0 && pMax>=2)1 else lvl(pModel) //Set output label to L if pModel = N, but maximum input level >=M
-							setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", pOut)
-						}
-						case "[ClassificationVariable]": {
-							val contractCV = contract as ClassificationVariableContract
-							val pCat = getMaxLevel(contractCV.getCatalog()) // Use the maximum privacy label from the item catalog
-							val pOut = if(pCat==0 && pMax>=2)1 else pCat //Set output label to L if pCat = N, but maximum input level >=M
-							setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", pOut)
-						}
-						case "[Clustering]": {
-							// Check if all incoming assets have privacy labels and all are N (level 0)
-							val allHaveLabels = !nr.incomingassets.empty && nr.incomingassets.forall [ ina |
-								levelOf(ina.assetlabel, "Privacy") >= 0
-							]
-							val allPrivacyLabelsAreN = allHaveLabels && !nr.incomingassets.exists [ ina |
-								levelOf(ina.assetlabel, "Privacy") != 0
-							]
-							// If no labels exist or all are N, set to N (0), otherwise L (1)
-							setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", if(allPrivacyLabelsAreN) 0 else 1)
-						}
-						case "[Transformation]": {
-							// pMax is already >= 0 (defaulted to 0 if no labels found)
-							val privacyLevel = pMax // Transformation contract copies the highest privacy label (ys)
-							setOrUpdateEdgeLabel(outgoing.edgelabel, "Privacy", privacyLevel)
-						}
-						case "[EncryptOrHash]": {
-							for (o : Objective.values) {
-								val oStr = o.literal
-								if (!outgoing.edgelabel.exists[l|l.objective == oStr]) {
-									setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, 0)
-								}
-							}
-						}
-						case "[Decrypt]": {
-							// Decrypt propagates labels asset-by-asset: each encrypted incoming asset's labels 
-							if (!nr.incomingassets.empty) {
-								for (var i = 0; i < nr.incomingassets.size; i++) {
-									val incomingAsset = nr.incomingassets.get(i)
-									val outgoingAssetIndex = if(i < nr.outgoingassets.size) i else nr.outgoingassets.
-											size - 1
-									val correspondingOutgoingAsset = if(outgoingAssetIndex >= 0) nr.outgoingassets.get(
-											outgoingAssetIndex) else null
-									if (correspondingOutgoingAsset !== null &&
-										outgoing.graphassets.contains(correspondingOutgoingAsset)) {
-										for (o : Objective.values) {
-											val oStr = o.literal
-											if (!outgoing.edgelabel.exists[l|l.objective == oStr]) {
-												val level = levelOf(incomingAsset.assetlabel, oStr)
-												if (level >= 0) { // Only set label if it exists (level >= 0)
-													setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, level)
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-						case "[Copier]": {
-							// Copier propagates labels asset-by-asset: each incoming asset's labels 
-							if (!nr.incomingassets.empty) {
-								for (var i = 0; i < nr.incomingassets.size; i++) {
-									val incomingAsset = nr.incomingassets.get(i)
-									val outgoingAssetIndex = if(i < nr.outgoingassets.size) i else nr.outgoingassets.
-											size - 1
-									val correspondingOutgoingAsset = if(outgoingAssetIndex >= 0) nr.outgoingassets.get(
-											outgoingAssetIndex) else null
-									if (correspondingOutgoingAsset !== null &&
-										outgoing.graphassets.contains(correspondingOutgoingAsset)) {
-										for (o : Objective.values) {
-											val oStr = o.literal
-											if (!outgoing.edgelabel.exists[l|l.objective == oStr]) {
-												val level = levelOf(incomingAsset.assetlabel, oStr)
-												if (level >= 0) { // Only set label if it exists (level >= 0)
-													setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, level)
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-						case "[Forward]": {
-							// Forward propagates labels asset-by-asset: each incoming asset's labels 
-							if (!nr.incomingassets.empty) {
-								for (var i = 0; i < nr.incomingassets.size; i++) {
-									val incomingAsset = nr.incomingassets.get(i)
-									val outgoingAssetIndex = if(i < nr.outgoingassets.size) i else nr.outgoingassets.
-											size - 1
-									val correspondingOutgoingAsset = if(outgoingAssetIndex >= 0) nr.outgoingassets.get(
-											outgoingAssetIndex) else null
-									if (correspondingOutgoingAsset !== null &&
-										outgoing.graphassets.contains(correspondingOutgoingAsset)) {
-										for (o : Objective.values) {
-											val oStr = o.literal
-											if (!outgoing.edgelabel.exists[l|l.objective == oStr]) {
-												val level = levelOf(incomingAsset.assetlabel, oStr)
-												if (level >= 0) { // Only set label if it exists (level >= 0)
-													setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, level)
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-						case "[Splitter]": {
-							// Splitter propagates labels asset-by-asset: splits incoming asset(s) into multiple outgoing assets
-							if (!nr.incomingassets.empty) {
-								val matchingOutgoingAsset = nr.outgoingassets.findFirst [ outAsset |
-									outgoing.graphassets.contains(outAsset)
-								]
-								if (matchingOutgoingAsset !== null) {
-									val outgoingAssetIndex = nr.outgoingassets.indexOf(matchingOutgoingAsset)
-									val incomingAssetIndex = if(outgoingAssetIndex <
-											nr.incomingassets.size) outgoingAssetIndex else nr.incomingassets.size - 1
-									val incomingAsset = nr.incomingassets.get(incomingAssetIndex)
-
-									for (o : Objective.values) {
-										val oStr = o.literal
-										if (!outgoing.edgelabel.exists[l|l.objective == oStr]) {
-											val level = levelOf(incomingAsset.assetlabel, oStr)
-											if (level >= 0) { // Only set label if it exists (level >= 0)
-												setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, level)
-											}
-										}
-									}
-								}
-							}
-						}
-						default: {
-							// Comparator, Joiner, User, Store: most restrictive (combine multiple assets)
-							for (o : Objective.values) {
-								val oStr = o.literal
-								if (!outgoing.edgelabel.exists[l|l.objective == oStr]) {
-									var max = 0
-									for (ina : nr.incomingassets) {
-										max = Math::max(max, levelOf(ina.assetlabel, oStr))
-									}
-									if (max >= 0) {
-										setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, max)
-									}
-								}
-							}
-						}
-					}
-				}
-
-				// Setze andere Objectives (most restrictive aus Input-Assets) für alle Contracts
-				for (o : Objective.values) {
-					val oStr = o.literal
-					if (oStr != "Privacy" && !outgoing.edgelabel.exists[l|l.objective == oStr]) {
-						var max = 0
-						for (ina : nr.incomingassets) {
-							max = Math::max(max, levelOf(ina.assetlabel, oStr))
-						}
-						if (max > 0) {
-							setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, max)
-						}
-					}
-				}
+		// Join contract requires one outgoing asset
+		if (nr.outgoingassets.size>1) {
+	            throw new IllegalArgumentException("Join contract cannot have multiple outgoing assets")
+	        }
+	        
+		val outgoingAsset = nr.outgoingassets.head
+		var changed=false
+		//Set maximum label for all objectives
+		for (o : Objective.values){
+			var objective = o.literal
+			var pMax = getMax(nr.incomingassets,objective)
+			if (pMax >= 0){
+				changed = setOrUpdateAssetLabelIfChanged(outgoingAsset.assetlabel,objective,pMax) || changed
 			}
-
-			// Falls Edge noch keine Labels hat, setze von Assets
+		}
+		return changed
+	}
+	
+	def boolean applyDecrypt(NodeResponsibility nr){
+		//Apply Decrypt contract: For some reason, the original implementation of the decrypt contract does exactly the same as forward, so I leave it like this for now.
+		return applyForward(nr)
+	}
+	
+	def boolean applyEncrypt(NodeResponsibility nr){
+		//Apply Encrypt contract: Set all output labels to 0
+		
+		var changed=false
+		//Iterate over all output privacy labels, all objectives
+		for (var i = 0; i < nr.outgoingassets.size; i++) {        
+	        val outgoingAsset = nr.outgoingassets.get(i)
 			for (o : Objective.values) {
 				val oStr = o.literal
-				if (!outgoing.edgelabel.exists[l|l.objective == oStr]) {
-					var max = 0
-					for (ga : outgoing.graphassets) {
-						max = Math::max(max, levelOf(ga.assetlabel, oStr))
-					}
-					if (max > 0) {
-						setOrUpdateEdgeLabel(outgoing.edgelabel, oStr, max)
-					}
+				changed=setOrUpdateAssetLabelIfChanged(outgoingAsset.assetlabel, oStr, 0)
+			}
+		}
+		return changed
+	}
+	
+	def boolean applyClassificationFixed(NodeResponsibility nr) {
+		// Apply ClassificationFixed Contract: Set output privacy level based on model parameter, with output >= L if input is >=M
+		
+		// ClassificationFixed contract requires exactly one outgoing asset
+		if (nr.outgoingassets.size>1) {
+	            throw new IllegalArgumentException("ClassificationFixed contract cannot have multiple outgoing assets")
+	        }
+	        
+		val outgoingAsset = nr.outgoingassets.head
+		val contract = findContract(nr)
+		val contractClass = contract as ClassificationFixedContract
+		//Contract type limited to privacy objective
+		var objective="Privacy"
+		var pMax = getMax(nr.incomingassets,objective)
+		val pModel = if(contractClass !== null && contractClass.getPModel() !== null) contractClass.getPModel() else Level.L
+		val pOut=if(lvl(pModel)==0 && pMax>=2)1 else lvl(pModel) //Set output label to L if pModel = N, but maximum input level >=M
+		val changed = setOrUpdateAssetLabelIfChanged(outgoingAsset.assetlabel,objective,pOut)
+		return changed
+	}
+	
+	def boolean applyClassificationVariable(NodeResponsibility nr) {
+		// Apply Classification Variable contract: Set output privacy label based on output catalog asset
+		
+		// ClassificationVariable contract requires exactly one outgoing asset
+		if (nr.outgoingassets.size>1) {
+	            throw new IllegalArgumentException("ClassificationVariable contract cannot have multiple outgoing assets")
+	        }
+		
+		val outgoingAsset = nr.outgoingassets.head
+		val contract = findContract(nr)
+		val contractClass = contract as ClassificationVariableContract
+		val pCat = getMaxLevel(contractClass.getCatalog()) // Use the maximum privacy label from the item catalog
+		//Contract type limited to privacy objective
+		var objective="Privacy"
+		var pMax = getMax(nr.incomingassets,objective)
+		val pOut = if(pCat==0 && pMax>=2)1 else pCat //Set output label to L if pCat = N, but maximum input level >=M
+		val changed = setOrUpdateAssetLabelIfChanged(outgoingAsset.assetlabel,objective,pOut)
+		return changed
+	}
+	
+	def boolean applyTransformation(NodeResponsibility nr) {
+		//Apply Transformation Contract (Same as join)
+		return applyJoin(nr)
+	}
+	
+	def boolean applyClustering(NodeResponsibility nr) {
+		//Apply Clustering contract (Set output label = L if all input labels >= M, N otherwise
+		
+		// Clustering contract requires exactly one outgoing asset
+		if (nr.outgoingassets.size>1) {
+	            throw new IllegalArgumentException("Clustering contract cannot have multiple outgoing assets")
+	        }
+	        
+		val outgoingAsset = nr.outgoingassets.head
+		//Contract type limited to privacy objective
+		val objective="Privacy"
+		var pMax = getMax(nr.incomingassets,objective)
+		val pOut = if(pMax>=2)1 else 0 //Set output label to L if maximum input level >=M, N otherwise
+		val changed = setOrUpdateAssetLabelIfChanged(outgoingAsset.assetlabel,objective,pOut)
+		return changed
+	}
+	
+	def List<GraphAsset> processNode(Node node) {
+		//Evaluate all responsibilities for this process (responsibility = contract + incoming assets + outgoing assets
+
+	    val changedAssets = newLinkedHashSet
+	    		
+	    for (NodeResponsibility nr : node.responsibility) {
+	        var changed=false
+	        switch nr.contractTypes.head{
+	        	case "Forward": 
+	        		changed = applyForward(nr)
+	        	case "Copier":
+	        		changed=applyForward(nr)
+	        	case "Joiner": 
+	        		changed = applyJoin(nr)
+	        	case "EncryptOrHash": 
+	        		changed = applyEncrypt(nr)
+	        	case "Decrypt": 
+	        		changed = applyDecrypt(nr)
+	        	case "ClassificationFixed": 
+	        		changed = applyClassificationFixed(nr)
+	        	case "ClassificationVariable": 
+	        		changed = applyClassificationVariable(nr)
+	        	case "Transformation": 
+	        		changed = applyTransformation(nr)
+	        	case "Clustering": 
+	        		changed = applyClustering(nr)
+	        	default:
+	        		println('''Unidentified contract type: «nr.contractTypes.head»''')
+	        }
+	        // If this contract changed labels, its outgoing assets may affect downstream processes
+	        if (changed) {
+	            changedAssets.addAll(nr.outgoingassets)
+	        }
+	    }
+	    return changedAssets.toList
+	}
+	
+	def void assignEdgeLabels(Iterable<Edge> edges) {
+		// Assign edge labels based on their assets (assuming propagation was executed and assets are labeled)
+	    for (Edge edge : edges) {
+	        for (o : Objective.values) {
+	            val objective = o.literal
+	            val maxLevel = getMax(edge.graphassets,objective)
+	            if (maxLevel >= 0) {
+	            	setOrUpdateEdgeLabel(edge.edgelabel,objective,maxLevel)
+	            }
+	            if (o.getName=="Privacy"){
+	        		logEdge(edge)
+	        	}
+		    	
+	        }
+	    }
+	}
+
+	val propagateLabelsInOrder = createRule.precondition(edfdtosimplegraph.EDFD.Matcher.querySpecification).action [
+		
+		// Initialize worklist with graph nodes (limit to processes with contracts)
+		val sub = engine.edfd2simplegraph.getAllValuesOfgraphElements(null, null, null).filter(Subgraphs).head
+		val worklist = newLinkedHashSet
+		worklist.addAll(sub.nodes.filter[!responsibility.empty])
+			
+		//Propagate asset labels until convergence
+		println("Propagating asset labels")
+		while (!worklist.empty){
+			//Get node
+			val node = worklist.head
+			worklist.remove(node)
+			
+			//Evaluate all contracts for that node
+			val changedAssets=processNode(node)
+			// Find all processes that consume at least one changed asset and add these to worklist for reevaluation
+		    val changedNodes = newLinkedHashSet
+		    for (Node candidate : sub.nodes) {
+		        if (candidate.responsibility.exists[nr |nr.incomingassets.exists[asset |changedAssets.contains(asset)]]) {
+	        		changedNodes.add(candidate)
 				}
 			}
-
-			logEdge(outgoing)
+			worklist.addAll(changedNodes)
 		}
+		
+		//Assign Edge labels
+		val edges=newHashSet
+		for (Node n : sub.nodes){
+			for (Edge e : n.outedges){
+				edges.add(e)
+			}
+		}
+		println("Assigning edge labels")
+		assignEdgeLabels(edges.toList)
 	].build
 
 	def execute() {
@@ -817,19 +874,15 @@ class eDFDToGraphTransformation {
 		}
 		return null
 	}
-
-	def int getMax(EList<GraphAsset> assets) {
+	
+	def int getMax(EList<GraphAsset> assets, String objective) {
 		// Berechne p_max für alle Contracts, die Input-Assets benötigen
 		var pMax = -1 // Initialize with -1 (no label)
 		for (ina : assets) {
-			val level = levelOf(ina.assetlabel, "Privacy")
+			val level = levelOf(ina.assetlabel, objective)
 			if (level >= 0) { // Only consider actual labels (level >= 0)
 				pMax = Math::max(pMax, level)
 			}
-		}
-		// If no labels found, default to N (0)
-		if (pMax == -1) {
-			pMax = 0
 		}
 		return pMax
 	}
