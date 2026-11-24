@@ -1,0 +1,476 @@
+EDFD SunnyPilot[
+    assets:
+        Asset "complete message logs"
+            type: String
+            source: "P1: Logging"
+            targets: "D1: qlog", "P20: Server Interface" ,
+        Asset "message logs subset"
+            type: String
+            source: "P1: Logging"
+            targets: "D2: rlog", "P20: Server Interface" ,
+        Asset "compressed camera data"
+            type: String
+            source: "P1: Logging"
+            targets: "D3: camera logs",
+        Asset "camera frames (driver)"
+            type: String
+            values: [ H P ] source: "E2: Driver-facing camera"
+            targets: "P17: Vision IPC Client (driver)", "P2: DriverMonitoring", "P3: Driver Monitoring Model", "P1: Logging" ,
+        Asset "camera frames (road)"
+            type: String
+            values: [ L P ] source: "E3: Road-facing camera"
+            targets: "P18: Vision IPC Client (road)", "P14: Self-driving model control", "P1: Logging" , "P19: Supercombo Model",
+        Asset "hardware status"
+            type: String
+            values: [N P]
+            source: "E9: Device Hardware"
+            targets: "P12: Device hardware interface" ,
+        Asset deviceState
+            type: String
+            source: "P12: Device hardware interface"
+            targets: "P14: Self-driving model control", "P11: Self Driving & Motion Planning", "P1: Logging" ,
+        Asset "radar data"
+            type: String
+            values: [N P]
+            source: "E4: Radar"
+            targets: "P16: Radar interface" ,
+        Asset radarState
+            type: String
+            source: "P16: Radar interface"
+            targets: "P15: Car Control", "P11: Self Driving & Motion Planning" ,
+        Asset "CAN messages (incoming)"
+            type: String
+            values: [N P]
+            source: "E8: CAN Bus"
+            targets: "P13: CAN bus interface",
+        Asset "CAN messages (outgoing)"
+            type: String
+            source: "P13: CAN bus interface"
+            targets: "E8: CAN Bus" ,
+        Asset pandadState
+            type: String
+            source: "P13: CAN bus interface"
+            targets: "P11: Self Driving & Motion Planning", "P15: Car Control", "P1: Logging" ,
+        Asset carState
+            type: String
+            source: "P13: CAN bus interface"
+            targets: "P15: Car Control", "P1: Logging", "P11: Self Driving & Motion Planning", "P14: Self-driving model control", "P2: DriverMonitoring" ,
+        Asset carOutput
+            type: String
+            source: "P15: Car Control"
+            targets: "P13: CAN bus interface", "P1: Logging" , "P11: Self Driving & Motion Planning",
+        Asset "forceDecel command"
+            type: String
+            source: "P15: Car Control"
+            targets: "P13: CAN bus interface", "P1: Logging" ,
+        Asset "accelerometer sensor data"
+            type: String
+            values: [N P ]
+            source: "E5: Accelerometer"
+            targets: "P9: Sensor data processing" ,
+        Asset "gyroscope sensor data"
+            type: String
+            values: [N P]
+            source: "E6: Gyroscope"
+            targets: "P9: Sensor data processing" ,
+        Asset gpsLocation
+            type: String
+            values: [ M P ] source: "E7: GPS Receiver"
+            targets: "P7: GPS location processing", "P6: navigation", "P8: Location data fusion", "P5: map rendering", "P1: Logging" ,
+        Asset navRoute
+            type: String
+            source: "P6: navigation"
+            targets: "P5: map rendering" ,
+        Asset alerts
+            type: String
+            source: "P4: alerts rendering"
+            targets: "E1: UI" ,
+        Asset "driver state"
+            type: String
+            source: "P4: alerts rendering"
+            targets: "E1: UI" ,
+        Asset "road name"
+            type: String
+            source: "P5: map rendering"
+            targets: "E1: UI" ,
+        Asset "speed limit"
+            type: String
+            source: "P5: map rendering"
+            targets: "E1: UI" ,
+        Asset driverMonitoringState
+            type: String
+            source: "P2: DriverMonitoring"
+            targets: "P4: alerts rendering", "P11: Self Driving & Motion Planning", "P14: Self-driving model control", "P15: Car Control", "P1: Logging" ,
+        Asset liveMapDataSP
+            type: String
+            source: "P5: map rendering"
+            targets: "P11: Self Driving & Motion Planning", "P1: Logging" , "E1: UI",
+        Asset liveLocationKalman
+            type: String
+            source: "P8: Location data fusion"
+            targets: "P5: map rendering", "P1: Logging" ,
+        Asset accelerometer
+            type: String
+            source: "P9: Sensor data processing"
+            targets: "P8: Location data fusion", "P1: Logging", "P10: Vehicle Motion Processing" ,
+        Asset gyroscope
+            type: String
+            source: "P9: Sensor data processing"
+            targets: "P8: Location data fusion", "P1: Logging", "P10: Vehicle Motion Processing" ,
+        Asset deviceMotion
+            type: String
+            source: "P10: Vehicle Motion Processing"
+            targets: "P11: Self Driving & Motion Planning", "P1: Logging", "P15: Car Control",
+        Asset cameraOdometry
+            type: String
+            source: "P14: Self-driving model control"
+            targets: "P10: Vehicle Motion Processing" ,
+        Asset selfdriveState
+            type: String
+            source: "P11: Self Driving & Motion Planning"
+            targets: "P15: Car Control", "P1: Logging", "P2: DriverMonitoring",
+        Asset longitudinalPlan
+            type: String
+            source: "P11: Self Driving & Motion Planning"
+            targets: "P15: Car Control", "P1: Logging" ,
+        Asset carControl
+            type: String
+            source: "P15: Car Control"
+            targets: "P11: Self Driving & Motion Planning", "P1: Logging", "P2: DriverMonitoring" ,
+        Asset controlState
+            type: String
+            source: "P15: Car Control"
+            targets: "P11: Self Driving & Motion Planning", "P14: Self-driving model control", "P1: Logging" ,
+        Asset driverStateV2
+            type: String
+            source: "P3: Driver Monitoring Model"
+            targets: "P2: DriverMonitoring" ,
+        Asset modelV2
+            type: String
+            source: "P19: Supercombo Model"
+            targets: "P14: Self-driving model control" , "P16: Radar interface", "P11: Self Driving & Motion Planning", "P2: DriverMonitoring","P1: Logging",
+        Asset "log data"
+            type: String
+            source: "P20: Server Interface"
+            targets: "E10: Comma AI Server" ,
+        Asset "navigation instructions"
+            type: String
+            values: [ M P ]
+            source: "E10: Comma AI Server"
+            targets: "P6: navigation", "P20: Server Interface"
+
+    elements:
+        Process "P1: Logging"
+            [
+            	contracts:
+            		[deviceState, carState, pandadState, gpsLocation, liveMapDataSP, liveLocationKalman, accelerometer, gyroscope, selfdriveState, longitudinalPlan, controlState, carControl, carOutput, "forceDecel command", driverMonitoringState, modelV2, deviceMotion Joiner :: "complete message logs"],
+	            	[deviceState, carState, pandadState, gpsLocation, liveMapDataSP, liveLocationKalman, accelerometer, gyroscope, selfdriveState, longitudinalPlan, controlState, carControl, carOutput, "forceDecel command", driverMonitoringState, modelV2, deviceMotion Joiner :: "message logs subset"],
+	            	["camera frames (driver)", "camera frames (road)" Joiner :: "compressed camera data"]
+                assets: "complete message logs" , "message logs subset" , "compressed camera data" , "camera frames (driver)" , "camera frames (road)" , deviceState , carState , pandadState , gpsLocation , liveMapDataSP , liveLocationKalman , accelerometer , gyroscope , selfdriveState , longitudinalPlan , controlState , carControl , carOutput , "forceDecel command" , driverMonitoringState , modelV2, deviceMotion
+                incoming flows: "P17: Vision IPC Client (driver).F7: camera frames (driver)", "P18: Vision IPC Client (road).F9: camera frames (road)", "P12: Device hardware interface.F13: deviceState", "P13: CAN bus interface.F23: carState, pandadState", "P7: GPS location processing.F31: gpsLocation", "P5: map rendering.F37: liveMapDataSP", "P8: Location data fusion.F39: liveLocationKalman", "P9: Sensor data processing.F41: accelerometer, gyroscope", "P11: Self Driving & Motion Planning.F48: selfdriveState, longitudinalPlan", "P15: Car Control.F53: controlState, carState, carControl, carOutput, forceDecel command", "P2: DriverMonitoring.F59: driverMonitoringState", "P14: Self-driving model control.F61: modelV2", "P10: Vehicle Motion Processing.F70: deviceMotion"
+                outgoing flows:
+                    "F1: complete message logs" [ assets: "complete message logs" source: "P1: Logging" targets: "D1: qlog" ] ,
+                    "F2: message logs subset" [ assets: "message logs subset" source: "P1: Logging" targets: "D2: rlog" ] ,
+                    "F3: compressed camera data" [ assets: "compressed camera data" source: "P1: Logging" targets: "D3: camera logs" ]
+            ] ,
+        Process "P2: DriverMonitoring"
+            [
+            	contracts:
+    				["camera frames (driver)" Forward :: "camera frames (driver)"],
+	    			[selfdriveState, carControl, carState, driverStateV2, modelV2 Joiner :: driverMonitoringState]
+                assets: "camera frames (driver)" , driverMonitoringState , selfdriveState , carControl , carState , driverStateV2 , modelV2
+                incoming flows: "P17: Vision IPC Client (driver).F6: camera frames (driver)", "P11: Self Driving & Motion Planning.F47: selfdriveState", "P15: Car Control.F54: carControl, carState", "P3: Driver Monitoring Model.F56: driverStateV2", "P14: Self-driving model control.F60: modelV2"
+                outgoing flows:
+                    "F35: driverMonitoringState" [ assets: driverMonitoringState source: "P2: DriverMonitoring" targets: "P4: alerts rendering" ] ,
+                    "F50: driverMonitoringState" [ assets: driverMonitoringState source: "P2: DriverMonitoring" targets: "P11: Self Driving & Motion Planning" ] ,
+                    "F55: driverMonitoringState" [ assets: driverMonitoringState source: "P2: DriverMonitoring" targets: "P15: Car Control" ] ,
+                    "F57: camera frames (driver)" [ assets: "camera frames (driver)" source: "P2: DriverMonitoring" targets: "P3: Driver Monitoring Model" ] ,
+                    "F58: driverMonitoringState" [ assets: driverMonitoringState source: "P2: DriverMonitoring" targets: "P14: Self-driving model control" ] ,
+                    "F59: driverMonitoringState" [ assets: driverMonitoringState source: "P2: DriverMonitoring" targets: "P1: Logging" ]
+            ] ,
+        Process "P3: Driver Monitoring Model"
+            [
+            	contracts: ClassificationFixed ["camera frames (driver)" PModel = M :: driverStateV2]
+                assets: driverStateV2 , "camera frames (driver)"
+                incoming flows: "P2: DriverMonitoring.F57: camera frames (driver)"
+                outgoing flows:
+                    "F56: driverStateV2" [ assets: driverStateV2 source: "P3: Driver Monitoring Model" targets: "P2: DriverMonitoring" ]
+            ] ,
+        Process "P4: alerts rendering"
+            [
+            	contracts:
+				    [driverMonitoringState Forward :: alerts],
+				    [driverMonitoringState Forward :: "driver state"]
+                assets: alerts , "driver state" , driverMonitoringState
+                incoming flows: "P2: DriverMonitoring.F35: driverMonitoringState"
+                outgoing flows:
+                    "F33: alerts, driver state" [ assets: alerts , "driver state" source: "P4: alerts rendering" targets: "E1: UI" ]
+            ] ,
+        Process "P5: map rendering"
+            [
+            	contracts:
+				    [gpsLocation, liveLocationKalman Joiner :: "road name"],
+				    [gpsLocation, liveLocationKalman Joiner :: "speed limit"],
+				    [gpsLocation, navRoute, liveLocationKalman Joiner :: liveMapDataSP]
+                assets: gpsLocation , navRoute , "road name" , "speed limit" , liveMapDataSP , liveLocationKalman
+                incoming flows: "P7: GPS location processing.F30: gpsLocation", "P6: navigation.F32: navRoute", "P8: Location data fusion.F38: liveLocationKalman"
+                outgoing flows:
+                    "F34: road name, speed limit, liveMapDataSP" [ assets: "road name" , "speed limit" , liveMapDataSP source: "P5: map rendering" targets: "E1: UI" ] ,
+                    "F36: liveMapDataSP" [ assets: liveMapDataSP source: "P5: map rendering" targets: "P11: Self Driving & Motion Planning" ] ,
+                    "F37: liveMapDataSP" [ assets: liveMapDataSP source: "P5: map rendering" targets: "P1: Logging" ]
+            ] ,
+        Process "P6: navigation"
+            [
+            	contracts:
+    				[gpsLocation, "navigation instructions" Joiner :: navRoute]
+                assets: gpsLocation , navRoute , "navigation instructions"
+                incoming flows: "P7: GPS location processing.F28: gpsLocation", "P20: Server Interface.F65: navigation instructions"
+                outgoing flows:
+                    "F32: navRoute" [ assets: navRoute source: "P6: navigation" targets: "P5: map rendering" ]
+            ] ,
+        Process "P7: GPS location processing"
+            [
+            	contracts:
+    				[gpsLocation Forward :: gpsLocation]
+                assets: gpsLocation
+                incoming flows: "E7: GPS Receiver.F27: gpsLocation"
+                outgoing flows:
+                    "F28: gpsLocation" [ assets: gpsLocation source: "P7: GPS location processing" targets: "P6: navigation" ] ,
+                    "F29: gpsLocation" [ assets: gpsLocation source: "P7: GPS location processing" targets: "P8: Location data fusion" ] ,
+                    "F30: gpsLocation" [ assets: gpsLocation source: "P7: GPS location processing" targets: "P5: map rendering" ] ,
+                    "F31: gpsLocation" [ assets: gpsLocation source: "P7: GPS location processing" targets: "P1: Logging" ]
+            ] ,
+        Process "P8: Location data fusion"
+            [
+            	contracts:
+    				[gpsLocation, accelerometer, gyroscope Joiner :: liveLocationKalman]
+                assets: gpsLocation , liveLocationKalman , accelerometer , gyroscope
+                incoming flows: "P7: GPS location processing.F29: gpsLocation", "P9: Sensor data processing.F40: accelerometer, gyroscope"
+                outgoing flows:
+                    "F38: liveLocationKalman" [ assets: liveLocationKalman source: "P8: Location data fusion" targets: "P5: map rendering" ] ,
+                    "F39: liveLocationKalman" [ assets: liveLocationKalman source: "P8: Location data fusion" targets: "P1: Logging" ]
+            ] ,
+        Process "P9: Sensor data processing"
+            [
+            	contracts:
+				    ["accelerometer sensor data" Forward :: accelerometer],
+				    ["gyroscope sensor data" Forward :: gyroscope]
+                assets: "accelerometer sensor data" , "gyroscope sensor data" , accelerometer , gyroscope
+                incoming flows: "E5: Accelerometer.F25: accelerometer sensor data", "E6: Gyroscope.F26: gyroscope sensor data"
+                outgoing flows:
+                    "F40: accelerometer, gyroscope" [ assets: accelerometer , gyroscope source: "P9: Sensor data processing" targets: "P8: Location data fusion" ] ,
+                    "F41: accelerometer, gyroscope" [ assets: accelerometer , gyroscope source: "P9: Sensor data processing" targets: "P1: Logging" ] ,
+                    "F42: accelerometer, gyroscope" [ assets: accelerometer , gyroscope source: "P9: Sensor data processing" targets: "P10: Vehicle Motion Processing" ]
+            ] ,
+        Process "P10: Vehicle Motion Processing"
+            [
+            	contracts:
+    				[accelerometer, gyroscope, cameraOdometry Joiner :: deviceMotion]
+                assets: accelerometer , gyroscope , deviceMotion , cameraOdometry
+                incoming flows: "P9: Sensor data processing.F42: accelerometer, gyroscope", "P14: Self-driving model control.F45: cameraOdometry"
+                outgoing flows:
+                    "F43: deviceMotion" [ assets: deviceMotion source: "P10: Vehicle Motion Processing" targets: "P11: Self Driving & Motion Planning" ] ,
+                    "F44: deviceMotion" [ assets: deviceMotion source: "P10: Vehicle Motion Processing" targets: "P15: Car Control" ],
+                    "F70: deviceMotion" [ assets: deviceMotion source: "P10: Vehicle Motion Processing" targets: "P1: Logging" ]
+            ] ,
+        Process "P11: Self Driving & Motion Planning"
+            [
+            	contracts:
+				    [deviceState, radarState, pandadState, liveMapDataSP, deviceMotion, carControl, controlState, carState, carOutput, driverMonitoringState, modelV2 Joiner :: selfdriveState],
+				    [deviceState, radarState, pandadState, liveMapDataSP, deviceMotion, carControl, controlState, carState, carOutput, driverMonitoringState, modelV2 Joiner :: longitudinalPlan]
+                assets: deviceState , radarState , pandadState , liveMapDataSP , deviceMotion , selfdriveState , longitudinalPlan , carControl , controlState , carState , driverMonitoringState , modelV2, carOutput
+                incoming flows: "P12: Device hardware interface.F12: deviceState", "P16: Radar interface.F17: radarState", "P13: CAN bus interface.F21: pandadState", "P5: map rendering.F36: liveMapDataSP", "P10: Vehicle Motion Processing.F43: deviceMotion", "P15: Car Control.F49: carControl, controlState, carState, carOutput", "P2: DriverMonitoring.F50: driverMonitoringState", "P14: Self-driving model control.F51: modelV2"
+                outgoing flows:
+                    "F46: selfdriveState, longitudinalPlan" [ assets: selfdriveState , longitudinalPlan source: "P11: Self Driving & Motion Planning" targets: "P15: Car Control" ] ,
+                    "F47: selfdriveState" [ assets: selfdriveState source: "P11: Self Driving & Motion Planning" targets: "P2: DriverMonitoring" ] ,
+                    "F48: selfdriveState, longitudinalPlan" [ assets: selfdriveState , longitudinalPlan source: "P11: Self Driving & Motion Planning" targets: "P1: Logging" ]
+            ] ,
+        Process "P12: Device hardware interface"
+            [
+            	contracts:
+    				["hardware status" Forward :: deviceState]
+                assets: "hardware status" , deviceState
+                incoming flows: "E9: Device Hardware.F10: hardware status"
+                outgoing flows:
+                    "F11: deviceState" [ assets: deviceState source: "P12: Device hardware interface" targets: "P14: Self-driving model control" ] ,
+                    "F12: deviceState" [ assets: deviceState source: "P12: Device hardware interface" targets: "P11: Self Driving & Motion Planning" ] ,
+                    "F13: deviceState" [ assets: deviceState source: "P12: Device hardware interface" targets: "P1: Logging" ]
+            ] ,
+        Process "P13: CAN bus interface"
+            [
+            	contracts:
+				    [carOutput, "forceDecel command" Joiner :: "CAN messages (outgoing)"],
+				    ["CAN messages (incoming)" Forward :: carState],
+				    ["CAN messages (incoming)" Forward :: pandadState]
+                assets: "CAN messages (incoming)" , "CAN messages (outgoing)" , pandadState , carState , carOutput , "forceDecel command"
+                incoming flows: "E8: CAN Bus.F19: CAN messages (incoming)", "P15: Car Control.F24: carOutput, forceDecel command"
+                outgoing flows:
+                    "F20: CAN messages (outgoing)" [ assets: "CAN messages (outgoing)" source: "P13: CAN bus interface" targets: "E8: CAN Bus" ] ,
+                    "F21: pandadState" [ assets: pandadState source: "P13: CAN bus interface" targets: "P11: Self Driving & Motion Planning" ] ,
+                    "F22: carState, pandadState" [ assets: carState , pandadState source: "P13: CAN bus interface" targets: "P15: Car Control" ] ,
+                    "F23: carState, pandadState" [ assets: carState , pandadState source: "P13: CAN bus interface" targets: "P1: Logging" ]
+            ] ,
+        Process "P14: Self-driving model control"
+            [
+            	contracts:
+				    ["camera frames (road)" Forward :: "camera frames (road)"],
+				    [modelV2, deviceState, carState Joiner :: cameraOdometry]
+                assets: "camera frames (road)" , deviceState , modelV2 , cameraOdometry , controlState , carState , driverMonitoringState , modelV2
+                incoming flows: "P18: Vision IPC Client (road).F8: camera frames (road)", "P12: Device hardware interface.F11: deviceState", "P15: Car Control.F52: controlState, carState", "P2: DriverMonitoring.F58: driverMonitoringState", "P19: Supercombo Model.F63: modelV2"
+                outgoing flows:
+                    "F18: modelV2" [ assets: modelV2 source: "P14: Self-driving model control" targets: "P16: Radar interface" ] ,
+                    "F45: cameraOdometry" [ assets: cameraOdometry source: "P14: Self-driving model control" targets: "P10: Vehicle Motion Processing" ] ,
+                    "F51: modelV2" [ assets: modelV2 source: "P14: Self-driving model control" targets: "P11: Self Driving & Motion Planning" ] ,
+                    "F60: modelV2" [ assets: modelV2 source: "P14: Self-driving model control" targets: "P2: DriverMonitoring" ] ,
+                    "F61: modelV2" [ assets: modelV2 source: "P14: Self-driving model control" targets: "P1: Logging" ] ,
+                    "F62: camera frames (road)" [ assets: "camera frames (road)" source: "P14: Self-driving model control" targets: "P19: Supercombo Model" ]
+            ] ,
+        Process "P15: Car Control"
+            [
+            	contracts:
+				    [radarState, carState, pandadState, selfdriveState, longitudinalPlan, deviceMotion Joiner :: carControl],
+				    [carState Forward :: carState],
+				    [radarState, carState, pandadState, selfdriveState, longitudinalPlan, deviceMotion Joiner :: controlState],
+				    [radarState, carState, pandadState, selfdriveState, longitudinalPlan, deviceMotion Joiner :: carOutput],
+				    [driverMonitoringState Forward :: "forceDecel command"]
+                assets: radarState , carState , pandadState , carOutput , "forceDecel command" , selfdriveState , longitudinalPlan , carControl , controlState , driverMonitoringState, deviceMotion
+                incoming flows: "P16: Radar interface.F16: radarState", "P13: CAN bus interface.F22: carState, pandadState", "P11: Self Driving & Motion Planning.F46: selfdriveState, longitudinalPlan", "P2: DriverMonitoring.F55: driverMonitoringState", "P10: Vehicle Motion Processing.F44: deviceMotion"
+                outgoing flows:
+                    "F24: carOutput, forceDecel command" [ assets: carOutput , "forceDecel command" source: "P15: Car Control" targets: "P13: CAN bus interface" ] ,
+                    "F49: carControl, controlState, carState, carOutput" [ assets: carControl , controlState , carState, carOutput source: "P15: Car Control" targets: "P11: Self Driving & Motion Planning" ] ,
+                    "F52: controlState, carState" [ assets: controlState , carState source: "P15: Car Control" targets: "P14: Self-driving model control" ] ,
+                    "F53: controlState, carState, carControl, carOutput, forceDecel command" [ assets: controlState , carState , carControl , carOutput , "forceDecel command" source: "P15: Car Control" targets: "P1: Logging" ] ,
+                    "F54: carControl, carState" [ assets: carControl , carState source: "P15: Car Control" targets: "P2: DriverMonitoring" ]
+            ] ,
+        Process "P16: Radar interface"
+            [
+            	contracts:
+    				[modelV2, "radar data" Joiner :: radarState]
+                assets: "radar data" , radarState , modelV2
+                incoming flows: "E4: Radar.F15: radar data", "P14: Self-driving model control.F18: modelV2"
+                outgoing flows:
+                    "F16: radarState" [ assets: radarState source: "P16: Radar interface" targets: "P15: Car Control" ] ,
+                    "F17: radarState" [ assets: radarState source: "P16: Radar interface" targets: "P11: Self Driving & Motion Planning" ]
+            ] ,
+        Process "P17: Vision IPC Client (driver)"
+            [
+            	contracts:
+				    ["camera frames (driver)" Forward :: "camera frames (driver)"]
+                assets: "camera frames (driver)"
+                incoming flows: "E2: Driver-facing camera.F4: camera frames (driver)"
+                outgoing flows:
+                    "F6: camera frames (driver)" [ assets: "camera frames (driver)" source: "P17: Vision IPC Client (driver)" targets: "P2: DriverMonitoring" ] ,
+                    "F7: camera frames (driver)" [ assets: "camera frames (driver)" source: "P17: Vision IPC Client (driver)" targets: "P1: Logging" ]
+            ] ,
+        Process "P18: Vision IPC Client (road)"
+            [
+            	contracts:
+				    ["camera frames (road)" Forward :: "camera frames (road)"]
+                assets: "camera frames (road)"
+                incoming flows: "E3: Road-facing camera.F5: camera frames (road)"
+                outgoing flows:
+                    "F8: camera frames (road)" [ assets: "camera frames (road)" source: "P18: Vision IPC Client (road)" targets: "P14: Self-driving model control" ] ,
+                    "F9: camera frames (road)" [ assets: "camera frames (road)" source: "P18: Vision IPC Client (road)" targets: "P1: Logging" ]
+            ] ,
+        Process "P19: Supercombo Model"
+            [
+            	contracts: Transformation ["camera frames (road)":: modelV2]
+                assets: "camera frames (road)" , modelV2
+                incoming flows: "P14: Self-driving model control.F62: camera frames (road)"
+                outgoing flows:
+                    "F63: modelV2" [ assets: modelV2 source: "P19: Supercombo Model" targets: "P14: Self-driving model control" ]
+            ] ,
+        Process "P20: Server Interface"
+            [
+            	contracts:
+				    ["complete message logs", "message logs subset", "compressed camera data" Joiner :: "log data"],
+				    ["navigation instructions" Forward :: "navigation instructions"]
+                assets: "log data" , "navigation instructions" , "complete message logs" , "message logs subset" , "compressed camera data"
+                incoming flows: "E10: Comma AI Server.F66: navigation instructions", "D1: qlog.F67: complete message logs", "D2: rlog.F68: message logs subset", "D3: camera logs.F69: compressed camera data"
+                outgoing flows:
+                    "F64: log data" [ assets: "log data" source: "P20: Server Interface" targets: "E10: Comma AI Server" ] ,
+                    "F65: navigation instructions" [ assets: "navigation instructions" source: "P20: Server Interface" targets: "P6: navigation" ]
+            ] ,
+        DataStore "D1: qlog"
+            [
+                assets: "complete message logs"
+                incoming flows: "P1: Logging.F1: complete message logs"
+                outgoing flows:
+                    "F67: complete message logs" [ assets: "complete message logs" source: "D1: qlog" targets: "P20: Server Interface" ]
+            ] ,
+        DataStore "D2: rlog"
+            [
+                assets: "message logs subset"
+                incoming flows: "P1: Logging.F2: message logs subset"
+                outgoing flows:
+                    "F68: message logs subset" [ assets: "message logs subset" source: "D2: rlog" targets: "P20: Server Interface" ]
+            ] ,
+        DataStore "D3: camera logs"
+            [
+                assets: "compressed camera data"
+                incoming flows: "P1: Logging.F3: compressed camera data"
+                outgoing flows:
+                    "F69: compressed camera data" [ assets: "compressed camera data" source: "D3: camera logs" targets: "P20: Server Interface" ]
+            ] ,
+        ExternalEntity "E1: UI"
+            [
+                assets: alerts , "driver state" , "road name" , "speed limit" , liveMapDataSP
+                incoming flows: "P4: alerts rendering.F33: alerts, driver state", "P5: map rendering.F34: road name, speed limit, liveMapDataSP"
+            ] ,
+        ExternalEntity "E2: Driver-facing camera"
+            [
+                assets: "camera frames (driver)"
+                outgoing flows:
+                    "F4: camera frames (driver)" [ assets: "camera frames (driver)" source: "E2: Driver-facing camera" targets: "P17: Vision IPC Client (driver)" ]
+            ] ,
+        ExternalEntity "E3: Road-facing camera"
+            [
+                assets: "camera frames (road)"
+                outgoing flows:
+                    "F5: camera frames (road)" [ assets: "camera frames (road)" source: "E3: Road-facing camera" targets: "P18: Vision IPC Client (road)" ]
+            ] ,
+        ExternalEntity "E4: Radar"
+            [
+                assets: "radar data"
+                outgoing flows:
+                    "F15: radar data" [ assets: "radar data" source: "E4: Radar" targets: "P16: Radar interface" ]
+            ] ,
+        ExternalEntity "E5: Accelerometer"
+            [
+                assets: "accelerometer sensor data"
+                outgoing flows:
+                    "F25: accelerometer sensor data" [ assets: "accelerometer sensor data" source: "E5: Accelerometer" targets: "P9: Sensor data processing" ]
+            ] ,
+        ExternalEntity "E6: Gyroscope"
+            [
+                assets: "gyroscope sensor data"
+                outgoing flows:
+                    "F26: gyroscope sensor data" [ assets: "gyroscope sensor data" source: "E6: Gyroscope" targets: "P9: Sensor data processing" ]
+            ] ,
+        ExternalEntity "E7: GPS Receiver"
+            [
+                assets: gpsLocation
+                outgoing flows:
+                    "F27: gpsLocation" [ assets: gpsLocation source: "E7: GPS Receiver" targets: "P7: GPS location processing" ]
+            ] ,
+        ExternalEntity "E8: CAN Bus"
+            [
+                assets: "CAN messages (incoming)", "CAN messages (outgoing)"
+                incoming flows: "P13: CAN bus interface.F20: CAN messages (outgoing)"
+                outgoing flows:
+                    "F19: CAN messages (incoming)" [ assets: "CAN messages (incoming)" source: "E8: CAN Bus" targets: "P13: CAN bus interface" ]
+            ] ,
+        ExternalEntity "E9: Device Hardware"
+            [
+                assets: "hardware status"
+                outgoing flows:
+                    "F10: hardware status" [ assets: "hardware status" source: "E9: Device Hardware" targets: "P12: Device hardware interface" ]
+            ] ,
+        ExternalEntity "E10: Comma AI Server"
+            [
+                assets: "log data" , "navigation instructions"
+                incoming flows: "P20: Server Interface.F64: log data"
+                outgoing flows:
+                    "F66: navigation instructions" [ assets: "navigation instructions" source: "E10: Comma AI Server" targets: "P20: Server Interface" ]
+            ]
+]

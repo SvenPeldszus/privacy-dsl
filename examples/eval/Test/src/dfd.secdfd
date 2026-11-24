@@ -1,0 +1,33 @@
+EDFD Spam_Detection [
+    assets:
+         Asset "User Profile" 
+         	type: String 
+         	values: [ M P ] 
+         	source: input_data_store 
+         	targets: Classifier ,
+
+         Asset Spam 
+         	type: Boolean 
+         	source: Classifier 
+         	targets: Fusion 
+         	
+	, Oscar , Asset AdditionalData type: String values:  [  P ] source: input_data_store targets: Fusion , Asset Result type: String source: Fusion targets: PostProcess , output_data_store , Asset MoreData type: String values:  [   C P ] source: input_data_store targets: Fusion elements:
+        
+        Process Classifier [ 
+        	contracts: ClassificationFixed [ "User Profile" PModel = L :: Spam ] 
+            incoming flows: "input_data_store.F1" 
+            outgoing flows: 
+		F3 [ assets: Spam source: Classifier targets: Oscar ] , F4 [ assets: Spam source: Classifier targets: Fusion ] ] , 
+        
+        DataStore input_data_store [ 
+        	outgoing flows: F1 [ 
+        		assets: "User Profile" 
+        		source: input_data_store 
+        		targets: Classifier
+        	]
+        , F5 [ assets: AdditionalData , MoreData source: input_data_store targets: Fusion ] ] , 
+        
+        DataStore output_data_store [ 
+        	assets: Result incoming flows: "PostProcess.F7"
+        , "Fusion.F8" ]
+, ExternalEntity Oscar [ incoming flows: "Classifier.F3" ] , Process Fusion [ contracts: [ Spam , AdditionalData Joiner :: Result ] assets: Spam , AdditionalData , Result incoming flows: "Classifier.F4" , "input_data_store.F5" outgoing flows: F6 [ assets: Result source: Fusion targets: PostProcess ] , F8 [ assets: MoreData source: Fusion targets: output_data_store ] ] , Process PostProcess [ assets: Result incoming flows: "Fusion.F6" outgoing flows: F7 [ assets: Result source: PostProcess targets: output_data_store ] ] ]
